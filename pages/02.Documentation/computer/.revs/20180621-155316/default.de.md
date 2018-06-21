@@ -1,6 +1,5 @@
 ---
 title: Computer
-published: true
 taxonomy:
     category:
         - docu
