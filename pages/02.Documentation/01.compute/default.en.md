@@ -1,8 +1,7 @@
 ---
-title: Computer
+title: Compute
 taxonomy:
     category:
         - docu
 ---
 
-dasdasdsadas
