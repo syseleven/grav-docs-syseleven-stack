@@ -22,7 +22,7 @@ taxonomy:
 
 Using the username and password (API credentials) that were provided by SysEleven we login at: [https://dashboard.cloud.syseleven.net](https://dashboard.cloud.syseleven.net).
 
-![SysEleven Login](../img/login.png)
+![SysEleven Login](/images/login.png)
 
 ## Importing SSH-key
 
@@ -31,7 +31,7 @@ Using the username and password (API credentials) that were provided by SysEleve
 
 Once submitted we can use the key pair with this name in the API and Templates.
 
-![import SSH key](../img/sshkeys.png)
+![import SSH key](/images/sshkeys.png)
 
 ## Starting the compute instance
 
@@ -44,7 +44,7 @@ Once submitted we can use the key pair with this name in the API and Templates.
 * Write the name of our public SSH-Key as parameter *key_name*.
 * Afterwards we click *Launch* and our first instance starts.
 
-![Launch Stack](../img/launch.png)
+![Launch Stack](/images/launch.png)
 
 ## Login to the compute instance
 * To log in to our compute instance, we have to gather its IP address. We can find it at *Compute* --> *Instances* in the field *Floating IP* for our new compute instance. 
@@ -54,7 +54,7 @@ We can check if we can connect to our instance on Mac and Linux in a terminal wi
 ssh syseleven@<myfloating-IP-Address>
 ```
 
-![SSH login](../img/loginterminal.png)
+![SSH login](/images/loginterminal.png)
 
 In the background, the web server, database server and a up-to-date PHP version is being installed.  
 We can check the progress with the following command:

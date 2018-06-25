@@ -24,7 +24,7 @@ taxonomy:
 
 To work with the SysEleven Stack API you need to set environment variables used by the command line tools to authenticate and authorize your API calls. Users logged into the [Dashboard](https://dashboard.cloud.syseleven.net) can download a file that helps setting these variables under *Compute* --> *Access & Security* --> *API Access*. There you can click on *Download OpenStack RC File v3* to download the corresponding file.
  
-![Environment Variable Download](../img/openrc.png)
+![Environment Variable Download](/images/openrc.png)
 
 ## Setting up the environment variables
 
@@ -34,7 +34,7 @@ To provide the clients with the parameters for authentication and authorisationu
 source Downloads/sys11demo-openrc.sh
 ```
 
-![source openrc](../img/source.png)
+![source openrc](/images/source.png)
 
 Sourcing this file to set up environment variables does not return output.
 

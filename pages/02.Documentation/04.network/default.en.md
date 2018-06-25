@@ -31,7 +31,7 @@ You can manage your network both via our public OpenStack API endpoints, as well
 
 Sign in at the  [Dashboard](https://dashboard.cloud.syseleven.net)
 
-![SysEleven Login](../img/login_router.png)
+![SysEleven Login](/images/login_router.png)
 
 #### Step Two: Create Interface on Router
 
@@ -45,7 +45,7 @@ To create a new interface on our router:
 
 Repeat the process with the other router.
 
-![Interface Overview](../img/router-interface.png)
+![Interface Overview](/images/router-interface.png)
 
 #### Step Three: Add a Static Route
 
@@ -58,7 +58,7 @@ To add a static route:
 
 Repeat the process with the other router
 
-![Interface Overview](../img/static-route.png)
+![Interface Overview](/images/static-route.png)
 
 #### Step Four: Creating the Host Route
 
@@ -73,7 +73,7 @@ To create the host route:
 
 Repeat the process with the other subnet.
 
-![Interface Overview](../img/hostroute.png)
+![Interface Overview](/images/hostroute.png)
 
 #### Conclusion
 

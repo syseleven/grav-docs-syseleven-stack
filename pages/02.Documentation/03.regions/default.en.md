@@ -32,12 +32,12 @@ taxonomy:
 
 Using the username and password (API credentials) that were provided by SysEleven we login at: [https://dashboard.cloud.syseleven.net](https://dashboard.cloud.syseleven.net).
 
-![SysEleven Login](../img/login.png)
+![SysEleven Login](/images/login.png)
 
 * In order to select a region via the dashboard, we go to the dropdown menu at the top of the dashboard.
 * There we select the region (cbk / dbl).
 
-![Select region](../img/selectregion.png)
+![Select region](/images/selectregion.png)
 
 Once selected we can start creating resources in the selected region.
 
