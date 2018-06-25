@@ -1,5 +1,5 @@
 ---
-title: Block Storage
+title: 'Block Storage'
 taxonomy:
     category:
         - docu

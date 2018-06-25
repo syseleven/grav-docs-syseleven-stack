@@ -1,5 +1,5 @@
 ---
-title: Networking Service
+title: 'Networking Service'
 taxonomy:
     category:
         - docu
