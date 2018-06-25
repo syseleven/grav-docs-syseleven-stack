@@ -1,3 +1,10 @@
+---
+title: Regions
+taxonomy:
+    category:
+        - docu
+---
+
 # Openstack Regions
 
 [TOC]

@@ -1,3 +1,10 @@
+---
+title: Configure API-Access
+taxonomy:
+    category:
+        - tutorial
+---
+
 # Configure API-Access
 
 [TOC]

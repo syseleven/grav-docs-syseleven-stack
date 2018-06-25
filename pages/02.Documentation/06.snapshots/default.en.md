@@ -1,3 +1,10 @@
+---
+title: Snapshots
+taxonomy:
+    category:
+        - docu
+---
+
 # Snapshots
 
 [TOC]

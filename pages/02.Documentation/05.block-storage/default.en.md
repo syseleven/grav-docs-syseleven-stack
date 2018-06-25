@@ -1,3 +1,10 @@
+---
+title: Block Storage
+taxonomy:
+    category:
+        - docu
+---
+
 # SysEleven Stack Block Storage
 
 [TOC]

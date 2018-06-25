@@ -1,3 +1,10 @@
+---
+title: Images
+taxonomy:
+    category:
+        - docu
+---
+
 # Images
 
 [TOC]

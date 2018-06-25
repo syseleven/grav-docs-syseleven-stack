@@ -1,3 +1,10 @@
+---
+title: Install OpenStack CLI
+taxonomy:
+    category:
+        - tutorial
+---
+
 # Install OpenStack CLI
 
 [TOC]
