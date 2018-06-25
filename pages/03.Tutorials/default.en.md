@@ -1,8 +1,8 @@
 ---
-title: Documenation
+title: Tutorials
 taxonomy:
     category:
-        - docu
+        - tutorial
 ---
 
 

@@ -1,3 +1,10 @@
+---
+title: First steps
+taxonomy:
+    category:
+        - tutorial
+---
+
 # First steps
 
 [TOC]

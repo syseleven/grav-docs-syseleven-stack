@@ -1,3 +1,10 @@
+---
+title: Networking Service
+taxonomy:
+    category:
+        - docu
+---
+
 # SysEleven Stack Networking Service
 
 [TOC]
