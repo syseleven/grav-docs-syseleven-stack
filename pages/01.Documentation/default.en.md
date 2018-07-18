@@ -1,8 +1,5 @@
 ---
-title: Documenation
-taxonomy:
-    category:
-        - docu
+title: Documentation
 ---
 
 ![SysEleven Logo](/images/stacklogo.svg)
