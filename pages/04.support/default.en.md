@@ -15,5 +15,5 @@ You can open tickets directly if you already have an account in our <a href="htt
 
 ### Further information
 
-* [Guideline for reporting issues](report-issues/)
+* [Guideline for reporting issues](/issue-reporting-guideline/)
 * [Library of basic heat templates](https://github.com/syseleven/heat-examples)
