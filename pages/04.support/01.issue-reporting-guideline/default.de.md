@@ -1,14 +1,14 @@
 ---
-title: 'Issue reporting guideline'
+title: 'Leitfaden zum Öffnen eines Tickets'
 date: '02-08-2018 13:21'
 ---
 
-## Introduction
-The following document describes the required form and level of details when reporting issues.
-It is not required but helps to investigate issues faster. It serves as a guideline on how to report issues.
+## Einleitung
+Das folgende Dokument beschreibt das benötigte Format und Level an Details wenn Probleme/Issues gemeldet werden.
+Dieser Leitfaden soll dabei helfen Probleme schneller zu lösen.
 
-## Required data for faster resolutions
-We want to minimize your effort to report any issues. Therefor we provide the information that is necessary to check and solve your issues/requests.
+## Benötigte Daten für eine schnellere Problembehebung
+Wir möchten Ihren Aufwand so gering wie möglich halten. Daher haben wir die wichtigsten Informationen zur Behebung des Problems zusammengestellt.
 
 ```
 Problem description:
