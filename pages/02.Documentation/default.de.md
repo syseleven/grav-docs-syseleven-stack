@@ -1,5 +1,5 @@
 ---
-title: Documentation
+title: Dokumentation
 ---
 
 All pages listed as Documentation will give you an overview of our services.
