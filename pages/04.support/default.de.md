@@ -15,5 +15,5 @@ Sie können direkt ein Ticket erstellen, wenn Sie bereits einen Account in unser
 
 ### Weitere Informationen
 
-* [Leitfaden zum Öffnen eines Tickets](/issue-reporting-guideline/)
+* [Leitfaden zum Öffnen eines Tickets](/support/issue-reporting-guideline/)
 * [Beispiele für basic heat templates](https://github.com/syseleven/heat-examples)
