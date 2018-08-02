@@ -1,5 +1,5 @@
 ---
-title: 'Contractual terms and conditions'
+title: 'Allgemeine Geschäftsbedingungen'
 date: '02-08-2018 13:28'
 ---
 
