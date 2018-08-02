@@ -1,6 +1,6 @@
 ---
 title: FAQ
-external_url: 'https://docs.syseleven.de/faq/en/taxonomy?name=category&val=SysEleven-Stack'
+external_url: 'https://docs.syseleven.de/faq/de/taxonomy?name=category&val=SysEleven-Stack'
 external_links:
     target: _blank
 date: '11-07-2018 16:33'
