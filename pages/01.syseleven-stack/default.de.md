@@ -4,18 +4,20 @@ published: true
 date: '02-08-2018 13:02'
 ---
 
-[SysEleven Stack](https://dashboard.cloud.syseleven.net/) is an OpenStack public cloud service from [SysEleven](https://www.syseleven.de/) - a Berlin based managed hosting company.
+[SysEleven Stack](https://dashboard.cloud.syseleven.net/) ist ein OpenStack public Cloud Dienst der [SysEleven GmbH](https://www.syseleven.de/) - ein Berliner Hosting Unternehmen.
 
 ---
 
-## First steps
+### Erste Schritte
 
-[First steps](/tutorials/firststeps/) show, how you can start a compute instance via the dashboard of the SysEleven Stack. Further examples show, how you can use the API of the SysEleven Stack to manage complex setups.
+["Erste Schritte"](/tutorials/firststeps/) zeigt, wie über das Dashboard des SysEleven Stack eine virtuelle Maschine gestartet werden kann.  
+Weitere Beispiele zeigen, wie über die API des SysEleven Stack komplexere Setups verwaltet werden können. 
 
-## Complex setups
+### Komplexe Setups
 
-On top of the first step examples, SysEleven provides a [library of heat templates](https://github.com/syseleven/heat-examples) that will help you with the creation of a complex setup.
+Auf dem Einstieg aufbauend stellt SysEleven eine [Bibliothek an Heat-Templates](https://github.com/syseleven/heat-examples) bereit, die nach dem Einstieg den Aufbau komplexerer Setups ermöglichen.
 
-## Support
+### Support
 
-As the vendor of the [SysEleven Stack](https://dashboard.cloud.syseleven.net/) we provide **free support** to our customers. For further information please check our [contact page](/support/contact/).
+Als der Hersteller des [SysEleven Stacks](https://dashboard.cloud.syseleven.net/) bieten wir **kostenlosen Support** für unsere Cloud-Kunden.  
+Weitere Informationen finden Sie auf unserer [Support Seite](/support/).
