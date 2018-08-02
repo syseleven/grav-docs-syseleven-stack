@@ -6,11 +6,11 @@ taxonomy:
     category:
         - tutorial
     tag:
+        - heat
         - lamp
         - instance
         - gui
         - horizon
-        - heat
 ---
 
 ## Goal
