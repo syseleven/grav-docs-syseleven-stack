@@ -10,11 +10,9 @@ taxonomy:
         - compute
 ---
 
-## Standard instance types
+## Standard network storage instance types
 
-Standard instances generally offer you good performance, availability and storage durability.
-
-Disk data will be distributed across multiple servers (SysEleven Distributed Storage).
+Standard instances generally offer you good performance, availability and storage durability. Disk data will be distributed across multiple servers (SysEleven Distributed Storage).
 
 We recommend these instance types for most workloads and applications.
 
@@ -29,7 +27,7 @@ M1 Large  |  m1.large   |  32GB  |   8   |   50GB   | high
 
 Note: You can extend storage using our our Block Storage Service.
 
-## Local SSD storage Instance types
+## Local SSD storage instance types
 
 Local SSD storage instances offer low latency SSD storage directly on the local host.
 
