@@ -4,9 +4,9 @@ taxonomy:
     category:
         - tutorial
     tag:
+        - heat
         - kickstart
         - jumphost
-        - heat
 ---
 
 ## Overview
