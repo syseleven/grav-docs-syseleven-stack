@@ -4,7 +4,7 @@ published: true
 date: '02-08-2018 13:02'
 ---
 
-[SysEleven Stack](https://dashboard.cloud.syseleven.net/) is an OpenStack public cloud service from [SysEleven](https://www.syseleven.de/) - a Berlin based managed hosting company.
+[SysEleven Stack](https://dashboard.cloud.syseleven.net/) is an OpenStack public cloud service from [SysEleven GmbH](https://www.syseleven.de/) - a Berlin based managed hosting company.
 
 ---
 
@@ -18,4 +18,4 @@ On top of the first step examples, SysEleven provides a [library of heat templat
 
 ## Support
 
-As the vendor of the [SysEleven Stack](https://dashboard.cloud.syseleven.net/) we provide **free support** to our customers. For further information please check our [contact page](/support/contact/).
+As the vendor of the [SysEleven Stack](https://dashboard.cloud.syseleven.net/) we provide **free support** to our customers. For further information please check our [support page](/support/).
