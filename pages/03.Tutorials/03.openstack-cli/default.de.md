@@ -30,11 +30,8 @@ Dieses Tutorial dient als Anleitung für die Installation der OpenStack CLI (Bef
 *In dieser Anleitung gehen wir davon aus, dass bisher nichts von den benötigten Programmen installiert wurde.
 Für den Fall das bereits Bestandteile installiert sind, überspringe den jeweiligen Punkt.*
 
-<div class="alert alert-dismissible alert-info">
-    <h4 class="alert-heading">Benötigte OpenStack Client Version die mit der SysEleven Cloud kompatibel ist</h4>
-    OpenStack Client Version 3.13.x ist die minimale Version um mit mehreren Regionen arbeiten zu können.<br>
-    Bitte sicherstellen dass die neueste stabile Version installiert ist.
-</div>
+! **Benötigte OpenStack Client Version die mit der SysEleven Cloud kompatibel ist** 
+! OpenStack Client Version 3.13.x ist die minimale Version um mit mehreren Regionen arbeiten zu können. Bitte sicherstellen dass die neueste stabile Version installiert ist.
 
 ---
 
