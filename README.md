@@ -1,6 +1,6 @@
-# grav-docu-syseleven-stack
+# grav-docs-syseleven-stack
 
-[![Build Status](https://travis-ci.org/syseleven/grav-docu-syseleven-stack.svg?branch=master)](https://travis-ci.org/syseleven/grav-docu-syseleven-stack)
+[![Build Status](https://travis-ci.org/syseleven/grav-docs-syseleven-stack.svg?branch=master)](https://travis-ci.org/syseleven/grav-docu-syseleven-stack)
 
 SysEleven Stack Documentation Repository
 
