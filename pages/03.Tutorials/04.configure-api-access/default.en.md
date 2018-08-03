@@ -66,7 +66,7 @@ Example setups can be copied as follows:
 git clone https://github.com/syseleven/heat-examples.git
 ```
 
-Now you can take the [LAMP-Setup](https://raw.githubusercontent.com/syseleven/heat-examples/master/lamp-server/) from our [single LAMP Server example](/tutorials/single-server-lamp) and start it using the API this time:
+Now you can take the [LAMP-Setup](https://raw.githubusercontent.com/syseleven/heat-examples/master/lamp-server/) from our [single LAMP Server example](/tutorials/single-lamp-server) and start it using the API this time:
 ```shell
 cd heat-examples/lamp-server
 openstack stack create -t example.yaml --parameter key_name=sys11demokey lampstack
