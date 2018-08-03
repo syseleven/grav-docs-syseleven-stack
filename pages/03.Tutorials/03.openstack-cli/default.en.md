@@ -10,6 +10,7 @@ taxonomy:
         - cli
         - openstackclient
         - client
+        - python-openstackclient
 ---
 
 ## Overview

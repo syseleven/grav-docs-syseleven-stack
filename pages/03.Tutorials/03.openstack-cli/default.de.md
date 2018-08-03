@@ -10,6 +10,7 @@ taxonomy:
         - cli
         - openstackclient
         - client
+        - python-openstackclient
 ---
 
 ## Übersicht
@@ -89,7 +90,7 @@ C:\Python27\Scripts>pip install python-openstackclient python-heatclient
 
 **OpenStack Plugins**
 
-[Installiere anschließend die benötigten Plugins](#zusatzliche-plugins-installieren), um mit den entsprechenden OpenStack APIs kommunizieren zu können.
+[Installiere anschließend die benötigten Plugins](#zus%C3%A4tzliche-plugins-installieren), um mit den entsprechenden OpenStack APIs kommunizieren zu können.
 
 ---
 
