@@ -56,7 +56,7 @@ Once submitted we can use the key pair with this name in the API and Templates.
 
 ### How to import?
 
-Using the username and password (API credentials) that were provided by SysEleven we source the 'openrc' file and enable the CLI client to talk to the Syseleven Stack.
+Using the username and password (API credentials) that were provided by SysEleven we source the 'openrc' file and enable the CLI client to talk to the SysEleven Stack.
 
 Then we create a new keypair in openstack as follows:
 
