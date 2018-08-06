@@ -51,4 +51,4 @@ L1 XLarge   | l1.xlarge   |  16   |  64GB  |  400GB
 L1 2XLarge  | l1.2xlarge  |  32   | 128GB  |  800GB
 L1 4XLarge  | l1.4xlarge  |  64   | 256GB  | 1600GB
 
-For more information, see the FAQ articles on [local storage instances](../../../faq/en/taxonomy?name=tag&val=localstorage).
+For more information, see the FAQ articles on [local storage instances](/../../../faq/en/taxonomy?name=tag&val=localstorage).
