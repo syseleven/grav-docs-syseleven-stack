@@ -1,6 +1,9 @@
 ---
 title: 'LoadBalancer as a Service: A TCP-based load balancer for your upstreams'
 date: '08-08-2018 09:58'
+taxonomy:
+    category:
+        - tutorial
 ---
 
 # LoadBalancer as a Service: A TCP-based load balancer for your upstreams
@@ -16,9 +19,9 @@ No dedicated load balancer instance is required to use this service.
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](api-access/).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
+* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
+* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
 
 ## How to setup a TCP LoadBalancer
 
