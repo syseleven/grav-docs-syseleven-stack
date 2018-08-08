@@ -7,12 +7,6 @@ taxonomy:
         - docu
 ---
 
-# Timezone / NTP Server
-
-[TOC]
-
----
-
 ## Timezone
 
 The configured timezone in SysEleven Stack is 'UTC' (Coordinated Universal Time).
