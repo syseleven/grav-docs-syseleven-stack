@@ -1,5 +1,5 @@
 ---
-title: 'SysEleven Stack Block-Speicher'
+title: Block-Speicher
 published: true
 date: '08-08-2018 10:40'
 taxonomy:
