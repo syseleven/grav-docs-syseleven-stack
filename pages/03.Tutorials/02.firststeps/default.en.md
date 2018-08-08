@@ -1,5 +1,7 @@
 ---
 title: 'First Steps - Launch a kickstart instance'
+published: true
+date: '08-08-2018 09:48'
 taxonomy:
     category:
         - tutorial
