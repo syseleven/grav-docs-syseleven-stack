@@ -110,11 +110,9 @@ Infos about the Minio client can be found [here](https://minio.io).
 
 **Installation of Minio client into the home directory of the current user is necessary for the following example commands to work!**
 
-<div class="alert alert-success">
-	<h4 class="alert-heading">Client functionality</h4>
-	<p>The Minio client is currently <b>incapable</b> of generating <b>public</b> files.</p>
-	<p>While synchronising many files <tt>minios</tt> performance is much better than with <tt>s3cmd</tt> though.</p>
-</div>
+!!!! **Client functionality**
+!!!! The Minio client is currently **incapable** of generating **public** files.
+!!!! While synchronising many files `minios` performance is much better than with `s3cmd` though.
 
 Now you can create a Minio S3 configuration:
 
