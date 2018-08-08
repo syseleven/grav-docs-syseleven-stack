@@ -1,5 +1,5 @@
 ---
-title: 'SysEleven Stack Block Storage'
+title: 'SysEleven Stack Block-Speicher'
 published: true
 date: '08-08-2018 10:40'
 taxonomy:
@@ -7,21 +7,21 @@ taxonomy:
         - docu
 ---
 
-## Overview
+## Übersicht
 
-SysEleven Stack Block Storage Service is built on the OpenStack Cinder project.
+SysEleven Stacks Block Storage Service basiert auf dem OpenStack Cinder Projekt.
 
-The Block Storage Service adds persistent block storage to your compute instances.
+Der Block Storage Service fügt persistenten, langlebigen Block Storage zu deinen Compute Instanzen hinzu.
 
-You can manage your block storage volumes and make them available to your compute instances both via our public OpenStack API endpoints, as well as using the [Dashboard](https://dashboard.cloud.syseleven.net).
+Sowohl via unserer öffentlichen OpenStack API, als auch durch das SysEleven Stack [Dashboard](https://dashboard.cloud.syseleven.net) können Block Storage Volumes verwaltet und in Compute Instanzen verfügbar gemacht werden.
 
-You can also create snapshots from your block storages volumes, which you can use as a boot image or as a template for the creation of other block storage volumes.
+Es können Snapshots von Block Storage Volumes erstellt werden, welche als Grundlage zur Erstellung neuer Volumes oder Images genutzt werden können.
 
-### Optimal storage alignment
+### Optimales Storage alignment
 
-The alignment within images that SysEleven distributes is already configured optimally.
+Das Alignment der von SysEleven bereitgestellen Images wird bereits optimal eingerichtet.
 
-To boost the performance of the virtual volumes the following settings are advisable:
+Um die Leistung der virtuellen Volumen optimal auszunutzen sind folgende Einstellungen empfehlenswert:
 
 ```shell
 mkfs.ext4 -q -L myVolumeLabel -E stride=2048,stripe_width=10240
@@ -29,15 +29,15 @@ mkfs.ext4 -q -L myVolumeLabel -E stride=2048,stripe_width=10240
 
 ## FAQ
 
-### Can I use a block storage volume across multiple VMs simultaneously?
+### Ist es möglich, ein Cinder Volume auf mehreren VMs zu verwenden? 
 
-Unfortunately this is not possible. Think of a block storage volume like a virtual hard disk - just as you cannot connect a hard disk to multiple computers at the same time, you cannnot connect a block storage volume to multiple compute instances at the same time.
+Nein, das geht aus technischen Gründen nicht. Ein Cinderdevice ist ein virtuelles Blockdevice und kann daher nicht gleichzeitig auf mehreren VMs verwendet werden.  
 
-### How can I get shared storage inside SysEleven Stack?
+### Wie kann ich also shared Storage innerhalb eines Stacks bereitstellen? 
 
-There are multiple options, for instance:
+Grundsätzlich gibt es mehrere Möglichkeiten, u.a.: 
 
- * S3 (SEOS) - provided as part of the SysEleven Stack
- * NFS, GlusterFS, Ceph - interim solution for legacy applications
+* S3 (SEOS) - als Bestandteil des SysEleven Stacks bereitgestellt
+* NFS, GlusterFS, Ceph - Übergangslösung für ältere Anwendungen
 
-For the NFS case, we provide a [shared volume](https://github.com/syseleven/heat-examples/tree/master/shared-volume) template with multiple automatically connecting NFS clients, which you can use with our orchestration service.
+Wir haben [ein Beispiel](https://github.com/syseleven/heat-examples/tree/master/shared-volume) für einen NFS-Server mit mehreren NFS-Clients, die sich automatisch mit diesem verbinden, welcher mit unserem Orchestration Service verwendet werden kann.
