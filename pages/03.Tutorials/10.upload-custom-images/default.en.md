@@ -1,5 +1,5 @@
 ---
-title: 'How to upload custom images?'
+title: 'Upload custom images'
 published: true
 date: '08-08-2018 11:34'
 taxonomy:
