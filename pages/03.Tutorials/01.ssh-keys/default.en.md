@@ -6,8 +6,8 @@ taxonomy:
     category:
         - tutorial
     tag:
-        - ssh-key
         - heat
+        - ssh-key
 ---
 
 ## Goal
