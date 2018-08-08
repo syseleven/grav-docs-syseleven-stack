@@ -26,18 +26,3 @@ Um die Leistung der virtuellen Volumen optimal auszunutzen sind folgende Einstel
 ```shell
 mkfs.ext4 -q -L myVolumeLabel -E stride=2048,stripe_width=10240
 ```
-
-## FAQ
-
-### Ist es möglich, ein Cinder Volume auf mehreren VMs zu verwenden? 
-
-Nein, das geht aus technischen Gründen nicht. Ein Cinderdevice ist ein virtuelles Blockdevice und kann daher nicht gleichzeitig auf mehreren VMs verwendet werden.  
-
-### Wie kann ich also shared Storage innerhalb eines Stacks bereitstellen? 
-
-Grundsätzlich gibt es mehrere Möglichkeiten, u.a.: 
-
-* S3 (SEOS) - als Bestandteil des SysEleven Stacks bereitgestellt
-* NFS, GlusterFS, Ceph - Übergangslösung für ältere Anwendungen
-
-Wir haben [ein Beispiel](https://github.com/syseleven/heat-examples/tree/master/shared-volume) für einen NFS-Server mit mehreren NFS-Clients, die sich automatisch mit diesem verbinden, welcher mit unserem Orchestration Service verwendet werden kann.
