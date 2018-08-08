@@ -11,7 +11,7 @@ taxonomy:
 
 OpenStack offers two different snapshot types. The logical mechanism is the same but the management is different.
 
-## Instance Snapshots
+### Instance Snapshots
 Instance snapshots can be created from instances that are using the ephemeral storage.
 
 **Optional: To create proper instance snapshots the instances should be to be shut off.**
@@ -43,7 +43,7 @@ openstack server image create --name <MyInstanceSnapshotName> <MyInstanceName>
 +------------------+-----------------------------------------------------------------------------------------------------------+
 ```
 
-## Volume Snapshots
+### Volume Snapshots
 Volume Snapshots can be created from any volume, be it a root disk for an instance or an additional volume.
 
 **Optional: To create proper instance snapshots the instances should be to be shut off.**
