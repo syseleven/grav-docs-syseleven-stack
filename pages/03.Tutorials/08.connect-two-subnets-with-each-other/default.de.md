@@ -1,5 +1,5 @@
 ---
-title: 'Wie verbinde ich 2 Subnetze miteinander?'
+title: 'Zwei Subnetze miteinander verbinden?'
 published: true
 date: '08-08-2018 11:10'
 taxonomy:
