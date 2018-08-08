@@ -17,9 +17,9 @@ taxonomy:
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](api-access/).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
+* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
+* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
 
 ## The How *not* To: Redundant Code
 

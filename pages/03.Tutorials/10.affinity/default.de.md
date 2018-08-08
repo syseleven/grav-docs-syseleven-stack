@@ -15,9 +15,9 @@ taxonomy:
 
 ## Vorraussetzungen
 
-* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](firststeps/) gezeigt, wird vorausgesetzt.
-* Grundlagen zur Bedienung des [OpenStack CLI-Tools](openstack-cli/).
-* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](api-access/) beschrieben.
+* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](/tutorials/firststeps/) gezeigt, wird vorausgesetzt.
+* Grundlagen zur Bedienung des [OpenStack CLI-Tools](/tutorials/openstack-cli/).
+* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](/tutorials/api-access/) beschrieben.
 
 ## Problemstellung
 Standardmäßig gibt es keine Garantie, dass Instanzen auf unterschiedliche Hypervisor (Host) verteilt werden. Der Nova Compute-Scheduler entscheidet dies anhand der zur Verfügung stehenden Ressourcen.  
