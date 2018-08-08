@@ -1,5 +1,5 @@
 ---
-title: 'Using local SSD storage'
+title: 'Lokalen SSD Speicher benutzen'
 published: true
 date: '08-08-2018 10:11'
 taxonomy:
@@ -7,7 +7,7 @@ taxonomy:
         - tutorial
 ---
 
-**Local SSD Storage als Alternative zu Distributed Storage**
+**Lokaler SSD Speicher als Alternative zum verteilter Speicher**
 
 ## Ziel
 
