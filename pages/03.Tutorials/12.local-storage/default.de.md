@@ -7,60 +7,60 @@ taxonomy:
         - tutorial
 ---
 
-**Local SSD storage as an alternative to our default distributed storage**
+**Local SSD Storage als Alternative zu Distributed Storage**
 
-## Objective
+## Ziel
 
-This tutorial aims to enable you to make use of the local ssd ephemeral storage provided as an alternative to the default distributed ephemeral storage in SysEleven Stack.
-
-
-## Prerequisites
-
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
+Diese Anleitung dient dazu, Sie in die Lage zu versetzen, Local SSD Storage anstelle des üblichen Distributed Storage als Ephemeral Storage im SysEleven Stack zu verwenden.
 
 
-## How to setup an instance with local ssd storage
+## Voraussetzungen
 
-There are two ways to achieve this goal and we show both, beginning with the quickest one.
+* Sie sollten in der Lage sein, einfache Heat-Templates zu verwenden, wie in [Erste Schritte](/tutorials/firststeps/) gezeigt.
+* Sie sollten die Grundlagen der [OpenStack-Kommandozeilenwerkzeuge](/tutorials/openstack-cli/) kennen.
+* Umgebungsvariablen werden gesetzt, wie im [API-Zugriff-Einrichten](/tutorials/api-access/) gezeigt.
 
 
-### Use our heat-example for a single server using local ssd as epehemeral storage
+## Wie man eine Instanz mit Local SSD Storage erzeugt
 
-You will be working with the [heat examples repository](https://github.com/syseleven/heat-examples) on Github. Your first step is to clone it:
+Es gibt zwei Möglichkeiten, die wir Ihnen hier beide zeigen, beginnend mit der, die am schnellsten zum Ziel führt.
+
+
+### Verwenden Sie unser Heat-Beispiel für einen einfachen Einzelserver mit Local SSD Storage
+
+Um mit unseren [Heat-Beispielen](https://github.com/syseleven/heat-examples) auf Github zu arbeiten, klonen sie sie zunächst:
 
 ```shell
 $ git clone https://github.com/syseleven/heat-examples
 $ cd heat-examples/single-server-on-local-storage
 ```
 
-Now you can create the example stack for local ssd storage:
+Nun können Sie den Beispiel-Stack für Local SSD Storage erzeugen:
 
 ```
 $ openstack stack create -t example.yaml local-storage-example-stack -e example-env.yaml --parameter key_name=<ssh key name> --wait
 ```
 
-In this command, `key_name` references an SSH-Key that you created in the [SSH Tutorial](/tutorials/ssh-keys/).
+In dieser Anweisung steht `key_name` für den SSH-Key, den Sie im [SSH Tutorial](/tutorials/ssh-keys/) hinterlegt haben.
 
-You have now created a very basic server with its ephemeral storage on local ssd.
-
-
-### Use another tutorial or heat-example
-
-You can use any other tutorial or heat-example and modify it to use local ssd storage instead of distributed storage.
-That does not always make sense, since not all workload profit from local ssd storage but it is in principle possible.
-Just follow the instructions to the point right before `openstack stack create` gets executed.
-Edit the stack file(s) and substitute the `m1.*` flavor with the correspondig `l1.*` flavor.
-If you then continue to create the stack, the server(s) will be created using local ssd storage as ephemeral storage.
+Sie haben soeben einen einfachen Server erstellt, dessen Dateisystem Local SSD Storage verwendet.
 
 
-## Implications
+### Wandeln Sie eine andere Anleitung oder ein anderes Heat-Beispiel ab
 
-See our [FAQ on local storage](../../../faq/de/taxonomy?name=tag&val=localstorage) for more information about the implications of using local ssd storage.
+Sie können andere Anleitungen oder Beispiele abwandeln, um Local SSD Storage anstelle des Distributed Storage zu verwenden.
+Das ergibt nicht immer Sinn, da nicht alle Anwendungen von Local SSD Storage profitieren, aber es ist im Prinzip möglich.
+Dazu folgen Sie den Anweisungen bis vor die Stelle, an der `openstack stack create` ausgeführt wird.
+Bearbeiten Sie die Stack-Datei(en) und ersetzen die den Flavor `m1.*` durch den entsprechenden `l1.*` Flavor.
+Wenn Sie mit der Erstellung des Stacks fortfahren, werden der/die Server anstelle des Distributed Storage nun Local SSD Storage verwenden.
 
 
-## Summary / Conclusion
+## Weitere Auswirkungen
 
-You now have created a basic server with local ssd storage and learned, how to modify other tutorials to make use of local ssd storage.
-You should now be able to do anything you were able to do with distributed storage, with local storage as well.
+Bitte lesen Sie auch unsere [FAQ zu Local SSD Storage](../faq/local-storage), um mehr über die Auswirkungen des Einsatzes von Local SSD Storage zu erfahren.
+
+
+## Zusammenfassung
+
+Sie haben einen einfachen Server erstellt, der Local SSD Storage nutzt und gelernt, wie sie andere Anleitungen abwandeln, um ebenfalls Local SSD Storage zu verwenden.
+Sie sollten nun in der Lage sein, alles, was Sie bisher nur mit Distrubuted Storage machen konnten, zukünftig auch mit Local SSD Storage zu tun.
