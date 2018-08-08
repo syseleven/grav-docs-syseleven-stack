@@ -45,3 +45,6 @@ The following distros are reported to be working in SysEleven Stack:
 * CentOS
 * CoreOS
 
+## Uploading custom images
+
+[This tutorial](/tutorials/upload-custom-images) shows how to upload custom images.
