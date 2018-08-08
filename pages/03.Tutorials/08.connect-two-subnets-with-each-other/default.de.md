@@ -1,5 +1,5 @@
 ---
-title: 'Connect two subnets with each other'
+title: 'Wie verbinde ich 2 Subnetze miteinander?'
 published: true
 date: '08-08-2018 11:10'
 taxonomy:
@@ -7,61 +7,54 @@ taxonomy:
         - tutorial
 ---
 
-## Prerequisites
+## Vorraussetzungen:
+* Zugang zum [Dashboard](https://dashboard.cloud.syseleven.net)
+* mindestens 2 vorhandene Router/Netzwerke
+* verschiedene IP-Ranges in beiden Netzwerken
 
-* Access to the [Dashboard](https://dashboard.cloud.syseleven.net)
-* at least two existing routers/networks
-* different IP ranges in both networks
+### Schritt Eins: Login
 
-### Step One: Login
-
-Sign in at the  [Dashboard](https://dashboard.cloud.syseleven.net)
+Mit den von SysEleven erhaltenen Daten für Nutzername und Passwort loggen wir uns im [Dashboard](https://dashboard.cloud.syseleven.net) ein.
 
 ![SysEleven Login](/images/horizon-login.png)
 
-### Step Two: Create Interface on Router
+### Schritt Zwei: Interface im Router anlegen
 
-To create a new interface on our router:
+Um ein Interface einzurichten, gehne wir wie folgt vor:
+* Klicke in der linken Seitenleiste unter "Network" auf "Router
+* Nun wählen wir den ersten Router für unsere Verbindung aus und klicken auf den Namen
+* Im sich nun öffnenden Fenster gehen wir auf den Reiter "Interfaces" und wählen dort "Add Interfaces" aus.
+* Hier wählt man im ersten Punkt den Ziel Router aus, vergibt unter IP eine eigene IP-Adresse (aus der IP-Range des Ziel Routers) und geht dann auf "Submit"
 
-* Click on the left side bar, then "Network" --> "Router".
-* Click on the first router you want to establish a connection with.
-* In the new window, under "Interfaces", click on "Add Interfaces".
-* Click on the router we want to connect to and add an IP under "IP" out of the IP range from target router.
-* Click "Submit".
+Diese Schritte wiederholt man nun für den anderen Router.
 
-Repeat the process with the other router.
+![Interface Übersicht](/images/router-interface.png)
 
-![Interface Overview](/images/router-interface.png)
+### Schritt Drei: Static Route erstellen
 
-### Step Three: Add a Static Route
+Der nächste Schritt ist nun eine Static Route (Statische Verbindung) anzulegen.
+* Wir begeben uns wie vorigen Schritt über "Network" -> "Routers" auf den entsprechenden Router
+* Hier klicken wir statt auf "Interfaces" auf "Static Route"
+* Nun legen wir eine Static Route über "Add Static Route" an und geben dort die IP-Range des Zielnetzes an, sowie als Nexthop die gleiche IP-Adresse wie im [vorigen Schritt](#schritt-zwei-interface-im-router-anlegen)
 
-To add a static route:
+Auch das wiederholen wir für den anderen Router.
 
-* Click on the left side bar, then "Network" --> "Router".
-* Click on the first router you want to establish a connection with.
-* Click on "Static Route"
-* Click "Add Static Route" and enter the IP range from the target network and as "Next hop" the same IP address as in step two
+![Interface Übersicht](/images/static-route.png)
 
-Repeat the process with the other router
+### Schritt Vier: Hostroute anlegen
 
-![Interface Overview](/images/static-route.png)
+Als letzten Schritt benötigen wir noch eine Hostroute.
+* Dafür gehen wir in der Seitenleiste nun auf Network, wählen unser Netzwerk aus und klicken auf den Namen.
+* Dort sehen wir alle zugehörigen Subnetze, klicken bei dem zugehörigen Subnet auf "Edit Subnet" und wählen den Reite "Subnet Details".
+* Unter dem Punkt "Host Routes" können wir unsere Route festlegt.
+* Dafür legen wir unseren Ziel IP-Bereich fest (z.B. 10.0.0.0/24) und auch die IP Adresse des dazugehörigen Router Interfaces.
+* Mit "Submit" speichern wir nun auch diesen Schritt
 
-### Step Four: Creating the Host Route
+Auch diesen Schritt wiederholen wir für das andere Subnet.
 
-To create the host route:
+![Interface Übersicht](/images/hostroute.png)
 
-* Click on the left side bar, then "Network", then the network you want to share.
-* Click on the subnet you want to connect to
-* Click on "Edit Subnet" and go to "Subnet Details".
-* Under "Host Routes" we can now set the route.
-* Specify the IP range (e.g. `10.0.0.0/24`) and the IP address of the specific router interface.
-* Click "Submit" to save the host route
+## Fazit
 
-Repeat the process with the other subnet.
-
-![Interface Overview](/images/hostroute.png)
-
-## Conclusion
-
-You connected two subnets, so they can communicate with another.  
-You also set up our own host routes and got to know the networking settings in the dashboard.
+Nun haben wir zwei Subnetze verbunden, die untereinander kommunizieren können.<br>
+Außerdem haben wir eine eigene Hostroute angelegt und auch verschiedene Unterpunkte im Dashboard kennengelernt.
