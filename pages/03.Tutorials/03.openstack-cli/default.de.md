@@ -1,5 +1,5 @@
 ---
-title: 'Install OpenStack CLI'
+title: 'OpenStack CLI installieren'
 published: true
 date: '03-08-2018 13:12'
 taxonomy:
@@ -7,9 +7,9 @@ taxonomy:
         - tutorial
     tag:
         - openstack
-        - cli
         - openstackclient
         - client
+        - cli
         - python-openstackclient
 ---
 
@@ -123,7 +123,7 @@ sudo -H pip install python-openstackclient python-heatclient
 
 ## Fazit
 Nun ist der OpenStack Client installiert und wir können diesen nutzen.
-**Damit die OpenStack CLI-Tools verwendet werden können, muss der [API Zugriff](/tutorial/api-access/) als Nächstes konfiguriert werden.**
+**Damit die OpenStack CLI-Tools verwendet werden können, muss der [API Zugriff](api-access/) als Nächstes konfiguriert werden.**
 
 Eine Übersicht aller Befehle kannst du dir mit folgendem Befehl anzeigen lassen:
 ```shell
