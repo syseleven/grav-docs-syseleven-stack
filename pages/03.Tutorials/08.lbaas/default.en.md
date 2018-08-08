@@ -1,12 +1,12 @@
 ---
-title: 'LoadBalancer as a Service: A TCP-based load balancer for your upstreams'
+title: 'LoadBalancer as a Service'
 date: '08-08-2018 09:58'
 taxonomy:
     category:
         - tutorial
 ---
 
-# LoadBalancer as a Service: A TCP-based load balancer for your upstreams
+**A TCP-based load balancer for your upstreams**
 
 ## Overview
 
