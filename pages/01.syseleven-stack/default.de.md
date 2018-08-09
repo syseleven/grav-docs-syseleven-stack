@@ -4,7 +4,7 @@ published: true
 date: '02-08-2018 13:02'
 ---
 
-[SysEleven Stack](https://dashboard.cloud.syseleven.net/) ist ein OpenStack Public Cloud Dienst der [SysEleven GmbH](https://www.syseleven.de/) - ein Berliner Hosting Unternehmen.
+[SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) ist ein OpenStack Public Cloud Dienst der [SysEleven GmbH](https://www.syseleven.de/) - ein Berliner Hosting Unternehmen.
 
 ---
 
