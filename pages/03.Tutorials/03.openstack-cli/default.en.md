@@ -31,10 +31,8 @@ This tutorial serves as manual on how to install the OpenStack CLI (Command Line
 *In this manual we expect that you haven't installed any of the required tools.
 If you already installed any of the tools, please skip that specific step.*
 
-
 ! **Required OpenStack client version to work with the SysEleven Cloud**
 ! OpenStack client version 3.13.x is the minimum to work with multiple regions. Please make sure to install the latest stable version.
-
 
 ---
 
@@ -42,55 +40,60 @@ If you already installed any of the tools, please skip that specific step.*
 
 First open `Terminal` or if installed [iTerm2](https://www.iterm2.com/).
 
-**PIP**
+### PIP
 
 To install the required packages, we use [PIP](https://en.wikipedia.org/wiki/Pip_(package_manager)) as package manager.
 
 We install `PIP`with the following command:
+
 ```shell
 sudo easy_install pip
 ```
 
-**Python dependencies**
+### Python dependencies
 
 To work around an OSX issue run the following command:
+
 ```shell
 sudo -H pip install --ignore-installed six pyparsing pyOpenSSL
 ```
 
 Alternatively running a ["virtual environment" with `virtualenv`](#virtualenv) also works, to have a separate environment for the OpenStack Client.
 
-**OpenStack Client**
+### OpenStack Client
 
 After the installation of `PIP` finished, we need to install the OpenStack CLI client and required plugins, to be able to communicate with the corresponding OpenStack API:
+
 ```shell
 sudo -H pip install python-openstackclient python-heatclient
 ```
 
---- 
+---
 
 ## Installation for Windows
 
-**Python**
+### Python
 
 To be able to use the OpenStack Client on Windows we first need [Python 2.7](https://www.python.org/downloads/release/python-2712/).
 After the installation is finished, we open our command prompt and ensure that we're in the following directory: `C:\Python27\Scripts`
 
-**PIP**
+### PIP
 
 Now we use the `easy_install` command to install [PIP](https://en.wikipedia.org/wiki/Pip_(package_manager)) as package manager:
+
 ```batch
 C:\Python27\Scripts>easy_install pip
 ```
 
-**OpenStack Client**
+### OpenStack Client
 
 After the installation of `PIP` finished, we need to install the OpenStack CLI as last step:
+
 ```batch
 C:\Python27\Scripts>pip install python-openstackclient python-heatclient
 ```
 
-**OpenStack Plugins**
+### OpenStack Plugins
 
 After that [install the required plugins](#installation-of-more-plugins) to be able to talk to the corresponding OpenStack APIs.
 
@@ -98,25 +101,28 @@ After that [install the required plugins](#installation-of-more-plugins) to be a
 
 ## Installation for Linux
 
-**PIP**
+### PIP
 
 To install the required packages, we use [PIP](https://en.wikipedia.org/wiki/Pip_(package_manager)) as package manager.
 
-*Red Hat Enterprise Linux, CentOS or Fedora*
+#### Red Hat Enterprise Linux, CentOS or Fedora
+
 ```shell
 yum install python-minimal python-pip
 ```
 
-*Ubuntu oder Debian*
+#### Ubuntu oder Debian
+
 ```shell
 apt install -q -y python-minimal python-pip
 ```
 
-**OpenStack Client**
+### OpenStack Client
 
 If there are dependency errors alternatively running a ["virtual environment" with `virtualenv`](#virtualenv) also works, to have a separate environment for the OpenStack Client.
 
 After the installation of `PIP` finished, we need to install the OpenStack CLI client and required plugins, to be able to communicate with the corresponding OpenStack API:
+
 ```shell
 pip install python-openstackclient python-heatclient
 ```
@@ -124,25 +130,30 @@ pip install python-openstackclient python-heatclient
 ---
 
 ## Conclusion
+
 We have installed the OpenStack Client and we now can use it.  
-**To be able to use the OpenStack CLI tools the [API access](api-access/) needs to be configured now.**
+**To be able to use the OpenStack CLI tools the [API access](../04.api-access/default.en.md) needs to be configured now.**
 
 If needed you can list all commands:
+
 ```shell
 openstack --help
 ```
 
---- 
+---
 
 ## Additional information
 
 ### Installation of more plugins
 
 One has the possibility to install plugins. Place the corresponding plugin name into the following command:
+
 ```shell
 pip install python-<PLUGINNAME>client
 ```
+
 Installing the heat plugin:
+
 ```shell
 pip install python-heatclient
 ```
@@ -160,22 +171,26 @@ Required plugins for the SysEleven Stack:
 [Virtualenv](https://virtualenv.pypa.io) provides a virtual environment to avoid problems with dependencies and other programs when installing the OpenStack Client. This manual applies for MAC and Linux systems.
 
 Install `virtualenv` with the following command:
+
 ```shell
 pip install virtualenv
 ```
 
 Now create a project folder e.g. `myproject` into which we create a `virtualenv`:
+
 ```shell
 cd myproject/
 virtualenv venv
 ```
 
 If required `virtualenv` can inherit global installed packages (e.g IPython or Numpy). Use the following command to configure this:
+
 ```shell
 virtualenv venv --system-site-packages
 ```
 
 These commands create a virtual subfolder within the project folder into which everything is being installed. However one has to activate the folder first (within the terminal that we use to work on the project):
+
 ```shell
 source myproject/venv/bin/activate
 ```
@@ -184,6 +199,7 @@ Now we should see `(venv)` at the beginning of our terminal prompt, that confirm
 If we install something now the installed programs end up within our project folders and do not create any conflics with other projects.
 
 *To exit the virutal environment we use:*
+
 ```shell
 deactivate
 ```

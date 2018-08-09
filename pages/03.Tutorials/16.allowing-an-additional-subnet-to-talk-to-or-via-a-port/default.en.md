@@ -11,10 +11,9 @@ Allowing e.g. VPN Network communication in and out via the VPN Gateway port requ
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
-
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
 
 ### Step One: List available ports
 

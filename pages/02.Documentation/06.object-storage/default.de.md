@@ -65,6 +65,7 @@ openstack ec2 credentials list
 ## Clients
 
 ### S3cmd
+
 Infos über den `s3cmd` Client sind [hier](http://s3tools.org/s3cmd) zu finden.
 
 Mit diesen Informationen können wir uns eine `s3cmd` Konfiguration erstellen, die wie folgt aussehen könnte:
@@ -94,16 +95,20 @@ und befüllen diesen mit Inhalt:
 s3cmd put test.jpg s3://BUCKET_NAME -P
 ```
 
-Mit dem Schalter -P stellen wir die Datei der Öffentlichkeit zur Verfügung. Hierbei ist zu beachten, dass die Ausgabe von `s3cmd` eine falsche URL ausgeben kann: 
+Mit dem Schalter -P stellen wir die Datei der Öffentlichkeit zur Verfügung. Hierbei ist zu beachten, dass die Ausgabe von `s3cmd` eine falsche URL ausgeben kann:
 
 ```shell
 Public URL of the object is: http://BUCKET_NAME.s3.amazonaws.com/test.jpg
 ```
 
-Ein Zugriff auf die S3 Datei ist unter der folgenden URL möglich: https://s3.dbl.cloud.syseleven.net/BUCKET_NAME/test.jpg  
+Ein Zugriff auf die S3 Datei ist unter der folgenden URL möglich:
+
+`https://s3.dbl.cloud.syseleven.net/BUCKET_NAME/test.jpg`
+
 Damit sind wir in der Lage static assets über eine HTTP URL einzubinden.
 
 ### Minio
+
 Infos über den Minio Client sind [hier](https://minio.io) zu finden.
 
 **Der Minio Client muss in das Home Directory des aktuellen Benutzers installiert werden, damit die folgenden Beispiel Commandos funktionieren.**
@@ -135,6 +140,7 @@ und befüllen diesen mit Inhalt:
 ```
 
 Datei(en) listet man wie folgt auf:
+
 ```shell
 ~/mc ls dbl/bucketname
 [2018-04-27 14:18:28 UTC] 380KiB test.jpg

@@ -7,6 +7,8 @@ taxonomy:
         - tutorial
 ---
 
+## Uploading Custom Images
+
 There are three different ways to upload custom images.
 
 ### Dashboard
@@ -18,8 +20,8 @@ There are three different ways to upload custom images.
 
 ### OpenStack-CLI
 
-You need to have the [OpenStack-CLI](/tutorials/openstack-cli/) installed and configured.
-After [sourcing the openrc.sh](/tutorials/api-access/) you can easily upload your own image and use it right after, like this:
+You need to have the [OpenStack-CLI](../03.openstack-cli/default.en.md) installed and configured.
+After [sourcing the openrc.sh](../04.api-access/default.en.md) you can easily upload your own image and use it right after, like this:
 
 ```shell
 glance --os-image-api-version 1 image-create --progress --is-public False --disk-format=qcow2 \
@@ -31,6 +33,7 @@ glance --os-image-api-version 1 image-create --progress --is-public False --disk
 
 It is also possible to upload images with heat.
 An example can look like this:
+
 ```plain
 heat_template_version: 2016-04-08
 
@@ -45,4 +48,5 @@ resources:
       name: Debian
       location: http://cdimage.debian.org/cdimage/openstack/testing/debian-testing-openstack-amd64.qcow2
 ```
+
 Further information can be found [here](https://dashboard.cloud.syseleven.net/horizon/project/stacks/resource_types/OS::Glance::Image).

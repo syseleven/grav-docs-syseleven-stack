@@ -27,14 +27,14 @@ Bestandteile bekannt sein.
 Ich kann zwar in OpenStack virtuelle Maschinen ohne Netzwerk betreiben; für das
 Gros der Anwendungen werde ich allerdings Netzwerk brauchen. In OpenStack gibt
 es fünf Objekte, die im Netzwerksegment wichtig sind: Netzwerke, Subnetze,
-Ports und Router sowie sogenannte Floating-IPs. 
+Ports und Router sowie sogenannte Floating-IPs.
 
 Netzwerke sind vorzustellen als Container, die einen Rahmen bilden, um darin
 ein- oder mehrere Subnetze zu betreiben. Subnetze sind in der
 Netzwerkarchitektur von OpenStack die tatsächlich genutzten Netzwerke, über die
 Traffic von der Aussenwelt in den Server geroutet wird und auch zurück. Ohne
 Subnetz wird also eine virtuelle Maschine keine Verbindung zur Aussenwelt
-bekommen. 
+bekommen.
 
 Es ist wichtig, sich vor Augen zu halten, dass alles in OpenStack ein Objekt
 bzw. eine Ressource ist, das über APIs verwaltet werden kann. Das heißt, dass
@@ -63,7 +63,7 @@ resources:
       - {start: 10.0.0.10, end: 10.0.0.250}
 ```
 
-Das Beispiel starten wir mit 
+Das Beispiel starten wir mit
 
 ```shell
 heat stack-create -f net.yaml netexample1
@@ -275,7 +275,7 @@ resources:
 Dieses Template starten wir wie gehabt, nur dass wir mittels `-P
 key_name=<PubKeyName>` unseren in OpenStack hinterlegten öffentlichen SSH-Key
 per Name referenzieren. Damit sorgen wir dafür, dass für den Standard-User der
-virtuellen Maschine unser SSH-Key eingespielt wird und wir Zugriff erhalten. 
+virtuellen Maschine unser SSH-Key eingespielt wird und wir Zugriff erhalten.
 
 Wir sehen in der Weboberfläche, dass das Netzwerk gebaut wird. Wir sehen auch,
 dass ein Netzwerk, ein Subnetz und ein Router angelegt werden und alle
@@ -460,14 +460,14 @@ ssh ec2-user@<IP-Adresse>
 ```
 
 Der ec2-user ist der Standard-User aus Ubuntu-Cloudimages, so lange nichts anderes konfiguriert wurde.
- 
+
 Wir haben nun die Bausteine Netzwerk und virtuelle Maschinen gezeigt. Das ist
 im Prinzip alles, was wir für den Betrieb eines einfachen Setups brauchen. Doch
 ganz so anspruchslos sind meist auch die einfachsten Hosting-Projekte nicht:
 Was passiert, wenn unsere Maschine größer werden soll als der eingestellte
 Flavor? und wo sind meine Daten, die ich in der Maschine aufgebaut habe, wenn
 ich den Stack lösche, wie ich es gelernt habe? Die Antwort auf beide Fragen
-findet sich [hier](/documentation/block-storage). Jede Maschine im Syseleven Stack wird derzeit
+findet sich [hier](../../02.Documentation/04.block-storage/default.de.md). Jede Maschine im Syseleven Stack wird derzeit
 mit einer Größe von 50GB Storage ausgeliefert. Brauche ich zusätzlichen
 Speicher, muss ich auf sogenannte Volumes zurückgreifen. Doch auch aus einer
 anderen Überlegung heraus sind Volumes interessant: Wenn ich meine Maschine
@@ -477,17 +477,15 @@ einer VM also als vergänglich, ephemeral, bezeichnet werden kann, kann ich
 Volumes als persistenten Speicher nutzen, der über den Zeitraum der Existenz
 eines Stacks hinaus zur Verfügung steht. Dafür lege ich mir am besten einen
 eigenen Stack an, der als einzige Aufgabe hat, mein Volume in der gewünschten
-Größe anzulegen. 
+Größe anzulegen.
 
 <!--- TODO: Code fehlt. -->
-```
-```
 
 Wenn ich dieses Template starte, erhalte ich ein Volume mit einer UID. Diese
 UID kann ich, über Parameter gesteuert, an mein Template der virtuellen
 Maschine übergeben. In der virtuellen Maschine taucht nun ein weiteres
 Blockdevice, also im Grunde eine weitere Festplatte, auf. So habe ich eine
-Lösung für die Persistenz meiner Daten. 
+Lösung für die Persistenz meiner Daten.
 
 Ebenfalls lässt sich so ein Setup realisieren, bei dem eine virtuelle Maschine
 mehr Speicherplatz zur Verfügung gestellt bekommt, als die 50GB des
@@ -496,10 +494,8 @@ erstellen, sondern in dem Stack, in dem die Maschine selbst auch erstellt wird.
 Ein vollständiges Setup sieht dann so aus:
 
 <!--- TODO: Code fehlt. -->
-```
-```
 
-## Bestandteile eines Heat-Templates.
+## Bestandteile eines Heat-Templates
 
 Wie ist ein Heat-Template, mit dem ich jeden Aspekt meiner Infrastruktur
 beschreiben kann, aufgebaut? Die Dateien, die die virtuelle Infrastruktur
@@ -525,7 +521,7 @@ erforderlich.
 Eine Beschreibung eines Heat-Stacks ist sinnvoll, aber optional. Sinnvoll ist
 sie auch deshalb, weil der Text aus dieser Sektion in der OpenStack-Datenbank
 abgelegt wird und daher die hier enthaltenen Informationen abrufbar sind, wenn
-der Stack gestartet ist. 
+der Stack gestartet ist.
 
 ### Parameter
 
@@ -569,6 +565,7 @@ resources:
 - port: { get_resource: example_port }
 
 ```
+
 Wie an diesem Beispiel zu sehen ist, gibt es noch eine andere häufig genutzte Referenzierung: Mit “get_param” wir auf den Inhalt der Parameter zugegriffen, die in der Parameterdeklaration eingeführt und deren Inhalt definiert wurde.
 
 ### Output

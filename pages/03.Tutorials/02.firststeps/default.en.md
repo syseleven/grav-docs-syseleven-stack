@@ -27,13 +27,14 @@ The kickstart instance contains all necessary tools to get started with the Open
 * Knowledge how to utilise a terminal/SSH and SSH-keys
 
 ---
-## Import SSH key(s)
 
-* Upload your SSH key(s) to the Horizon Dashboard - see [SSH Tutorial](ssh-keys/)
+## Import SSH keys
+
+* Upload your SSH key(s) to the Horizon Dashboard - see [SSH Tutorial](../01.ssh-keys/default.en.md)
 
 ## Launch Stack
 
-* Log in to the [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) using the username and password (API credentials) that were provided by SysEleven. 
+* Log in to the [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) using the username and password (API credentials) that were provided by SysEleven.
 
 ![SysEleven Login](/images/horizon-login.png)
 
@@ -69,6 +70,7 @@ The kickstart instance contains all necessary tools to get started with the Open
 ![horizon-compute-instances-kickstart-fip](/images/horizon-compute-instances-kickstart-fip.png)
 
 * Open a terminal of your choice and log in to the instance via ssh with the username `syseleven`  
+
 `ssh syseleven@<floating IP> -i ~/.ssh/< private ssh key >`
 
 * You should now be logged in your instance via SSH  

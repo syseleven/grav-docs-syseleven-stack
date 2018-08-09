@@ -7,19 +7,18 @@ taxonomy:
         - tutorial
 ---
 
-***Resource Groups: From Single Server to Distributed Setup***
+## Resource Groups: From Single Server to Distributed Setup
 
 ## Goal
 
 * This tutorial shows how you can group servers. That way you can control the
 * amount of identical servers via parameters.
 
-
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
 
 ## The How *not* To: Redundant Code
 
@@ -91,7 +90,7 @@ Simplifying Infrastructure Templates with `Resource Groups`.
 A simple servers with several identical servers is split between two files: A `setup.yaml that describes everything except the servers:
 
 ```plain
-heat_template_version: 2014-10-16 
+heat_template_version: 2014-10-16
 
 #
 # you can start this stack using the following command:
@@ -110,8 +109,8 @@ resources:
     type: OS::Heat::ResourceGroup
     depends_on: example_subnet
     properties:
-      count: { get_param: server_count } 
-      resource_def: 
+      count: { get_param: server_count }
+      resource_def:
         type: server.yaml
         properties:
           network_id: { get_resource: example_net}
@@ -154,7 +153,7 @@ resources:
     type: OS::Nova::Server
     properties:
       user_data_format: RAW
-      image: Ubuntu 16.04 sys11-cloudimg amd64 
+      image: Ubuntu 16.04 sys11-cloudimg amd64
       flavor: m1.small
       name: { get_param: server_name }
       networks:
@@ -174,7 +173,7 @@ This method has several advantages:
 * You avoid redundancies and repetition.
 * You get an automatically managed index you can use (in this example for the server name).
 * The number of resources in a group is controlled by a simple parameter, so you can generate differently scaled setups from the same code base.
- 
+
 ## An Example
 
 We published an [example setup](https://github.com/syseleven/heat-examples/tree/master/example-setup) using Resource Groups for modularization and simplification.

@@ -10,5 +10,6 @@
   },
   "first-line-h1": false,
   "valid-metadata-block": true,
-  "no-multiple-blanks": false
+  "no-multiple-blanks": false,
+  "no-duplicate-heading": false
 }

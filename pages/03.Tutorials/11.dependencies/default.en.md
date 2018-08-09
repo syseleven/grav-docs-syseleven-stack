@@ -14,13 +14,14 @@ taxonomy:
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
 
-## The Problem: Creating Resources fails:
+## The Problem: Creating Resources fails
 
 If Resources are not created in a defined order, they will be created randomly. This can cause stack creation to fail:
+
 ```shell
 syselevenstack@kickstart:~/failingDemo$ openstack stack create -t clustersetup.yaml -e clustersetup-env.yaml noDependencies --wait
 2016-10-18 13:50:48 [noDependencies]: CREATE_IN_PROGRESS  Stack CREATE started
@@ -42,19 +43,20 @@ syselevenstack@kickstart:~/failingDemo$ openstack stack create -t clustersetup.y
 2016-10-18 13:51:17 [appserver_group]: CREATE_COMPLETE  state changed
 2016-10-18 13:51:17 [noDependencies]: CREATE_FAILED  Resource CREATE failed: BadRequest: resources.dbserver_group.resources[0].resources.dbserver: Port de3404ba-3b43-4123-bf1d-1a1809ea434a requires a FixedIP in order to be used. (HTTP 400) (Request-ID: req-bcd57a8b-7290-4311-8800-46fc78fb0f8d)
 
- Stack noDependencies CREATE_FAILED 
+ Stack noDependencies CREATE_FAILED
 
-syselevenstack@kickstart:~/failingDemo$ 
+syselevenstack@kickstart:~/failingDemo$
 ```
 
 ## The Solution: Define the Order of Resource Creation
 
 In a Heat template you can define dependencies using the keyword `depends_on`:
+
 ```plain
 resources:
   syseleven_net:
     type: OS::Neutron::Net
-    properties: 
+    properties:
       name: syseleven-net
 
   syseleven_subnet:
@@ -64,6 +66,7 @@ resources:
 ```
 
 You can observe this using the option `--wait` when using the OpenStack command line tools to create a stack:
+
 ```shell
 syselevenstack@kickstart:~/heat-examples/example-setup$ openstack stack create -t clustersetup.yaml -e clustersetup-env.yaml depTest --wait
 2016-10-19 11:42:17 [depTest]: CREATE_IN_PROGRESS  Stack CREATE started

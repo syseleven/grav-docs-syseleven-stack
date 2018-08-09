@@ -7,19 +7,18 @@ taxonomy:
         - tutorial
 ---
 
-***Resource Groups: vom Single-Server zu verteilten Setups***  
+## Resource Groups: vom Single-Server zu verteilten Setups  
 
 ## Ziel
 
 * In diesem Tutorial wird gezeigt, wie Server in Gruppen zusammengefasst werden.
 * Die Anzahl gleicher Server kann so über Parameter gesteuert werden.
 
+## Vorraussetzungen
 
-## Vorraussetzungen 
-
-* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](/tutorials/firststeps/) gezeigt, wird vorausgesetzt.
-* Grundlagen zur Bedienung des [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](/tutorials/api-access/) beschrieben.
+* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](../02.firststeps/default.en.md) gezeigt, wird vorausgesetzt.
+* Grundlagen zur Bedienung des [OpenStack CLI-Tools](../03.openstack-cli/default.de.md).
+* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../04.api-access/default.en.md) beschrieben.
 
 ## Wie es *nicht* sein sollte: redundanter Code
 
@@ -91,7 +90,7 @@ Infrastrukturtemplates vereinfachen anhand von 'ResourceGroups'.
 Ein einfaches Szenario mit mehreren gleichen Servern verteilt sich damit auf zwei Dateien, einmal die`setup.yaml`, in der alles außer meinen Servern beschrieben ist:
 
 ```plain
-heat_template_version: 2014-10-16 
+heat_template_version: 2014-10-16
 
 #
 # you can start this stack using the following command:
@@ -110,8 +109,8 @@ resources:
     type: OS::Heat::ResourceGroup
     depends_on: example_subnet
     properties:
-      count: { get_param: server_count } 
-      resource_def: 
+      count: { get_param: server_count }
+      resource_def:
         type: server.yaml
         properties:
           network_id: { get_resource: example_net}
@@ -154,7 +153,7 @@ resources:
     type: OS::Nova::Server
     properties:
       user_data_format: RAW
-      image: Ubuntu 16.04 sys11-cloudimg amd64 
+      image: Ubuntu 16.04 sys11-cloudimg amd64
       flavor: m1.small
       name: { get_param: server_name }
       networks:
@@ -175,6 +174,6 @@ Wir erreichen so mehrere Vorteile:
 * Wir haben einen automatisch fortlaufenden Index, den wir hier am Beispiel der Servernamen nutzen.
 * Die Anzahl der Ressourcen in einer Gruppe lässt sich einfach in Parameter auslagern, so dass verschieden skalierte Setups aus der selben Code-Basis erstellt werden können.
 
-## Beispiel-Ressourcen:
+## Beispiel-Ressourcen
 
 Das auf Github veröffentlichte Beispiel [ExampleSetup](https://github.com/syseleven/heat-examples/tree/master/example-setup) setzt `resourceGroups` zur Vereinfachung ein.

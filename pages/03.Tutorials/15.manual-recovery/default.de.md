@@ -12,18 +12,18 @@ taxonomy:
 * Herunterladen eines Instanz-Snapshots
 * Dateisystem im Snapshot reparieren und mounten
 
-## Vorraussetzungen 
+## Vorraussetzungen
 
-* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](/tutorials/firststeps/) gezeigt, wird vorausgesetzt.
-* Grundlagen zur Bedienung des [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](/tutorials/api-access/) beschrieben.
+* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](../02.firststeps/default.en.md) gezeigt, wird vorausgesetzt.
+* Grundlagen zur Bedienung des [OpenStack CLI-Tools](../03.openstack-cli/default.de.md).
+* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../04.api-access/default.en.md) beschrieben.
 
 ## Optional: Temporäre Arbeitsumgebung
 
 <details/>
 <summary>Hier klicken um Details einzublenden</summary>
 
-**Temporäre Arbeitsumgebung**
+### Temporäre Arbeitsumgebung
 
 Für dieses Tutorial benötigen wir eine *Linux-Umgebung* mit OpenStack Client. Sollte diese noch nicht vorhanden sein, kann sie mit folgenden Kommandos erstellt werden:
 
@@ -37,7 +37,7 @@ openstack stack create -t kickstart.yaml --parameter key_name=<ssh key name> <st
 Nun müssen wir uns zur erstellten Instanz verbinden.
 
 ```shell
-$ ssh syseleven@<server-ip>
+ssh syseleven@<server-ip>
 ```
 
 Alle folgenden Kommandos werden hier ausgeführt.
@@ -46,7 +46,7 @@ Wir benötigen auch die OpenStack Zugangsdaten (openrc-Datei).
 Diese kann [hier](https://dashboard.cloud.syseleven.net/horizon/project/access_and_security/api_access/openrc/) heruntergeladen werden.
 
 ```shell
-$ source openrc
+source openrc
 ```
 
 </details>
@@ -70,9 +70,9 @@ openstack image save --file snapshot.qcow2 <snapshot name>
 Auf das Dateisystem kann nun mit nbd zugegriffen werden:
 
 ```shell
-$ sudo apt-get install -y qemu-utils
-$ sudo modprobe nbd
-$ sudo qemu-nbd --connect /dev/nbd0 snapshot.qcow2
+sudo apt-get install -y qemu-utils
+sudo modprobe nbd
+sudo qemu-nbd --connect /dev/nbd0 snapshot.qcow2
 ```
 
 Nun können die verfügbaren Partitionen angezeigt werden.
@@ -101,7 +101,7 @@ $ sudo fsck -f /dev/nbd0p1
 Jetzt kann das Dateisystem eingehängt werden.
 
 ```shell
-$ sudo mount /dev/nbd0p1 /mnt/
+sudo mount /dev/nbd0p1 /mnt/
 ```
 
 ## Zusammenfassung

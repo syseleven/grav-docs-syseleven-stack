@@ -14,16 +14,16 @@ taxonomy:
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
 
 ## Optional: temporary work environment
 
 <details/>
 <summary>Click here to show details</summary>
 
-**Temporary work environment**
+### Temporary work environment
 
 For this tutorial, we need a *Linux* environment and the OpenStack client. If you do not have that yet, you can create it with the following commands:
 
@@ -37,16 +37,16 @@ openstack stack create -t kickstart.yaml --parameter key_name=<ssh key name> <st
 Now we need to connect to the created instance.
 
 ```shell
-$ ssh syseleven@<server-ip>
+ssh syseleven@<server-ip>
 ```
 
 The following commands need to be executed in the ssh session.
 
 We also need the OpenStack credentials (openrc-file).
-You can download the file [here](https://dashboard.cloud.syseleven.net/horizon/project/access_and_security/api_access/openrc/). 
+You can download the file [here](https://dashboard.cloud.syseleven.net/horizon/project/access_and_security/api_access/openrc/).
 
 ```shell
-$ source openrc
+source openrc
 ```
 
 </details>
@@ -70,9 +70,9 @@ openstack image save --file snapshot.qcow2 <snapshot name>
 We can access the snapshot's contents via nbd.
 
 ```shell
-$ sudo apt-get install -y qemu-utils
-$ sudo modprobe nbd
-$ sudo qemu-nbd --connect /dev/nbd0 snapshot.qcow2
+sudo apt-get install -y qemu-utils
+sudo modprobe nbd
+sudo qemu-nbd --connect /dev/nbd0 snapshot.qcow2
 ```
 
 Let's list the partitions.
@@ -94,14 +94,14 @@ To repair the filesystem, use fsck.
 
 ```shell
 # Using the option -y, fsck will repair without asking.
-$ sudo fsck -f /dev/nbd0p1
+sudo fsck -f /dev/nbd0p1
 [...]
 ```
 
 Now we can mount the filesystem.
 
 ```shell
-$ sudo mount /dev/nbd0p1 /mnt/
+sudo mount /dev/nbd0p1 /mnt/
 ```
 
 # Conclusion

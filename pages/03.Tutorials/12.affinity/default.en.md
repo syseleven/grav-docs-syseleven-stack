@@ -6,7 +6,7 @@ taxonomy:
         - tutorial
 ---
 
-**Better distributing redundant services for higher availability**
+## Better distributing redundant services for higher availability
 
 ## Goal
 
@@ -15,11 +15,12 @@ taxonomy:
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
 
 ## Problem
+
 By default, there is no guarantees wether servers will be distributed across different hypervisors. The Nova compute scheduler makes that decision based on available resources.  
 This can lead to services that are meant to be highly available to share a common host and therefore share a single point of failure.  
 Inversely it might be desired to have two services to be located as close as possible, because they will need high bandwidth between each other.  
@@ -28,6 +29,7 @@ Both cases are solvable using ServerGroups. That way you can influence the distr
 ## Principle
 
 Create a OS::Nova::ServerGroup resource and reference it as scheduler hint in the server definition.
+
 ```plain
 resources:
   anti-affinity_group:
@@ -50,7 +52,8 @@ resources:
 
 ## Example
 
-Here the [ResourceGroups example](resourcegroups/) is extended using ServerGroups for *affinity* and *anti-affinity* `group.yaml`:
+Here the [ResourceGroups example](../06.resourcegroups/default.en.md) is extended using ServerGroups for *affinity* and *anti-affinity* `group.yaml`:
+
 ```plain
 heat_template_version: 2014-10-16
 
@@ -121,6 +124,7 @@ resources:
 ```
 
 The already known `server.yaml` extended by affinity_group parameter:
+
 ```plain
 heat_template_version: 2014-10-16
 
@@ -160,6 +164,7 @@ resources:
 
 There are two options to check whether the scheduler hints were fully considered.
 For one you can list the members of a ServerGroup:
+
 ```plain
 openstack server group show "hosts on one compute-node"
 +----------+----------------------------------------------------------------------------+
@@ -173,6 +178,7 @@ openstack server group show "hosts on one compute-node"
 ```
 
 Also you can compare the hostIds of the individual instances:
+
 ```plain
 openstack server show server_0 -c name -c hostId
 +--------+----------------------------------------------------------+

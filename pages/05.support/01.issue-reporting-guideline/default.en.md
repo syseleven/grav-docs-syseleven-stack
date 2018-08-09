@@ -4,13 +4,15 @@ date: '02-08-2018 13:21'
 ---
 
 ## Introduction
+
 The following document describes the required form and level of details when reporting issues.
 It is not required but helps to investigate issues faster. It serves as a guideline on how to report issues.
 
 ## Required data for faster resolutions
+
 We want to minimize your effort to report any issues. Therefor we provide the information that is necessary to check and solve your issues/requests.
 
-```
+```text
 Problem description:
 - What does work?
 - What does not work?

@@ -12,15 +12,16 @@ taxonomy:
 * In diesem Tutorial wird gezeigt, wie einzelne Resourcen in einem Stack aufeinander aufbauend organisiert werden können.
 * Damit ist es möglich, beispielsweise erst die Netzwerk-Infrastruktur aufzubauen, bevor dort Server gestartet werden.
 
-## Vorraussetzungen 
+## Vorraussetzungen
 
-* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](/tutorials/firststeps/) gezeigt, wird vorausgesetzt.
-* Grundlagen zur Bedienung des [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](/tutorials/api-access/) beschrieben.
+* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](../02.firststeps/default.en.md) gezeigt, wird vorausgesetzt.
+* Grundlagen zur Bedienung des [OpenStack CLI-Tools](../03.openstack-cli/default.de.md).
+* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../04.api-access/default.en.md) beschrieben.
 
 ## Das Problem: Der Aufbau von Ressourcen scheitert
 
 Wenn die Reihenfolge bestimmter Ressourcen nicht vorgegeben wird, werden die Ressourcen willkürlich angelegt. Der Aufbau eines Stack schlägt dann nach folgendem Muster fehl:
+
 ```shell
 syselevenstack@kickstart:~/failingDemo$ openstack stack create -t clustersetup.yaml -e clustersetup-env.yaml noDependencies --wait
 2016-10-18 13:50:48 [noDependencies]: CREATE_IN_PROGRESS  Stack CREATE started
@@ -42,19 +43,20 @@ syselevenstack@kickstart:~/failingDemo$ openstack stack create -t clustersetup.y
 2016-10-18 13:51:17 [appserver_group]: CREATE_COMPLETE  state changed
 2016-10-18 13:51:17 [noDependencies]: CREATE_FAILED  Resource CREATE failed: BadRequest: resources.dbserver_group.resources[0].resources.dbserver: Port de3404ba-3b43-4123-bf1d-1a1809ea434a requires a FixedIP in order to be used. (HTTP 400) (Request-ID: req-bcd57a8b-7290-4311-8800-46fc78fb0f8d)
 
- Stack noDependencies CREATE_FAILED 
+ Stack noDependencies CREATE_FAILED
 
-syselevenstack@kickstart:~/failingDemo$ 
+syselevenstack@kickstart:~/failingDemo$
 ```
 
 ## Die Lösung: saubere Definition der Reihenfolge
 
-In einem Heat-Template werden Dependencies mittels `depends_on` definiert. 
+In einem Heat-Template werden Dependencies mittels `depends_on` definiert.
+
 ```plain
 resources:
   syseleven_net:
     type: OS::Neutron::Net
-    properties: 
+    properties:
       name: syseleven-net
 
   syseleven_subnet:
@@ -64,6 +66,7 @@ resources:
 ```
 
 Über den openstack CLI Client gestartet lässt sich das mit der Option `--wait` gut beobachten:
+
 ```shell
 syselevenstack@kickstart:~/heat-examples/example-setup$ openstack stack create -t clustersetup.yaml -e clustersetup-env.yaml depTest --wait
 2016-10-19 11:42:17 [depTest]: CREATE_IN_PROGRESS  Stack CREATE started
@@ -97,6 +100,6 @@ syselevenstack@kickstart:~/heat-examples/example-setup$ openstack stack create -
 +---------------------+-----------------------------------------------------------------+
 ```
 
-## Beispiel-Ressourcen:
+## Beispiel-Ressourcen
 
 Das auf Github veröffentlichte Beispiel [examplesetup](https://github.com/syseleven/heat-examples/tree/master/example-setup) setzt Dependencies ein.

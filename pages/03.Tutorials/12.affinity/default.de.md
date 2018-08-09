@@ -6,7 +6,7 @@ taxonomy:
         - tutorial
 ---
 
-**Redundante Services für eine höhere Verfügbarkeit besser verteilen**
+## Redundante Services für eine höhere Verfügbarkeit besser verteilen
 
 ## Ziel
 
@@ -15,11 +15,12 @@ taxonomy:
 
 ## Vorraussetzungen
 
-* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](/tutorials/firststeps/) gezeigt, wird vorausgesetzt.
-* Grundlagen zur Bedienung des [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](/tutorials/api-access/) beschrieben.
+* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](../02.firststeps/default.en.md) gezeigt, wird vorausgesetzt.
+* Grundlagen zur Bedienung des [OpenStack CLI-Tools](../03.openstack-cli/default.de.md).
+* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../04.api-access/default.en.md) beschrieben.
 
 ## Problemstellung
+
 Standardmäßig gibt es keine Garantie, dass Instanzen auf unterschiedliche Hypervisor (Host) verteilt werden. Der Nova Compute-Scheduler entscheidet dies anhand der zur Verfügung stehenden Ressourcen.  
 Dies kann dazu führen, dass redundant ausgelegte Services wie App-Server auf dem gleichen Host landen und damit bei einem Ausfall des Hosts nicht mehr erreichbar sind.  
 Im umgekehrten Fall möchte man vielleicht zwei Services so nah wie möglich bei einander haben, da zwischen diesen viel Bandbreite gebraucht wird.  
@@ -28,6 +29,7 @@ Beides ist mit ServerGroups lösbar. Auf diese Weise kann man Einfluss auf die V
 ## Prinzip
 
 Man erstellt eine `OS::Nova::ServerGroup-Ressource` und referenziert diese als *Scheduler-Hint* in der *Server-Definition*.
+
 ```plain
 resources:
   anti-affinity_group:
@@ -50,7 +52,8 @@ resources:
 
 ## Beispiele
 
-Das [ResourceGroups-Beispiel](resourcegroups/) ist hier ergänzt um ServerGroups für die Nutzung von *Affinity* und *Anti-Affinity* `group.yaml`:
+Das [ResourceGroups-Beispiel](../06.resourcegroups/default.de.md) ist hier ergänzt um ServerGroups für die Nutzung von *Affinity* und *Anti-Affinity* `group.yaml`:
+
 ```plain
 heat_template_version: 2014-10-16
 
@@ -121,6 +124,7 @@ resources:
 ```
 
 Die bekannte `server.yaml ergänzt um die affinity_group Parameter:
+
 ```plain
 heat_template_version: 2014-10-16
 
@@ -160,6 +164,7 @@ resources:
 
 Um nachvollziehen zu können, dass die Scheduler-Hints auch gewirkt haben, gibt es zwei Ansätze.  
 Zum einen kann man sich die Mitglieder eine ServerGroup anzeigen lassen:
+
 ```plain
 openstack server group show "hosts on one compute-node"
 +----------+----------------------------------------------------------------------------+
@@ -173,6 +178,7 @@ openstack server group show "hosts on one compute-node"
 ```
 
 Zum anderen kann man die hostIds der einzelnen Instanzen vergleichen:
+
 ```plain
 openstack server show server_0 -c name -c hostId
 +--------+----------------------------------------------------------+

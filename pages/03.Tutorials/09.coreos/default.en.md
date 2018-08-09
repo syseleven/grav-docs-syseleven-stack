@@ -15,17 +15,17 @@ taxonomy:
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
 
 ## Clone the example repository
 
 You will be working with the [heat examples repository](https://github.com/syseleven/heat-examples) on Github. Your first step is to clone it:
 
 ```shell
-$ git clone https://github.com/syseleven/heat-examples
-$ cd heat-examples/coreOS
+git clone https://github.com/syseleven/heat-examples
+cd heat-examples/coreOS
 ```
 
 ## Upload the CoreOS image
@@ -33,7 +33,7 @@ $ cd heat-examples/coreOS
 We created a helper script in the *coreOS* example for this example to upload the [official stable CoreOS image](https://coreos.com/os/docs/latest/booting-on-openstack.html) to the SysEleven Stack.  
 
 ```shell
-shell$ ./upload_replacing_coreos_image.sh
+./upload_replacing_coreos_image.sh
 ```
 
 This helper script first downloads the image, deletes existing images on your SysEleven Stack named `private_coreos` and finally uploads the new image.
@@ -43,11 +43,12 @@ The image will reside in the private scope of your project and will persist when
 ## Start the CoreOS instances
 
 After uploading the CoreOS image, you can create the stack:
-```
-$ openstack stack create -t cluster.yaml <stack name> --parameter key_name=<ssh key name> --wait
+
+```shell
+openstack stack create -t cluster.yaml <stack name> --parameter key_name=<ssh key name> --wait
 ```
 
-In this command, `key_name` references an SSH-Key that you created in the [SSH Tutorial](/tutorials/ssh-keys/).  
+In this command, `key_name` references an SSH-Key that you created in the [SSH Tutorial](../01.ssh-keys/default.en.md).  
 You can start more than one instance setting the optional parameter `number_instances`. If you do not specify this parameter, only one instance will start up.
 
 ## Conclusion
@@ -61,12 +62,12 @@ You have now started one or more CoreOS instances on the SysEleven Stack. You wi
 * Connecting to the SSH service is allowed by the security group (defined in the yaml files) as well. You can log in via: `ssh core@<ip-address>`.
 
 You can change the number of instances on demand. To scale from the current number of instances (default is 1) to 5, you can run this simple command:
+
 ```shell
-$ openstack stack update -t cluster.yaml <stack name> --parameter key_name=<ssh key name> --number_instances=5 --wait
+openstack stack update -t cluster.yaml <stack name> --parameter key_name=<ssh key name> --number_instances=5 --wait
 ```
 
 This setup is still missing a couple pieces to provide load balancing or high availability. Check out the links in the next section for some advanced setups you can build based on this tutorial.
-
 
 ## Links/Examples
 

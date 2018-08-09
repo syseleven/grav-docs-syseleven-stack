@@ -103,6 +103,7 @@ syselevenstack@kickstart:~$ neutron net-list
 ```
 
 Choose one of the public networks, for this example `float1` with the ID `80ca1837-a461-4621-b58d-79507aa8b044`. Again, create the network, just with a parameter:
+
 ```shell
 heat stack-create -f net2.yaml \
                   -P public_network_id=80ca1837-a461-4621-b58d-79507aa8b044 \
@@ -153,7 +154,7 @@ heat stack-create -f net3.yaml \
                   netexample3
 ```
 
-You can see in the [Dashboard](https://dashboard.cloud.syseleven.net) that you created a private network `example-net`, which is connected to the public network `float1` through a Router. 
+You can see in the [Dashboard](https://dashboard.cloud.syseleven.net) that you created a private network `example-net`, which is connected to the public network `float1` through a Router.
 
 Using this infrastructure we can now start a virtual machine which has an outside network connections. All that is missing is a way to assign a virtual machine to a given subnet. This is done using *Ports*. *Ports* are the network interfaces of a virtual machine: A *Port* needs to be connected to a *Subnet* for the virtual machine to be able to use it. Here is the code to connect a *Port* to a *Subnet*:
 
@@ -296,7 +297,7 @@ resources:
 
 Attempts to connect to the machine will fail both in the browser or via SSH. What is missing? You need to decide how your virtual machine should be used and allow network traffic to flow accordingly. The default security policy in the SysEleven Stack forbids all traffic coming from the Internet. This is a good practice to ensure stacks are secure by default and you do not expose internal systems, i.e. a database server, to the Internet accidentally.
 
-You can change that policy easily by adding another object: A *Security Group*. Security groups are similar to simple firewalls: You need to define the protocol, maybe a port or port range, and the source and target IP addresses or address ranges, as well as the direction of traffic. Incoming traffic is called *ingress*, outgoing traffic *egress*. 
+You can change that policy easily by adding another object: A *Security Group*. Security groups are similar to simple firewalls: You need to define the protocol, maybe a port or port range, and the source and target IP addresses or address ranges, as well as the direction of traffic. Incoming traffic is called *ingress*, outgoing traffic *egress*.
 
 If you now start your stack, all objects are successfully combined and your first virtual machine is live. Do not worry, future machines will be less complicated to bring up, since you will build a collection of templates that cover your use cases. Here is the full orchestration template that allows you to start the minimal example we built so far:
 
@@ -380,25 +381,22 @@ nova list
 ```
 
 Copy the IP address and log into the virtual machine:
+
 ```shell
 ssh ec2-user@<IP-Adresse>
 ```
 
 In Ubuntu cloud images, `ec2-user` is the default name of the default user account.
 
-You got to know the network and virtual machine parts of orchestration. You do not need anything else to run a simple stack. But many web applications have operational constraints we did not cover yet: What happens if you need to change the size or number of our virtual machines? How do you preserve and find my data if I delete my stack as shown above? You can find answers to these questions in the [Block Storage documentation](/documentation/block-storage). Every virtual machine currently comes with 50 GB of storage. If you need additional storage, you need to create and use volumes. Volumes are also interesting from another point of view: If you want to preserve data beyond the life time of a virtual machine (for example a database for a web application), you need to use volumes. The storage that comes with a virtual machine is *ephemeral*: it is lost when the virtual machine is deleted. To provide long lasting storage, create a stack to create and provide a volume of the required storage size.
+You got to know the network and virtual machine parts of orchestration. You do not need anything else to run a simple stack. But many web applications have operational constraints we did not cover yet: What happens if you need to change the size or number of our virtual machines? How do you preserve and find my data if I delete my stack as shown above? You can find answers to these questions in the [Block Storage documentation](../04.block-storage/default.en.md). Every virtual machine currently comes with 50 GB of storage. If you need additional storage, you need to create and use volumes. Volumes are also interesting from another point of view: If you want to preserve data beyond the life time of a virtual machine (for example a database for a web application), you need to use volumes. The storage that comes with a virtual machine is *ephemeral*: it is lost when the virtual machine is deleted. To provide long lasting storage, create a stack to create and provide a volume of the required storage size.
 
 <!--- TODO: Code fehlt. -->
-```
-```
 
 Using a storage template, you get a volume with a UID. You can pass this UID to a virtual machine using a parameter, where the volume will show up as an additional block device, just like an additional hard disk. Using that block device, data can be stored persistently.
 
 You can also build a setup where a virtual machine has more than 50 GB of storage. In that case you do not need to create the volume in a separate stack, you can just expand the orchestration template for your virtual machine. A complete setup would look like this:
 
 <!--- TODO: Code fehlt. -->
-```
-```
 
 ## Composition of Heat templates
 

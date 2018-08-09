@@ -7,20 +7,22 @@ taxonomy:
         - tutorial
 ---
 
-## Vorraussetzungen:
+## Vorraussetzungen
+
 * Zugang zum [Dashboard](https://dashboard.cloud.syseleven.net)
 * mindestens 2 vorhandene Router/Netzwerke
 * verschiedene IP-Ranges in beiden Netzwerken
 
-### Schritt Eins: Login
+### Login
 
 Mit den von SysEleven erhaltenen Daten für Nutzername und Passwort loggen wir uns im [Dashboard](https://dashboard.cloud.syseleven.net) ein.
 
 ![SysEleven Login](/images/horizon-login.png)
 
-### Schritt Zwei: Interface im Router anlegen
+### Interface im Router anlegen
 
 Um ein Interface einzurichten, gehne wir wie folgt vor:
+
 * Klicke in der linken Seitenleiste unter "Network" auf "Router
 * Nun wählen wir den ersten Router für unsere Verbindung aus und klicken auf den Namen
 * Im sich nun öffnenden Fenster gehen wir auf den Reiter "Interfaces" und wählen dort "Add Interfaces" aus.
@@ -30,20 +32,22 @@ Diese Schritte wiederholt man nun für den anderen Router.
 
 ![Interface Übersicht](/images/router-interface.png)
 
-### Schritt Drei: Static Route erstellen
+### Static Route erstellen
 
 Der nächste Schritt ist nun eine Static Route (Statische Verbindung) anzulegen.
+
 * Wir begeben uns wie vorigen Schritt über "Network" -> "Routers" auf den entsprechenden Router
 * Hier klicken wir statt auf "Interfaces" auf "Static Route"
-* Nun legen wir eine Static Route über "Add Static Route" an und geben dort die IP-Range des Zielnetzes an, sowie als Nexthop die gleiche IP-Adresse wie im [vorigen Schritt](#schritt-zwei-interface-im-router-anlegen)
+* Nun legen wir eine Static Route über "Add Static Route" an und geben dort die IP-Range des Zielnetzes an, sowie als Nexthop die gleiche IP-Adresse wie im [vorigen Schritt](#interface-im-router-anlegen)
 
 Auch das wiederholen wir für den anderen Router.
 
 ![Interface Übersicht](/images/static-route.png)
 
-### Schritt Vier: Hostroute anlegen
+### Hostroute anlegen
 
 Als letzten Schritt benötigen wir noch eine Hostroute.
+
 * Dafür gehen wir in der Seitenleiste nun auf Network, wählen unser Netzwerk aus und klicken auf den Namen.
 * Dort sehen wir alle zugehörigen Subnetze, klicken bei dem zugehörigen Subnet auf "Edit Subnet" und wählen den Reite "Subnet Details".
 * Unter dem Punkt "Host Routes" können wir unsere Route festlegt.

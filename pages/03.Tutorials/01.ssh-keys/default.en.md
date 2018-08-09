@@ -37,7 +37,7 @@ Using the username and password (API credentials) that were provided by SysEleve
 ![SysEleven Login](/images/horizon-login.png)
 
 * In order to import your SSH-key using the dashboard, we go to "Compute" --> "Access And Security" --> "Key Pairs".
-* There we select "Import Key Pair", give the key pair a name (that we remember for later use) and import the public part of the key pair via copy & paste into the interface. 
+* There we select "Import Key Pair", give the key pair a name (that we remember for later use) and import the public part of the key pair via copy & paste into the interface.
 
 ![import SSH key](/images/sshkeys.png)
 
@@ -50,8 +50,8 @@ Once submitted we can use the key pair with this name in the API and Templates.
 ### Prerequisites
 
 * You need to have the login data for the SysEleven Stack API (user name and passphrase).
-* The [OpenStack CLI-Tools](/tutorials/openstack-cli/) are installed in an up-to-date version.
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
+* The [OpenStack CLI-Tools](../03.openstack-cli/default.en.md) are installed in an up-to-date version.
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
 * Knowledge how to utilise a terminal/SSH and SSH-keys.
 
 ### How to import?

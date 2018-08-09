@@ -7,44 +7,40 @@ taxonomy:
         - tutorial
 ---
 
-**Lokaler SSD Speicher als Alternative zum verteilter Speicher**
+## Lokaler SSD Speicher als Alternative zum verteilter Speicher
 
 ## Ziel
 
 Diese Anleitung dient dazu, Sie in die Lage zu versetzen, Local SSD Storage anstelle des üblichen Distributed Storage als Ephemeral Storage im SysEleven Stack zu verwenden.
 
-
 ## Voraussetzungen
 
-* Sie sollten in der Lage sein, einfache Heat-Templates zu verwenden, wie in [Erste Schritte](/tutorials/firststeps/) gezeigt.
-* Sie sollten die Grundlagen der [OpenStack-Kommandozeilenwerkzeuge](/tutorials/openstack-cli/) kennen.
-* Umgebungsvariablen werden gesetzt, wie im [API-Zugriff-Einrichten](/tutorials/api-access/) gezeigt.
-
+* Sie sollten in der Lage sein, einfache Heat-Templates zu verwenden, wie in [Erste Schritte](../02.firststeps/default.en.md) gezeigt.
+* Sie sollten die Grundlagen der [OpenStack-Kommandozeilenwerkzeuge](../03.openstack-cli/default.de.md) kennen.
+* Umgebungsvariablen werden gesetzt, wie im [API-Zugriff-Einrichten](../04.api-access/default.en.md) gezeigt.
 
 ## Wie man eine Instanz mit Local SSD Storage erzeugt
 
 Es gibt zwei Möglichkeiten, die wir Ihnen hier beide zeigen, beginnend mit der, die am schnellsten zum Ziel führt.
 
-
 ### Verwenden Sie unser Heat-Beispiel für einen einfachen Einzelserver mit Local SSD Storage
 
 Um mit unseren [Heat-Beispielen](https://github.com/syseleven/heat-examples) auf Github zu arbeiten, klonen sie sie zunächst:
 
-```shell
-$ git clone https://github.com/syseleven/heat-examples
-$ cd heat-examples/single-server-on-local-storage
+```bash
+git clone https://github.com/syseleven/heat-examples
+cd heat-examples/single-server-on-local-storage
 ```
 
 Nun können Sie den Beispiel-Stack für Local SSD Storage erzeugen:
 
-```
-$ openstack stack create -t example.yaml local-storage-example-stack -e example-env.yaml --parameter key_name=<ssh key name> --wait
+```bash
+openstack stack create -t example.yaml local-storage-example-stack -e example-env.yaml --parameter key_name=<ssh key name> --wait
 ```
 
-In dieser Anweisung steht `key_name` für den SSH-Key, den Sie im [SSH Tutorial](/tutorials/ssh-keys/) hinterlegt haben.
+In dieser Anweisung steht `key_name` für den SSH-Key, den Sie im [SSH Tutorial](../01.ssh-keys/default.en.md) hinterlegt haben.
 
 Sie haben soeben einen einfachen Server erstellt, dessen Dateisystem Local SSD Storage verwendet.
-
 
 ### Wandeln Sie eine andere Anleitung oder ein anderes Heat-Beispiel ab
 
@@ -57,8 +53,7 @@ Wenn Sie mit der Erstellung des Stacks fortfahren, werden der/die Server anstell
 
 ## Weitere Auswirkungen
 
-Bitte lesen Sie auch unsere [FAQ zu Local SSD Storage](../faq/local-storage), um mehr über die Auswirkungen des Einsatzes von Local SSD Storage zu erfahren.
-
+Bitte lesen Sie auch unsere [FAQ zu Local SSD Storage](https://docs.syseleven.de/faq/en/taxonomy?name=tag&val=localstorage), um mehr über die Auswirkungen des Einsatzes von Local SSD Storage zu erfahren.
 
 ## Zusammenfassung
 

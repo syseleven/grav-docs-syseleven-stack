@@ -10,8 +10,8 @@ date: '02-08-2018 13:02'
 
 ## Erste Schritte
 
-["Erste Schritte"](/tutorials/firststeps/) zeigt, wie über das Dashboard des SysEleven Stack eine virtuelle Maschine gestartet werden kann.  
-Weitere Beispiele zeigen, wie über die API des SysEleven Stack komplexere Setups verwaltet werden können. 
+["Erste Schritte"](../03.Tutorials/02.firststeps/default.en.md) zeigt, wie über das Dashboard des SysEleven Stack eine virtuelle Maschine gestartet werden kann.  
+Weitere Beispiele zeigen, wie über die API des SysEleven Stack komplexere Setups verwaltet werden können.
 
 ## Komplexe Setups
 
@@ -20,4 +20,4 @@ Auf dem Einstieg aufbauend stellt SysEleven eine [Bibliothek an Heat-Templates](
 ## Support
 
 Als der Hersteller des [SysEleven Stacks](https://dashboard.cloud.syseleven.net/) bieten wir **kostenlosen Support** für unsere Cloud-Kunden.  
-Weitere Informationen finden Sie auf unserer [Support Seite](/support/).
+Weitere Informationen finden Sie auf unserer [Support Seite](../05.support/default.de.md).

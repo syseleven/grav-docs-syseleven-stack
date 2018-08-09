@@ -12,4 +12,4 @@ Ebenfalls ist ein einfacher Health-Check nutzbar.
 
 Leider kann die Client-IP zur Zeit nicht an die Systeme hinter dem LoadBalancer durchgereicht werden. Die IP des Lastverteilers wird als Ausgangsadresse angezeigt.
 
-Wir haben ein Tutorial zur [Nutzung des LBaaS](/tutorials/lbaas/) vorbereitet.
+Wir haben ein Tutorial zur [Nutzung des LBaaS](../../03.Tutorials/07.lbaas/default.en.md) vorbereitet.

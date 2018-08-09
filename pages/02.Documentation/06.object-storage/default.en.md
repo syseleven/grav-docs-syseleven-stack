@@ -17,12 +17,12 @@ You can create the OpenStack API to generate credentials to access the SysEleven
 
 ## Buckets
 
-Buckets are the logical unit SysEleven Stack Object Storage uses to stores objects. 
+Buckets are the logical unit SysEleven Stack Object Storage uses to stores objects.
 Every bucket in the SysEleven Stack as a unique name.
 
 ## Objects
 
-Basically, SysEleven Stack Object Storage is a big key/value store. 
+Basically, SysEleven Stack Object Storage is a big key/value store.
 A file or file object can be assigned a file name like key, and made available under this key.
 
 ## Regions
@@ -67,6 +67,7 @@ openstack ec2 credentials list
 ## Clients
 
 ### S3cmd
+
 Infos about the `s3cmd` client can be found [here](http://s3tools.org/s3cmd).
 
 Now you can create an `s3cmd` configuration which could look like this:
@@ -102,10 +103,14 @@ The command-line option `-P` means the file(s) uploaded is publicly available. P
 Public URL of the object is: http://BUCKET_NAME.s3.amazonaws.com/test.jpg
 ```
 
-The correct URL in this case would be https://s3.dbl.cloud.syseleven.net/BUCKET_NAME/test.jpg  
+The correct URL in this case would be
+
+`https://s3.dbl.cloud.syseleven.net/BUCKET_NAME/test.jpg`
+
 You can use these URLs to refer to the uploaded files as static assets in your web applications.
 
 ### Minio
+
 Infos about the Minio client can be found [here](https://minio.io).
 
 **Installation of Minio client into the home directory of the current user is necessary for the following example commands to work!**
@@ -137,6 +142,7 @@ Then, use it to add some file(s):
 ```
 
 List the file(s):
+
 ```shell
 ~/mc ls dbl/bucketname
 [2018-04-27 14:18:28 UTC] 380KiB test.jpg

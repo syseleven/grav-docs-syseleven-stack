@@ -14,7 +14,7 @@ taxonomy:
 
 ## The SysEleven Rescue Image
 
-The rescue image was built and tested using Ubuntu 16.04 LTS as core system. 
+The rescue image was built and tested using Ubuntu 16.04 LTS as core system.
 It contains a variety of pre-installed tools to rescue your instance and supports most filesystems out of the box.
 
 !!! Since the rescue image is rebuilt regularly it is advisable to always check for the [current rescue image name or ID](#launch-nova-rescue-mode).
@@ -26,16 +26,16 @@ It contains a variety of pre-installed tools to rescue your instance and support
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
 
 ## Optional: temporary work environment
 
 <details/>
 <summary>Click here to show details</summary>
 
-**Temporary work environment**
+### Temporary work environment
 
 For this tutorial, we need a *Linux* environment and the OpenStack client. If you do not have that yet, you can create it with the following commands:
 
@@ -49,16 +49,16 @@ openstack stack create -t kickstart.yaml --parameter key_name=<ssh key name> <st
 Now we need to connect to the created instance.
 
 ```shell
-$ ssh syseleven@<server-ip>
+ssh syseleven@<server-ip>
 ```
 
 The following commands need to be executed in the ssh session.
 
 We also need the OpenStack credentials (openrc-file).
-You can download the file [here](https://dashboard.cloud.syseleven.net/horizon/project/access_and_security/api_access/openrc/). 
+You can download the file [here](https://dashboard.cloud.syseleven.net/horizon/project/access_and_security/api_access/openrc/).
 
 ```shell
-$ source openrc
+source openrc
 ```
 
 </details>
@@ -69,11 +69,13 @@ To be able to connect to the instance volume we need to launch nova rescue mode.
 For this we use a *rescue image* that SysEleven provides in OpenStack.
 
 First we stop the instance
+
 ```shell
 openstack server stop <server uuid>
 ```
 
 Then we need to get the current ID of the rescue image
+
 ```shell
 openstack image list --public | grep -i rescue
 
@@ -85,8 +87,9 @@ openstack image list --public | grep -i rescue
 </div>
 
 Now we launch the instance into the rescue mode using the rescue image
+
 ```shell
-# openstack server rescue --image < Image name / ID > <server name / uuid> 
+# openstack server rescue --image < Image name / ID > <server name / uuid>
 
 openstack server rescue --image Rescue-Ubuntu-16.04-sys11 app001
 ```
@@ -100,11 +103,13 @@ Once you are logged in you can work with the rescue mode.
 ### via SSH
 
 If you used a SSH key while deploying the instance initially you can login via ssh
+
 ```shell
-$ ssh ubuntu@<Instance floating ip>
+ssh ubuntu@<Instance floating ip>
 ```
 
 ### via Console
+
 The rescue image generated a random password with every start, which can be viewed on the console. The root user is only allowed to login via the console. Once logged in you can define a password for the systemuser "ubuntu" if no SSH key is available and login via SSH is preferred.
 
 Get the root password:
@@ -166,7 +171,6 @@ detection, and install the latest OS patches and disk drivers.
 [...]
 ```
 
-
 ## Stop Nova rescue mode
 
 First we "unrescue" the instance.
@@ -181,8 +185,8 @@ Then we start the instance again.
 openstack server start <server uuid>
 ```
 
-# Conclusion
+## Conclusion
 
-* We have access to the system/files via the rescue mode.  
-* The data is accessible on `/mnt/`.    
-* If it's an ext filesystem you should have a look in `/mnt/lost+found`.  
+* We have access to the system/files via the rescue mode.
+* The data is accessible on `/mnt/`.
+* If it's an ext filesystem you should have a look in `/mnt/lost+found`.

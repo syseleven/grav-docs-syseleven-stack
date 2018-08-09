@@ -28,7 +28,7 @@ taxonomy:
 
 ### How to select?
 
-* Log in to the [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) using the username and password (API credentials) that were provided by SysEleven. 
+* Log in to the [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) using the username and password (API credentials) that were provided by SysEleven.
 
 ![SysEleven Login](/images/horizon-login.png)
 
@@ -46,8 +46,8 @@ Once selected we can start creating resources in the selected region.
 ### Prerequisites
 
 * You need to have the login data for the SysEleven Stack API (user name and passphrase).
-* The [OpenStack CLI-Tools](/tutorials/openstack-cli/) are installed in an up-to-date version.
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
+* The [OpenStack CLI-Tools](../../03.Tutorials/03.openstack-cli/default.de.md) are installed in an up-to-date version.
+* Environment variables are set, like shown in the [API-Access-Tutorial](../../03.Tutorials/04.api-access/default.en.md).
 
 ### How to select?
 
@@ -60,6 +60,7 @@ When using the openstack client we can select the region with
 the command line option `--os-region-name <region name>`.
 
 The following example shows how to use it:
+
 ```shell
 # openstack --os-region-name <region name> <openstack sub command>
 

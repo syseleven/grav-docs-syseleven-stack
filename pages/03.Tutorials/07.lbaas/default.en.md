@@ -6,9 +6,9 @@ taxonomy:
         - tutorial
 ---
 
-**A TCP-based load balancer for your upstreams**
+## A TCP-based load balancer for your upstreams
 
-## Overview
+### Overview
 
 OpenStack provides load balancing through LoadBalancer as a Service (LBaaS).
 This means that load balancing rules can be created directly within OpenStack.
@@ -19,24 +19,25 @@ No dedicated load balancer instance is required to use this service.
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](/tutorials/firststeps/).
-* You know the basics of using the [OpenStack CLI-Tools](/tutorials/openstack-cli/).
-* Environment variables are set, like shown in the [API-Access-Tutorial](/tutorials/api-access/).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
 
 ## How to setup a TCP LoadBalancer
 
 In this tutorial we demonstrate an LBaaS setup with the following features:
 
-- a TCP load balancer
-- Round Robin LB algorithm
-- Health Monitor for LB pool members (upstream instances)
-- a server group with dynamic number of servers
-- every upstream node installs Apache2 and PHP7.0 FPM via HEAT
-- "Anyapp" as simple PHP application
+* a TCP load balancer
+* Round Robin LB algorithm
+* Health Monitor for LB pool members (upstream instances)
+* a server group with dynamic number of servers
+* every upstream node installs Apache2 and PHP7.0 FPM via HEAT
+* "Anyapp" as simple PHP application
 
 ### Clone git repository
 
 We use a heat code example that we provide [on Github](https://github.com/syseleven/heat-examples).
+
 ```shell
 git clone https://github.com/syseleven/heat-examples.git
 ```
@@ -44,6 +45,7 @@ git clone https://github.com/syseleven/heat-examples.git
 ### Step one: Create the stack
 
 Open the folder containing the example code and create the stack providing your SSH key and the stack name.
+
 ```shell
 $ cd heat-examples/LBaaS
 
@@ -75,20 +77,23 @@ After a successful launch the whole setup will not be reachable from the outside
 you bind a valid security group to the load balancer port.
 
 Ports can be assigned as follows:
+
 ```shell
-$ openstack port set --security-group <Security Group> <LoadBalancer Port>
+openstack port set --security-group <Security Group> <LoadBalancer Port>
 ```
 
 There is an output section that gives you the abilty to assign the correct security group to.
 
 To simplify this process the example stack gives you a vaild openstack command in the output section.
+
 ```shell
-$ openstack stack show <stackName> -f value -c outputs | grep -i 'port set'
+openstack stack show <stackName> -f value -c outputs | grep -i 'port set'
 ```
 
 ### Step Three: Check if the load balancer works properly
 
 The example code contains the LB floating IP in its output:
+
 ```shell
 # openstack stack show <stack name> -f value -c outputs
 
@@ -108,6 +113,7 @@ $ openstack stack show examplelb -f value -c outputs
 ```
 
 To retrieve only the URL use the following command:
+
 ```shell
 # openstack stack show <stack name> -f value -c outputs | grep -i 'http:' | cut -f2- -d:
 

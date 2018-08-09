@@ -27,7 +27,7 @@ taxonomy:
 
 ## Launch Stack
 
-* Log in to the [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) using the username and password (API credentials) that were provided by SysEleven. 
+* Log in to the [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) using the username and password (API credentials) that were provided by SysEleven.
 
 ![SysEleven Login](/images/horizon-login.png)
 
@@ -42,7 +42,7 @@ taxonomy:
 
 * Click "Next"
 * Write "lampserver" into the field "Stack Name"
-* Write the name of your SSH key that you uploaded to the Horizon Dashboard - see [SSH Tutorial](ssh-keys/)
+* Write the name of your SSH key that you uploaded to the Horizon Dashboard - see [SSH Tutorial](../01.ssh-keys/default.en.md)
 * Click on "Launch"  
 
 ![horizon-orchestration-stacks-launch-stackname-lamp-server](/images/horizon-orchestration-stacks-launch-stackname-lamp-server.png)
@@ -51,17 +51,16 @@ taxonomy:
 * Go to "Compute" --> "Instances" in order to retrieve the floating IP that is required to access the instance via SSH  
 * Copy the floating IP from the example server  
 * Open a terminal of your choice and log in to the instance via ssh with the username `syseleven`  
+
 `ssh syseleven@<floating IP> -i ~/.ssh/< private ssh key >`
 
 ![ssh-login-syseleven-sshkeyrsa-lamp-server](/images/ssh-login-syseleven-sshkeyrsa-lamp-server.png)
 
 * You should now be logged in your instance via SSH  
 * You can follow the installation progress:
+  In the background, the web server, database server and a up-to-date PHP version is being installed.  
+  We can check the progress with the following command: `tail -f /var/log/cloud-init-output.log`
 
-    In the background, the web server, database server and a up-to-date PHP version is being installed.  
-    We can check the progress with the following command: `tail -f /var/log/cloud-init-output.log`
-    
 * Furthermore you may test the webserver:
-
-    This template deploys a simple PHP application.    
-    You can now place any PHP application to `/var/www/html` and test it.
+  This template deploys a simple PHP application.
+  You can now place any PHP application to `/var/www/html` and test it.
