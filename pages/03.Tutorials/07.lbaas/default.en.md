@@ -125,7 +125,7 @@ $ openstack stack show examplelb -f value -c outputs | grep -i 'http:' | cut -f2
 Open Anyapp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server.
 Open Anyapp in other tabs/windows to see the load balancer working.
 
-![LBAnyApp](/images/AnyApp_20180301.png)
+![LBAnyApp](../../images/AnyApp_20180301.png)
 
 ## Conclusion
 

@@ -17,7 +17,7 @@ taxonomy:
 
 Sign in at the  [Dashboard](https://dashboard.cloud.syseleven.net)
 
-![SysEleven Login](/images/horizon-login.png)
+![SysEleven Login](../../images/horizon-login.png)
 
 ### Step Two: Create Interface on Router
 
@@ -31,7 +31,7 @@ To create a new interface on our router:
 
 Repeat the process with the other router.
 
-![Interface Overview](/images/router-interface.png)
+![Interface Overview](../../images/router-interface.png)
 
 ### Step Three: Add a Static Route
 
@@ -44,7 +44,7 @@ To add a static route:
 
 Repeat the process with the other router
 
-![Interface Overview](/images/static-route.png)
+![Interface Overview](../../images/static-route.png)
 
 ### Step Four: Creating the Host Route
 
@@ -59,7 +59,7 @@ To create the host route:
 
 Repeat the process with the other subnet.
 
-![Interface Overview](/images/hostroute.png)
+![Interface Overview](../../images/hostroute.png)
 
 ## Conclusion
 

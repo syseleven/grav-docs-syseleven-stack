@@ -34,12 +34,12 @@ SSH keys can be imported via the GUI (Horizon / Dashboad) or the CLI (OpenStack 
 
 Using the username and password (API credentials) that were provided by SysEleven we login at: [https://dashboard.cloud.syseleven.net](https://dashboard.cloud.syseleven.net).
 
-![SysEleven Login](/images/horizon-login.png)
+![SysEleven Login](../../images/horizon-login.png)
 
 * In order to import your SSH-key using the dashboard, we go to "Compute" --> "Access And Security" --> "Key Pairs".
 * There we select "Import Key Pair", give the key pair a name (that we remember for later use) and import the public part of the key pair via copy & paste into the interface.
 
-![import SSH key](/images/sshkeys.png)
+![import SSH key](../../images/sshkeys.png)
 
 Once submitted we can use the key pair with this name in the API and Templates.
 

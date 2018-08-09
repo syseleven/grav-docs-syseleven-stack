@@ -36,11 +36,11 @@ The kickstart instance contains all necessary tools to get started with the Open
 
 * Log in to the [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) using the username and password (API credentials) that were provided by SysEleven.
 
-![SysEleven Login](/images/horizon-login.png)
+![SysEleven Login](../../images/horizon-login.png)
 
 * In order to launch the example stack using the dashboard go to "Project" --> "Orchestration" --> "Stacks".  
 
-![horizon-orchestration-stacks](/images/horizon-orchestration-stacks.png)
+![horizon-orchestration-stacks](../../images/horizon-orchestration-stacks.png)
 
 * Click the button "Launch Stack"
 * Select "URL" as "Template Source"
@@ -48,26 +48,26 @@ The kickstart instance contains all necessary tools to get started with the Open
 * Paste the copied URL into the field "Template URL"
 * Select "File" as "Environment Source"  
 
-![horizon-orchestration-stacks-launch-url-file](/images/horizon-orchestration-stacks-launch-url-file.png)
+![horizon-orchestration-stacks-launch-url-file](../../images/horizon-orchestration-stacks-launch-url-file.png)
 
 * Click "Next"
 * Write a name for this stack into the field "Stack Name"
 * Write the name of your SSH key that you uploaded to the Horizon Dashboard - see [Import SSH key(s)](#import-ssh-keys)
 * Click on "Launch"  
 
-![horizon-orchestration-stacks-launch-stackname-kickstart](/images/horizon-orchestration-stacks-launch-stackname-kickstart.png)
+![horizon-orchestration-stacks-launch-stackname-kickstart](../../images/horizon-orchestration-stacks-launch-stackname-kickstart.png)
 
 * Verify that the stack status is "Create In Progress" or "Create Complete"  
 
-![horizon-orchestration-stacks-launch-complete-kickstart](/images/horizon-orchestration-stacks-launch-complete-kickstart.png)
+![horizon-orchestration-stacks-launch-complete-kickstart](../../images/horizon-orchestration-stacks-launch-complete-kickstart.png)
 
 * Go to "Compute" --> "Instances" in order to retrieve the floating IP that is required to access the instance via SSH  
 
-![horizon-compute-instances](/images/horizon-compute-instances.png)
+![horizon-compute-instances](../../images/horizon-compute-instances.png)
 
 * Copy the floating IP from the kickstart server  
 
-![horizon-compute-instances-kickstart-fip](/images/horizon-compute-instances-kickstart-fip.png)
+![horizon-compute-instances-kickstart-fip](../../images/horizon-compute-instances-kickstart-fip.png)
 
 * Open a terminal of your choice and log in to the instance via ssh with the username `syseleven`  
 
@@ -75,7 +75,7 @@ The kickstart instance contains all necessary tools to get started with the Open
 
 * You should now be logged in your instance via SSH  
 
-![ssh-login-syseleven-success-kickstart](/images/ssh-login-syseleven-success-kickstart.png)
+![ssh-login-syseleven-success-kickstart](../../images/ssh-login-syseleven-success-kickstart.png)
 
 ## Conclusion
 

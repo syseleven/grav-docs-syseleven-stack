@@ -29,7 +29,7 @@ taxonomy:
 
 * Log in to the [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) using the username and password (API credentials) that were provided by SysEleven.
 
-![SysEleven Login](/images/horizon-login.png)
+![SysEleven Login](../../images/horizon-login.png)
 
 * In order to launch the example stack using the dashboard go to "Project" --> "Orchestration" --> "Stacks".  
 * Click the button "Launch Stack"
@@ -38,14 +38,14 @@ taxonomy:
 * Paste the copied URL into the field "Template URL"
 * Select "File" as "Environment Source"  
 
-![horizon-orchestration-stacks-launch-url-file](/images/horizon-orchestration-stacks-launch-url-file.png)
+![horizon-orchestration-stacks-launch-url-file](../../images/horizon-orchestration-stacks-launch-url-file.png)
 
 * Click "Next"
 * Write "lampserver" into the field "Stack Name"
 * Write the name of your SSH key that you uploaded to the Horizon Dashboard - see [SSH Tutorial](../01.ssh-keys/default.en.md)
 * Click on "Launch"  
 
-![horizon-orchestration-stacks-launch-stackname-lamp-server](/images/horizon-orchestration-stacks-launch-stackname-lamp-server.png)
+![horizon-orchestration-stacks-launch-stackname-lamp-server](../../images/horizon-orchestration-stacks-launch-stackname-lamp-server.png)
 
 * Verify that the stack status is "Create In Progress" or "Create Complete"  
 * Go to "Compute" --> "Instances" in order to retrieve the floating IP that is required to access the instance via SSH  
@@ -54,7 +54,7 @@ taxonomy:
 
 `ssh syseleven@<floating IP> -i ~/.ssh/< private ssh key >`
 
-![ssh-login-syseleven-sshkeyrsa-lamp-server](/images/ssh-login-syseleven-sshkeyrsa-lamp-server.png)
+![ssh-login-syseleven-sshkeyrsa-lamp-server](../../images/ssh-login-syseleven-sshkeyrsa-lamp-server.png)
 
 * You should now be logged in your instance via SSH  
 * You can follow the installation progress:

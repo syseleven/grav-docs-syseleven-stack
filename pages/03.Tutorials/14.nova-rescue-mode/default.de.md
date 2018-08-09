@@ -114,11 +114,11 @@ Das Rescue Image generiert beim jedem Start ein zufälliges Root Passwort, welch
 
 Das Root Passwort auslesen:
 
-![root password](/images/rescue_pw.png)
+![root password](../../images/rescue_pw.png)
 
 Mit dem Root Passwort anmelden:
 
-![root password](/images/rescue_console_login.png)
+![root password](../../images/rescue_console_login.png)
 
 ## Mit der Nova rescue Instanz arbeiten
 

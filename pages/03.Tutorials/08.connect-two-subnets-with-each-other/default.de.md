@@ -17,7 +17,7 @@ taxonomy:
 
 Mit den von SysEleven erhaltenen Daten für Nutzername und Passwort loggen wir uns im [Dashboard](https://dashboard.cloud.syseleven.net) ein.
 
-![SysEleven Login](/images/horizon-login.png)
+![SysEleven Login](../../images/horizon-login.png)
 
 ### Interface im Router anlegen
 
@@ -30,7 +30,7 @@ Um ein Interface einzurichten, gehne wir wie folgt vor:
 
 Diese Schritte wiederholt man nun für den anderen Router.
 
-![Interface Übersicht](/images/router-interface.png)
+![Interface Übersicht](../../images/router-interface.png)
 
 ### Static Route erstellen
 
@@ -42,7 +42,7 @@ Der nächste Schritt ist nun eine Static Route (Statische Verbindung) anzulegen.
 
 Auch das wiederholen wir für den anderen Router.
 
-![Interface Übersicht](/images/static-route.png)
+![Interface Übersicht](../../images/static-route.png)
 
 ### Hostroute anlegen
 
@@ -56,7 +56,7 @@ Als letzten Schritt benötigen wir noch eine Hostroute.
 
 Auch diesen Schritt wiederholen wir für das andere Subnet.
 
-![Interface Übersicht](/images/hostroute.png)
+![Interface Übersicht](../../images/hostroute.png)
 
 ## Fazit
 

@@ -114,11 +114,11 @@ The rescue image generated a random password with every start, which can be view
 
 Get the root password:
 
-![root password](/images/rescue_pw.png)
+![root password](../../images/rescue_pw.png)
 
 Login with the root password:
 
-![root password](/images/rescue_console_login.png)
+![root password](../../images/rescue_console_login.png)
 
 ## Work with the nova rescue instance
 
