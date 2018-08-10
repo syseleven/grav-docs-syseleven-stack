@@ -16,24 +16,27 @@ You can view and manage images both via the OpenStack API, as well as using the 
 
 ## Provided Images
 
-Images that are marked with **sys11 optimized** are built, optimized, tested and supported by Sys11.  
-More images will be added in the future.
+Images with the description **sys11 optimized** are built, optimized, tested and fully supported by SysEleven.  
+Standard cloud images from their original source are supported with best effort only.
 
-Distro           | Name                             | Description                             | Supported |
------------------|----------------------------------|-----------------------------------------|-----------|
-Ubuntu 16.04 LTS | Ubuntu 16.04 LTS                 | Unmodified, directly from Canonical     | yes       |
-Ubuntu 16.04 LTS | Ubuntu 16.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack | yes       |
-Ubuntu 14.04 LTS | Ubuntu 14.04 LTS                 | Unmodified, directly from Canonical     | yes       |
-Ubuntu 14.04 LTS | Ubuntu 14.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack | yes       |
-                 |                                  |                                         |           |
-Ubuntu 16.04 LTS | Rescue Ubuntu 16.04 sys11        | Modified, optimized for SysEleven Stack | yes       |
-
+Distro           | Name                             | Description                               | Supported   |
+-----------------|----------------------------------|-------------------------------------------|-------------|
+Ubuntu 18.04 LTS | Ubuntu 18.04 LTS                 | Unmodified, directly from Canonical       | best-effort |
+Ubuntu 18.04 LTS | Ubuntu 18.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   | yes         |
+Ubuntu 16.04 LTS | Ubuntu 16.04 LTS                 | Unmodified, directly from Canonical       | best-effort |
+Ubuntu 16.04 LTS | Ubuntu 16.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   | yes         |
+Ubuntu 14.04 LTS | Ubuntu 14.04 LTS                 | Unmodified, directly from Canonical       | best-effort |
+Ubuntu 14.04 LTS | Ubuntu 14.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   | yes         |
+CentOS 7         | CentOS 7                         | Unmodified, directly from CentOS sources. | best-effort |
+Debian 9         | Debian 9                         | Unmodified, directly from Debian sources. | best-effort |
+Ubuntu 16.04 LTS | Rescue Ubuntu 16.04 sys11        | Modified, optimized for SysEleven Stack   | yes         |
+Ubuntu 18.04 LTS | Rescue Ubuntu 18.04 sys11        | Modified, optimized for SysEleven Stack   | yes         |
 
 ## Distros
 
 ### Recommendation
 
-SysEleven currently recommends to run **Ubuntu 16.04 LTS sys11 optimized** in the SysEleven Stack.
+SysEleven currently recommends to run **Ubuntu 18.04 LTS sys11 optimized** in the SysEleven Stack.
 
 ### Other distros
 
