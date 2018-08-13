@@ -1,8 +1,9 @@
 # grav-docs-syseleven-stack
 
-[![Build Status](https://travis-ci.org/syseleven/grav-docs-syseleven-stack.svg?branch=master)](https://travis-ci.org/syseleven/grav-docs-syseleven-stack)
+## SysEleven Stack Documentation Repository
 
-SysEleven Stack Documentation Repository
+[![Build Status](https://travis-ci.org/syseleven/grav-docs-syseleven-stack.svg?branch=master)](https://travis-ci.org/syseleven/grav-docs-syseleven-stack) 
+[![GitHub license](https://img.shields.io/github/license/syseleven/grav-docs-syseleven-stack.svg)](https://github.com/syseleven/grav-docs-syseleven-stack/blob/master/LICENSE)
 
 The content of master is automatically displayed at [https://docs.syseleven.de/syseleven-stack](https://docs.syseleven.de/syseleven-stack) in a [Grav CMS](https://getgrav.org/) installation.
 
