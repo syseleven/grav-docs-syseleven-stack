@@ -14,10 +14,10 @@ taxonomy:
 
 ## The SysEleven Rescue Image
 
-The rescue image was built and tested using Ubuntu 16.04 LTS as core system.
-It contains a variety of pre-installed tools to rescue your instance and supports most filesystems out of the box.
+The rescue images were built and tested using Ubuntu 16.04 and 18.04 LTS as core system.
+Theiy contain a variety of pre-installed tools to rescue your instances and supports most filesystems out of the box.
 
-!!! Since the rescue image is rebuilt regularly it is advisable to always check for the [current rescue image name or ID](#launch-nova-rescue-mode).
+!!! Since the rescue images are rebuilt regularly it is advisable to always check for the [current rescue image name or ID](#launch-nova-rescue-mode).
 
 ## Goal
 
@@ -79,7 +79,8 @@ Then we need to get the current ID of the rescue image
 ```shell
 openstack image list --public | grep -i rescue
 
-| ace507db-7acc-46dd-93e1-e561fb962f03 | Rescue-Ubuntu-16.04-sys11                              | active |
+| ace507db-7ac.......... | Rescue Ubuntu 16.04 sys11   | active |
+| ace507db-7ac.......... | Rescue Ubuntu 18.04 sys11   | active |
 ```
 
 <div class="alert alert-dismissible alert-info">
@@ -91,7 +92,7 @@ Now we launch the instance into the rescue mode using the rescue image
 ```shell
 # openstack server rescue --image < Image name / ID > <server name / uuid>
 
-openstack server rescue --image Rescue-Ubuntu-16.04-sys11 app001
+openstack server rescue --image Rescue Ubuntu 18.04 sys11 app001
 ```
 
 Please wait a few seconds while the rescue image is started.
