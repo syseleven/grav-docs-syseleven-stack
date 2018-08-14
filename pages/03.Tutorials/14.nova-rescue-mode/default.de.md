@@ -92,7 +92,7 @@ Danach starten wir die Instanz mit dem Rescue Image
 ```shell
 # openstack server rescue --image < Image name / ID > <server name / uuid>
 
-openstack server rescue --image Rescue Ubuntu 18.04 sys11 app001
+openstack server rescue --image "Rescue Ubuntu 18.04 sys11" app001
 ```
 
 Bitte ein paar Sekunden warten, während das Rescue Image startet.
