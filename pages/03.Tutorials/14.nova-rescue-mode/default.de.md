@@ -14,10 +14,10 @@ taxonomy:
 
 ## Das SysEleven Rescue Image
 
-Das Rescue Image wurde basierend auf Ubuntu 16.04 LTS als Kern System gebaut und getestet.
-Es enthält eine Anzahl an vorinstallierten Tools um Instanzen zu retten und unterstützt die meisten Dateisysteme "out-of-the-box".
+Die Rescue Images wurden basierend auf Ubuntu 16.04 und 18.04 LTS als Kern System gebaut und getestet.
+Sie enthalten vorinstallierten Tools um Instanzen zu retten und unterstützen die meisten Dateisysteme "out-of-the-box".
 
-!!! Da das Rescue Image regelmäßig neu gebaut wird ist es empfehlenswert immer die [aktuelle Image ID oder den Image Namen abzufragen](#nova-rescue-modus-starten).
+!!! Da die Rescue Images regelmäßig neu gebaut werden ist es empfehlenswert immer die [aktuelle Image ID oder den Image Namen abzufragen](#nova-rescue-modus-starten).
 
 ## Ziel
 
@@ -77,9 +77,10 @@ openstack server stop <server uuid>
 Dann benötigen wir die aktuelle ID vom Rescue Image
 
 ```shell
-openstack image list --public | grep -i rescue
+$ openstack image list --public | grep -i rescue
 
-| ace507db-7ac.......... | Rescue-Ubuntu-16.04-sys11                              | active |
+| fsf3af07-8ru.......... | Rescue Ubuntu 16.04 sys11   | active |
+| ace507db-7ac.......... | Rescue Ubuntu 18.04 sys11   | active |
 ```
 
 <div class="alert alert-dismissible alert-info">
@@ -91,7 +92,7 @@ Danach starten wir die Instanz mit dem Rescue Image
 ```shell
 # openstack server rescue --image < Image name / ID > <server name / uuid>
 
-openstack server rescue --image Rescue-Ubuntu-16.04-sys11 app001
+openstack server rescue --image Rescue Ubuntu 18.04 sys11 app001
 ```
 
 Bitte ein paar Sekunden warten, während das Rescue Image startet.
