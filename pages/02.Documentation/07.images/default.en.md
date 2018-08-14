@@ -27,8 +27,6 @@ Ubuntu 16.04 LTS | Ubuntu 16.04 LTS                 | Unmodified, directly from 
 Ubuntu 16.04 LTS | Ubuntu 16.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   | yes         |
 Ubuntu 14.04 LTS | Ubuntu 14.04 LTS                 | Unmodified, directly from Canonical       | best-effort |
 Ubuntu 14.04 LTS | Ubuntu 14.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   | yes         |
-CentOS 7         | CentOS 7                         | Unmodified, directly from CentOS sources. | best-effort |
-Debian 9         | Debian 9                         | Unmodified, directly from Debian sources. | best-effort |
 Ubuntu 16.04 LTS | Rescue Ubuntu 16.04 sys11        | Modified, optimized for SysEleven Stack   | yes         |
 Ubuntu 18.04 LTS | Rescue Ubuntu 18.04 sys11        | Modified, optimized for SysEleven Stack   | yes         |
 
