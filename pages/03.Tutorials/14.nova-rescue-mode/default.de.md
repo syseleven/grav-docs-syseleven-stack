@@ -77,9 +77,9 @@ openstack server stop <server uuid>
 Dann benötigen wir die aktuelle ID vom Rescue Image
 
 ```shell
-openstack image list --public | grep -i rescue
+$ openstack image list --public | grep -i rescue
 
-| ace507db-7ac.......... | Rescue Ubuntu 16.04 sys11   | active |
+| fsf3af07-8ru.......... | Rescue Ubuntu 16.04 sys11   | active |
 | ace507db-7ac.......... | Rescue Ubuntu 18.04 sys11   | active |
 ```
 

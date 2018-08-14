@@ -15,7 +15,7 @@ taxonomy:
 ## The SysEleven Rescue Image
 
 The rescue images were built and tested using Ubuntu 16.04 and 18.04 LTS as core system.
-Theiy contain a variety of pre-installed tools to rescue your instances and supports most filesystems out of the box.
+They contain a variety of pre-installed tools to rescue your instances and supports most filesystems out of the box.
 
 !!! Since the rescue images are rebuilt regularly it is advisable to always check for the [current rescue image name or ID](#launch-nova-rescue-mode).
 
@@ -77,9 +77,9 @@ openstack server stop <server uuid>
 Then we need to get the current ID of the rescue image
 
 ```shell
-openstack image list --public | grep -i rescue
+$ openstack image list --public | grep -i rescue
 
-| ace507db-7ac.......... | Rescue Ubuntu 16.04 sys11   | active |
+| fsf3af07-8ru.......... | Rescue Ubuntu 16.04 sys11   | active |
 | ace507db-7ac.......... | Rescue Ubuntu 18.04 sys11   | active |
 ```
 
