@@ -53,7 +53,7 @@ Wenn Sie mit der Erstellung des Stacks fortfahren, werden der/die Server anstell
 
 ## Weitere Auswirkungen
 
-Bitte lesen Sie auch unsere [FAQ zu Local SSD Storage](https://docs.syseleven.de/faq/en/taxonomy?name=tag&val=localstorage), um mehr über die Auswirkungen des Einsatzes von Local SSD Storage zu erfahren.
+Bitte lesen Sie auch unsere [FAQ zu Local SSD Storage](https://docs.syseleven.de/helpcenter/en/taxonomy?name=tag&val=localstorage), um mehr über die Auswirkungen des Einsatzes von Local SSD Storage zu erfahren.
 
 ## Zusammenfassung
 

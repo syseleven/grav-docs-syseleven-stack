@@ -50,4 +50,4 @@ L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB  |
 L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB  |
 L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB  |
 
-For more information, see the FAQ articles on [local storage instances](https://docs.syseleven.de/faq/en/taxonomy?name=tag&val=localstorage).
+For more information, see the FAQ articles on [local storage instances](https://docs.syseleven.de/helpcenter/en/taxonomy?name=tag&val=localstorage).
