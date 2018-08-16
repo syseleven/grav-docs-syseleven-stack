@@ -1,6 +1,10 @@
 ---
 title: Support
 date: '16-08-2018 13:45'
+taxonomy:
+    tag:
+        - syseleven-stack
+        - support
 ---
 
 Als der Hersteller des [SysEleven Stacks](https://dashboard.cloud.syseleven.net/) bieten wir **kostenlosen Support** für unsere Cloud-Kunden. Wir freuen uns Ihnen behilftlich zu sein.

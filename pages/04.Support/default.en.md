@@ -1,6 +1,10 @@
 ---
 title: Support
 date: '16-08-2018 13:45'
+taxonomy:
+    tag:
+        - syseleven-stack
+        - support
 ---
 
 As the vendor of the [SysEleven Stack](https://dashboard.cloud.syseleven.net/) we provide **free support** to our customers. We are happy to assist you.
