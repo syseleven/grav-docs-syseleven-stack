@@ -52,7 +52,7 @@ If you then continue to create the stack, the server(s) will be created using lo
 
 ## Implications
 
-See our [FAQ on local storage](https://docs.syseleven.de/faq/de/taxonomy?name=tag&val=localstorage) for more information about the implications of using local ssd storage.
+See our [FAQ on local storage](https://docs.syseleven.de/helpcenter/de/taxonomy?name=tag&val=localstorage) for more information about the implications of using local ssd storage.
 
 ## Summary / Conclusion
 
