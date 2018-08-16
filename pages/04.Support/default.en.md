@@ -7,7 +7,7 @@ taxonomy:
         - support
 ---
 
-As the vendor of the [SysEleven Stack](https://dashboard.cloud.syseleven.net/) we provide **free support** to our customers. We are happy to assist you.
+As the vendor of the [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) we provide **free support** to our customers. We are happy to assist you.
 
 ## Help Center
 
@@ -22,7 +22,7 @@ Click <a href="mailto:cloudsupport@syseleven.de?subject=# Problem description&bo
 
 ### via Ticketsystem
 
-You can open tickets directly if you already have an account in our <a href="https://helpdesk.syseleven.de">ticketsystem</a>.
+You can open tickets directly if you already have an account in our [ticketsystem](https://helpdesk.syseleven.de/).
 
 ---
 

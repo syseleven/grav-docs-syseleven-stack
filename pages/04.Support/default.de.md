@@ -7,12 +7,12 @@ taxonomy:
         - support
 ---
 
-Als der Hersteller des [SysEleven Stacks](https://dashboard.cloud.syseleven.net/) bieten wir **kostenlosen Support** für unsere Cloud-Kunden. Wir freuen uns Ihnen behilftlich zu sein.
+Als der Hersteller des [SysEleven Stacks](https://www.syseleven.de/produkte-services/syseleven-stack/) bieten wir **kostenlosen Support** für unsere Cloud-Kunden. Wir freuen uns Ihnen behilflich zu sein.
 
 ## Hilfe Center
 
-Das [Hilfe Center](https://docs.syseleven.de/helpcenter/de/taxonomy?name=category&val=SysEleven-Stack) hilft dabei Antworten auf Ihre Fragen zu finden.  
-Bitte schauen Sie zuerst ins [Hilfe Center](https://docs.syseleven.de/helpcenter/de/taxonomy?name=category&val=SysEleven-Stack) bevor Sie uns kontaktieren. Natürlich dürfen Sie uns gerne jederzeit kontaktieren, wenn Sie weitere Fragen haben.
+Das [Hilfe Center](https://docs.syseleven.de/helpcenter/de/taxonomy?name=category&val=SysEleven-Stack) enthält Antworten auf allgemeine und spezifische Fragen.  
+Bitte schauen Sie zuerst ins [Hilfe Center](https://docs.syseleven.de/helpcenter/de/taxonomy?name=category&val=SysEleven-Stack) bevor Sie uns kontaktieren. Natürlich dürfen Sie uns gerne jederzeit kontaktieren, wenn Sie weitere Fragen oder Anliegen haben.
 
 ## Support kontaktieren
 
@@ -22,7 +22,7 @@ Klicken Sie <a href="mailto:cloudsupport@syseleven.de?subject=# Problem descript
 
 ### via Ticketsystem
 
-Sie können direkt ein Ticket erstellen, wenn Sie bereits einen Account in unserem <a href="https://helpdesk.syseleven.de>Ticketsystem</a> haben.
+Sie können direkt ein Ticket im Web-Frontend erstellen, wenn Sie bereits einen Account in unserem [Ticketsystem](https://helpdesk.syseleven.de/) haben.
 
 ---
 
