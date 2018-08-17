@@ -1,7 +1,7 @@
 ---
 title: Images
 published: true
-date: '08-08-2018 11:06'
+date: '17-08-2018 16:22'
 taxonomy:
     category:
         - docu
@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-SysEleven provides and maintains a set of images in the SysEleven Stack.  
+SysEleven provides and maintains a set of images in the SysEleven Stack.
 The SysEleven Stack also offers the possibility to upload custom images.
 
 You can view and manage images both via the OpenStack API, as well as using the [Dashboard (GUI)](https://dashboard.cloud.syseleven.net).
@@ -26,7 +26,7 @@ Apart from building images from scratch SysEleven adjusts the file system alignm
 Apart from building optimized images we also provide standard images from their original sources.
 Standard cloud images are supported with best effort only.
 
-### Image List
+### Image overview
 
 Distro           | Name                             | Description                               | Supported   |
 -----------------|----------------------------------|-------------------------------------------|-------------|
@@ -72,5 +72,5 @@ CoreOS                    | `https://stable.release.core-os.net/amd64-usr/curren
 
 ### How to upload images?
 
-[This tutorial](../../03.Tutorials/10.upload-custom-images/default.en.md) shows how to upload custom images.
+[This tutorial](../../03.Tutorials/10.upload-images/default.en.md) shows how to upload custom images.
 
