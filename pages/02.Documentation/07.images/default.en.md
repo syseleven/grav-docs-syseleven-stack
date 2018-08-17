@@ -14,10 +14,19 @@ The SysEleven Stack also offers the possibility to upload custom images.
 
 You can view and manage images both via the OpenStack API, as well as using the [Dashboard (GUI)](https://dashboard.cloud.syseleven.net).
 
-## Provided Images
+## Available Images
 
-Images with the description **sys11 optimized** are built, optimized, tested and fully supported by SysEleven.  
-Standard cloud images from their original source are supported with best effort only.
+### SysEleven Images
+
+Images with the description **sys11 optimized** are built, optimized, tested and fully supported by SysEleven.
+Apart from building images from scratch SysEleven adjusts the file system alignment to work best with the underlying storage system.
+
+### Standard Images
+
+Apart from building optimized images we also provide standard images from their original sources.
+Standard cloud images are supported with best effort only.
+
+### Image List
 
 Distro           | Name                             | Description                               | Supported   |
 -----------------|----------------------------------|-------------------------------------------|-------------|
@@ -32,14 +41,9 @@ Ubuntu 18.04 LTS | Rescue Ubuntu 18.04 sys11        | Modified, optimized for Sy
 
 ## Distros
 
-### Recommendation
-
-SysEleven currently recommends to run **Ubuntu 18.04 LTS sys11 optimized** in the SysEleven Stack.
-
-### Other distros
+SysEleven currently recommends to use the **Ubuntu 18.04 LTS sys11 optimized** image in the SysEleven Stack.
 
 Basically it is possible to run any kind of operating system within the SysEleven Stack as long as it supports running in [KVM](https://www.linux-kvm.org/page/Main_Page).
-
 Though Windows can be hosted in the SysEleven Stack we do not provide support for instances running Windows.
 
 The following distros are reported to be working in SysEleven Stack:
@@ -48,6 +52,25 @@ The following distros are reported to be working in SysEleven Stack:
 * CentOS
 * CoreOS
 
-## Uploading custom images
+## Uploading images
+
+### Image sources
+
+This table shows the sources for the most common images used within OpenStack.
+
+Distro                    | URL |
+--------------------------|-----|
+Ubuntu 18.04 LTS (Bionic) | `http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img` |
+Ubuntu 16.04 LTS (Xenial) | `http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img` |
+Ubuntu 14.04 LTS (Trusty) | `http://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img` |
+Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
+CentOS 7                  | `https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2` |
+CoreOS                    | `https://stable.release.core-os.net/amd64-usr/current/coreos_production_openstack_image.img.bz2` |
+
+!!! The CoreOS image has to be decompressed before it can be imported
+!!! `bunzip2 coreos_production_openstack_image.img.bz2`
+
+### How to upload images?
 
 [This tutorial](../../03.Tutorials/10.upload-custom-images/default.en.md) shows how to upload custom images.
+
