@@ -72,5 +72,5 @@ CoreOS                    | `https://stable.release.core-os.net/amd64-usr/curren
 
 ### How to upload images?
 
-[This tutorial](../../03.Tutorials/10.upload-images/default.en.md) shows how to upload custom images.
+[This tutorial](../../03.Tutorials/10.upload-images/default.en.md) shows how to upload images via CLI and GUI.
 

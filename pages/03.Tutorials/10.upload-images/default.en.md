@@ -7,9 +7,13 @@ taxonomy:
         - tutorial
 ---
 
-## Uploading Images
+## Upload Images
 
 There are three different ways to upload custom images.
+
+### Image sources
+
+!!! [This overview](../../02.Documentation/07.images/default.en.md) contains a list of standard images sources.
 
 ### Dashboard
 
