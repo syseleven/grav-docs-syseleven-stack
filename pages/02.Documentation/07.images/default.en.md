@@ -24,20 +24,20 @@ Apart from building images from scratch SysEleven adjusts the file system alignm
 ### Standard Images
 
 Apart from building optimized images we also provide standard images from their original sources.
-Standard cloud images are supported with best effort only.
+Standard cloud images are supported with best effort.
 
 ### Image overview
 
-Distro           | Name                             | Description                               | Supported   |
------------------|----------------------------------|-------------------------------------------|-------------|
-Ubuntu 18.04 LTS | Ubuntu 18.04 LTS                 | Unmodified, directly from Canonical       | best-effort |
-Ubuntu 18.04 LTS | Ubuntu 18.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   | yes         |
-Ubuntu 16.04 LTS | Ubuntu 16.04 LTS                 | Unmodified, directly from Canonical       | best-effort |
-Ubuntu 16.04 LTS | Ubuntu 16.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   | yes         |
-Ubuntu 14.04 LTS | Ubuntu 14.04 LTS                 | Unmodified, directly from Canonical       | best-effort |
-Ubuntu 14.04 LTS | Ubuntu 14.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   | yes         |
-Ubuntu 16.04 LTS | Rescue Ubuntu 16.04 sys11        | Modified, optimized for SysEleven Stack   | yes         |
-Ubuntu 18.04 LTS | Rescue Ubuntu 18.04 sys11        | Modified, optimized for SysEleven Stack   | yes         |
+Distro           | Name                             | Description                               |
+-----------------|----------------------------------|-------------------------------------------|
+Ubuntu 18.04 LTS | Ubuntu 18.04 LTS                 | Unmodified, directly from Canonical       |
+Ubuntu 18.04 LTS | Ubuntu 18.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   |
+Ubuntu 16.04 LTS | Ubuntu 16.04 LTS                 | Unmodified, directly from Canonical       |
+Ubuntu 16.04 LTS | Ubuntu 16.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   |
+Ubuntu 14.04 LTS | Ubuntu 14.04 LTS                 | Unmodified, directly from Canonical       |
+Ubuntu 14.04 LTS | Ubuntu 14.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   |
+Ubuntu 16.04 LTS | Rescue Ubuntu 16.04 sys11        | Modified, optimized for SysEleven Stack   |
+Ubuntu 18.04 LTS | Rescue Ubuntu 18.04 sys11        | Modified, optimized for SysEleven Stack   |
 
 ## Distros
 
