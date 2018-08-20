@@ -1,13 +1,13 @@
 ---
-title: 'Upload custom images'
+title: 'Upload images'
 published: true
-date: '08-08-2018 11:34'
+date: '20-08-2018 10:05'
 taxonomy:
     category:
         - tutorial
 ---
 
-## Uploading Custom Images
+## Upload Images
 
 There are three different ways to upload custom images.
 
@@ -25,8 +25,8 @@ After [sourcing the openrc.sh](../04.api-access/default.en.md) you can easily up
 
 ```shell
 glance --os-image-api-version 1 image-create --progress --is-public False --disk-format=qcow2 \
---container-format=bare --property architecture=x86_64 --name="Debian" \
---location http://cdimage.debian.org/cdimage/openstack/testing/debian-testing-openstack-amd64.qcow2
+--container-format=bare --property architecture=x86_64 --name="Debian Stretch" \
+--location https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2
 ```
 
 ### Heat-Template
@@ -34,7 +34,7 @@ glance --os-image-api-version 1 image-create --progress --is-public False --disk
 It is also possible to upload images with heat.
 An example can look like this:
 
-```plain
+```yaml
 heat_template_version: 2016-04-08
 
 description: Simple template to upload an image
@@ -45,8 +45,12 @@ resources:
     properties:
       container_format: bare
       disk_format: qcow2
-      name: Debian
-      location: http://cdimage.debian.org/cdimage/openstack/testing/debian-testing-openstack-amd64.qcow2
+      name: Debian Stretch
+      location: https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2
 ```
 
 Further information can be found [here](https://dashboard.cloud.syseleven.net/horizon/project/stacks/resource_types/OS::Glance::Image).
+
+## Image sources
+
+!!! [This overview](../../02.Documentation/07.images/default.en.md) contains a list of standard images sources.
