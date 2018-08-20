@@ -1,7 +1,7 @@
 ---
 title: 'Upload images'
 published: true
-date: '17-08-2018 16:26'
+date: '20-08-2018 10:05'
 taxonomy:
     category:
         - tutorial
@@ -10,10 +10,6 @@ taxonomy:
 ## Upload Images
 
 There are three different ways to upload custom images.
-
-### Image sources
-
-!!! [This overview](../../02.Documentation/07.images/default.en.md) contains a list of standard images sources.
 
 ### Dashboard
 
@@ -54,3 +50,7 @@ resources:
 ```
 
 Further information can be found [here](https://dashboard.cloud.syseleven.net/horizon/project/stacks/resource_types/OS::Glance::Image).
+
+## Image sources
+
+!!! [This overview](../../02.Documentation/07.images/default.en.md) contains a list of standard images sources.

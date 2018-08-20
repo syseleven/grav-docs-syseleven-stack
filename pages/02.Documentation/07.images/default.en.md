@@ -1,7 +1,7 @@
 ---
 title: Images
 published: true
-date: '17-08-2018 16:22'
+date: '20-08-2018 10:05'
 taxonomy:
     category:
         - docu
@@ -18,12 +18,23 @@ You can view and manage images both via the OpenStack API, as well as using the 
 
 ### SysEleven Images
 
-Images with the description **sys11 optimized** are built, optimized, tested and fully supported by SysEleven.
+Images with the description **sys11 optimized** are built, optimized, tested and supported by SysEleven.
 Apart from building images from scratch SysEleven adjusts the file system alignment to work best with the underlying storage system.
+
+#### Pre-installed packages in SysEleven images
+
+```bash
+# All images
+cloud-init openssh-server python vim rng-tools wget curl cron psmisc man-db
+logrotate apt-transport-https software-properties-common language-pack-de xz-utils
+
+# Ubuntu 18.04 LTS only
+netplan.io gnupg2
+```
 
 ### Standard Images
 
-Apart from building optimized images we also provide standard images from their original sources.
+Additionally to the self-bild images we also provide standard images from their original sources.
 Standard cloud images are supported with best effort.
 
 ### Image overview
@@ -56,7 +67,7 @@ The following distros are reported to be working in SysEleven Stack:
 
 ### Image sources
 
-This table shows the sources for the most common images used within OpenStack.
+This table shows sources for commonly used images suitable for OpenStack.
 
 Distro                    | URL |
 --------------------------|-----|
