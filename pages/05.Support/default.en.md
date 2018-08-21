@@ -1,6 +1,6 @@
 ---
 title: Support
-date: '16-08-2018 13:45'
+date: '21-08-2018 14:45'
 taxonomy:
     tag:
         - syseleven-stack
@@ -12,7 +12,7 @@ As the vendor of the [SysEleven Stack](https://www.syseleven.de/produkte-service
 ## Help Center
 
 The [Help Center](https://docs.syseleven.de/helpcenter/en/taxonomy?name=category&val=SysEleven-Stack) guides you toward answers to your questions.  
-Please first have a look into the [Help Center](https://docs.syseleven.de/helpcenter/en/taxonomy?name=category&val=SysEleven-Stack) before contacting us. Of course you are welcome to contact us at any time if you have further questions.
+Please first have a look into this [Documentation](https://docs.syseleven.de/syseleven-stack) and the [Help Center](https://docs.syseleven.de/helpcenter/en/taxonomy?name=category&val=SysEleven-Stack) before contacting us. Of course you are welcome to contact us at any time if you have further questions.
 
 ## Contact Support
 
