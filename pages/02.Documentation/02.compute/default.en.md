@@ -70,7 +70,7 @@ It is possible to resize all M1 flavors since they have the same base storage.
 
 ### L1 flavors
 
-Resizing local storage flavors is currently not possible since the base storage differs in size.
+Resizing local storage flavors is currently **not** possible since the base storage differs in size.
 
 ## Flavor migration
 
@@ -84,6 +84,6 @@ Migrating M1 to L1 flavors is generally possible with the following exception:
 ### L1 to M1 migration
 
 It is currently **not** possible to migrate any L1 flavor to M1 flavors.
-This is a limitation cause by OpenStack in regards to LVM which is used for the local storage flavors.
+This is a limitation caused by OpenStack in regards to LVM which is used for local storage.
 
 If you require a resize the fastest solution is to build a new instance and migrate the required data (if any) via network.
