@@ -3,7 +3,7 @@ title: Support
 date: '21-08-2018 14:45'
 taxonomy:
     tag:
-        - syseleven-stack
+        - FAQ
         - support
 ---
 
