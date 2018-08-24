@@ -1,5 +1,8 @@
 ---
 title: Dokumentation
+taxonomy:
+    category:
+        - docs
 ---
 
 All pages listed as Documentation will give you an overview of our services.

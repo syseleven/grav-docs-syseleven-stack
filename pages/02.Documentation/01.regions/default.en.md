@@ -4,7 +4,7 @@ published: true
 date: '08-08-2018 11:24'
 taxonomy:
     category:
-        - docu
+        - docs
 ---
 
 ## Goal

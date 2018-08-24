@@ -6,5 +6,5 @@ external_links:
 media_order: ''
 taxonomy:
     category:
-        - docu
+        - docs
 ---

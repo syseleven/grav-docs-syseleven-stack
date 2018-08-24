@@ -4,7 +4,7 @@ published: true
 date: '08-08-2018 11:16'
 taxonomy:
     category:
-        - docu
+        - docs
 ---
 
 ## Overview

@@ -4,7 +4,7 @@ published: true
 date: '08-08-2018 11:45'
 taxonomy:
     category:
-        - docu
+        - docs
 ---
 
 OpenStack uses ports to connect cloud instances to networks and corresponding (virtual) network devices like routers, firewalls.

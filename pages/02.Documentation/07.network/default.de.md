@@ -4,7 +4,7 @@ published: true
 date: '08-08-2018 11:08'
 taxonomy:
     category:
-        - docu
+        - docs
 ---
 
 SysEleven Stacks Networking Service basiert auf dem OpenStack Neutron Projekt.
