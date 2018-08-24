@@ -4,7 +4,7 @@ published: true
 date: '21-08-2018 17:15'
 taxonomy:
     category:
-        - docu
+        - docs
     tag:
         - flavor
         - compute

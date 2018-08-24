@@ -4,7 +4,7 @@ published: true
 date: '08-08-2018 11:55'
 taxonomy:
     category:
-        - docu
+        - docs
 ---
 
 The SysEleven Stack orchestration service is built on the OpenStack Heat project.
