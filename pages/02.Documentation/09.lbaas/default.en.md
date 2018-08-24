@@ -4,7 +4,7 @@ published: true
 date: '08-08-2018 11:40'
 taxonomy:
     category:
-        - docu
+        - docs
 ---
 
 The SysEleven Stack LBaaS is a TCP-based loadbalancer. It supports round robin as balancing mechanism.
