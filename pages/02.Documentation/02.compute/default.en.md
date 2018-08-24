@@ -38,8 +38,8 @@ M1 Small    |  m1.small   |  8GB   |   2   |   50GB   |
 M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
 M1 Large    |  m1.large   | 32GB   |   8   |   50GB   |
 
-!!! (*)
-!!! You can extend storage using our our Block Storage Service.
+(*)
+You can extend storage using our our Block Storage Service.
 
 ### Local SSD storage instance types (L1)
 
@@ -75,8 +75,7 @@ Resizing local storage flavors is currently **not** possible.
 ### Flavor change to different storage type
 
 ! We do **not** recommend to change flavors to different storage types.
-! If more resources are required for an instance the fastest solution is to build a new instance
-! and migrate the required data (if any) via network or an attached volume.
+! If more resources are required for an instance the fastest solution is to build a new instance and migrate the required data (if any) via network or an attached volume.
 
 #### M1 to L1 migration
 
