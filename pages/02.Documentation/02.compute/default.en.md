@@ -82,8 +82,7 @@ and migrate the required data (if any) via network or an attached volume.
 
 Migrating M1 to L1 flavors is generally possible with the following exception:
 
-M1 flavors **cannot** be migrated to the L1 flavor `l1.tiny`.
-**Why?** The target disk (25GB) is smaller than the source disk (50GB).
+M1 flavors **cannot** be migrated to the L1 flavor `l1.tiny` because the target disk (25GB) is smaller than the source disk (50GB).
 
 #### L1 to M1 migration
 
