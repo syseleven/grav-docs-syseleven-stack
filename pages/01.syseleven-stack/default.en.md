@@ -1,10 +1,10 @@
 ---
 title: 'SysEleven Stack'
 published: true
-date: '02-08-2018 13:02'
+date: '27-08-2018 10:39'
 ---
 
-[SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) is an OpenStack public cloud service from [SysEleven GmbH](https://www.syseleven.de/) - a Berlin based managed hosting company.
+[SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) is an OpenStack public cloud service from [SysEleven GmbH](https://www.syseleven.de/) - a Berlin based company.
 
 ---
 
