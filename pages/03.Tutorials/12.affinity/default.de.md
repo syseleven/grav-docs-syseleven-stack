@@ -123,7 +123,7 @@ resources:
       - {start: 10.0.0.10, end: 10.0.0.250}
 ```
 
-Die bekannte `server.yaml ergänzt um die affinity_group Parameter:
+Die bekannte `server.yaml` ergänzt um die affinity_group Parameter:
 
 ```plain
 heat_template_version: 2014-10-16
