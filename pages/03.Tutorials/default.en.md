@@ -1,5 +1,7 @@
 ---
 title: Tutorials
+page-toc:
+    active: false
 taxonomy:
     category:
         - tutorial

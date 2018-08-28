@@ -1,5 +1,7 @@
 ---
 title: Documentation
+page-toc:
+    active: false
 taxonomy:
     category:
         - docs
