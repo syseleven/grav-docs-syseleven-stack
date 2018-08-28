@@ -1,7 +1,7 @@
 ---
 title: 'Compute Service'
 published: true
-date: '21-08-2018 17:15'
+date: '08-08-2018 10:46'
 taxonomy:
     category:
         - docs
@@ -15,12 +15,13 @@ taxonomy:
         - quobyte
 ---
 
-## Overview
+## Übersicht
 
-SysEleven Stacks Compute Service is built on the OpenStack Nova project.
-It manages the life-cycle of compute instances in your environment. Its responsibilities include spawning, scheduling and decommissioning of virtual machines on demand.
+SysEleven Stacks Compute Service basiert auf dem OpenStack Nova Projekt.
 
-You can manage your compute instance both via our public [OpenStack API](../../03.Tutorials/04.api-access/default.en.md) endpoints, as well as using the [Dashboard](https://dashboard.cloud.syseleven.net).
+Der Service verwaltet den Lebenszyklus einer Compute Instanz. Seine Zuständigkeit umfasst das erstellen, planen und  ausmustern von Compute Instanzen.
+
+Sowohl via unserer öffentlichen [OpenStack API](../../03.Tutorials/04.api-access/default.en.md), als auch durch das [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) können Compute Instanzen verwaltet werden.
 
 ## Flavors
 
@@ -89,58 +90,11 @@ It is currently **not** possible to migrate any L1 flavor to M1 flavors.
 
 ---
 
-## Questions & Answers
+## Fragen & Antworten
 
 ### Which storage flavor fits my needs best?
 
 In general, workloads where large volumes of data are transmitted or many small chunks of data are handled in parallel benefit from the overall performance of distributed storage and of course the redundancy and availability whereas workloads with tiny requests that need to be executed serially benefits from the lower latency of local ssd storage.
-
-### Can I allocate a fixed IP to a compute instance?
-
-Normally a fixed IP shouldn't play a big role in a cloud setup, since the infrastructure might change a lot.
-If you need a fixed IP, you can assign a port from our networking service as a fixed IP to our compute instance. Here is an example which shows how to use the orchestration service to fetch a fixed IP address to use in a template:
-
-```plain
-  management_port:
-    type: OS::Neutron::Port
-    properties:
-      network_id: { get_resource: management_net }
-      fixed_ips:
-        - ip_address: 192.168.122.100
-```
-
-### My compute instance was created, but is not accessible via SSH/HTTP etc.
-
-By default all compute instances of are using the "default" security group. It's settings do not allow any other packets, except of ICMP in order to be able to ping your compute instance. Any other ports needed by a given instance need to be opened by adding a rule to the security group your instance uses (i.e., SSH or HTTPS).
-Here is an example that shows how you can use a heat template to allow incoming HTTP/HTTPS traffic via your security group:
-
-```plain
-resources:
-  allow_webtraffic:
-    type: OS::Neutron::SecurityGroup
-    properties:
-      description: allow incoming webtraffic from anywhere.
-      name: allow webtraffic
-      rules: 
-        - { direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 80, port_range_max: 80, protocol: tcp }
-        - { direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 443, port_range_max: 443, protocol: tcp }
-```
-
-This security group can now be connected to a port of your network:
-
-```plain
-  example_port:
-    type: OS::Neutron::Port
-    properties:
-      security_groups: [ get_resource: allow_webtraffic, default ]
-      network_id: { get_resource: example_net}
-```
-
-The security group "default" is added in this example, since this group is taking care of allowing outbound traffic.
-
-### How long does a migration take?
-
-A live migration takes usually 500ms. In some situations migrations may take longer.
 
 ### Why are instances migrated?
 
@@ -159,6 +113,54 @@ while the machine is online. Therefore instances are moved to another hardware n
 
 Unfortunately life migrations are not possible in case of a hardware failure, therefor running instances will be automatically restarted on another hardware node. Stopped instances will be moved but remain in their stopped state.
 
+### How long does a migration take?
+
+A live migration takes usually about 500ms. In some situations migrations may take longer.
+
 ### Why are instances disconnected while migrating?
 
 To transfer the active state of instances (incl. RAM/Memory) they need to be 'frozen' prior to the migration. During the transfer network packets can get lost. It depends on the operating system and application that is being used if connection can be reestablished.
+
+### Kann ich einer Compute Instanz eine feste interne IP zuweisen??
+
+Normalerweise spielen in einer Cloudumgebung feste IPs keine Rolle, da sich die Infrastruktur häufig ändert. 
+Ist das nicht gewünscht, kann ich z.B. mit folgendem Heat-Template via unserem SysEleven Stack Orchestration Service einer Maschine eine statische IP zuweisen:
+
+```plain
+  management_port:
+    type: OS::Neutron::Port
+    properties:
+      network_id: { get_resource: management_net }
+      fixed_ips:
+        - ip_address: 192.168.122.100
+```
+
+Die Konsistenz der Netzwerkarchitektur muss ich dann allerdings selbst sicherstellen.
+
+### Meine virtuelle Maschine wurde erstellt, ist aber nicht per SSH/ HTTP usw. erreichbar
+
+Grundsätzlich sind alle Compute Instanzen im SysEleven Stack mit einer Default-Security-Group gesichert, die außer ICMP-Paketen keinen Traffic auf die VMs akzeptiert. Für jeden Service, der erreichbar sein soll, muss also eine Security-Group-Regel erstellt werden, die den Zugriff ermöglicht. Hier ein Beispiel wie HTTP(S)-Traffic mit einem Heat-Template unseres Orchestration Service zu ihrer Instanz erlaubt werden kann:
+
+```plain
+resources:
+  allow_webtraffic:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      description: allow incoming webtraffic from anywhere.
+      name: allow webtraffic
+      rules: 
+        - { direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 80, port_range_max: 80, protocol: tcp }
+        - { direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 443, port_range_max: 443, protocol: tcp }
+```
+
+Diese so gebaute Security-Group muss noch an einen Port gebunden werden:
+
+```plain
+  example_port:
+    type: OS::Neutron::Port
+    properties:
+      security_groups: [ get_resource: allow_webtraffic, default ]
+      network_id: { get_resource: example_net}
+```
+
+Die Security-Group "default" ist in diesem Beispiel hinzugefügt, da diese Gruppe im SysEleven Stack dafür sorgt, dass Traffic, der ausgehend erlaubt ist, auch eingehend erlaubt wird.
