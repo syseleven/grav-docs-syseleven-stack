@@ -92,6 +92,26 @@ It is currently **not** possible to migrate any L1 flavor to M1 flavors.
 
 ## Fragen & Antworten
 
+### Which storage flavor fits my needs best?
+
+In general, workloads where large volumes of data are transmitted or many small chunks of data are handled in parallel benefit from the overall performance of distributed storage and of course the redundancy and availability whereas workloads with tiny requests that need to be executed serially benefits from the lower latency of local ssd storage.
+
+### Kann ich einer Compute Instanz eine feste interne IP zuweisen??
+
+Normalerweise spielen in einer Cloudumgebung feste IPs keine Rolle, da sich die Infrastruktur häufig ändert. 
+Ist das nicht gewünscht, kann ich z.B. mit folgendem Heat-Template via unserem SysEleven Stack Orchestration Service einer Maschine eine statische IP zuweisen:
+
+```plain
+  management_port:
+    type: OS::Neutron::Port
+    properties:
+      network_id: { get_resource: management_net }
+      fixed_ips:
+        - ip_address: 192.168.122.100
+```
+
+Die Konsistenz der Netzwerkarchitektur muss ich dann allerdings selbst sicherstellen.
+
 ### Meine virtuelle Maschine wurde erstellt, ist aber nicht per SSH/ HTTP usw. erreichbar
 
 Grundsätzlich sind alle Compute Instanzen im SysEleven Stack mit einer Default-Security-Group gesichert, die außer ICMP-Paketen keinen Traffic auf die VMs akzeptiert. Für jeden Service, der erreichbar sein soll, muss also eine Security-Group-Regel erstellt werden, die den Zugriff ermöglicht. Hier ein Beispiel wie HTTP(S)-Traffic mit einem Heat-Template unseres Orchestration Service zu ihrer Instanz erlaubt werden kann:
@@ -119,6 +139,27 @@ Diese so gebaute Security-Group muss noch an einen Port gebunden werden:
 ```
 
 Die Security-Group "default" ist in diesem Beispiel hinzugefügt, da diese Gruppe im SysEleven Stack dafür sorgt, dass Traffic, der ausgehend erlaubt ist, auch eingehend erlaubt wird.
+
+### How long does a migration take?
+
+A live migration takes usually 500ms. In some situations migrations may take longer.
+
+### Why are instances migrated?
+
+**Software Updates**
+
+SysEleven regularly updates the software on the hypervisor host machines.
+To apply certain updates a reboot is required and running instances are therefore moved to another 
+hypervisor host. 
+
+**Hardware Maintenance**
+
+All hardware nodes require maintenance at some point. Sometimes the required maintenance work cannot be done
+while the machine is online. Therefore instances are moved to another hardware node prior to the planned maintenance work.
+
+**Hardware failure**
+
+Unfortunately life migrations are not possible in case of a hardware failure, therefor running instances will be automatically restarted on another hardware node. Stopped instances will be moved but remain in their stopped state.
 
 ### Why are instances disconnected while migrating?
 

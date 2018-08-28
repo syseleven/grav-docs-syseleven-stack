@@ -91,6 +91,24 @@ It is currently **not** possible to migrate any L1 flavor to M1 flavors.
 
 ## Questions & Answers
 
+### Which storage flavor fits my needs best?
+
+In general, workloads where large volumes of data are transmitted or many small chunks of data are handled in parallel benefit from the overall performance of distributed storage and of course the redundancy and availability whereas workloads with tiny requests that need to be executed serially benefits from the lower latency of local ssd storage.
+
+### Can I allocate a fixed IP to a compute instance?
+
+Normally a fixed IP shouldn't play a big role in a cloud setup, since the infrastructure might change a lot.
+If you need a fixed IP, you can assign a port from our networking service as a fixed IP to our compute instance. Here is an example which shows how to use the orchestration service to fetch a fixed IP address to use in a template:
+
+```plain
+  management_port:
+    type: OS::Neutron::Port
+    properties:
+      network_id: { get_resource: management_net }
+      fixed_ips:
+        - ip_address: 192.168.122.100
+```
+
 ### My compute instance was created, but is not accessible via SSH/HTTP etc.
 
 By default all compute instances of are using the "default" security group. It's settings do not allow any other packets, except of ICMP in order to be able to ping your compute instance. Any other ports needed by a given instance need to be opened by adding a rule to the security group your instance uses (i.e., SSH or HTTPS).
@@ -119,6 +137,27 @@ This security group can now be connected to a port of your network:
 ```
 
 The security group "default" is added in this example, since this group is taking care of allowing outbound traffic.
+
+### How long does a migration take?
+
+A live migration takes usually 500ms. In some situations migrations may take longer.
+
+### Why are instances migrated?
+
+**Software Updates**
+
+SysEleven regularly updates the software on the hypervisor host machines.
+To apply certain updates a reboot is required and running instances are therefore moved to another 
+hypervisor host. 
+
+**Hardware Maintenance**
+
+All hardware nodes require maintenance at some point. Sometimes the required maintenance work cannot be done
+while the machine is online. Therefore instances are moved to another hardware node prior to the planned maintenance work.
+
+**Hardware failure**
+
+Unfortunately life migrations are not possible in case of a hardware failure, therefor running instances will be automatically restarted on another hardware node. Stopped instances will be moved but remain in their stopped state.
 
 ### Why are instances disconnected while migrating?
 
