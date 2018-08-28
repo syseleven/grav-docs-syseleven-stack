@@ -8,6 +8,6 @@
   },
   "devDependencies": {
     "markdownlint-cli": "^0.13.0",
-    "markdownlint-rules-grav-pages": "^1.0.5"
+    "markdownlint-rules-grav-pages": "^1.0.7"
   }
 }
