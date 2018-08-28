@@ -2,6 +2,8 @@
 title: 'SysEleven Stack'
 published: true
 date: '02-08-2018 13:02'
+page-toc:
+    active: false
 ---
 
 [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) ist ein OpenStack Public Cloud Dienst der [SysEleven GmbH](https://www.syseleven.de/) - ein Berliner Unternehmen.

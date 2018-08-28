@@ -1,6 +1,8 @@
 ---
 title: Support
 date: '16-08-2018 13:45'
+page-toc:
+    active: false
 taxonomy:
     tag:
         - syseleven-stack
