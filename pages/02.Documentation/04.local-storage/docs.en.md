@@ -23,6 +23,34 @@ For a quick start to evaluate or just play with local ssd storage, please see ou
 
 We provide a [tabular overview of our flavor types](/syseleven-stack/documentation/compute/).
 
+### Can I resize local SSD storage instances?
+
+No, local storage instances cannot be resized, you have to recreate them with a different size and migrate your data.
+You can, however, attach a volume, move your data onto it, then detach it and attach it to another system where you move your data to the local SSD storage.
+Depending on your application, there are likely smarter ways to bring new nodes into the cluster and seed them, e.g. promoting a replication slave.
+
+### Can I use local SSD storage in other sizes?
+
+Local SSD storage is exclusively available in the sizes defined in our [flavors](/syseleven-stack/documentation/flavors).
+
+### Can I use local SSD storage for volumes?
+
+No, local SSD storage is only available as ephemeral storage.
+
+### What is the difference between local ssd storage and distributed storage?
+
+SysEleven Stack distributed storage distributes several copies of segments of your data over many physical ssd devices attached to different physical compute nodes connected via network. This allows for high overall performance, because several devices can work simultaneously, but introduces a latency for single operations, because data has to be transmitted via network.
+
+SysEleven Stack local ssd storage stores your data on a local raid mirrored ssd storage directly attached to the compute node. This reduces the latency, because no network is involved, but also redundancy, because only two devices and one compute node are involved.
+
+### Can I combine local SSD storage with distributed storage?
+
+Yes. You can attach volumes with distributed storage to your instances and this can be very handy to seed them with data or create backups, where latency isn't such an issue as with the running service.
+
+### Can I replace local SSD storage with a volume?
+
+Yes, but this rarely makes sense as it isn't a local volume instance anymore. It may make sense in certain cases to setup or repair things, see our [rescue tutorial](/syseleven-stack/tutorials/nova-rescue-mode).
+
 ### When should I better not use local SSD storage?
 
 Traditional single server setups often suffer from performance penalty when run on distributed storage. While it may be tempting to build them on local storage to gain speed, we discourage to use is this way because of the lower redundancy and availability. To put it into simple words, you put your service and your data at risk, when running a single server setup on local storage.
