@@ -9,47 +9,17 @@ taxonomy:
 
 SysEleven Stack offers two flavors of ephemeral storage. The default storage type is a distributed storage based on quobyte. It offers high performance, redundancy and scalability at the cost of latency. For some application workloads, where latency is a bottleneck, we offer local ssd storage.
 
-Please find more info about local storage in the [FAQ](https://docs.syseleven.de/helpcenter/de/taxonomy?name=tag&val=localstorage).
-
 ---
 
 ## Questions & Answers
 
-### How do I use local ssd storage?
-
-For a quick start to evaluate or just play with local ssd storage, please see our [Tutorials](/syseleven-stack/tutorials/local-storage/).
-
 ### Where can I find a list of all the Local SSD storage instance types?
 
-We provide a [tabular overview of our flavor types](/syseleven-stack/documentation/compute/).
+We provide a [tabular overview of our flavor types](/syseleven-stack/02.documentation/02.compute/).
 
-### Can I resize local SSD storage instances?
+### How do I use local ssd storage?
 
-No, local storage instances cannot be resized, you have to recreate them with a different size and migrate your data.
-You can, however, attach a volume, move your data onto it, then detach it and attach it to another system where you move your data to the local SSD storage.
-Depending on your application, there are likely smarter ways to bring new nodes into the cluster and seed them, e.g. promoting a replication slave.
-
-### Can I use local SSD storage in other sizes?
-
-Local SSD storage is exclusively available in the sizes defined in our [flavors](/syseleven-stack/documentation/flavors).
-
-### Can I use local SSD storage for volumes?
-
-No, local SSD storage is only available as ephemeral storage.
-
-### What is the difference between local ssd storage and distributed storage?
-
-SysEleven Stack distributed storage distributes several copies of segments of your data over many physical ssd devices attached to different physical compute nodes connected via network. This allows for high overall performance, because several devices can work simultaneously, but introduces a latency for single operations, because data has to be transmitted via network.
-
-SysEleven Stack local ssd storage stores your data on a local raid mirrored ssd storage directly attached to the compute node. This reduces the latency, because no network is involved, but also redundancy, because only two devices and one compute node are involved.
-
-### Can I combine local SSD storage with distributed storage?
-
-Yes. You can attach volumes with distributed storage to your instances and this can be very handy to seed them with data or create backups, where latency isn't such an issue as with the running service.
-
-### Can I replace local SSD storage with a volume?
-
-Yes, but this rarely makes sense as it isn't a local volume instance anymore. It may make sense in certain cases to setup or repair things, see our [rescue tutorial](/syseleven-stack/tutorials/nova-rescue-mode).
+For a quick start to evaluate or just play with local ssd storage, please see our [Tutorials](/syseleven-stack/03.tutorials/13.local-storage/).
 
 ### When should I better not use local SSD storage?
 
@@ -59,13 +29,36 @@ Traditional single server setups often suffer from performance penalty when run 
 
 Depending on your application, there are many proven ways to design either your setup or your application in a way that provides for the missing redundancy. Application servers can be multiplied and put behind a loadbalancer, databases can be set up in replication topologies or clusters. We try to provide some inspiration among our [heat teamplates](https://github.com/syseleven/heat-examples), please contact us if you need further assistance.
 
+### Can I use local SSD storage for volumes?
+
+No, local SSD storage is only available as ephemeral storage.
+
+### Can I combine local SSD storage with distributed storage?
+
+Yes. You can attach volumes with distributed storage to your instances and this can be very handy to seed them with data or create backups, where latency isn't such an issue as with the running service.
+
+### Can I replace local SSD storage with a volume?
+
+Yes, but this rarely makes sense as it isn't a local volume instance anymore. It may make sense in certain cases to setup or repair things, see our [rescue tutorial](/syseleven-stack/03.tutorials/14.nova-rescue-mode).
+
+### Can I use local SSD storage in other sizes?
+
+Local SSD storage is exclusively available in the sizes defined in our [flavors](/syseleven-stack/02.documentation/02.compute).
+
+### Can I resize local SSD storage instances?
+
+No, local storage instances cannot be resized, you have to recreate them with a different size and migrate your data.
+You can, however, attach a volume, move your data onto it, then detach it and attach it to another system where you move your data to the local SSD storage.
+Depending on your application, there are likely smarter ways to bring new nodes into the cluster and seed them, e.g. promoting a replication slave.
+
+### What happens in case of hardware failures?
+
+Local SSD storage instances cannot be moved between hypervisors. That means in case of a hardware failure, **data loss is inevitable**.
+You need to replace them with a new system from scratch and data restored from one of your backups or surviving members of the cluster.
+
 ### What about hardware maintenance?
 
 Local SSD storage instances cannot be (live) migrated, we need to regularly reboot our compute nodes for maintenance and this **inevitably affects all virtual machines with local storage** hosted on them.
-
-### How is maintenance carried out for local SSD storage nodes?
-
-Affected instances will receive an ACPI shutdown event that gives the operating system one minute grace period to shut down orderly. After the maintenance it will we brought up again. Expect up to half an hour (30min) of downtime. There will be **no further annoucement** aside from the ACPI shutdown event.
 
 ### When is the local storage node maintenance window?
 
@@ -75,11 +68,10 @@ To keep the impact predictable, we hereby announce a regular maintenance window:
 
 we will restart about 25% of our local ssd storage compute nodes. Statistically, every instance **will be shut down once a month**.
 
+### How is maintenance carried out for local SSD storage nodes?
+
+Affected instances will receive an ACPI shutdown event that gives the operating system one minute grace period to shut down orderly. After the maintenance it will we brought up again. Expect up to half an hour (30min) of downtime. There will be **no further annoucement** aside from the ACPI shutdown event.
+
 ### How many nodes/instances will be affected by local SSD storage node maintenance simultaneously?
 
-Planned maintenances will only affect one compute node at a time and between two maintenances there will be half an hour of recreation to allow the affected systems to re-join their clusters or whatever. It will, however, affect all local ssd storage instances on the same compute node. To ensure, that redundant systems will not be affected simultaneously, you must put them into [anti-affinity-groups](/syseleven-stack/tutorials/affinity/).
-
-### What happens in case of hardware failures?
-
-Local SSD storage instances cannot be moved between hypervisors. That means in case of a hardware failure, **data loss is inevitable**.
-You need to replace them with a new system from scratch and data restored from one of your backups or surviving members of the cluster.
+Planned maintenances will only affect one compute node at a time and between two maintenances there will be half an hour of recreation to allow the affected systems to re-join their clusters or whatever. It will, however, affect all local ssd storage instances on the same compute node. To ensure, that redundant systems will not be affected simultaneously, you must put them into [anti-affinity-groups](/syseleven-stack/03.tutorials/12.affinity/).

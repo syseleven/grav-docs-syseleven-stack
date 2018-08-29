@@ -58,7 +58,7 @@ L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB  |
 L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB  |
 L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB  |
 
-For more information, see the FAQ articles on [local storage instances](https://docs.syseleven.de/helpcenter/en/taxonomy?name=tag&val=localstorage).
+For more information, see [local storage](/syseleven-stack/02.Documentation/04.local-storage).
 
 ## Flavor change (resizing)
 
@@ -90,6 +90,12 @@ It is currently **not** possible to migrate any L1 flavor to M1 flavors.
 ---
 
 ## Fragen & Antworten
+
+### Was ist der Unterschied zwischen Local SSD Storage und Distributed Storage?
+
+Auf unserem Distributed Storage werden mehrere Kopien der Datensegmente auf mehrere physische SSDs verteilt, die an unterschiedlichen physischen Servern angeschlossen und durch das Netzwerk verbunden sind. Dadurch können wir generell eine hohe Performance bieten, da Daten auf mehreren SSDs gleichzeitig verarbeitet werden können – jedoch entsteht dadurch eine zusätzliche Latenz für einzelne Operationen, da Daten über das Netzwerk übertragen werden müssen.
+
+Auf unserem Local SSD Storage, werden die Daten auf einem lokalen gespiegelten RAID gespeichert. Die Latenz reduziert sich, denn Daten müssen dafür nicht über das Netzwerk übertragen werden. Verfügbarkeit und Datenbeständigkeit sind jedoch bei diesen Instanztypen reduziert, da die Daten nur lokal auf einem Server vorgehalten werden.
 
 ### Which storage flavor fits my needs best?
 
