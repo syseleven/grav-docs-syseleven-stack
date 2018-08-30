@@ -5,14 +5,6 @@ date: '21-08-2018 17:15'
 taxonomy:
     category:
         - docs
-    tag:
-        - flavor
-        - compute
-        - nova
-        - localstorage
-        - ssdstorage
-        - networkstorage
-        - quobyte
 ---
 
 ## Overview
