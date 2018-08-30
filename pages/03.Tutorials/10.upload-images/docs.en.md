@@ -20,8 +20,8 @@ There are three different ways to upload custom images.
 
 ### OpenStack-CLI
 
-You need to have the [OpenStack-CLI](../03.openstack-cli/default.en.md) installed and configured.
-After [sourcing the openrc.sh](../04.api-access/default.en.md) you can easily upload your own image and use it right after, like this:
+You need to have the [OpenStack-CLI](../03.openstack-cli/docs.en.md) installed and configured.
+After [sourcing the openrc.sh](../04.api-access/docs.en.md) you can easily upload your own image and use it right after, like this:
 
 ```shell
 glance --os-image-api-version 1 image-create --progress --is-public False --disk-format=qcow2 \
@@ -53,4 +53,4 @@ Further information can be found [here](https://dashboard.cloud.syseleven.net/ho
 
 ## Image sources
 
-!!! [This overview](../../02.Documentation/06.images/default.en.md#image-sources) contains a list of standard images sources.
+!!! [This overview](../../02.Documentation/06.images/docs.en.md#image-sources) contains a list of standard images sources.

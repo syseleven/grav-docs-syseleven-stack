@@ -30,7 +30,7 @@ The kickstart instance contains all necessary tools to get started with the Open
 
 ## Import SSH keys
 
-* Upload your SSH key(s) to the Horizon Dashboard - see [SSH Tutorial](../01.ssh-keys/default.en.md)
+* Upload your SSH key(s) to the Horizon Dashboard - see [SSH Tutorial](../01.ssh-keys/docs.en.md)
 
 ## Launch Stack
 

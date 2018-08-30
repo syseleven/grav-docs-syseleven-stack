@@ -7,10 +7,9 @@ taxonomy:
         - docs
 ---
 
-## Timezone
+## Overview
 
 The configured timezone in SysEleven Stack is 'UTC' (Coordinated Universal Time).
-
 Please be aware that the time shown in your instance logs may differ from the log entries in the OpenStack (GUI/CLI) log.
 
 ## NTP Server

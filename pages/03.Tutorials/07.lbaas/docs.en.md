@@ -19,9 +19,9 @@ No dedicated load balancer instance is required to use this service.
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
-* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
-* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/docs.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/docs.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/docs.en.md).
 
 ## How to setup a TCP LoadBalancer
 

@@ -7,16 +7,16 @@ taxonomy:
         - docs
 ---
 
-## Goal
-
-* Select Region via GUI (Horizon)
-* Select Region via CLI (OpenStack client)
-
 ## Overview
 
 * Regions are available to all customers.
 * Currently 2 regions are available.
 * The dashboard "Overview" shows the resources of the currently selected region.
+
+## Goal
+
+* Select Region via GUI (Horizon)
+* Select Region via CLI (OpenStack client)
 
 ---
 
@@ -46,8 +46,8 @@ Once selected we can start creating resources in the selected region.
 ### Prerequisites
 
 * You need to have the login data for the SysEleven Stack API (user name and passphrase).
-* The [OpenStack CLI-Tools](../../03.Tutorials/03.openstack-cli/default.de.md) are installed in an up-to-date version.
-* Environment variables are set, like shown in the [API-Access-Tutorial](../../03.Tutorials/04.api-access/default.en.md).
+* The [OpenStack CLI-Tools](../../03.Tutorials/03.openstack-cli/docs.de.md) are installed in an up-to-date version.
+* Environment variables are set, like shown in the [API-Access-Tutorial](../../03.Tutorials/04.api-access/docs.en.md).
 
 ### How to select?
 

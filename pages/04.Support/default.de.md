@@ -30,5 +30,5 @@ Sie können direkt ein Ticket im Web-Frontend erstellen, wenn Sie bereits einen 
 
 ## Weitere Informationen
 
-* [Leitfaden zum Öffnen eines Tickets](./02.issue-reporting-guideline/default.de.md)
+* [Leitfaden zum Öffnen eines Tickets](./02.issue-reporting-guideline/docs.de.md)
 * [Beispiele für basic heat templates](https://github.com/syseleven/heat-examples)

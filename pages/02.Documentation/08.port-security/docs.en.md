@@ -7,6 +7,8 @@ taxonomy:
         - docs
 ---
 
+## Overview
+
 OpenStack uses ports to connect cloud instances to networks and corresponding (virtual) network devices like routers, firewalls.
 By default SysEleven Stack port security will be enforced, which means that:
 
@@ -16,4 +18,4 @@ By default SysEleven Stack port security will be enforced, which means that:
 It is possible to change these restrictions using security groups and the port security settings.  
 In this article we will focus on the port security settings; for more information about security groups have a look [here](https://wiki.openstack.org/wiki/Neutron/SecurityGroups).
 
-[This tutorial](../../03.Tutorials/16.allowing-an-additional-subnet-to-talk-to-or-via-a-port/default.en.md) shows how to allow an additional subnet to talk to/via a port to be able to communicate via a VPN for example.
+[This tutorial](../../03.Tutorials/16.allowing-an-additional-subnet-to-talk-to-or-via-a-port/docs.en.md) shows how to allow an additional subnet to talk to/via a port to be able to communicate via a VPN for example.

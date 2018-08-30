@@ -7,7 +7,7 @@ taxonomy:
         - docs
 ---
 
-## Snapshot types
+## Overview
 
 OpenStack offers two different snapshot types. The logical mechanism is the same but the management is different.
 

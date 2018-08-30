@@ -15,9 +15,9 @@ taxonomy:
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
-* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
-* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/docs.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/docs.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/docs.en.md).
 
 ## Problem
 
@@ -52,7 +52,7 @@ resources:
 
 ## Example
 
-Here the [ResourceGroups example](../06.resourcegroups/default.en.md) is extended using ServerGroups for *affinity* and *anti-affinity* `group.yaml`:
+Here the [ResourceGroups example](../06.resourcegroups/docs.en.md) is extended using ServerGroups for *affinity* and *anti-affinity* `group.yaml`:
 
 ```plain
 heat_template_version: 2014-10-16

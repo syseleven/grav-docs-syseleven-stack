@@ -15,9 +15,9 @@ taxonomy:
 
 ## Vorraussetzungen
 
-* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](../02.firststeps/default.en.md) gezeigt, wird vorausgesetzt.
-* Grundlagen zur Bedienung des [OpenStack CLI-Tools](../03.openstack-cli/default.de.md).
-* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../04.api-access/default.en.md) beschrieben.
+* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](../02.firststeps/docs.en.md) gezeigt, wird vorausgesetzt.
+* Grundlagen zur Bedienung des [OpenStack CLI-Tools](../03.openstack-cli/docs.de.md).
+* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../04.api-access/docs.en.md) beschrieben.
 
 ## Problemstellung
 
@@ -52,7 +52,7 @@ resources:
 
 ## Beispiele
 
-Das [ResourceGroups-Beispiel](../06.resourcegroups/default.de.md) ist hier ergänzt um ServerGroups für die Nutzung von *Affinity* und *Anti-Affinity* `group.yaml`:
+Das [ResourceGroups-Beispiel](../06.resourcegroups/docs.de.md) ist hier ergänzt um ServerGroups für die Nutzung von *Affinity* und *Anti-Affinity* `group.yaml`:
 
 ```plain
 heat_template_version: 2014-10-16

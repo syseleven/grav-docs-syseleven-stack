@@ -15,9 +15,9 @@ This tutorial aims to enable you to make use of the local ssd ephemeral storage 
 
 ## Prerequisites
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/default.en.md).
-* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/default.en.md).
-* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/default.en.md).
+* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/docs.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/docs.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/docs.en.md).
 
 ## How to setup an instance with local ssd storage
 
@@ -38,7 +38,7 @@ Now you can create the example stack for local ssd storage:
 openstack stack create -t example.yaml local-storage-example-stack -e example-env.yaml --parameter key_name=<ssh key name> --wait
 ```
 
-In this command, `key_name` references an SSH-Key that you created in the [SSH Tutorial](../01.ssh-keys/default.en.md).
+In this command, `key_name` references an SSH-Key that you created in the [SSH Tutorial](../01.ssh-keys/docs.en.md).
 
 You have now created a very basic server with its ephemeral storage on local ssd.
 

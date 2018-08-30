@@ -60,5 +60,5 @@ Auch diesen Schritt wiederholen wir für das andere Subnet.
 
 ## Fazit
 
-Nun haben wir zwei Subnetze verbunden, die untereinander kommunizieren können.<br>
+Nun haben wir zwei Subnetze verbunden, die untereinander kommunizieren können.  
 Außerdem haben wir eine eigene Hostroute angelegt und auch verschiedene Unterpunkte im Dashboard kennengelernt.

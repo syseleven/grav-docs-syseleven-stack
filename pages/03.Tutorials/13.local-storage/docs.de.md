@@ -15,9 +15,9 @@ Diese Anleitung dient dazu, Sie in die Lage zu versetzen, Local SSD Storage anst
 
 ## Voraussetzungen
 
-* Sie sollten in der Lage sein, einfache Heat-Templates zu verwenden, wie in [Erste Schritte](../02.firststeps/default.en.md) gezeigt.
-* Sie sollten die Grundlagen der [OpenStack-Kommandozeilenwerkzeuge](../03.openstack-cli/default.de.md) kennen.
-* Umgebungsvariablen werden gesetzt, wie im [API-Zugriff-Einrichten](../04.api-access/default.en.md) gezeigt.
+* Sie sollten in der Lage sein, einfache Heat-Templates zu verwenden, wie in [Erste Schritte](../02.firststeps/docs.en.md) gezeigt.
+* Sie sollten die Grundlagen der [OpenStack-Kommandozeilenwerkzeuge](../03.openstack-cli/docs.de.md) kennen.
+* Umgebungsvariablen werden gesetzt, wie im [API-Zugriff-Einrichten](../04.api-access/docs.en.md) gezeigt.
 
 ## Wie man eine Instanz mit Local SSD Storage erzeugt
 
@@ -38,7 +38,7 @@ Nun können Sie den Beispiel-Stack für Local SSD Storage erzeugen:
 openstack stack create -t example.yaml local-storage-example-stack -e example-env.yaml --parameter key_name=<ssh key name> --wait
 ```
 
-In dieser Anweisung steht `key_name` für den SSH-Key, den Sie im [SSH Tutorial](../01.ssh-keys/default.en.md) hinterlegt haben.
+In dieser Anweisung steht `key_name` für den SSH-Key, den Sie im [SSH Tutorial](../01.ssh-keys/docs.en.md) hinterlegt haben.
 
 Sie haben soeben einen einfachen Server erstellt, dessen Dateisystem Local SSD Storage verwendet.
 

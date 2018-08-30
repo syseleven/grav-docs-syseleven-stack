@@ -42,7 +42,7 @@ taxonomy:
 
 * Click "Next"
 * Write "lampserver" into the field "Stack Name"
-* Write the name of your SSH key that you uploaded to the Horizon Dashboard - see [SSH Tutorial](../01.ssh-keys/default.en.md)
+* Write the name of your SSH key that you uploaded to the Horizon Dashboard - see [SSH Tutorial](../01.ssh-keys/docs.en.md)
 * Click on "Launch"  
 
 ![horizon-orchestration-stacks-launch-stackname-lamp-server](../../images/horizon-orchestration-stacks-launch-stackname-lamp-server.png)

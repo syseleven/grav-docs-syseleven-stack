@@ -7,6 +7,8 @@ taxonomy:
         - docs
 ---
 
+## Overview
+
 SysEleven Stack offers two flavors of ephemeral storage. The default storage type is a distributed storage based on quobyte. It offers high performance, redundancy and scalability at the cost of latency. For some application workloads, where latency is a bottleneck, we offer local ssd storage.
 
 ---

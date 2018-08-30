@@ -21,7 +21,7 @@ taxonomy:
 ## Prerequisites
 
 * You need to have the login data for the SysEleven Stack API (user name and passphrase).
-* The [OpenStack CLI-Tools](../03.openstack-cli/default.en.md) are installed in an up-to-date version.
+* The [OpenStack CLI-Tools](../03.openstack-cli/docs.en.md) are installed in an up-to-date version.
 * Knowledge how to utilise a terminal/SSH and SSH-keys.
 
 ## Accessing the SysEleven Stack API
@@ -67,7 +67,7 @@ Example setups can be copied as follows:
 git clone https://github.com/syseleven/heat-examples.git
 ```
 
-Now you can take the [LAMP-Setup](https://raw.githubusercontent.com/syseleven/heat-examples/master/lamp-server/) from our [single LAMP Server example](../05.single-lamp-server/default.en.md) and start it using the API this time:
+Now you can take the [LAMP-Setup](https://raw.githubusercontent.com/syseleven/heat-examples/master/lamp-server/) from our [single LAMP Server example](../05.single-lamp-server/docs.en.md) and start it using the API this time:
 
 ```shell
 cd heat-examples/lamp-server
