@@ -4,11 +4,7 @@ published: true
 date: '08-08-2018 09:48'
 taxonomy:
     category:
-        - tutorial
-    tag:
-        - heat
-        - kickstart
-        - jumphost
+        - docs
 ---
 
 ## Overview

@@ -4,7 +4,7 @@ published: true
 date: '08-08-2018 10:05'
 taxonomy:
     category:
-        - tutorial
+        - docs
 ---
 
 ## Goal

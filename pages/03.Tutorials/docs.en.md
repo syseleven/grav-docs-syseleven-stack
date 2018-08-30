@@ -4,7 +4,7 @@ page-toc:
     active: false
 taxonomy:
     category:
-        - tutorial
+        - docs
 ---
 
 All pages listed as Tutorials will give you an overview about how to use our services.

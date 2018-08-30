@@ -3,7 +3,7 @@ title: 'Verfügbarkeit von redundanten Services erhöhen'
 date: '08-08-2018 09:45'
 taxonomy:
     category:
-        - tutorial
+        - docs
 ---
 
 ## Redundante Services für eine höhere Verfügbarkeit besser verteilen

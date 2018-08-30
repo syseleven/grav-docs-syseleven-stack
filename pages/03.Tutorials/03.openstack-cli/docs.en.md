@@ -4,13 +4,7 @@ published: true
 date: '02-08-2018 17:29'
 taxonomy:
     category:
-        - tutorial
-    tag:
-        - openstack
-        - openstackclient
-        - client
-        - cli
-        - python-openstackclient
+        - docs
 ---
 
 ## Overview

@@ -4,7 +4,7 @@ published: true
 date: '08-08-2018 10:11'
 taxonomy:
     category:
-        - tutorial
+        - docs
 ---
 
 ## Local SSD storage as an alternative to our default distributed storage

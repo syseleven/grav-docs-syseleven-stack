@@ -50,7 +50,7 @@ L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB  |
 L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB  |
 L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB  |
 
-For more information, see the [local storage](/syseleven-stack/02.Documentation/04.local-storage).
+For more information, see the [local storage](../04.local-storage/docs.en.md).
 
 ## Flavor change (resizing)
 
@@ -95,18 +95,18 @@ In general, workloads where large volumes of data are transmitted or many small 
 
 ### Why are instances migrated?
 
-**Software Updates**
+#### Software Updates
 
 SysEleven regularly updates the software on the hypervisor host machines.
-To apply certain updates a reboot is required and running instances are therefore moved to another 
-hypervisor host. 
+To apply certain updates a reboot is required and running instances are therefore moved to another
+hypervisor host.
 
-**Hardware Maintenance**
+#### Hardware Maintenance
 
 All hardware nodes require maintenance at some point. Sometimes the required maintenance work cannot be done
 while the machine is online. Therefore instances are moved to another hardware node prior to the planned maintenance work.
 
-**Hardware failure**
+#### Hardware failure
 
 Unfortunately life migrations are not possible in case of a hardware failure, therefor running instances will be automatically restarted on another hardware node. Stopped instances will be moved but remain in their stopped state.
 
@@ -132,7 +132,7 @@ If you need a fixed IP, you can assign a port from our networking service as a f
         - ip_address: 192.168.122.100
 ```
 
-### My compute instance was created, but is not accessible via SSH/HTTP etc.
+### My compute instance was created, but is not accessible via SSH/HTTP
 
 By default all compute instances of are using the "default" security group. It's settings do not allow any other packets, except of ICMP in order to be able to ping your compute instance. Any other ports needed by a given instance need to be opened by adding a rule to the security group your instance uses (i.e., SSH or HTTPS).
 Here is an example that shows how you can use a heat template to allow incoming HTTP/HTTPS traffic via your security group:
@@ -144,7 +144,7 @@ resources:
     properties:
       description: allow incoming webtraffic from anywhere.
       name: allow webtraffic
-      rules: 
+      rules:
         - { direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 80, port_range_max: 80, protocol: tcp }
         - { direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 443, port_range_max: 443, protocol: tcp }
 ```

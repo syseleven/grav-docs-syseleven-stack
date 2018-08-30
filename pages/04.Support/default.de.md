@@ -3,10 +3,6 @@ title: Support
 date: '16-08-2018 13:45'
 page-toc:
     active: false
-taxonomy:
-    tag:
-        - syseleven-stack
-        - support
 ---
 
 Als der Hersteller des [SysEleven Stacks](https://www.syseleven.de/produkte-services/syseleven-stack/) bieten wir **kostenlosen Support** für unsere Cloud-Kunden. Wir freuen uns Ihnen behilflich zu sein.
@@ -30,5 +26,5 @@ Sie können direkt ein Ticket im Web-Frontend erstellen, wenn Sie bereits einen 
 
 ## Weitere Informationen
 
-* [Leitfaden zum Öffnen eines Tickets](./02.issue-reporting-guideline/docs.de.md)
+* [Leitfaden zum Öffnen eines Tickets](02.issue-reporting-guideline/default.de.md)
 * [Beispiele für basic heat templates](https://github.com/syseleven/heat-examples)

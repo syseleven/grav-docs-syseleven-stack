@@ -4,13 +4,7 @@ published: true
 date: '02-08-2018 17:29'
 taxonomy:
     category:
-        - tutorial
-    tag:
-        - openstack
-        - CLI
-        - openstackclient
-        - API
-        - client
+        - docs
 ---
 
 ## Goal

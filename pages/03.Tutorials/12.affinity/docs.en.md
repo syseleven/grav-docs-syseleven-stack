@@ -3,7 +3,7 @@ title: 'Enhance availability for redundant services'
 date: '08-08-2018 09:45'
 taxonomy:
     category:
-        - tutorial
+        - docs
 ---
 
 ## Better distributing redundant services for higher availability

@@ -4,7 +4,7 @@ published: true
 date: '08-08-2018 11:48'
 taxonomy:
     category:
-        - tutorial
+        - docs
 ---
 
 Allowing e.g. VPN Network communication in and out via the VPN Gateway port requires adjustment of the port security.

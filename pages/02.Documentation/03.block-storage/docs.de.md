@@ -36,7 +36,7 @@ Nein, das geht aus technischen Gründen nicht. Ein Cinder Gerät ist ein virtuel
 
 ### Wie kann ich also shared Storage innerhalb eines Stacks bereitstellen?
 
-Grundsätzlich gibt es mehrere Möglichkeiten, u.a.: 
+Grundsätzlich gibt es mehrere Möglichkeiten, u.a.:
 
 * S3 (SEOS) - als Bestandteil des SysEleven Stacks bereitgestellt
 * NFS, GlusterFS, Ceph - Übergangslösung für ältere Anwendungen

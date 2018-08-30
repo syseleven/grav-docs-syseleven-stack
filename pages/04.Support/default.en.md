@@ -3,10 +3,6 @@ title: Support
 date: '16-08-2018 13:45'
 page-toc:
     active: false
-taxonomy:
-    tag:
-        - syseleven-stack
-        - support
 ---
 
 As the vendor of the [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) we provide **free support** to our customers. We are happy to assist you.
@@ -30,5 +26,5 @@ You can open tickets directly if you already have an account in our [ticketsyste
 
 ## Further information
 
-* [Guideline for reporting issues](./02.issue-reporting-guideline/docs.en.md)
+* [Guideline for reporting issues](02.issue-reporting-guideline/default.en.md)
 * [Library of basic heat templates](https://github.com/syseleven/heat-examples)

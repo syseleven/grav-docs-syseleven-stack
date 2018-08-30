@@ -17,11 +17,11 @@ Der SysEleven Stack bietet zwei Arten (flavors) von Ephemeral Storage. Der Stand
 
 ### Wo finde ich eine Liste der verfügbaren Local SSD Storage Instanztypen?
 
-Eine Übersicht befindet sich [hier](/syseleven-stack/02.documentation/02.compute/).
+Eine Übersicht befindet sich [hier](../02.compute/docs.de.md).
 
 ### Wie benutze ich Local SSD Storage?
 
-Für einen schnellen Start zum ausprobieren oder herumspielen lesen Sie bitte unser [Tutorial](/syseleven-stack/03.tutorials/13.local-storage/).
+Für einen schnellen Start zum ausprobieren oder herumspielen lesen Sie bitte unser [Tutorial](../../03.tutorials/13.local-storage/docs.de.md).
 
 ### Wann sollte ich Local SSD Storage besser nicht einsetzen?
 
@@ -41,11 +41,11 @@ Ja. Volumes mit Distributes Storages können an die Instanz angeschlossen werden
 
 ### Kann ich Local SSD Storage durch ein Volume ersetzen?
 
-Ja, aber das ergibt selten Sinn, denn sie nutzt ja dann den Local SSD Storage nicht mehr. Es kann aber in bestimmten Fällen hilfreich sein, um Dinge einzurichten oder zu reparieren, siehe auch unsere Anleitung zur [Datenrettung](/syseleven-stack/03.tutorials/14.nova-rescue-mode).
+Ja, aber das ergibt selten Sinn, denn sie nutzt ja dann den Local SSD Storage nicht mehr. Es kann aber in bestimmten Fällen hilfreich sein, um Dinge einzurichten oder zu reparieren, siehe auch unsere Anleitung zur [Datenrettung](../../03.tutorials/14.nova-rescue-mode/docs.de.md).
 
 ### Kann ich Local SSD Storage in anderen Größen erhalten?
 
-Nein. Local SSD Storage ist ausschließlich in den angegebenen [Flavors](/syseleven-stack/02.documentation/02.compute) erhältlich.
+Nein. Local SSD Storage ist ausschließlich in den angegebenen [Flavors](../02.compute/docs.de.md) erhältlich.
 
 ### Kann ich die Größe von Local SSD Storage ändern?
 
@@ -76,4 +76,4 @@ Betroffene Instanzen erhalten zunächst ein ACPI Shutdown Signal und eine Frist 
 
 ### Wieviele Instanzen sind gleichzeitig von Hardware-Wartungen der local SSD storage nodes betroffen?
 
-Geplante Hardware-Wartungen betreffen immer nur einen Hardware-Server zu einer Zeit und zwischen zwei Hardware-Wartungen wird eine halbe Stunde gewartet, damit die betroffenen Instanzen sich wieder in ihren Cluster oder Wasauchimmer integrieren können. Es werden jedoch alle Local SSD Storage Instanzen auf der selben Serverhardware gleichzeitig vom Ausfall betroffen sein. Damit redundante System nicht gleichzeitig ausfallen, müssen sie diese unbedingt in eine [anti-affinity-groups](/syseleven-stack/03.tutorials/12.affinity/) aufnehmen.
+Geplante Hardware-Wartungen betreffen immer nur einen Hardware-Server zu einer Zeit und zwischen zwei Hardware-Wartungen wird eine halbe Stunde gewartet, damit die betroffenen Instanzen sich wieder in ihren Cluster oder Wasauchimmer integrieren können. Es werden jedoch alle Local SSD Storage Instanzen auf der selben Serverhardware gleichzeitig vom Ausfall betroffen sein. Damit redundante System nicht gleichzeitig ausfallen, müssen sie diese unbedingt in eine [anti-affinity-groups](../../03.tutorials/12.affinity/docs.de.md) aufnehmen.

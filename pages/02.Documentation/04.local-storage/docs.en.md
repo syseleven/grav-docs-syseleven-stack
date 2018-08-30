@@ -17,11 +17,11 @@ SysEleven Stack offers two flavors of ephemeral storage. The default storage typ
 
 ### Where can I find a list of all the Local SSD storage instance types?
 
-We provide a [tabular overview of our flavor types](/syseleven-stack/02.documentation/02.compute/).
+We provide a [tabular overview of our flavor types](../02.compute/docs.en.md).
 
 ### How do I use local ssd storage?
 
-For a quick start to evaluate or just play with local ssd storage, please see our [Tutorials](/syseleven-stack/03.tutorials/13.local-storage/).
+For a quick start to evaluate or just play with local ssd storage, please see our [Tutorials](../../03.tutorials/13.local-storage/docs.en.md).
 
 ### When should I better not use local SSD storage?
 
@@ -41,11 +41,11 @@ Yes. You can attach volumes with distributed storage to your instances and this 
 
 ### Can I replace local SSD storage with a volume?
 
-Yes, but this rarely makes sense as it isn't a local volume instance anymore. It may make sense in certain cases to setup or repair things, see our [rescue tutorial](/syseleven-stack/03.tutorials/14.nova-rescue-mode).
+Yes, but this rarely makes sense as it isn't a local volume instance anymore. It may make sense in certain cases to setup or repair things, see our [rescue tutorial](../../03.tutorials/14.nova-rescue-mode/docs.en.md).
 
 ### Can I use local SSD storage in other sizes?
 
-Local SSD storage is exclusively available in the sizes defined in our [flavors](/syseleven-stack/02.documentation/02.compute).
+Local SSD storage is exclusively available in the sizes defined in our [flavors](../02.compute/docs.en.md).
 
 ### Can I resize local SSD storage instances?
 
@@ -76,4 +76,4 @@ Affected instances will receive an ACPI shutdown event that gives the operating 
 
 ### How many nodes/instances will be affected by local SSD storage node maintenance simultaneously?
 
-Planned maintenances will only affect one compute node at a time and between two maintenances there will be half an hour of recreation to allow the affected systems to re-join their clusters or whatever. It will, however, affect all local ssd storage instances on the same compute node. To ensure, that redundant systems will not be affected simultaneously, you must put them into [anti-affinity-groups](/syseleven-stack/03.tutorials/12.affinity/).
+Planned maintenances will only affect one compute node at a time and between two maintenances there will be half an hour of recreation to allow the affected systems to re-join their clusters or whatever. It will, however, affect all local ssd storage instances on the same compute node. To ensure, that redundant systems will not be affected simultaneously, you must put them into [anti-affinity-groups](../../03.tutorials/12.affinity/docs.de.md).

@@ -4,12 +4,7 @@ published: true
 date: '03-08-2018 13:08'
 taxonomy:
     category:
-        - tutorial
-    tag:
-        - instance
-        - rescue
-        - novarescue
-        - rescuemode
+        - docs
 ---
 
 ## The SysEleven Rescue Image

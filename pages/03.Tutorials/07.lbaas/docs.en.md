@@ -3,7 +3,7 @@ title: 'Create a LoadBalancer (as a Service)'
 date: '08-08-2018 09:58'
 taxonomy:
     category:
-        - tutorial
+        - docs
 ---
 
 ## A TCP-based load balancer for your upstreams

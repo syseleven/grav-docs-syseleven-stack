@@ -22,7 +22,7 @@ Du hast zwei Möglichkeiten dein Netzwerk zu verwalten. Du kannst dafür die öf
 
 ### Wie kann ich den LBaaS nutzen?
 
-Wir haben ein Tutorial zur [Nutzung des LBaaS](/syseleven-stack/tutorials/lbaas/) vorbereitet.
+Wir haben ein Tutorial zur [Nutzung des LBaaS](../../03.Tutorials/07.lbaas/docs.en.md) vorbereitet.
 
 ### Kann auf die originale Client-IP aus den Systemen hinter dem LBaaS zugegriffen werden?
 

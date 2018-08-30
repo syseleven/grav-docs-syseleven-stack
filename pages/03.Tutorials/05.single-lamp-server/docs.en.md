@@ -4,13 +4,7 @@ published: true
 date: '02-08-2018 17:20'
 taxonomy:
     category:
-        - tutorial
-    tag:
-        - heat
-        - lamp
-        - instance
-        - gui
-        - horizon
+        - docs
 ---
 
 ## Goal

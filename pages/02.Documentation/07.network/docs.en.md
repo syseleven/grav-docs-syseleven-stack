@@ -20,7 +20,7 @@ You can manage your network both via our public OpenStack API endpoints, as well
 
 ### How do I use the SysEleven Stack LBaaS?
 
-We prepared a simple tutorial that shows [basic usage of LBaaS](/syseleven-stack/tutorials/lbaas/).
+We prepared a simple tutorial that shows [basic usage of LBaaS](../../03.Tutorials/07.lbaas/docs.en.md).
 
 ### Is it possible to see the client IP behind the LBaaS?
 

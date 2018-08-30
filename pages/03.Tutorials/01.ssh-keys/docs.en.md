@@ -4,10 +4,7 @@ published: true
 date: '02-08-2018 17:23'
 taxonomy:
     category:
-        - tutorial
-    tag:
-        - heat
-        - ssh-key
+        - docs
 ---
 
 ## Goal

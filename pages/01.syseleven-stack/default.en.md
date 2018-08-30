@@ -12,7 +12,7 @@ page-toc:
 
 ## First steps
 
-[First steps](/syseleven-stack/03.Tutorials/02.firststeps/docs.en.md) show, how you can start a compute instance via the dashboard of the SysEleven Stack. Further examples show, how you can use the API of the SysEleven Stack to manage complex setups.
+[First steps](../03.Tutorials/02.firststeps/docs.en.md) show, how you can start a compute instance via the dashboard of the SysEleven Stack. Further examples show, how you can use the API of the SysEleven Stack to manage complex setups.
 
 ## Complex setups
 
@@ -20,4 +20,4 @@ On top of the first step examples, SysEleven provides a [library of heat templat
 
 ## Support
 
-As the vendor of the [SysEleven Stack](https://dashboard.cloud.syseleven.net/) we provide **free support** to our customers. For further information please check our [support page](../04.Support/docs.en.md).
+As the vendor of the [SysEleven Stack](https://dashboard.cloud.syseleven.net/) we provide **free support** to our customers. For further information please check our [support page](../04.Support/default.en.md).

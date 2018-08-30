@@ -4,7 +4,7 @@ published: true
 date: '20-08-2018 10:05'
 taxonomy:
     category:
-        - tutorial
+        - docs
 ---
 
 ## Upload Images

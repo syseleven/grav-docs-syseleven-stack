@@ -4,7 +4,7 @@ published: true
 date: '08-08-2018 09:55'
 taxonomy:
     category:
-        - tutorial
+        - docs
 ---
 
 ## Resource Groups: vom Single-Server zu verteilten Setups  
