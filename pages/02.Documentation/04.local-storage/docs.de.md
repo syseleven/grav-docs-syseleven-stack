@@ -66,13 +66,17 @@ Obwohl Local SSD Storage Instanzen nicht (live) migriert werden können, müssen
 
 Um die Auswirkungen vorhersehbar zu gestalten, kündigen wir hiermit ein Wartungsfenster an:
 
->Jede Woche in der Nacht von Mittwoch, 23 Uhr bis Donnerstag, 4 Uhr,
+> Jede Woche in der Nacht von Mittwoch, 23 Uhr bis Donnerstag, 4 Uhr,
 
-werden wir ca. 25% unserer Local SSD Storage Server warten. Statistisch gesehen wird jede Instanz **einmal im Monant heruntergefahren**.
+werden wir ca. 25% unserer Local SSD Storage Server warten. Statistisch gesehen wird jede Instanz
+
+> einmal im Monat heruntergefahren.
 
 ### Wie läuft eine Hardware-Wartung für local SSD storage nodes ab?
 
-Betroffene Instanzen erhalten zunächst ein ACPI Shutdown Signal und eine Frist von einer Minute, um sich ordentlich herunterzufahren. Rechnen sie mit bis zu einer halben Stunde Ausfallzeit, bevor die Instanzen wieder hochgefahren werden. Es sind neben dem ACPI Shutdown Event **keine weiteren Ankündigungen** vorgesehen.
+Betroffene Instanzen erhalten zunächst ein ACPI Shutdown Signal und eine Frist von einer Minute, um sich ordentlich herunterzufahren. Rechnen sie mit bis zu einer halben Stunde Ausfallzeit, bevor die Instanzen wieder hochgefahren werden. Es sind neben dem ACPI Shutdown Event
+
+> keine weiteren Ankündigungen vorgesehen.
 
 ### Wieviele Instanzen sind gleichzeitig von Hardware-Wartungen der local SSD storage nodes betroffen?
 

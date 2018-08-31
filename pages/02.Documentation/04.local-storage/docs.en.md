@@ -15,11 +15,11 @@ SysEleven Stack offers two flavors of ephemeral storage. The default storage typ
 
 ## Questions & Answers
 
-### Where can I find a list of all the Local SSD storage instance types?
+### Where can I find a list of all the local SSD storage instance types?
 
 We provide a [tabular overview of our flavor types](../02.compute/docs.en.md).
 
-### How do I use local ssd storage?
+### How do I use local SSD storage?
 
 For a quick start to evaluate or just play with local ssd storage, please see our [Tutorials](../../03.Tutorials/13.local-storage/docs.en.md).
 
@@ -62,13 +62,15 @@ You need to replace them with a new system from scratch and data restored from o
 
 Local SSD storage instances cannot be (live) migrated, we need to regularly reboot our compute nodes for maintenance and this **inevitably affects all virtual machines with local storage** hosted on them.
 
-### When is the local storage node maintenance window?
+### When is the local SSD storage node maintenance window?
 
 To keep the impact predictable, we hereby announce a regular maintenance window:
 
 >Every week in the night from wednesday, 11pm (23h) to thursday, 4am,
 
-we will restart about 25% of our local ssd storage compute nodes. Statistically, every instance **will be shut down once a month**.
+we will restart about 25% of our local ssd storage compute nodes. Statistically, every instance
+
+> will be shut down once a month.
 
 ### How is maintenance carried out for local SSD storage nodes?
 

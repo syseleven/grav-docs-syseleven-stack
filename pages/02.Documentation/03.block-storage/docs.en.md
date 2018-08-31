@@ -30,9 +30,9 @@ mkfs.ext4 -q -L myVolumeLabel -E stride=2048,stripe_width=10240
 
 ## Questions & Answers
 
-### Can I use a block storage volume across multiple VMs?
+### Can I use a block storage volume across multiple VMs simultaneously?
 
-Unfortunately this is not possible. Think of a block storage volume like a virtual hard disk - just as you cannot connect a hard disk to multiple computers at the same time, you cannnot connect a block storage volume to multiple compute instances at the same time.
+Unfortunately this is not possible. Think of a block storage volume like a virtual hard disk - just as you cannot connect a hard disk to multiple computers at the same time, you cannot connect a block storage volume to multiple compute instances at the same time.
 
 ### How can I get shared storage inside SysEleven Stack?
 

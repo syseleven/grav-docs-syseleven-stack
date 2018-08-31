@@ -30,7 +30,7 @@ mkfs.ext4 -q -L myVolumeLabel -E stride=2048,stripe_width=10240
 
 ## Fragen & Antworten
 
-### Ist es möglich ein Cinder Volume auf mehreren VMs gleichzeitig zu verwenden?
+### Ist es möglich, ein Cinder Volume auf mehreren VMs gleichzeitig zu verwenden?
 
 Nein, das geht aus technischen Gründen nicht. Ein Cinder Gerät ist ein virtuelles Block Gerät und kann daher nicht gleichzeitig auf mehreren VMs verwendet werden.
 
