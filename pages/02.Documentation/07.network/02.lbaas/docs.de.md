@@ -31,4 +31,4 @@ Nein, aktuell ist dies leider nicht möglich. Die IP des Lastverteilers wird als
 
 ### Wie kann ich den LBaaS nutzen?
 
-Wir haben ein Tutorial zur [Nutzung des LBaaS](../../03.Tutorials/07.lbaas/docs.en.md) vorbereitet.
+Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../03.Tutorials/07.lbaas/docs.en.md) vorbereitet.
