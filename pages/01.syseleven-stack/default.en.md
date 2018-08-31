@@ -12,7 +12,7 @@ page-toc:
 
 ## First steps
 
-[First steps](../03.Tutorials/02.firststeps/default.en.md) show, how you can start a compute instance via the dashboard of the SysEleven Stack. Further examples show, how you can use the API of the SysEleven Stack to manage complex setups.
+[First steps](../03.Tutorials/02.firststeps/docs.en.md) show, how you can start a compute instance via the dashboard of the SysEleven Stack. Further examples show, how you can use the API of the SysEleven Stack to manage complex setups.
 
 ## Complex setups
 
