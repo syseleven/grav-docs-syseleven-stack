@@ -118,7 +118,7 @@ A live migration takes usually about 500ms. In some situations migrations may ta
 
 To transfer the active state of instances (incl. RAM/Memory) they need to be 'frozen' prior to the migration. During the transfer network packets can get lost. It depends on the operating system and application that is being used if connection can be reestablished.
 
-### Kann ich einer Compute Instanz eine feste interne IP zuweisen??
+### Kann ich einer Compute Instanz eine feste interne IP zuweisen?
 
 Normalerweise spielen in einer Cloudumgebung feste IPs keine Rolle, da sich die Infrastruktur häufig ändert.
 Ist das nicht gewünscht, kann ich z.B. mit folgendem Heat-Template via unserem SysEleven Stack Orchestration Service einer Maschine eine statische IP zuweisen:
@@ -134,7 +134,7 @@ Ist das nicht gewünscht, kann ich z.B. mit folgendem Heat-Template via unserem 
 
 Die Konsistenz der Netzwerkarchitektur muss ich dann allerdings selbst sicherstellen.
 
-### Meine virtuelle Maschine wurde erstellt, ist aber nicht per SSH/ HTTP usw. erreichbar
+### Meine virtuelle Maschine wurde erstellt, ist aber z.B. nicht per SSH/ HTTP usw. erreichbar
 
 Grundsätzlich sind alle Compute Instanzen im SysEleven Stack mit einer Default-Security-Group gesichert, die außer ICMP-Paketen keinen Traffic auf die VMs akzeptiert. Für jeden Service, der erreichbar sein soll, muss also eine Security-Group-Regel erstellt werden, die den Zugriff ermöglicht. Hier ein Beispiel wie HTTP(S)-Traffic mit einem Heat-Template unseres Orchestration Service zu ihrer Instanz erlaubt werden kann:
 

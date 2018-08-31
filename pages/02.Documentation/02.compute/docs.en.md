@@ -132,7 +132,7 @@ If you need a fixed IP, you can assign a port from our networking service as a f
         - ip_address: 192.168.122.100
 ```
 
-### My compute instance was created, but is not accessible via SSH/HTTP
+### My compute instance was created, but is e.g. not accessible via SSH/HTTP
 
 By default all compute instances of are using the "default" security group. It's settings do not allow any other packets, except of ICMP in order to be able to ping your compute instance. Any other ports needed by a given instance need to be opened by adding a rule to the security group your instance uses (i.e., SSH or HTTPS).
 Here is an example that shows how you can use a heat template to allow incoming HTTP/HTTPS traffic via your security group:
