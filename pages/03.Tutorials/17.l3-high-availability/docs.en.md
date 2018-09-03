@@ -1,28 +1,36 @@
-# Layer 3 High Availability in OpenStack
+---
+title: 'Building Layer 3 High Availability'
+published: true
+date: '16-09-2018 16:20'
+taxonomy:
+    category:
+        - docs
+---
 
 ## Problem statement
-* Some services, like reverse proxies or load balancers cannot use service discovery mechanisms in order to achieve high
-availability.
-* In order to improve high availablity and decrease covergence time after failure, it is feasible to have one virtual IP
-address shared between different instances. Some applications have this functionality built-in, some don't.
+
+* Some services, like reverse proxies or load balancers cannot use service discovery mechanisms in order to achieve high availability.
+* In order to improve high availablity and decrease covergence time after failure, it is feasible to have one virtual IP address shared between different instances. Some applications have this functionality built-in, some don't.
 
 ## Technology used
+
 * Virtual Router Redundancy Protocol, [RFC 5978](https://tools.ietf.org/html/rfc5798)
 
 ## Components used
+
 * keepalived is an open source VRRP implementation
 
 ## Considerations
-* VRRP must discover routers (in our case - application servers) in unicast mode, since broadcast is not available in
-cloud networking.
-* Virtual IP address must resolve to virtual MAC (00:00:5E:00:01:XX) address, so there is no need in Gratuitous ARP,
-which does not always work correctly with our SDN controller.
-* Instances, that share virtual IP address, must be connected to the same OpenStack subnet and must have same subnet and
-mask configuration.
+
+* VRRP must discover routers (in our case - application servers) in unicast mode, since broadcast is not available in cloud networking.
+* Virtual IP address must resolve to virtual MAC (00:00:5E:00:01:XX) address, so there is no need in Gratuitous ARP, which does not always work correctly with our SDN controller.
+* Instances, that share virtual IP address, must be connected to the same OpenStack subnet and must have same subnet and mask configuration.
 
 ## Configuration
+
 Let's say we have three instances running:
-```
+
+```shell
 +--------------------------------------+-----------+--------+-------------------------------------+--------+---------+
 | ID                                   | Name      | Status | Networks                            | Image  | Flavor  |
 +--------------------------------------+-----------+--------+-------------------------------------+--------+---------+
@@ -34,7 +42,8 @@ Let's say we have three instances running:
 
 Two of them, `ha_first` and `ha_second` will share single virtual IP address from 10.200.51.0/24 between them. The
 subnet itself is configured in following way:
-```
+
+```shell
 +-------------------+--------------------------------------+
 | Field             | Value                                |
 +-------------------+--------------------------------------+
@@ -61,20 +70,23 @@ subnet itself is configured in following way:
 | updated_at        | 2018-08-06T11:42:44                  |
 +-------------------+--------------------------------------+
 ```
+
 Note DHCP allocation pool here. It is configured in such way, so there are some IP addresses below 10.200.51.32, which
 are excluded from pool. Virtual IP address must be allocated from the excluded range, to ensure that it will not be
 assigned to any instance by mistake. For this example, we will stick to `10.200.51.10`. The third instance, `observer`,
 will be used by us to check connectivity to virtual IP.
 
 First, lets install and configure keepalived on `ha_first` and `ha_second`:
-```
+
+```shell
 ubuntu@ha-first:~$ sudo apt install keepalived
 ```
 
 Now, let's create keepalived configuration.
 
 `/etc/keepalived/keepalived.conf` on `ha_first`:
-```
+
+```shell
 vrrp_instance vrrp_1 {
     debug 2
     interface ens3
@@ -94,7 +106,8 @@ vrrp_instance vrrp_1 {
 ```
 
 `/etc/keepalived/keepalived.conf` on `ha_second`:
-```
+
+```shell
 vrrp_instance vrrp_1 {
     debug 2
     interface ens3
@@ -114,19 +127,17 @@ vrrp_instance vrrp_1 {
 ```
 
 Some of these options need special attention in cloud environments:
-* `use_vmac` - forces VRRP virtal router to use virtual MAC address as described in RFC. This will decrease convergence
-time, since there is no need to update ARP entry on client instances. This also mitigates some limitations, discovered
-in our SDN controller, since it caches ARP tables and will reply with MAC address of `ha_first`, even when virtual IP
-address is moved to `ha_second`. When two instances share same MAC, this problem goes away.
-* `vmac_xmit_base` - forces VRRP to use physical interface MAC address as source when it sends its own packets. This
-is requred for correct operation and to avoid any IP filtering by port security.
+
+* `use_vmac` - forces VRRP virtal router to use virtual MAC address as described in RFC. This will decrease convergence time, since there is no need to update ARP entry on client instances. This also mitigates some limitations, discovered in our SDN controller, since it caches ARP tables and will reply with MAC address of `ha_first`, even when virtual IP address is moved to `ha_second`. When two instances share same MAC, this problem goes away.
+* `vmac_xmit_base` - forces VRRP to use physical interface MAC address as source when it sends its own packets. This is requred for correct operation and to avoid any IP filtering by port security.
 * `unicast_src_ip` and `unicast_peer` - since cloud does not support broadcast, all communication must be unicast.
 
 Now, let's start keepalived and ensure that instances recognize each other, and state of `ha_second` is transitioned to
 BACKUP. Let's check some logs for that.
 
 `journalctl -u keepalived` on `ha_first`:
-```
+
+```shell
 Aug 07 08:46:33 ha-first systemd[1]: Starting Keepalive Daemon (LVS and VRRP)...
 Aug 07 08:46:33 ha-first Keepalived[8765]: Starting Keepalived v1.3.9 (10/21,2017)
 Aug 07 08:46:33 ha-first Keepalived[8765]: Opening file '/etc/keepalived/keepalived.conf'.
@@ -147,7 +158,8 @@ Aug 07 08:46:38 ha-first Keepalived_vrrp[8780]: VRRP_Instance(vrrp_1) Received a
 ```
 
 `journalctl -u keepalived` on `ha_second`:
-```
+
+```shell
 Aug 07 08:46:38 ha-second systemd[1]: Starting Keepalive Daemon (LVS and VRRP)...
 Aug 07 08:46:38 ha-second Keepalived[8647]: Starting Keepalived v1.3.9 (10/21,2017)
 Aug 07 08:46:38 ha-second Keepalived[8647]: Opening file '/etc/keepalived/keepalived.conf'.
@@ -168,7 +180,8 @@ Aug 07 08:46:38 ha-second Keepalived_vrrp[8665]: VRRP_Instance(vrrp_1) Entering 
 ```
 
 Looks like everything is correct. We can confirm that by seeing virtual IP address on `ha_first` instance:
-```
+
+```shell
 ubuntu@ha-first:~$ ip -4 a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     inet 127.0.0.1/8 scope host lo
@@ -184,7 +197,7 @@ ubuntu@ha-first:~$
 
 Let's check if we can reach this ip address from our observer.
 
-```
+```shell
 ubuntu@observer:~$ ping 10.200.51.10 -c 3
 PING 10.200.51.10 (10.200.51.10) 56(84) bytes of data.
 From 10.200.51.34 icmp_seq=1 Destination Host Unreachable
@@ -206,7 +219,7 @@ on ports, that connect instances `ha_first` and `ha_second` to network 10.200.51
 
 First, let's find port IDs:
 
-```
+```shell
 $ openstack port list --network ha_lab
 +--------------------------------------+------+-------------------+-----------------------------------------------------------------------------+--------+
 | ID                                   | Name | MAC Address       | Fixed IP Addresses                                                          | Status |
@@ -220,13 +233,15 @@ $ openstack port list --network ha_lab
 
 Second and fourth lines are ports, connecting `ha_first` and `ha_second` accordingly. Now, we must allow 10.200.51.10 on these ports:
 
-```
+```shell
 $ openstack port set --allowed-address ip-address=10.200.51.10 913c4131-0cc3-4df4-9f7e-b4cf4ae885ca
+(no output)
 $ openstack port set --allowed-address ip-address=10.200.51.10 e220e2d9-f4de-4941-92e0-640ee352aa4f
 ```
 
 Let's check connectivity again:
-```
+
+```shell
 ubuntu@observer:~$ ping 10.200.51.10 -c 3
 PING 10.200.51.10 (10.200.51.10) 56(84) bytes of data.
 64 bytes from 10.200.51.10: icmp_seq=1 ttl=64 time=3.24 ms
@@ -248,12 +263,13 @@ virtual mac address assigned to VRRP virtual router 1 (configuration option virt
 
 Let's now bring down keepalived process on `ha_first` and check if virtual IP address will now be served by `ha_second`:
 
-```
+```shell
 ubuntu@ha-first:~$ sudo systemctl stop keepalived.service
 ```
 
 We can now see that `ha_second` took the IP address:
-```
+
+```shell
 ubuntu@ha-second:~$ ip -4 a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     inet 127.0.0.1/8 scope host lo
@@ -267,7 +283,8 @@ ubuntu@ha-second:~$ ip -4 a
 ```
 
 There is confirmation in log:
-```
+
+```shell
 Aug 07 09:06:18 ha-second Keepalived_vrrp[8665]: VRRP_Instance(vrrp_1) Transition to MASTER STATE
 Aug 07 09:06:19 ha-second Keepalived_vrrp[8665]: VRRP_Instance(vrrp_1) Entering MASTER STATE
 ```
