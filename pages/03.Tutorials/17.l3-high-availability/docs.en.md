@@ -18,7 +18,7 @@ taxonomy:
 
 ## Components used
 
-* keepalived is an open source VRRP implementation
+* `keepalived` is an open source VRRP implementation
 
 ## Considerations
 
@@ -71,7 +71,7 @@ subnet itself is configured in following way:
 +-------------------+--------------------------------------+
 ```
 
-Note DHCP allocation pool here. It is configured in such way, so there are some IP addresses below 10.200.51.32, which
+Note the DHCP allocation pool here. It is configured in such way, so there are some IP addresses below 10.200.51.32, which
 are excluded from pool. Virtual IP address must be allocated from the excluded range, to ensure that it will not be
 assigned to any instance by mistake. For this example, we will stick to `10.200.51.10`. The third instance, `observer`,
 will be used by us to check connectivity to virtual IP.
@@ -179,7 +179,7 @@ Aug 07 08:46:38 ha-second Keepalived_vrrp[8665]: VRRP_Instance(vrrp_1) Received 
 Aug 07 08:46:38 ha-second Keepalived_vrrp[8665]: VRRP_Instance(vrrp_1) Entering BACKUP STATE
 ```
 
-Looks like everything is correct. We can confirm that by seeing virtual IP address on `ha_first` instance:
+Looks like everything is correct. We can confirm that by seeing the virtual IP address on `ha_first` instance:
 
 ```shell
 ubuntu@ha-first:~$ ip -4 a
@@ -258,8 +258,8 @@ ubuntu@observer:~$ ip neigh
 ubuntu@observer:~$
 ```
 
-We can now sucessfully reach virtual ip address. It has MAC address 00:00:5e:00:01:01, which, according to RFC, is
-virtual mac address assigned to VRRP virtual router 1 (configuration option virtual_router_id)
+We can now sucessfully reach the virtual ip address. It has the MAC address 00:00:5e:00:01:01, which, according to RFC, is
+the virtual mac address assigned to VRRP virtual router 1 (configuration option virtual_router_id)
 
 Let's now bring down keepalived process on `ha_first` and check if virtual IP address will now be served by `ha_second`:
 
@@ -267,7 +267,7 @@ Let's now bring down keepalived process on `ha_first` and check if virtual IP ad
 ubuntu@ha-first:~$ sudo systemctl stop keepalived.service
 ```
 
-We can now see that `ha_second` took the IP address:
+Now we can see that instance `ha_second` took the IP address:
 
 ```shell
 ubuntu@ha-second:~$ ip -4 a
@@ -289,6 +289,8 @@ Aug 07 09:06:18 ha-second Keepalived_vrrp[8665]: VRRP_Instance(vrrp_1) Transitio
 Aug 07 09:06:19 ha-second Keepalived_vrrp[8665]: VRRP_Instance(vrrp_1) Entering MASTER STATE
 ```
 
+## Conclusion
+
 With this configuration, it takes approximately 2 seconds to discover failure and update MAC forwarding tables.
-Convergence time could be decreased by tuning `Advertisement_Interval`, `Skew_Time` and `Master_Down_Interval`.
+Convergence time can be decreased by tuning `Advertisement_Interval`, `Skew_Time` and `Master_Down_Interval`.
 This could be improved even more, by using [BFD](https://en.wikipedia.org/wiki/Bidirectional_Forwarding_Detection).
