@@ -76,13 +76,13 @@ are excluded from pool. Virtual IP address must be allocated from the excluded r
 assigned to any instance by mistake. For this example, we will stick to `10.200.51.10`. The third instance, `observer`,
 will be used by us to check connectivity to virtual IP.
 
-First, lets install and configure keepalived on `ha_first` and `ha_second`:
+First, let's install and configure keepalived on `ha_first` and `ha_second`:
 
 ```shell
 ubuntu@ha-first:~$ sudo apt install keepalived
 ```
 
-Now, let's create keepalived configuration.
+Now, let's create the keepalived configuration.
 
 `/etc/keepalived/keepalived.conf` on `ha_first`:
 
@@ -128,9 +128,9 @@ vrrp_instance vrrp_1 {
 
 Some of these options need special attention in cloud environments:
 
-* `use_vmac` - forces VRRP virtal router to use virtual MAC address as described in RFC. This will decrease convergence time, since there is no need to update ARP entry on client instances. This also mitigates some limitations, discovered in our SDN controller, since it caches ARP tables and will reply with MAC address of `ha_first`, even when virtual IP address is moved to `ha_second`. When two instances share same MAC, this problem goes away.
-* `vmac_xmit_base` - forces VRRP to use physical interface MAC address as source when it sends its own packets. This is requred for correct operation and to avoid any IP filtering by port security.
-* `unicast_src_ip` and `unicast_peer` - since cloud does not support broadcast, all communication must be unicast.
+* `use_vmac` - forces VRRP virtual router to use a virtual MAC address as described in RFC. This will decrease convergence time, since there is no need to update the ARP entry on client instances. This also mitigates some limitations, discovered in our SDN controller, since it caches ARP tables and will reply with the MAC address of `ha_first`, even when the virtual IP address is moved to `ha_second`. When two instances share the same MAC address, this problem goes away.
+* `vmac_xmit_base` - forces VRRP to use the physical interface MAC address as source when it sends its own packets. This is required for correct operation and to avoid any IP filtering by port security.
+* `unicast_src_ip` and `unicast_peer` - since the cloud does not support broadcast, all communication must be unicast.
 
 Now, let's start keepalived and ensure that instances recognize each other, and state of `ha_second` is transitioned to
 BACKUP. Let's check some logs for that.
@@ -195,7 +195,7 @@ ubuntu@ha-first:~$ ip -4 a
 ubuntu@ha-first:~$
 ```
 
-Let's check if we can reach this ip address from our observer.
+Let's check if we can reach this ip address from our observer instance.
 
 ```shell
 ubuntu@observer:~$ ping 10.200.51.10 -c 3
@@ -214,8 +214,8 @@ ubuntu@observer:~$ ip neigh
 ubuntu@observer:~$
 ```
 
-The reason why we can't ping or even arp virtual IP address, is neutron port security. We need to allow this IP address
-on ports, that connect instances `ha_first` and `ha_second` to network 10.200.51.0/24.
+The reason why we can't ping or even arp a virtual IP address, is neutron port security. We need to allow this IP address
+on ports, that connect instances `ha_first` and `ha_second` to the network 10.200.51.0/24.
 
 First, let's find port IDs:
 
@@ -231,7 +231,7 @@ $ openstack port list --network ha_lab
 +--------------------------------------+------+-------------------+-----------------------------------------------------------------------------+--------+
 ```
 
-Second and fourth lines are ports, connecting `ha_first` and `ha_second` accordingly. Now, we must allow 10.200.51.10 on these ports:
+Second and fourth lines are ports, connecting `ha_first` and `ha_second` accordingly. Now, we must allow `10.200.51.10` on these ports:
 
 ```shell
 $ openstack port set --allowed-address ip-address=10.200.51.10 913c4131-0cc3-4df4-9f7e-b4cf4ae885ca
