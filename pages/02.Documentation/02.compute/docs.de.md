@@ -1,7 +1,7 @@
 ---
 title: 'Compute Service'
 published: true
-date: '08-08-2018 10:46'
+date: '21-09-2018 11:45'
 taxonomy:
     category:
         - docs
@@ -16,11 +16,11 @@ Sowohl via unserer öffentlichen [OpenStack API](../../03.Tutorials/04.api-acces
 
 ## Flavors
 
-### Standard network storage instance types (M1)
+### Standard Instanz-Typen (M1)
 
-Standard instances generally offer you good performance, availability and storage durability. Disk data will be distributed across multiple servers (SysEleven Distributed Storage).
-
-We recommend these instance types for most workloads and applications.
+Standard Instanz-Typen sind mit einem verteiltem Root-Speichermedium einer festen Größe ausgestattet.
+Sie bieten ein ausgewogenes Verhältnis zwischen Leistung, Verfügbarkeit und Sicherheit.
+Wir empfehlen diese Instanz-Typen für die meisten Anwendungen und Nutzungsfälle.
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
@@ -31,14 +31,13 @@ M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
 M1 Large    |  m1.large   | 32GB   |   8   |   50GB   |
 
 (*)
-You can extend storage using our our Block Storage Service.
+Sie können den Root-Speicher durch unseren ebenfalls verteilten Block-Speicher ergänzen.
 
-### Local SSD storage instance types (L1)
+### Local SSD Storage Instanz-Typen (L1)
 
-Local SSD storage instances offer low latency SSD storage directly on the local host.
-These can be useful for special workloads like replicated databases.
-
-! Availability and data durability are reduced, because data is only stored locally on one server.
+Local SSD Storage Instanz-Typen sind mit einem lokalen Root-Speichermedium in unterschiedlichen Größen ausgestattet.
+Die Rechenleistung ist mit der der Standard Instanzen vergleichbar, aber die Speicherlatenz ist geringer, dadurch steigt der Durchsatz an sequentiellen, synchronen Operationen, obwohl der Gesamthöchstdurchsatz etwas geringer ist.
+Diese Instanzen können für bestimmte Anwendungsfälle, wie verteilte Datenbanken, vorteilhaft sein.
 
 Name        | API Name    | Memory | vCPUs | Storage |
 ------------|-------------|--------|-------|---------|
@@ -50,7 +49,7 @@ L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB  |
 L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB  |
 L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB  |
 
-For more information, see [local storage](../04.local-storage/docs.de.md).
+Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage](../04.local-storage/docs.de.md).
 
 ## Flavor change (resizing)
 
