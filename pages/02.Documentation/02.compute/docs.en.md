@@ -1,7 +1,7 @@
 ---
 title: 'Compute Service'
 published: true
-date: '21-09-2018 11:45'
+date: '26-09-2018 11:45'
 taxonomy:
     category:
         - docs
@@ -18,8 +18,9 @@ You can manage your compute instance both via our public [OpenStack API](../../0
 
 ### Standard instance types (M1)
 
-Standard instances are equipped with distributed ephemeral (root) storage of a fixed size.
-They generally offer you good performance, availability and storage durability.
+Standard instances generally offer you good performance, availability and storage durability.
+Disk data will be distributed across multiple servers (SysEleven Distributed Storage).
+
 We recommend these instance types for most workloads and applications.
 
 Name        | API Name    | Memory | vCPUs | Storage* |
@@ -35,9 +36,8 @@ You can extend storage using our our Block Storage Service.
 
 ### Local SSD storage instance types (L1)
 
-Local SSD storage instances are equipped with local ephemeral (root) storage in different sizes.
-The compute power is similar to standard instances, but storage latency is much lower, thus serial, synchroneous iops are better although maximum bulk iops are lower.
-These instances can be useful for special use cases like replicated databases.
+Local SSD storage instances offer low latency SSD storage directly on the local host.
+These can be useful for special workloads like replicated databases.
 
 ! Availability and data durability are reduced, because data is only stored locally on one server.
 

@@ -1,7 +1,7 @@
 ---
 title: 'Compute Service'
 published: true
-date: '21-09-2018 11:45'
+date: '26-09-2018 11:45'
 taxonomy:
     category:
         - docs
@@ -18,8 +18,9 @@ Sowohl via unserer öffentlichen [OpenStack API](../../03.Tutorials/04.api-acces
 
 ### Standard Instanz-Typen (M1)
 
-Standard Instanz-Typen sind mit einem verteiltem Root-Speichermedium einer festen Größe ausgestattet.
-Sie bieten ein ausgewogenes Verhältnis zwischen Leistung, Verfügbarkeit und Sicherheit.
+Standard Instanz-Typen bieten ein ausgewogenes Verhältnis zwischen Leistung, Verfügbarkeit und Sicherheit.
+Der Datenspeicher wird auf mehrere Server verteilt (SysEleven Distributed Storage).
+
 Wir empfehlen diese Instanz-Typen für die meisten Anwendungen und Nutzungsfälle.
 
 Name        | API Name    | Memory | vCPUs | Storage* |
@@ -35,9 +36,10 @@ Sie können den Root-Speicher durch unseren ebenfalls verteilten Block-Speicher 
 
 ### Local SSD Storage Instanz-Typen (L1)
 
-Local SSD Storage Instanz-Typen sind mit einem lokalen Root-Speichermedium in unterschiedlichen Größen ausgestattet.
-Die Rechenleistung ist mit der der Standard Instanzen vergleichbar, aber die Speicherlatenz ist geringer, dadurch steigt der Durchsatz an sequentiellen, synchronen Operationen, obwohl der Gesamthöchstdurchsatz etwas geringer ist.
+Local SSD Storage Instanz-Typen sind mit lokal angeschlossenem SSD Speicher mit geringer Latenz ausgestattet.
 Diese Instanzen können für bestimmte Anwendungsfälle, wie verteilte Datenbanken, vorteilhaft sein.
+
+! Verfügbarkeit und Beständigkeit sind bei diesem Instanz-Typ **verringert**, weil die Daten nur lokal auf einem Server gespeichert werden.
 
 Name        | API Name    | Memory | vCPUs | Storage |
 ------------|-------------|--------|-------|---------|
