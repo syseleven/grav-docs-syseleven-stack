@@ -14,6 +14,7 @@ Der Service verwaltet den Lebenszyklus einer Compute Instanz. Seine Zuständigke
 
 Sowohl via unserer öffentlichen [OpenStack API](../../03.Tutorials/04.api-access/docs.en.md), als auch durch das [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) können Compute Instanzen verwaltet werden.
 
+
 ## Flavors
 
 ### Standard Instanz-Typen (M1)
@@ -41,6 +42,8 @@ Diese Instanzen können für bestimmte Anwendungsfälle, wie verteilte Datenbank
 
 ! Verfügbarkeit und Datenbeständigkeit sind bei diesem Instanz-Typ **verringert**, weil die Daten nur lokal auf einem Server gespeichert werden.
 
+Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage](../04.local-storage/docs.de.md).
+
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
 L1 Tiny     | l1.tiny     |   4GB  |   1   |   25GB   |
@@ -52,9 +55,9 @@ L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB   |
 L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
 
 (*)
-Der lokal abgeschlossene Festspeicher kann durch unseren verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden.
+Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden,
+[um weniger latenzkritische Daten dort zu speichern](../04.local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
 
-Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage](../04.local-storage/docs.de.md).
 
 ## Flavor change (resizing)
 
