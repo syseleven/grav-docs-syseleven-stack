@@ -56,7 +56,7 @@ L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
 
 (*)
 You can extend local ephemeral storage using our distributed [Block Storage Service](../03.block-storage/docs.en.md),
-[to place less latency critical data on it](../04.local-storage/docs.en.md#can-i-combine-local-ssd-storage-with-distributed-storage).
+to place less latency critical data on it.
 
 
 ## Flavor change (resizing)

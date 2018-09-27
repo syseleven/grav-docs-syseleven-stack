@@ -56,7 +56,7 @@ L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
 
 (*)
 Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden,
-[um weniger latenzkritische Daten dort zu speichern](../04.local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
+um weniger latenzkritische Daten dort zu speichern.
 
 
 ## Flavor change (resizing)
