@@ -41,15 +41,18 @@ Diese Instanzen können für bestimmte Anwendungsfälle, wie verteilte Datenbank
 
 ! Verfügbarkeit und Datenbeständigkeit sind bei diesem Instanz-Typ **verringert**, weil die Daten nur lokal auf einem Server gespeichert werden.
 
-Name        | API Name    | Memory | vCPUs | Storage |
-------------|-------------|--------|-------|---------|
-L1 Tiny     | l1.tiny     |   4GB  |   1   |   25GB  |
-L1 Small    | l1.small    |   8GB  |   2   |   50GB  |
-L1 Medium   | l1.medium   |  16GB  |   4   |  100GB  |
-L1 Large    | l1.large    |  32GB  |   8   |  200GB  |
-L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB  |
-L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB  |
-L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB  |
+Name        | API Name    | Memory | vCPUs | Storage* |
+------------|-------------|--------|-------|----------|
+L1 Tiny     | l1.tiny     |   4GB  |   1   |   25GB   |
+L1 Small    | l1.small    |   8GB  |   2   |   50GB   |
+L1 Medium   | l1.medium   |  16GB  |   4   |  100GB   |
+L1 Large    | l1.large    |  32GB  |   8   |  200GB   |
+L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB   |
+L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB   |
+L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
+
+(*)
+Der lokal abgeschlossene Festspeicher kann durch unseren verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden.
 
 Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage](../04.local-storage/docs.de.md).
 

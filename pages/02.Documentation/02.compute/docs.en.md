@@ -32,7 +32,7 @@ M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
 M1 Large    |  m1.large   | 32GB   |   8   |   50GB   |
 
 (*)
-You can extend ephemeral storage using our our durable [Block Storage Service](../03.block-storage/docs.en.md).
+You can extend ephemeral storage using our durable [Block Storage Service](../03.block-storage/docs.en.md).
 
 ### Local SSD storage instance types (L1)
 
@@ -41,15 +41,18 @@ These can be useful for special workloads like replicated databases.
 
 ! Availability and data durability are reduced, because data is only stored locally on one server.
 
-Name        | API Name    | Memory | vCPUs | Storage |
-------------|-------------|--------|-------|---------|
-L1 Tiny     | l1.tiny     |   4GB  |   1   |   25GB  |
-L1 Small    | l1.small    |   8GB  |   2   |   50GB  |
-L1 Medium   | l1.medium   |  16GB  |   4   |  100GB  |
-L1 Large    | l1.large    |  32GB  |   8   |  200GB  |
-L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB  |
-L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB  |
-L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB  |
+Name        | API Name    | Memory | vCPUs | Storage* |
+------------|-------------|--------|-------|----------|
+L1 Tiny     | l1.tiny     |   4GB  |   1   |   25GB   |
+L1 Small    | l1.small    |   8GB  |   2   |   50GB   |
+L1 Medium   | l1.medium   |  16GB  |   4   |  100GB   |
+L1 Large    | l1.large    |  32GB  |   8   |  200GB   |
+L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB   |
+L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB   |
+L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
+
+(*)
+You can extend local ephemeral storage using our distributed [Block Storage Service](../03.block-storage/docs.en.md).
 
 For more information, see the [local storage](../04.local-storage/docs.en.md).
 
