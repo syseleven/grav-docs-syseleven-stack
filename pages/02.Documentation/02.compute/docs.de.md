@@ -1,7 +1,7 @@
 ---
 title: 'Compute Service'
 published: true
-date: '08-08-2018 10:46'
+date: '26-09-2018 11:45'
 taxonomy:
     category:
         - docs
@@ -14,13 +14,15 @@ Der Service verwaltet den Lebenszyklus einer Compute Instanz. Seine Zuständigke
 
 Sowohl via unserer öffentlichen [OpenStack API](../../03.Tutorials/04.api-access/docs.en.md), als auch durch das [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) können Compute Instanzen verwaltet werden.
 
+
 ## Flavors
 
-### Standard network storage instance types (M1)
+### Standard Instanz-Typen (M1)
 
-Standard instances generally offer you good performance, availability and storage durability. Disk data will be distributed across multiple servers (SysEleven Distributed Storage).
+Standard Instanz-Typen bieten gute Leistung, Verfügbarkeit und Datenbeständigkeit in einem ausgewogenen Verhältnis.
+Der Datenspeicher wird auf mehrere Server verteilt (SysEleven Distributed Storage).
 
-We recommend these instance types for most workloads and applications.
+Wir empfehlen diese Instanz-Typen für die meisten Anwendungen und Nutzungsfälle.
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
@@ -31,26 +33,31 @@ M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
 M1 Large    |  m1.large   | 32GB   |   8   |   50GB   |
 
 (*)
-You can extend storage using our our Block Storage Service.
+Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden.
 
-### Local SSD storage instance types (L1)
+### Local SSD Storage Instanz-Typen (L1)
 
-Local SSD storage instances offer low latency SSD storage directly on the local host.
-These can be useful for special workloads like replicated databases.
+Local SSD Storage Instanz-Typen sind mit lokal angeschlossenem SSD Speicher mit geringer Latenz ausgestattet.
+Diese Instanzen können für bestimmte Anwendungsfälle, wie verteilte Datenbanken, vorteilhaft sein.
 
-! Availability and data durability are reduced, because data is only stored locally on one server.
+! Verfügbarkeit und Datenbeständigkeit sind bei diesem Instanz-Typ **verringert**, weil die Daten nur lokal auf einem Server gespeichert werden.
 
-Name        | API Name    | Memory | vCPUs | Storage |
-------------|-------------|--------|-------|---------|
-L1 Tiny     | l1.tiny     |   4GB  |   1   |   25GB  |
-L1 Small    | l1.small    |   8GB  |   2   |   50GB  |
-L1 Medium   | l1.medium   |  16GB  |   4   |  100GB  |
-L1 Large    | l1.large    |  32GB  |   8   |  200GB  |
-L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB  |
-L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB  |
-L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB  |
+Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage](../04.local-storage/docs.de.md).
 
-For more information, see [local storage](../04.local-storage/docs.de.md).
+Name        | API Name    | Memory | vCPUs | Storage* |
+------------|-------------|--------|-------|----------|
+L1 Tiny     | l1.tiny     |   4GB  |   1   |   25GB   |
+L1 Small    | l1.small    |   8GB  |   2   |   50GB   |
+L1 Medium   | l1.medium   |  16GB  |   4   |  100GB   |
+L1 Large    | l1.large    |  32GB  |   8   |  200GB   |
+L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB   |
+L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB   |
+L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
+
+(*)
+Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden,
+um weniger latenzkritische Daten dort zu speichern.
+
 
 ## Flavor change (resizing)
 

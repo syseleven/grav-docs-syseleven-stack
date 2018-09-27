@@ -1,7 +1,7 @@
 ---
 title: 'Compute Service'
 published: true
-date: '21-08-2018 17:15'
+date: '26-09-2018 11:45'
 taxonomy:
     category:
         - docs
@@ -14,11 +14,13 @@ It manages the life-cycle of compute instances in your environment. Its responsi
 
 You can manage your compute instance both via our public [OpenStack API](../../03.Tutorials/04.api-access/docs.en.md) endpoints, as well as using the [Dashboard](https://dashboard.cloud.syseleven.net).
 
+
 ## Flavors
 
-### Standard network storage instance types (M1)
+### Standard instance types (M1)
 
-Standard instances generally offer you good performance, availability and storage durability. Disk data will be distributed across multiple servers (SysEleven Distributed Storage).
+Standard instances generally offer you good performance, availability and storage durability.
+Disk data will be distributed across multiple servers (SysEleven Distributed Storage).
 
 We recommend these instance types for most workloads and applications.
 
@@ -31,7 +33,7 @@ M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
 M1 Large    |  m1.large   | 32GB   |   8   |   50GB   |
 
 (*)
-You can extend storage using our our Block Storage Service.
+You can extend ephemeral storage using our durable [Block Storage Service](../03.block-storage/docs.en.md).
 
 ### Local SSD storage instance types (L1)
 
@@ -40,17 +42,22 @@ These can be useful for special workloads like replicated databases.
 
 ! Availability and data durability are reduced, because data is only stored locally on one server.
 
-Name        | API Name    | Memory | vCPUs | Storage |
-------------|-------------|--------|-------|---------|
-L1 Tiny     | l1.tiny     |   4GB  |   1   |   25GB  |
-L1 Small    | l1.small    |   8GB  |   2   |   50GB  |
-L1 Medium   | l1.medium   |  16GB  |   4   |  100GB  |
-L1 Large    | l1.large    |  32GB  |   8   |  200GB  |
-L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB  |
-L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB  |
-L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB  |
-
 For more information, see the [local storage](../04.local-storage/docs.en.md).
+
+Name        | API Name    | Memory | vCPUs | Storage* |
+------------|-------------|--------|-------|----------|
+L1 Tiny     | l1.tiny     |   4GB  |   1   |   25GB   |
+L1 Small    | l1.small    |   8GB  |   2   |   50GB   |
+L1 Medium   | l1.medium   |  16GB  |   4   |  100GB   |
+L1 Large    | l1.large    |  32GB  |   8   |  200GB   |
+L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB   |
+L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB   |
+L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
+
+(*)
+You can extend local ephemeral storage using our distributed [Block Storage Service](../03.block-storage/docs.en.md),
+to place less latency critical data on it.
+
 
 ## Flavor change (resizing)
 
