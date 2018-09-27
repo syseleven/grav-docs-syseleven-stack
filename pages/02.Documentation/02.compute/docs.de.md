@@ -32,7 +32,7 @@ M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
 M1 Large    |  m1.large   | 32GB   |   8   |   50GB   |
 
 (*)
-Sie können den Root-Speicher durch unseren ebenfalls verteilten Block-Speicher ergänzen.
+Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden.
 
 ### Local SSD Storage Instanz-Typen (L1)
 

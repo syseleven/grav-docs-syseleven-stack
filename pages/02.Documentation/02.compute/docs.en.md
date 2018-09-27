@@ -32,7 +32,7 @@ M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
 M1 Large    |  m1.large   | 32GB   |   8   |   50GB   |
 
 (*)
-You can extend storage using our our Block Storage Service.
+You can extend ephemeral storage using our our durable [Block Storage Service](../03.block-storage/docs.en.md).
 
 ### Local SSD storage instance types (L1)
 
