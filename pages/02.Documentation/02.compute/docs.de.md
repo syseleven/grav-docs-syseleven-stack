@@ -18,7 +18,7 @@ Sowohl via unserer öffentlichen [OpenStack API](../../03.Tutorials/04.api-acces
 
 ### Standard Instanz-Typen (M1)
 
-Standard Instanz-Typen bieten ein ausgewogenes Verhältnis zwischen Leistung, Verfügbarkeit und Sicherheit.
+Standard Instanz-Typen bieten gute Leistung, Verfügbarkeit und Datenbeständigkeit in einem ausgewogenen Verhältnis.
 Der Datenspeicher wird auf mehrere Server verteilt (SysEleven Distributed Storage).
 
 Wir empfehlen diese Instanz-Typen für die meisten Anwendungen und Nutzungsfälle.
@@ -39,7 +39,7 @@ Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen
 Local SSD Storage Instanz-Typen sind mit lokal angeschlossenem SSD Speicher mit geringer Latenz ausgestattet.
 Diese Instanzen können für bestimmte Anwendungsfälle, wie verteilte Datenbanken, vorteilhaft sein.
 
-! Verfügbarkeit und Beständigkeit sind bei diesem Instanz-Typ **verringert**, weil die Daten nur lokal auf einem Server gespeichert werden.
+! Verfügbarkeit und Datenbeständigkeit sind bei diesem Instanz-Typ **verringert**, weil die Daten nur lokal auf einem Server gespeichert werden.
 
 Name        | API Name    | Memory | vCPUs | Storage |
 ------------|-------------|--------|-------|---------|
