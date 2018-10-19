@@ -42,7 +42,7 @@ These can be useful for special workloads like replicated databases.
 
 ! Availability and data durability are reduced, because data is only stored locally on one server.
 
-For more information, see the [local storage](../04.local-storage/docs.en.md).
+For more information, see the [local storage documentation](../04.local-storage/docs.en.md).
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
