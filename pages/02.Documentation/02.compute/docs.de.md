@@ -1,7 +1,7 @@
 ---
 title: 'Compute Service'
 published: true
-date: '26-09-2018 11:45'
+date: '23-10-2018 13:45'
 taxonomy:
     category:
         - docs
@@ -40,7 +40,7 @@ Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen
 Local SSD Storage Instanz-Typen sind mit lokal angeschlossenem SSD Speicher mit geringer Latenz ausgestattet.
 Diese Instanzen können für bestimmte Anwendungsfälle, wie verteilte Datenbanken, vorteilhaft sein.
 
-! Verfügbarkeit und Datenbeständigkeit sind bei diesem Instanz-Typ **verringert**, weil die Daten nur lokal auf einem Server gespeichert werden.
+! Verfügbarkeit und Datenbeständigkeit sind bei diesem Instanz-Typ [**verringert**](../04.local-storage/docs.de.md#was-passiert-im-fall-einer-hardware-stoerung), weil die Daten nur lokal auf einem Server gespeichert werden.
 
 Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage](../04.local-storage/docs.de.md).
 

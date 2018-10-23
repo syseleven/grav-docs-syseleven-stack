@@ -1,7 +1,7 @@
 ---
 title: 'Compute Service'
 published: true
-date: '26-09-2018 11:45'
+date: '23-10-2018 13:45'
 taxonomy:
     category:
         - docs
@@ -40,9 +40,9 @@ You can extend ephemeral storage using our durable [Block Storage Service](../03
 Local SSD storage instances offer low latency SSD storage directly on the local host.
 These can be useful for special workloads like replicated databases.
 
-! Availability and data durability are reduced, because data is only stored locally on one server.
+! Availability and data durability are [**reduced**](../04.local-storage/docs.en.md#what-happens-in-case-of-hardware-failures), because data is only stored locally on one server.
 
-For more information, see the [local storage](../04.local-storage/docs.en.md).
+For more information, see the [local storage documentation](../04.local-storage/docs.en.md).
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
