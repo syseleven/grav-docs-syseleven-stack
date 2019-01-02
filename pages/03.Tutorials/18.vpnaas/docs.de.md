@@ -9,6 +9,7 @@ taxonomy:
 ## IPSec und IKE basiertes VPN (as a Service)
 
 ### Überblick
+
 Neutron Einheit bietet VPNaaS an.
 Das bedeutet, dass Regeln direkt mit OpenStack erstellt und verbunden werden können.
 Im Folge dessen sind keine externe Instanzen für VPN mehr nötig.
