@@ -171,15 +171,15 @@ $ openstack port create \
 ```
 
 ```shell
-$ openstack router add port c971c888-a0bb-47e3-a922-565899c9f090 93c4691c-405b-4a10-b8c3-2cd59b799b16
+ openstack router add port c971c888-a0bb-47e3-a922-565899c9f090 93c4691c-405b-4a10-b8c3-2cd59b799b16
 ```
 
 ```shell
-$ openstack router set c971c888-a0bb-47e3-a922-565899c9f090 \
+ openstack router set c971c888-a0bb-47e3-a922-565899c9f090 \
   --external-gateway ext-net
 ```
 
-### Schritt zwei: Die vorherigen Schritte wiederholen, um ein Netzwerk für die rechte Seite zu erstellen.
+### Schritt zwei: Die vorherigen Schritte wiederholen um ein Netzwerk für die rechte Seite zu erstellen
 
 ```shell
 $ openstack network create right
@@ -325,11 +325,11 @@ right-port
 ```
 
 ```shell
-$ openstack router add port 56f95788-1c34-432f-8ad6-f304776221a2 dfe963ec-4f36-4144-96c2-071af9d3c920
+ openstack router add port 56f95788-1c34-432f-8ad6-f304776221a2 dfe963ec-4f36-4144-96c2-071af9d3c920
 ```
 
 ```shell
-$ openstack router set 56f95788-1c34-432f-8ad6-f304776221a2 \
+ openstack router set 56f95788-1c34-432f-8ad6-f304776221a2 \
 --external-gateway ext-net
 ```
 
