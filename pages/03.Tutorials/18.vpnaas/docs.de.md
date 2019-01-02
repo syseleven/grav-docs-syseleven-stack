@@ -62,7 +62,7 @@ $ openstack network create left
 +---------------------------+--------------------------------------+
 ```
 
-#### 1. Subnetz für das obenstehendes Netzwerk (links) allokieren
+#### 1. Subnetz für das obenstehende Netzwerk (links) allokieren
 
 ```shell
 $ openstack subnet create left_sub \
@@ -179,7 +179,7 @@ $ openstack router set c971c888-a0bb-47e3-a922-565899c9f090 \
   --external-gateway ext-net
 ```
 
-### Schritt zwei: Die vorhigen Schritte wiederholen, um ein Netzwerk für die rechte Seite zu erstellen.
+### Schritt zwei: Die vorherigen Schritte wiederholen, um ein Netzwerk für die rechte Seite zu erstellen.
 
 ```shell
 $ openstack network create right
@@ -217,7 +217,7 @@ $ openstack network create right
 +---------------------------+--------------------------------------+
 ```
 
-#### 1. Subnetz für das obenstehendes Netzwerk (rechts) allokieren
+#### 1. Subnetz für das obenstehende Netzwerk (rechts) allokieren
 
 ```shell
 $ openstack subnet create right_sub  \
@@ -333,7 +333,7 @@ $ openstack router set 56f95788-1c34-432f-8ad6-f304776221a2 \
 --external-gateway ext-net
 ```
 
-### Schritt drei: IKE und IPSec Regeln erstellen
+### Schritt drei: IKE- und IPSec-Regeln erstellen
 
 ```shell
 $ openstack vpn ike policy create ikepolicy
@@ -437,7 +437,7 @@ mmouselli:~ mmouselli$ openstack vpn ipsec site connection create conn \
 +--------------------------+--------------------------------------------------------+
 ```
 
-### Schritt fünf: Die vorhigen Schritte wiederholen für das rechte Netzwerk
+### Schritt fünf: Die vorherigen Schritte wiederholen für das rechte Netzwerk
 
 #### 1. VPN-Service erstellen
 
