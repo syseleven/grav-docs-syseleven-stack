@@ -6,7 +6,7 @@ taxonomy:
         - docs
 ---
 
-## IPsec and IKE based VPN as a Service
+## IPSec and IKE based VPN as a Service
 
 ### Overview
 
@@ -180,7 +180,7 @@ $ openstack router set c971c888-a0bb-47e3-a922-565899c9f090 \
   --external-gateway ext-net
 ```
 
-### Setup Two : Repeat the previous steps and create the right network
+### Setup Two: Repeat the previous steps and create the right network
 
 ```shell
 $ openstack network create right
@@ -334,7 +334,7 @@ $ openstack router set 56f95788-1c34-432f-8ad6-f304776221a2 \
 --external-gateway ext-net
 ```
 
-### Step Three: Create an IKE and IPsec policy
+### Step Three: Create an IKE and IPSec policy
 
 ```shell
 $ openstack vpn ike policy create ikepolicy
