@@ -10,9 +10,9 @@ taxonomy:
 
 ### Overview
 
-OpenStack's Neutron provides VPN through VPN as a Service (VPNaaS).
-This means that policies can be created directly within OpenStack.
-No dedicated VPN-Instance is required to use this service.
+OpenStack's Neutron provides Site-to-Site IPsec IKEv1 VPN through VPN as a Service (VPNaaS).
+This means that IPsec policies and connections are configured within the OpenStack.
+No dedicated virtual machines are required to use this service.
 
 !!! **Feature availability**
 !!! VPNaaS is currently available in our both regions 'dbl & cbk'.
@@ -21,7 +21,7 @@ No dedicated VPN-Instance is required to use this service.
 
 * You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/docs.en.md).
-* You have two networks in different regions that you want to connect them together
+* Following this tutorial you will create new OpenStack networks and subnets. If you want to connect two existing networks, skip steps one and two.
 
 ## How to setup a IPSec VPN
 
@@ -504,5 +504,5 @@ $ openstack vpn ipsec site connection create conn \
 
 ### Step Six: Check if the VPN works properly
 
-Please make sure that ICMP traffic is permitted between the end point.
-Connect to on of the machines on one endpoint and try to ping the other endpoint.
+Create virtual machines with interfaces in `right_sub` and `left_sub`, and make sure they can reach each other, by sending ICMP echo requests to internal IP addresses.
+Note that one of this virtual machines need to have Floating IP address, so you can reach the VM itself.
