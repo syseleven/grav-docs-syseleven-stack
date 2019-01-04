@@ -15,7 +15,7 @@ This means that IPsec policies and connections are configured within the OpenSta
 No dedicated virtual machines are required to use this service.
 
 !!! **Feature availability**
-!!! VPNaaS is currently available in our both regions 'dbl & cbk'.
+!!! VPNaaS is currently available in both our regions 'dbl' and 'cbk'.
 
 ## Prerequisites
 
@@ -180,7 +180,7 @@ $ openstack port create \
   --external-gateway ext-net
 ```
 
-### Setup Two: Repeat the previous steps and create the right network
+### Step Two: Repeat the previous steps and create the right network
 
 ```shell
 $ openstack network create right
@@ -505,4 +505,4 @@ $ openstack vpn ipsec site connection create conn \
 ### Step Six: Check if the VPN works properly
 
 Create virtual machines with interfaces in `right_sub` and `left_sub`, and make sure they can reach each other, by sending ICMP echo requests to internal IP addresses.
-Note that one of this virtual machines need to have Floating IP address, so you can reach the VM itself.
+Note that one of this virtual machines needs to have a Floating IP address, so you can reach the VM itself.

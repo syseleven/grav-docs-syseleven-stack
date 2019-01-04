@@ -6,22 +6,22 @@ taxonomy:
         - docs
 ---
 
-## IPSec und IKE basiertes VPN (as a Service)
+## IPSec und IKE basiertes VPN as a Service
 
 ### Überblick
 
-Neutron Einheit bietet VPNaaS an.
-Das bedeutet, dass Regeln direkt mit OpenStack erstellt und verbunden werden können.
-Im Folge dessen sind keine externe Instanzen für VPN mehr nötig.
+OpenStack Neutron bietet Site-to-Site IPsec IKEv1 VPN an, als VPNaaS (VPN as a Service).
+Das bedeutet, dass IPsec-Regeln und -Verbindungen direkt mit OpenStack konfiguriert werden können.
+Im Folge dessen sind keine externen Instanzen (virtuelle Maschinen) für VPN mehr nötig.
 
 !!! **Verfügbarkeit**
-!!! VPNaaS ist nun in unseren beiden Regionen 'dbl & cbk' verfügbar.
+!!! VPNaaS ist nun in unseren beiden Regionen 'dbl' und 'cbk' verfügbar.
 
 ## Voraussetzungen
 
 * Du solltest Wissen über die Nutzung von OpenStack CLI-Tools verfügen [OpenStack CLI-Tools](../03.openstack-cli/docs.de.md).
-* Environment-Variablen müssen für den API-Zugang gesetzt werden. Sieh das Beispiel [API-Access-Tutorial](../04.api-access/docs.en.md).
-* Du hast zwei seperate Netzwerke in unterschiedlichen Regionen und du willst sie zusammen verbinden
+* Environment-Variablen müssen für den API-Zugang gesetzt sein. Siehe das Beispiel [API-Access-Tutorial](../04.api-access/docs.de.md).
+* In dieser Anleitung wirst du zwei seperate Netzwerke in unterschiedlichen Regionen anlegen und sie miteinander verbinden. Wenn du zwei existierende Netzwerke verbinden möchtest, überspringe die Schritte eins und zwei.
 
 ## Wie baut man IPSec-VPN
 
@@ -180,7 +180,7 @@ $ openstack port create \
   --external-gateway ext-net
 ```
 
-### Schritt zwei: Die vorherigen Schritte wiederholen um ein Netzwerk für die rechte Seite zu erstellen
+### Schritt zwei: Die vorherigen Schritte wiederholen, um ein Netzwerk für die rechte Seite zu erstellen
 
 ```shell
 $ openstack network create right
@@ -504,5 +504,5 @@ $ openstack vpn ipsec site connection create conn \
 
 ### Schritt sechs: Die aufgebaute Verbindung testen
 
-Bitte achte darauf, dass der ICMP-Traffic zwischen beiden Endknoten freigeschaltet ist.
-Du solltest aus einer VE von einem Endpoint das andere Netzwerk anpingen.
+Erstelle virtuelle Maschinen mit Interfaces in `right_sub` und `left_sub` und überprüfe, dass sie einander erreichen können, indem du ICMP Echo Requests zu den internen IP-Adressen sendest (Ping).
+Beachte, dass eine der virtuellen Maschinen eine Floating-IP-Adresse benötigt, damit du die VM von außen erreichen kannst.
