@@ -20,7 +20,7 @@ Im Folge dessen sind keine externen Instanzen (virtuelle Maschinen) für VPN meh
 ## Voraussetzungen
 
 * Du solltest Wissen über die Nutzung von OpenStack CLI-Tools verfügen [OpenStack CLI-Tools](../03.openstack-cli/docs.de.md).
-* Environment-Variablen müssen für den API-Zugang gesetzt sein. Siehe das Beispiel [API-Access-Tutorial](../04.api-access/docs.de.md).
+* Environment-Variablen müssen für den API-Zugang gesetzt sein. Siehe das Beispiel [API-Access-Tutorial](../04.api-access/docs.en.md).
 * In dieser Anleitung wirst du zwei seperate Netzwerke in unterschiedlichen Regionen anlegen und sie miteinander verbinden. Wenn du zwei existierende Netzwerke verbinden möchtest, überspringe die Schritte eins und zwei.
 
 ## Wie baut man IPSec-VPN
