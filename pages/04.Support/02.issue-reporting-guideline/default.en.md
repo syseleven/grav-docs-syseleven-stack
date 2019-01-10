@@ -10,7 +10,7 @@ It is not required but helps to investigate issues faster. It serves as a guidel
 
 ## Required data for faster resolutions
 
-We want to minimize your effort to report any issues. Therefor we provide the information that is necessary to check and solve your issues/requests.
+We want to minimize your effort to report any issues. For that reason we provide you with a list, which information helps us to check and solve your issues/requests.
 
 ```text
 Problem description:

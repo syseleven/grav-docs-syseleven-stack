@@ -22,7 +22,7 @@ taxonomy:
 ## Problem
 
 By default, there is no guarantees wether servers will be distributed across different hypervisors. The Nova compute scheduler makes that decision based on available resources.  
-This can lead to services that are meant to be highly available to share a common host and therefore share a single point of failure.  
+This can lead to services that are meant to be highly available to share a common host and thus share a single point of failure.  
 Inversely it might be desired to have two services to be located as close as possible, because they will need high bandwidth between each other.  
 Both cases are solvable using ServerGroups. That way you can influence the distribution of instances.
 
