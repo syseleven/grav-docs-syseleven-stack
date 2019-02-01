@@ -6,11 +6,11 @@ date: '02-08-2018 13:21'
 ## Einleitung
 
 Das folgende Dokument beschreibt das benötigte Format und Level an Details wenn Probleme/Issues gemeldet werden.
-Dieser Leitfaden soll dabei helfen Probleme schneller zu lösen.
+Dieser Leitfaden soll dabei helfen, Probleme schneller zu lösen.
 
 ## Benötigte Daten für eine schnellere Problembehebung
 
-Wir möchten Ihren Aufwand so gering wie möglich halten. Daher haben wir die wichtigsten Informationen zur Behebung des Problems zusammengestellt.
+Wir möchten Ihren Aufwand so gering wie möglich halten. Daher haben wir für Sie zusammengestellt, welche Informationen uns bei der Behebung des Problems helfen.
 
 ```text
 Problem description:

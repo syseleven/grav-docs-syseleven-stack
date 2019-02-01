@@ -105,17 +105,20 @@ In general, workloads where large volumes of data are transmitted or many small 
 #### Software Updates
 
 SysEleven regularly updates the software on the hypervisor host machines.
-To apply certain updates a reboot is required and running instances are therefore moved to another
-hypervisor host.
+Sometimes those updates require restarts of services or even a reboot of the whole hypervisor.
+In such cases we will live-migrate all running instances to another hypervisor host prior to applying the update.
 
 #### Hardware Maintenance
 
-All hardware nodes require maintenance at some point. Sometimes the required maintenance work cannot be done
-while the machine is online. Therefore instances are moved to another hardware node prior to the planned maintenance work.
+All hardware nodes require maintenance at some point.
+Sometimes the required maintenance work cannot be done while the machine is online.
+In such cases we will live-migrate all running instances to another hypervisor host prior to performing the maintenance.
 
 #### Hardware failure
 
-Unfortunately life migrations are not possible in case of a hardware failure, therefor running instances will be automatically restarted on another hardware node. Stopped instances will be moved but remain in their stopped state.
+Unfortunately live migrations are not possible in case of a hardware failure.
+In such a situation running instances will be automatically restarted on another hardware node.
+Stopped instances will also be assigned to another hypervisor but remain stopped.
 
 ### How long does a migration take?
 
