@@ -1,7 +1,7 @@
 ---
 title: 'LoadBalancer as a Service (LBaaS)'
 published: true
-date: '08-08-2018 11:40'
+date: '2019-02-19 17:30'
 taxonomy:
     category:
         - docs
@@ -15,6 +15,9 @@ It also offers a simple HealthCheck.
 Unfortunately it is currently not possible to forward the client IP to the instances behind the loadbalancer. The IP of the LBaaS will show up as the client IP
 
 We prepared a simple tutorial that shows [basic usage of LBaaS](../../../03.Tutorials/07.lbaas/docs.en.md).
+
+!!! **Feature availability**
+!!! LBaaS is currently only available in region 'dbl'. It will also be available in region 'cbk' in the near future.
 
 ---
 
