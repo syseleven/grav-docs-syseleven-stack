@@ -1,7 +1,7 @@
 ---
-title: 'LoadBalancer as a Service'
+title: 'LoadBalancer as a Service (LBaaS)'
 published: true
-date: '08-08-2018 11:40'
+date: '2019-02-19 17:30'
 taxonomy:
     category:
         - docs
@@ -15,6 +15,9 @@ Ebenfalls ist ein einfacher Health-Check nutzbar.
 Leider kann die Client-IP zur Zeit nicht an die Systeme hinter dem LoadBalancer durchgereicht werden. Die IP des Lastverteilers wird als Ausgangsadresse angezeigt.
 
 Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../03.Tutorials/07.lbaas/docs.en.md) vorbereitet.
+
+!!! **Verfügbarkeit**
+!!! Die Funktionalität des LBaaS ist derzeit nur in der Region 'dbl' verfügbar. Sie wird demnächst auch in der Region 'cbk' bereitgestellt.
 
 ---
 
