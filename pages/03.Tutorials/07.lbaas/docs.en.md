@@ -1,6 +1,6 @@
 ---
 title: 'Create a LoadBalancer (as a Service)'
-date: '2019-02-19 17:30'
+date: '2019-02-28 17:30'
 taxonomy:
     category:
         - docs
@@ -15,7 +15,7 @@ This means that load balancing rules can be created directly within OpenStack.
 No dedicated load balancer instance is required to use this service.
 
 !!! **Feature availability**
-!!! LBaaS is currently only available in region 'dbl'. It will also be available in region 'cbk' in the near future.
+!!! LBaaS was previously only available in region 'dbl'. It has become also available in region 'cbk' in february 2019.
 
 ## Prerequisites
 

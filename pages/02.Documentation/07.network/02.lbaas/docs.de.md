@@ -1,7 +1,7 @@
 ---
 title: 'LoadBalancer as a Service (LBaaS)'
 published: true
-date: '2019-02-19 17:30'
+date: '2019-02-28 17:30'
 taxonomy:
     category:
         - docs
@@ -17,7 +17,7 @@ Leider kann die Client-IP zur Zeit nicht an die Systeme hinter dem LoadBalancer 
 Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../03.Tutorials/07.lbaas/docs.en.md) vorbereitet.
 
 !!! **Verfügbarkeit**
-!!! Die Funktionalität des LBaaS ist derzeit nur in der Region 'dbl' verfügbar. Sie wird demnächst auch in der Region 'cbk' bereitgestellt.
+!!! Die Funktionalität des LBaaS war bisher nur in der Region 'dbl' verfügbar, sie wurde im Februar 2019 auch in der Region 'cbk' bereitgestellt.
 
 ---
 
