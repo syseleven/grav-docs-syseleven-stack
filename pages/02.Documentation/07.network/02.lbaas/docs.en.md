@@ -1,7 +1,7 @@
 ---
 title: 'LoadBalancer as a Service (LBaaS)'
 published: true
-date: '2019-02-19 17:30'
+date: '2019-02-28 17:30'
 taxonomy:
     category:
         - docs
@@ -17,7 +17,7 @@ Unfortunately it is currently not possible to forward the client IP to the insta
 We prepared a simple tutorial that shows [basic usage of LBaaS](../../../03.Tutorials/07.lbaas/docs.en.md).
 
 !!! **Feature availability**
-!!! LBaaS is currently only available in region 'dbl'. It will also be available in region 'cbk' in the near future.
+!!! LBaaS was previously only available in region 'dbl'. It has become also available in region 'cbk' in February 2019.
 
 ---
 
