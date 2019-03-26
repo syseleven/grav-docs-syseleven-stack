@@ -37,4 +37,4 @@ Weitere Informationen finden Sie auf unserer [Support Seite](../06.Support/defau
 
 ## Beiträge editieren
 
-Unsere [Dokumentation ist auf GitHub](https://github.com/syseleven/grav-docu-syseleven-stack) und wir freuen uns auf Änderungswünsche in Form von Pull Requests.
+Unsere [Dokumentation ist auf GitHub](https://github.com/syseleven/grav-docu-syseleven-stack) und wir freuen uns über Änderungswünsche in Form von Pull Requests.
