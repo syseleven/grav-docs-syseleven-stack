@@ -47,7 +47,7 @@ Once selected we can start creating resources in the selected region.
 
 * You need to have the login data for the SysEleven Stack API (user name and passphrase).
 * The [OpenStack CLI-Tools](../../03.Howtos/openstack-cli/docs.de.md) are installed in an up-to-date version.
-* Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/04.api-access/docs.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/03.api-access/docs.en.md).
 
 ### How to select?
 
