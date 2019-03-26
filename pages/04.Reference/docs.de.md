@@ -1,5 +1,5 @@
 ---
-title: Reference guide
+title: Referenz
 page-toc:
     active: false
 taxonomy:
@@ -7,6 +7,4 @@ taxonomy:
         - docs
 ---
 
-All pages listed as Documentation will give you an overview of our services.
-
-The Documentation pages are intended to be a description of what we offer. If you search for guides on e.g. how to spin up your instances or cluster, have a look at our [Tutorials](../02.Tutorials/docs.de.md).
+Detaillierte Beschreibung aller Dienste, die im Rahmen von SysEleven Stack angeboten werden.
