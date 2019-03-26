@@ -4,12 +4,12 @@ published: true
 date: '03-08-2018 13:12'
 taxonomy:
     category:
-        - docs
+        - howtos
 ---
 
 ## Übersicht
 
-Dieses Tutorial dient als Anleitung für die Installation der OpenStack CLI (Befehlszeilen-Schnittstelle, engl.: command line interface). Mit der OpenStack CLI kannst du deine Stacks administrieren und überwachen.
+Dieses How-to dient als Anleitung für die Installation der OpenStack CLI (Befehlszeilen-Schnittstelle, engl.: command line interface). Mit der OpenStack CLI kannst du deine Stacks administrieren und überwachen.
 
 ## Ziel
 

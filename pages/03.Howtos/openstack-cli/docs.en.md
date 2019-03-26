@@ -4,12 +4,12 @@ published: true
 date: '02-08-2018 17:29'
 taxonomy:
     category:
-        - docs
+        - howtos
 ---
 
 ## Overview
 
-This tutorial serves as manual on how to install the OpenStack CLI (Command Line Interface). With the OpenStack CLI you can manage and monitor your Stacks.
+This How-to serves as manual on how to install the OpenStack CLI (Command Line Interface). With the OpenStack CLI you can manage and monitor your Stacks.
 
 ## Goal
 
