@@ -21,9 +21,9 @@ Sie enthalten vorinstallierten Tools um Instanzen zu retten und unterstützen di
 
 ## Vorraussetzungen
 
-* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](../02.firststeps/docs.en.md) gezeigt, wird vorausgesetzt.
+* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](../../02.Tutorials/02.firststeps/docs.en.md) gezeigt, wird vorausgesetzt.
 * Grundlagen zur Bedienung des [OpenStack CLI-Tools](../../03.Howtos/openstack-cli/docs.de.md).
-* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../04.api-access/docs.en.md) beschrieben.
+* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../../02.Tutorials/04.api-access/docs.en.md) beschrieben.
 
 ## Optional: Temporäre Arbeitsumgebung
 
