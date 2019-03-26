@@ -83,5 +83,5 @@ CoreOS                    | `https://stable.release.core-os.net/amd64-usr/curren
 
 ### How to upload images?
 
-[This tutorial](../../03.Howtos/upload-images/docs.en.md) shows how to upload images via CLI and GUI.
+[This tutorial](../../03.Howtos/08.upload-images/docs.en.md) shows how to upload images via CLI and GUI.
 

@@ -41,7 +41,7 @@ Ja. Volumes mit Distributes Storages können an die Instanz angeschlossen werden
 
 ### Kann ich Local SSD Storage durch ein Volume ersetzen?
 
-Ja, aber das ergibt selten Sinn, denn sie nutzt ja dann den Local SSD Storage nicht mehr. Es kann aber in bestimmten Fällen hilfreich sein, um Dinge einzurichten oder zu reparieren, siehe auch unsere Anleitung zur [Datenrettung](../../03.Howtos/nova-rescue-mode/docs.de.md).
+Ja, aber das ergibt selten Sinn, denn sie nutzt ja dann den Local SSD Storage nicht mehr. Es kann aber in bestimmten Fällen hilfreich sein, um Dinge einzurichten oder zu reparieren, siehe auch unsere Anleitung zur [Datenrettung](../../03.Howtos/04.nova-rescue-mode/docs.de.md).
 
 ### Kann ich Local SSD Storage in anderen Größen erhalten?
 

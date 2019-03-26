@@ -16,7 +16,7 @@ This tutorial aims to enable you to make use of the local ssd ephemeral storage 
 ## Prerequisites
 
 * You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/docs.en.md).
-* You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/openstack-cli/docs.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/05.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../03.api-access/docs.en.md).
 
 ## How to setup an instance with local ssd storage

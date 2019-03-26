@@ -15,7 +15,7 @@ taxonomy:
 ## Prerequisites
 
 * You should be able to use simple heat templates, like shown in the [first steps tutorial](../../02.Tutorials/02.firststeps/docs.en.md).
-* You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/openstack-cli/docs.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/05.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/03.api-access/docs.en.md).
 
 ## Optional: temporary work environment

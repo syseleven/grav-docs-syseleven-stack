@@ -1,5 +1,5 @@
 ---
-title: Tutorials
+title: How-to guides
 page-toc:
     active: false
 taxonomy:

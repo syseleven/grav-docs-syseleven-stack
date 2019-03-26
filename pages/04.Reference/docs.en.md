@@ -1,5 +1,5 @@
 ---
-title: Documentation
+title: Referenz
 page-toc:
     active: false
 taxonomy:

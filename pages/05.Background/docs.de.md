@@ -1,5 +1,5 @@
 ---
-title: Hintergrund Artikel
+title: Hintergründe
 page-toc:
     active: false
 taxonomy:

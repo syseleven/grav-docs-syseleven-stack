@@ -41,7 +41,7 @@ Yes. You can attach volumes with distributed storage to your instances and this 
 
 ### Can I replace local SSD storage with a volume?
 
-Yes, but this rarely makes sense as it isn't a local volume instance anymore. It may make sense in certain cases to setup or repair things, see our [rescue tutorial](../../03.Howtos/nova-rescue-mode/docs.en.md).
+Yes, but this rarely makes sense as it isn't a local volume instance anymore. It may make sense in certain cases to setup or repair things, see our [rescue tutorial](../../03.Howtos/04.nova-rescue-mode/docs.en.md).
 
 ### Can I use local SSD storage in other sizes?
 
