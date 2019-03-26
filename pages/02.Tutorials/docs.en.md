@@ -4,7 +4,7 @@ page-toc:
     active: false
 taxonomy:
     category:
-        - tutorials
+        - docs
 ---
 
 Learning-oriented step-by-step guides, to get started with SysEleven Stack.
