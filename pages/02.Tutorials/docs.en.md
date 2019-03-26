@@ -4,9 +4,9 @@ page-toc:
     active: false
 taxonomy:
     category:
-        - docs
+        - tutorials
 ---
 
-All pages listed as Tutorials will give you an overview about how to use our services.
+Learning-oriented step-by-step guides, to get started with SysEleven Stack.
 
-The Tutorial pages are intended to be guides on how you can use what we offer. If you search for descriptions e.g. which versions we support, have a look at our [Documentation](../04.Reference/docs.en.md).
+For goal-oriented step-by-step guides, for solving specific problems, see our [How-to guides](../03.Howtos/docs.en.md).
