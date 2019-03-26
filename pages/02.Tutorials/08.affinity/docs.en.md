@@ -52,7 +52,7 @@ resources:
 
 ## Example
 
-Here the [ResourceGroups example](../06.resourcegroups/docs.en.md) is extended using ServerGroups for *affinity* and *anti-affinity* `group.yaml`:
+Here the [ResourceGroups example](../05.resourcegroups/docs.en.md) is extended using ServerGroups for *affinity* and *anti-affinity* `group.yaml`:
 
 ```plain
 heat_template_version: 2014-10-16
