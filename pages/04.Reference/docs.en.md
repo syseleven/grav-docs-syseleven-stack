@@ -1,5 +1,5 @@
 ---
-title: Referenz
+title: Reference
 page-toc:
     active: false
 taxonomy:
