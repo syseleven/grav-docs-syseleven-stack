@@ -17,7 +17,7 @@ Weitere Beispiele zeigen, wie über die API des SysEleven Stack komplexere Setup
 
 ## Inhalt
 
-Unsere Dokmentation ist aufgeteilt in die folgenden Sektionen:
+Unsere Dokumentation ist aufgeteilt in die folgenden Sektionen:
 
 | Sektion             | Beschreibung |
 | -------------------:| -------------|
