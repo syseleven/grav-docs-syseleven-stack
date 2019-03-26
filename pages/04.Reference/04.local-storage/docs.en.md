@@ -21,7 +21,7 @@ We provide a [tabular overview of our flavor types](../02.compute/docs.en.md).
 
 ### How do I use local SSD storage?
 
-For a quick start to evaluate or just play with local ssd storage, please see our [Tutorials](../../03.Tutorials/13.local-storage/docs.en.md).
+For a quick start to evaluate or just play with local ssd storage, please see our [Tutorials](../../02.Tutorials/13.local-storage/docs.en.md).
 
 ### When should I better not use local SSD storage?
 
@@ -41,7 +41,7 @@ Yes. You can attach volumes with distributed storage to your instances and this 
 
 ### Can I replace local SSD storage with a volume?
 
-Yes, but this rarely makes sense as it isn't a local volume instance anymore. It may make sense in certain cases to setup or repair things, see our [rescue tutorial](../../03.Tutorials/14.nova-rescue-mode/docs.en.md).
+Yes, but this rarely makes sense as it isn't a local volume instance anymore. It may make sense in certain cases to setup or repair things, see our [rescue tutorial](../../02.Tutorials/14.nova-rescue-mode/docs.en.md).
 
 ### Can I use local SSD storage in other sizes?
 
@@ -78,4 +78,4 @@ Affected instances will receive an ACPI shutdown event that gives the operating 
 
 ### How many nodes/instances will be affected by local SSD storage node maintenance simultaneously?
 
-Planned maintenances will only affect one compute node at a time and between two maintenances there will be half an hour of recreation to allow the affected systems to re-join their clusters or whatever. It will, however, affect all local ssd storage instances on the same compute node. To ensure, that redundant systems will not be affected simultaneously, you must put them into [anti-affinity-groups](../../03.Tutorials/12.affinity/docs.de.md).
+Planned maintenances will only affect one compute node at a time and between two maintenances there will be half an hour of recreation to allow the affected systems to re-join their clusters or whatever. It will, however, affect all local ssd storage instances on the same compute node. To ensure, that redundant systems will not be affected simultaneously, you must put them into [anti-affinity-groups](../../02.Tutorials/12.affinity/docs.de.md).

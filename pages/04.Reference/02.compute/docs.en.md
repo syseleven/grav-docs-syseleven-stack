@@ -7,22 +7,22 @@ taxonomy:
         - docs
 ---
 
-## Übersicht
+## Overview
 
-SysEleven Stacks Compute Service basiert auf dem OpenStack Nova Projekt.
-Der Service verwaltet den Lebenszyklus einer Compute Instanz. Seine Zuständigkeit umfasst das erstellen, planen und  ausmustern von Compute Instanzen.
+SysEleven Stacks Compute Service is built on the OpenStack Nova project.
+It manages the life-cycle of compute instances in your environment. Its responsibilities include spawning, scheduling and decommissioning of virtual machines on demand.
 
-Sowohl via unserer öffentlichen [OpenStack API](../../03.Tutorials/04.api-access/docs.en.md), als auch durch das [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) können Compute Instanzen verwaltet werden.
+You can manage your compute instance both via our public [OpenStack API](../../02.Tutorials/04.api-access/docs.en.md) endpoints, as well as using the [Dashboard](https://dashboard.cloud.syseleven.net).
 
 
 ## Flavors
 
-### Standard Instanz-Typen (M1)
+### Standard instance types (M1)
 
-Standard Instanz-Typen bieten gute Leistung, Verfügbarkeit und Datenbeständigkeit in einem ausgewogenen Verhältnis.
-Der Datenspeicher wird auf mehrere Server verteilt (SysEleven Distributed Storage).
+Standard instances generally offer you good performance, availability and storage durability.
+Disk data will be distributed across multiple servers (SysEleven Distributed Storage).
 
-Wir empfehlen diese Instanz-Typen für die meisten Anwendungen und Nutzungsfälle.
+We recommend these instance types for most workloads and applications.
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
@@ -33,16 +33,16 @@ M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
 M1 Large    |  m1.large   | 32GB   |   8   |   50GB   |
 
 (*)
-Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden.
+You can extend ephemeral storage using our durable [Block Storage Service](../03.block-storage/docs.en.md).
 
-### Local SSD Storage Instanz-Typen (L1)
+### Local SSD storage instance types (L1)
 
-Local SSD Storage Instanz-Typen sind mit lokal angeschlossenem SSD Speicher mit geringer Latenz ausgestattet.
-Diese Instanzen können für bestimmte Anwendungsfälle, wie verteilte Datenbanken, vorteilhaft sein.
+Local SSD storage instances offer low latency SSD storage directly on the local host.
+These can be useful for special workloads like replicated databases.
 
-! Verfügbarkeit und Datenbeständigkeit sind bei diesem Instanz-Typ [**verringert**](../04.local-storage/docs.de.md#was-passiert-im-fall-einer-hardware-stoerung), weil die Daten nur lokal auf einem Server gespeichert werden.
+! Availability and data durability are [**reduced**](../04.local-storage/docs.en.md#what-happens-in-case-of-hardware-failures), because data is only stored locally on one server.
 
-Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage](../04.local-storage/docs.de.md).
+For more information, see the [local storage documentation](../04.local-storage/docs.en.md).
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
@@ -55,8 +55,8 @@ L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB   |
 L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
 
 (*)
-Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden,
-[um weniger latenzkritische Daten dort zu speichern](../04.local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
+You can extend local ephemeral storage using our distributed [Block Storage Service](../03.block-storage/docs.en.md),
+[to place less latency critical data on it](../04.local-storage/docs.en.md#can-i-combine-local-ssd-storage-with-distributed-storage).
 
 
 ## Flavor change (resizing)
@@ -88,13 +88,13 @@ It is currently **not** possible to migrate any L1 flavor to M1 flavors.
 
 ---
 
-## Fragen & Antworten
+## Questions & Answers
 
-### Was ist der Unterschied zwischen Local SSD Storage und Distributed Storage?
+### What is the difference between local ssd storage and distributed storage?
 
-Auf unserem Distributed Storage werden mehrere Kopien der Datensegmente auf mehrere physische SSDs verteilt, die an unterschiedlichen physischen Servern angeschlossen und durch das Netzwerk verbunden sind. Dadurch können wir generell eine hohe Performance bieten, da Daten auf mehreren SSDs gleichzeitig verarbeitet werden können – jedoch entsteht dadurch eine zusätzliche Latenz für einzelne Operationen, da Daten über das Netzwerk übertragen werden müssen.
+SysEleven Stack distributed storage distributes several copies of segments of your data over many physical ssd devices attached to different physical compute nodes connected via network. This allows for high overall performance, because several devices can work simultaneously, but introduces a latency for single operations, because data has to be transmitted via network.
 
-Auf unserem Local SSD Storage, werden die Daten auf einem lokalen gespiegelten RAID gespeichert. Die Latenz reduziert sich, denn Daten müssen dafür nicht über das Netzwerk übertragen werden. Verfügbarkeit und Datenbeständigkeit sind jedoch bei diesen Instanztypen reduziert, da die Daten nur lokal auf einem Server vorgehalten werden.
+SysEleven Stack local ssd storage stores your data on a local raid mirrored ssd storage directly attached to the compute node. This reduces the latency, because no network is involved, but also redundancy, because only two devices and one compute node are involved.
 
 ### Which storage flavor fits my needs best?
 
@@ -128,10 +128,10 @@ A live migration takes usually about 500ms. In some situations migrations may ta
 
 To transfer the active state of instances (incl. RAM/Memory) they need to be 'frozen' prior to the migration. During the transfer network packets can get lost. It depends on the operating system and application that is being used if connection can be reestablished.
 
-### Kann ich einer Compute Instanz eine feste interne IP zuweisen?
+### Can I allocate a fixed IP to a compute instance?
 
-Normalerweise spielen in einer Cloudumgebung feste IPs keine Rolle, da sich die Infrastruktur häufig ändert.
-Ist das nicht gewünscht, kann ich z.B. mit folgendem Heat-Template via unserem SysEleven Stack Orchestration Service einer Maschine eine statische IP zuweisen:
+Normally a fixed IP shouldn't play a big role in a cloud setup, since the infrastructure might change a lot.
+If you need a fixed IP, you can assign a port from our networking service as a fixed IP to our compute instance. Here is an example which shows how to use the orchestration service to fetch a fixed IP address to use in a template:
 
 ```plain
   management_port:
@@ -142,11 +142,10 @@ Ist das nicht gewünscht, kann ich z.B. mit folgendem Heat-Template via unserem 
         - ip_address: 192.168.122.100
 ```
 
-Die Konsistenz der Netzwerkarchitektur muss ich dann allerdings selbst sicherstellen.
+### My compute instance was created, but is e.g. not accessible via SSH/HTTP
 
-### Meine virtuelle Maschine wurde erstellt, ist aber z.B. nicht per SSH/ HTTP usw. erreichbar
-
-Grundsätzlich sind alle Compute Instanzen im SysEleven Stack mit einer Default-Security-Group gesichert, die außer ICMP-Paketen keinen Traffic auf die VMs akzeptiert. Für jeden Service, der erreichbar sein soll, muss also eine Security-Group-Regel erstellt werden, die den Zugriff ermöglicht. Hier ein Beispiel wie HTTP(S)-Traffic mit einem Heat-Template unseres Orchestration Service zu ihrer Instanz erlaubt werden kann:
+By default all compute instances of are using the "default" security group. It's settings do not allow any other packets, except of ICMP in order to be able to ping your compute instance. Any other ports needed by a given instance need to be opened by adding a rule to the security group your instance uses (i.e., SSH or HTTPS).
+Here is an example that shows how you can use a heat template to allow incoming HTTP/HTTPS traffic via your security group:
 
 ```plain
 resources:
@@ -160,7 +159,7 @@ resources:
         - { direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 443, port_range_max: 443, protocol: tcp }
 ```
 
-Diese so gebaute Security-Group muss noch an einen Port gebunden werden:
+This security group can now be connected to a port of your network:
 
 ```plain
   example_port:
@@ -170,4 +169,4 @@ Diese so gebaute Security-Group muss noch an einen Port gebunden werden:
       network_id: { get_resource: example_net}
 ```
 
-Die Security-Group "default" ist in diesem Beispiel hinzugefügt, da diese Gruppe im SysEleven Stack dafür sorgt, dass Traffic, der ausgehend erlaubt ist, auch eingehend erlaubt wird.
+The security group "default" is added in this example, since this group is taking care of allowing outbound traffic.

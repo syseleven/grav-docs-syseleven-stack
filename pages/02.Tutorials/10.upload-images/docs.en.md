@@ -53,4 +53,4 @@ Further information can be found [here](https://dashboard.cloud.syseleven.net/ho
 
 ## Image sources
 
-!!! [This overview](../../02.Documentation/06.images/docs.en.md#image-sources) contains a list of standard images sources.
+!!! [This overview](../../04.Reference/06.images/docs.en.md#image-sources) contains a list of standard images sources.

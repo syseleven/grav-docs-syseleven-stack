@@ -12,7 +12,7 @@ page-toc:
 
 ## First steps
 
-[First steps](../03.Tutorials/02.firststeps/docs.en.md) show, how you can start a compute instance via the dashboard of the SysEleven Stack. Further examples show, how you can use the API of the SysEleven Stack to manage complex setups.
+[First steps](../02.Tutorials/02.firststeps/docs.en.md) show, how you can start a compute instance via the dashboard of the SysEleven Stack. Further examples show, how you can use the API of the SysEleven Stack to manage complex setups.
 
 ## Contents
 
@@ -20,10 +20,10 @@ Our documentation is structured in four distinct sections:
 
 | Section             | Description |
 | -------------------:| -------------|
-| [Tutorials](../02.Tutorials/index.en.md)            | Learning-oriented step-by-step guides, to get started with SysEleven Stack. |
-| [How-to guides](../03.Howtos/index.en.md)           | Goal-oriented step-by-step guides, for solving specific problems. |
-| [Reference articles](../04.Reference/index.en.md)   | Detailled description of all our services, that we offer in the context of SysEleven Stack. |
-| [Background articles](../05.Background/index.en.md) | Explanations and Background information regarding our services. |
+| [Tutorials](../02.Tutorials/docs.en.md)            | Learning-oriented step-by-step guides, to get started with SysEleven Stack. |
+| [How-to guides](../03.Howtos/docs.en.md)           | Goal-oriented step-by-step guides, for solving specific problems. |
+| [Reference articles](../04.Reference/docs.en.md)   | Detailled description of all our services, that we offer in the context of SysEleven Stack. |
+| [Background articles](../05.Background/docs.en.md) | Explanations and Background information regarding our services. |
 
 ## Examples
 
@@ -32,3 +32,7 @@ On top of the documentation, SysEleven provides a [library of heat templates](ht
 ## Support
 
 As the vendor of the [SysEleven Stack](https://dashboard.cloud.syseleven.net/) we provide **free support** to our customers. For further information please check our [support page](../04.Support/default.en.md).
+
+## Edit articles
+
+Our [documentation is on GitHub](https://github.com/syseleven/grav-docu-syseleven-stack) and we are happy for any contributions via pull requests.
