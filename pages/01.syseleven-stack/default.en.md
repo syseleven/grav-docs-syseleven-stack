@@ -22,7 +22,7 @@ Our documentation is structured in four distinct sections:
 | -------------------:| -------------|
 | [Tutorials](../02.Tutorials/docs.en.md)            | Learning-oriented step-by-step guides, to get started with SysEleven Stack. |
 | [How-to guides](../03.Howtos/docs.en.md)           | Goal-oriented step-by-step guides, for solving specific problems. |
-| [Reference articles](../04.Reference/docs.en.md)   | Detailled description of all the services we are offering in the context of SysEleven Stack. |
+| [Reference articles](../04.Reference/docs.en.md)   | Detailed description of all the services we are offering in the context of SysEleven Stack. |
 | [Background articles](../05.Background/docs.en.md) | Explanations and Background information regarding our services. |
 
 ## Examples
