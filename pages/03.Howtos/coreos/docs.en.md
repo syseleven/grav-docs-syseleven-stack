@@ -17,7 +17,7 @@ taxonomy:
 
 * You should be able to use simple heat templates, like shown in the [first steps tutorial](../../02.Tutorials/02.firststeps/docs.en.md).
 * You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/openstack-cli/docs.en.md).
-* Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/04.api-access/docs.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/03.api-access/docs.en.md).
 
 ## Clone the example repository
 
@@ -48,7 +48,7 @@ After uploading the CoreOS image, you can create the stack:
 openstack stack create -t cluster.yaml <stack name> --parameter key_name=<ssh key name> --wait
 ```
 
-In this command, `key_name` references an SSH-Key that you created in the [SSH Tutorial](../01.ssh-keys/docs.en.md).  
+In this command, `key_name` references an SSH-Key that you created in the [SSH Tutorial](../../02.Tutorials/01.ssh-keys/docs.en.md).  
 You can start more than one instance setting the optional parameter `number_instances`. If you do not specify this parameter, only one instance will start up.
 
 ## Conclusion

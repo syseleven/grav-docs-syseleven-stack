@@ -126,7 +126,7 @@ pip install python-openstackclient python-heatclient
 ## Conclusion
 
 We have installed the OpenStack Client and we now can use it.  
-**To be able to use the OpenStack CLI tools the [API access](../04.api-access/docs.en.md) needs to be configured now.**
+**To be able to use the OpenStack CLI tools the [API access](../../02.Tutorials/03.api-access/docs.en.md) needs to be configured now.**
 
 If needed you can list all commands:
 

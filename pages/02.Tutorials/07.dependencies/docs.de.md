@@ -16,7 +16,7 @@ taxonomy:
 
 * Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](../02.firststeps/docs.en.md) gezeigt, wird vorausgesetzt.
 * Grundlagen zur Bedienung des [OpenStack CLI-Tools](../../03.Howtos/openstack-cli/docs.de.md).
-* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../04.api-access/docs.en.md) beschrieben.
+* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../03.api-access/docs.en.md) beschrieben.
 
 ## Das Problem: Der Aufbau von Ressourcen scheitert
 

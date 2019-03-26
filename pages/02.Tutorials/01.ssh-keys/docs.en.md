@@ -48,7 +48,7 @@ Once submitted we can use the key pair with this name in the API and Templates.
 
 * You need to have the login data for the SysEleven Stack API (user name and passphrase).
 * The [OpenStack CLI-Tools](../../03.Howtos/openstack-cli/docs.en.md) are installed in an up-to-date version.
-* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/docs.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../03.api-access/docs.en.md).
 * Knowledge how to utilise a terminal/SSH and SSH-keys.
 
 ### How to import?

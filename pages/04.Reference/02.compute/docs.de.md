@@ -40,9 +40,9 @@ Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen
 Local SSD Storage Instanz-Typen sind mit lokal angeschlossenem SSD Speicher mit geringer Latenz ausgestattet.
 Diese Instanzen können für bestimmte Anwendungsfälle, wie verteilte Datenbanken, vorteilhaft sein.
 
-! Verfügbarkeit und Datenbeständigkeit sind bei diesem Instanz-Typ [**verringert**](../05.Background/local-storage/docs.de.md#was-passiert-im-fall-einer-hardware-stoerung), weil die Daten nur lokal auf einem Server gespeichert werden.
+! Verfügbarkeit und Datenbeständigkeit sind bei diesem Instanz-Typ [**verringert**](../../05.Background/local-storage/docs.de.md#was-passiert-im-fall-einer-hardware-stoerung), weil die Daten nur lokal auf einem Server gespeichert werden.
 
-Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage](../05.Background/local-storage/docs.de.md).
+Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage](../../05.Background/local-storage/docs.de.md).
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
@@ -56,7 +56,7 @@ L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
 
 (*)
 Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden,
-[um weniger latenzkritische Daten dort zu speichern](../05.Background/local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
+[um weniger latenzkritische Daten dort zu speichern](../../05.Background/local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
 
 
 ## Flavor change (resizing)
