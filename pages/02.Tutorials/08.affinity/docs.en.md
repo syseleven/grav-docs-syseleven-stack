@@ -1,5 +1,5 @@
 ---
-title: 'Enhance availability for redundant services'
+title: '8. Enhance availability for redundant services'
 date: '08-08-2018 09:45'
 taxonomy:
     category:

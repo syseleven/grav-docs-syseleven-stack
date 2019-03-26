@@ -1,5 +1,5 @@
 ---
-title: 'Using local SSD storage'
+title: '9. Using local SSD storage'
 published: true
 date: '08-08-2018 10:11'
 taxonomy:

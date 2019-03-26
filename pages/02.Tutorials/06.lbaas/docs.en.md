@@ -1,5 +1,5 @@
 ---
-title: 'Create a LoadBalancer (as a Service)'
+title: '6. Create a LoadBalancer (as a Service)'
 date: '2019-02-28 17:30'
 taxonomy:
     category:

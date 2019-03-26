@@ -1,5 +1,5 @@
 ---
-title: 'Using logically structured Stack Resources'
+title: '7. Stack-Ressourcen logisch aufeinander aufbauen '
 published: true
 date: '08-08-2018 10:05'
 taxonomy:
@@ -7,20 +7,20 @@ taxonomy:
         - docs
 ---
 
-## Goal
+## Ziel
 
-* In this tutorial you will learn how to organise stack resources that depend on each other in a structured way.
-* One example use case is to create your network before you create and add servers to it.
+* In diesem Tutorial wird gezeigt, wie einzelne Resourcen in einem Stack aufeinander aufbauend organisiert werden können.
+* Damit ist es möglich, beispielsweise erst die Netzwerk-Infrastruktur aufzubauen, bevor dort Server gestartet werden.
 
-## Prerequisites
+## Vorraussetzungen
 
-* You should be able to use simple heat templates, like shown in the [first steps tutorial](../02.firststeps/docs.en.md).
-* You know the basics of using the [OpenStack CLI-Tools](../03.openstack-cli/docs.en.md).
-* Environment variables are set, like shown in the [API-Access-Tutorial](../04.api-access/docs.en.md).
+* Der Umgang mit einfachen Heat-Templates, wie [in den ersten Schritten](../02.firststeps/docs.en.md) gezeigt, wird vorausgesetzt.
+* Grundlagen zur Bedienung des [OpenStack CLI-Tools](../03.openstack-cli/docs.de.md).
+* Umgebungsvariablen gesetzt, wie im [API-Access-Tutorial](../04.api-access/docs.en.md) beschrieben.
 
-## The Problem: Creating Resources fails
+## Das Problem: Der Aufbau von Ressourcen scheitert
 
-If Resources are not created in a defined order, they will be created randomly. This can cause stack creation to fail:
+Wenn die Reihenfolge bestimmter Ressourcen nicht vorgegeben wird, werden die Ressourcen willkürlich angelegt. Der Aufbau eines Stack schlägt dann nach folgendem Muster fehl:
 
 ```shell
 syselevenstack@kickstart:~/failingDemo$ openstack stack create -t clustersetup.yaml -e clustersetup-env.yaml noDependencies --wait
@@ -48,9 +48,9 @@ syselevenstack@kickstart:~/failingDemo$ openstack stack create -t clustersetup.y
 syselevenstack@kickstart:~/failingDemo$
 ```
 
-## The Solution: Define the Order of Resource Creation
+## Die Lösung: saubere Definition der Reihenfolge
 
-In a Heat template you can define dependencies using the keyword `depends_on`:
+In einem Heat-Template werden Dependencies mittels `depends_on` definiert.
 
 ```plain
 resources:
@@ -61,11 +61,11 @@ resources:
 
   syseleven_subnet:
     type: OS::Neutron::Subnet
-    depends_on: [ syseleven_net ] # <-- Here the order while creating and deleting resourcces is defined.
+    depends_on: [ syseleven_net ] # <-- hiermit wird die Reihenfolge beim Anlegen und Löschen von Ressourcen sortiert.
 
 ```
 
-You can observe this using the option `--wait` when using the OpenStack command line tools to create a stack:
+Über den openstack CLI Client gestartet lässt sich das mit der Option `--wait` gut beobachten:
 
 ```shell
 syselevenstack@kickstart:~/heat-examples/example-setup$ openstack stack create -t clustersetup.yaml -e clustersetup-env.yaml depTest --wait
@@ -100,6 +100,6 @@ syselevenstack@kickstart:~/heat-examples/example-setup$ openstack stack create -
 +---------------------+-----------------------------------------------------------------+
 ```
 
-## Examples
+## Beispiel-Ressourcen
 
-We provided an [example setup](https://github.com/syseleven/heat-examples/tree/master/example-setup) on github which uses dependencies.
+Das auf Github veröffentlichte Beispiel [examplesetup](https://github.com/syseleven/heat-examples/tree/master/example-setup) setzt Dependencies ein.
