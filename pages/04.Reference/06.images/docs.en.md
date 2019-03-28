@@ -9,65 +9,37 @@ taxonomy:
 
 ## Overview
 
-SysEleven provides and maintains a set of images in the SysEleven Stack.
-The SysEleven Stack also offers the possibility to upload custom images.
+SysEleven provides and maintains a set of images in the SysEleven Stack. As soon as vendors publish new images, we will verify their origin, test them and publish them automatically.
 
-You can view and manage images both via the OpenStack API, as well as using the [Dashboard (GUI)](https://dashboard.cloud.syseleven.net).
+You can view and manage images both via the OpenStack API and CLI, as well as using the [Dashboard (GUI)](https://dashboard.cloud.syseleven.net).
 
-## Available Images
+If you need to maintain your own set of images, you can upload them yourself as well using the OpenStack API. It is possible to use tools like [Hashicorp Packer](https://www.packer.io/) to build your own images, for example with certain preinstalled software.
 
-### SysEleven Images
+## Available public images
 
-Images with the description **sys11 optimized** are built, optimized, tested and supported by SysEleven.
-Apart from building images from scratch SysEleven adjusts the file system alignment to work best with the underlying storage system.
+Name                             | Description                               |
+---------------------------------|-------------------------------------------|
+CentOS 7 (YYYY-MM-DD)            | Unmodified, directly from vendor          |
+CoreOS Stable (YYYY-MM-DD)       | Unmodified, directly from vendor          |
+Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor          |
+Ubuntu Bionic 18.04 (YYYY-MM-DD) | Unmodified, directly from vendor          |
+Ubuntu Xenial 16.04 (YYYY-MM-DD) | Unmodified, directly from vendor          |
+Rescue Ubuntu 16.04 sys11        | Modified, for use with nova rescue mode   |
+Rescue Ubuntu 18.04 sys11        | Modified, for use with nova rescue mode   |
 
-#### Pre-installed packages in SysEleven images
+## Image lifecycle
 
-```bash
-# All images
-cloud-init openssh-server python vim rng-tools wget curl cron psmisc man-db
-logrotate apt-transport-https software-properties-common language-pack-de xz-utils
+As soon as we upload a new version of an operating system image (recognizable by the current date in their name), we will change the visibility of the old image version:
 
-# Ubuntu 18.04 LTS only
-netplan.io gnupg2
-```
-
-### Standard Images
-
-Additionally to the self-bild images we also provide standard images from their original sources.
-Standard cloud images are supported with best effort.
-
-### Image overview
-
-Distro           | Name                             | Description                               |
------------------|----------------------------------|-------------------------------------------|
-Ubuntu 18.04 LTS | Ubuntu 18.04 LTS                 | Unmodified, directly from Canonical       |
-Ubuntu 18.04 LTS | Ubuntu 18.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   |
-Ubuntu 16.04 LTS | Ubuntu 16.04 LTS                 | Unmodified, directly from Canonical       |
-Ubuntu 16.04 LTS | Ubuntu 16.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   |
-Ubuntu 14.04 LTS | Ubuntu 14.04 LTS                 | Unmodified, directly from Canonical       |
-Ubuntu 14.04 LTS | Ubuntu 14.04 LTS sys11 optimized | Modified, optimized for SysEleven Stack   |
-Ubuntu 16.04 LTS | Rescue Ubuntu 16.04 sys11        | Modified, optimized for SysEleven Stack   |
-Ubuntu 18.04 LTS | Rescue Ubuntu 18.04 sys11        | Modified, optimized for SysEleven Stack   |
-
-## Distros
-
-SysEleven currently recommends to use the **Ubuntu 18.04 LTS sys11 optimized** image in the SysEleven Stack.
-
-Basically it is possible to run any kind of operating system within the SysEleven Stack as long as it supports running in [KVM](https://www.linux-kvm.org/page/Main_Page).
-Though Windows can be hosted in the SysEleven Stack we do not provide support for instances running Windows.
-
-The following distros are reported to be working in SysEleven Stack:
-
-* Debian
-* CentOS
-* CoreOS
+- If you are using an old public image, the image will stay visible within the project that is using it until you stop using it
+- If you are not using an old public image anymore, the image will become invisible for you after some time.
+- If a public image becomes completely unused by all customers, we will remove it
 
 ## Uploading images
 
 ### Image sources
 
-This table shows sources for commonly used images suitable for OpenStack.
+If you prefer maintaining your own set of images, this table shows sources for commonly used images suitable for OpenStack:
 
 Distro                    | URL |
 --------------------------|-----|
@@ -76,12 +48,12 @@ Ubuntu 16.04 LTS (Xenial) | `http://cloud-images.ubuntu.com/xenial/current/xenia
 Ubuntu 14.04 LTS (Trusty) | `http://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img` |
 Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
 CentOS 7                  | `https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2` |
-CoreOS                    | `https://stable.release.core-os.net/amd64-usr/current/coreos_production_openstack_image.img.bz2` |
+CoreOS Stable             | `https://stable.release.core-os.net/amd64-usr/current/coreos_production_openstack_image.img.bz2` |
 
-!!! The CoreOS image has to be decompressed before it can be imported
+!!! The CoreOS image must to be decompressed before uploading
 !!! `bunzip2 coreos_production_openstack_image.img.bz2`
 
 ### How to upload images?
 
-[This tutorial](../../03.Howtos/08.upload-images/docs.en.md) shows how to upload images via CLI and GUI.
+[The "Upload Images" how-to guide](../../03.Howtos/07.upload-images/docs.en.md) explains how to upload images via CLI and GUI.
 
