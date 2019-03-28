@@ -80,7 +80,7 @@ Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/curren
 CentOS 7                  | `https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2` |
 CoreOS Stable             | `https://stable.release.core-os.net/amd64-usr/current/coreos_production_openstack_image.img.bz2` |
 
-!!! The CoreOS image must to be decompressed before uploading
+!!! The CoreOS image must be decompressed before uploading
 !!! `bunzip2 coreos_production_openstack_image.img.bz2`
 
 ### How to upload images?
