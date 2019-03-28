@@ -27,13 +27,43 @@ Ubuntu Xenial 16.04 (YYYY-MM-DD) | Unmodified, directly from vendor          |
 Rescue Ubuntu 16.04 sys11        | Modified, for use with nova rescue mode   |
 Rescue Ubuntu 18.04 sys11        | Modified, for use with nova rescue mode   |
 
-## Image lifecycle
+### Public image lifecycle
 
 As soon as we upload a new version of an operating system image (recognizable by the current date in their name), we will change the visibility of the old image version:
 
 - If you are using an old public image, the image will stay visible within the project that is using it until you stop using it
 - If you are not using an old public image anymore, the image will become invisible for you after some time.
 - If a public image becomes completely unused by all customers, we will remove it
+
+### Public image properties
+
+Public images get certain properties that you can use for finding the latest images for example with Packer or Terraform.
+
+Property name                    | Description                               |
+---------------------------------|-------------------------------------------|
+ci_job_id                        | Internal reference number                 |
+ci_pipeline_id                   | Internal reference number                 |
+cpu_arch                         | Image only runs with this cpu architecture. Currently always `x86_64` |
+default_ssh_username             | If not configured otherwise using cloud-init, servers using this image can be accessed with this ssh username. |
+distribution                     | Unique identifier for the distribution and version (e.g. `ubuntu-bionic`) |
+os_distro                        | Name of the distribution (e.g. `ubuntu`)  |
+os_type                          | Operating system type (currently always `linux`) |
+os_version                       | Version of the operating system (e.g. `18.04`) |
+source_sha512sum                 | SHA512 hash of the original image file, as provided by the vendor under `source_url` |
+source_sha256sum                 | SHA256 hash of the original image file, as provided by the vendor under `source_url` |
+source_url                       | URL to the vendor image file that has been used for this image |
+
+Here is an example for filtering the images by properties using [Hasicorp Terraform's image data source](https://www.terraform.io/docs/providers/openstack/d/images_image_v2.html):
+
+```hcl
+data "openstack_images_image_v2" "ubuntu-bionic" {
+  most_recent = true
+  properties = {
+    os_version = "18.04"
+    os_distro = "ubuntu"
+  }
+}
+```
 
 ## Uploading images
 
