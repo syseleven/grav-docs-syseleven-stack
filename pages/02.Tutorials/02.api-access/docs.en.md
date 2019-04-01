@@ -1,5 +1,5 @@
 ---
-title: '2. Configure API-Access'
+title: 'Configure API-Access'
 published: true
 date: '02-08-2018 17:29'
 taxonomy:

@@ -1,5 +1,5 @@
 ---
-title: '4. Organising instances in group'
+title: 'Organising instances in group'
 published: true
 date: '08-08-2018 09:55'
 taxonomy:

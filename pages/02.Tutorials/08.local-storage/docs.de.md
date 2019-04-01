@@ -1,5 +1,5 @@
 ---
-title: '8. Lokalen SSD Speicher benutzen'
+title: 'Lokalen SSD Speicher benutzen'
 published: true
 date: '08-08-2018 10:11'
 taxonomy:

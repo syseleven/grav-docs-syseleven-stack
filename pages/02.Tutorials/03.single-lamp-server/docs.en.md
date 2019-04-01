@@ -1,5 +1,5 @@
 ---
-title: '3. Single LAMP Server'
+title: 'Single LAMP Server'
 published: true
 date: '02-08-2018 17:20'
 taxonomy:
