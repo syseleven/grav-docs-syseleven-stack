@@ -52,7 +52,7 @@ If you then continue to create the stack, the server(s) will be created using lo
 
 ## Implications
 
-See our [Background article about Local SSD Storage](../../05.Background/01.local-storage/docs.en.md) for more information about the implications of using local ssd storage.
+See our [Background article about Local SSD Storage](../../05.Background/02.local-storage/docs.en.md) for more information about the implications of using local ssd storage.
 
 ## Summary / Conclusion
 

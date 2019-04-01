@@ -53,7 +53,7 @@ Wenn Sie mit der Erstellung des Stacks fortfahren, werden der/die Server anstell
 
 ## Weitere Auswirkungen
 
-Bitte lesen Sie auch unseren [Hintergrundartikel zum Thema Local SSD Storage](../../05.Background/01.local-storage/docs.de.md), um mehr über die Auswirkungen des Einsatzes von Local SSD Storage zu erfahren.
+Bitte lesen Sie auch unseren [Hintergrundartikel zum Thema Local SSD Storage](../../05.Background/02.local-storage/docs.de.md), um mehr über die Auswirkungen des Einsatzes von Local SSD Storage zu erfahren.
 
 ## Zusammenfassung
 
