@@ -7,11 +7,6 @@ page-toc:
 
 As the vendor of the [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) we provide **free support** to our customers. We are happy to assist you.
 
-## Help Center
-
-The [Help Center](https://docs.syseleven.de/helpcenter/en/taxonomy?name=category&val=SysEleven-Stack) guides you toward answers to your questions.  
-Please first have a look into the [Help Center](https://docs.syseleven.de/helpcenter/en/taxonomy?name=category&val=SysEleven-Stack) before contacting us. Of course you are welcome to contact us at any time if you have further questions.
-
 ## Contact Support
 
 ### via E-Mail
@@ -26,5 +21,5 @@ You can open tickets directly if you already have an account in our [ticketsyste
 
 ## Further information
 
-* [Guideline for reporting issues](02.issue-reporting-guideline/default.en.md)
+* [Guideline for reporting issues](01.issue-reporting-guideline/default.en.md)
 * [Library of basic heat templates](https://github.com/syseleven/heat-examples)

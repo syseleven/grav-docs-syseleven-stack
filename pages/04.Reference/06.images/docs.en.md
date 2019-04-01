@@ -24,8 +24,8 @@ CoreOS Stable (YYYY-MM-DD)       | Unmodified, directly from vendor          |
 Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor          |
 Ubuntu Bionic 18.04 (YYYY-MM-DD) | Unmodified, directly from vendor          |
 Ubuntu Xenial 16.04 (YYYY-MM-DD) | Unmodified, directly from vendor          |
-Rescue Ubuntu 16.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/04.nova-rescue-mode/docs.en.md) |
-Rescue Ubuntu 18.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/04.nova-rescue-mode/docs.en.md) |
+Rescue Ubuntu 16.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
+Rescue Ubuntu 18.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
 
 ### Public image lifecycle
 
