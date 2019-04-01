@@ -1,5 +1,5 @@
 ---
-title: '7. Using logically structured Stack Resources'
+title: 'Using logically structured Stack Resources'
 published: true
 date: '08-08-2018 10:05'
 taxonomy:

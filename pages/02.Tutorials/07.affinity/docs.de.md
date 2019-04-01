@@ -1,5 +1,5 @@
 ---
-title: '8. Verfügbarkeit von redundanten Services erhöhen'
+title: 'Verfügbarkeit von redundanten Services erhöhen'
 date: '08-08-2018 09:45'
 taxonomy:
     category:

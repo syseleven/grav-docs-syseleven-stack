@@ -1,5 +1,5 @@
 ---
-title: '7. Stack-Ressourcen logisch aufeinander aufbauen '
+title: 'Stack-Ressourcen logisch aufeinander aufbauen '
 published: true
 date: '08-08-2018 10:05'
 taxonomy:

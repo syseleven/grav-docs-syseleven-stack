@@ -1,5 +1,5 @@
 ---
-title: '1. Import SSH keys'
+title: 'Import SSH keys'
 published: true
 date: '02-08-2018 17:23'
 taxonomy:

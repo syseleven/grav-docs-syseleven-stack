@@ -1,5 +1,5 @@
 ---
-title: '4. Instanzen in Gruppen organisieren'
+title: 'Instanzen in Gruppen organisieren'
 published: true
 date: '08-08-2018 09:55'
 taxonomy:
