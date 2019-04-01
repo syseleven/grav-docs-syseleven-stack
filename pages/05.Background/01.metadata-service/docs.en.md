@@ -9,17 +9,17 @@ taxonomy:
 
 ## Overview
 
-This article describes how servers retrieve instance-specific information like hostname, IP-address, SSH-keys and initialization scripts when started for the first time.
+This article describes how servers retrieve instance-specific information like hostname, IP address, SSH keys and initialization scripts when started for the first time.
 
 When a new instance starts for the first time, if you are using images that come with cloud-init preinstalled like [the public images we offer](../../04.Reference/06.images/docs.en.md), it will roughly do the following things:
 
 1. On first boot, the instance will look for attached networking interfaces and start a DHCP client on these interfaces.
 2. When a network connection has been established, cloud-init will try to retrieve information from the Metadata service
-3. Cloud-init will apply configuration settings like the hostname, SSH-keys and will run user-provided scripts
+3. Cloud-init will apply configuration settings like the hostname, SSH keys and will run user-provided scripts
 
 ## Metadata service
 
-The metadata service can be accessed via HTTP from any virtual machine inside running on the SysEleven Stack like so:
+The metadata service can be accessed via HTTP from any virtual machine running on the SysEleven Stack like so:
 
 ```bash
 $ curl http://169.254.169.254/
