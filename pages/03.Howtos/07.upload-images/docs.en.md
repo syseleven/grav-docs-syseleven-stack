@@ -20,8 +20,8 @@ There are three different ways to upload custom images.
 
 ### OpenStack-CLI
 
-You need to have the [OpenStack-CLI](../../03.Howtos/05.openstack-cli/docs.en.md) installed and configured.
-After [sourcing the openrc.sh](../../02.Tutorials/03.api-access/docs.en.md) you can easily upload your own image and use it right after, like this:
+You need to have the [OpenStack-CLI](../../03.Howtos/02.openstack-cli/docs.en.md) installed and configured.
+After [sourcing the openrc.sh](../../02.Tutorials/02.api-access/docs.en.md) you can easily upload your own image and use it right after, like this:
 
 ```shell
 glance --os-image-api-version 1 image-create --progress --is-public False --disk-format=qcow2 \

@@ -14,7 +14,7 @@ Ebenfalls ist ein einfacher Health-Check nutzbar.
 
 Leider kann die Client-IP zur Zeit nicht an die Systeme hinter dem LoadBalancer durchgereicht werden. Die IP des Lastverteilers wird als Ausgangsadresse angezeigt.
 
-Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../02.Tutorials/06.lbaas/docs.en.md) vorbereitet.
+Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../02.Tutorials/05.lbaas/docs.en.md) vorbereitet.
 
 !!! **Verfügbarkeit**
 !!! Die Funktionalität des LBaaS war bisher nur in der Region 'dbl' verfügbar, sie wurde im Februar 2019 auch in der Region 'cbk' bereitgestellt.
@@ -34,4 +34,4 @@ Nein, aktuell ist dies leider nicht möglich. Die IP des Lastverteilers wird als
 
 ### Wie kann ich den LBaaS nutzen?
 
-Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../02.Tutorials/06.lbaas/docs.en.md) vorbereitet.
+Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../02.Tutorials/05.lbaas/docs.en.md) vorbereitet.

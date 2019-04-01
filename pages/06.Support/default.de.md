@@ -7,11 +7,6 @@ page-toc:
 
 Als der Hersteller des [SysEleven Stacks](https://www.syseleven.de/produkte-services/syseleven-stack/) bieten wir **kostenlosen Support** für unsere Cloud-Kunden. Wir freuen uns Ihnen behilflich zu sein.
 
-## Hilfe Center
-
-Das [Hilfe Center](https://docs.syseleven.de/helpcenter/de/taxonomy?name=category&val=SysEleven-Stack) enthält Antworten auf allgemeine und spezifische Fragen.  
-Bitte schauen Sie zuerst ins [Hilfe Center](https://docs.syseleven.de/helpcenter/de/taxonomy?name=category&val=SysEleven-Stack) bevor Sie uns kontaktieren. Natürlich dürfen Sie uns gerne jederzeit kontaktieren, wenn Sie weitere Fragen oder Anliegen haben.
-
 ## Support kontaktieren
 
 ### via E-Mail
@@ -26,5 +21,5 @@ Sie können direkt ein Ticket im Web-Frontend erstellen, wenn Sie bereits einen 
 
 ## Weitere Informationen
 
-* [Leitfaden zum Öffnen eines Tickets](02.issue-reporting-guideline/default.de.md)
+* [Leitfaden zum Öffnen eines Tickets](01.issue-reporting-guideline/default.de.md)
 * [Beispiele für basic heat templates](https://github.com/syseleven/heat-examples)

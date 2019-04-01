@@ -12,7 +12,7 @@ taxonomy:
 SysEleven Stacks Compute Service is built on the OpenStack Nova project.
 It manages the life-cycle of compute instances in your environment. Its responsibilities include spawning, scheduling and decommissioning of virtual machines on demand.
 
-You can manage your compute instance both via our public [OpenStack API](../../02.Tutorials/03.api-access/docs.en.md) endpoints, as well as using the [Dashboard](https://dashboard.cloud.syseleven.net).
+You can manage your compute instance both via our public [OpenStack API](../../02.Tutorials/02.api-access/docs.en.md) endpoints, as well as using the [Dashboard](https://dashboard.cloud.syseleven.net).
 
 
 ## Flavors

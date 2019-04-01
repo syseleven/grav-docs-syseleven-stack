@@ -19,8 +19,8 @@ No dedicated virtual machines are required to use this service.
 
 ## Prerequisites
 
-* You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/05.openstack-cli/docs.en.md).
-* Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/03.api-access/docs.en.md).
+* You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md).
+* Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 * Following this tutorial you will create new OpenStack networks and subnets. If you want to connect two existing networks, skip steps one and two.
 
 ## How to setup a IPSec VPN

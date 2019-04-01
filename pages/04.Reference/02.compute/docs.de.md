@@ -12,7 +12,7 @@ taxonomy:
 SysEleven Stacks Compute Service basiert auf dem OpenStack Nova Projekt.
 Der Service verwaltet den Lebenszyklus einer Compute Instanz. Seine Zuständigkeit umfasst das erstellen, planen und  ausmustern von Compute Instanzen.
 
-Sowohl via unserer öffentlichen [OpenStack API](../../02.Tutorials/03.api-access/docs.en.md), als auch durch das [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) können Compute Instanzen verwaltet werden.
+Sowohl via unserer öffentlichen [OpenStack API](../../02.Tutorials/02.api-access/docs.en.md), als auch durch das [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) können Compute Instanzen verwaltet werden.
 
 
 ## Flavors

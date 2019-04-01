@@ -12,7 +12,7 @@ page-toc:
 
 ## Erste Schritte
 
-["Erste Schritte"](../02.Tutorials/02.firststeps/docs.en.md) zeigt, wie über das Dashboard des SysEleven Stack eine virtuelle Maschine gestartet werden kann.  
+["Erste Schritte"](../02.Tutorials/01.firststeps/docs.en.md) zeigt, wie über das Dashboard des SysEleven Stack eine virtuelle Maschine gestartet werden kann.  
 Weitere Beispiele zeigen, wie über die API des SysEleven Stack komplexere Setups verwaltet werden können.
 
 ## Inhalt
