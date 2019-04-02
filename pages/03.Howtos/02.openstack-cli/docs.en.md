@@ -59,7 +59,7 @@ Alternatively running a ["virtual environment" with `virtualenv`](#virtualenv) a
 After the installation of `PIP` finished, we need to install the OpenStack CLI client and required plugins, to be able to communicate with the corresponding OpenStack API:
 
 ```shell
-sudo -H pip install python-openstackclient python-heatclient
+sudo -H pip install python-openstackclient python-heatclient python-neutronclient
 ```
 
 ---
@@ -84,7 +84,7 @@ C:\Python27\Scripts>easy_install pip
 After the installation of `PIP` finished, we need to install the OpenStack CLI as last step:
 
 ```batch
-C:\Python27\Scripts>pip install python-openstackclient python-heatclient
+C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient
 ```
 
 ### OpenStack Plugins
@@ -118,7 +118,7 @@ If there are dependency errors alternatively running a ["virtual environment" wi
 After the installation of `PIP` finished, we need to install the OpenStack CLI client and required plugins, to be able to communicate with the corresponding OpenStack API:
 
 ```shell
-pip install python-openstackclient python-heatclient
+pip install python-openstackclient python-heatclient python-neutronclient
 ```
 
 ---
@@ -155,6 +155,7 @@ pip install python-heatclient
 Required plugins for the SysEleven Stack:
 
 * heat - Orchestration API
+* neutron - Network API
 
 ---
 
