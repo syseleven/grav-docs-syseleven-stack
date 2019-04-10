@@ -74,7 +74,7 @@ Let's say you have backend servers, frontend servers, and database servers. You 
 
 The `default` security group will be used if not specified otherwise. It allows all traffic in your OpenStack project that originates from a port with the `default` security group, and denies everything else.
 
-! Blocking ICMP traffic can lead to connectivity issues. Usually it is recommended not to block ICMP.
+! Blocking ICMP traffic can lead to connectivity issues, for example path mtu discovery over vpn connections relies on ICMP to be allowed. Usually it is recommended not to block ICMP.
 
 ### Firewall rules (FWaaS)
 
@@ -82,11 +82,11 @@ Using FWaaS you can enforce rules at network boundaries. *OpenStack Firewalls*  
 
 You can find [example code in our terraform-examples](https://github.com/syseleven/terraform-examples/tree/master/FWaaS) on GitHub.
 
-! Blocking ICMP traffic can lead to connectivity issues. Usually it is recommended not to block ICMP.
+! Blocking ICMP traffic can lead to connectivity issues, for example path mtu discovery over vpn connections relies on ICMP to be allowed. Usually it is recommended not to block ICMP.
 
 ### IPsec VPN (VPNaaS)
 
-Using VPNaaS you can establish secure connections between different regions and your own premises.
+With VPNaaS you can establish secure site-to-site tunnels from your premises to SysEleven Stack, so you can access cloud resources like if they were part of your network. This feature can also be used to interconnect different regions together.
 
 See our heat-examples on GitHub [for an example how to connect two regions using VPNaaS](https://github.com/syseleven/heat-examples/tree/master/vpn-site2site).
 
@@ -96,7 +96,7 @@ If you want to connect to the internet directly (e.g. using Fixed IPs instead of
 
 In addition to the standard `ext-net`, that is shared across all our customers, you will get your own external network. This gives you more control and can make it easier to integrate SysEleven Stack with your existing infrastructure.
 
-Please contact our customer support if you are interested at cloudsupport@syseleven.de.
+Please [contact our customer support](../../06.Support/default.en.md) if you are interested.
 
 ### L4 Load balancing (TCP) (Neutron-LBaaS)
 
