@@ -89,7 +89,7 @@ See our heat-examples on GitHub [for an example how to connect two regions using
 
 ### Customer public IP space (Bring your own IP)
 
-If you want to connect to the internet directly (e.g. using Fixed IPs instead of Floating IPs) or if you have special requirements, you can easily transfer your public IP networks to SysEleven Stack.
+If you want to connect to the internet without NAT (e.g. using Fixed IPs instead of Floating IPs) or if you have special requirements, you can easily transfer your public IP networks to SysEleven Stack.
 
 In addition to the standard `ext-net`, that is shared across all our customers, you will get your own external network. This gives you more control and can make it easier to integrate SysEleven Stack with your existing infrastructure.
 
