@@ -181,7 +181,7 @@ Danach starten wir die Instanz wieder.
 openstack server start <server uuid>
 ```
 
-# Zusammenfassung
+## Zusammenfassung
 
 * Wir haben über den Rescue Modus Zugriff auf das System/die Dateien.
 * Die Daten sind nun unter `/mnt/` verfügbar.
