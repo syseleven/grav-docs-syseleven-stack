@@ -23,6 +23,8 @@ Der Datenspeicher wird auf mehrere Server verteilt (SysEleven Distributed Storag
 
 Wir empfehlen diese Instanz-Typen für die meisten Anwendungen und Nutzungsfälle.
 
+#### Ausgeglichen
+
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
 M1 Micro    |  m1.micro   |  2GB   |   1   |   50GB   |
@@ -30,9 +32,35 @@ M1 Tiny     |  m1.tiny    |  4GB   |   1   |   50GB   |
 M1 Small    |  m1.small   |  8GB   |   2   |   50GB   |
 M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
 M1 Large    |  m1.large   | 32GB   |   8   |   50GB   |
+(M1 XLarge**)   |  (m1.xlarge)** | 64GB   |   16   |   50GB   |
+(M1 XXLarge**)  |  (m1.xxlarge)** | 128GB|   32   |   50GB   |
+
+#### CPU-Optimiert
+
+Name            | API Name     | Memory | vCPUs | Storage* |
+----------------|--------------|--------|-------|----------|
+M1 CPU Tiny     |  m1c.tiny    |  2GB   |   1   |   50GB   |
+M1 CPU Small    |  m1c.small   |  4GB   |   2   |   50GB   |
+M1 CPU Medium   |  m1c.medium  | 8GB    |   4   |   50GB   |
+M1 CPU Large    |  m1c.large   | 16GB   |   8   |   50GB   |
+M1 CPU XLarge   |  m1c.xlarge  | 32GB   |   16   |   50GB   |
+(M1 CPU XXLarge)** |  (m1c.xxlarge)** | 64GB   |   32   |   50GB   |
+
+#### RAM-Optimiert
+
+Name            | API Name     | Memory | vCPUs | Storage* |
+----------------|--------------|--------|-------|----------|
+M1 RAM Tiny     |  m1r.tiny    |  8GB   |   1   |   50GB   |
+M1 RAM Small    |  m1r.small   | 16GB   |   2   |   50GB   |
+M1 RAM Medium   |  m1r.medium  | 32GB   |   4   |   50GB   |
+(M1 RAM Large)**  |  m1r.large | 64GB   |   8   |   50GB   |
+(M1 RAM XLarge)** |  m1r.xlarge| 128GB  |   16   |   50GB   |
 
 (*)
 Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden.
+
+(**)
+Nur auf Anfrage erhältlich
 
 ### Local SSD Storage Instanz-Typen (L1)
 
@@ -42,6 +70,8 @@ Diese Instanzen können für bestimmte Anwendungsfälle, wie verteilte Datenbank
 ! Verfügbarkeit und Datenbeständigkeit sind bei diesem Instanz-Typ [**verringert**](../../05.Background/02.local-storage/docs.de.md#was-passiert-im-fall-einer-hardware-stoerung), weil die Daten nur lokal auf einem Server gespeichert werden.
 
 Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage](../../05.Background/02.local-storage/docs.de.md).
+
+#### Ausgeglichen
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
@@ -53,10 +83,33 @@ L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB   |
 L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB   |
 L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
 
+#### CPU-Optimiert
+
+Name          | API Name    | Memory | vCPUs | Storage* |
+--------------|-------------|--------|-------|----------|
+L1 CPU Tiny   | l1c.tiny     |   2GB  |   1   |   25GB   |
+L1 CPU Small  | l1c.small    |   4GB  |   2   |   50GB   |
+L1 CPU Medium | l1c.medium   |   8GB  |   4   |  100GB   |
+L1 CPU Large    | l1c.large    |  16GB  |   8   |  200GB   |
+L1 CPU XLarge   | l1c.xlarge   |  32GB  |  16   |  400GB   |
+L1 CPU 2XLarge  | l1c.2xlarge  |  64GB  |  32   |  800GB   |
+L1 CPU 4XLarge  | l1c.4xlarge  | 128GB  |  64   | 1600GB   |
+
+#### RAM-Optimiert
+
+Name          | API Name    | Memory | vCPUs | Storage* |
+--------------|-------------|--------|-------|----------|
+L1 RAM Tiny   | l1r.tiny     |   8GB  |   1   |   25GB   |
+L1 RAM Small  | l1r.small    |  16GB  |   2   |   50GB   |
+L1 RAM Medium | l1r.medium   |  32GB  |   4   |  100GB   |
+L1 RAM Large    | l1r.large  |  64GB  |   8   |  200GB   |
+L1 RAM XLarge   | l1r.xlarge | 128GB  |  16   |  400GB   |
+L1 RAM 2XLarge  | l1r.2xlarge| 256GB  |  32   |  800GB   |
+
+
 (*)
 Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden,
 [um weniger latenzkritische Daten dort zu speichern](../../05.Background/02.local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
-
 
 ## Flavor change (resizing)
 
