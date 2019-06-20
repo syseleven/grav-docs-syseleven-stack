@@ -105,7 +105,7 @@ To install the required packages, we use [PIP](https://en.wikipedia.org/wiki/Pip
 yum install python-minimal python-pip
 ```
 
-#### Ubuntu oder Debian
+#### Ubuntu or Debian
 
 ```shell
 apt install -q -y python-minimal python-pip
