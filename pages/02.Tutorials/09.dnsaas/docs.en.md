@@ -186,7 +186,10 @@ $ openstack recordset delete domain.example. www.domain.example.
 | Unable to create subzone in another tenants zone | The subzone must be created by the tenant owning the zone and can then be [transferred](#transfer-of-zones). |
 | Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be [transferred](#transfer-of-zones). |
 
-### How to manage PTR Records (reverse DNS) of floating IP-Addresses
+### How to manage PTR records (reverse DNS) of floating IP addresses
+
+!!! **Feature unavailable**
+!!! Due to technical issues, the management of reverse DNS records is not yet implemented.
 
 First, obtain a list of manageable PTR Records.
 

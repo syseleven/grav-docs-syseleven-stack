@@ -68,7 +68,10 @@ $ openstack recordset create --type A --record 123.45.67.89 domain.example. www.
 TODO
 
 
-### Set a PTR Record (reverse DNS) for your floating IP-Address
+### Set a PTR Record (reverse DNS) for your floating IP address
+
+!!! **Feature unavailable**
+!!! Due to technical issues, the management of reverse DNS records is not yet implemented.
 
 First, obtain the ID of manageable PTR Records.
 
