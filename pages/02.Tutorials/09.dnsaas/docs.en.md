@@ -109,7 +109,7 @@ $ openstack recordset create --type A --record 123.45.67.89 domain.example. www.
 #### Update records within that zone
 
 ```shell
-$ openstack recordset set --description "Webserver FIP" --ttl 600 --record 123.45.67.88  domain.example. www.domain.example.
+$ openstack recordset set --description "Webserver FIP" --ttl 600 --record 123.45.67.88 domain.example. www.domain.example.
 +-------------+--------------------------------------+
 | Field       | Value                                |
 +-------------+--------------------------------------+
@@ -128,7 +128,7 @@ $ openstack recordset set --description "Webserver FIP" --ttl 600 --record 123.4
 | zone_id     | 01234567-89ab-cdef-0123-456789abcdef |
 | zone_name   | domain.example.                      |
 +-------------+--------------------------------------+
-$ openstack recordset set --no-description --no-ttl --record 123.45.67.89  mbernhardt.invaliddomain.de. www.mbernhardt.invaliddomain.de.
+$ openstack recordset set --no-description --no-ttl --record 123.45.67.89 domain.example. www.domain.example.
 +-------------+--------------------------------------+
 | Field       | Value                                |
 +-------------+--------------------------------------+
@@ -182,9 +182,9 @@ $ openstack recordset delete domain.example. www.domain.example.
 | More than one label is required | It is not allowed to create a zone for a top level domain. |
 | Zone name cannot be the same as a TLD | It is not allowed to create a zone for a known top level domain. |
 | u'domain.example' is not a 'domainname'| Domain names must be fully qualified, i.e. end with a dot. |
-| Please delete any subzones before deleting this zone | This is a security measure to prevent you from losing control over your zone after having [transferred](#transfer-of-zones) subzones |
-| Unable to create subzone in another tenants zone | The subzone must be created by the tenant owning the zone and can then be transferred |
-| Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be transferred |
+| Please delete any subzones before deleting this zone | This is a security measure to prevent you from losing control over your zone after having [transferred](#transfer-of-zones) subzones. |
+| Unable to create subzone in another tenants zone | The subzone must be created by the tenant owning the zone and can then be [transferred](#transfer-of-zones). |
+| Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be [transferred](#transfer-of-zones). |
 
 ### How to manage PTR Records (reverse DNS) of floating IP-Addresses
 
