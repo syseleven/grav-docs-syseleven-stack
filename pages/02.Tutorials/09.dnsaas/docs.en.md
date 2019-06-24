@@ -36,12 +36,33 @@ First you create a dns zone with the following command:
 
 ```shell
 $ openstack zone create --email "email@domain.example" domain.example.
++----------------+--------------------------------------+
+| Field          | Value                                |
++----------------+--------------------------------------+
+| action         | CREATE                               |
+| attributes     |                                      |
+| created_at     | 2019-06-24T15:41:22.000000           |
+| description    | None                                 |
+| email          | email@example.de                     |
+| id             | 01234567-89ab-cdef-0123-456789abcdef |
+| masters        |                                      |
+| name           | domain.example.                      |
+| pool_id        | 14234f0f-1234-4444-6789-758006f43802 |
+| project_id     | 0123456789abcdef0123456789abcdef     |
+| serial         | 1561390882                           |
+| status         | PENDING                              |
+| transferred_at | None                                 |
+| ttl            | 21600                                |
+| type           | PRIMARY                              |
+| updated_at     | None                                 |
+| version        | 1                                    |
++----------------+--------------------------------------+
 ```
 
 You can also create subzones with the following command:
 
 ```shell
-$ openstack zone create --email "email@domain.example" sub.domain.example.
+openstack zone create --email "email@domain.example" sub.domain.example.
 ```
 
 To indicate a valid email address is a requirement by the relevant DNS standards (RFC) and thus also mandatory for OpenStack.
@@ -55,12 +76,33 @@ To create a secondary or slave zone, thats content are actually managed by (and 
 
 ```shell
 $ openstack zone create --type SECONDARY --masters 123.45.67.89 -- secondary.domain.example.
++----------------+--------------------------------------+
+| Field          | Value                                |
++----------------+--------------------------------------+
+| action         | CREATE                               |
+| attributes     |                                      |
+| created_at     | 2019-06-24T15:43:56.000000           |
+| description    | None                                 |
+| email          | hostmaster@example.com               |
+| id             | 01234567-89ab-cdef-0123-456789abcdef |
+| masters        | 123.45.67.89                         |
+| name           | secondary.domain.example.            |
+| pool_id        | 14234f0f-1234-4444-6789-758006f43802 |
+| project_id     | 0123456789abcdef0123456789abcdef     |
+| serial         | 1                                    |
+| status         | PENDING                              |
+| transferred_at | None                                 |
+| ttl            | 21600                                |
+| type           | SECONDARY                            |
+| updated_at     | None                                 |
+| version        | 1                                    |
++----------------+--------------------------------------+
 ```
 
 Attention: Because more than one master ip address can be specified, the list must either be terminated with a double dash or the whole parameter with its list be moved to the end of the command line.
 
 ```shell
-$ openstack zone create secondary.domain.example. --type SECONDARY --masters 123.45.67.89
+openstack zone create secondary.domain.example. --type SECONDARY --masters 123.45.67.89
 ```
 
 

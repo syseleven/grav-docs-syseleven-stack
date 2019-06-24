@@ -36,6 +36,27 @@ Create a dns zone with the following command:
 
 ```shell
 $ openstack zone create --email "email@domain.example" domain.example.
++----------------+--------------------------------------+
+| Field          | Value                                |
++----------------+--------------------------------------+
+| action         | CREATE                               |
+| attributes     |                                      |
+| created_at     | 2019-06-24T15:41:22.000000           |
+| description    | None                                 |
+| email          | email@example.de                     |
+| id             | 01234567-89ab-cdef-0123-456789abcdef |
+| masters        |                                      |
+| name           | domain.example.                      |
+| pool_id        | 14234f0f-1234-4444-6789-758006f43802 |
+| project_id     | 0123456789abcdef0123456789abcdef     |
+| serial         | 1561390882                           |
+| status         | PENDING                              |
+| transferred_at | None                                 |
+| ttl            | 21600                                |
+| type           | PRIMARY                              |
+| updated_at     | None                                 |
+| version        | 1                                    |
++----------------+--------------------------------------+
 ```
 
 Create a dns record with the following command:
