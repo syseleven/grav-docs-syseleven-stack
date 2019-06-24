@@ -342,6 +342,7 @@ For reverse DNS records you do not need to take care about the zone creation and
 | Problem | Solution |
 |---|---|
 | Duplicate Record | see [changing an entry](#edit-ptr). |
+| Duplicate Record | see [changing an entry](../../02.Tutorials/09.dnsaas/docs.en.md#edit-ptr). |
 
 ### Import/Export of Zones
 
