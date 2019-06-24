@@ -27,7 +27,7 @@ If your CLI-Tools or Kickstart Server have been installed prior to the feature r
 
 ### Create your Webserver
 
-This is not the main focus of this document, but you can work through [this howto]() first if you don't already have one.
+This is not the main focus of this document, but you can work through [this howto](../../02.Tutorials/03.single-lamp-server/docs.en.md) first if you don't already have one.
 
 
 ### Prepare the Zone and Records in OpenStack/Designate
