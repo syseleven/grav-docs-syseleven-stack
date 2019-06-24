@@ -279,10 +279,17 @@ $ openstack ptr record list
 +------------------------------------------+--------------------------+-------------+-------+
 ```
 
-The reverse DNS record can now be looked up with your preferred utility.
+The reverse DNS record can now be looked up with your preferred utility directly on the nameserver.
 
 ```shell
-$ dig +short @ns01.cloud.syseleven.net -x 195.192.129.177 ptr
+$ dig +short @ns01.cloud.syseleven.net -x 123.45.67.89 ptr
+hostname.domain.example.
+```
+
+We can verify that the reverse DNS records resolve correctly in the public Domain Name System.
+
+```shell
+$ dig +short -x 123.45.67.89 ptr
 hostname.domain.example.
 ```
 
