@@ -35,6 +35,12 @@ If your CLI-Tools or Kickstart Server have been installed prior to the feature r
 First you create a dns zone with the following command:
 
 ```shell
+$ openstack zone create --email "email@domain.example" domain.example.
+```
+
+You can also create subzones with the following command:
+
+```shell
 $ openstack zone create --email "email@domain.example" sub.domain.example.
 ```
 
@@ -43,6 +49,22 @@ To indicate a valid email adress is a requirement by the relevant DNS standards 
 The zone name can be any publicly available domain name or subdomain name. Top level domain names are not allowed.
 
 #### Have the zone delegated to the SysEleven Stack Nameservers
+
+The delegation of a zone will be done by the appropriate registry for the toplevel domain where the registered domain belongs to. Most likely it will be triggered via your registrar or reseller. They need to know the nameservers that the domain shall be delegated to. You can obtain that list with the following command
+
+```shell
+$ openstack recordset list domain.example. --type ns
++--------------------------------------+-----------------+------+---------------------------+--------+--------+
+| id                                   | name            | type | records                   | status | action |
++--------------------------------------+-----------------+------+---------------------------+--------+--------+
+| 01234567-89ab-cdef-0123-456789abcdef | domain.example. | NS   | ns02.cloud.syseleven.net. | ACTIVE | NONE   |
+|                                      |                 |      | ns04.cloud.syseleven.net. |        |        |
+|                                      |                 |      | ns03.cloud.syseleven.net. |        |        |
+|                                      |                 |      | ns01.cloud.syseleven.net. |        |        |
++--------------------------------------+-----------------+------+---------------------------+--------+--------+
+```
+
+In this case you will have to give the nameserver names `ns01.cloud.syseleven.net` thru `ns04.cloud.syseleven.net` to your registrar. They will then arrange for the delegation. Some registries perform sanitiy checks on the nameservers before executing a delegation. If you encounter problems with the registry, please contact our support.
 
 #### Create records within that zone
 
