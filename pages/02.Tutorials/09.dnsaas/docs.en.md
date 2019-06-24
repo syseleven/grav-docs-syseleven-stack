@@ -6,7 +6,7 @@ taxonomy:
         - docs
 ---
 
-## DNS as a Service (DNSaaS) Tutorial
+## DNS as a service (DNSaaS) tutorial
 
 ### Overview
 
@@ -22,7 +22,7 @@ No dedicated virtual machines are required to use this service.
 * You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 
-If your CLI-Tools or Kickstart Server have been installed prior to the feature release, you may need to install the designate client (plugin).
+If your CLI-Tools or kickstart server have been installed prior to the feature release, you may need to install the designate client (plugin).
 
 ```shell
 (sudo) pip install python-openstackclient python-designateclient
@@ -30,7 +30,7 @@ If your CLI-Tools or Kickstart Server have been installed prior to the feature r
 
 ### How to create a DNS zone and manage its records
 
-#### Create a zone
+#### Create a (primary) zone
 
 First you create a dns zone with the following command:
 
@@ -44,11 +44,27 @@ You can also create subzones with the following command:
 $ openstack zone create --email "email@domain.example" sub.domain.example.
 ```
 
-To indicate a valid email adress is a requirement by the relevant DNS standards (RFC) and thus also mandatory for OpenStack Designate. 
+To indicate a valid email address is a requirement by the relevant DNS standards (RFC) and thus also mandatory for OpenStack.
 
 The zone name can be any publicly available domain name or subdomain name. Top level domain names are not allowed.
 
-#### Have the zone delegated to the SysEleven Stack Nameservers
+
+#### Create a secondary (slave) zone
+
+To create a secondary or slave zone, thats content are actually managed by (and obtained from) the primary or master server, you need to specify the master server(s):
+
+```shell
+$ openstack zone create --type SECONDARY --masters 123.45.67.89 -- secondary.domain.example.
+```
+
+Attention: Because more than one master ip address can be specified, the list must either be terminated with a double dash or the whole parameter with its list be moved to the end of the command line.
+
+```shell
+$ openstack zone create secondary.domain.example. --type SECONDARY --masters 123.45.67.89
+```
+
+
+#### Have the zone delegated to the SysEleven Stack nameservers
 
 The delegation of a zone will be done by the appropriate registry for the toplevel domain where the registered domain belongs to. Most likely it will be triggered via your registrar or reseller. They need to know the nameservers that the domain shall be delegated to. You can obtain that list with the following command
 
@@ -64,11 +80,98 @@ $ openstack recordset list domain.example. --type ns
 +--------------------------------------+-----------------+------+---------------------------+--------+--------+
 ```
 
-In this case you will have to give the nameserver names `ns01.cloud.syseleven.net` thru `ns04.cloud.syseleven.net` to your registrar. They will then arrange for the delegation. Some registries perform sanitiy checks on the nameservers before executing a delegation. If you encounter problems with the registry, please contact our support.
+In this case you will have to give the nameserver names `ns01.cloud.syseleven.net` thru `ns04.cloud.syseleven.net` to your registrar. They will then arrange for the delegation. Some registries perform sanity checks on the nameservers before executing a delegation. If you encounter problems with the registry, please contact our support.
 
 #### Create records within that zone
 
+```shell
+$ openstack recordset create --type A --record 123.45.67.89 domain.example. www.domain.example.
++-------------+--------------------------------------+
+| Field       | Value                                |
++-------------+--------------------------------------+
+| action      | CREATE                               |
+| created_at  | 2019-06-21T15:39:36.000000           |
+| description | None                                 |
+| id          | 01234567-89ab-cdef-0123-456789abcdef |
+| name        | www.domain.example.                  |
+| project_id  | 0123456789abcdef0123456789abcdef     |
+| records     | 123.45.67.89                         |
+| status      | PENDING                              |
+| ttl         | None                                 |
+| type        | A                                    |
+| updated_at  | None                                 |
+| version     | 1                                    |
+| zone_id     | 01234567-89ab-cdef-0123-456789abcdef |
+| zone_name   | domain.example.                      |
++-------------+--------------------------------------+
+```
+
 #### Update records within that zone
+
+```shell
+$ openstack recordset set --description "Webserver FIP" --ttl 600 --record 123.45.67.88  domain.example. www.domain.example.
++-------------+--------------------------------------+
+| Field       | Value                                |
++-------------+--------------------------------------+
+| action      | UPDATE                               |
+| created_at  | 2019-06-21T15:39:36.000000           |
+| description | Webserver FIP                        |
+| id          | 01234567-89ab-cdef-0123-456789abcdef |
+| name        | www.domain.example.                  |
+| project_id  | 0123456789abcdef0123456789abcdef     |
+| records     | 123.45.67.88                         |
+| status      | PENDING                              |
+| ttl         | 600                                  |
+| type        | A                                    |
+| updated_at  | 2019-06-24T10:44:33.000000           |
+| version     | 2                                    |
+| zone_id     | 01234567-89ab-cdef-0123-456789abcdef |
+| zone_name   | domain.example.                      |
++-------------+--------------------------------------+
+$ openstack recordset set --no-description --no-ttl --record 123.45.67.89  mbernhardt.invaliddomain.de. www.mbernhardt.invaliddomain.de.
++-------------+--------------------------------------+
+| Field       | Value                                |
++-------------+--------------------------------------+
+| action      | UPDATE                               |
+| created_at  | 2019-06-21T15:39:36.000000           |
+| description | None                                 |
+| id          | 01234567-89ab-cdef-0123-456789abcdef |
+| name        | www.domain.example.                  |
+| project_id  | 0123456789abcdef0123456789abcdef     |
+| records     | 123.45.67.89                         |
+| status      | PENDING                              |
+| ttl         | None                                 |
+| type        | A                                    |
+| updated_at  | 2019-06-24T10:46:19.000000           |
+| version     | 3                                    |
+| zone_id     | 01234567-89ab-cdef-0123-456789abcdef |
+| zone_name   | domain.example.                      |
++-------------+--------------------------------------+
+```
+
+#### Remove records from that zone
+
+```shell
+$ openstack recordset delete domain.example. www.domain.example.
++-------------+--------------------------------------+
+| Field       | Value                                |
++-------------+--------------------------------------+
+| action      | DELETE                               |
+| created_at  | 2019-06-21T15:39:36.000000           |
+| description | None                                 |
+| id          | 01234567-89ab-cdef-0123-456789abcdef |
+| name        | www.domain.example.                  |
+| project_id  | 0123456789abcdef0123456789abcdef     |
+| records     | 123.45.67.89                         |
+| status      | PENDING                              |
+| ttl         | None                                 |
+| type        | A                                    |
+| updated_at  | 2019-06-24T10:51:43.000000           |
+| version     | 3                                    |
+| zone_id     | 01234567-89ab-cdef-0123-456789abcdef |
+| zone_name   | domain.example.                      |
++-------------+--------------------------------------+
+```
 
 #### Frequent problems and their solutions
 
@@ -83,7 +186,7 @@ Please delete any subzones before deleting this zone|
 Unable to createsubzone in another tenants zone|
 Unable to create zone because another tenant owns a subzone of the zone|
 
-### How to manage PTR Records (reverse DNS) of floating IP-Adresses
+### How to manage PTR Records (reverse DNS) of floating IP-Addresses
 
 First, obtain a list of manageable PTR Records.
 
