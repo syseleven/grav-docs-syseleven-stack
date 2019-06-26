@@ -63,7 +63,7 @@ It is not automatically possible for us to verify ownership of your domain names
 
 It is possible to use our authoritative name server infrastructure together with a hidden master that you maintain yourself. You can accomplish that by creating a secondary zone. Using the OpenStack CLI you can create it like this: `openstack zone create --type secondary --masters master-1.example.com. master-2.example.com`.
 
-Our authoritative name servers will respect the `Refresh`, `Retry`, `Expire` and `TTL` timings of the configured DNS master and our servers will poll for updates using the `AXFR` protocol accordingly.
+Our authoritative name servers will respect the `Refresh`, `Retry`, `Expire` and `TTL` timings in the SOA record as specified by the configured DNS master and our servers will poll for updates using the `AXFR` protocol accordingly. You can expect the `AXFR` to originate from one of our public authoritative DNS servers (`ns01.cloud.syseleven.net`, `ns02.cloud.syseleven.net`, `ns03.cloud.syseleven.net` or `ns04.cloud.syseleven.net`).
 
 Sending the `NOTIFY` message to our DNS servers is not supported.
 
