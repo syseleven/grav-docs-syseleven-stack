@@ -23,7 +23,7 @@ The DNS service is shared between all regions. You will need to choose a region 
 | ----------------------------------------|----------------|-------------
 | Manage zones and recordsets             | yes            | yes
 | Zone transfer to different projects     | yes            | yes
-| Slave Zones                             | yes            | yes
+| Secondary Zones                         | yes            | yes
 | Zone Import / Export                    | yes            | yes
 | PTR records for Floating IPs            | no             | no
 
@@ -57,9 +57,9 @@ It is possible to transfer zones If they need to be maintained using different O
 
 It is not automatically possible for us to verify ownership of your domain names, so in very rare circumstances your domain name might have been claimed by another customer already. Please contact our customer support in this case.
 
-### Slave Zones
+### Secondary Zones
 
-It is possible to use our authoritative name server infrastructure together with a hidden master that you maintain yourself. You can accomplish that by creating a slave zone.
+It is possible to use our authoritative name server infrastructure together with a hidden master that you maintain yourself. You can accomplish that by creating a secondary zone. Using the OpenStack CLI you can create it like this: `openstack zone create --type secondary --masters master-1.example.com. master-2.example.com`.
 
 Our authoritative name servers will respect the `Refresh`, `Retry`, `Expire` and `TTL` timings of the configured DNS master and our servers will poll for updates using the `AXFR` protocol accordingly.
 
