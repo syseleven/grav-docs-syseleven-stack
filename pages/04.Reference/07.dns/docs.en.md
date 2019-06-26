@@ -17,6 +17,8 @@ You can manage DNS zones and records both via our [public OpenStack API endpoint
 
 The DNS service is shared between all regions. You will need to choose a region in the Dashboard or using the OpenStack CLI environment variable `OS_REGION`, but it does not matter which one you choose. DNS objects are always global.
 
+!! The SysEleven Stack DNS service is currently in the test phase. The test phase ends in September 2019. Until then you can use all features free of charge.
+
 ### Feature Support Matrix
 
 | OpenStack Designate Feature             |   CBK region   |   DBL region
