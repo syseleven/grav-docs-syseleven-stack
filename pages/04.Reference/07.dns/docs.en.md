@@ -31,7 +31,7 @@ The DNS service is shared between all regions. You will need to choose a region 
 
 ### Manage zones and recordsets
 
-A `zone` object represents a DNS Zone, e.g. your domain name and your subdomain names. If you want to use the SysEleven Stack DNS service for your domain, you need to delegate it to our DNS servers. <Link to how-to>
+A `zone` object represents a DNS Zone, e.g. your domain name and your subdomain names. If you want to use the SysEleven Stack DNS service for your domain, you need to delegate it to our DNS servers.
 
 A `recordset` object represents DNS records. One recordset usually consists of a name (e.g. `example.com.` or `www.example.com.`). a type (e.g. `A` for IPv4 records) and one or more records (e.g. `10.0.0.1` and `10.0.0.2`).
 
