@@ -14,8 +14,7 @@ OpenStack's Designate provides a Domain Name Service as a service (DNSaaS).
 This means that zones and records can be configured within OpenStack via an API and will be queryable via DNS from public nameservers run by SysEleven.
 Users do not require any dedicated virtual machines to use this service.
 
-!!! **Feature availability**
-!!! DNSaaS was released 06/2019. Reliability and performance may not immediately be fully established.
+!! The SysEleven Stack DNS service is currently in the test phase. The test phase ends in September 2019. Until then you can use all features free of charge.
 
 ### Prerequisites
 
@@ -235,7 +234,7 @@ $ openstack recordset delete domain.example. www.domain.example.
 | u'domain.example' is not a 'domainname'| Domain names must be fully qualified, i.e. end with a dot. |
 | Please delete any subzones before deleting this zone | This is a security measure to prevent you from losing control over your zone after having [transferred](#transfer) subzones. |
 | Unable to create subzone in another tenants zone | The subzone must be created by the tenant owning the zone and can then be [transferred](#transfer). |
-| Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be [transferred](#transfer). |
+| Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be [transferred](#transfer). |
 
 
 ### Managing reverse DNS (PTR records) for floating IP addresses
@@ -246,12 +245,12 @@ $ openstack recordset delete domain.example. www.domain.example.
 
 ### Import/Export
 
-There is a feature to import/export standard DNS Master Zone Files. This feature is intended to facilitate moving your zones to and from SysEleven Stack. This is described in a [Howto]().
+There is a feature to import/export standard DNS Master Zone Files. This feature is intended to facilitate moving your zones to and from SysEleven Stack. This will be described in a [Howto](../../03.Howtos/docs.en.md).
 
 
 ### Transfer
 
-Zones can be transferred between different projects within SysEleven Stack. This process is described in detail in our [Howto]().
+Zones can be transferred between different projects within SysEleven Stack. This process will be described in detail in our planned [Howto](../../03.Howtos/docs.en.md).
 
 
 ### Collisions
