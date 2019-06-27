@@ -108,7 +108,7 @@ In this case you will have to give the nameserver names `ns01.cloud.syseleven.ne
 ### Set a PTR Record (reverse DNS) for your floating IP address
 
 !!! **Feature unavailable**
-!!! While generally possible in OpenStacks Designate component, this is unfortunately not yet implemented in SysEleven Stack due to technical restrictions. We are working on removing these restrictions.
+!!! While generally possible in OpenStacks Designate component, this is unfortunately not yet implemented in SysEleven Stack due to technical restrictions. We are working on removing these obstacles.
 
 
 ### Conclusion

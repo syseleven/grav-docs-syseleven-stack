@@ -1,5 +1,5 @@
 ---
-title: 'DNS as a Service (DNSaaS) Tutorial'
+title: 'DNS as a service tutorial'
 date: '24-07-2019 12:00'
 taxonomy:
     category:
@@ -367,7 +367,7 @@ $ openstack recordset delete domain.example. www.domain.example.
 ### Managing reverse DNS (PTR records) for floating IP addresses
 
 !!! **Feature unavailable**
-!!! While generally possible in OpenStacks Designate component, this is unfortunately not yet implemented in SysEleven Stack due to technical restrictions. We are working on removing these restrictions.
+!!! While generally possible in OpenStacks Designate component, this is unfortunately not yet implemented in SysEleven Stack due to technical restrictions. We are working on removing these obstacles.
 
 
 ### Import/Export
