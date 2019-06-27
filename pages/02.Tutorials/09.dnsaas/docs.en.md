@@ -11,7 +11,7 @@ taxonomy:
 ### Overview
 
 OpenStack's Designate provides a Domain Name Service as a service (DNSaaS).
-This means that zones and records can be configured within OpenStack via an API and will be queryable via DNS protocol from public nameservers run by SysEleven.
+This means that zones and records can be configured within OpenStack via an API (also see the [reference guide](../../04.Reference/07.dns/docs.en.md)) and will be queryable via DNS protocol from public nameservers run by SysEleven.
 This functionality can be very handy to automate updates to dns records caused by failovers or deployments, it also facilitatess automated renewal of letsencrypt ssl certificates.
 
 The tutorial is intended to make you familiar with the main functionality and aware of the presence of more advanced features of the DNS service of the SysEleven Stack.
