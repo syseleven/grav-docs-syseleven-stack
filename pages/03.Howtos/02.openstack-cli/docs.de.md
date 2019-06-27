@@ -59,7 +59,7 @@ Alternativ kann eine ["virtuelle Umgebung" mit `virtualenv`](#virtualenv) auch f
 Nachdem wir `PIP` installiert haben, brauchen wir nun nur noch den OpenStack Client und Plugins mit folgendem Befehl zu installieren, um mit den entsprechenden OpenStack APIs kommunizieren zu können:
 
 ```shell
-pip install python-openstackclient python-heatclient python-neutronclient
+pip install python-openstackclient python-heatclient python-neutronclient python-designateclient
 ```
 
 ---
@@ -84,7 +84,7 @@ C:\Python27\Scripts>easy_install pip
 Nachdem nun `PIP` installiert ist, brauchen wir als letzten Schritt nur noch die OpenStack CLI zu installieren:
 
 ```batch
-C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient
+C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient python-designateclientt
 ```
 
 ### OpenStack Plugins
