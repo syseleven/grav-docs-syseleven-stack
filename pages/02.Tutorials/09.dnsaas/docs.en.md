@@ -10,12 +10,12 @@ taxonomy:
 
 ### Overview
 
-OpenStack's Designate provides a Domain Name Service as a Service (DNSaaS).
-This means that zones and records can be configured within OpenStack.
-No dedicated virtual machines are required to use this service.
+OpenStack's Designate provides a Domain Name Service as a service (DNSaaS).
+This means that zones and records can be configured within OpenStack via an API and will be queryable via DNS from public nameservers run by SysEleven.
+Users do not require any dedicated virtual machines to use this service.
 
 !!! **Feature availability**
-!!! DNSaaS gets released 07/2019. Reliability and performance may not immediately be fully established.
+!!! DNSaaS was released 06/2019. Reliability and performance may not immediately be fully established.
 
 ### Prerequisites
 
@@ -28,7 +28,7 @@ If your CLI-Tools or kickstart server have been installed prior to the feature r
 (sudo) pip install python-openstackclient python-designateclient
 ```
 
-### How to create a DNS zone and manage its records
+### Managing Zones
 
 #### Create a (primary) zone
 
@@ -123,6 +123,15 @@ $ openstack recordset list domain.example. --type ns
 ```
 
 In this case you will have to give the nameserver names `ns01.cloud.syseleven.net` thru `ns04.cloud.syseleven.net` to your registrar. They will then arrange for the delegation. Some registries perform sanity checks on the nameservers before executing a delegation. If you encounter problems with the registry, please contact our support.
+
+
+#### Updating zones
+
+
+#### Removing zones
+
+
+### Managing Record(set)s
 
 #### Create records within that zone
 
@@ -219,7 +228,7 @@ $ openstack recordset delete domain.example. www.domain.example.
 
 | Problem | Solution |
 |---|---|
-| Duplicate Zone| Zone has already been created, either by you or by another user. Contact us if you believe, someone else is illegitimately blocking your domain. |
+| Duplicate Zone| Zone has already been created, either by you or by another user. See [collisions](#collisions). |
 | Invalid TLD | Zone names must be within a known toplevel domain. Contact us if you believe the top level domain is valid. |
 | More than one label is required | It is not allowed to create a zone for a top level domain. |
 | Zone name cannot be the same as a TLD | It is not allowed to create a zone for a known top level domain. |
@@ -228,134 +237,24 @@ $ openstack recordset delete domain.example. www.domain.example.
 | Unable to create subzone in another tenants zone | The subzone must be created by the tenant owning the zone and can then be [transferred](#transfer-of-zones). |
 | Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be [transferred](#transfer-of-zones). |
 
-### How to manage PTR records (reverse DNS) of floating IP addresses
+
+### Managing reverse DNS (PTR records) for floating IP addresses
 
 !!! **Feature unavailable**
-!!! Due to technical issues, the management of reverse DNS records is not yet implemented.
+!!! While generally possible in OpenStacks Designate component, this is unfortunately not yet implemented in SysEleven Stack due to technical restrictions. We are working on removing these restrictions.
 
-First, obtain a list of manageable PTR Records.
 
-```shell
-$ openstack ptr record list
-+------------------------------------------+----------+-------------+-----+
-| id                                       | ptrdname | description | ttl |
-+------------------------------------------+----------+-------------+-----+
-| dbl:01234567-89ab-cdef-0123-456789abcdef |          |             |     |
-+------------------------------------------+----------+-------------+-----+
-```
+### Import/Export
 
-There is one entry for every floating ip associated with the current project in any region, i.e. it basically corresponds to the output of `openstack floating ip list` issued for all available regions.
+There is a feature to import/export standard DNS Master Zone Files. This feature is intended to facilitate moving your zones to and from SysEleven Stack. This is described in a [Howto]().
 
-Now we can display details for the not yet set record.
 
-```shell
-$ openstack ptr record show dbl:01234567-89ab-cdef-0123-456789abcdef
-+-------------+------------------------------------------+
-| Field       | Value                                    |
-+-------------+------------------------------------------+
-| action      | None                                     |
-| address     | 123.45.67.89                             |
-| description | None                                     |
-| id          | dbl:01234567-89ab-cdef-0123-456789abcdef |
-| ptrdname    | None                                     |
-| status      | ACTIVE                                   |
-| ttl         | None                                     |
-+-------------+------------------------------------------+
-```
+### Transfer
 
-This is the minimal command to set a reverse dns record with the desired hostname.
+Zones can be transferred between projects. This process is described in detail in our [Howto]().
 
-```shell
-$ openstack ptr record set dbl:01234567-89ab-cdef-0123-456789abcdef hostname.domain.example.
-+-------------+------------------------------------------+
-| Field       | Value                                    |
-+-------------+------------------------------------------+
-| action      | CREATE                                   |
-| address     | 123.45.67.89                             |
-| description | test                                     |
-| id          | dbl:01234567-89ab-cdef-0123-456789abcdef |
-| ptrdname    | hostname.domain.example.                 |
-| status      | PENDING                                  |
-| ttl         | 21600                                    |
-+-------------+------------------------------------------+
-```
-
-<a name="edit-ptr"></a>Changes to a record require unsetting it and setting it again with complete corrected parameters.
-
-```shell
-$ openstack ptr record unset dbl:01234567-89ab-cdef-0123-456789abcdef
-$ openstack ptr record set dbl:01234567-89ab-cdef-0123-456789abcdef --description Test --ttl 86400 hostname.domain.example.
-+-------------+------------------------------------------+
-| Field       | Value                                    |
-+-------------+------------------------------------------+
-| action      | CREATE                                   |
-| address     | 123.45.67.89                             |
-| description | Test                                     |
-| id          | dbl:01234567-89ab-cdef-0123-456789abcdef |
-| ptrdname    | hostname.domain.example.                 |
-| status      | PENDING                                  |
-| ttl         | 86400                                    |
-+-------------+------------------------------------------+
-```
-
-This how a populated record looks like:
-
-```shell
-$ openstack ptr record show dbl:01234567-89ab-cdef-0123-456789abcdef
-+-------------+------------------------------------------+
-| Field       | Value                                    |
-+-------------+------------------------------------------+
-| action      | NONE                                     |
-| address     | 123.45.67.89                             |
-| description | Test                                     |
-| id          | dbl:01234567-89ab-cdef-0123-456789abcdef |
-| ptrdname    | hostname.domain.example.                 |
-| status      | ACTIVE                                   |
-| ttl         | 86400                                    |
-+-------------+------------------------------------------+
-$ openstack ptr record list
-+------------------------------------------+--------------------------+-------------+-------+
-| id                                       | ptrdname                 | description | ttl   |
-+------------------------------------------+--------------------------+-------------+-------+
-| dbl:01234567-89ab-cdef-0123-456789abcdef | hostname.domain.example. | Test        | 86400 |
-+------------------------------------------+--------------------------+-------------+-------+
-```
-
-The reverse DNS record can now be looked up with your preferred utility directly on the nameserver.
-
-```shell
-$ dig +short @ns01.cloud.syseleven.net -x 123.45.67.89 ptr
-hostname.domain.example.
-```
-
-We can verify that the reverse DNS records resolve correctly in the public Domain Name System.
-
-```shell
-$ dig +short -x 123.45.67.89 ptr
-hostname.domain.example.
-```
-
-For reverse DNS records you do not need to take care about the zone creation and delegation, this is up to SysEleven. OpenStack Designate takes care that each user of the SysEleven Stack has only control over records corresponding to his/her floating ip addresses.
-
-#### Frequent problems and their solutions
-
-| Problem | Solution |
-|---|---|
-| Duplicate Record | see [changing an entry](#edit-ptr). |
-| Duplicate Record | see [changing an entry](../../02.Tutorials/09.dnsaas/docs.en.md#edit-ptr). |
-
-### Import/Export of Zones
-
-TODO
 
 ### Collisions
 
 Each domain name can only be registered once within the SysEleven Stack. If a domain name is already taken you cannot register this domain or a subdomain within. You can, however, create subzones within your already registered zone and transfer them to other users. Creation of a zone does not require actual control over the domain, it is legit to prepare zones for future use, e.g. in preparation of the registration. If you have the feeling that a zone is blocked illegitimately by another user, please contact our support.
 
-TODO
-
-### Transfer of Zones
-
-Zones can be transferred to other users.
-
-TODO
