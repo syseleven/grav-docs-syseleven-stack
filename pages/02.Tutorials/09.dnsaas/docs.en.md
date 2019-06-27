@@ -233,9 +233,9 @@ $ openstack recordset delete domain.example. www.domain.example.
 | More than one label is required | It is not allowed to create a zone for a top level domain. |
 | Zone name cannot be the same as a TLD | It is not allowed to create a zone for a known top level domain. |
 | u'domain.example' is not a 'domainname'| Domain names must be fully qualified, i.e. end with a dot. |
-| Please delete any subzones before deleting this zone | This is a security measure to prevent you from losing control over your zone after having [transferred](#transfer-of-zones) subzones. |
-| Unable to create subzone in another tenants zone | The subzone must be created by the tenant owning the zone and can then be [transferred](#transfer-of-zones). |
-| Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be [transferred](#transfer-of-zones). |
+| Please delete any subzones before deleting this zone | This is a security measure to prevent you from losing control over your zone after having [transferred](#transfer) subzones. |
+| Unable to create subzone in another tenants zone | The subzone must be created by the tenant owning the zone and can then be [transferred](#transfer). |
+| Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be [transferred](#transfer). |
 
 
 ### Managing reverse DNS (PTR records) for floating IP addresses
@@ -251,7 +251,7 @@ There is a feature to import/export standard DNS Master Zone Files. This feature
 
 ### Transfer
 
-Zones can be transferred between projects. This process is described in detail in our [Howto]().
+Zones can be transferred between different projects within SysEleven Stack. This process is described in detail in our [Howto]().
 
 
 ### Collisions
