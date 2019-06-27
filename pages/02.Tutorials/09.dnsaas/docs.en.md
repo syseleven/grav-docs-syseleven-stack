@@ -256,9 +256,24 @@ $ openstack zone delete domain.example.de.
 +----------------+--------------------------------------+
 ```
 
+#### Frequent problems and their solutions
+
+| Problem | Solution |
+|---|---|
+| Duplicate Zone| Zone has already been created, either by you or by another user. See [collisions](#collisions). |
+| Invalid TLD | Zone names must be within a known toplevel domain. Contact us if you believe the top level domain is valid. |
+| More than one label is required | It is not allowed to create a zone for a top level domain. |
+| Zone name cannot be the same as a TLD | It is not allowed to create a zone for a known top level domain. |
+| u'domain.example' is not a 'domainname'| Domain names must be fully qualified, i.e. end with a dot. |
+| Please delete any subzones before deleting this zone | This is a security measure to prevent you from losing control over your zone after having [transferred](#transfer) subzones. |
+| Unable to create subzone in another tenants zone | The subzone must be created by the tenant owning the zone and can then be [transferred](#transfer). |
+| Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be [transferred](#transfer). |
+| 'masters' has more items than allowed | This can mean you're trying to specify masters for a master zone. |
+
+
 ### Managing Record(set)s
 
-#### Create records within that zone
+#### Creating record(set)s
 
 ```shell
 $ openstack recordset create --type A --record 123.45.67.89 domain.example. www.domain.example.
@@ -282,7 +297,7 @@ $ openstack recordset create --type A --record 123.45.67.89 domain.example. www.
 +-------------+--------------------------------------+
 ```
 
-#### Update records within that zone
+#### Updating record(set)s
 
 ```shell
 $ openstack recordset set --description "Webserver FIP" --ttl 600 --record 123.45.67.88 domain.example. www.domain.example.
@@ -325,7 +340,7 @@ $ openstack recordset set --no-description --no-ttl --record 123.45.67.89 domain
 +-------------+--------------------------------------+
 ```
 
-#### Remove records from that zone
+#### Removing record(set)s
 
 ```shell
 $ openstack recordset delete domain.example. www.domain.example.
@@ -348,20 +363,6 @@ $ openstack recordset delete domain.example. www.domain.example.
 | zone_name   | domain.example.                      |
 +-------------+--------------------------------------+
 ```
-
-#### Frequent problems and their solutions
-
-| Problem | Solution |
-|---|---|
-| Duplicate Zone| Zone has already been created, either by you or by another user. See [collisions](#collisions). |
-| Invalid TLD | Zone names must be within a known toplevel domain. Contact us if you believe the top level domain is valid. |
-| More than one label is required | It is not allowed to create a zone for a top level domain. |
-| Zone name cannot be the same as a TLD | It is not allowed to create a zone for a known top level domain. |
-| u'domain.example' is not a 'domainname'| Domain names must be fully qualified, i.e. end with a dot. |
-| Please delete any subzones before deleting this zone | This is a security measure to prevent you from losing control over your zone after having [transferred](#transfer) subzones. |
-| Unable to create subzone in another tenants zone | The subzone must be created by the tenant owning the zone and can then be [transferred](#transfer). |
-| Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be [transferred](#transfer). |
-| 'masters' has more items than allowed | This can mean you're trying to specify masters for a master zone. |
 
 
 ### Managing reverse DNS (PTR records) for floating IP addresses
