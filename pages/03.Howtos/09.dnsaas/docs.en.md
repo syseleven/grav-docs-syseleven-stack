@@ -1,12 +1,12 @@
 ---
-title: 'How to set up forward and reverse DNS for a Server/Website'
+title: 'How to set up DNS for a Server/Website'
 date: '24-07-2019 12:00'
 taxonomy:
     category:
         - docs
 ---
 
-## How to set up forward and reverse DNS for a Server/Website
+## How to set up DNS for a Server/Website
 
 ### Overview
 
@@ -86,41 +86,27 @@ $ openstack recordset create --type A --record 123.45.67.89 domain.example. www.
 
 ### Delegate your Domain to SysEleven Stack Nameservers
 
-TODO
+The delegation of a zone will be done by the appropriate registry for the toplevel domain where the registered domain belongs to, e.g. DeNIC for `*.de`-Domains. Most likely it will be triggered via your registrar or reseller. They need to know the nameservers that the domain shall be delegated to. You can obtain that list with the following command
+
+```shell
+$ openstack recordset list domain.example. --type ns
++--------------------------------------+-----------------+------+---------------------------+--------+--------+
+| id                                   | name            | type | records                   | status | action |
++--------------------------------------+-----------------+------+---------------------------+--------+--------+
+| 01234567-89ab-cdef-0123-456789abcdef | domain.example. | NS   | ns02.cloud.syseleven.net. | ACTIVE | NONE   |
+|                                      |                 |      | ns04.cloud.syseleven.net. |        |        |
+|                                      |                 |      | ns03.cloud.syseleven.net. |        |        |
+|                                      |                 |      | ns01.cloud.syseleven.net. |        |        |
++--------------------------------------+-----------------+------+---------------------------+--------+--------+
+```
+
+In this case you will have to give the nameserver names `ns01.cloud.syseleven.net` thru `ns04.cloud.syseleven.net` to your registrar. They will then arrange for the delegation. Some registries perform sanity checks on the nameservers before executing a delegation. If you encounter problems with the registry, please contact our support.
 
 
 ### Set a PTR Record (reverse DNS) for your floating IP address
 
 !!! **Feature unavailable**
-!!! Due to technical issues, the management of reverse DNS records is not yet implemented.
-
-First, obtain the ID of manageable PTR Records.
-
-```shell
-$ openstack ptr record list
-+------------------------------------------+----------+-------------+-----+
-| id                                       | ptrdname | description | ttl |
-+------------------------------------------+----------+-------------+-----+
-| dbl:01234567-89ab-cdef-0123-456789abcdef |          |             |     |
-+------------------------------------------+----------+-------------+-----+
-```
-
-This is the minimal command to set a reverse dns record with the desired hostname.
-
-```shell
-$ openstack ptr record set dbl:01234567-89ab-cdef-0123-456789abcdef www.domain.example.
-+-------------+------------------------------------------+
-| Field       | Value                                    |
-+-------------+------------------------------------------+
-| action      | CREATE                                   |
-| address     | 123.45.67.89                             |
-| description | test                                     |
-| id          | dbl:01234567-89ab-cdef-0123-456789abcdef |
-| ptrdname    | www.domain.example.                      |
-| status      | PENDING                                  |
-| ttl         | 21600                                    |
-+-------------+------------------------------------------+
-```
+!!! While generally possible in OpenStacks Designate component, this is unfortunately not yet implemented in SysEleven Stack due to technical restrictions. We are working on removing these restrictions.
 
 
 ### Conclusion
@@ -132,8 +118,6 @@ We can verify that the dns records resolve correctly on the Nameservers of the S
 ```shell
 $ dig +short @ns01.cloud.syseleven.net www.domain.example a
 123.45.67.89
-$ dig +short @ns01.cloud.syseleven.net -x 123.45.67.89 ptr
-www.domain.example.
 ```
 
 We can verify that the dns records resolve correctly in the public Domain Name System.
@@ -141,7 +125,5 @@ We can verify that the dns records resolve correctly in the public Domain Name S
 ```shell
 $ dig +short www.domain.example a
 123.45.67.89
-$ dig +short -x 123.45.67.89 ptr
-www.domain.example.
 ```
 
