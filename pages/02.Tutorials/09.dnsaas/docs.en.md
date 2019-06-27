@@ -13,6 +13,8 @@ taxonomy:
 OpenStack's Designate provides a Domain Name Service as a service (DNSaaS).
 This means that zones and records can be configured within OpenStack via an API and will be queryable via DNS protocol from public nameservers run by SysEleven.
 This tutorial is intended to make you familiar with the main functionality and aware of the presence of more advanced features of the DNS service of the SysEleven Stack.
+We will show examples with the openstack CLI, discovering the functionality in the [GUI](https://cloud.syseleven.de/horizon/project/dnszones/) is left as an exercise to the user.
+We will also provide dnsaas examples to our [heat examples](https://github.com/syseleven/heat-examples) and [terraform examples](https://github.com/syseleven/terraform-examples), contributions are welcome.
 
 !! The SysEleven Stack DNS service is currently in a test period. The test period ends in September 2019. Until then you can use all features free of charge.
 
