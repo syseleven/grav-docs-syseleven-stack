@@ -1,12 +1,12 @@
 ---
-title: 'Using DNS as a service tutorial'
+title: 'Using DNS as a service'
 date: '24-07-2019 12:00'
 taxonomy:
     category:
         - docs
 ---
 
-## DNS as a service (DNSaaS) tutorial
+## Using DNS as a Service (DNSaaS)
 
 ### Overview
 
