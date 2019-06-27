@@ -98,6 +98,8 @@ $ openstack zone create --type SECONDARY --masters 123.45.67.89 -- secondary.dom
 +----------------+--------------------------------------+
 ```
 
+Note, that the shown email-address `hostmaster@example.com` is a placeholder by openstack, any given value will be ignored for secondary zones.
+
 Attention: Because more than one master ip address can be specified, the list must either be terminated with a double dash or the whole parameter with its list be moved to the end of the command line.
 
 ```shell
@@ -126,9 +128,133 @@ In this case you will have to give the nameserver names `ns01.cloud.syseleven.ne
 
 #### Updating zones
 
+We can change or unset the description and change the email address of primary zones like this:
+
+```shell
+$ openstack zone set --description "Example Domain" --email other@domain.example domain.example.de.
++----------------+--------------------------------------+
+| Field          | Value                                |
++----------------+--------------------------------------+
+| action         | UPDATE                               |
+| attributes     |                                      |
+| created_at     | 2019-06-24T15:41:22.000000           |
+| description    | Example Domain                       |
+| email          | other@domain.example                 |
+| id             | 01234567-89ab-cdef-0123-456789abcdef |
+| masters        |                                      |
+| name           | domain.example.                      |
+| pool_id        | 14234f0f-1234-4444-6789-758006f43802 |
+| project_id     | 0123456789abcdef0123456789abcdef     |
+| serial         | 1561628292                           |
+| status         | PENDING                              |
+| transferred_at | None                                 |
+| ttl            | 21600                                |
+| type           | PRIMARY                              |
+| updated_at     | 2019-06-27T09:38:12.000000           |
+| version        | 3                                    |
++----------------+--------------------------------------+
+$ openstack zone set --no-description --email email@domain.example domain.example.de.
++----------------+--------------------------------------+
+| Field          | Value                                |
++----------------+--------------------------------------+
+| action         | UPDATE                               |
+| attributes     |                                      |
+| created_at     | 2019-06-24T15:41:22.000000           |
+| description    | None                                 |
+| email          | email@domain.example                 |
+| id             | 01234567-89ab-cdef-0123-456789abcdef |
+| masters        |                                      |
+| name           | domain.example.                      |
+| pool_id        | 14234f0f-1234-4444-6789-758006f43802 |
+| project_id     | 0123456789abcdef0123456789abcdef     |
+| serial         | 1561628369                           |
+| status         | PENDING                              |
+| transferred_at | None                                 |
+| ttl            | 21600                                |
+| type           | PRIMARY                              |
+| updated_at     | 2019-06-27T09:39:29.000000           |
+| version        | 4                                    |
++----------------+--------------------------------------+
+```
+
+We can also change the masters of secondary zones like this:
+
+```shell
+$ openstack zone set --masters 123.45.67.88 -- secondary.domain.example.de.
++----------------+--------------------------------------+
+| Field          | Value                                |
++----------------+--------------------------------------+
+| action         | UPDATE                               |
+| attributes     |                                      |
+| created_at     | 2019-06-24T15:43:56.000000           |
+| description    | None                                 |
+| email          | hostmaster@example.com               |
+| id             | 01234567-89ab-cdef-0123-456789abcdef |
+| masters        | 123.45.67.88                         |
+| name           | secondary.domain.example.            |
+| pool_id        | 14234f0f-1234-4444-6789-758006f43802 |
+| project_id     | 0123456789abcdef0123456789abcdef     |
+| serial         | 1                                    |
+| status         | PENDING                              |
+| transferred_at | None                                 |
+| ttl            | 21600                                |
+| type           | SECONDARY                            |
+| updated_at     | 2019-06-27T09:32:27.000000           |
+| version        | 2                                    |
++----------------+--------------------------------------+
+```
+
+It is however not possible to change the type between master and secondary zones, they have to be removed and recreated as the new type.
+
 
 #### Removing zones
 
+```shell
+$ openstack zone delete secondary.domain.example.de.
++----------------+--------------------------------------+
+| Field          | Value                                |
++----------------+--------------------------------------+
+| action         | DELETE                               |
+| attributes     |                                      |
+| created_at     | 2019-06-24T15:43:56.000000           |
+| description    | None                                 |
+| email          | hostmaster@example.com               |
+| id             | 01234567-89ab-cdef-0123-456789abcdef |
+| masters        | 123.45.67.88                         |
+| name           | secondary.domain.example.            |
+| pool_id        | 14234f0f-1234-4444-6789-758006f43802 |
+| project_id     | 0123456789abcdef0123456789abcdef     |
+| serial         | 1                                    |
+| status         | PENDING                              |
+| transferred_at | None                                 |
+| ttl            | 21600                                |
+| type           | SECONDARY                            |
+| updated_at     | 2019-06-27T09:46:53.000000           |
+| version        | 7                                    |
++----------------+--------------------------------------+
+$ openstack zone delete domain.example.de.
++----------------+--------------------------------------+
+| Field          | Value                                |
++----------------+--------------------------------------+
+| action         | DELETE                               |
+| attributes     |                                      |
+| created_at     | 2019-06-24T15:41:22.000000           |
+| description    | None                                 |
+| email          | email@domain.example                 |
+| id             | 01234567-89ab-cdef-0123-456789abcdef |
+| masters        |                                      |
+| name           | domain.example.                      |
+| pool_id        | 14234f0f-1234-4444-6789-758006f43802 |
+| project_id     | 0123456789abcdef0123456789abcdef     |
+| serial         | 1561628369                           |
+| status         | PENDING                              |
+| transferred_at | None                                 |
+| ttl            | 21600                                |
+| type           | PRIMARY                              |
+| updated_at     | 2019-06-27T09:46:59.000000           |
+| version        | 7                                    |
++----------------+--------------------------------------+
+```
 
 ### Managing Record(set)s
 
@@ -235,6 +361,7 @@ $ openstack recordset delete domain.example. www.domain.example.
 | Please delete any subzones before deleting this zone | This is a security measure to prevent you from losing control over your zone after having [transferred](#transfer) subzones. |
 | Unable to create subzone in another tenants zone | The subzone must be created by the tenant owning the zone and can then be [transferred](#transfer). |
 | Unable to create zone because another tenant owns a subzone of the zone | The zone must be created by the tenant owning the subzone and can then be [transferred](#transfer). |
+| 'masters' has more items than allowed | This can mean you're trying to specify masters for a master zone. |
 
 
 ### Managing reverse DNS (PTR records) for floating IP addresses
