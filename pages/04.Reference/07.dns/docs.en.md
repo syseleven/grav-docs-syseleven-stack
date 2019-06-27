@@ -35,19 +35,7 @@ A `zone` object represents a DNS Zone, e.g. your domain name and your subdomain 
 
 A `recordset` object represents DNS records. One recordset usually consists of a name (e.g. `example.com.` or `www.example.com.`). a type (e.g. `A` for IPv4 records) and one or more records (e.g. `10.0.0.1` and `10.0.0.2`).
 
-After creating zones in the SysEleven Stack DNS service you can see the responsible authoritative name servers by listing the recordsets in the horizon dashboard or by running `openstack recordset list example.com.`:
-
-```shell
-$ openstack recordset list example.com.
-+--------------------------------------+--------------------------+-------+--------------------------------------------------------------------------------+--------+--------+
-| id                                   | name                     | type  | records                                                                        | status | action |
-+--------------------------------------+--------------------------+-------+--------------------------------------------------------------------------------+--------+--------+
-| 53fee216-577a-41b4-9d48-025239b38411 | example.com.             | NS    | ns01.cloud.syseleven.net.                                                      | ACTIVE | NONE   |
-|                                      |                          |       | ns02.cloud.syseleven.net.                                                      |        |        |
-|                                      |                          |       | ns04.cloud.syseleven.net.                                                      |        |        |
-|                                      |                          |       | ns03.cloud.syseleven.net.                                                      |        |        |
-+--------------------------------------+--------------------------+-------+--------------------------------------------------------------------------------+--------+--------+
-```
+To find out more on how you can do this, see our [tutorial](../../02.Tutorials/09.dnsaas/docs.en.md) and [howto guide](../../03.Howtos/09.dnsaas/docs.en.md).
 
 !! Please note that DNS zones are always represented with a trailing dot in our DNS service, so if your domain name is `example.com`, the corresponding zone name would be `example.com.`
 
