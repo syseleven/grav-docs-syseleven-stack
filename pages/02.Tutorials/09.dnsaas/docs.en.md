@@ -14,7 +14,7 @@ OpenStack's Designate provides a Domain Name Service as a service (DNSaaS).
 This means that zones and records can be configured within OpenStack via an API and will be queryable via DNS from public nameservers run by SysEleven.
 Users do not require any dedicated virtual machines to use this service.
 
-!! The SysEleven Stack DNS service is currently in the test phase. The test phase ends in September 2019. Until then you can use all features free of charge.
+!! The SysEleven Stack DNS service is currently in the test period. The test period ends in September 2019. Until then you can use all features free of charge.
 
 ### Prerequisites
 

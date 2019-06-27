@@ -12,7 +12,7 @@ taxonomy:
 
 This Document will show you the essential steps to create a minimal zone with a minimal recordset for a simple Server like a Website.
 
-!! The SysEleven Stack DNS service is currently in the test phase. The test phase ends in September 2019. Until then you can use all features free of charge.
+!! The SysEleven Stack DNS service is currently in the test period. The test period ends in September 2019. Until then you can use all features free of charge.
 
 
 ### Prerequisites
