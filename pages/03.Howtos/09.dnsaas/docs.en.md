@@ -114,7 +114,7 @@ In this case you will have to give the nameserver names `ns01.cloud.syseleven.ne
 
 ### Conclusion
 
-We have delegated a domain registered elsewhere to the SysEleven Stack and created a basic zone for this domain with basic records for a Webserver in the SysEleven Stack.
+We have delegated a domain registered elsewhere to the SysEleven Stack and created a zone for this domain with the minimum necessary records for a Webserver in the SysEleven Stack.
 
 We can verify that the dns records resolve correctly on the Nameservers of the SysEleven Stack:
 
