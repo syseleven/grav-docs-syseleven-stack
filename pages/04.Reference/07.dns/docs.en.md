@@ -37,7 +37,7 @@ A `recordset` object represents DNS records. One recordset usually consists of a
 
 To find out more on how you can do this, see our [tutorial](../../02.Tutorials/09.dnsaas/docs.en.md) and [howto guide](../../03.Howtos/09.dnsaas/docs.en.md).
 
-!! Please note that DNS zones are always represented with a trailing dot in our DNS service, so if your domain name is `example.com`, the corresponding zone name would be `example.com.`
+!! Please note that DNS zones in the SysEleven DNS service must be fully qualified, which means they must end with a trailing dot. If your domain name is `example.com`, the corresponding fully qualified zone name would be `example.com.`
 
 ### Zone transfer to different projects
 
