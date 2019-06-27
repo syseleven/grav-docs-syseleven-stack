@@ -16,7 +16,7 @@ This functionality can be very handy to automate updates to dns records caused b
 
 The tutorial is intended to make you familiar with the main functionality and aware of the presence of more advanced features of the DNS service of the SysEleven Stack.
 It shows examples for the openstack CLI, discovering the functionality in the [GUI](https://cloud.syseleven.de/horizon/project/dnszones/) is left as an exercise to the user.
-The API can also be used with [Terraform](https://www.terraform.io/docs/providers/openstack/r/dns_zone_v2.html), we appreciate contributions to our [terraform examples](https://github.com/syseleven/terraform-examples).
+The API can also be used with [Terraform](https://www.terraform.io/docs/providers/openstack/r/dns_zone_v2.html), for examples have a look at our [IaC library](https://github.com/syseleven/terraform-examples).
 
 !! The SysEleven Stack DNS service is currently in a test period. The test period ends in September 2019. Until then you can use all features free of charge.
 
