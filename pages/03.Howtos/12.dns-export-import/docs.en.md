@@ -26,9 +26,9 @@ If your CLI-Tools or Kickstart Server have been installed prior to the feature r
 (sudo) pip install python-openstackclient python-designateclient
 ```
 
-### Export your zone
+### Create your zone
 
-This document assumes that you already have the zone you want to export. If you want to practise with a test domain, you can create an empty zone like this:
+This document assumes that you already have a zone you want to export. If you want to practise with a test domain, you can create an empty zone like this:
 
 ```shell
 $ openstack zone create --email "email@domain.example" domain.example.
@@ -79,6 +79,10 @@ $ openstack recordset create --type A --record 123.45.67.89 domain.example. www.
 +-------------+--------------------------------------+
 ```
 
+### Export your zone
+
+To export a zone, we can issue an zone export with the information of the zone id or name.
+
 ```shell
 $ openstack zone export create domain.example.
 +------------+--------------------------------------+
@@ -96,6 +100,8 @@ $ openstack zone export create domain.example.
 +------------+--------------------------------------+
 ```
 
+You can also list all zone exports which have been made. 
+
 ```shell
 $ openstack zone export list
 +--------------------------------------+--------------------------------------+----------------------------+----------+
@@ -104,6 +110,8 @@ $ openstack zone export list
 | 35c0d8a0-31d6-4342-8266-00982a2673f1 | 456d37fd-7e0e-4cd1-ac3e-e44fde0f82b7 | 2019-06-24T15:43:37.000000 | COMPLETE |
 +--------------------------------------+--------------------------------------+----------------------------+----------+
 ```
+
+The raw zone information can be obtained by using the zone export showfile.
 
 ```shell
 $ openstack zone export showfile 35c0d8a0-31d6-4342-8266-00982a2673f1 -f value
@@ -119,3 +127,47 @@ www.domain.example.de.  IN A 123.45.67.89
 ```
 
 ### Import your zone
+
+To import a zone, we can issue an zone import with the filename of the zone you wish to import. For this command to work properly, the zone file needs to be in bind format.
+
+```shell
+$ openstack zone import create ~/domain.example.de.zone
++------------+--------------------------------------+
+| Field      | Value                                |
++------------+--------------------------------------+
+| created_at | 2019-06-24T15:48:46.000000           |
+| id         | 4067eae9-b3e6-4b65-bf7b-d5c039d35586 |
+| message    | None                                 |
+| project_id | 0123456789abcdef0123456789abcdef     |
+| status     | PENDING                              |
+| updated_at | None                                 |
+| version    | 1                                    |
+| zone_id    | None                                 |
++------------+--------------------------------------+
+```
+
+You can also list all zone exports which have been made
+
+```shell
+$ openstack zone import list
++--------------------------------------+--------------------------------------+----------------------------+----------+-----------------------------+
+| id                                   | zone_id                              | created_at                 | status   | message                     |
++--------------------------------------+--------------------------------------+----------------------------+----------+-----------------------------+
+| 4067eae9-b3e6-4b65-bf7b-d5c039d35586 | 2e1db03e-4d9c-4116-b023-4f3a82e1f7d7 | 2019-06-24T15:48:46.000000 | COMPLETE | domain.example.de. imported |
++--------------------------------------+--------------------------------------+----------------------------+----------+-----------------------------+
+```
+
+To confirm your zone has been imported successfully you can check the list of zones
+
+```shell
+openstack zone list
++--------------------------------------+--------------------+---------+------------+--------+--------+
+| id                                   | name               | type    |     serial | status | action |
++--------------------------------------+--------------------+---------+------------+--------+--------+
+| 2e1db03e-4d9c-4116-b023-4f3a82e1f7d7 | domain.example.de. | PRIMARY | 1562146000 | ACTIVE | NONE   |
++--------------------------------------+--------------------+---------+------------+--------+--------+
+```
+
+### Conclusion
+
+We have exported and re-imported a zone.
