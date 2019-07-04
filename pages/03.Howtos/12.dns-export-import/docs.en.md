@@ -126,7 +126,7 @@ domain.example.de.  IN SOA ns04.cloud.syseleven.net. email.example.de. 156214600
 www.domain.example.de.  IN A 123.45.67.89
 ```
 
-THe ouput of the showfile command can directly by used as zone file in bind. In the next step we will reimport the zone we just exported.
+The ouput of the showfile command can directly by used as zone file in bind. In the next step we will reimport the zone we just exported.
 
 ### Import your zone
 
@@ -197,3 +197,21 @@ $ openstack recordset list 2e1db03e-4d9c-4116-b023-4f3a82e1f7d7
 ### Conclusion
 
 We have exported and re-imported a zone using OpenStack DNS.
+
+```shell
+$ openstack zone export list
++--------------------------------------+--------------------------------------+----------------------------+----------+
+| id                                   | zone_id                              | created_at                 | status   |
++--------------------------------------+--------------------------------------+----------------------------+----------+
+| 35c0d8a0-31d6-4342-8266-00982a2673f1 | 456d37fd-7e0e-4cd1-ac3e-e44fde0f82b7 | 2019-06-24T15:43:37.000000 | COMPLETE |
++--------------------------------------+--------------------------------------+----------------------------+----------+
+
+$ openstack zone import list
++--------------------------------------+--------------------------------------+----------------------------+----------+-----------------------------+
+| id                                   | zone_id                              | created_at                 | status   | message                     |
++--------------------------------------+--------------------------------------+----------------------------+----------+-----------------------------+
+| 4067eae9-b3e6-4b65-bf7b-d5c039d35586 | 2e1db03e-4d9c-4116-b023-4f3a82e1f7d7 | 2019-06-24T15:48:46.000000 | COMPLETE | domain.example.de. imported |
++--------------------------------------+--------------------------------------+----------------------------+----------+-----------------------------+
+```
+
+This can be useful to backup and restore zone files as part of disaster recovery.
