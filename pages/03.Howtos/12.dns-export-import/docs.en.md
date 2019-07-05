@@ -28,7 +28,7 @@ If your CLI-Tools or Kickstart Server have been installed prior to the feature r
 
 ### Create your zone
 
-This document assumes that you already have a zone you want to export. If you want to practise with a test domain, you can create an empty zone like in the example below. Be sure to use the recommended hostmaster@<you-domain> mail address.
+This document assumes that you already have a zone you want to export. If you want to practise with a test domain, you can create an empty zone like in the example below. Be sure to use the recommended hostmaster@<your-domain> mail address.
 
 
 ```shell
@@ -101,7 +101,7 @@ $ openstack zone export create domain.example.
 +------------+--------------------------------------+
 ```
 
-You can also list all zone exports which have been made. 
+You can also list all zone exports which have been made.
 
 ```shell
 $ openstack zone export list
@@ -160,7 +160,7 @@ openstack zone import list
 +--------------------------------------+---------+----------------------------+--------+-----------------+
 ```
 
-If there is no zone file using the same domain, because we removed it before or it was deleted on accident, the zone import request will succeed. 
+If there is no zone file using the same domain, because we removed it before or it was deleted on accident, the zone import request will succeed.
 
 
 ```shell
@@ -194,6 +194,7 @@ $ openstack recordset list 2e1db03e-4d9c-4116-b023-4f3a82e1f7d7
 | d50a2d59-424b-4919-b51e-cb0588e414ae | www.domain.example.de.        | A    | 123.45.67.89                                                                                    | ACTIVE | NONE   |
 +--------------------------------------+-------------------------------+------+-------------------------------------------------------------------------------------------------+--------+--------+
 ```
+
 ### Conclusion
 
 We have exported and re-imported a zone using OpenStack DNS.
