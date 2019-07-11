@@ -86,4 +86,3 @@ CoreOS Stable             | `https://stable.release.core-os.net/amd64-usr/curren
 ### How to upload images?
 
 [The "Upload Images" how-to guide](../../03.Howtos/07.upload-images/docs.en.md) explains how to upload images via CLI and GUI.
-
