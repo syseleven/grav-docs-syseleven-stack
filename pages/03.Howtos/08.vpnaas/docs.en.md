@@ -375,6 +375,7 @@ $ openstack vpn ipsec policy create ipsecpolicy
 ```
 
 ### Step Four: Create VPN services on both sides
+
 Create a VPN service on the left side and another on the right side
 and note the external IP addresses that were assigned to the VPN services.
 
