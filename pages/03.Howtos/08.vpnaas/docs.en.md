@@ -67,7 +67,7 @@ $ openstack network create left-network
 
 ```shell
 $ openstack subnet create left-subnet \
-  --network e4f43f87-3b31-41e4-9803-8e10edd3167e \
+  --network left-network \
   --subnet-range 10.1.0.0/24 \
   --gateway 10.1.0.1 \
   --dns-nameserver 8.8.8.8
@@ -131,7 +131,7 @@ $ openstack router create left-router
 
 ```shell
 $ openstack port create \
-  --network e4f43f87-3b31-41e4-9803-8e10edd3167e \
+  --network left-network \
   left-port
 +-------------------------+--------------------------------------------------------------------------+
 | Field                   | Value                                                                    |
@@ -172,11 +172,11 @@ $ openstack port create \
 ```
 
 ```shell
- openstack router add port c971c888-a0bb-47e3-a922-565899c9f090 93c4691c-405b-4a10-b8c3-2cd59b799b16
+ openstack router add port left-router left-port
 ```
 
 ```shell
- openstack router set c971c888-a0bb-47e3-a922-565899c9f090 \
+ openstack router set left-router \
   --external-gateway ext-net
 ```
 
@@ -222,7 +222,7 @@ $ openstack network create right-network
 
 ```shell
 $ openstack subnet create right-subnet  \
---network 46e614d1-baaa-46cf-8e4c-c96fe63fecf2 \
+--network right-network \
 --subnet-range 10.2.0.0/24 \
 --gateway 10.2.0.1
 +-------------------+--------------------------------------+
@@ -285,7 +285,7 @@ $ openstack router create right-router
 
 ```shell
 $ openstack port create \
---network 46e614d1-baaa-46cf-8e4c-c96fe63fecf2 \
+--network right-network \
 right-port
 +-------------------------+--------------------------------------------------------------------------+
 | Field                   | Value                                                                    |
@@ -326,11 +326,11 @@ right-port
 ```
 
 ```shell
- openstack router add port 56f95788-1c34-432f-8ad6-f304776221a2 dfe963ec-4f36-4144-96c2-071af9d3c920
+ openstack router add port right-router right-port
 ```
 
 ```shell
- openstack router set 56f95788-1c34-432f-8ad6-f304776221a2 \
+ openstack router set right-router \
 --external-gateway ext-net
 ```
 
@@ -383,8 +383,8 @@ and note the external IP addresses that were assigned to the VPN services.
 
 ```shell
 $ openstack vpn service create left-vpn \
---router c971c888-a0bb-47e3-a922-565899c9f090 \
---subnet 38346388-4b09-4f0a-a3d1-b1a5f6587f4c
+--router left-router \
+--subnet left-subnet
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
@@ -406,8 +406,8 @@ $ openstack vpn service create left-vpn \
 
 ```shell
 $ openstack vpn service create right-vpn \
-  --router 56f95788-1c34-432f-8ad6-f304776221a2 \
-  --subnet a1026c99-8dd6-496a-a565-74a49f2e95ec
+  --router right-router \
+  --subnet right-subnet
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
@@ -437,8 +437,9 @@ $ openstack vpn ipsec site connection create left-conn \
   --vpnservice left-vpn \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
+  --local-id left-peer.domain.example \
   --peer-address 195.192.130.187 \
-  --peer-id 195.192.130.187 \
+  --peer-id right-peer.domain.example \
   --peer-cidr 10.2.0.0/24 \
   --psk secret
 +--------------------------+--------------------------------------------------------+
@@ -451,13 +452,13 @@ $ openstack vpn ipsec site connection create left-conn \
 | IPSec Policy             | f9633763-2393-4ec3-824a-1e07dd7cfc2e                   |
 | Initiator                | bi-directional                                         |
 | Local Endpoint Group ID  | None                                                   |
-| Local ID                 |                                                        |
+| Local ID                 | left-peer.domain.example                               |
 | MTU                      | 1500                                                   |
 | Name                     | left-conn                                              |
 | Peer Address             | 195.192.130.187                                        |
 | Peer CIDRs               | 10.2.0.0/24                                            |
 | Peer Endpoint Group ID   | None                                                   |
-| Peer ID                  | 195.192.130.187                                        |
+| Peer ID                  | right-peer.domain.example                              |
 | Pre-shared Key           | secret                                                 |
 | Project                  | 70061ce0cd2e47ef9d7dc82174dc9923                       |
 | Route Mode               | static                                                 |
@@ -480,8 +481,9 @@ $ openstack vpn ipsec site connection create right-conn \
   --vpnservice right-vpn \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
+  --local-id right-peer.domain.example \
   --peer-address 195.192.128.58 \
-  --peer-id 195.192.128.58 \
+  --peer-id left-peer.domain.example \
   --peer-cidr 10.1.0.0/24 \
   --psk secret
 +--------------------------+--------------------------------------------------------+
@@ -494,13 +496,13 @@ $ openstack vpn ipsec site connection create right-conn \
 | IPSec Policy             | f9633763-2393-4ec3-824a-1e07dd7cfc2e                   |
 | Initiator                | bi-directional                                         |
 | Local Endpoint Group ID  | None                                                   |
-| Local ID                 |                                                        |
+| Local ID                 | right-peer.domain.example                              |
 | MTU                      | 1500                                                   |
 | Name                     | right-conn                                             |
 | Peer Address             | 195.192.128.58                                         |
 | Peer CIDRs               | 10.1.0.0/24                                            |
 | Peer Endpoint Group ID   | None                                                   |
-| Peer ID                  | 195.192.128.58                                         |
+| Peer ID                  | left-peer.domain.example                               |
 | Pre-shared Key           | secret                                                 |
 | Project                  | 70061ce0cd2e47ef9d7dc82174dc9923                       |
 | Route Mode               | static                                                 |
