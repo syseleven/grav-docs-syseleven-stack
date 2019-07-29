@@ -374,9 +374,12 @@ $ openstack vpn ipsec policy create ipsecpolicy
 +-------------------------------+----------------------------------------+
 ```
 
-### Step Four: Create a VPN service on the left side and its site connection
+### Step Four: Create VPN services on both sides
 
-#### 1. Create the VPN Service
+Create a VPN service on the left side and another on the right side
+and note the external IP addresses that were assigned to the VPN services.
+
+#### 1. Create the VPN service on the left side
 
 ```shell
 $ openstack vpn service create vpn \
@@ -399,10 +402,38 @@ $ openstack vpn service create vpn \
 +----------------+--------------------------------------+
 ```
 
-#### 2. Create the site connection
+#### 1. Create the VPN service on the right side
 
 ```shell
-mmouselli:~ mmouselli$ openstack vpn ipsec site connection create conn \
+$ openstack vpn service create vpn2 \
+  --router 56f95788-1c34-432f-8ad6-f304776221a2 \
+  --subnet a1026c99-8dd6-496a-a565-74a49f2e95ec
++----------------+--------------------------------------+
+| Field          | Value                                |
++----------------+--------------------------------------+
+| Description    |                                      |
+| ID             | d7c3def8-82f9-4e1d-94ae-0b8d29651cd4 |
+| Name           | vpn2                                 |
+| Project        | 70061ce0cd2e47ef9d7dc82174dc9923     |
+| Router         | 56f95788-1c34-432f-8ad6-f304776221a2 |
+| State          | True                                 |
+| Status         | PENDING_CREATE                       |
+| Subnet         | a1026c99-8dd6-496a-a565-74a49f2e95ec |
+| external_v4_ip | 195.192.130.187                      |
+| external_v6_ip | None                                 |
+| project_id     | 70061ce0cd2e47ef9d7dc82174dc9923     |
++----------------+--------------------------------------+
+```
+
+### Step Five: Create the site connections
+
+#### 1. Create the site connection on the left side
+
+Create a site connection named "conn" from the left side (VPN service "vpn") to the right side
+(peer IP address is 195.192.130.187 and 10.2.0.0/24 is the right subnet).
+
+```shell
+$ openstack vpn ipsec site connection create conn \
   --vpnservice vpn \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
@@ -438,35 +469,14 @@ mmouselli:~ mmouselli$ openstack vpn ipsec site connection create conn \
 +--------------------------+--------------------------------------------------------+
 ```
 
-### Step Five: Repeat the previous steps and create a VPN service on the right side and the site connection for it
+#### 2. Create the site connection on the right side
 
-#### 1. Create the VPN Service
+Create a site connection named "conn2" from the right side (VPN service "vpn2") to the left side
+(peer IP address is 195.192.128.58 and 10.1.0.0/24 is the left subnet).
 
-```shell
-$ openstack vpn service create vpn2 \
-  --router 56f95788-1c34-432f-8ad6-f304776221a2 \
-  --subnet a1026c99-8dd6-496a-a565-74a49f2e95ec
-+----------------+--------------------------------------+
-| Field          | Value                                |
-+----------------+--------------------------------------+
-| Description    |                                      |
-| ID             | d7c3def8-82f9-4e1d-94ae-0b8d29651cd4 |
-| Name           | vpn2                                 |
-| Project        | 70061ce0cd2e47ef9d7dc82174dc9923     |
-| Router         | 56f95788-1c34-432f-8ad6-f304776221a2 |
-| State          | True                                 |
-| Status         | PENDING_CREATE                       |
-| Subnet         | a1026c99-8dd6-496a-a565-74a49f2e95ec |
-| external_v4_ip | 195.192.130.187                      |
-| external_v6_ip | None                                 |
-| project_id     | 70061ce0cd2e47ef9d7dc82174dc9923     |
-+----------------+--------------------------------------+
-```
-
-#### 2. Create the site connection
 
 ```shell
-$ openstack vpn ipsec site connection create conn \
+$ openstack vpn ipsec site connection create conn2 \
   --vpnservice vpn2 \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
@@ -486,7 +496,7 @@ $ openstack vpn ipsec site connection create conn \
 | Local Endpoint Group ID  | None                                                   |
 | Local ID                 |                                                        |
 | MTU                      | 1500                                                   |
-| Name                     | conn                                                   |
+| Name                     | conn2                                                  |
 | Peer Address             | 195.192.128.58                                         |
 | Peer CIDRs               | 10.1.0.0/24                                            |
 | Peer Endpoint Group ID   | None                                                   |
