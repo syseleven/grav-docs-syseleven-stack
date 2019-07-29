@@ -28,7 +28,7 @@ No dedicated virtual machines are required to use this service.
 ### Step One: Create left network
 
 ```shell
-$ openstack network create left
+$ openstack network create left-network
 +---------------------------+--------------------------------------+
 | Field                     | Value                                |
 +---------------------------+--------------------------------------+
@@ -45,7 +45,7 @@ $ openstack network create left
 | is_vlan_transparent       | None                                 |
 | location                  | None                                 |
 | mtu                       | None                                 |
-| name                      | left                                 |
+| name                      | left-network                         |
 | port_security_enabled     | True                                 |
 | project_id                | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | provider:network_type     | None                                 |
@@ -66,7 +66,7 @@ $ openstack network create left
 #### 1. Allocating subnet for the left network
 
 ```shell
-$ openstack subnet create left_sub \
+$ openstack subnet create left-subnet \
   --network e4f43f87-3b31-41e4-9803-8e10edd3167e \
   --subnet-range 10.1.0.0/24 \
   --gateway 10.1.0.1 \
@@ -87,7 +87,7 @@ $ openstack subnet create left_sub \
 | ipv6_address_mode | None                                 |
 | ipv6_ra_mode      | None                                 |
 | location          | None                                 |
-| name              | left_sub                             |
+| name              | left-subnet                          |
 | network_id        | e4f43f87-3b31-41e4-9803-8e10edd3167e |
 | project_id        | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | revision_number   | 2                                    |
@@ -183,7 +183,7 @@ $ openstack port create \
 ### Step Two: Repeat the previous steps and create the right network
 
 ```shell
-$ openstack network create right
+$ openstack network create right-network
 +---------------------------+--------------------------------------+
 | Field                     | Value                                |
 +---------------------------+--------------------------------------+
@@ -200,7 +200,7 @@ $ openstack network create right
 | is_vlan_transparent       | None                                 |
 | location                  | None                                 |
 | mtu                       | None                                 |
-| name                      | right                                |
+| name                      | right-network                        |
 | port_security_enabled     | True                                 |
 | project_id                | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | provider:network_type     | None                                 |
@@ -221,7 +221,7 @@ $ openstack network create right
 #### 1. Allocating subnet for the right network
 
 ```shell
-$ openstack subnet create right_sub  \
+$ openstack subnet create right-subnet  \
 --network 46e614d1-baaa-46cf-8e4c-c96fe63fecf2 \
 --subnet-range 10.2.0.0/24 \
 --gateway 10.2.0.1
@@ -241,7 +241,7 @@ $ openstack subnet create right_sub  \
 | ipv6_address_mode | None                                 |
 | ipv6_ra_mode      | None                                 |
 | location          | None                                 |
-| name              | right_sub                            |
+| name              | right-subnet                         |
 | network_id        | 46e614d1-baaa-46cf-8e4c-c96fe63fecf2 |
 | project_id        | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | revision_number   | 2                                    |
@@ -382,7 +382,7 @@ and note the external IP addresses that were assigned to the VPN services.
 #### 1. Create the VPN service on the left side
 
 ```shell
-$ openstack vpn service create vpn \
+$ openstack vpn service create left-vpn \
 --router c971c888-a0bb-47e3-a922-565899c9f090 \
 --subnet 38346388-4b09-4f0a-a3d1-b1a5f6587f4c
 +----------------+--------------------------------------+
@@ -390,7 +390,7 @@ $ openstack vpn service create vpn \
 +----------------+--------------------------------------+
 | Description    |                                      |
 | ID             | a29b6e62-f456-44b1-9774-28cefc1df9fb |
-| Name           | vpn                                  |
+| Name           | left-vpn                             |
 | Project        | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | Router         | c971c888-a0bb-47e3-a922-565899c9f090 |
 | State          | True                                 |
@@ -405,7 +405,7 @@ $ openstack vpn service create vpn \
 #### 1. Create the VPN service on the right side
 
 ```shell
-$ openstack vpn service create vpn2 \
+$ openstack vpn service create right-vpn \
   --router 56f95788-1c34-432f-8ad6-f304776221a2 \
   --subnet a1026c99-8dd6-496a-a565-74a49f2e95ec
 +----------------+--------------------------------------+
@@ -413,7 +413,7 @@ $ openstack vpn service create vpn2 \
 +----------------+--------------------------------------+
 | Description    |                                      |
 | ID             | d7c3def8-82f9-4e1d-94ae-0b8d29651cd4 |
-| Name           | vpn2                                 |
+| Name           | right-vpn                            |
 | Project        | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | Router         | 56f95788-1c34-432f-8ad6-f304776221a2 |
 | State          | True                                 |
@@ -429,12 +429,12 @@ $ openstack vpn service create vpn2 \
 
 #### 1. Create the site connection on the left side
 
-Create a site connection named "conn" from the left side (VPN service "vpn") to the right side
+Create a site connection named "left-conn" from the left side (VPN service "left-vpn") to the right side
 (peer IP address is 195.192.130.187 and 10.2.0.0/24 is the right subnet).
 
 ```shell
-$ openstack vpn ipsec site connection create conn \
-  --vpnservice vpn \
+$ openstack vpn ipsec site connection create left-conn \
+  --vpnservice left-vpn \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
   --peer-address 195.192.130.187 \
@@ -453,7 +453,7 @@ $ openstack vpn ipsec site connection create conn \
 | Local Endpoint Group ID  | None                                                   |
 | Local ID                 |                                                        |
 | MTU                      | 1500                                                   |
-| Name                     | conn                                                   |
+| Name                     | left-conn                                              |
 | Peer Address             | 195.192.130.187                                        |
 | Peer CIDRs               | 10.2.0.0/24                                            |
 | Peer Endpoint Group ID   | None                                                   |
@@ -471,13 +471,13 @@ $ openstack vpn ipsec site connection create conn \
 
 #### 2. Create the site connection on the right side
 
-Create a site connection named "conn2" from the right side (VPN service "vpn2") to the left side
+Create a site connection named "right-conn" from the right side (VPN service "right-vpn") to the left side
 (peer IP address is 195.192.128.58 and 10.1.0.0/24 is the left subnet).
 
 
 ```shell
-$ openstack vpn ipsec site connection create conn2 \
-  --vpnservice vpn2 \
+$ openstack vpn ipsec site connection create right-conn \
+  --vpnservice right-vpn \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
   --peer-address 195.192.128.58 \
@@ -496,7 +496,7 @@ $ openstack vpn ipsec site connection create conn2 \
 | Local Endpoint Group ID  | None                                                   |
 | Local ID                 |                                                        |
 | MTU                      | 1500                                                   |
-| Name                     | conn2                                                  |
+| Name                     | right-conn                                             |
 | Peer Address             | 195.192.128.58                                         |
 | Peer CIDRs               | 10.1.0.0/24                                            |
 | Peer Endpoint Group ID   | None                                                   |
@@ -514,5 +514,5 @@ $ openstack vpn ipsec site connection create conn2 \
 
 ### Step Six: Check if the VPN works properly
 
-Create virtual machines with interfaces in `right_sub` and `left_sub`, and make sure they can reach each other, by sending ICMP echo requests to internal IP addresses.
+Create virtual machines with interfaces in `right-subnet` and `left-subnet`, and make sure they can reach each other, by sending ICMP echo requests to internal IP addresses.
 Note that one of this virtual machines needs to have a Floating IP address, so you can reach the VM itself.
