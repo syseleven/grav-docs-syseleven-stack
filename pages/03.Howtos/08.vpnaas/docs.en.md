@@ -131,52 +131,53 @@ $ openstack router create left-router
 
 ```shell
 $ openstack port create \
+  --fixed-ip subnet=left-subnet,ip-address=10.1.0.1 \
   --network left-network \
   left-port
-+-------------------------+--------------------------------------------------------------------------+
-| Field                   | Value                                                                    |
-+-------------------------+--------------------------------------------------------------------------+
-| admin_state_up          | UP                                                                       |
-| allowed_address_pairs   |                                                                          |
-| binding_host_id         | None                                                                     |
-| binding_profile         | None                                                                     |
-| binding_vif_details     | None                                                                     |
-| binding_vif_type        | None                                                                     |
-| binding_vnic_type       | normal                                                                   |
-| created_at              | 2018-12-27T13:41:21Z                                                     |
-| data_plane_status       | None                                                                     |
-| description             |                                                                          |
-| device_id               |                                                                          |
-| device_owner            |                                                                          |
-| dns_assignment          | None                                                                     |
-| dns_domain              | None                                                                     |
-| dns_name                | None                                                                     |
-| extra_dhcp_opts         |                                                                          |
-| fixed_ips               | ip_address='10.1.0.10', subnet_id='38346388-4b09-4f0a-a3d1-b1a5f6587f4c' |
-| id                      | 93c4691c-405b-4a10-b8c3-2cd59b799b16                                     |
-| location                | None                                                                     |
-| mac_address             | fa:16:3e:bf:1b:62                                                        |
-| name                    | left-port                                                                |
-| network_id              | e4f43f87-3b31-41e4-9803-8e10edd3167e                                     |
-| port_security_enabled   | True                                                                     |
-| project_id              | 70061ce0cd2e47ef9d7dc82174dc9923                                         |
-| propagate_uplink_status | None                                                                     |
-| qos_policy_id           | None                                                                     |
-| revision_number         | 5                                                                        |
-| security_group_ids      | 7406b3d8-0937-4fbc-b6cb-50f229653a80                                     |
-| status                  | ACTIVE                                                                   |
-| tags                    |                                                                          |
-| trunk_details           | None                                                                     |
-| updated_at              | 2018-12-27T13:41:21Z                                                     |
-+-------------------------+--------------------------------------------------------------------------+
++-------------------------+-------------------------------------------------------------------------+
+| Field                   | Value                                                                   |
++-------------------------+-------------------------------------------------------------------------+
+| admin_state_up          | UP                                                                      |
+| allowed_address_pairs   |                                                                         |
+| binding_host_id         | None                                                                    |
+| binding_profile         | None                                                                    |
+| binding_vif_details     | None                                                                    |
+| binding_vif_type        | None                                                                    |
+| binding_vnic_type       | normal                                                                  |
+| created_at              | 2018-12-27T13:41:21Z                                                    |
+| data_plane_status       | None                                                                    |
+| description             |                                                                         |
+| device_id               |                                                                         |
+| device_owner            |                                                                         |
+| dns_assignment          | None                                                                    |
+| dns_domain              | None                                                                    |
+| dns_name                | None                                                                    |
+| extra_dhcp_opts         |                                                                         |
+| fixed_ips               | ip_address='10.1.0.1', subnet_id='38346388-4b09-4f0a-a3d1-b1a5f6587f4c' |
+| id                      | 93c4691c-405b-4a10-b8c3-2cd59b799b16                                    |
+| location                | None                                                                    |
+| mac_address             | fa:16:3e:bf:1b:62                                                       |
+| name                    | left-port                                                               |
+| network_id              | e4f43f87-3b31-41e4-9803-8e10edd3167e                                    |
+| port_security_enabled   | True                                                                    |
+| project_id              | 70061ce0cd2e47ef9d7dc82174dc9923                                        |
+| propagate_uplink_status | None                                                                    |
+| qos_policy_id           | None                                                                    |
+| revision_number         | 5                                                                       |
+| security_group_ids      | 7406b3d8-0937-4fbc-b6cb-50f229653a80                                    |
+| status                  | ACTIVE                                                                  |
+| tags                    |                                                                         |
+| trunk_details           | None                                                                    |
+| updated_at              | 2018-12-27T13:41:21Z                                                    |
++-------------------------+-------------------------------------------------------------------------+
 ```
 
 ```shell
- openstack router add port left-router left-port
+openstack router add port left-router left-port
 ```
 
 ```shell
- openstack router set left-router \
+openstack router set left-router \
   --external-gateway ext-net
 ```
 
@@ -222,9 +223,9 @@ $ openstack network create right-network
 
 ```shell
 $ openstack subnet create right-subnet  \
---network right-network \
---subnet-range 10.2.0.0/24 \
---gateway 10.2.0.1
+  --network right-network \
+  --subnet-range 10.2.0.0/24 \
+  --gateway 10.2.0.1
 +-------------------+--------------------------------------+
 | Field             | Value                                |
 +-------------------+--------------------------------------+
@@ -285,53 +286,54 @@ $ openstack router create right-router
 
 ```shell
 $ openstack port create \
---network right-network \
-right-port
-+-------------------------+--------------------------------------------------------------------------+
-| Field                   | Value                                                                    |
-+-------------------------+--------------------------------------------------------------------------+
-| admin_state_up          | UP                                                                       |
-| allowed_address_pairs   |                                                                          |
-| binding_host_id         | None                                                                     |
-| binding_profile         | None                                                                     |
-| binding_vif_details     | None                                                                     |
-| binding_vif_type        | None                                                                     |
-| binding_vnic_type       | normal                                                                   |
-| created_at              | 2018-12-27T13:59:43Z                                                     |
-| data_plane_status       | None                                                                     |
-| description             |                                                                          |
-| device_id               |                                                                          |
-| device_owner            |                                                                          |
-| dns_assignment          | None                                                                     |
-| dns_domain              | None                                                                     |
-| dns_name                | None                                                                     |
-| extra_dhcp_opts         |                                                                          |
-| fixed_ips               | ip_address='10.2.0.10', subnet_id='a1026c99-8dd6-496a-a565-74a49f2e95ec' |
-| id                      | dfe963ec-4f36-4144-96c2-071af9d3c920                                     |
-| location                | None                                                                     |
-| mac_address             | fa:16:3e:93:06:ad                                                        |
-| name                    | right-port                                                               |
-| network_id              | 46e614d1-baaa-46cf-8e4c-c96fe63fecf2                                     |
-| port_security_enabled   | True                                                                     |
-| project_id              | 70061ce0cd2e47ef9d7dc82174dc9923                                         |
-| propagate_uplink_status | None                                                                     |
-| qos_policy_id           | None                                                                     |
-| revision_number         | 5                                                                        |
-| security_group_ids      | 7406b3d8-0937-4fbc-b6cb-50f229653a80                                     |
-| status                  | ACTIVE                                                                   |
-| tags                    |                                                                          |
-| trunk_details           | None                                                                     |
-| updated_at              | 2018-12-27T13:59:44Z                                                     |
-+-------------------------+--------------------------------------------------------------------------+
+  --fixed-ip subnet=right-subnet,ip-address=10.2.0.1 \
+  --network right-network \
+  right-port
++-------------------------+-------------------------------------------------------------------------+
+| Field                   | Value                                                                   |
++-------------------------+-------------------------------------------------------------------------+
+| admin_state_up          | UP                                                                      |
+| allowed_address_pairs   |                                                                         |
+| binding_host_id         | None                                                                    |
+| binding_profile         | None                                                                    |
+| binding_vif_details     | None                                                                    |
+| binding_vif_type        | None                                                                    |
+| binding_vnic_type       | normal                                                                  |
+| created_at              | 2018-12-27T13:59:43Z                                                    |
+| data_plane_status       | None                                                                    |
+| description             |                                                                         |
+| device_id               |                                                                         |
+| device_owner            |                                                                         |
+| dns_assignment          | None                                                                    |
+| dns_domain              | None                                                                    |
+| dns_name                | None                                                                    |
+| extra_dhcp_opts         |                                                                         |
+| fixed_ips               | ip_address='10.2.0.1', subnet_id='a1026c99-8dd6-496a-a565-74a49f2e95ec' |
+| id                      | dfe963ec-4f36-4144-96c2-071af9d3c920                                    |
+| location                | None                                                                    |
+| mac_address             | fa:16:3e:93:06:ad                                                       |
+| name                    | right-port                                                              |
+| network_id              | 46e614d1-baaa-46cf-8e4c-c96fe63fecf2                                    |
+| port_security_enabled   | True                                                                    |
+| project_id              | 70061ce0cd2e47ef9d7dc82174dc9923                                        |
+| propagate_uplink_status | None                                                                    |
+| qos_policy_id           | None                                                                    |
+| revision_number         | 5                                                                       |
+| security_group_ids      | 7406b3d8-0937-4fbc-b6cb-50f229653a80                                    |
+| status                  | ACTIVE                                                                  |
+| tags                    |                                                                         |
+| trunk_details           | None                                                                    |
+| updated_at              | 2018-12-27T13:59:44Z                                                    |
++-------------------------+-------------------------------------------------------------------------+
 ```
 
 ```shell
- openstack router add port right-router right-port
+openstack router add port right-router right-port
 ```
 
 ```shell
- openstack router set right-router \
---external-gateway ext-net
+openstack router set right-router \
+  --external-gateway ext-net
 ```
 
 ### Step Three: Create an IKE and IPSec policy
@@ -383,8 +385,8 @@ and note the external IP addresses that were assigned to the VPN services.
 
 ```shell
 $ openstack vpn service create left-vpn \
---router left-router \
---subnet left-subnet
+  --router left-router \
+  --subnet left-subnet
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
