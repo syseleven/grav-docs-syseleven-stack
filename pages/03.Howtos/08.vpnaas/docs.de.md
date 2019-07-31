@@ -520,3 +520,42 @@ $ openstack vpn ipsec site connection create right-conn \
 
 Erstelle virtuelle Maschinen mit Interfaces in `right-subnet` und `left-subnet` und überprüfe, dass sie einander erreichen können, indem du ICMP Echo Requests zu den internen IP-Adressen sendest (Ping).
 Beachte, dass eine der virtuellen Maschinen eine Floating-IP-Adresse benötigt, damit du die VM von außen erreichen kannst.
+
+### Schritt sieben: Inspizieren und Aufräumen
+
+Um die soeben im Rahmen der Anleitung erstellten Komponenten anzusehen
+
+```shell
+openstack network list --long
+openstack subnet list --long
+openstack router list --long
+openstack port list --long
+openstack vpn ipsec policy list --long
+openstack vpn ike policy list --long
+openstack vpn service list --long
+openstack vpn ipsec site connection list --long
+```
+
+Um die Komponenten nach Gebrauch in der umgekehrten Reihenfolge wieder abzuräumen, gehen wir folgendermaßen vor:
+
+```shell
+openstack vpn ipsec site connection delete left-conn
+openstack vpn service delete left-vpn
+openstack vpn ike policy delete ikepolicy
+openstack vpn ipsec policy delete ipsecpolicy
+openstack router remove port left-router left-port
+openstack router delete left-router
+openstack subnet delete left-subnet
+openstack network delete left-network
+```
+
+```shell
+openstack vpn ipsec site connection delete right-conn
+openstack vpn service delete right-vpn
+openstack vpn ike policy delete ikepolicy
+openstack vpn ipsec policy delete ipsecpolicy
+openstack router remove port right-router right-port
+openstack router delete right-router
+openstack subnet delete right-subnet
+openstack network delete right-network
+```
