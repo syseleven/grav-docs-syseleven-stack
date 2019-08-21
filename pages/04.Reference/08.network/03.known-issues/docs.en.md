@@ -17,7 +17,7 @@ In order for return traffic to be allowed to flow into a VM in OpenStack, a dyna
 This dynamic rule will expire in 60 seconds. If the server was quiet for more than one minute, the dynamic inbound security group rule will be deleted and the return traffic from the remote server will be rejected.
 
 **Solutions:**  
-To avoid running into this issue there are 3 possible solutions:
+To avoid running into this issue there are 4 possible solutions:
 
 * Add a security group rule in OpenStack which explicitly allows returning traffic, there will be no need of dynamic rules. The Linux kernel option `net.ipv4.ip_local_port_range` configures the range from which the random source port will be picked when a virtual machine initiates a connection. For example, setting this value to 30000 - 50000 and allowing all incoming traffic to port range 30000 - 50000 will solve the issue.
 * If your application supports TCP keepalives, turn on the keepalives in an interval below 60 seconds.
