@@ -13,13 +13,13 @@ taxonomy:
 
 **Problem Statement:**  
 When a virtual machine establishes a TCP connection to a remote server, it uses a random TCP source port.
-In order for return traffic to be allowed to flow into a VM in OpenStack, a dynamic inbound security group rule will automatically be created by the SDN, allowing traffic to flow to this random TCP port.
+In order for return traffic to be allowed to flow into a VM in OpenStack, a dynamic inbound security group rule will automatically be created by the SDN (Software Defined Network), allowing traffic to flow to this random TCP port.
 This dynamic rule will expire in 60 seconds. If the server was quiet for more than one minute, the dynamic inbound security group rule will be deleted and the return traffic from the remote server will be rejected.
 
 **Solutions:**  
 To avoid running into this issue there are 4 possible solutions:
 
-* Add a security group rule in OpenStack which explicitly allows returning traffic, there will be no need of dynamic rules. The Linux kernel option `net.ipv4.ip_local_port_range` configures the range from which the random source port will be picked when a virtual machine initiates a connection. For example, setting this value to 30000 - 50000 and allowing all incoming traffic to port range 30000 - 50000 will solve the issue.
+* Add a security group rule in OpenStack, which explicitly allows returning traffic. Now the SDN has no need to create dynamic rules anymore. The Linux kernel option `net.ipv4.ip_local_port_range` configures the range from which the random source port will be picked when a virtual machine initiates a connection. For example, setting this value to 30000 - 50000 and allowing all incoming traffic to port range 30000 - 50000 will solve the issue.
 * If your application supports TCP keepalives, turn on the keepalives in an interval below 60 seconds.
 * If both virtual machines run in the same OpenStack project, add a security group to the server which allows all traffic from virtual machines with the client security group attached.
 * Directly turn on TCP keepalives in the kernel
