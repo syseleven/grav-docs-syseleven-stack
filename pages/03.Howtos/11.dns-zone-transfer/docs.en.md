@@ -143,7 +143,7 @@ $ openstack zone list
 +--------------------------------------+--------------------------+---------+------------+--------+--------+
 ```
 
-This can be useful to resolve a dispute peacefully, but it makes sense over deleting and recreating the zone especially if the zones recordsets shall be retained without interrupt or the zones are subzones that cannot otherwise be created in another project.
+This can be useful to resolve a dispute peacefully, but it makes sense over deleting and recreating the zone especially if the zones recordsets shall be retained without interruption or the zones are subzones that cannot otherwise be created in another project.
 Say, if you want to delegate the handling for a subsystem within your company to a team, you can create a subdomain within your domain and transfer it to the project of your team.
 
 If you created an empty example zone for practicing, don't forget to delete it from the recipient project's list.
