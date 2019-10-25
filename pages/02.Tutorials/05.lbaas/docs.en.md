@@ -14,9 +14,6 @@ OpenStack provides load balancing through LoadBalancer as a Service (LBaaS).
 This means that load balancing rules can be created directly within OpenStack.
 No dedicated load balancer instance is required to use this service.
 
-!!! **Feature availability**
-!!! LBaaS was previously only available in region 'dbl'. It has become also available in region 'cbk' in February 2019.
-
 ## Prerequisites
 
 * You should be able to use simple heat templates, like shown in the [first steps tutorial](../01.firststeps/docs.en.md).
@@ -47,7 +44,7 @@ git clone https://github.com/syseleven/heat-examples.git
 Open the folder containing the example code and create the stack providing your SSH key and the stack name.
 
 ```shell
-$ cd heat-examples/LBaaS
+$ cd heat-examples/lbaas
 
 # openstack stack create -t lbstack.yaml --parameter key_name=<publicKeyName> <stackName>
 
