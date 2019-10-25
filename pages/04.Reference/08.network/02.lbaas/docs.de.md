@@ -9,15 +9,12 @@ taxonomy:
 
 ## Übersicht
 
-Der SysEleven Stack LBaaS ist ein einfacher TCP-basierter Lastverteiler. Er verteilt Anfragen nach dem Round-Robin Prinzip (der Reihe nach).
-Ebenfalls ist ein einfacher Health-Check nutzbar.
+Der SysEleven Stack LBaaS ist ein einfacher TCP-basierter Lastverteiler, der Anfragen nach dem Round-Robin Prinzip (der Reihe nach) verteilt.
+Optional können Sie auch eine Systemüberwachung (Health Monitoring) einrichten.
 
-Leider kann die Client-IP zur Zeit nicht an die Systeme hinter dem LoadBalancer durchgereicht werden. Die IP des Lastverteilers wird als Ausgangsadresse angezeigt.
+Leider kann die Client-IP zur Zeit nicht an die Systeme hinter dem LoadBalancer durchgereicht werden. Die IP-Adresse des Lastverteilers wird als Ausgangsadresse angezeigt.
 
 Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../02.Tutorials/05.lbaas/docs.en.md) vorbereitet.
-
-!!! **Verfügbarkeit**
-!!! Die Funktionalität des LBaaS war bisher nur in der Region 'dbl' verfügbar, sie wurde im Februar 2019 auch in der Region 'cbk' bereitgestellt.
 
 ---
 
@@ -25,12 +22,17 @@ Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../02.Tutorials/05.lbaas/do
 
 ### Welche Funktionen bietet der SysEleven Stack LBaaS?
 
-Der SysEleven Stack LBaaS ist ein einfacher TCP-basierter LastVerteiler. Er verteilt Anfragen nach dem Round-Robin Prinzip (der Reihe nach).
-Ebenfalls ist ein einfacher Health-Check nutzbar.
+Der SysEleven Stack LBaaS ist ein einfacher TCP-basierter Lastverteiler, der Anfragen nach dem Round-Robin Prinzip (der Reihe nach) verteilt.
+Optional können Sie auch eine Systemüberwachung (Health Monitoring) einrichten.
+Folgende Modi werden unterstützt:
+- Listener-Protokoll: TCP
+- Pool-Protokoll: TCP
+- Verteilungsstrategie: ROUND_ROBIN
+- Health-Monitoring-Protokolle: TCP, HTTP, HTTPS
 
 ### Kann auf die originale Client-IP aus den Systemen hinter dem LBaaS zugegriffen werden?
 
-Nein, aktuell ist dies leider nicht möglich. Die IP des Lastverteilers wird als Ausgangsadresse angezeigt.
+Nein, aktuell ist dies leider nicht möglich. Die IP-Adresse des Lastverteilers wird als Ausgangsadresse angezeigt.
 
 ### Wie kann ich den LBaaS nutzen?
 
