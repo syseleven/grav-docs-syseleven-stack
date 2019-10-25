@@ -25,6 +25,7 @@ We prepared a simple tutorial that shows [basic usage of LBaaS](../../../02.Tuto
 The SysEleven Stack LBaaS is a TCP-based load balancer using round robin as balancing mechanism.
 It also offers health monitoring.
 The following modes are supported:
+
 - Listener protocol: TCP
 - Pool protocol: TCP
 - Distribution strategy: ROUND_ROBIN

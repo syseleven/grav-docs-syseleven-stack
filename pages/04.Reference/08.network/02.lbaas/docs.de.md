@@ -25,6 +25,7 @@ Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../02.Tutorials/05.lbaas/do
 Der SysEleven Stack LBaaS ist ein einfacher TCP-basierter Lastverteiler, der Anfragen nach dem Round-Robin Prinzip (der Reihe nach) verteilt.
 Optional können Sie auch eine Systemüberwachung (Health Monitoring) einrichten.
 Folgende Modi werden unterstützt:
+
 - Listener-Protokoll: TCP
 - Pool-Protokoll: TCP
 - Verteilungsstrategie: ROUND_ROBIN
