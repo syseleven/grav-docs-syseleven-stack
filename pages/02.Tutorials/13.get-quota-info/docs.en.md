@@ -6,7 +6,8 @@ taxonomy:
         - docs
 ---
 
-# REST API to query quota and usage information
+## Introduction
+
 For many resource types like instances, VCPUs, volume storage you can check
 the limits and the current usage in the dashboard (Horizon) or use the
 standard OpenStack APIs to collect the data in some automation.
@@ -22,7 +23,7 @@ For queries to the quota API you need an OpenStack Keystone token to
 authenticate with. If you installed the OpenStack command line tools
 you can create a token with the command `openstack token issue`.
 
-```
+```plain
 openstack token issue
 +------------+----------------------------------+
 | Field      | Value                            |
@@ -33,13 +34,16 @@ openstack token issue
 | user_id    | 22222222222222222222222222222222 |
 +------------+----------------------------------+
 ```
+
 The token ("id" row in the table) you will pass in the `X-Auth-Token` header of the REST API requests.
 
 ## Query quota
 
 ### URL
 
+```plain
 GET https://api.cloud.syseleven.net:5001/v1/projects/{project_id}/quota
+```
 
 ### Request parameters
 
@@ -55,7 +59,7 @@ Example
 - Project ID "11111111111111111111111111111111"
 - Regions cbk and dbl
 
-```
+```shell
 curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.syseleven.net:5001/v1/projects/11111111111111111111111111111111/quota?regions=cbk,dbl
 ```
 
@@ -63,7 +67,7 @@ curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.sysel
 
 The response contains the quota information in JSON format. Example for a response with information about regions cbk and dbl:
 
-```
+```json
 {
   "cbk": {
     "compute.cores": 50,
@@ -107,6 +111,7 @@ The response contains the quota information in JSON format. Example for a respon
   }
 }
 ```
+
 Overview of fields:
 
 Name | Beschreibung
@@ -136,7 +141,9 @@ A limit of -1 means "unlimited", 0 means "no resources".
 
 ### URL
 
+```plain
 GET https://api.cloud.syseleven.net:5001/v1/projects/{project_id}/current_usage
+```
 
 ### Request parameters
 
@@ -152,14 +159,15 @@ Example
 - Project ID "11111111111111111111111111111111"
 - Regions cbk and dbl
 
-```
+```shell
 curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.syseleven.net:5001/v1/projects/11111111111111111111111111111111/current_usage?regions=cbk,dbl
 ```
 
 ### Response
+
 The response contains the information about the currently-used resources in JSON format. Example of a response with data about regions cbk and dbl:
 
-```
+```json
 {
   "cbk": {
     "compute.cores": 3,

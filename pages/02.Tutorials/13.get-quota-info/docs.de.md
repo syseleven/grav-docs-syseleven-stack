@@ -6,11 +6,12 @@ taxonomy:
         - docs
 ---
 
-# REST API zur Abfrage von Quota-Informationen
+## Einleitung
+
 Für die meisten Ressourcen-Typen wie z.B. Instanzen, VCPUs, Volume-Speicher
 können Sie die Limits und die aktuelle Auslastung über das Dashboard (Horizon)
 einsehen oder die OpenStack APIs nutzen, um die Informationen automatisiert
-abzufragen. Die Informationen über die Quota von Object-Storage (S3) sind 
+abzufragen. Die Informationen über die Quota von Object-Storage (S3) sind
 allerdings nicht über diese Standard-APIs verfügbar.
 
 Für Quota- und Ausnutzungsinformationen einschließlich Object-Storage bietet
@@ -22,7 +23,7 @@ Für Anfragen an die Quota-API benötigen Sie ein OpenStack-Keystone-Token.
 Wenn Sie den OpenStack-Kommandozeilen-Client installiert haben, können Sie
 sich ein Token mit dem Kommando `openstack token issue` erzeugen.
 
-```
+```plain
 openstack token issue
 +------------+----------------------------------+
 | Field      | Value                            |
@@ -33,13 +34,16 @@ openstack token issue
 | user_id    | 22222222222222222222222222222222 |
 +------------+----------------------------------+
 ```
+
 Das so erzeugte Token ("id"-Zeile in der Tabelle) geben Sie dann im `X-Auth-Token` der REST-API-Requests an.
 
 ## Quota abfrufen
 
 ### URL
 
+```plain
 GET https://api.cloud.syseleven.net:5001/v1/projects/{project_id}/quota
+```
 
 ### Anfrage-Parameter
 
@@ -55,14 +59,15 @@ Beispiel
 - Project-ID "11111111111111111111111111111111"
 - Regionen cbk und dbl
 
-```
+```shell
 curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.syseleven.net:5001/v1/projects/11111111111111111111111111111111/quota?regions=cbk,dbl
 ```
 
 ### Antwort
 
 Die Antwort beinhaltet die Quota-Informationen in JSON-Format. Zum Beispiel bei einer Anfrage für die Regionen cbk und dbl:
-```
+
+```json
 {
   "cbk": {
     "compute.cores": 50,
@@ -106,6 +111,7 @@ Die Antwort beinhaltet die Quota-Informationen in JSON-Format. Zum Beispiel bei 
   }
 }
 ```
+
 Übersicht über die einzelnen Elemente:
 
 Name | Beschreibung
@@ -135,7 +141,9 @@ Ein Limit-Wert von -1 bedeutet "unbeschränkt", 0 bedeutet "keine Ressourcen".
 
 ### URL
 
+```plain
 GET https://api.cloud.syseleven.net:5001/v1/projects/{project_id}/current_usage
+```
 
 ### Anfrage-Parameter
 
@@ -151,14 +159,15 @@ Beispiel
 - Project-ID "11111111111111111111111111111111"
 - Regionen cbk und dbl
 
-```
+```shell
 curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.syseleven.net:5001/v1/projects/11111111111111111111111111111111/current_usage?regions=cbk,dbl
 ```
 
 ### Antwort
+
 Die Antwort beinhaltet die Informationen über aktuell verwendete Ressourcen in JSON-Format. Zum Beispiel bei einer Anfrage für die Regionen cbk und dbl:
 
-```
+```json
 {
   "cbk": {
     "compute.cores": 3,
