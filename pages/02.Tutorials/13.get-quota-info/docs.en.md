@@ -114,7 +114,7 @@ The response contains the quota information in JSON format. Example for a respon
 
 Overview of fields:
 
-Name | Beschreibung
+Field | Description
 -----|---------|-------------
 compute.cores | Number of virtual cores |
 compute.instances | Number of virtual machines (servers, instances) |
@@ -220,7 +220,7 @@ The response contains the information about the currently-used resources in JSON
 }
 ```
 
-Name | Beschreibung
+Field | Description
 -----|---------|-------------
 compute.cores | Number of virtual cores |
 compute.flavors | Number of virtual machines per flavor |
