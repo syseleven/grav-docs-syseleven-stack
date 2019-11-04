@@ -14,7 +14,7 @@ einsehen oder die OpenStack APIs nutzen, um die Informationen automatisiert
 abzufragen. Die Informationen über die Quota von Object-Storage (S3) sind
 allerdings nicht über diese Standard-APIs verfügbar.
 
-Für Quota- und Ausnutzungsinformationen einschließlich Object-Storage bietet
+Für Quota- und Auslastungsinformationen einschließlich Object-Storage bietet
 der SysEleven Stack eine eigene REST API an.
 
 ## Voraussetzungen
@@ -137,7 +137,7 @@ volume.volumes | Anzahl der Block Storage Volumes |
 
 Ein Limit-Wert von -1 bedeutet "unbeschränkt", 0 bedeutet "keine Ressourcen".
 
-## Aktuelle Ausnutzung abfrufen
+## Aktuelle Auslastung abfrufen
 
 ### URL
 
