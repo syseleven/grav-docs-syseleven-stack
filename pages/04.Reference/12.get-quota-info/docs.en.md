@@ -147,25 +147,42 @@ GET https://api.cloud.syseleven.net:5001/v1/projects/{project_id}/current_usage
 
 ### Request parameters
 
-Name        | Where    | Description |
-------------|----------|-------------|
-project_id  | URL path | The OpenStack project ID. It needs to be the same as the one the token was created with. |
+Name         | Where    | Description |
+-------------|----------|-------------|
+project_id   | URL path | The OpenStack project ID. It needs to be the same as the one the token was created with. |
 X-Auth-Token | Header | Token for authenticating the request. |
 regions      | URL query parameter | Optionally restrict the regions to be queried. Comma-separated list of region names. If no region is given here, all regions are queried. |
+filter       | URL query parameter | Optionally restrict the components to be queried. Comma-separated list of component names like "compute", "network", etc. See below for a list |
+
+Using the `regions` and `filter` parameters you may restrict the query to regions and/or components.
+If you are only interested in the usage information of certain components, using those filters allows
+to accelerate the queries because unnecessary internal communication to other components or regions is
+avoided.
+
+Component names supported by `filter`:
+
+- compute
+- dns
+- network
+- network.lb
+- network.vpn
+- s3
+- volume
 
 Example
 
 - Token "01234567890abcdef01234567890abcd"
 - Project ID "11111111111111111111111111111111"
 - Regions cbk and dbl
+- Filter for components "compute" and "s3"
 
 ```shell
-curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.syseleven.net:5001/v1/projects/11111111111111111111111111111111/current_usage?regions=cbk,dbl
+curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.syseleven.net:5001/v1/projects/11111111111111111111111111111111/current_usage?regions=cbk,dbl&filter=compute,s3
 ```
 
 ### Response
 
-The response contains the information about the currently-used resources in JSON format. Example of a response with data about regions cbk and dbl:
+The response contains the information about the currently-used resources in JSON format. Example of a response with data about regions cbk and dbl (and without a component filter):
 
 ```json
 {
@@ -220,8 +237,8 @@ The response contains the information about the currently-used resources in JSON
 }
 ```
 
-Field | Description
------|---------|-------------
+Field | Description |
+------|-------------|
 compute.cores | Number of virtual cores |
 compute.flavors | Number of virtual machines per flavor |
 compute.instances | Total number of virtual machines |

@@ -37,7 +37,7 @@ openstack token issue
 
 Das so erzeugte Token ("id"-Zeile in der Tabelle) geben Sie dann im `X-Auth-Token` der REST-API-Requests an.
 
-## Quota abfrufen
+## Quota abrufen
 
 ### URL
 
@@ -137,7 +137,7 @@ volume.volumes | Anzahl der Block Storage Volumes |
 
 Ein Limit-Wert von -1 bedeutet "unbeschränkt", 0 bedeutet "keine Ressourcen".
 
-## Aktuelle Auslastung abfrufen
+## Aktuelle Auslastung abrufen
 
 ### URL
 
@@ -152,20 +152,36 @@ Name        | Wo übergeben | Beschreibung |
 project_id  | URL-Pfad     | Die OpenStack Project-ID. Es muss die gleiche sein, für die das Token erstellt wurde. |
 X-Auth-Token | Header | Das Token zur Authorisierung der Anfrage. |
 regions      | URL-Parameter | Optionale Beschränkung der Abfrage auf bestimmte Regionen. Komma-separierte Liste von Regionsnamen. Ist keine Region angegeben, werden Daten über alle Regionen geliefert. |
+filter | URL-Parameter | Optionale Beschränkung der Abfrage auf bestimmte Komponenten wie "compute", "network" etc. Komma-separierte Liste von Komponenten-Namen, s.u. |
 
-Beispiel
+Mit den Parameter `filter` und `regions` können Sie die Anfragen auf Regionen und/oder Komponenten
+beschränken. Wenn nur die Auslastung für einzelne Komponenten interessiert, können Sie durch diese
+Filter die Abfragen beschleunigen, da intern unnötige Kommunikation mit den anderen Komponenten/Regionen vermieden wird.
+
+Mögliche Komponenten-Namen in `filter`:
+
+- compute
+- dns
+- network
+- network.lb
+- network.vpn
+- s3
+- volume
+
+Beispiel:
 
 - Token "01234567890abcdef01234567890abcd"
 - Project-ID "11111111111111111111111111111111"
 - Regionen cbk und dbl
+- Filter für Komponenten "compute" und "s3"
 
 ```shell
-curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.syseleven.net:5001/v1/projects/11111111111111111111111111111111/current_usage?regions=cbk,dbl
+curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.syseleven.net:5001/v1/projects/11111111111111111111111111111111/current_usage?regions=cbk,dbl&filter=compute,s3
 ```
 
 ### Antwort
 
-Die Antwort beinhaltet die Informationen über aktuell verwendete Ressourcen in JSON-Format. Zum Beispiel bei einer Anfrage für die Regionen cbk und dbl:
+Die Antwort beinhaltet die Informationen über aktuell verwendete Ressourcen in JSON-Format. Zum Beispiel bei einer Anfrage für die Regionen cbk und dbl (ohne Komponenten-Filter):
 
 ```json
 {
@@ -220,8 +236,8 @@ Die Antwort beinhaltet die Informationen über aktuell verwendete Ressourcen in 
 }
 ```
 
-Name | Beschreibung
------|---------|-------------
+Name | Beschreibung |
+-----|--------------|
 compute.cores | Anzahl der virtuellen Cores |
 compute.flavors | Anzahl der virtuellen Maschinen pro Flavor |
 compute.instances | Gesamtzahl der virtuellen Maschinen |
