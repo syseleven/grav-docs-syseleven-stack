@@ -9,15 +9,12 @@ taxonomy:
 
 ## Overview
 
-The SysEleven Stack LBaaS is a TCP-based loadbalancer. It supports round robin as balancing mechanism.
-It also offers a simple HealthCheck.
+The SysEleven Stack LBaaS is a TCP-based loadbalancer using round robin as balancing mechanism.
+It also offers health monitoring.
 
 Unfortunately it is currently not possible to forward the client IP to the instances behind the loadbalancer. The IP of the LBaaS will show up as the client IP
 
 We prepared a simple tutorial that shows [basic usage of LBaaS](../../../02.Tutorials/05.lbaas/docs.en.md).
-
-!!! **Feature availability**
-!!! LBaaS was previously only available in region 'dbl'. It has become also available in region 'cbk' in February 2019.
 
 ---
 
@@ -25,8 +22,14 @@ We prepared a simple tutorial that shows [basic usage of LBaaS](../../../02.Tuto
 
 ### What features does the SysEleven Stack LBaaS offer?
 
-The SysEleven Stack LBaaS is a TCP-based LoadBalancer. It supports round robin as balancing mechanism.
-It also offers a simple HealthCheck.
+The SysEleven Stack LBaaS is a TCP-based load balancer using round robin as balancing mechanism.
+It also offers health monitoring.
+The following modes are supported:
+
+- Listener protocol: TCP
+- Pool protocol: TCP
+- Distribution strategy: ROUND_ROBIN
+- Health monitoring protocols: TCP, HTTP, HTTPS
 
 ### Is it possible to see the client IP behind the LBaaS?
 
