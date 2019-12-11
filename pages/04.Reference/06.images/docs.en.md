@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-SysEleven provides and maintains a set of images in the SysEleven Stack. As soon as vendors publish new images, we will verify their origin, test them and publish them automatically.
+SysEleven provides and maintains a set of images in the SysEleven Stack. As soon as vendors publish new images, we will verify their origin, test them and publish them automatically. We don't do any changes in vendor images, to keep checksums intact. That allows our customers to validate image origin if needed.
 
 You can view and manage images both via the OpenStack API and CLI, as well as using the [Dashboard (GUI)](https://dashboard.cloud.syseleven.net).
 
@@ -17,15 +17,19 @@ If you need to maintain your own set of images, you can upload them yourself as 
 
 ## Available public images
 
-Name                             | Description                               |
----------------------------------|-------------------------------------------|
-CentOS 7 (YYYY-MM-DD)            | Unmodified, directly from vendor          |
-CoreOS Stable (YYYY-MM-DD)       | Unmodified, directly from vendor          |
-Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor          |
-Ubuntu Bionic 18.04 (YYYY-MM-DD) | Unmodified, directly from vendor          |
-Ubuntu Xenial 16.04 (YYYY-MM-DD) | Unmodified, directly from vendor          |
+Name                             | Description                                         |
+---------------------------------|-----------------------------------------------------|
+CentOS 7 (YYYY-MM-DD)            | Unmodified, directly from vendor                    |
+CoreOS Stable (YYYY-MM-DD)       | Unmodified, directly from vendor                    |
+Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
+Debian Buster (YYYY-MM-DD)       | Unmodified, directly from vendor *(See note below)* |
+Ubuntu Bionic 18.04 (YYYY-MM-DD) | Unmodified, directly from vendor                    |
+Ubuntu Xenial 16.04 (YYYY-MM-DD) | Unmodified, directly from vendor                    |
 Rescue Ubuntu 16.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
 Rescue Ubuntu 18.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
+
+\* Debian Buster image provided by Debian community has a bug that causes loss of networking
+in virtual machine after 24 hours. See section "Known issues with public images" below.
 
 ### Public image lifecycle
 
@@ -64,6 +68,16 @@ data "openstack_images_image_v2" "ubuntu-bionic" {
   }
 }
 ```
+
+### Known issues with public images
+
+- Official Debian Buster OpenStack image may has a bug in `ifupdown` configuration. After initial boot, eth0 interface
+will be configured with both DHCP and static cloud-init configuration. Since both will try to assign the same IP
+address to eth0, `RTNETLINK answers: File exists` error will be produced, resulting `networking.service` systemd unit
+in errored state. This will block DHCP client from refreshing lease after 24 hours. Solution is to remove dynamic eth0
+configuration from `/etc/network/interfaces`, or to remove static configuration written by cloud-init from
+`/etc/network/interfaces.d`. After this change, restart of `systemd-networkd` systemd unit, or restart of virtual
+machine is required.
 
 ## Uploading images
 
