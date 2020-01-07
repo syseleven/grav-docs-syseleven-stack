@@ -83,29 +83,33 @@ host_base = s3.dbl.cloud.syseleven.net
 host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
 ```
 
-Im nächsten Schritt erstellen wir einen S3 Bucket. Mit dem Schalter -P erlauben wir dabei das der Inhalt dieses Buckets (falls dieser auch mit dem Schalter -P öffentlich hochgeladen wird) von der Öffentlichkeit erreichbar gemacht wird:
+Im nächsten Schritt erstellen wir einen S3 Bucket.
 
 ```shell
 s3cmd mb s3://BUCKET_NAME -P
+
+Mit dem Schalter `-P` oder `--acl-public` machen wir den Bucket öffentlich, d.h. es ist grundsätzlich möglich, Objekte in diesem Bucket öffentlich zu machen und diese öffentlichen Objekte sowie eine Übersicht über die öffentlichen Objekte abzurufen. Ohne den Schalter `-P` oder mit dem Schalter `--acl-private` ist das anonyme Abrufen von Objekten sowie der Übersicht nicht möglich.
 ```
 
-und befüllen diesen mit Inhalt:
+Nun befüllen wir den Bucket mit Objekten:
 
 ```shell
 s3cmd put test.jpg s3://BUCKET_NAME -P
 ```
 
-Hier wird die Datei hochgeladen und mit dem Schalter -P die auch öffentlich erreichbar gemacht. Dabei ist zu beachten, dass die Ausgabe von `s3cmd` eine falsche URL ausgeben kann:
+Hier wird eine Datei hochgeladen und mit dem Schalter `-P` oder `--acl-public` auch öffentlich erreichbar gemacht, wenn der Bucket öffentlich ist. Objekte, die ohne `-P` oder mit `--acl-private` hochgeladen werden, sind nicht öffentlich abrufbar und werden auch nicht in der Übersicht aufgeführt.
+
+Dabei ist zu beachten, dass die Ausgabe von `s3cmd` je nach seiner Konfiguration eine falsche URL ausgeben kann, z.B. in der Voreinstellung:
 
 ```shell
 Public URL of the object is: http://BUCKET_NAME.s3.amazonaws.com/test.jpg
 ```
 
-Ein Zugriff auf die S3 Datei ist unter der folgenden URL möglich:
+Die korrekte URL für den Zugriff auf das öffentliche S3 Objekt wäre im SysEleven Stack
 
 `https://s3.dbl.cloud.syseleven.net/BUCKET_NAME/test.jpg`
 
-Damit sind wir in der Lage static assets über eine HTTP URL einzubinden.
+Damit sind wir in der Lage, statische Assets über eine HTTP URL einzubinden.
 
 ### Minio
 

@@ -85,25 +85,29 @@ host_base = s3.dbl.cloud.syseleven.net
 host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
 ```
 
-Next, create an S3 Bucket. The command-line option `-P` means the content uploaded into this bucket (if also uploaded with the same command-line option `-P`) will be publicly available:
+Next, create an S3 Bucket.
 
 ```shell
 s3cmd mb s3://BUCKET_NAME -P
 ```
 
-Then, use it to add some file(s):
+The option `-P` or `--acl-public` makes this a public bucket which means that public objects in this bucket and a list of public objects can be retrieved. Without this option or with `--acl-private` the public retrieval of objects and the list is ot possible.
+
+Then add some object(s):
 
 ```shell
 s3cmd put test.jpg s3://BUCKET_NAME -P
 ```
 
-Here we upload the file(s), the command-line option `-P` marks them as publicly available. Please note that `s3cmd` may return incorrect URLs, i.e.:
+Here we upload a file and make it public by specifying the option `-P` or `--acl-public`. Objects without this option or with `--acl-private` are not publicly available and will not be contained in the listing.
+
+Please note that `s3cmd` may be configured to return incorrect URLs, i.e. by default:
 
 ```shell
 Public URL of the object is: http://BUCKET_NAME.s3.amazonaws.com/test.jpg
 ```
 
-The correct URL in this case would be
+The correct URL for this object in SysEleven Stack would be
 
 `https://s3.dbl.cloud.syseleven.net/BUCKET_NAME/test.jpg`
 
