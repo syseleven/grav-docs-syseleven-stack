@@ -85,10 +85,10 @@ host_base = s3.dbl.cloud.syseleven.net
 host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
 ```
 
-Next, create an S3 Bucket:
+Next, create an S3 Bucket. The command-line option `-P` means the content uploaded into this bucket (if also uploaded with the same command-line option `-P`) will be publicly available:
 
 ```shell
-s3cmd mb s3://BUCKET_NAME
+s3cmd mb s3://BUCKET_NAME -P
 ```
 
 Then, use it to add some file(s):
@@ -97,7 +97,7 @@ Then, use it to add some file(s):
 s3cmd put test.jpg s3://BUCKET_NAME -P
 ```
 
-The command-line option `-P` means the file(s) uploaded is publicly available. Please note that `s3cmd` may return incorrect URLs, i.e.:
+Here we upload the file(s), the command-line option `-P` marks them as publicly available. Please note that `s3cmd` may return incorrect URLs, i.e.:
 
 ```shell
 Public URL of the object is: http://BUCKET_NAME.s3.amazonaws.com/test.jpg

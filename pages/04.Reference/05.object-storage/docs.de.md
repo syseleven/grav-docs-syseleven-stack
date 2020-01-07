@@ -83,10 +83,10 @@ host_base = s3.dbl.cloud.syseleven.net
 host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
 ```
 
-Im nächsten Schritt erstellen wir einen S3 Bucket:
+Im nächsten Schritt erstellen wir einen S3 Bucket. Mit dem Schalter -P erlauben wir dabei das der Inhalt dieses Buckets (falls dieser auch mit dem Schalter -P öffentlich hochgeladen wird) von der Öffentlichkeit erreichbar gemacht wird:
 
 ```shell
-s3cmd mb s3://BUCKET_NAME
+s3cmd mb s3://BUCKET_NAME -P
 ```
 
 und befüllen diesen mit Inhalt:
@@ -95,7 +95,7 @@ und befüllen diesen mit Inhalt:
 s3cmd put test.jpg s3://BUCKET_NAME -P
 ```
 
-Mit dem Schalter -P stellen wir die Datei der Öffentlichkeit zur Verfügung. Hierbei ist zu beachten, dass die Ausgabe von `s3cmd` eine falsche URL ausgeben kann:
+Hier wird die Datei hochgeladen und mit dem Schalter -P die auch öffentlich erreichbar gemacht. Dabei ist zu beachten, dass die Ausgabe von `s3cmd` eine falsche URL ausgeben kann:
 
 ```shell
 Public URL of the object is: http://BUCKET_NAME.s3.amazonaws.com/test.jpg
