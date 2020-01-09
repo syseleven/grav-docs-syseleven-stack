@@ -87,9 +87,9 @@ Im nächsten Schritt erstellen wir einen S3 Bucket.
 
 ```shell
 s3cmd mb s3://BUCKET_NAME -P
+```
 
 Mit dem Schalter `-P` oder `--acl-public` machen wir den Bucket öffentlich, d.h. es ist grundsätzlich möglich, Objekte in diesem Bucket öffentlich zu machen und diese öffentlichen Objekte sowie eine Übersicht über die öffentlichen Objekte abzurufen. Ohne den Schalter `-P` oder mit dem Schalter `--acl-private` ist das anonyme Abrufen von Objekten sowie der Übersicht nicht möglich.
-```
 
 Nun befüllen wir den Bucket mit Objekten:
 
