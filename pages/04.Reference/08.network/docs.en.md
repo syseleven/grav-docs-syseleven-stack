@@ -72,6 +72,10 @@ Let's say you have backend servers, frontend servers, and database servers. You 
 The `default` security group will be used if not specified otherwise. It allows all traffic in your OpenStack project that originates from a port with the `default` security group, and denies everything else.
 
 ! We recommend not to block ICMP because path MTU discovery relies on it, to avoid connectivity issues over VPN tunnels.
+! For these reasons, ICMP packets from link local range 169.254.0.0/16 are explicitly allowed to enter any virtual machine in our cloud.
+! This is not a security concern, since this range is not routed in Internet and between OpenStack networks.
+! If you configure an extra layer of security with iptables or other kind filtering inside virtual machine itself, please
+! allow ICMP from this range.
 
 ### Firewall rules (FWaaS)
 
