@@ -28,8 +28,8 @@ Ubuntu Xenial 16.04 (YYYY-MM-DD) | Unmodified, directly from vendor             
 Rescue Ubuntu 16.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
 Rescue Ubuntu 18.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
 
-\* Debian Buster image provided by Debian community has a bug that causes loss of networking
-in virtual machine after 24 hours. See section "Known issues with public images" below.
+!!! Debian Buster image provided by Debian community has a bug that causes loss of networking
+!!! in virtual machine after 24 hours. See section "Known issues with public images" below.
 
 ### Public image lifecycle
 
@@ -71,7 +71,7 @@ data "openstack_images_image_v2" "ubuntu-bionic" {
 
 ### Known issues with public images
 
-- Official Debian Buster OpenStack image may has a bug in `ifupdown` configuration. After initial boot, eth0 interface
+- Official Debian Buster OpenStack image may have a bug in `ifupdown` configuration. After initial boot, eth0 interface
 will be configured with both DHCP and static cloud-init configuration. Since both will try to assign the same IP
 address to eth0, `RTNETLINK answers: File exists` error will be produced, resulting `networking.service` systemd unit
 in errored state. This will block DHCP client from refreshing lease after 24 hours. Solution is to remove dynamic eth0
