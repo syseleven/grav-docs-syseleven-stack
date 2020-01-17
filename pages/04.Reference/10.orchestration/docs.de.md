@@ -233,7 +233,7 @@ resources:
       name: example host
       image: Ubuntu-14.04-LTS from cloud-images.ubuntu.com
       key_name: { get_param: key_name }
-      flavor: m1.micro
+      flavor: m1c.tiny
       networks:
         - port: { get_resource: port }
 
@@ -305,7 +305,7 @@ resources:
       name: example host
       image: Ubuntu-14.04-LTS from cloud-images.ubuntu.com
       key_name: { get_param: key_name }
-      flavor: m1.micro
+      flavor: m1c.tiny
       networks:
         - port: { get_resource: port }
 
@@ -393,7 +393,7 @@ resources:
       name: example host
       image: Ubuntu-14.04-LTS from cloud-images.ubuntu.com
       key_name: { get_param: key_name }
-      flavor: m1.micro
+      flavor: m1c.tiny
       networks:
         - port: { get_resource: port }
 

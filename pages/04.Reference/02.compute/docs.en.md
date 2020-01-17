@@ -28,7 +28,6 @@ We recommend these instance types for most workloads and applications.
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
-M1 Micro    |  m1.micro   |  2GB   |   1   |   50GB   |
 M1 Tiny     |  m1.tiny    |  4GB   |   1   |   50GB   |
 M1 Small    |  m1.small   |  8GB   |   2   |   50GB   |
 M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
