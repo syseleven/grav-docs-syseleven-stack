@@ -110,23 +110,23 @@ L1 RAM 2XLarge  | l1r.2xlarge| 256GB  |  32   |  800GB   |
 Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden,
 [um weniger latenzkritische Daten dort zu speichern](../../05.Background/02.local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
 
-## Flavor change (resizing)
+## Flavor wechseln (resizing)
 
-!!! After the initial resize request was placed, additional confirmation is required before the system will resize the instance when resizing via GUI/CLI.
+!!! Nach der initialen Anforderung zum Wechseln des Flavors ist eine explizite Bestätigung erforderlich, bevor das System den Wechsel umsetzt, wenn der Wechsel über die GUI oder das CLI angefordert wird.
 
 ### M1 Instanz-Typen
 
-Es ist unterstütz die Größe von allen M1 Instanz-Typen zu ändern, weil sie das selbe Storage backend haben.
+Es ist möglich, die Größe zwischen allen M1 Instanz-Typen zu wechseln, weil sie den selben verteilten Speichertyp verwenden.
 
 ### L1 Instanz-Typen
 
-Es ist zurzeit nicht unterstütz die Größe von Local Storage Instanz-Typen zu ändern.
+Es wird zurzeit nicht unterstützt, die Größe von Local Storage Instanz-Typen zu wechseln.
 
 ### Wechseln zwischen Instance-Typen
 
-! Wir empfehlen nicht zwischen verschiedenen Instanz-Typen zu wechseln, z.B. zwischen L1 und M1 Instanz-Typen.
-! Wenn mehr Resourcen für eine Intsanz erforderlich sind, ist die schnellste Lösung eine neue Instanz zu bauen und die Datei per Netzwerk oder per angeschlossende Volume zu migrieren.
-! Wenn es trozdem notwendig ist die Größe oder Instanz-Typ zu ändern, kann man ein Image aus der Instanz erstellen und als Ursprungsimage für eine neue Instanz mit einem anderen Flavor benutzen. Bitte beachten Sie, dass die Hardwarespezifikationen und CPU flags sich anderen können.
+Wenn mehr Ressourcen für eine Instanz erforderlich sind, ist die schnellste Lösung, eine neue Instanz zu bauen und ggf. die Daten über das Netzwerk oder ein angeschlossenes Volume zu migrieren.
+
+Wenn eine Umwandlung einer vorhandenen Instanz unausweichlich erscheint, kann ein ähnliches Ergebnis erreicht werden, indem man ein Abbild der Instanz erstellt und es als Vorlage für eine neue Instanz mit einem anderen Flavor benutzt. Bitte beachten Sie, dass die Hardwarespezifikationen und CPU-Flags sich dabei ändern können.
 
 ---
 

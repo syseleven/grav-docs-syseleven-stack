@@ -116,7 +116,7 @@ You can extend local ephemeral storage using our distributed [Block Storage Serv
 
 ### M1 flavors
 
-It is possible to resize all M1 flavors since they have the same base storage backend.
+It is possible to resize all M1 flavors since they use the same base storage backend.
 
 ### L1 flavors
 
@@ -124,9 +124,9 @@ Resizing local storage flavors is currently **not** possible.
 
 ### Flavor change to different storage type
 
-! We do **not** recommend to change flavors to different storage types, i.e. between L1 and M1 flavors.
-! If more resources are required for an instance, the fastest solution is to build a new instance and migrate the required data (if any) via network or an attached volume.
-! If resize is still required, an image from instance could be created and used as a boot source for new instance with other flavor. Please keep in mind that hardware specifications and CPU flags may change with change of flavor.
+If more resources are required for an instance, the fastest solution is to build a new instance and migrate the required data (if any) via network or an attached volume.
+
+If a conversion of an existing instance seems inevitable, a similar result can be achieved by creating an image from that instance and using it as a boot source for a new instance with another flavor. Please keep in mind that hardware specifications and CPU flags may change with change of flavor.
 
 ---
 
