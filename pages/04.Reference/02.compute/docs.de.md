@@ -110,32 +110,23 @@ L1 RAM 2XLarge  | l1r.2xlarge| 256GB  |  32   |  800GB   |
 Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../03.block-storage/docs.de.md) ergänzt werden,
 [um weniger latenzkritische Daten dort zu speichern](../../05.Background/02.local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
 
-## Flavor change (resizing)
+## Flavor wechseln (resizing)
 
-!!! After the initial resize request was placed, additional confirmation is required before the system will resize the instance when resizing via GUI/CLI.
+!!! Nach der initialen Anforderung zum Wechseln des Flavors ist eine explizite Bestätigung erforderlich, bevor das System den Wechsel umsetzt, wenn der Wechsel über die GUI oder das CLI angefordert wird.
 
-### M1 flavors
+### M1 Instanz-Typen
 
-It is possible to resize all M1 flavors since they have the same base storage.
+Es ist möglich, die Größe zwischen allen M1 Instanz-Typen zu wechseln, weil sie den selben verteilten Speichertyp verwenden.
 
-### L1 flavors
+### L1 Instanz-Typen
 
-Resizing local storage flavors is currently **not** possible.
+Es wird zurzeit nicht unterstützt, die Größe von Local Storage Instanz-Typen zu wechseln.
 
-### Flavor change to different storage type
+### Wechseln zwischen Instance-Typen
 
-! We do **not** recommend to change flavors to different storage types.
-! If more resources are required for an instance the fastest solution is to build a new instance and migrate the required data (if any) via network or an attached volume.
+Wenn mehr Ressourcen für eine Instanz erforderlich sind, ist die schnellste Lösung, eine neue Instanz zu bauen und ggf. die Daten über das Netzwerk oder ein angeschlossenes Volume zu migrieren.
 
-#### M1 to L1 migration
-
-Migrating M1 to L1 flavors is generally possible with the following exception:
-
-M1 flavors **cannot** be migrated to the L1 flavor `l1.tiny` because the target disk (25GB) is smaller than the source disk (50GB).
-
-#### L1 to M1 migration
-
-It is currently **not** possible to migrate any L1 flavor to M1 flavors.
+Wenn eine Umwandlung einer vorhandenen Instanz unausweichlich erscheint, kann ein ähnliches Ergebnis erreicht werden, indem man ein Abbild der Instanz erstellt und es als Vorlage für eine neue Instanz mit einem anderen Flavor benutzt. Bitte beachten Sie, dass die Hardwarespezifikationen und CPU-Flags sich dabei ändern können.
 
 ---
 
