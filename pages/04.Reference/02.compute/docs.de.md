@@ -114,28 +114,19 @@ Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, l
 
 !!! After the initial resize request was placed, additional confirmation is required before the system will resize the instance when resizing via GUI/CLI.
 
-### M1 flavors
+### M1 Instanz-Typen
 
-It is possible to resize all M1 flavors since they have the same base storage.
+Es ist unterstütz die Größe von allen M1 Instanz-Typen zu ändern, weil sie das selbe Storage backend haben.
 
-### L1 flavors
+### L1 Instanz-Typen
 
-Resizing local storage flavors is currently **not** possible.
+Es ist zurzeit nicht unterstütz die Größe von Local Storage Instanz-Typen zu ändern.
 
-### Flavor change to different storage type
+### Wechseln zwischen Instance-Typen
 
-! We do **not** recommend to change flavors to different storage types.
-! If more resources are required for an instance the fastest solution is to build a new instance and migrate the required data (if any) via network or an attached volume.
-
-#### M1 to L1 migration
-
-Migrating M1 to L1 flavors is generally possible with the following exception:
-
-M1 flavors **cannot** be migrated to the L1 flavor `l1.tiny` because the target disk (25GB) is smaller than the source disk (50GB).
-
-#### L1 to M1 migration
-
-It is currently **not** possible to migrate any L1 flavor to M1 flavors.
+! Wir empfehlen nicht zwischen verschiedenen Instanz-Typen zu wechseln, z.B. zwischen L1 und M1 Instanz-Typen.
+! Wenn mehr Resourcen für eine Intsanz erforderlich sind, ist die schnellste Lösung eine neue Instanz zu bauen und die Datei per Netzwerk oder per angeschlossende Volume zu migrieren.
+! Wenn es trozdem notwendig ist die Größe oder Instanz-Typ zu ändern, kann man ein Image aus der Instanz erstellen und als Ursprungsimage für eine neue Instanz mit einem anderen Flavor benutzen. Bitte beachten Sie, dass die Hardwarespezifikationen und CPU flags sich anderen können.
 
 ---
 
