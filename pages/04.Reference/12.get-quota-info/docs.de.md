@@ -188,7 +188,7 @@ Die Antwort beinhaltet die Informationen über aktuell verwendete Ressourcen in 
   "cbk": {
     "compute.cores": 3,
     "compute.flavors": {
-      "m1.micro": 3
+      "m1c.tiny": 3
     },
     "compute.instances": 3,
     "compute.ram_mb": 6144,

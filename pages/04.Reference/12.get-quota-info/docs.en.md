@@ -189,7 +189,7 @@ The response contains the information about the currently-used resources in JSON
   "cbk": {
     "compute.cores": 3,
     "compute.flavors": {
-      "m1.micro": 3
+      "m1c.tiny": 3
     },
     "compute.instances": 3,
     "compute.ram_mb": 6144,
