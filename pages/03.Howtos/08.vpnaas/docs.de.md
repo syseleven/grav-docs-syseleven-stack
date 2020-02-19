@@ -516,3 +516,7 @@ $ openstack vpn ipsec site connection create conn2 \
 
 Erstelle virtuelle Maschinen mit Interfaces in `right_sub` und `left_sub` und überprüfe, dass sie einander erreichen können, indem du ICMP Echo Requests zu den internen IP-Adressen sendest (Ping).
 Beachte, dass eine der virtuellen Maschinen eine Floating-IP-Adresse benötigt, damit du die VM von außen erreichen kannst.
+
+## Hinweis zur Kompatibilität
+
+Bitte beachten Sie die [bekannten Probleme](../../04.Reference/08.network/docs.en.md#known-interoperability-issues) in unserer [Referenz](../../04.Reference/08.network/docs.en.md).

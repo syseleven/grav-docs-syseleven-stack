@@ -91,6 +91,10 @@ With VPNaaS you can establish secure site-to-site tunnels from your premises to 
 
 See our heat-examples on GitHub [for an example how to connect two regions using VPNaaS](https://github.com/syseleven/heat-examples/tree/master/vpn-site2site).
 
+#### Known interoperability issues
+
+As control over configuration details is limited in this VPNaaS implementation, connections to external destinations require flexibility on the remote side. For example there are multiple ways specified in IPsec how to connect multiple networks over a connection. Our VPNaaS supports only the variant, where each pair of networks uses a distinct SA (security association). This is known to cause problems hard to diagnose in conjunction with [GCP Cloud VPN](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing#ts-ip-ranges). One possible workaround is to set up distinct connections for each pair of networks, which can become awkward to maintain. Another would be to use a TCP VPN like [OpenVPN](https://openvpn.net/), [VTun](http://vtun.sourceforge.net/), [Wireguard](https://www.wireguard.com/), [Tinc](https://tinc-vpn.org/) or [Zerotier](https://www.zerotier.com/). As a third alternative approach, we are working on the preconditions needed to run virtual appliances like [PFSense](https://www.pfsense.org/) in our platform and let them provide self managed vpn services.
+
 ### Customer public IP space (Bring your own IP)
 
 If you want to connect to the internet without NAT (e.g. using Fixed IPs instead of Floating IPs) or if you have special requirements, you can easily transfer your public IP networks to SysEleven Stack.
