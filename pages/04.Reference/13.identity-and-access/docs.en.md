@@ -31,7 +31,7 @@ export OS_REGION_NAME="dbl"
 
 ## Tokens
 
-OpenStack also supports authorization via tokens. E.g. via the OpenStack python CLI client you are able to create a token using your user credentials.
+OpenStack supports authorization via tokens, via the OpenStack python CLI you could create a token using your user credentials.
 
 ```shell
 openstack token issue
