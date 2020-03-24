@@ -13,7 +13,7 @@ OpenStack's Identity API is implemented via Keystone. It provides API client aut
 
 ## Password
 
-The common way for a user or service to authenticate towards Keystone is by using username and password. We may enter the user credentials in the OpenStack dashboard, or use them inside of your software to manage your OpenStack ressources. A sample OpenStack RC file which can be used for the OpenStack python CLI client would be the following.
+The common way for a user or service to authenticate towards Keystone is by using username and password. You may enter the user credentials in the OpenStack dashboard, or use them inside of your software to manage your OpenStack ressources. A sample OpenStack RC file which can be used for the OpenStack python CLI client would be the following.
 
 ```shell
 export OS_AUTH_URL=https://keystone.cloud.syseleven.net:5000/v3
@@ -45,7 +45,7 @@ openstack token issue
 +------------+----------------------------------+
 ```
 
-These tokens are valid for 24 hours and cannot be listed after creation. We can use this token to authenticate ourselves by slightly changing the OpenStack RC file we used for creating this token.
+These tokens are valid for 24 hours and cannot be listed after creation. You can use this token to authenticate yourself by slightly changing your OpenStack RC file you may used for creating this token.
 
 ```shell
 export OS_TOKEN="ab4d1e500c5245e5a166892943118a44"
@@ -54,7 +54,7 @@ unset OS_USER_DOMAIN_NAME
 unset OS_USERNAME
 ```
 
-If we want to revoke a token before it expires we may do so manually.
+If you want to revoke a token before it expires we may do so manually.
 
 ```shell
 openstack token revoke ab4d1e500c5245e5a166892943118a44
