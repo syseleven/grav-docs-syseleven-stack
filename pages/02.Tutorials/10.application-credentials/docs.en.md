@@ -71,6 +71,7 @@ $ openstack application credential create test
 
 The default user role assignments are described in the [Reference Guide](../../04.Reference/13.identity-and-access/docs.en.md)).The password for the Application Credentials is only shown once on creation, there is no way to receive the password again once the credentials are created.
 
+
 ```shell
 $ openstack application credential show test
 +--------------+----------------------------------+

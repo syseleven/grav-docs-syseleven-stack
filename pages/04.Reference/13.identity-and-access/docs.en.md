@@ -96,4 +96,4 @@ Role         | rights     |
 operator     | read/write |
 viewer       | read       |
 
-By default an user has 2 roles, the viewer role which represents a read-only access and the operator role which represents a read-write access. By granting an user both, the operator and the viewer role, he is capable of delegating these roles separately when creating [Application Credentials](../../02.Tutorials/10.application-credentials/docs.en.md). 
+By default an user has 2 roles, the viewer role which represents a read-only access and the operator role which represents a read-write access. By granting an user both, the operator and the viewer role, he is capable of delegating these roles separately when creating [Application Credentials](../../02.Tutorials/10.application-credentials/docs.en.md).
