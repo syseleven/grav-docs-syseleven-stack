@@ -11,6 +11,19 @@ taxonomy:
 
 [OpenStack's Identity API](https://docs.openstack.org/api-ref/identity/) is implemented via Keystone. It provides API client authentication and service discovery.
 
+### Supported APIs
+
+Component    | Current API | Deprecated API |
+-------------|-------------|-----------------
+keystone     | v3, v2      |                |
+cinder       | v3          | v2             |
+designate    | v2          |                |
+glance       | v2          | v1             |
+neutron      | v2          |                |
+hova         | v2          |                |
+heat         | v1          |                |
+
+
 ## Authentication
 
 There a different ways to authenticate towards Keystone.
