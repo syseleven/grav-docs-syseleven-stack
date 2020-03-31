@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-Since the Queens update, OpenStack supports the creation of [Application Credentials](../../04.Reference/13.identity-and-access/docs.en.md) to allow users and their applications to authenticate to OpenStack. The users can delegate a subset of their assigned roles, granting an application the same or restricted authorization for their projects and ressources.  
+Since the Queens update, OpenStack supports the creation of [Application Credentials](../../../04.Reference/13.identity-and-access/docs.en.md) to allow users and their applications to authenticate to OpenStack. The users can delegate a subset of their assigned roles, granting an application the same or restricted authorization for their projects and ressources.  
 
 ### Create Application Credentials
 
@@ -69,7 +69,7 @@ $ openstack application credential create test
 +--------------+----------------------------------------------------------------------------------------+
 ```
 
-The default user role assignments are described in the [Reference Guide]((../../04.Reference/13.identity-and-access/docs.en.md)).The password for the Application Credentials is only shown once on creation, there is no way to receive the password again once the credentials are created.
+The default user role assignments are described in the [Reference Guide]((../../../04.Reference/13.identity-and-access/docs.en.md)).The password for the Application Credentials is only shown once on creation, there is no way to receive the password again once the credentials are created.
 
 ```shell
 $ openstack application credential show test
