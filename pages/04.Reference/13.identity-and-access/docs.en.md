@@ -9,60 +9,34 @@ taxonomy:
 
 ## Overview
 
-[OpenStack's Identity API](https://docs.openstack.org/api-ref/identity/) is implemented via Keystone. It provides API client authentication and service discovery.
+SysEleven Stack uses the OpenStack component Keystone for identity and access.
 
-### Supported APIs
+There a different ways to authenticate towards Keystone. Upon successful authentication, the identity service provides the user with an authorization token used for subsequent service requests.
 
-Component    | Current API | Deprecated API |
--------------|-------------|-----------------
-keystone     | v3, v2      |                |
-cinder       | v3          | v2             |
-designate    | v2          |                |
-glance       | v2          | v1             |
-neutron      | v2          |                |
-hova         | v2          |                |
-heat         | v1          |                |
+## Supported authentication methods
 
-
-## Authentication
-
-There a different ways to authenticate towards Keystone.
+Method                                     | Supported     |
+-------------------------------------------|---------------|
+Password                                   | yes |
+Token                                      | yes |
+Application Credentials                    | yes |
+Multi-Factor-Authentication (TOTP)         | no  |
 
 ### Password
 
-The common way for a user or service to authenticate towards Keystone is by using username and password. You may enter the user credentials in the OpenStack dashboard, or use them inside of your software to manage your OpenStack ressources. A sample OpenStack RC file which can be used for the OpenStack python CLI client would be the following.
+A common way for an user or service to authenticate towards Keystone is by using username and password. For an example, have a look at the [API access tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 
-```shell
-export OS_AUTH_URL=https://keystone.cloud.syseleven.net:5000/v3
-export OS_IDENTITY_API_VERSION=3
-export OS_PROJECT_ID="<your-project-id>"
-export OS_USER_DOMAIN_NAME="Default"
-export OS_INTERFACE=public
-export OS_ENDPOINT_TYPE=public
-export OS_USERNAME="<your-username>"
-export OS_PASSWORD="<your-password>"
-export OS_INTERFACE="public"
-export OS_REGION_NAME="dbl"
-#export OS_REGION_NAME="cbk"
-```
+Users can change their password either using the OpenStack CLI command `openstack user password set`, or via the [OpenStack dashboard](https://cloud.syseleven.de).
+
+If you forgot your password, please contact the [Cloud-Support at cloudsupport@syseleven.de](../../06.Support/default.en.md).
 
 ### Token
 
-OpenStack supports authorization via tokens, via the OpenStack python CLI you could create a token using your user credentials.
+When you authenticate using a token, it is not necessary anymore to provide username and password. Tokens are valid for only 24 hours.
 
-```shell
-openstack token issue
-+------------+----------------------------------+
-| Field      | Value                            |
-+------------+----------------------------------+
-| expires    | 2020-03-21T08:37:54+0000         |
-| id         | ab4d1e500c5245e5a166892943118a44 |
-| project_id | 18ba5d3f9d714091bca8859a401d825f |
-| user_id    | 0c66382aa9594649abf7a99720058bba |
-+------------+----------------------------------+
-```
+The OpenStack CLI allows you to create tokens with the command `openstack token issue`. It can also be manually revoked using `openstack token revoke`. For more information how to get started with the OpenStack CLI, have a look at the [API access tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 
-These tokens are valid for 24 hours and cannot be listed after creation. You can use this token to authenticate yourself by slightly changing your OpenStack RC file you may used for creating this token.
+Many clients will switch to the token authentication methods with these environment variables in place:
 
 ```shell
 export OS_TOKEN="ab4d1e500c5245e5a166892943118a44"
@@ -71,29 +45,47 @@ unset OS_USER_DOMAIN_NAME
 unset OS_USERNAME
 ```
 
-If you want to revoke a token before it expires we may do so manually.
-
-```shell
-openstack token revoke ab4d1e500c5245e5a166892943118a44
-```
-
 ### Application Credentials
 
-Users can also create [Application Credentials](../../02.Tutorials/10.application-credentials/docs.en.md) to authorize their services to their projects. Using this approach an user can delegate his read or read/write rights to an application. This way an user's password is decoupled from an application's configuration.
+Users can create Application Credentials and use them instead of the Password method. This is useful, if you want to configure third party software like Prometheus to query the OpenStack API.
 
-## Supported methods
+Using Application Credentials it can be avoided to put clear text passwords into the configuration of applications.
 
-TODO
+Application Credentials always belong to a user, and can inherit some or all roles of their owner.
 
-## User access management
+Using this approach a user can delegate the `operator` (for read-write access) or, if desired, only the `viewer` role (for read-only access) to an application.
 
-The [Cloud-Support](https://docs.syseleven.de/syseleven-stack/de/support) manages projects, users, groups and roles. They can provide users with different roles.
+Please refer to the [Application Credentials tutorial](../../03.Tutorials/13.application-credentials/docs.en.md) to learn more about how to use Application Credentials.
 
-### Supported roles
+## Access management
 
-Role         | rights     |
--------------|------------|
-operator     | read/write |
-viewer       | read       |
+On the SysEleven Stack, `users` belong to `groups`, which can get access to `projects`. The access privileges of the user are defined by their `roles` in the project.
 
-By default an user has 2 roles, the viewer role which represents a read-only access and the operator role which represents a read-write access. By granting an user both, the operator and the viewer role, he is capable of delegating these roles separately when creating [Application Credentials](../../02.Tutorials/10.application-credentials/docs.en.md).
+Typically every customer will have one or more users (for every team member), and one or more projects. Users can have access to all customer projects, or only to a subset of projects if required.
+
+We manage projects, users, groups and roles for you. Please contact the [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md) if you happen to require changes to your projects, users or groups.
+
+### Projects
+
+Every cloud resource, like virtual machines, belong to a certain project. It might be good practice to separate unrelated pieces of infrastructure into different projects.
+
+### Groups
+
+By default, we create one group for read-only access and one group for read-write access for every project. If you have special requirements, please contact the [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+
+### Roles
+
+Role         | Access to cloud resources     |
+-------------|-------------------------------|
+operator     | create, read, update, delete  |
+viewer       | read                          |
+
+For users with read-write access, we will assign both the operator and the viewer roles. This allows them to delegate these roles separately when creating [Application Credentials](../../02.Tutorials/10.application-credentials/docs.en.md).
+
+## Access to SEOS (S3-compatible object storage)
+
+For access to the S3-compatible object storage, users can create, list and delete ec2 credentials (access key and secret key). They are only valid for the SysEleven S3-compatible object storage (SEOS).
+
+It is only possible to create ec2 credentials with the `operator` role, because they allow write access to all S3 buckets within a project by default.
+
+For more information, see the [block storage reference guide](../../04.Reference/03.block-storage/docs.en.md).
