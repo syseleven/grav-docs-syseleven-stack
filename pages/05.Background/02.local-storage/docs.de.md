@@ -17,7 +17,7 @@ Der SysEleven Stack bietet zwei Arten (flavors) von Ephemeral Storage. Der Stand
 
 ### Wo finde ich eine Liste der verfügbaren Local SSD Storage Instanztypen?
 
-Eine Übersicht befindet sich [hier](../../04.Reference/02.compute/docs.de.md).
+Eine Übersicht befindet sich [hier](../../04.Reference/03.compute/docs.de.md).
 
 ### Wie benutze ich Local SSD Storage?
 
@@ -45,7 +45,7 @@ Ja, aber das ergibt selten Sinn, denn sie nutzt ja dann den Local SSD Storage ni
 
 ### Kann ich Local SSD Storage in anderen Größen erhalten?
 
-Nein. Local SSD Storage ist ausschließlich in den angegebenen [Flavors](../../04.Reference/02.compute/docs.de.md) erhältlich.
+Nein. Local SSD Storage ist ausschließlich in den angegebenen [Flavors](../../04.Reference/03.compute/docs.de.md) erhältlich.
 
 ### Kann ich die Größe von Local SSD Storage ändern?
 

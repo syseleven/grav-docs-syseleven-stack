@@ -17,7 +17,7 @@ SysEleven Stack offers two flavors of ephemeral storage. The default storage typ
 
 ### Where can I find a list of all the local SSD storage instance types?
 
-We provide a [tabular overview of our flavor types](../../04.Reference/02.compute/docs.en.md).
+We provide a [tabular overview of our flavor types](../../04.Reference/03.compute/docs.en.md).
 
 ### How do I use local SSD storage?
 
@@ -45,7 +45,7 @@ Yes, but this rarely makes sense as it isn't a local volume instance anymore. It
 
 ### Can I use local SSD storage in other sizes?
 
-Local SSD storage is exclusively available in the sizes defined in our [flavors](../../04.Reference/02.compute/docs.en.md).
+Local SSD storage is exclusively available in the sizes defined in our [flavors](../../04.Reference/03.compute/docs.en.md).
 
 ### Can I resize local SSD storage instances?
 
