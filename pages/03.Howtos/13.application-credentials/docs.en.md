@@ -110,10 +110,10 @@ $ openstack application credential create read-only --role viewer --expiration 2
 If we want to use the Application Credentials that we created in the steps before, we may create a RC file containing the credentials which can be used with the OpenStack python CLI. Be sure to replace the `CREDENTIAL_ID` and `CREDENTIAL_SECRET` accordingly and unset other related `OS_.*` variables.
 
 ```shell
-OS_AUTH_URL=https://keystone.cloud.syseleven.net:5000/v3
-OS_AUTH_TYPE=v3applicationcredential
-OS_APPLICATION_CREDENTIAL_ID=0d65b0f6c1814fb886252e5b4d945640
-OS_APPLICATION_CREDENTIAL_SECRET=PaHdxTYcngnIbbawQu3MLKqqwyf6oh_geeBo6QG9UPNkCl0Qh7FxcJTWTKtNfRViYje590_kBW8QL7Qi9gtxeg
+export OS_AUTH_URL=https://keystone.cloud.syseleven.net:5000/v3
+export OS_AUTH_TYPE=v3applicationcredential
+export OS_APPLICATION_CREDENTIAL_ID=0d65b0f6c1814fb886252e5b4d945640
+export OS_APPLICATION_CREDENTIAL_SECRET=PaHdxTYcngnIbbawQu3MLKqqwyf6oh_geeBo6QG9UPNkCl0Qh7FxcJTWTKtNfRViYje590_kBW8QL7Qi9gtxeg
 ```
 
 ### Delete Application Credentials
