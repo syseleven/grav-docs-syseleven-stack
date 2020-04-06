@@ -88,4 +88,4 @@ For access to the S3-compatible object storage, users can create, list and delet
 
 It is only possible to create ec2 credentials with the `operator` role, because they allow write access to all S3 buckets within a project by default.
 
-For more information, see the [block storage reference guide](../../04.Reference/04.block-storage/docs.en.md).
+For more information, see the [object storage reference guide](../../04.Reference/05.object-storage/docs.en.md).
