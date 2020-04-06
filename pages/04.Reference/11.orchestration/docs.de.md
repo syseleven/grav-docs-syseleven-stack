@@ -469,7 +469,7 @@ ganz so anspruchslos sind meist auch die einfachsten Hosting-Projekte nicht:
 Was passiert, wenn unsere Maschine größer werden soll als der eingestellte
 Flavor? und wo sind meine Daten, die ich in der Maschine aufgebaut habe, wenn
 ich den Stack lösche, wie ich es gelernt habe? Die Antwort auf beide Fragen
-findet sich [hier](../../04.Reference/03.block-storage/docs.de.md). Jede Maschine im Syseleven Stack wird derzeit
+findet sich [hier](../../04.Reference/04.block-storage/docs.de.md). Jede Maschine im Syseleven Stack wird derzeit
 mit einer Größe von 50GB Storage ausgeliefert. Brauche ich zusätzlichen
 Speicher, muss ich auf sogenannte Volumes zurückgreifen. Doch auch aus einer
 anderen Überlegung heraus sind Volumes interessant: Wenn ich meine Maschine
