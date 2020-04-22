@@ -128,6 +128,28 @@ Wenn mehr Ressourcen für eine Instanz erforderlich sind, ist die schnellste Lö
 
 Wenn eine Umwandlung einer vorhandenen Instanz unausweichlich erscheint, kann ein ähnliches Ergebnis erreicht werden, indem man ein Abbild der Instanz erstellt und es als Vorlage für eine neue Instanz mit einem anderen Flavor benutzt. Bitte beachten Sie, dass die Hardwarespezifikationen und CPU-Flags sich dabei ändern können.
 
+## Instanz-Snapshots
+
+Instanz-Snapshots können erstellt werden, falls die VM nicht von einem Cinder Volume gestartet wurde.
+
+```shell
+openstack server image create --name <MyInstanceSnapshotName> <MyInstanceName>
+```
+
+### Datenkonsistenz der Snapshots
+
+Wir empfehlen die Instanz auszuschalten, bevor ein Snapshot erstellt wird, denn sonst können Inkonsistenzen und Datenkorruption auftreten.
+
+Eine andere Variante Inkonsistenzen zu vermeiden, ist den Qemu guest agent zu verwenden. Leider reicht es nicht aus, den Guest agent in einer virtuellen Maschine zu installieren.
+Es ist ein Glance image nötig, in dem das Attribut `hw_qemu_guest_agent=yes` gesetzt ist, sowie der Guest agent vorinstalliert und korrekt konfiguriert ist.
+Nur wenn die virtuelle Maschine dann mit solch einem Image erstellt wurde, weiß der Compute Service dass der Guest Agent verfügbar ist.
+
+## Instanzen von einem Snapshot starten
+
+Snapshots können als Template für neue Instanzen verwendet werden.
+
+[Dieses Heat-Beispiel](https://github.com/syseleven/heat-examples/tree/master/singles-server-from-snapshot) zeigt, wie Snapshots verwendet werden können, um neue Instanzen zu erstellen.
+
 ---
 
 ## Fragen & Antworten
