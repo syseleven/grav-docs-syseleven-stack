@@ -20,7 +20,7 @@ You can manage your block storage volumes and make them available to your comput
 | Volume type                             |   CBK region   |   DBL region
 | ----------------------------------------|----------------|-------------
 | quobyte                                 | yes (default)  | yes (default)
-| quobyte_multi                           | yes            | yes
+| quobyte-multiattach                     | yes            | yes
 
 ### quobyte
 
@@ -28,7 +28,7 @@ The data will be stored on SSDs in the SysEleven Stack distributed storage clust
 
 The volumes can only be attached to a single virtual machine at a time.
 
-### quobyte_multi
+### quobyte-multiattach
 
 This volume type is the same as the `quobyte` volume type, except that the volumes can be attached to multiple VMs at the same time.
 
