@@ -7,7 +7,7 @@ taxonomy:
         - docs
 ---
 
-# Cinder multi-attach
+## Cinder multi-attach
 
 ### Overview
 
@@ -22,6 +22,7 @@ In this tutorial we will create a cinder volume and attach it to 3 different ins
 ### Create a cinder multi-attach volume
 
 Multiattach volumes are created by choosing the type `quobyte-multiattach`.
+
 ```shell
 openstack volume create --size 50 --type quobyte-multiattach  testvolume
 +---------------------+--------------------------------------+
@@ -52,6 +53,7 @@ openstack volume create --size 50 --type quobyte-multiattach  testvolume
 ### Attach the new volume to the instances
 
 For this tutorial the following 3 instances are used:
+
 ```shell
 openstack server list
 +--------------------------------------+----------------+--------+----------------------------------------+----------------------------------+
@@ -98,7 +100,7 @@ O2CB_ENABLED=true
 Define all 3 VMs in /etc/ocfs2/cluster.conf to tell o2cb which nodes are part of the cluster and how to reach them. Make sure that the `name` setting for every node matches the hostname and that the `number` is unique in the cluster.
 This file is identical on all 3 VMs:
 
-```
+```shell
 # /etc/ocfs2/cluster.conf
 node:
         ip_port = 7777
@@ -134,14 +136,15 @@ systemctl enable o2cb
 ```
 
 ### Create a filesystem on the volume
+
 In this example there is only one cinder volume attached to the VMs. The device name on all VMs is `/dev/vdb`.
 The next step os only necessary on one VM:
 
 ```shell
-mkfs.ocfs2 /dev/vdb 
+mkfs.ocfs2 /dev/vdb
 ```
 
-### Mount the filesystem 
+### Mount the filesystem
 
 Mount the filesystem on all 3 VMs:
 
@@ -153,4 +156,4 @@ Now it is possible to read and write files from all VMs to the volume
 
 ## References
 
-[OCFS2 best practices guide] (http://www.oracle.com/us/technologies/linux/ocfs2-best-practices-2133130.pdf)
+[OCFS2 best practices guide](http://www.oracle.com/us/technologies/linux/ocfs2-best-practices-2133130.pdf)
