@@ -119,5 +119,5 @@ resize2fs /dev/vdX
 
 ### Current limitations
 
-- Online resizing is not supported. A volume must be detached, before it can be resized.
-- Shrinking volumes is not supported. If you need to reduce the size of your volume, create a new one and copy the data.
+* Online resizing is not supported. A volume must be detached, before it can be resized.
+* Shrinking volumes is not supported. If you need to reduce the size of your volume, create a new one and copy the data.
