@@ -140,9 +140,9 @@ openstack server image create --name <MyInstanceSnapshotName> <MyInstanceName>
 
 For best results, we recommend to shut off the instance before creating a snapshot. Otherwise there might be data inconsistencies and file system corruption.
 
-Another variant to avoid data inconsistencies is to use the Qemu guest agent. Unfortunately it's not sufficient to install the guest agent in your virtual machine.
-You have to start with a Glance image where the Qemu guest agent is already properly installed and configured. This image must have the property `hw_qemu_guest_agent=yes`.
-Only if the virtual machine was created from such an image the compute service learns that the guest agent is available.
+Another variant to avoid data inconsistencies is to use the QEMU Guest Agent. Unfortunately it's not sufficient to install the Guest Agent in your virtual machine.
+You have to start with a Glance image where the QEMU Guest Agent is already properly installed and configured. This image must have the property `hw_qemu_guest_agent=yes`.
+Only if the virtual machine was created from such an image the compute service learns that the Guest Agent is available.
 
 ## Launch instances from snapshots
 

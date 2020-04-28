@@ -138,10 +138,10 @@ openstack server image create --name <MyInstanceSnapshotName> <MyInstanceName>
 
 ### Datenkonsistenz der Snapshots
 
-Wir empfehlen die Instanz auszuschalten, bevor ein Snapshot erstellt wird, denn sonst können Inkonsistenzen und Datenkorruption auftreten.
+Wir empfehlen, die Instanz auszuschalten, bevor ein Snapshot erstellt wird, denn sonst können Inkonsistenzen und Datenkorruption auftreten.
 
-Eine andere Variante Inkonsistenzen zu vermeiden, ist den Qemu guest agent zu verwenden. Leider reicht es nicht aus, den Guest agent in einer virtuellen Maschine zu installieren.
-Es ist ein Glance image nötig, in dem das Attribut `hw_qemu_guest_agent=yes` gesetzt ist, sowie der Guest agent vorinstalliert und korrekt konfiguriert ist.
+Eine andere Variante, Inkonsistenzen zu vermeiden, ist den QEMU Guest Agent zu verwenden. Leider reicht es nicht aus, den Guest Agent in einer virtuellen Maschine zu installieren.
+Es ist ein Glance image nötig, in dem das Attribut `hw_qemu_guest_agent=yes` gesetzt ist, sowie der Guest Agent vorinstalliert und korrekt konfiguriert ist.
 Nur wenn die virtuelle Maschine dann mit solch einem Image erstellt wurde, weiß der Compute Service dass der Guest Agent verfügbar ist.
 
 ## Instanzen von einem Snapshot starten
