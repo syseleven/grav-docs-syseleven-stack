@@ -153,7 +153,7 @@ Mount the file system on all 3 VMs:
 mount.ocfs2 /dev/vdb /mnt
 ```
 
-Now it is possible to read and write files from all VMs to the volume
+Now it is possible to read and write files on the volume from all VMs.
 
 ## References
 
