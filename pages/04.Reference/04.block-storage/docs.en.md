@@ -32,11 +32,11 @@ The volumes can only be attached to a single virtual machine at a time.
 
 This volume type is the same as the `quobyte` volume type, except that the volumes can be attached to multiple VMs at the same time.
 
-The performance of `quobyte-multiattach` is slightly reduced because some caching strategies are not possible with multi-attach volumes. There is also a performance penalty using ocfs2 (or any other cluster file system) compared to ext4, because the file system must coordinate with the other nodes over the network.
+The performance of `quobyte-multiattach` is slightly reduced because some caching strategies are not possible with multi-attach volumes. There is also a performance penalty using ocfs2 (or any other cluster file system, like gfs2) compared to ext4, because the file system must coordinate with the other nodes over the network.
 
 Please refer to our multi-attach volume tutorial. It explains [how to use multi-attach volumes with the cluster file system ocfs2](../../02.Tutorials/10.cinder-multiattach/docs.en.md).
 
-!! WARNING: This mode of operation requires special cluster file systems like ocfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
+!! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
 
 ## Available functionality
 
@@ -103,7 +103,7 @@ This is useful, for example, to make app servers more scalable or to reduce sing
 
 Please refer to our multi-attach volume tutorial. It explains [how to use multi-attach volumes with the cluster file system ocfs2](../../02.Tutorials/10.cinder-multiattach/docs.en.md).
 
-!! WARNING: This mode of operation requires special cluster file systems like ocfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
+!! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
 
 ### Volume resizing
 
