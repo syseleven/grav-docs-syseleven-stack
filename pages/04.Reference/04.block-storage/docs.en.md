@@ -69,7 +69,7 @@ The transfer can be initiated in one project using `openstack volume transfer re
 
 A snapshot saves a point-in-time copy of a block storage volume.
 
-```
+```shell
 openstack volume snapshot create --volume volume_name_or_id snapshot_name
 ```
 
@@ -77,7 +77,7 @@ Snapshots can only be created while the volume is detached. The option `--force`
 
 You may use the snapshot as a source when creating a new volume:
 
-```
+```shell
 openstack volume create --snapshot snapshot_id name_of_new_volume
 ```
 
@@ -85,7 +85,7 @@ openstack volume create --snapshot snapshot_id name_of_new_volume
 
 It is possible to copy the contents of a cinder volume to the [glance image store](../06.images/docs.en.md), e.g. using the [OpenStack CLI](../../02.Tutorials/02.api-access/docs.en.md):
 
-```
+```shell
 openstack image create --volume volume_name_or_id name_of_new_image
 ```
 
@@ -105,13 +105,13 @@ Sometimes it is necessary to change the size of your volume.
 
 Cinder volumes can be extended in size using the API or the OpenStack CLI:
 
-```
+```shell
 openstack volume set --size XX volume_name_or_id
 ```
 
 Following the volume size change it might be necessary to grow the filesystem. If you are using ext4 you may need to run this command on the VM where the volume is attached:
 
-```
+```shell
 resize2fs /dev/vdX
 ```
 

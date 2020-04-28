@@ -56,7 +56,7 @@ M1 RAM Medium   |  m1r.medium  | 32GB   |   4   |   50GB   |
 (M1 RAM XLarge)** |  m1r.xlarge| 128GB  |   16   |   50GB   |
 
 (*)
-Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.de.md) ergänzt werden.
+Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.en.md) ergänzt werden.
 
 (**)
 Nur auf Anfrage erhältlich
@@ -107,7 +107,7 @@ L1 RAM 2XLarge  | l1r.2xlarge| 256GB  |  32   |  800GB   |
 
 
 (*)
-Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.de.md) ergänzt werden,
+Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.en.md) ergänzt werden,
 [um weniger latenzkritische Daten dort zu speichern](../../05.Background/02.local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
 
 ## Flavor wechseln (resizing)
