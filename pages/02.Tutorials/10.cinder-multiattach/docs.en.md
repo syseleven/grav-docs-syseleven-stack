@@ -83,14 +83,17 @@ Multi-attach volumes require a [cluster file system](https://en.wikipedia.org/wi
 **Warning: We do not recommend to use a file system like Ext4 or XFS for multi-attach volumes. Concurrent write access will destroy the file system and the data on that volume.**
 
 For this tutorial we use OCFS2.
-To setup OCFS2 we need to install the ocfs2-tools and kernel module for the running kernel version on every VM:
+To setup OCFS2 we need to install the ocfs2 management tools and kernel modules for the running kernel version on every VM:
 
 ```shell
-apt install ocfs2-tools linux-modules-extra-4.15.0-91-generic
+uname -a
+Linux app-instance-1 4.4.0-177-generic #207-Ubuntu SMP Mon Mar 16 01:16:10 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+
+apt install ocfs2-tools linux-modules-extra-4.4.0-177-generic
 ```
 
 OCFS2 is configurend in /etc/default/o2cb and /etc/ocfs/cluster.conf.
-Set `O2CB_ENABLED=true` in /etc/default/o2cb. All other settings can left unchanged.
+Set `O2CB_ENABLED=true` in /etc/default/o2cb. All other settings can be left unchanged.
 
 ```shell
 # O2CB_ENABLED: 'true' means to load the driver on boot.
