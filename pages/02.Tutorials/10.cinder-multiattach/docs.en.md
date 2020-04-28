@@ -11,7 +11,7 @@ taxonomy:
 
 ### Overview
 
-In this tutorial we will create a cinder volume and attach it to 3 different instances simoultaniously in Read/Write mode using the OCFS2 filesystem.
+In this tutorial we will create a cinder volume and attach it to 3 different instances simultaneously in Read/Write mode using the OCFS2 file system.
 
 ### Prerequisites
 
@@ -21,7 +21,7 @@ In this tutorial we will create a cinder volume and attach it to 3 different ins
 
 ### Create a cinder multi-attach volume
 
-Multiattach volumes are created by choosing the type `quobyte-multiattach`.
+Multi-attach volumes are created by choosing the type `quobyte-multiattach`.
 
 ```shell
 openstack volume create --size 50 --type quobyte-multiattach  testvolume
@@ -73,14 +73,14 @@ openstack --os-compute-api-version 2.60 server add volume "App Instance 3" testv
 If you get an error message like
 >versions supported by client: 2.1 - 2.41
 
-you need to update your openstack client. Working with multi attach volumes is supported from nova API version 2.60.
+you need to update your openstack client. Working with multi-attach volumes is supported from nova API version 2.60.
 
 
 ### Setup OCFS2
 
-Multi-attach volumes require a [cluster filesystem](https://en.wikipedia.org/wiki/Clustered_file_system#SHARED-DISK) like OCFS2 or GFS2 to coordinate concurrent filesystem access.
+Multi-attach volumes require a [cluster file system](https://en.wikipedia.org/wiki/Clustered_file_system#SHARED-DISK) like OCFS2 or GFS2 to coordinate concurrent file system access.
 
-**Warning: We do not recommend to use a file system like Ext4 or XFS for multi-attach volumes. Concurrent write access will destroy the filesystem and the data on that volume.**
+**Warning: We do not recommend to use a file system like Ext4 or XFS for multi-attach volumes. Concurrent write access will destroy the file system and the data on that volume.**
 
 For this tutorial we use OCFS2.
 To setup OCFS2 we need to install the ocfs2-tools and kernel module for the running kernel version on every VM:
@@ -126,7 +126,6 @@ node:
 cluster:
     node_count = 3
     name = ocfs2
-
 ```
 
 Start the o2cb service on all 3 VMs and check the status:
@@ -137,18 +136,18 @@ systemctl status o2cb
 systemctl enable o2cb
 ```
 
-### Create a filesystem on the volume
+### Create a file system on the volume
 
 In this example there is only one cinder volume attached to the VMs. The device name on all VMs is `/dev/vdb`.
-The next step os only necessary on one VM:
+The next step is only necessary on one VM:
 
 ```shell
 mkfs.ocfs2 /dev/vdb
 ```
 
-### Mount the filesystem
+### Mount the file system
 
-Mount the filesystem on all 3 VMs:
+Mount the file system on all 3 VMs:
 
 ```shell
 mount.ocfs2 /dev/vdb /mnt
