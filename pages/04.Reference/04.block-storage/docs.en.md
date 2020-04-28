@@ -50,7 +50,7 @@ Please refer to our multi-attach volume tutorial. It explains [how to use multi-
 | Volume resizing                         | yes (offline*) | yes (offline*)
 | Volume backups                          | no | no
 
-* offline meeans, that this functionality is only supported for volumes that are not attached to a virtual machine.
+* offline means, that this functionality is only supported for volumes that are not attached to a virtual machine.
 
 ### Block storage volumes
 
