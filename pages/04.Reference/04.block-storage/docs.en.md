@@ -32,6 +32,8 @@ The volumes can only be attached to a single virtual machine at a time.
 
 This volume type is the same as the `quobyte` volume type, except that the volumes can be attached to multiple VMs at the same time.
 
+The performance of `quobyte-multiattach` is slightly reduced because some caching strategies are not possible with multi-attach volumes. There is also a performance penalty using ocfs2 (or any other cluster file system) compared to ext4, because the file system must coordinate with the other nodes over the network.
+
 Please refer to our multi-attach volume tutorial. It explains [how to use multi-attach volumes with the cluster file system ocfs2](../../02.Tutorials/10.cinder-multiattach/docs.en.md).
 
 !! WARNING: This mode of operation requires special cluster file systems like ocfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
@@ -96,6 +98,8 @@ The cinder volume must be detached for the operation to succeed.
 ### Multi-attach volumes
 
 When you create a volume with a multi-attach volume type (See <a href="#Available volume types">available volume types</a>), it is possible to attach it to multiple virtual machines at the same time.
+
+This is useful, for example, to make app servers more scalable or to reduce single points of failure: If your application relies on a file system to store information, for example pictures, you can use multi-attach volumes to share the file system across a number of app servers, without the need for network storage solutions like NFS.
 
 Please refer to our multi-attach volume tutorial. It explains [how to use multi-attach volumes with the cluster file system ocfs2](../../02.Tutorials/10.cinder-multiattach/docs.en.md).
 
