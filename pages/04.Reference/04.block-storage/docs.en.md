@@ -32,7 +32,7 @@ The volumes can only be attached to a single virtual machine at a time.
 
 This volume type is the same as the `quobyte` volume type, except that the volumes can be attached to multiple VMs at the same time.
 
-Please refer to our multi-attach volume tutorial. It explains how to use this feature with the cluster file system ocfs2. TODO: Add link to tutorial.
+Please refer to our multi-attach volume tutorial. It explains [how to use multi-attach volumes with the cluster file system ocfs2](../../02.Tutorials/10.cinder-multiattach/docs.en.md).
 
 !! WARNING: This mode of operation requires special cluster file systems like ocfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
 
@@ -42,11 +42,13 @@ Please refer to our multi-attach volume tutorial. It explains how to use this fe
 | ----------------------------------------|----------------|-------------
 | Block storage volumes                   | yes | yes
 | Volume transfer                         | yes | yes
-| Volume snapshots                        | yes (offline) | yes (offline)
-| Save volume as glance image             | yes (offline) | yes (offline)
+| Volume snapshots                        | yes (offline*) | yes (offline*)
+| Save volume as glance image             | yes (offline*) | yes (offline*)
 | Multi-attach volumes                    | yes | yes
-| Volume resizing                         | yes (offline) | yes (offline)
+| Volume resizing                         | yes (offline*) | yes (offline*)
 | Volume backups                          | no | no
+
+* offline meeans, that this functionality is only supported for volumes that are not attached to a virtual machine.
 
 ### Block storage volumes
 
@@ -95,7 +97,7 @@ The cinder volume must be detached for the operation to succeed.
 
 When you create a volume with a multi-attach volume type (See <a href="#Available volume types">available volume types</a>), it is possible to attach it to multiple virtual machines at the same time.
 
-Please refer to our multi-attach volume tutorial. It explains how to use this feature with the cluster file system ocfs2. TODO: Add link to tutorial.
+Please refer to our multi-attach volume tutorial. It explains [how to use multi-attach volumes with the cluster file system ocfs2](../../02.Tutorials/10.cinder-multiattach/docs.en.md).
 
 !! WARNING: This mode of operation requires special cluster file systems like ocfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
 

@@ -11,7 +11,7 @@ taxonomy:
 
 ### Overview
 
-In this tutorial we will create a cinder volume and attach it to 3 different instances simultaneously in Read/Write mode using the OCFS2 file system.
+In this tutorial we will create a [block storage volume](../../04.Reference/04.block-storage/docs.en.md) and attach it to 3 different instances simultaneously in Read/Write mode using the OCFS2 file system.
 
 ### Prerequisites
 
@@ -160,4 +160,5 @@ Now it is possible to read and write files on the volume from all VMs.
 
 ## References
 
-[OCFS2 best practices guide](http://www.oracle.com/us/technologies/linux/ocfs2-best-practices-2133130.pdf)
+- [SysEleven Stack block storage reference guide](../../04.Reference/04.block-storage/docs.en.md)
+- [OCFS2 best practices guide](http://www.oracle.com/us/technologies/linux/ocfs2-best-practices-2133130.pdf)
