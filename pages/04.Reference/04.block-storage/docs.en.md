@@ -1,7 +1,7 @@
 ---
 title: 'Block Storage'
 published: true
-date: '08-08-2018 10:40'
+date: '04-29-2020 10:40'
 taxonomy:
     category:
         - docs
@@ -97,7 +97,7 @@ The cinder volume must be detached for the operation to succeed.
 
 ### Multi-attach volumes
 
-When you create a volume with a multi-attach volume type (See <a href="#Available volume types">available volume types</a>), it is possible to attach it to multiple virtual machines at the same time.
+When you create a volume with a multi-attach volume type (See <a href="#available-volume-types">available volume types</a>), it is possible to attach it to multiple virtual machines at the same time.
 
 This is useful, for example, to make app servers more scalable or to reduce single points of failure: If your application relies on a file system to store information, for example pictures, you can use multi-attach volumes to share the file system across a number of app servers, without the need for network storage solutions like NFS.
 
