@@ -128,6 +128,29 @@ If more resources are required for an instance, the fastest solution is to build
 
 If a conversion of an existing instance seems inevitable, a similar result can be achieved by creating an image from that instance and using it as a boot source for a new instance with another flavor. Please keep in mind that hardware specifications and CPU flags may change with change of flavor.
 
+## Instance Snapshots
+
+Instance snapshots can be created from instances, if they are not booted from a cinder volume.
+
+```shell
+openstack server image create --name <MyInstanceSnapshotName> <MyInstanceName>
+```
+
+### Data consistency
+
+For best results, we recommend to shut off the instance before creating a snapshot. Otherwise there might be data inconsistencies and file system corruption.
+
+Another variant to avoid data inconsistencies is to use the QEMU Guest Agent. Unfortunately it's not sufficient to install the Guest Agent in your virtual machine.
+You have to start with a Glance image where the QEMU Guest Agent is already properly installed and configured. This image must have the property `hw_qemu_guest_agent=yes`.
+Only if the virtual machine was created from such an image the compute service learns that the Guest Agent is available.
+
+## Launch instances from snapshots
+
+Snapshots can be used as templates for new instances.
+
+[This heat example](https://github.com/syseleven/heat-examples/tree/master/singles-server-from-snapshot) shows
+how to use snapshots to launch new instances using the ephemeral or volume storage.
+
 ---
 
 ## Questions & Answers

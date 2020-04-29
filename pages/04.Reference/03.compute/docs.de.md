@@ -56,7 +56,7 @@ M1 RAM Medium   |  m1r.medium  | 32GB   |   4   |   50GB   |
 (M1 RAM XLarge)** |  m1r.xlarge| 128GB  |   16   |   50GB   |
 
 (*)
-Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.de.md) ergänzt werden.
+Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.en.md) ergänzt werden.
 
 (**)
 Nur auf Anfrage erhältlich
@@ -107,7 +107,7 @@ L1 RAM 2XLarge  | l1r.2xlarge| 256GB  |  32   |  800GB   |
 
 
 (*)
-Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.de.md) ergänzt werden,
+Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.en.md) ergänzt werden,
 [um weniger latenzkritische Daten dort zu speichern](../../05.Background/02.local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
 
 ## Flavor wechseln (resizing)
@@ -127,6 +127,28 @@ Es wird zurzeit nicht unterstützt, die Größe von Local Storage Instanz-Typen 
 Wenn mehr Ressourcen für eine Instanz erforderlich sind, ist die schnellste Lösung, eine neue Instanz zu bauen und ggf. die Daten über das Netzwerk oder ein angeschlossenes Volume zu migrieren.
 
 Wenn eine Umwandlung einer vorhandenen Instanz unausweichlich erscheint, kann ein ähnliches Ergebnis erreicht werden, indem man ein Abbild der Instanz erstellt und es als Vorlage für eine neue Instanz mit einem anderen Flavor benutzt. Bitte beachten Sie, dass die Hardwarespezifikationen und CPU-Flags sich dabei ändern können.
+
+## Instanz-Snapshots
+
+Instanz-Snapshots können erstellt werden, falls die VM nicht von einem Cinder Volume gestartet wurde.
+
+```shell
+openstack server image create --name <MyInstanceSnapshotName> <MyInstanceName>
+```
+
+### Datenkonsistenz der Snapshots
+
+Wir empfehlen, die Instanz auszuschalten, bevor ein Snapshot erstellt wird, denn sonst können Inkonsistenzen und Datenkorruption auftreten.
+
+Eine andere Variante, Inkonsistenzen zu vermeiden, ist den QEMU Guest Agent zu verwenden. Leider reicht es nicht aus, den Guest Agent in einer virtuellen Maschine zu installieren.
+Es ist ein Glance image nötig, in dem das Attribut `hw_qemu_guest_agent=yes` gesetzt ist, sowie der Guest Agent vorinstalliert und korrekt konfiguriert ist.
+Nur wenn die virtuelle Maschine dann mit solch einem Image erstellt wurde, weiß der Compute Service dass der Guest Agent verfügbar ist.
+
+## Instanzen von einem Snapshot starten
+
+Snapshots können als Template für neue Instanzen verwendet werden.
+
+[Dieses Heat-Beispiel](https://github.com/syseleven/heat-examples/tree/master/singles-server-from-snapshot) zeigt, wie Snapshots verwendet werden können, um neue Instanzen zu erstellen.
 
 ---
 
