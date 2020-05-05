@@ -19,6 +19,8 @@ If you need to maintain your own set of images, you can upload them yourself as 
 
 Name                             | Description                                         |
 ---------------------------------|-----------------------------------------------------|
+CentOS 8 (YYYY-MM-DD)            | Unmodified, directly from vendor                    |
+CentOS 8 Stream (YYYY-MM-DD)     | Unmodified, directly from vendor                    |
 CentOS 7 (YYYY-MM-DD)            | Unmodified, directly from vendor                    |
 CoreOS Stable (YYYY-MM-DD)       | Unmodified, directly from vendor                    |
 Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
@@ -94,6 +96,8 @@ Ubuntu 16.04 LTS (Xenial) | `http://cloud-images.ubuntu.com/xenial/current/xenia
 Ubuntu 14.04 LTS (Trusty) | `http://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img` |
 Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
 CentOS 7                  | `https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2` |
+CentOS 8                  | `https://cloud.centos.org/centos/8/x86_64/images/` |
+CentOS 8 Stream           | `https://cloud.centos.org/centos/8-stream/x86_64/images/` |
 CoreOS Stable             | `https://stable.release.core-os.net/amd64-usr/current/coreos_production_openstack_image.img.bz2` |
 
 !!! The CoreOS image must be decompressed before uploading
