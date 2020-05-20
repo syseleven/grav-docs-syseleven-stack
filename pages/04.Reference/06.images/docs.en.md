@@ -1,7 +1,7 @@
 ---
 title: Images
 published: true
-date: '20-08-2018 10:05'
+date: '05-05-2020 10:08'
 taxonomy:
     category:
         - docs
@@ -19,10 +19,14 @@ If you need to maintain your own set of images, you can upload them yourself as 
 
 Name                             | Description                                         |
 ---------------------------------|-----------------------------------------------------|
+CentOS 8 (YYYY-MM-DD)            | Unmodified, directly from vendor                    |
+CentOS 8 Stream (YYYY-MM-DD)     | Unmodified, directly from vendor                    |
 CentOS 7 (YYYY-MM-DD)            | Unmodified, directly from vendor                    |
 CoreOS Stable (YYYY-MM-DD)       | Unmodified, directly from vendor                    |
+Flatcar Stable (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
 Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
 Debian Buster (YYYY-MM-DD)       | Unmodified, directly from vendor *(See note below)* |
+Ubuntu Focal 20.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
 Ubuntu Bionic 18.04 (YYYY-MM-DD) | Unmodified, directly from vendor                    |
 Ubuntu Xenial 16.04 (YYYY-MM-DD) | Unmodified, directly from vendor                    |
 Rescue Ubuntu 16.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
@@ -49,10 +53,10 @@ ci_job_id                        | Internal reference number                 |
 ci_pipeline_id                   | Internal reference number                 |
 cpu_arch                         | Image only runs with this cpu architecture. Currently always `x86_64` |
 default_ssh_username             | If not configured otherwise using cloud-init, servers using this image can be accessed with this ssh username. |
-distribution                     | Unique identifier for the distribution and version (e.g. `ubuntu-bionic`) |
+distribution                     | Unique identifier for the distribution and version (e.g. `ubuntu-focal`) |
 os_distro                        | Name of the distribution (e.g. `ubuntu`)  |
 os_type                          | Operating system type (currently always `linux`) |
-os_version                       | Version of the operating system (e.g. `18.04`) |
+os_version                       | Version of the operating system (e.g. `20.04`) |
 source_sha512sum                 | SHA512 hash of the original image file, as provided by the vendor under `source_url` |
 source_sha256sum                 | SHA256 hash of the original image file, as provided by the vendor under `source_url` |
 source_url                       | URL to the vendor image file that has been used for this image |
@@ -60,10 +64,10 @@ source_url                       | URL to the vendor image file that has been us
 Here is an example for filtering the images by properties using [Hasicorp Terraform's image data source](https://www.terraform.io/docs/providers/openstack/d/images_image_v2.html):
 
 ```hcl
-data "openstack_images_image_v2" "ubuntu-bionic" {
+data "openstack_images_image_v2" "ubuntu-focal" {
   most_recent = true
   properties = {
-    os_version = "18.04"
+    os_version = "20.04"
     os_distro = "ubuntu"
   }
 }
@@ -87,14 +91,18 @@ If you prefer maintaining your own set of images, this table shows sources for c
 
 Distro                    | URL |
 --------------------------|-----|
+Ubuntu 20.04 LTS (Focal)  | `http://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img` |
 Ubuntu 18.04 LTS (Bionic) | `http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img` |
 Ubuntu 16.04 LTS (Xenial) | `http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img` |
 Ubuntu 14.04 LTS (Trusty) | `http://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img` |
 Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
 CentOS 7                  | `https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2` |
+CentOS 8                  | `https://cloud.centos.org/centos/8/x86_64/images/` |
+CentOS 8 Stream           | `https://cloud.centos.org/centos/8-stream/x86_64/images/` |
 CoreOS Stable             | `https://stable.release.core-os.net/amd64-usr/current/coreos_production_openstack_image.img.bz2` |
+Flatcar Stable            | `https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_openstack_image.img.bz2` |
 
-!!! The CoreOS image must be decompressed before uploading
+!!! The CoreOS and Flatcar images must be decompressed before uploading
 !!! `bunzip2 coreos_production_openstack_image.img.bz2`
 
 ### How to upload images?
