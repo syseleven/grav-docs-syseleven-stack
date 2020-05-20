@@ -99,11 +99,19 @@ The cinder volume must be detached for the operation to succeed.
 
 When you create a volume with a multi-attach volume type (See <a href="#available-volume-types">available volume types</a>), it is possible to attach it to multiple virtual machines at the same time.
 
+!! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
+
 This is useful, for example, to make app servers more scalable or to reduce single points of failure: If your application relies on a file system to store information, for example pictures, you can use multi-attach volumes to share the file system across a number of app servers, without the need for network storage solutions like NFS.
 
 Please refer to our multi-attach volume tutorial. It explains [how to use multi-attach volumes with the cluster file system ocfs2](../../02.Tutorials/10.cinder-multiattach/docs.en.md).
 
-!! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
+Your client must use the nova API version 2.60 or later for attaching / detaching the volume. In the openstack CLI you can accomplish this using the `--os-compute-api-version` parameter:
+
+```shell
+openstack --os-compute-api-version 2.60 server add volume instance_name volume_name
+```
+
+The necessary settings for terraform are described in the [terraform documentation for multi-attach volume attachments](https://www.terraform.io/docs/providers/openstack/r/compute_volume_attach_v2.html#using-multiattach-enabled-volumes).
 
 ### Volume resizing
 
