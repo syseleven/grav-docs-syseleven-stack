@@ -11,7 +11,7 @@ taxonomy:
 
 The SysEleven Stack offers LBaaS via two different generations of APIs: Neutron LBaaSv2 (deprecated API) and Octavia (current API).
 
-Looking at the API definition both services are similar. 
+Looking at the API definition both services are similar.
 But there are differences in the feature set provided by the SysEleven Stack.
 With Neutron LBaaS only simple TCP-based load balancers are supported, with Octavia on the other hand also HTTP and HTTPS. With both services it is optionally possible to set up health monitoring.
 
