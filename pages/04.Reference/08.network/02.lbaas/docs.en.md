@@ -9,10 +9,15 @@ taxonomy:
 
 ## Overview
 
-The SysEleven Stack LBaaS is a TCP-based loadbalancer using round robin as balancing mechanism.
-It also offers health monitoring.
+The SysEleven Stack offers LBaaS via two different generations of APIs: Neutron LBaaSv2 (deprecated API) and Octavia (current API).
 
-Unfortunately it is currently not possible to forward the client IP to the instances behind the loadbalancer. The IP of the LBaaS will show up as the client IP
+Looking at the API definition both services are similar. 
+But there are differences in the feature set provided by the SysEleven Stack.
+With Neutron LBaaS only simple TCP-based load balancers are supported, with Octavia on the other hand also HTTP and HTTPS. With both services it is optionally possible to set up health monitoring.
+
+The client IP address can only be made visible to the backend servers if
+an Octavia load balancer is used, in case of Neutron the backends will only
+see the IP address of the load balancer.
 
 We prepared a simple tutorial that shows [basic usage of LBaaS](../../../02.Tutorials/05.lbaas/docs.en.md).
 
@@ -22,18 +27,16 @@ We prepared a simple tutorial that shows [basic usage of LBaaS](../../../02.Tuto
 
 ### What features does the SysEleven Stack LBaaS offer?
 
-The SysEleven Stack LBaaS is a TCP-based load balancer using round robin as balancing mechanism.
-It also offers health monitoring.
-The following modes are supported:
+The following table lists the supported features of the two LBaaS services:
 
-- Listener protocol: TCP
-- Pool protocol: TCP
-- Distribution strategy: ROUND_ROBIN
-- Health monitoring protocols: TCP, HTTP, HTTPS
-
-### Is it possible to see the client IP behind the LBaaS?
-
-No. Unfortunately that is currently not possible. The IP of the LBaaS will show up as the client IP.
+Function             | Neutron LBaaSv2 | Octavia LBaaS
+---------------------|-----------------|--------------
+Listener protocols  | TCP             | TCP, HTTP, HTTPS
+Pool protocols      | TCP             | TCP, HTTP, HTTPS
+Distribution strategies | ROUND_ROBIN     | ROUND_ROBIN
+Health Monitoring protocols | TCP, HTTP, HTTPS | TCP, HTTP, HTTPS
+Original client IP visible on backend servers? | no | yes
+Available in dashboard | yes | no (planned)
 
 ### How do I use the SysEleven Stack LBaaS?
 

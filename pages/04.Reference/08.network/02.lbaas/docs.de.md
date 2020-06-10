@@ -1,5 +1,5 @@
 ---
-title: 'LoadBalancer as a Service (LBaaS)'
+title: 'Load Balancer as a Service (LBaaS)'
 published: true
 date: '2019-02-28 17:30'
 taxonomy:
@@ -9,10 +9,14 @@ taxonomy:
 
 ## Übersicht
 
-Der SysEleven Stack LBaaS ist ein einfacher TCP-basierter Lastverteiler, der Anfragen nach dem Round-Robin Prinzip (der Reihe nach) verteilt.
-Optional können Sie auch eine Systemüberwachung (Health Monitoring) einrichten.
+Der SysEleven Stack bietet LBaaS über zwei verschiedene Generationen von APIs an: Neutron LBaaSv2 (veraltete API) und Octavia (aktuelle API).
 
-Leider kann die Client-IP zur Zeit nicht an die Systeme hinter dem LoadBalancer durchgereicht werden. Die IP-Adresse des Lastverteilers wird als Ausgangsadresse angezeigt.
+Aus Sicht der API-Definition verhalten sich beide Dienste ähnlich.
+Allerdings unterscheiden sich die vom SysEleven Stack untertützten Funktionen.
+In der Neutron-Variante sind nur einfache TCP-basierte Lastverteiler möglich,
+über Octavia auch HTTP und HTTPS. Für beide Typen können sie optional auch eine Systemüberwachung (Health Monitoring) einrichten.
+
+Die Client-IP kann nur bei Octavia-Load-Balancern an die Systeme hinter dem LoadBalancer durchgereicht werden. Bei Neutron-Load-Balancern wird immer nur die IP-Adresse des Lastverteilers als Ausgangsadresse angezeigt.
 
 Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../02.Tutorials/05.lbaas/docs.en.md) vorbereitet.
 
@@ -22,18 +26,17 @@ Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../02.Tutorials/05.lbaas/do
 
 ### Welche Funktionen bietet der SysEleven Stack LBaaS?
 
-Der SysEleven Stack LBaaS ist ein einfacher TCP-basierter Lastverteiler, der Anfragen nach dem Round-Robin Prinzip (der Reihe nach) verteilt.
-Optional können Sie auch eine Systemüberwachung (Health Monitoring) einrichten.
-Folgende Modi werden unterstützt:
+Die folgende Tabelle stellt die verfügbaren Funktionen der beiden LBaaS-Dienste
+gegenüber:
 
-- Listener-Protokoll: TCP
-- Pool-Protokoll: TCP
-- Verteilungsstrategie: ROUND_ROBIN
-- Health-Monitoring-Protokolle: TCP, HTTP, HTTPS
-
-### Kann auf die originale Client-IP aus den Systemen hinter dem LBaaS zugegriffen werden?
-
-Nein, aktuell ist dies leider nicht möglich. Die IP-Adresse des Lastverteilers wird als Ausgangsadresse angezeigt.
+Funktion             | Neutron LBaaSv2 | Octavia LBaaS
+---------------------|-----------------|--------------
+Listener-Protokolle  | TCP             | TCP, HTTP, HTTPS
+Pool-Protokolle      | TCP             | TCP, HTTP, HTTPS
+Verteilungsstrategie | ROUND_ROBIN     | ROUND_ROBIN
+Health-Monitoring-Protokolle | TCP, HTTP, HTTPS | TCP, HTTP, HTTPS
+Originale Client-IP auf den Backend-Servern sichtbar? | nein | ja
+Verfügbar im Dashboard | ja | nein (geplant)
 
 ### Wie kann ich den LBaaS nutzen?
 
