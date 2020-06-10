@@ -28,7 +28,7 @@ You can manage networking objects both via our [public OpenStack API endpoints](
 | IPsec VPN (VPNaaS)                      | yes | yes
 | Customer public IP space (Bring your own IP) | yes | yes
 | L4 Load balancing (TCP) (Neutron-LBaaS) | yes | yes
-| L7 Load balancing (HTTP/HTTPS) (Octavia-LBaaS) | no | no
+| L7 Load balancing (HTTP/HTTPS) (Octavia-LBaaS) | yes | yes
 | Dynamic routing (BGP)                   | no | no
 | Metering support                        | no | no
 | Quality of service (QoS)                | no | no
@@ -103,8 +103,9 @@ In addition to the standard `ext-net`, that is shared across all our customers, 
 
 Please [contact our customer support](../../06.Support/default.en.md) if you are interested.
 
-### L4 Load balancing (TCP) (Neutron-LBaaS)
+### Load balancing
 
-Using L4 load balancers, you can improve the availability and scalability of your TCP-based services. If configured to do so, the Load balancer will actively monitor all backends and route TCP connections to healthy backends.
+Using load balancers, you can improve the availability and scalability of your TCP-based services. If configured to do so, the Load balancer will actively monitor all backends and route connections to healthy backends.
+L4 load balancing (TCP) is supported via Neutron LBaaSv2 and Octavia, L7 load balancing (HTTP/HTTPS) only via Octavia.
 
 See our [tutorial on load balancing for more information](../../02.Tutorials/05.lbaas/docs.en.md).
