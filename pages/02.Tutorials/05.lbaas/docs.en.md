@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-OpenStack provides load balancing through LoadBalancer as a Service (LBaaS).
+OpenStack provides load balancing through Load Balancer as a Service (LBaaS).
 This means that load balancing rules can be created directly within OpenStack.
 No dedicated load balancer instance is required to use this service.
 
@@ -18,11 +18,27 @@ Currently the SysEleven Stack provides two APIs/services for Load Balancers: Oct
 With the Neutron variant the SysEleven Stack only supports TCP-based load balancers,
 whereas with Octavia also HTTP and HTTPS are supported.
 
+Below you will find two tutorials: how to set up an HTTP load balancer (using Heat for orchestration and Octavia for LBaaS)
+and how to set up a simple TCP load balancer (again using Heat for orchestration, but Neutron for LBaaS).
+
 ## Prerequisites
 
 * You should be able to use simple heat templates, like shown in the [first steps tutorial](../01.firststeps/docs.en.md).
 * You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../02.api-access/docs.en.md).
+
+## Git repository with Heat template examples
+
+The heat template examples used in the tutorials are available [on Github](https://github.com/syseleven/heat-examples).
+
+```shell
+git clone https://github.com/syseleven/heat-examples.git
+```
+
+This repository is used in both setups described below:
+
+* heat-examples/lbaas-octavia: contains the heat template for an HTTP load balancer set up using Octavia resources
+* heat-examples/lbaas: contains the heat template for a TCP load balancer set up using Neutron LBaaSv2 resources
 
 ## How to setup an HTTP Load Balancer with Heat and Octavia
 
@@ -34,14 +50,6 @@ In this tutorial we demonstrate an Octavia LBaaS setup with the following featur
 * a server group with dynamic number of servers
 * every upstream node installs Apache2 and PHP7.0 FPM via HEAT
 * "Anyapp" as simple PHP application
-
-### Clone git repository
-
-The heat template example is available [on Github](https://github.com/syseleven/heat-examples).
-
-```shell
-git clone https://github.com/syseleven/heat-examples.git
-```
 
 ### Step one: Create the stack
 
@@ -136,27 +144,22 @@ $ openstack stack create -t lbstack.yaml --parameter key_name=exampleuser exampl
 
 ### Step two: Assign security group to load balancer
 
-<div class="alert alert-dismissible alert-info">
-    <h4 class="alert-heading">Port updates</h4>
-    Port-Updates can't be done in heat at the moment:<br>
-    [This link](https://blueprints.launchpad.net/heat/+spec/add-security-group-to-port) provide more information on this.
-</div>
-
 After a successful launch the whole setup will not be reachable from the outside until
-you bind a valid security group to the load balancer port.
+you bind a valid security group to the load balancer port. This step is necessary, because it is not possible to update ports in Heat.
+See [this link](https://blueprints.launchpad.net/heat/+spec/add-security-group-to-port) for more information on this.
 
-Ports can be assigned as follows:
+Assign a security group to the port as follows:
 
 ```shell
 openstack port set --security-group <Security Group> <LoadBalancer Port>
 ```
 
-There is an output section that gives you the abilty to assign the correct security group to.
-
-To simplify this process the example stack gives you a vaild openstack command in the output section.
+To make things easier for you, the example Heat template defines
+an output section that will format a valid openstack command for this port / security group assignment. 
+With the following command you can display the formatted `port set` command:
 
 ```shell
-openstack stack show <stackName> -f value -c outputs | grep -i 'port set'
+openstack stack output show <stackName> sec_group_connection -c output_value -f value
 ```
 
 ### Step three: Check if the load balancer works properly
