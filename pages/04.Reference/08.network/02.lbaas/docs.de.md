@@ -9,16 +9,18 @@ taxonomy:
 
 ## Übersicht
 
-Der SysEleven Stack bietet LBaaS über zwei verschiedene Generationen von APIs an: Neutron LBaaSv2 (veraltete API) und Octavia (aktuelle API).
+Der SysEleven Stack bietet Load-Balancer-as-a-Service (LBaaS)
+über zwei verschiedene Generationen von APIs an:
+Neutron LBaaSv2 (veraltete API) und Octavia (aktuelle API).
 
 Aus Sicht der API-Definition verhalten sich beide Dienste ähnlich.
 Allerdings unterscheiden sich die vom SysEleven Stack untertützten Funktionen.
 In der Neutron-Variante sind nur einfache TCP-basierte Lastverteiler möglich,
-über Octavia auch HTTP und HTTPS. Für beide Typen können sie optional auch eine Systemüberwachung (Health Monitoring) einrichten.
+über Octavia auch HTTP und HTTPS.
+Für beide Typen können sie optional auch eine Systemüberwachung (Health Monitoring) einrichten.
 
-Die Client-IP kann nur bei Octavia-Load-Balancern an die Systeme hinter dem LoadBalancer durchgereicht werden. Bei Neutron-Load-Balancern wird immer nur die IP-Adresse des Lastverteilers als Ausgangsadresse angezeigt.
-
-Wir haben ein Tutorial zur [Nutzung des LBaaS](../../../02.Tutorials/05.lbaas/docs.en.md) vorbereitet.
+Die Client-IP kann nur bei Octavia-Load-Balancern an die Systeme hinter dem LoadBalancer durchgereicht werden.
+Bei Neutron-Load-Balancern wird immer nur die IP-Adresse des Lastverteilers als Ausgangsadresse angezeigt.
 
 ---
 
