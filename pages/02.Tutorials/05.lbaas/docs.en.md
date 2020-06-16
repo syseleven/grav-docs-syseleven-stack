@@ -155,7 +155,7 @@ openstack port set --security-group <Security Group> <LoadBalancer Port>
 ```
 
 To make things easier for you, the example Heat template defines
-an output section that will format a valid openstack command for this port / security group assignment. 
+an output section that will format a valid openstack command for this port / security group assignment.
 With the following command you can display the formatted `port set` command:
 
 ```shell

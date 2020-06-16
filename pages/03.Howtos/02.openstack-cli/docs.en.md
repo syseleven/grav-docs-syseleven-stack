@@ -66,7 +66,7 @@ sudo -H pip install \
     python-glanceclient \
     python-heatclient \
     python-neutronclient \
-    python-octaviaclient 
+    python-octaviaclient
 ```
 
 ---
@@ -132,7 +132,7 @@ pip install python-openstackclient python-heatclient python-neutronclient python
 
 ## Conclusion
 
-We have installed the OpenStack Client and we now can use it.  
+We have installed the OpenStack Client and we now can use it.
 **To be able to use the OpenStack CLI tools the [API access](../../02.Tutorials/02.api-access/docs.en.md) needs to be configured now.**
 
 If needed you can list all commands:
