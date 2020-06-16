@@ -1,7 +1,7 @@
 ---
 title: 'Lokalen SSD Speicher benutzen'
 published: true
-date: '08-08-2018 10:11'
+date: '2020-06-16 10:11'
 taxonomy:
     category:
         - docs
@@ -48,7 +48,8 @@ Sie können andere Anleitungen oder Beispiele abwandeln, um Local SSD Storage an
 Das ergibt nicht immer Sinn, da nicht alle Anwendungen von Local SSD Storage profitieren, aber es ist im Prinzip möglich.
 Dazu folgen Sie den Anweisungen bis vor die Stelle, an der `openstack stack create` ausgeführt wird.
 Bearbeiten Sie die Stack-Datei(en) und ersetzen die den Flavor `m1.*` durch den entsprechenden `l1.*` Flavor.
-Wenn Sie mit der Erstellung des Stacks fortfahren, werden der/die Server anstelle des Distributed Storage nun Local SSD Storage verwenden.
+Wenn Sie mit der Erstellung des Stacks fortfahren, werden der/die Server nun Local SSD Storage für das Systemvolume verwenden.
+Dies gilt nicht für eventuell angebundene Volumes, diese bestehen [weiterhin aus Distributed Storage](../../05.Background/02.local-storage/docs.en.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
 
 
 ## Weitere Auswirkungen
