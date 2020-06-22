@@ -1,7 +1,7 @@
 ---
 title: 'Lokaler SSD Speicher'
 published: true
-date: '08-08-2018 10:50'
+date: '2020-06-16 10:11'
 taxonomy:
     category:
         - docs
@@ -37,11 +37,11 @@ Nein. lokaler SSD Speicher ist ausschließlich für Ephemeral Storage verfügbar
 
 ### Kann Local SSD Storage mit Distributed Storage kombiniert werden?
 
-Ja. Volumes mit Distributes Storages können an die Instanz angeschlossen werden und das kann sehr nützlich sein, um sie initial mit Daten zu bestücken oder Backups anzufertigen, bei denen die Latenz nicht so ein Problem darstellt, wie beim laufenden Dienst.
+Ja. Volumes mit Distributed Storage können an die Instanz angeschlossen werden und das kann sehr nützlich sein, um sie initial mit Daten zu bestücken oder Backups anzufertigen, bei denen die Latenz nicht so ein Problem darstellt, wie beim laufenden Dienst.
 
 ### Kann ich Local SSD Storage durch ein Volume ersetzen?
 
-Ja, aber das ergibt selten Sinn, denn sie nutzt ja dann den Local SSD Storage nicht mehr. Es kann aber in bestimmten Fällen hilfreich sein, um Dinge einzurichten oder zu reparieren, siehe auch unsere Anleitung zur [Datenrettung](../../03.Howtos/05.nova-rescue-mode/docs.de.md).
+Ja, aber das ergibt selten Sinn, denn die Instanz nutzt ja dann den Local SSD Storage nicht mehr. Es kann aber in bestimmten Fällen hilfreich sein, um Dinge einzurichten oder zu reparieren, siehe auch unsere Anleitung zur [Datenrettung](../../03.Howtos/05.nova-rescue-mode/docs.de.md).
 
 ### Kann ich Local SSD Storage in anderen Größen erhalten?
 
@@ -51,7 +51,7 @@ Nein. Local SSD Storage ist ausschließlich in den angegebenen [Flavors](../../0
 
 Nein. Local SSD Storage kann nicht umgewandelt werden, sie müssen in der gewünschten Größe neu erstellt und die Daten migriert werden.
 Man kann allerdings ein Volume anschließen, die Daten hinaufschieben, das Volume dann an eine andere Instanz anschließen und die Daten auf deren Local SSD Storage bewegen.
-Abhängig von der Anwendung gibt es jedoch wahrscheinlich klügere Wege, um neue Systeme in den Verbund aufzunehmen, z.B. Datenbank-Slaves zu fördern.
+Abhängig von der Anwendung gibt es jedoch wahrscheinlich klügere Wege, um neue Systeme in den Verbund aufzunehmen, z.B. Datenbank-Slaves zu befördern.
 
 ### Was passiert im Fall einer Hardware-Störung?
 

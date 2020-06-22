@@ -1,7 +1,7 @@
 ---
 title: 'Using local SSD storage'
 published: true
-date: '08-08-2018 10:11'
+date: '2020-06-16 10:11'
 taxonomy:
     category:
         - docs
@@ -49,6 +49,7 @@ That does not always make sense, since not all workload profit from local ssd st
 Just follow the instructions to the point right before `openstack stack create` gets executed.
 Edit the stack file(s) and substitute the `m1.*` flavor with the correspondig `l1.*` flavor.
 If you then continue to create the stack, the server(s) will be created using local ssd storage as ephemeral storage.
+This does not apply to attached volumes, that will [continue to use distributed storage](../../05.Background/02.local-storage/docs.en.md#can-i-combine-local-ssd-storage-with-distributed-storage).
 
 ## Implications
 
