@@ -10,7 +10,9 @@ taxonomy:
 ## Overview
 
 The SysEleven Stack offers LBaaS via two different generations of APIs:
-Neutron LBaaSv2 (deprecated API) and Octavia (current API).
+Neutron LBaaSv2 and Octavia.
+
+!! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
 
 Looking at the API definition both services are similar.
 But there are differences in the feature set provided by the SysEleven Stack.
@@ -22,23 +24,132 @@ The client IP address can only be made visible to the backend servers if
 an Octavia load balancer is used, in case of Neutron the backends will only
 see the IP address of the load balancer.
 
----
+### Quick comparison table
 
-## Questions & Answers
+The following table compares the supported features of the two LBaaS services:
 
-### What features does the SysEleven Stack LBaaS offer?
-
-The following table lists the supported features of the two LBaaS services:
-
-Function             | Neutron LBaaSv2 | Octavia LBaaS
----------------------|-----------------|--------------
-Listener protocols  | TCP             | TCP, HTTP, HTTPS
-Pool protocols      | TCP             | TCP, HTTP, HTTPS
-Distribution strategies | ROUND_ROBIN     | ROUND_ROBIN
-Health Monitoring protocols | TCP, HTTP, HTTPS | TCP, HTTP, HTTPS
-Original client IP visible on backend servers? | no | yes
+Function                | Neutron LBaaSv2 | Octavia LBaaS
+------------------------|-----------------|--------------
+Loadbalancing protocols | TCP             | TCP, HTTP, HTTPS, TERMINATED_HTTPS, UDP
+Distribution strategies | ROUND_ROBIN (random) | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
+Health Monitoring protocols | TCP, HTTP, HTTPS | PING, HTTP, TCP, HTTPS, TLS-HELLO, UDP-CONNECT
+Header insertion** | no | yes
 Available in dashboard | yes | no (planned)
 
-### How do I use the SysEleven Stack LBaaS?
+** Header insertion is useful for example to make the client IP address visible on the backend servers (via the `X-Forwarded-For` header).
+
+### General limitations of the cloud dashboard (Horizon)
+
+Currently, the cloud dashboard (Horizon) at cloud.syseleven.de only displays Neutron-LBaaS load balancers. Octavia load balancers can be currently only managed [using the API and the OpenStack CLI](../../02.Tutorials/02.api-access/docs.en.md) (using the `openstack loadbalancer` commands).
+
+### Neutron LBaaSv2
+
+Neutron load balancers can be maintained using the cloud dashboard (Horizon) at cloud.syseleven.de, or [using the API and the neutron CLI](../../02.Tutorials/02.api-access/docs.en.md) (e.g. `neutron lbaas-loadbalancer-list`).
+
+Neutron LBaaSv2 Feature              | Supported in CBK region | Supported in DBL region
+-------------------------------------|-------------------------|---------------
+Load balancing protocols             | TCP | TCP
+Health Monitoring protocols          | HTTP, TCP, HTTPS | HTTP, TCP, HTTPS
+Distribution strategies              | ROUND_ROBIN (random) | ROUND_ROBIN (random)
+Session persistence                  | No                     | No
+L7 rules and policies                | No                     | No
+
+#### Limitations
+
+- Only TCP-based load balancers are supported. For this reason, it is not possible to make the client IP address visible to the backend servers with Neutron LBaaSv2
+
+### Octavia LBaaS
+
+!! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
+
+Octavia is our more advanced load balancer option. Below you will find the reference documentation. If you want a quick start, please refer to our [LBaaS tutorial](../../../02.Tutorials/05.lbaas/docs.en.md).
+
+Octavia LBaaS Feature                | Supported in CBK region | Supported in DBL region
+-------------------------------------|-------------------------|---------------
+Load balancing protocols             | TCP, HTTP, HTTPS, TERMINATED_HTTPS, UDP | TCP, HTTP, HTTPS, TERMINATED_HTTPS, UDP
+Health Monitoring protocols          | PING, HTTP, TCP, HTTPS, TLS-HELLO, UDP-CONNECT | PING, HTTP, TCP, HTTPS, TLS-HELLO, UDP-CONNECT
+Distribution strategies              | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP                    | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
+Session persistence                  | Yes                     | Yes
+Header insertion                     | Yes                     | Yes
+L7 rules and policies                | Yes                     | Yes
+Loadbalancer Flavors                 | No                      | No
+VIP QoS policies                     | No                      | No
+
+#### Load balancing protocols
+
+The load balancing protocol can be configured using the Octavia LBaaS listener resource (e.g. `openstack loadbalancer listener create`).
+
+Only when using the HTTP and TERMINATED_HTTPS load balancing protocols, it is possible to use <a href="#header-insertion">header insertion</a> as well as <a href="#l7-rules-and-policies">l7 rules and policies</a>.
+
+With load balancers that use the TCP, UDP and HTTPS load balancing protocols, this is unfortunately not possible.
+
+#### Health monitoring protocols
+
+Adding a healthmonitor to your load balancer is optional, but we recommend it. Healthmonitors will make sure, that only load balancer pool members that pass a certain test will be considered.
+
+The test protocol (healthmonitor type) can be configured, among other things, using the Octavia LBaaS healthmonitor resource (e.g. `openstack loadbalancer healthmonitor create`).
+
+#### Distribution strategies
+
+Terraform funktioniert grade nicht mit Barbican
+
+Single flavor for testing is planned.
 
 We prepared a simple tutorial that shows [basic usage of LBaaS](../../../02.Tutorials/05.lbaas/docs.en.md).
+
+#### Session persistence
+
+Session persistence can be configured on the load balancer pool resource.
+
+For load balancers of type `HTTP` and `TERMINATED_HTTPS`, we support the `APP_COOKIE` and `HTTP_COOKIE` session persistence methods. The `SOURCE_IP` session persistence method is supported for all load balancer types.
+
+With `APP_COOKIE` the load balancer will use the specified `cookie_name` to send future requests to the same backend server (`pool member`).
+
+Using `HTTP_COOKIE`, the load balancer will generate a cookie and insert it to the response.
+
+<!-- For UDP flows it is possible to configure persistence_timeout and persistence_granularity https://docs.openstack.org/api-ref/load-balancer/v2/?expanded=create-pool-detail#session-persistence -->
+
+#### Header insertion
+
+Header insertion can be configured on the load balancer listener resource, for example using the command `openstack loadbalancer listener create --insert-headers <HEADER>=true [..]`.
+
+Header insertion is turned off by default. When turned on, the specified header with information about the request will be passed to the pool members.
+
+Header insertion is only supported for the `HTTP` and `TERMINATED_HTTPS` load balancer methods.
+
+Header                        | Description
+------------------------------| ------------
+X-Forwarded-For               | The client IP address
+X-Forwarded-Port              | The source port of the TCP connection to the client
+X-Forwarded-Proto             | The used protocol between the client and load balancer (Either `http` or `https`)
+X-SSL-Client-Verify           | Contains `0` if the client authentication was successful, or an error ID greater than `0`. The error IDs are defined in the OpenSSL library
+X-SSL-Client-Has-Cert         | `true` if a client authentication certificate was presented, and `false` if not. Does not indicate validity.
+X-SSL-Client-DN               | Contains the full Distinguished Name of the certificate presented by the client
+X-SSL-Client-CN               | Contains the Common Name from the full Distinguished Name of the certificate presented by the client
+X-SSL-Issuer                  | Contains the full Distinguished Name of the client certificate issuer
+X-SSL-Client-SHA1             | Contains the SHA-1 fingerprint of the certificate presented by the client in hex string format
+X-SSL-Client-Not-Before       | Contains the start date presented by the client as a formatted string YYMMDDhhmmss[Z].
+X-SSL-Client-Not-After        | Contains the end date presented by the client as a formatted string YYMMDDhhmmss[Z].
+
+#### L7 rules and policies
+
+Using L7 policies the load balancer can perform actions defined in the `L7 rule`, when all the conditions defined in the associated `L7 policies` are met.
+
+L7 policies are associated with a load balancer listener resource. The listener will evaluate them in order, sorted by the `position` parameter.
+
+L7 Policy Action    | Description
+--------------------|----------------------------------
+REDIRECT_TO_POOL    | Will use a different load balancer pool for requests matching the L7 policy rules
+REDIRECT_TO_PREFIX  | Will concatenate the given prefix with the complete original URI path, and redirect to the resulting location.
+REDIRECT_TO_URL     | Will redirect to the given location
+REJECT              | The request is denied with the Forbidden (403) response code, and not forwarded on to any back-end pool
+
+The action of the first matching L7 policy will be executed. The L7 policy matches, if all the L7 rules match (`AND` condition). If you need an `OR` condition, create multiple policies with the same action and different rules.
+
+L7 rules always compare a given value with a request value (specified by the rule type), using a `compare_type` (One of `CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, or `STARTS_WITH`).
+
+The result can be optionally inverted using the `invert` parameter.
+
+The L7 rule `type` is one of `COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`, `SSL_CONN_HAS_CERT`, `SSL_VERIFY_RESULT`, and `SSL_DN_FIELD`.
+
+Some rule types allow specifying a `key`. Using the `key` you can choose a specific `COOKIE` or `HEADER` by name.

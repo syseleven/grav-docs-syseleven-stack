@@ -6,20 +6,18 @@ taxonomy:
         - docs
 ---
 
-## A TCP-based load balancer for your upstreams
+# Overview
 
-### Overview
-
-OpenStack provides load balancing through Load Balancer as a Service (LBaaS).
-This means that load balancing rules can be created directly within OpenStack.
-No dedicated load balancer instance is required to use this service.
+SysEleven Stack provides load balancing through Load Balancer as a Service (LBaaS).
 
 Currently the SysEleven Stack provides two APIs/services for Load Balancers: Octavia LBaaS and Neutron LBaaSv2.
 With the Neutron variant the SysEleven Stack only supports TCP-based load balancers,
 whereas with Octavia also HTTP and HTTPS are supported.
 
-Below you will find two tutorials: how to set up an HTTP load balancer (using Heat for orchestration and Octavia for LBaaS)
-and how to set up a simple TCP load balancer (again using Heat for orchestration, but Neutron for LBaaS).
+Please refer to our reference documentation for a more [detailed comparison between Octavia LBaaS and Neutron LBaaS](../../04.Reference/08.network/02.lbaas/docs.en.md).
+
+Below you will find two tutorials: how to set up an HTTP load balancer (using Heat for orchestration and Octavia load balancers)
+and how to set up a simple TCP load balancer (again using Heat for orchestration, but with Neutron load balancers).
 
 ## Prerequisites
 
@@ -40,7 +38,9 @@ This repository is used in both setups described below:
 * heat-examples/lbaas-octavia: contains the heat template for an HTTP load balancer set up using Octavia resources
 * heat-examples/lbaas: contains the heat template for a TCP load balancer set up using Neutron LBaaSv2 resources
 
-## How to setup an HTTP Load Balancer with Heat and Octavia
+## HTTP Load Balancer with Heat and Octavia
+
+!! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
 
 In this tutorial we demonstrate an Octavia LBaaS setup with the following features:
 
@@ -106,7 +106,7 @@ Open Anyapp in other tabs/windows to see the load balancer working.
 
 ![LBAnyApp](../../images/AnyApp_20180301.png)
 
-## How to setup a TCP Load Balancer with Heat and Neutron LBaaSv2
+## TCP Load Balancer with Heat and Neutron LBaaSv2
 
 With Neutron LBaasV2 only TCP-based load balancing is supported.
 In contrast to Octavia-based stacks you have to attach a security group to the load balancer VIP port
@@ -201,6 +201,5 @@ Open Anyapp in other tabs/windows to see the load balancer working.
 
 ## Conclusion
 
-You should now be able to adopt this example to your needs.
-The obvious things to change are the upstream servers, the overall architecture should work for many scenarios.
-
+You should now be able to adapt this example to your needs.
+One of the things you might want to change are the upstream servers. The overall architecture should work for many scenarios.
