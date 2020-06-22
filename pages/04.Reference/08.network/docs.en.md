@@ -107,7 +107,7 @@ Please [contact our customer support](../../06.Support/default.en.md) if you are
 
 Using load balancers, you can improve the availability and scalability of your services.
 
-SysEleven Stack offers two options Neutron LBaaSv2 (TCP-only) and Octavia LBaaS (TCP, HTTP, HTTPS).
+SysEleven Stack offers two options: Neutron LBaaSv2 (TCP-only) and Octavia LBaaS (TCP, HTTP, HTTPS).
 
 !! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
 
