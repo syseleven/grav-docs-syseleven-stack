@@ -148,10 +148,10 @@ REJECT              | The request is denied with the Forbidden (403) response co
 
 The action of the first matching L7 policy will be executed. The L7 policy matches, if all the L7 rules match (`AND` condition). If you need an `OR` condition, create multiple policies with the same action and different rules.
 
-L7 rules always compare a given value with a request value (specified by the rule type), using a `compare_type` (One of `CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, or `STARTS_WITH`).
-
-The result can be optionally inverted using the `invert` parameter.
-
 The L7 rule `type` is one of `COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`, `SSL_CONN_HAS_CERT`, `SSL_VERIFY_RESULT`, and `SSL_DN_FIELD`.
 
+L7 rules always compare a given value with a request value (specified by the rule type), using a `compare_type` (One of `CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, or `STARTS_WITH`).
+
 Some rule types allow specifying a `key`. Using the `key` you can choose a specific `COOKIE` or `HEADER` by name.
+
+The result can be optionally inverted using the `invert` parameter.
