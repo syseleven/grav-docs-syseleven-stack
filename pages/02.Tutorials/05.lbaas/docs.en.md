@@ -94,11 +94,11 @@ $ openstack stack show examplelb -f value -c outputs
 To retrieve only the URL use the following command:
 
 ```shell
-# openstack stack show <stack name> -f value -c outputs | grep -i 'http:' | cut -f2- -d:
+# openstack stack output show <stack name> <output key> -c output_value -f value
 
-$ openstack stack show examplelb -f value -c outputs | grep -i 'http:' | cut -f2- -d:
+$ openstack stack output show examplelb lburl -c output_value -f value
 
-"http://195.192.128.20:80",
+http://195.192.128.20:80
 ```
 
 Open Anyapp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server.
@@ -187,11 +187,11 @@ $ openstack stack show examplelb -f value -c outputs
 To retrieve only the URL use the following command:
 
 ```shell
-# openstack stack show <stack name> -f value -c outputs | grep -i 'http:' | cut -f2- -d:
+# openstack stack output show <stack name> <output key> -c output_value -f value
 
-$ openstack stack show examplelb -f value -c outputs | grep -i 'http:' | cut -f2- -d:
+$ openstack stack output show examplelb lburl -c output_value -f value
 
-"http://195.192.128.20:80",
+http://195.192.128.20:80
 ```
 
 Open Anyapp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server.
