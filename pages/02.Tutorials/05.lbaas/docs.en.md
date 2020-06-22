@@ -6,7 +6,7 @@ taxonomy:
         - docs
 ---
 
-# Overview
+## Overview
 
 SysEleven Stack provides load balancing through Load Balancer as a Service (LBaaS).
 
