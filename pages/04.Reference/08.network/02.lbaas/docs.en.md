@@ -38,7 +38,7 @@ Currently, the cloud dashboard (Horizon) at [cloud.syseleven.de](https://cloud.s
 
 ## Neutron LBaaSv2
 
-Neutron load balancers can be maintained using the cloud dashboard (Horizon) at [cloud.syseleven.de](https://cloud.syseleven.de), or [using the API and the neutron CLI](../../02.Tutorials/02.api-access/docs.en.md) (e.g. `neutron lbaas-loadbalancer-list`).
+Neutron load balancers can be maintained using the cloud dashboard (Horizon) at [cloud.syseleven.de](https://cloud.syseleven.de), or [using the API and the neutron CLI](../../../02.Tutorials/02.api-access/docs.en.md) (e.g. `neutron lbaas-loadbalancer-list`).
 
 Neutron LBaaSv2 Feature              | Supported in CBK region | Supported in DBL region
 -------------------------------------|-------------------------|---------------
