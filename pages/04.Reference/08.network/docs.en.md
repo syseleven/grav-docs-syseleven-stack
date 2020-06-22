@@ -105,7 +105,12 @@ Please [contact our customer support](../../06.Support/default.en.md) if you are
 
 ### Load balancing
 
-Using load balancers, you can improve the availability and scalability of your TCP-based services. If configured to do so, the Load balancer will actively monitor all backends and route connections to healthy backends.
-L4 load balancing (TCP) is supported via Neutron LBaaSv2 and Octavia, L7 load balancing (HTTP/HTTPS) only via Octavia.
+Using load balancers, you can improve the availability and scalability of your TCP-based services.
 
-See our [tutorial on load balancing for more information](../../02.Tutorials/05.lbaas/docs.en.md).
+SysEleven Stack offers two options Neutron LBaaSv2 (TCP-only) and Octavia LBaaS (TCP, HTTP, HTTPS).
+
+!! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
+
+Please refer to the [LBaaS reference documentation](02.lbaas/docs.en.md) for a comparison between the two and for more information.
+
+For how to get started, have a look at our [LBaaS tutorial](../../02.Tutorials/05.lbaas/docs.en.md).
