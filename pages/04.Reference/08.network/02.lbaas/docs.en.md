@@ -45,7 +45,7 @@ Neutron LBaaSv2 Feature              | Supported in CBK region | Supported in DB
 Load balancing protocols             | TCP | TCP
 Health Monitoring protocols          | HTTP, TCP, HTTPS | HTTP, TCP, HTTPS
 Distribution strategies              | ROUND_ROBIN (random) | ROUND_ROBIN (random)
-Session persistence                  | No                     | No
+Session persistence                  | SOURCE_IP | SOURCE_IP
 L7 rules and policies                | No                     | No
 
 ### Limitations
