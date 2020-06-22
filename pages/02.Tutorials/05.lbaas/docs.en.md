@@ -10,14 +10,11 @@ taxonomy:
 
 SysEleven Stack provides load balancing through Load Balancer as a Service (LBaaS).
 
-Currently the SysEleven Stack provides two APIs/services for Load Balancers: Octavia LBaaS and Neutron LBaaSv2.
-With the Neutron variant the SysEleven Stack only supports TCP-based load balancers,
-whereas with Octavia also HTTP and HTTPS are supported.
+Currently the SysEleven Stack provides two APIs/services for Load Balancers: Octavia LBaaS and Neutron LBaaSv2. With the Neutron variant the SysEleven Stack only supports TCP-based load balancers, whereas with Octavia also HTTP and HTTPS are supported.
 
 Please refer to our reference documentation for a more [detailed comparison between Octavia LBaaS and Neutron LBaaS](../../04.Reference/08.network/02.lbaas/docs.en.md).
 
-Below you will find two tutorials: how to set up an HTTP load balancer (using Heat for orchestration and Octavia load balancers)
-and how to set up a simple TCP load balancer (again using Heat for orchestration, but with Neutron load balancers).
+Below you will find two tutorials: how to set up an HTTP load balancer (using Heat for orchestration and Octavia load balancers) and how to set up a simple TCP load balancer (again using Heat for orchestration, but with Neutron load balancers).
 
 ## Prerequisites
 
@@ -109,8 +106,7 @@ Open Anyapp in other tabs/windows to see the load balancer working.
 ## TCP Load Balancer with Heat and Neutron LBaaSv2
 
 With Neutron LBaasV2 only TCP-based load balancing is supported.
-In contrast to Octavia-based stacks you have to attach a security group to the load balancer VIP port
-after the stack was created successfully.
+In contrast to Octavia-based stacks you have to attach a security group to the load balancer VIP port after the stack was created successfully.
 
 In this tutorial we demonstrate a Neutron LBaaSv2 setup with the following features:
 
@@ -144,8 +140,7 @@ $ openstack stack create -t lbstack.yaml --parameter key_name=exampleuser exampl
 
 ### Step two: Assign security group to load balancer
 
-After a successful launch the whole setup will not be reachable from the outside until
-you bind a valid security group to the load balancer port. This step is necessary, because it is not possible to update ports in Heat.
+After a successful launch the whole setup will not be reachable from the outside until you bind a valid security group to the load balancer port. This step is necessary, because it is not possible to update ports in Heat.
 See [this link](https://blueprints.launchpad.net/heat/+spec/add-security-group-to-port) for more information on this.
 
 Assign a security group to the port as follows:
@@ -154,8 +149,7 @@ Assign a security group to the port as follows:
 openstack port set --security-group <Security Group> <LoadBalancer Port>
 ```
 
-To make things easier for you, the example Heat template defines
-an output section that will format a valid openstack command for this port / security group assignment.
+To make things easier for you, the example Heat template defines an output section that will format a valid openstack command for this port / security group assignment.
 With the following command you can display the formatted `port set` command:
 
 ```shell
@@ -201,5 +195,4 @@ Open Anyapp in other tabs/windows to see the load balancer working.
 
 ## Conclusion
 
-You should now be able to adapt this example to your needs.
-One of the things you might want to change are the upstream servers. The overall architecture should work for many scenarios.
+You should now be able to adapt this example to your needs. One of the things you might want to change are the upstream servers. The overall architecture should work for many scenarios.
