@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-SysEleven Stack uses the OpenStack component Barbican for secret storage. We introduced the Barbican secret storage first of all to provide a safe way to store SSL certificates and private keys for [Octavia Load balancer as a Service](../08.Network/02.lbaas/docs.en.md). 
+SysEleven Stack uses the OpenStack component Barbican for secret storage. We introduced the Barbican secret storage first of all to provide a safe way to store SSL certificates and private keys for [Octavia Load balancer as a Service](../08.network/02.lbaas/docs.en.md).
 
 !! Barbican is part of the Octavia public beta phase. This means we invite you to test the Barbican secret storage, but we do not recommend you to use it for production workloads yet.
 
@@ -25,9 +25,7 @@ Certificate orders                   | No
 
 ### Secret storage and metadata
 
-SysEleven will store every secret under the hood in an instance of [hashicorp vault](www.vaultproject.io), dedicated solely to Barbican. All secrets are transferred and stored fully encrypted at all times.
-
-Metadata will not be stored fully encrypted.
+All secrets are transferred and stored fully encrypted at all times. Metadata may not be stored fully encrypted.
 
 ### Secret containers
 
@@ -47,7 +45,7 @@ Barbican can be used to persist a list of secret consumers for any given secret 
 
 ### Access control lists
 
-By default, secrets and secret containers are accessible for all users of a project (See the [identity and access reference guide](../01.identity-and-access/docs.en.md) for more information about users, groups and projects)
+By default, secrets and secret containers are accessible for all users of a project (See the [identity and access reference guide](../01.identity-and-access/docs.en.md) for more information about users, groups and projects).
 
 Using access control lists, you can reduce access to certain users or groups.
 

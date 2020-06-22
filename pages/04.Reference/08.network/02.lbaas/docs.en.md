@@ -40,7 +40,7 @@ Available in dashboard | yes | no (planned)
 
 ### General limitations of the cloud dashboard (Horizon)
 
-Currently, the cloud dashboard (Horizon) at cloud.syseleven.de only displays Neutron-LBaaS load balancers. Octavia load balancers can be currently only managed [using the API and the OpenStack CLI](../../02.Tutorials/02.api-access/docs.en.md) (using the `openstack loadbalancer` commands).
+Currently, the cloud dashboard (Horizon) at cloud.syseleven.de only displays Neutron-LBaaS load balancers. Octavia load balancers can be currently only managed [using the API and the OpenStack CLI](../../../02.Tutorials/02.api-access/docs.en.md) (using the `openstack loadbalancer` commands).
 
 ### Neutron LBaaSv2
 
