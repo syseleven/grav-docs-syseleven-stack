@@ -9,22 +9,16 @@ taxonomy:
 
 ## Overview
 
-The SysEleven Stack offers LBaaS via two different generations of APIs:
-Neutron LBaaSv2 and Octavia.
+The SysEleven Stack offers LBaaS via two different generations of APIs: Neutron LBaaSv2 and Octavia.
 
 !! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
 
-Looking at the API definition both services are similar.
-But there are differences in the feature set provided by the SysEleven Stack.
-With Neutron LBaaS only simple TCP-based load balancers are supported,
-with Octavia on the other hand also HTTP and HTTPS.
-Both services optionally allow to set up health monitoring.
+Looking at the API definition both services are similar. But there are differences in the feature set provided by the SysEleven Stack.
+With Neutron LBaaS only simple TCP-based load balancers are supported, with Octavia on the other hand also HTTP and HTTPS. Both services optionally allow to set up health monitoring.
 
-The client IP address can only be made visible to the backend servers if
-an Octavia load balancer is used, in case of Neutron the backends will only
-see the IP address of the load balancer.
+The client IP address can only be made visible to the backend servers if an Octavia load balancer is used, in case of Neutron the backends will only see the IP address of the load balancer.
 
-### Quick comparison table
+## Quick comparison table
 
 The following table compares the supported features of the two LBaaS services:
 
@@ -38,13 +32,13 @@ Available in dashboard | yes | no (planned)
 
 ** Header insertion is useful for example to make the client IP address visible on the backend servers (via the `X-Forwarded-For` header).
 
-### General limitations of the cloud dashboard (Horizon)
+## General limitations of the cloud dashboard (Horizon)
 
-Currently, the cloud dashboard (Horizon) at cloud.syseleven.de only displays Neutron-LBaaS load balancers. Octavia load balancers can be currently only managed [using the API and the OpenStack CLI](../../../02.Tutorials/02.api-access/docs.en.md) (using the `openstack loadbalancer` commands).
+Currently, the cloud dashboard (Horizon) at [cloud.syseleven.de](https://cloud.syseleven.de) only displays Neutron-LBaaS load balancers. Octavia load balancers you can manage [using the API and the OpenStack CLI](../../../02.Tutorials/02.api-access/docs.en.md) (using the `openstack loadbalancer` commands).
 
-### Neutron LBaaSv2
+## Neutron LBaaSv2
 
-Neutron load balancers can be maintained using the cloud dashboard (Horizon) at cloud.syseleven.de, or [using the API and the neutron CLI](../../02.Tutorials/02.api-access/docs.en.md) (e.g. `neutron lbaas-loadbalancer-list`).
+Neutron load balancers can be maintained using the cloud dashboard (Horizon) at [cloud.syseleven.de](https://cloud.syseleven.de), or [using the API and the neutron CLI](../../02.Tutorials/02.api-access/docs.en.md) (e.g. `neutron lbaas-loadbalancer-list`).
 
 Neutron LBaaSv2 Feature              | Supported in CBK region | Supported in DBL region
 -------------------------------------|-------------------------|---------------
@@ -54,11 +48,11 @@ Distribution strategies              | ROUND_ROBIN (random) | ROUND_ROBIN (rando
 Session persistence                  | No                     | No
 L7 rules and policies                | No                     | No
 
-#### Limitations
+### Limitations
 
 - Only TCP-based load balancers are supported. For this reason, it is not possible to make the client IP address visible to the backend servers with Neutron LBaaSv2
 
-### Octavia LBaaS
+## Octavia LBaaS
 
 !! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
 
@@ -75,7 +69,7 @@ L7 rules and policies                | Yes                     | Yes
 Loadbalancer Flavors                 | No                      | No
 VIP QoS policies                     | No                      | No
 
-#### Load balancing protocols
+### Load balancing protocols
 
 The load balancing protocol can be configured using the Octavia LBaaS listener resource (e.g. `openstack loadbalancer listener create`).
 
@@ -83,23 +77,23 @@ Only when using the HTTP and TERMINATED_HTTPS load balancing protocols, it is po
 
 With load balancers that use the TCP, UDP and HTTPS load balancing protocols, this is unfortunately not possible.
 
-#### Health monitoring protocols
+### Health monitoring protocols
 
-Adding a healthmonitor to your load balancer is optional, but we recommend it. Healthmonitors will make sure, that only load balancer pool members that pass a certain test will be considered.
+Adding a health monitor to your load balancer is optional, but we recommend it. Health monitors will make sure that only load balancer pool members that pass a certain test will be considered.
 
-The test protocol (healthmonitor type) can be configured, among other things, using the Octavia LBaaS healthmonitor resource (e.g. `openstack loadbalancer healthmonitor create`).
+The test protocol (health monitor type) can be configured, among other things, using the Octavia LBaaS healthmonitor resource (e.g. `openstack loadbalancer healthmonitor create`).
 
-#### Distribution strategies
+### Distribution strategies
 
-The distribution strategy controls how the load balancer chooses it's backend.
+The distribution strategy controls how the load balancer chooses its backend.
 
 Distribution strategy | Description
 ----------------------|--------------------
 ROUND_ROBIN           | Distribute new requests evenly across all backends (pool members)
-LEAST_CONNECTIONS     | Choose the backend server with the least open connections to the load balancer
+LEAST_CONNECTIONS     | Choose the backend server with the least open connections from the load balancer
 SOURCE_IP             | Choose the backend server depending on the client IP address
 
-#### Session persistence
+### Session persistence
 
 Session persistence can be configured on the load balancer pool resource.
 
@@ -111,7 +105,7 @@ Using `HTTP_COOKIE`, the load balancer will generate a cookie and insert it to t
 
 <!-- For UDP flows it is possible to configure persistence_timeout and persistence_granularity https://docs.openstack.org/api-ref/load-balancer/v2/?expanded=create-pool-detail#session-persistence -->
 
-#### Header insertion
+### Header insertion
 
 Header insertion can be configured on the load balancer listener resource, for example using the command `openstack loadbalancer listener create --insert-headers <HEADER>=true [..]`.
 
@@ -133,7 +127,7 @@ X-SSL-Client-SHA1             | Contains the SHA-1 fingerprint of the certificat
 X-SSL-Client-Not-Before       | Contains the start date presented by the client as a formatted string YYMMDDhhmmss[Z].
 X-SSL-Client-Not-After        | Contains the end date presented by the client as a formatted string YYMMDDhhmmss[Z].
 
-#### L7 rules and policies
+### L7 rules and policies
 
 Using L7 policies the load balancer can perform actions defined in the `L7 rule`, when all the conditions defined in the associated `L7 policies` are met.
 

@@ -23,11 +23,11 @@ Secret consumers                     | Yes
 Access control lists                 | Yes
 Certificate orders                   | No
 
-### Secret storage and metadata
+## Secret storage and metadata
 
 All secrets are transferred and stored fully encrypted at all times. Metadata may not be stored fully encrypted.
 
-### Secret containers
+## Secret containers
 
 Secret containers represent a set of secrets, for a certain purpose.
 
@@ -39,11 +39,11 @@ Generic           | No restrictions
 RSA               | `public_key`, `private_key`, and `private_key_passphrase`
 Certificate       | `certificate` and optionally `private_key`, `private_key_passphrase`, and `intermediates`
 
-### Secret consumers
+## Secret consumers
 
 Barbican can be used to persist a list of secret consumers for any given secret container. The secret consumer consists of a consumer name, a URL and a reference to the secret container.
 
-### Access control lists
+## Access control lists
 
 By default, secrets and secret containers are accessible for all users of a project (See the [identity and access reference guide](../01.identity-and-access/docs.en.md) for more information about users, groups and projects).
 
@@ -51,6 +51,6 @@ Using access control lists, you can reduce access to certain users or groups.
 
 !! Currently the access control list (ACL) settings defined for a container are not propagated down to associated secrets.
 
-### Known issues
+## Known issues
 
 - Currently it is not possible to create secret containers of type certificate with Terraform. See [the terraform issue tracker](https://github.com/terraform-providers/terraform-provider-openstack/issues/1005) and the [OpenStack issue tracker](https://storyboard.openstack.org/#!/story/2007629).
