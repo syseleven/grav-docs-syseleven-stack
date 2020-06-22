@@ -1,5 +1,5 @@
 ---
-title: 'Create a Load Balancer (as a Service)'
+title: 'Create a Load Balancer (using LBaaS)'
 date: '2019-02-28 17:30'
 taxonomy:
     category:
