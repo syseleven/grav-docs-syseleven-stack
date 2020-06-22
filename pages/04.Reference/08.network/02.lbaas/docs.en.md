@@ -91,11 +91,13 @@ The test protocol (healthmonitor type) can be configured, among other things, us
 
 #### Distribution strategies
 
-Terraform funktioniert grade nicht mit Barbican
+The distribution strategy controls how the load balancer chooses it's backend.
 
-Single flavor for testing is planned.
-
-We prepared a simple tutorial that shows [basic usage of LBaaS](../../../02.Tutorials/05.lbaas/docs.en.md).
+Distribution strategy | Description
+----------------------|--------------------
+ROUND_ROBIN           | Distribute new requests evenly across all backends (pool members)
+LEAST_CONNECTIONS     | Choose the backend server with the least open connections to the load balancer
+SOURCE_IP             | Choose the backend server depending on the client IP address
 
 #### Session persistence
 
