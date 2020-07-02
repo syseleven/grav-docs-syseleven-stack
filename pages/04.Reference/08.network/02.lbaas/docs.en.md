@@ -24,9 +24,9 @@ The following table compares the supported features of the two LBaaS services:
 
 Function                | Neutron LBaaSv2 | Octavia LBaaS
 ------------------------|-----------------|--------------
-Loadbalancing protocols | TCP             | TCP, HTTP, HTTPS, TERMINATED_HTTPS, UDP
+Loadbalancing protocols | TCP             | TCP, HTTP, HTTPS, TERMINATED_HTTPS
 Distribution strategies | ROUND_ROBIN (random) | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
-Health Monitoring protocols | TCP, HTTP, HTTPS | PING, HTTP, TCP, HTTPS, TLS-HELLO, UDP-CONNECT
+Health Monitoring protocols | TCP, HTTP, HTTPS | PING, HTTP, TCP, HTTPS, TLS-HELLO
 Header insertion** | no | yes
 Available in dashboard | yes | no (planned)
 
@@ -75,7 +75,7 @@ The load balancing protocol can be configured using the Octavia LBaaS listener r
 
 Only when using the HTTP and TERMINATED_HTTPS load balancing protocols, it is possible to use <a href="#header-insertion">header insertion</a> as well as <a href="#l7-rules-and-policies">l7 rules and policies</a>.
 
-With load balancers that use the TCP, UDP and HTTPS load balancing protocols, this is unfortunately not possible.
+With load balancers that use the TCP and HTTPS load balancing protocols, this is unfortunately not possible.
 
 ### Health monitoring protocols
 
