@@ -71,7 +71,20 @@ $ openstack stack create -t lbstack.yaml --parameter key_name=exampleuser exampl
 +---------------------+--------------------------------------+
 ```
 
-### Step two: Check if the load balancer works properly
+### Step two (optional): Set allowed CIDRs
+
+By default the load balancer will accept connections from everywhere. In order to limit the incoming traffic to certain client IP address ranges you need to configure the listener with allowed CIDRs (one or multiple).
+In our HEAT template example the listener's name is the stack name followed by "-listener", e.g. "examplelb-listener".
+
+```shell
+# openstack loadbalancer listener set --allowed-cidr 172.20.0.0/16 --allowed-cidr 10.0.0.0/8 <listener name>
+
+$ openstack loadbalancer listener set --allowed-cidr 172.20.0.0/16 --allowed-cidr 10.0.0.0/8 examplelb-listener
+```
+
+It is not possible to remove individual CIDRs, so you have to overwrite the list of CIDRs with the new complete list. Or set it explicitly to 0.0.0.0/0 to allow access to everyone again.
+
+### Step three: Check if the load balancer works properly
 
 The example code contains the LB floating IP in its output:
 
