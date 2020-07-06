@@ -60,8 +60,8 @@ Octavia is our more advanced load balancer option. Below you will find the refer
 
 Octavia LBaaS Feature                | Supported in CBK region | Supported in DBL region
 -------------------------------------|-------------------------|---------------
-Load balancing protocols             | TCP, HTTP, HTTPS, TERMINATED_HTTPS, UDP | TCP, HTTP, HTTPS, TERMINATED_HTTPS, UDP
-Health Monitoring protocols          | PING, HTTP, TCP, HTTPS, TLS-HELLO, UDP-CONNECT | PING, HTTP, TCP, HTTPS, TLS-HELLO, UDP-CONNECT
+Load balancing protocols             | TCP, HTTP, HTTPS, TERMINATED_HTTPS | TCP, HTTP, HTTPS, TERMINATED_HTTPS
+Health Monitoring protocols          | PING, HTTP, TCP, HTTPS, TLS-HELLO | PING, HTTP, TCP, HTTPS, TLS-HELLO
 Distribution strategies              | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP                    | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
 Session persistence                  | Yes                     | Yes
 Header insertion                     | Yes                     | Yes
