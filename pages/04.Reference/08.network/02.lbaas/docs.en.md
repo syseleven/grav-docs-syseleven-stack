@@ -66,7 +66,7 @@ Distribution strategies              | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
 Session persistence                  | Yes                     | Yes
 Header insertion                     | Yes                     | Yes
 L7 rules and policies                | Yes                     | Yes
-Loadbalancer Flavors                 | No                      | No
+Load Balancer Flavors                | Yes                     | Yes
 VIP QoS policies                     | No                      | No
 
 ### Load balancing protocols
@@ -149,3 +149,14 @@ L7 rules always compare a given value with a request value (specified by the rul
 Some rule types allow specifying a `key`. Using the `key` you can choose a specific `COOKIE` or `HEADER` by name.
 
 The result can be optionally inverted using the `invert` parameter.
+
+### Load balancer flavors
+
+The SysEleven Stack currently provides two flavors of Octavia Load Balancers:
+
+LB Flavor | Topology | VM flavor | Description
+----------|----------|-----------|-------------
+failover-small | Active/Standby | m1c.small | Load balancer is implemented in two virtual machines in an active/standby setup.
+standalone-tiny | Stand-alone   | m1c.tiny  | Load balancer is implemented in a single stand-alone virtual machine
+
+The default load balancer flavor is `failover-small` which offers more performance and failure resilience. You may choose `standalone-small` instead for development setups to save some resources when failure resilience is not the top priority.
