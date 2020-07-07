@@ -32,7 +32,7 @@ git clone https://github.com/syseleven/heat-examples.git
 
 This repository is used in both setups described below:
 
-* heat-examples/lbaas-octavia: contains the heat template for an HTTP load balancer set up using Octavia resources
+* heat-examples/lbaas-octavia-http: contains the heat template for an HTTP load balancer set up using Octavia resources
 * heat-examples/lbaas: contains the heat template for a TCP load balancer set up using Neutron LBaaSv2 resources
 
 ## HTTP Load Balancer with Heat and Octavia
@@ -53,7 +53,7 @@ In this tutorial we demonstrate an Octavia LBaaS setup with the following featur
 Open the folder containing the example code and create the stack providing your SSH key and the stack name.
 
 ```shell
-$ cd heat-examples/lbaas-octavia
+$ cd heat-examples/lbaas-octavia-http
 
 # openstack stack create -t lbstack.yaml --parameter key_name=<publicKeyName> <stackName>
 
