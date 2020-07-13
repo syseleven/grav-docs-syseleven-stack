@@ -28,7 +28,7 @@ You can manage networking objects both via our [public OpenStack API endpoints](
 | IPsec VPN (VPNaaS)                      | yes | yes
 | Customer public IP space (Bring your own IP) | yes | yes
 | L4 Load balancing (TCP) (Neutron-LBaaS) | yes | yes
-| L7 Load balancing (HTTP/HTTPS) (Octavia-LBaaS) | no | no
+| L7 Load balancing (HTTP/HTTPS) (Octavia-LBaaS) | yes | yes
 | Dynamic routing (BGP)                   | no | no
 | Metering support                        | no | no
 | Quality of service (QoS)                | no | no
@@ -103,8 +103,14 @@ In addition to the standard `ext-net`, that is shared across all our customers, 
 
 Please [contact our customer support](../../06.Support/default.en.md) if you are interested.
 
-### L4 Load balancing (TCP) (Neutron-LBaaS)
+### Load balancing
 
-Using L4 load balancers, you can improve the availability and scalability of your TCP-based services. If configured to do so, the Load balancer will actively monitor all backends and route TCP connections to healthy backends.
+Using load balancers, you can improve the availability and scalability of your services.
 
-See our [tutorial on load balancing for more information](../../02.Tutorials/05.lbaas/docs.en.md).
+SysEleven Stack offers two options: Neutron LBaaSv2 (TCP-only) and Octavia LBaaS (TCP, HTTP, HTTPS).
+
+!! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
+
+Please refer to the [LBaaS reference documentation](02.lbaas/docs.en.md) for a comparison between the two and for more information.
+
+For how to get started, have a look at our [LBaaS tutorial](../../02.Tutorials/05.lbaas/docs.en.md).

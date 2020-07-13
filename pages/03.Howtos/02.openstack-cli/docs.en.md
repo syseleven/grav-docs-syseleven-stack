@@ -59,7 +59,14 @@ Alternatively running a ["virtual environment" with `virtualenv`](#virtualenv) a
 After the installation of `PIP` finished, we need to install the OpenStack CLI client and required plugins, to be able to communicate with the corresponding OpenStack API:
 
 ```shell
-sudo -H pip install python-openstackclient python-heatclient python-neutronclient python-designateclient
+sudo -H pip install \
+    python-openstackclient \
+    python-barbicanclient \
+    python-designateclient \
+    python-glanceclient \
+    python-heatclient \
+    python-neutronclient \
+    python-octaviaclient
 ```
 
 ---
@@ -84,7 +91,7 @@ C:\Python27\Scripts>easy_install pip
 After the installation of `PIP` finished, we need to install the OpenStack CLI as last step:
 
 ```batch
-C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient python-designateclient
+C:\Python27\Scripts>pip install python-openstackclient python-barbicanclient python-designateclient python-glanceclient python-heatclient python-neutronclient python-octaviaclient
 ```
 
 ### OpenStack Plugins
@@ -125,7 +132,7 @@ pip install python-openstackclient python-heatclient python-neutronclient python
 
 ## Conclusion
 
-We have installed the OpenStack Client and we now can use it.  
+We have installed the OpenStack Client and we now can use it.
 **To be able to use the OpenStack CLI tools the [API access](../../02.Tutorials/02.api-access/docs.en.md) needs to be configured now.**
 
 If needed you can list all commands:

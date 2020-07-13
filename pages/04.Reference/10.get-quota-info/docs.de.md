@@ -121,11 +121,11 @@ compute.instances | Anzahl der virtuellen Maschinen (Server, Instanzen) |
 compute.ram_mb | RAM für virtuelle Maschinen in MB |
 dns.zones | Anzahl der DNS-Zonen |
 network.floatingips | Anzahl der Floating IP-Adressen |
-network.lb_healthmonitors | Anzahl der LBaaS Health-Monitors |
-network.lb_listeners | Anzahl der LBaaS Listener |
-network.lb_members | Anzahl der LBaaS Pool Member |
-network.lb_pools | Anzahl der LBaaS Pools |
-network.loadbalancers | Anzahl der LBaaS Load Balancer |
+network.lb_healthmonitors | Anzahl der Neutron LBaaSv2 Health-Monitors |
+network.lb_listeners | Anzahl der Neutron LBaaSv2 Listener |
+network.lb_members | Anzahl der Neutron LBaaSv2 Pool Member |
+network.lb_pools | Anzahl der Neutron LBaaSv2 Pools |
+network.loadbalancers | Anzahl der Neutron LBaaSv2 Load Balancer |
 network.vpn_endpoint_groups | Anzahl der VPNaaS Endpunktgruppen |
 network.vpn_ikepolicy | Anzahl der VPNaaS IKE Policies |
 network.vpn_ipsec_site_connections | Anzahl der VPNaaS Site Connections |

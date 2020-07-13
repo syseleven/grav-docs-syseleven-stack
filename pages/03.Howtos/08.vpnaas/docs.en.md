@@ -1,5 +1,5 @@
 ---
-title: 'Create a VPN (as a Service)'
+title: 'Create a VPN (using VPNaaS)'
 date: '02-01-2019 12:20'
 taxonomy:
     category:
