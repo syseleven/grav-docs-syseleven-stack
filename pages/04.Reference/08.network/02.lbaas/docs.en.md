@@ -27,10 +27,9 @@ Function                | Neutron LBaaSv2 | Octavia LBaaS
 Loadbalancing protocols | TCP             | TCP, HTTP, HTTPS, TERMINATED_HTTPS
 Distribution strategies | ROUND_ROBIN (random) | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
 Health Monitoring protocols | TCP, HTTP, HTTPS | PING, HTTP, TCP, HTTPS, TLS-HELLO
-Header insertion** | no | yes
+Header insertion (`X-Forwarded-For` etc.) | no | yes
+PROXY protocol support | no | yes
 Available in dashboard | yes | no (planned)
-
-** Header insertion is useful for example to make the client IP address visible on the backend servers (via the `X-Forwarded-For` header).
 
 ## General limitations of the cloud dashboard (Horizon)
 
@@ -44,6 +43,7 @@ Neutron LBaaSv2 Feature              | Supported in CBK region | Supported in DB
 -------------------------------------|-------------------------|---------------
 Load balancing protocols             | TCP | TCP
 Health Monitoring protocols          | HTTP, TCP, HTTPS | HTTP, TCP, HTTPS
+Pool protocols                       | TCP | TCP
 Distribution strategies              | ROUND_ROBIN (random) | ROUND_ROBIN (random)
 Session persistence                  | SOURCE_IP | SOURCE_IP
 L7 rules and policies                | No                     | No
@@ -62,6 +62,7 @@ Octavia LBaaS Feature                | Supported in CBK region | Supported in DB
 -------------------------------------|-------------------------|---------------
 Load balancing protocols             | TCP, HTTP, HTTPS, TERMINATED_HTTPS | TCP, HTTP, HTTPS, TERMINATED_HTTPS
 Health Monitoring protocols          | PING, HTTP, TCP, HTTPS, TLS-HELLO | PING, HTTP, TCP, HTTPS, TLS-HELLO
+Pool protocols                       | PROXY, TCP, HTTP, HTTPS | PROXY, TCP, HTTP, HTTPS
 Distribution strategies              | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP                    | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
 Session persistence                  | Yes                     | Yes
 Header insertion                     | Yes                     | Yes
@@ -82,6 +83,14 @@ With load balancers that use the TCP and HTTPS load balancing protocols, this is
 Adding a health monitor to your load balancer is optional, but we recommend it. Health monitors will make sure that only load balancer pool members that pass a certain test will be considered.
 
 The test protocol (health monitor type) can be configured, among other things, using the Octavia LBaaS healthmonitor resource (e.g. `openstack loadbalancer healthmonitor create`).
+
+### Pool protocols
+
+The pool together with the pool members represent a set of backend servers. It is possible to configure the protocol between backend and load balancer.
+
+Using the special PROXY protocol it is possible to retrieve the client IP address, even with TCP or non-terminated HTTPS load balancing protocols. Please refer to the HAProxy documentation for a [specification of the PROXY protocol](http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt).
+
+Your application must support the PROXY protocol. It is possible to add a reverse proxy like nginx between your application and the Octavia loadbalancer to add PROXY support. The nginx documentation provides a how to for [receiving the proxy protocol](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/).
 
 ### Distribution strategies
 
@@ -111,7 +120,7 @@ Header insertion can be configured on the load balancer listener resource, for e
 
 Header insertion is turned off by default. When turned on, the specified header with information about the request will be passed to the pool members.
 
-Header insertion is only supported for the `HTTP` and `TERMINATED_HTTPS` load balancer methods.
+Header insertion is only supported for the `HTTP` and `TERMINATED_HTTPS` load balancer methods. If you need the client IP address on your backend servers with other load balancer methods, consider the <a href="#pool-protocols">PROXY pool protocol</a>.
 
 Header                        | Description
 ------------------------------| ------------
