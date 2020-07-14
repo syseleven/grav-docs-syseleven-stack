@@ -90,7 +90,7 @@ The pool together with the pool members represent a set of backend servers. It i
 
 Using the special PROXY protocol it is possible to retrieve the client IP address, even with TCP or non-terminated HTTPS load balancing protocols. Please refer to the HAProxy documentation for a [specification of the PROXY protocol](http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt).
 
-Your application must support the PROXY protocol. It is possible to add a reverse proxy like nginx between your application and the Octavia loadbalancer to add PROXY support. The nginx documentation provides a how to for [receiving the proxy protocol](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/).
+Your application must support the PROXY protocol. It is possible to add a reverse proxy like nginx between your application and the Octavia loadbalancer to add PROXY support. The nginx documentation provides a how-to for [receiving the proxy protocol](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/).
 
 ### Distribution strategies
 
