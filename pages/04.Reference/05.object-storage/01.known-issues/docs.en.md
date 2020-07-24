@@ -9,10 +9,10 @@ taxonomy:
 
 ## Overview
 
-### S3cmd cannot download large files 
+### S3cmd cannot download large files
 
 **Problem Statement:**  
-When using S3cmd to manage your data in the SysEleven Stack Object Storage, you may run into an issue trying to download large files (which size exceed 100 GB). You will receive a 503 response asking you to slow down even when reducing download speed to a minimum. 
+When using S3cmd to manage your data in the SysEleven Stack Object Storage, you may run into an issue trying to download large files (which size exceed 100 GB). You will receive a 503 response asking you to slow down even when reducing download speed to a minimum.
 
 **Solutions:**  
 We suggest to download the file in multiple chunks using the HTTP Range header. S4cmd supports this out of the box using the --max-singlepart-download-size option:

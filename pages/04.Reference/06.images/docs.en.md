@@ -76,12 +76,12 @@ data "openstack_images_image_v2" "ubuntu-focal" {
 ### Known issues with public images
 
 - Official Debian Buster OpenStack image may have a bug in `ifupdown` configuration. After initial boot, eth0 interface
-will be configured with both DHCP and static cloud-init configuration. Since both will try to assign the same IP
-address to eth0, `RTNETLINK answers: File exists` error will be produced, resulting `networking.service` systemd unit
-in errored state. This will block DHCP client from refreshing lease after 24 hours. Solution is to remove dynamic eth0
-configuration from `/etc/network/interfaces`, or to remove static configuration written by cloud-init from
-`/etc/network/interfaces.d`. After this change, restart of `systemd-networkd` systemd unit, or restart of virtual
-machine is required.
+  will be configured with both DHCP and static cloud-init configuration. Since both will try to assign the same IP
+  address to eth0, `RTNETLINK answers: File exists` error will be produced, resulting `networking.service` systemd unit
+  in errored state. This will block DHCP client from refreshing lease after 24 hours. Solution is to remove dynamic eth0
+  configuration from `/etc/network/interfaces`, or to remove static configuration written by cloud-init from
+  `/etc/network/interfaces.d`. After this change, restart of `systemd-networkd` systemd unit, or restart of virtual
+  machine is required.
 
 ## Uploading images
 
