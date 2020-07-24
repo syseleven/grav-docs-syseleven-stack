@@ -12,15 +12,14 @@ taxonomy:
 ### S3cmd cannot download large files
 
 **Problem Statement:**  
-When using S3cmd to manage your data in the SysEleven Stack Object Storage, you may run into an issue trying to download large files (which size exceed 100 GB). You will receive a 503 response asking you to slow down even when reducing download speed to a minimum.
+When using `s3cmd` to manage your data in the SysEleven Stack Object Storage, you may run into an issue trying to download large files (whose size exceeds 100 GiB). You will receive a 503 response asking you to slow down even when reducing download speed to a minimum.
 
 **Solutions:**  
-We suggest to download the file in multiple chunks using the HTTP Range header. S4cmd supports this out of the box using the --max-singlepart-download-size option:
+We suggest to download the file in multiple chunks using the HTTP Range header. `s4cmd` supports this out of the box using the `--max-singlepart-download-size` option:
 
 ```plain
-s4cmd get --max-singlepart-download-size=1000 s3://BUCKET_NAME/FILE_NAME
+s4cmd get --max-singlepart-download-size=$((50*1024**2)) --multipart-split-size=$((50*1024**2)) s3://BUCKET_NAME/FILE_NAME
 ````
 
-In the example command the option itself defines that files greater then 1000 bytes will be downloaded in multipart transfers.
-
+The value of 52428800 Bytes = 50 GiB specified in this example is actually the default value for those parameters, so that using `s4cmd` without specifying those parameters should already circumvent the mentioned problem by doing multipart transfers.
 
