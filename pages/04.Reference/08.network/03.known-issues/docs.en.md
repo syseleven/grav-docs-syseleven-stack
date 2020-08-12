@@ -48,7 +48,7 @@ Currently there is no solution to overcome this issue.
 ### Error updating Neutron LBaaS load balancer
 
 **Problem Statement:**
-Neutron LBaaSv2 sets up loadbalancers directly in our SDN Stack based on Midonet. When trying to update a Neutron LBaaSv2 loadbalancer (name, description or admin-state-up), Midonet will answers with a 400 response code stating a bad request. The error will further be passed to Neutron which subsequently sets the affected loadbalancer to ERROR state. The loadbalancer itself will get updated accordingly and keeps working as intended. Unfortunately due to the loadbalancer being in ERROR state, further requests (besides delete requests) on the loadbalancer object will be rejected until the state has been reset.
+When trying to update a Neutron LBaaSv2 load balancer (name, description or admin-state-up), Neutron will answer with 400 Bad Request. The affected load balancer ends up in `ERROR` state. The load balancer itself will get updated accordingly and keeps working as intended. Unfortunately due to the load balancer switching to the ERROR state, further requests (except delete requests) on it will be rejected.
 
 **Solution:**  
 The Cloud Support needs to reset the loadbalancer state.
