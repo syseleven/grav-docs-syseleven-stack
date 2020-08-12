@@ -51,4 +51,4 @@ Currently there is no solution to overcome this issue.
 When trying to update a Neutron LBaaSv2 load balancer (name, description or admin-state-up), Neutron will answer with 400 Bad Request. The affected load balancer ends up in `ERROR` state. The load balancer itself will get updated accordingly and keeps working as intended. Unfortunately due to the load balancer switching to the ERROR state, further requests (except delete requests) on it will be rejected.
 
 **Solution:**  
-The Cloud Support needs to reset the loadbalancer state.
+The Cloud Support needs to reset the load balancer state.
