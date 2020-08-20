@@ -37,7 +37,7 @@ s3cmd -c .s3cfg-admin put test.txt s3://acl-write/test.txt
 # We will later use the test.txt object to confirm our applied ACLs are working
 ```
 
-As we did not define any ACLs while creating the buckets/objects, the default private ACL will be used. In the current state all users, who have access to our OpenStack project (who have created EC2 credentials for this project), have full control on our newly created buckets/objects.
+As we did not define any ACLs while creating the buckets/objects, the default private ACL will be used. In the current state all users, who have access to our OpenStack project (users who have created EC2 credentials for this project), have full control on our newly created buckets/objects.
 
 For an object to be accessable to an user, the object itself and the parent buckets have to have proper ACLs set.
 
