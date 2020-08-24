@@ -41,11 +41,11 @@ As we did not define any ACLs while creating the buckets/objects, the default pr
 
 For an object to be accessable to an user, the object itself and the parent buckets have to have proper ACLs set.
 
-### Revoke default ACLs 
+### Revoke default ACLs
 
 In this step we will revoke the access to the buckets/objects for every user with access to our OpenStack project.
 
-*As this point it is important to understand that OpenStack EC2 credentials are bound to a user and a project. Thus if you are managing multiple OpenStack projects, there is more then 1 way to allow an user to be able to access your buckets/objects. You may allow the users EC2 credentials created for project A to access your data but at the same time revoke the access for the users EC2 credentials created for project B* 
+*As this point it is important to understand that OpenStack EC2 credentials are bound to a user and a project. Thus if you are managing multiple OpenStack projects, there is more then 1 way to allow an user to be able to access your buckets/objects. You may allow the users EC2 credentials created for project A to access your data but at the same time revoke the access for the users EC2 credentials created for project B*
 
 ```shell
 # Get our OpenStack project ID
@@ -58,7 +58,7 @@ s3cmd -c .s3cfg-admin setacl --acl-revoke=full_control:${MY_PROJECT_ID} s3://acl
 s3cmd -c .s3cfg-admin setacl --acl-revoke=full_control:${MY_PROJECT_ID} s3://acl-write/test.txt
 ```
 
-Now only the owner (.s3cfg-admin) has access to the buckets and objects we created for this tutorial. 
+Now only the owner (.s3cfg-admin) has access to the buckets and objects we created for this tutorial.
 
 ### Grant read-only access via user ACLs
 
@@ -71,7 +71,7 @@ s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:6cfb9350ae2046d8b9129801c9af5387
 # e.g : s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:6cfb9350ae2046d8b9129801c9af5387/${MY_PROJECT_ID} s3://acl-read/test.txt
 ```
 
-**Unfortunately every grant of rights via ACLs will re-add a default ACL grant providing full control for all users from the OpenStack project the object is contained in for all involved buckets/objects** 
+**Unfortunately every grant of rights via ACLs will re-add a default ACL grant providing full control for all users from the OpenStack project the object is contained in for all involved buckets/objects**
 
 Thus we have to manually remove the default ACL again
 
@@ -91,7 +91,7 @@ We will proceed to grant write rights for our additional user. As we also want t
 *When granting an user both read and write rights, he automatically gets the full_control ACL granted. Thus when you want to revoke the write ACLs for the user you will have to revoke the full_control ACL for the user and re-grant the read ACL.*
 
 ```shell
-# Grant full control for write bucket, 
+# Grant full control for write bucket,
 s3cmd -c .s3cfg-admin setacl --acl-grant=full_control:u:6cfb9350ae2046d8b9129801c9af5387/${MY_PROJECT_ID} s3://acl-write
 # And remove the default ACL which got added additionally
 s3cmd -c .s3cfg-admin setacl --acl-revoke=full_control:${MY_PROJECT_ID} s3://acl-write
@@ -142,7 +142,7 @@ If you add new objects to your buckets to which you already set ACLs, there are 
 s3cmd -c .s3cfg-admin put test.txt s3://acl-read/test2.txt
 ```
 
-As the default ACL is in place, all users of our OpenStack project would currently have access to the new file (if the parent bucket ACLs allow it). Thus currently Lets set the ACLs for the new object the same way we did for the already existing object. 
+As the default ACL is in place, all users of our OpenStack project would currently have access to the new file (if the parent bucket ACLs allow it). Thus currently Lets set the ACLs for the new object the same way we did for the already existing object.
 
 ```shell
 s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:6cfb9350ae2046d8b9129801c9af5387/8d0a3fb580fd46079ac6aeaf3bcc412e s3://acl-read/test2.txt
