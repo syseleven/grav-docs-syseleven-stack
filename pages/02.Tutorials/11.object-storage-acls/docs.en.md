@@ -37,7 +37,7 @@ s3cmd -c .s3cfg-admin put test.txt s3://acl-write/test.txt
 # We will later use the test.txt object to confirm our applied ACLs are working
 ```
 
-As we did not define any ACLs while creating the buckets/objects, the default private ACL will be used. In the current state all users, who have access to our OpenStack project (users who have created EC2 credentials for this project), have full control on our newly created buckets/objects.
+As we did not define any ACLs while creating the buckets/objects, the default private ACL will be used. In the current state all users, who have access to our OpenStack project (who have created EC2 credentials for this project), have full control on our newly created buckets/objects.
 
 For an object to be accessable to an user, the object itself and the parent buckets have to have proper ACLs set.
 
@@ -62,14 +62,13 @@ Now only the owner (.s3cfg-admin) has access to the buckets and objects we creat
 
 ### Grant read-only access via user ACLs
 
-We will proceed to grant read rights for our additional user.
+We will proceed to grant read rights for our additional user. We assume this user with access to our project has the user ID `6cfb9350ae2046d8b9129801c9af5387`.
 
 ```shell
-# Assumption : user max.mustermann@myproject.de has access to our project
 # Lets grant him read access to your acl-read bucket and all objects contained inside (using the recursive option)
-s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:max.mustermann@myproject.de/${MY_PROJECT_ID} s3://acl-read --recursive
+s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:6cfb9350ae2046d8b9129801c9af5387/${MY_PROJECT_ID} s3://acl-read --recursive
 # We may also only grant the user to specific objects inside the bucket, in this case we leave out the recursive option and directly add the object names :
-# e.g : s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:max.mustermann@myproject.de/${MY_PROJECT_ID} s3://acl-read/test.txt
+# e.g : s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:6cfb9350ae2046d8b9129801c9af5387/${MY_PROJECT_ID} s3://acl-read/test.txt
 ```
 
 **Unfortunately every grant of rights via ACLs will re-add a default ACL grant providing full control for all users from the OpenStack project the object is contained in for all involved buckets/objects** 
@@ -93,7 +92,7 @@ We will proceed to grant write rights for our additional user. As we also want t
 
 ```shell
 # Grant full control for write bucket, 
-s3cmd -c .s3cfg-admin setacl --acl-grant=full_control:u:max.mustermann@myproject.de/${MY_PROJECT_ID} s3://acl-write
+s3cmd -c .s3cfg-admin setacl --acl-grant=full_control:u:6cfb9350ae2046d8b9129801c9af5387/${MY_PROJECT_ID} s3://acl-write
 # And remove the default ACL which got added additionally
 s3cmd -c .s3cfg-admin setacl --acl-revoke=full_control:${MY_PROJECT_ID} s3://acl-write
 ```
@@ -105,12 +104,12 @@ If you want to check your current ACLs for an object you may issue the `s3cmd in
 ```shell
 # The project id : 8d0a3fb580fd46079ac6aeaf3bcc412e will differ in your case
 s3cmd -c .s3cfg-admin info s3://acl-write/test.txt | grep ACL
-   ACL:       u:max.mustermann@myproject.de/8d0a3fb580fd46079ac6aeaf3bcc412e: FULL_CONTROL
+   ACL:       u:6cfb9350ae2046d8b9129801c9af5387/8d0a3fb580fd46079ac6aeaf3bcc412e: FULL_CONTROL
    ACL:       8d0a3fb580fd46079ac6aeaf3bcc412e: FULL_CONTROL
 
 s3cmd -c .s3cfg-admin info s3://acl-read/test.txt
    ACL:       8d0a3fb580fd46079ac6aeaf3bcc412e: FULL_CONTROL
-   ACL:       u:max.mustermann@myproject.de/8d0a3fb580fd46079ac6aeaf3bcc412e: READ
+   ACL:       u:6cfb9350ae2046d8b9129801c9af5387/8d0a3fb580fd46079ac6aeaf3bcc412e: READ
 ```
 
 Additional things to be aware of are the following :
@@ -121,12 +120,11 @@ Additional things to be aware of are the following :
 
 ### Grant access for external users
 
-It is also possible to grant access on your buckets/objects to external users which have no direct access to your OpenStack project. In this case you need know the external user name and the project for which he created his EC2 credentials.
+It is also possible to grant access on your buckets/objects to external users which have no direct access to your OpenStack project. In this case you need know the external user ID and the project ID for which he created his EC2 credentials. We assume this user has the user ID `585468883baa46989862c1c95a1b359d` and project ID for which he created the EC2 credentials is `6da1da7f0c7e4afaa39d7119ae764cff`.
 
 ```shell
-# We assume the user name is : someotheruser@someotherproject.de and the project id that the user created his EC2 credentials in is : 6da1da7f0c7e4afaa39d7119ae764cff
 # Lets grant read access for this external user
-s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:someotheruser@someotherproject.de/6da1da7f0c7e4afaa39d7119ae764cff s3://acl-read --recursive
+s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:585468883baa46989862c1c95a1b359d/6da1da7f0c7e4afaa39d7119ae764cff s3://acl-read --recursive
 # Again a default ACL was added to all involved buckets/objects that now gives full control for all users from the internal project. Lets remove it again.
 s3cmd -c .s3cfg-admin setacl --acl-revoke=full_control:${MY_PROJECT_ID} s3://acl-read --recursive
 ```
@@ -147,13 +145,12 @@ s3cmd -c .s3cfg-admin put test.txt s3://acl-read/test2.txt
 As the default ACL is in place, all users of our OpenStack project would currently have access to the new file (if the parent bucket ACLs allow it). Thus currently Lets set the ACLs for the new object the same way we did for the already existing object. 
 
 ```shell
-s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:max.mustermann@myproject.de/8d0a3fb580fd46079ac6aeaf3bcc412e s3://acl-read/test2.txt
+s3cmd -c .s3cfg-admin setacl --acl-grant=read:u:6cfb9350ae2046d8b9129801c9af5387/8d0a3fb580fd46079ac6aeaf3bcc412e s3://acl-read/test2.txt
 # Remove default full_control ACL for the added file
 s3cmd -c .s3cfg-admin setacl --acl-revoke=full_control:${MY_PROJECT_ID} s3://acl-read/test2.txt
 # Remove hidden added full_control ACL from the Bucket which would allow read user to edit the file
 s3cmd -c .s3cfg-admin setacl --acl-revoke=full_control:${MY_PROJECT_ID} s3://acl-read
 ```
-
 
 ### Grant/revoke access via groups
 
