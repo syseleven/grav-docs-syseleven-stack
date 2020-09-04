@@ -27,7 +27,7 @@ The DNS service is shared between all regions. You will need to choose a region 
 | Zone transfer to different projects     | yes            | yes
 | Secondary Zones                         | yes            | yes
 | Zone Import / Export                    | yes            | yes
-| PTR records for Floating IPs            | no             | no
+| PTR records for Floating IPs            | yes            | yes
 
 ### Manage zones and recordsets
 
@@ -58,3 +58,16 @@ Sending the `NOTIFY` message to our DNS servers is not supported.
 ### Zone Import / Export
 
 To migrate large amounts of zones and records to the SysEleven Stack DNS service, it is possible to use our Import / Export functionality. It is using the master file format as specified in RFC 1035.
+
+### PTR records for Floating IPs
+
+To create a reverse lookup PTR entry for a Floating IP address, two parameters `--dns-domain` and `--dns-name` can be set. DNS zone specfied in `--dns-domain` has to be created and owned by the same project. If zone exists and configured properly, forward A-type record specified in `--dns-name` will be created in it. A reverse PTR-type record will be created in `in-addr.arpa` zone that is hosted in our cloud, but invisible to customer projects.
+
+Full command line to create a Floating IP adress with a reverse PTR record will look like this: `openstack floating ip create --dns-domain example.con. --dns-name mx01 ext-net`
+
+### Automatic PTR records for all VMs with Floating IPs
+
+Forward A-type and reverse PTR-type records can be created automatically for all VMs that have Floating IP address attached. In order to achieve this, `--dns-domain` option should be provied to the OpenStack network during creation time, or later. DNS zone specfied in `--dns-domain` has to be created and owned by the same project. If zone exists and configured properly, forward A-type record and reverse PTR-type record will be created for every VM, after a Floating IP address is attached to it. Host name will be generated from the VM name. Note that disallowed symbols like underscore (_) or space ( ) are not allowed in host names, and will be removed from VM name. When a Floating IP address is detached from a VM, corresponding A and PTR records are deleted. Floating IPs themselves do not have to have any DNS related information.
+
+To create a network with DNS domain set: `openstack network create example-net --dns-domain example.com.`.
+To set a DNS domain on existing network: `openstack network set --dns-domain testzone.de. example-net`.
