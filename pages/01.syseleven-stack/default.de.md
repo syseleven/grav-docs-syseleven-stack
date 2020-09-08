@@ -24,7 +24,7 @@ Unsere Dokumentation ist aufgeteilt in die folgenden Sektionen:
 | [Tutorials](../02.Tutorials/docs.de.md)            | Lernorientierte Schritt-für-Schritt-Anleitungen, um mit SysEleven Stack loslegen zu können. |
 | [How-to-Guides](../03.Howtos/docs.de.md)           | Zielorientierte Schritt-für-Schritt-Anleitungen, die zeigen, wie bestimmte Probleme gelöst werden können. |
 | [Referenz-Artikel](../04.Reference/docs.de.md)     | Detaillierte Beschreibung aller Dienste, die im Rahmen von SysEleven Stack angeboten werden. |
-| [Hingergrund-Artikel](../05.Background/docs.de.md) | Erklärungen und Hintergrundinformationen zu unseren Diensten. |
+| [Hintergrund-Artikel](../05.Background/docs.de.md) | Erklärungen und Hintergrundinformationen zu unseren Diensten. |
 
 ## Beispiele
 
