@@ -140,6 +140,6 @@ Forward A-type and reverse PTR-type records can be created automatically for all
 
 The DNS zone specfied in `--dns-domain` must be created and owned by the same project. If the zone exists and is configured properly on a network, forward A-type records and reverse PTR-type records will be created for every VM in that network, as soon as a Floating IP address is attached to it.
 
-The record name will be generated from the VM name. Note that some symbols like underscore (`_`) or space (` `) are not allowed in host names, and will be removed from the host name. When a Floating IP address is detached from a VM, corresponding A and PTR records are deleted automatically.
- 
+The record name will be generated from the VM name. Note that some symbols like underscore (`_`) or spaces ( ) are not allowed in host names, and will be removed from the host name. When a Floating IP address is detached from a VM, corresponding A and PTR records are deleted automatically.
+
 When using this approach, Floating IPs themselves don't need to be created using the `--dns-domain` and `--dns-name` options.
