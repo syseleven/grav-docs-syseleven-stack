@@ -12,7 +12,7 @@ taxonomy:
 
 This Document will show you the essential steps to add a PTR record for an existing floating IP.
 
-For a complete overview see the [networking reference guide](../../04.Reference/08.network/docs.en.md) and the [dns reference guide](../../04.Reference/07.dns/docs.en.md).
+For a complete overview see the [networking reference guide](../../04.Reference/08.network/docs.en.md) and the [DNS reference guide](../../04.Reference/07.dns/docs.en.md).
 
 ### Prerequisites
 
@@ -60,7 +60,7 @@ $ openstack zone create --email email@domain.example ptrhowto.example.
 
 ### Create a network and a server
 
-You need at least one network and one server. For testing purposes, you can create a network and a server by following the [first steps tutorial](../../02.Tutorials/01.firststeps/docs.en.md) or the [single lampserver tutorial](../../02.Tutorials/03.single-lamp-server/docs.en.md).
+You need at least one network and one server. For testing purposes, you can create a network and a server by following the tutorials "[first steps](../../02.Tutorials/01.firststeps/docs.en.md)" or "[single LAMP server](../../02.Tutorials/03.single-lamp-server/docs.en.md)".
 
 ### Assign the DNS domain to the network
 
@@ -80,7 +80,7 @@ openstack network set --dns-domain ptrhowto.example. <Network UUID>
 
 ### Assign the DNS domain and DNS name to the port
 
-Because we did not yet use DNS integration yet, when the server was created, we must update the DNS domain and DNS name for the preexisting network port of our server. For newly created servers this will happen automatically, once we assigned the dns domain to the network.
+Because we did not use the DNS integration when the server was created, we must update the DNS domain and DNS name for the preexisting network port of our server. For newly created servers this will happen automatically, once we assigned the dns domain to the network.
 
 First let's find the ID of the server we want to work with and the floating IP:
 
@@ -93,7 +93,7 @@ $ openstack server list
 +--------------------------------------+------------+--------+--------------------------------------------------+----------------------------------+----------+
 ```
 
-And now we need to find the Network port ID:
+And now we need to find the network port ID:
 
 ```shell
 $ openstack port list --server e4dc0ac3-7f71-4279-ba95-d686da868dae
@@ -142,5 +142,4 @@ Also, a matching reverse PTR-type record is configured for the floating IP:
 $ dig +short -x 185.56.129.73
 appserver2.ptrhowto.example.net.
 ```
-
 
