@@ -18,14 +18,12 @@ The tutorial is intended to make you familiar with the main functionality and aw
 It shows examples for the openstack CLI, discovering the functionality in the [GUI](https://cloud.syseleven.de/horizon/project/dnszones/) is left as an exercise to the user.
 The API can also be used with [Terraform](https://www.terraform.io/docs/providers/openstack/r/dns_zone_v2.html), have a look at our [terraform examples](https://github.com/syseleven/terraform-examples).
 
-!! The SysEleven Stack DNS service is currently in a test period. The test period ends in September 2019. Until then you can use all features free of charge.
-
 ### Prerequisites
 
 * You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 
-If your CLI-Tools or kickstart server have been installed prior to the feature release, you may need to install the designate client (plugin).
+You may need to install the designate client (plugin).
 
 ```shell
 (sudo) pip install python-openstackclient python-designateclient
@@ -371,9 +369,7 @@ $ openstack recordset delete domain.example. www.domain.example.
 
 ### Managing reverse DNS (PTR records) for floating IP addresses
 
-!!! **Feature unavailable**
-!!! While generally possible in OpenStacks Designate component, this is unfortunately not yet implemented in SysEleven Stack due to technical restrictions. We are working on removing these obstacles.
-
+If you need PTR records for your floating IP address, you achieve that by configuring your network such that forward A-records and reverse PTR-records are set up automatically for you. Please refer to the How-to guide on [adding PTR records for an existing floating IP](../../03.Howtos/14.add-ptr-records/docs.en.md) and to the [Networking reference guide](../../04.Reference/08.network/docs.en.md).
 
 ### Import/Export
 

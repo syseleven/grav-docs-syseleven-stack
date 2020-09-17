@@ -63,6 +63,6 @@ To migrate large amounts of zones and records to the SysEleven Stack DNS service
 
 ### PTR records for Floating IPs
 
-It is possible to configure PTR records for Floating IPs. This is accomplished using the Neutron DNS integration. For more information, please refer to our [Network reference guide](../08.network/docs.en.md) and our [How-to guide for setting up PTR records](../../03.Howtos/14.ptr-records/docs.en.md).
+It is possible to configure PTR records for Floating IPs. This is accomplished using the Neutron DNS integration. For more information, please refer to our [Network reference guide](../08.network/docs.en.md) and our [How-to guide for setting up PTR records for existing floating IPs](../../03.Howtos/14.add-ptr-records/docs.en.md).
 
 It is not possible to set arbitrary PTR records via the Designate API directly (e.g. using `openstack ptr record set`).

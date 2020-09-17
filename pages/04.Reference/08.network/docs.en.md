@@ -122,7 +122,9 @@ The Neutron DNS integration adds `dns_domain` and `dns_name` attributes to netwo
 
 With these properties, the Neutron networking service will create forward A-type records and reverse PTR-type records in our [Designate DNS service](../07.dns/docs.en.md) for you.
 
-If you need to add a PTR-record to an existing floating IP, have a look at our how-to guide on [adding PTR records to an existing floating IP](../../03.Howtos/14.ptr-records/docs.en.md).
+If you need to add a PTR-record to an existing floating IP, have a look at our how-to guide on [adding PTR records to an existing floating IP](../../03.Howtos/14.add-ptr-records/docs.en.md).
+
+If you are using a custom public IP space (Bring your own IP), you need to first delegate your corresponding `in-addr.arpa` to our DNS service before you use the Neutron DNS integration.
 
 #### Floating IPs with DNS properties
 

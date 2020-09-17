@@ -14,15 +14,12 @@ This Document will show you the essential steps to transfer a zone from one proj
 
 For a complete overview see the [reference guide](../../04.Reference/07.dns/docs.en.md).
 
-!! The SysEleven Stack DNS service is currently in a test period. The test period ends in September 2019. Until then you can use all features free of charge.
-
-
 ### Prerequisites
 
 * You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 
-If your CLI-Tools or Kickstart Server have been installed prior to the feature release, you may need to install the designate client (plugin).
+You may need to install the designate client (plugin).
 
 ```shell
 (sudo) pip install python-openstackclient python-designateclient
