@@ -140,5 +140,5 @@ Also, a matching reverse PTR-type record is configured for the floating IP:
 
 ```shell
 $ dig +short -x 185.56.129.73
-appserver2.ptrhowto.example.net.
+appserver2.ptrhowto.example.
 ```
