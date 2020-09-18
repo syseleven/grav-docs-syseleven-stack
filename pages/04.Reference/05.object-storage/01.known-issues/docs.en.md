@@ -14,8 +14,7 @@ taxonomy:
 Using recently-created EC2 credentials to communicate with the SysEleven Stack Object Storage may result in requests taking longer than 60 seconds. Depending on the client used for communication to the SysEleven Stack Object Storage, this can further lead to request timeouts.
 
 **Solutions:** 
-The problem will be gone after a few minutes.
-
+The problem will be gone after a few minutes, after the object storage refreshed its own user credentials cache.
 
 ### S3cmd cannot download large files
 
