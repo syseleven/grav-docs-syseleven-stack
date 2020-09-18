@@ -16,7 +16,6 @@ Using recently-created EC2 credentials to communicate with the SysEleven Stack O
 **Solutions:** 
 The problem will be gone after a few minutes.
 
-Due to the SysEleven Stack Object Storage managing its own user cache, newly created EC2 credentials may not be scraped right away and requests may suffer delays until the user cache got updated.
 
 ### S3cmd cannot download large files
 
