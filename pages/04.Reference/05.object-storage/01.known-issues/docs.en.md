@@ -11,7 +11,7 @@ taxonomy:
 
 ### Request timeouts using recently created EC2 credentials
 **Problem Statement:**
-Using recently created EC2 credentials to communicate with the SysEleven Stack Object Storage may result in requests taking approximately longer than 60 seconds. Depending on the client used for communication to the SysEleven Stack Object Storage, this can further lead to request timeouts.
+Using recently-created EC2 credentials to communicate with the SysEleven Stack Object Storage may result in requests taking longer than 60 seconds. Depending on the client used for communication to the SysEleven Stack Object Storage, this can further lead to request timeouts.
 
 **Solutions:** 
 The problem will be gone after a few minutes.
@@ -31,4 +31,3 @@ s4cmd get --max-singlepart-download-size=$((50*1024**2)) --multipart-split-size=
 ````
 
 The value of 52428800 Bytes = 50 GiB specified in this example is actually the default value for those parameters, so that using `s4cmd` without specifying those parameters should already circumvent the mentioned problem by doing multipart transfers.
-
