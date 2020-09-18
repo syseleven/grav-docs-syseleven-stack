@@ -10,6 +10,7 @@ taxonomy:
 ## Overview
 
 ### Request timeouts using recently created EC2 credentials
+
 **Problem Statement:**
 Using recently-created EC2 credentials to communicate with the SysEleven Stack Object Storage may result in requests taking longer than 60 seconds. Depending on the client used for communication to the SysEleven Stack Object Storage, this can further lead to request timeouts.
 
