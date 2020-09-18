@@ -62,9 +62,9 @@ $ openstack zone create --email email@domain.example ptrhowto.example.
 
 You need at least one network and one server. For testing purposes, you can create a network and a server by following the tutorials "[first steps](../../02.Tutorials/01.firststeps/docs.en.md)" or "[single LAMP server](../../02.Tutorials/03.single-lamp-server/docs.en.md)".
 
-### Assign the DNS domain to the network
+### Set DNS domain property of the network
 
-For automated forward A-record and reverse PTR-record management, the network needs to be assigned to the DNS zone.
+For automated forward A-record and reverse PTR-record management, the DNS domain needs to be associated with the network.
 
 Find out the network ID with this command:
 
@@ -72,15 +72,15 @@ Find out the network ID with this command:
 openstack network list
 ```
 
-Then assign the DNS zone to the network:
+Then associate the DNS zone with the network:
 
 ```shell
 openstack network set --dns-domain ptrhowto.example. <Network UUID>
 ```
 
-### Assign the DNS domain and DNS name to the port
+### Set the DNS domain and DNS name of the port
 
-Because we did not use the DNS integration when the server was created, we must update the DNS domain and DNS name for the preexisting network port of our server. For newly created servers this will happen automatically, once we assigned the dns domain to the network.
+Because we did not use the DNS integration when the server was created, we must update the DNS domain and DNS name for the preexisting network port of our server. For newly created servers this will happen automatically, once we associated the DNS domain with the network.
 
 First let's find the ID of the server we want to work with and the floating IP:
 
@@ -142,4 +142,3 @@ Also, a matching reverse PTR-type record is configured for the floating IP:
 $ dig +short -x 185.56.129.73
 appserver2.ptrhowto.example.net.
 ```
-
