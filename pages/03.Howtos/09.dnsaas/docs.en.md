@@ -13,15 +13,12 @@ taxonomy:
 This Document will show you the essential steps to create a minimal zone with a minimal recordset for a simple Server like a Website.
 For a complete overview see the [reference guide](../../04.Reference/07.dns/docs.en.md).
 
-!! The SysEleven Stack DNS service is currently in a test period. The test period ends in September 2019. Until then you can use all features free of charge.
-
-
 ### Prerequisites
 
 * You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 
-If your CLI-Tools or Kickstart Server have been installed prior to the feature release, you may need to install the designate client (plugin).
+You may need to install the designate client (plugin).
 
 ```shell
 (sudo) pip install python-openstackclient python-designateclient
@@ -108,9 +105,7 @@ In this case you will have to give the nameserver names `ns01.cloud.syseleven.ne
 
 ### Set a PTR Record (reverse DNS) for your floating IP address
 
-!!! **Feature unavailable**
-!!! While generally possible in OpenStacks Designate component, this is unfortunately not yet implemented in SysEleven Stack due to technical restrictions. We are working on removing these obstacles.
-
+If you need PTR records for your floating IP address, you achieve that by configuring your network such that forward A-records and reverse PTR-records are set up automatically for you. Please refer to the How-to guide on [adding PTR records for an existing floating IP](../14.add-ptr-records/docs.en.md) and to the [Networking reference guide](../../04.Reference/08.network/docs.en.md).
 
 ### Conclusion
 

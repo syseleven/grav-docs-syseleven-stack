@@ -29,6 +29,7 @@ You can manage networking objects both via our [public OpenStack API endpoints](
 | Customer public IP space (Bring your own IP) | yes | yes
 | L4 Load balancing (TCP) (Neutron-LBaaS) | yes | yes
 | L7 Load balancing (HTTP/HTTPS) (Octavia-LBaaS) | yes | yes
+| Neutron DNS integration and PTR records | yes | yes
 | Dynamic routing (BGP)                   | no | no
 | Metering support                        | no | no
 | Quality of service (QoS)                | no | no
@@ -114,3 +115,31 @@ SysEleven Stack offers two options: Neutron LBaaSv2 (TCP-only) and Octavia LBaaS
 Please refer to the [LBaaS reference documentation](02.lbaas/docs.en.md) for a comparison between the two and for more information.
 
 For how to get started, have a look at our [LBaaS tutorial](../../02.Tutorials/05.lbaas/docs.en.md).
+
+### Neutron DNS integration and PTR records
+
+The Neutron DNS integration adds `dns_domain` and `dns_name` attributes to networks, ports and floating IPs.
+
+With these properties, the Neutron networking service will create forward A-type records and reverse PTR-type records in our [Designate DNS service](../07.dns/docs.en.md) for you.
+
+If you need to add a PTR-record to an existing floating IP, have a look at our how-to guide on [adding PTR records to an existing floating IP](../../03.Howtos/14.add-ptr-records/docs.en.md).
+
+If you are using a custom public IP space (Bring your own IP), you need to first delegate your corresponding `in-addr.arpa` to our DNS service before you use the Neutron DNS integration.
+
+#### Floating IPs with DNS properties
+
+To create a reverse lookup PTR entry for a floating IP address, two parameters `--dns-domain` and `--dns-name` can be set. The DNS zone specfied in `--dns-domain` has to be created and owned by the same project. If the zone exists and configured properly, a forward A-type record as specified in `--dns-name` will be created in it. A reverse PTR-type record will be created in the `in-addr.arpa` zone that is hosted in our cloud, but invisible to customer projects.
+
+The full command line to create a floating IP adress with a reverse PTR record will look like this: `openstack floating ip create --dns-domain example.com. --dns-name mx01 ext-net`
+
+It is unfortunately not possible to set the `dns_name` and `dns_domain` properties for a floating IP that has already been created in the past.
+
+#### Networks and ports with DNS properties
+
+Forward A-type and reverse PTR-type records can be created automatically for all VMs that have Floating IP addresses attached. In order to achieve this, you need to provide the `--dns-domain` option when creating the network. It can also be updated later (e.g. using `openstack network set example-network --dns-domain example.com.`). You can create a network with the `dns_domain` property set using `openstack network create example-net --dns-domain example.com.`.
+
+The DNS zone specfied in `--dns-domain` must be created and owned by the same project. If the zone exists and is configured properly on a network, forward A-type records and reverse PTR-type records will be created for every VM in that network, as soon as a Floating IP address is attached to it.
+
+The record name will be generated from the VM name. Note that some symbols like underscore (`_`) or spaces ( ) are not allowed in host names, and will be removed from the host name. When a Floating IP address is detached from a VM, corresponding A and PTR records are deleted automatically.
+
+When using this approach, Floating IPs themselves don't need to be created using the `--dns-domain` and `--dns-name` options.

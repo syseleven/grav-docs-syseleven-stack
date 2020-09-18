@@ -17,8 +17,6 @@ You can manage DNS zones and records both via our [public OpenStack API endpoint
 
 The DNS service is shared between all regions. You will need to choose a region in the Dashboard or using the OpenStack CLI environment variable `OS_REGION`, but it does not matter which one you choose. DNS objects are always global.
 
-!! The SysEleven Stack DNS service is currently in the test phase. The test phase ends in September 2019. Until then you can use all features free of charge.
-
 ### Feature Support Matrix
 
 | OpenStack Designate Feature             |   CBK region   |   DBL region
@@ -27,7 +25,9 @@ The DNS service is shared between all regions. You will need to choose a region 
 | Zone transfer to different projects     | yes            | yes
 | Secondary Zones                         | yes            | yes
 | Zone Import / Export                    | yes            | yes
-| PTR records for Floating IPs            | no             | no
+| PTR records for Floating IPs            | yes*           | yes*
+
+*Using the Neutron DNS integration (more information in the section <a href="#ptr-records-for-floating-ips">PTR records for Floating IPs</a>)
 
 ### Manage zones and recordsets
 
@@ -58,3 +58,9 @@ Sending the `NOTIFY` message to our DNS servers is not supported.
 ### Zone Import / Export
 
 To migrate large amounts of zones and records to the SysEleven Stack DNS service, it is possible to use our Import / Export functionality. It is using the master file format as specified in RFC 1035.
+
+### PTR records for Floating IPs
+
+It is possible to configure PTR records for Floating IPs. This is accomplished using the Neutron DNS integration. For more information, please refer to our [Network reference guide](../08.network/docs.en.md) and our [How-to guide for setting up PTR records for existing floating IPs](../../03.Howtos/14.add-ptr-records/docs.en.md).
+
+It is not possible to set arbitrary PTR records via the Designate API directly (e.g. using `openstack ptr record set`).
