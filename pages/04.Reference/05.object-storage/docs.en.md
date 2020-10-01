@@ -15,6 +15,27 @@ It stores and retrieves arbitrary unstructured data objects via a RESTful, HTTP-
 
 You can create the OpenStack API to generate credentials to access the SysEleven Stack Object Storage. You can then use the S3 API with various S3 clients and/or SDKs.
 
+## Supported S3 operations
+
+Feature                          | Supported |
+---------------------------------|-----------|
+bucket HEAD/GET/PUT/DELETE       | yes       |
+object HEAD/GET/PUT/POST/DELETE  | yes       |
+multipart upload                 | yes       |
+bucket listing                   | yes       |
+input compression                | yes       |
+request signature authentication | yes       |
+bucket/object ACL                | yes       |
+predefined ACL groups            | yes       |
+bucket/IAM user ACP              | no        |
+object versions                  | no        |
+object expiration                | no        |
+regions and storage classes      | no        |
+encryption                       | no        |
+access logging                   | no        |
+website hosting configuration    | no        |
+
+
 ## Buckets
 
 Buckets are the logical unit SysEleven Stack Object Storage uses to stores objects.
