@@ -25,7 +25,7 @@ multipart upload                 | yes       |
 bucket listing                   | yes       |
 input compression                | yes       |
 request signature authentication | yes       |
-bucket/object ACL                | yes       |
+bucket/object ACL                | partially*|
 predefined ACL groups            | yes       |
 bucket/IAM user ACP              | no        |
 object versions                  | no        |
@@ -35,6 +35,7 @@ encryption                       | no        |
 access logging                   | no        |
 website hosting configuration    | no        |
 
+Setting bucket/object ACLs is only partially possible and currently unintuitive to use. We are in contact with the software manufacturer to solve this problem. For detailed information feel free to contact our [Cloud Support](../06.Support/default.en.md).
 
 ## Buckets
 
