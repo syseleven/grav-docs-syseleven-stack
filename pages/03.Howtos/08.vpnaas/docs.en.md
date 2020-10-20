@@ -21,14 +21,18 @@ No dedicated virtual machines are required to use this service.
 
 * You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/02.api-access/docs.en.md).
-* Following this tutorial you will create new OpenStack networks and subnets. If you want to connect two existing networks, skip steps one and two.
+* Following this tutorial you will create new OpenStack networks and subnets in different regions. If you want to connect two existing networks, skip steps one and two.
 
-## How to setup a IPSec VPN
+## How to set up a IPSec VPN
+
+In this tutorial you will create two VPN services. The described steps don't mention it, but they assume that the "left" network and VPN service are created in one region and the "right" network and VPN service in another.
 
 ### Step One: Create left network
 
+#### 1. Create left network
+
 ```shell
-$ openstack network create left
+$ openstack network create left-network
 +---------------------------+--------------------------------------+
 | Field                     | Value                                |
 +---------------------------+--------------------------------------+
@@ -45,7 +49,7 @@ $ openstack network create left
 | is_vlan_transparent       | None                                 |
 | location                  | None                                 |
 | mtu                       | None                                 |
-| name                      | left                                 |
+| name                      | left-network                         |
 | port_security_enabled     | True                                 |
 | project_id                | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | provider:network_type     | None                                 |
@@ -63,11 +67,11 @@ $ openstack network create left
 +---------------------------+--------------------------------------+
 ```
 
-#### 1. Allocating subnet for the left network
+#### 2. Allocate subnet for the left network
 
 ```shell
-$ openstack subnet create left_sub \
-  --network e4f43f87-3b31-41e4-9803-8e10edd3167e \
+$ openstack subnet create left-subnet \
+  --network left-network \
   --subnet-range 10.1.0.0/24 \
   --gateway 10.1.0.1 \
   --dns-nameserver 8.8.8.8
@@ -87,7 +91,7 @@ $ openstack subnet create left_sub \
 | ipv6_address_mode | None                                 |
 | ipv6_ra_mode      | None                                 |
 | location          | None                                 |
-| name              | left_sub                             |
+| name              | left-subnet                          |
 | network_id        | e4f43f87-3b31-41e4-9803-8e10edd3167e |
 | project_id        | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | revision_number   | 2                                    |
@@ -99,7 +103,7 @@ $ openstack subnet create left_sub \
 +-------------------+--------------------------------------+
 ```
 
-#### 2. Creating a router in the left network
+#### 3. Create a router for the left network
 
 ```shell
 $ openstack router create left-router
@@ -127,63 +131,24 @@ $ openstack router create left-router
 +-------------------------+--------------------------------------+
 ```
 
-#### 3. Attaching a port to the router and link it to the external network
+#### 4. Attach the subnet to the router
 
 ```shell
-$ openstack port create \
-  --network e4f43f87-3b31-41e4-9803-8e10edd3167e \
-  left-port
-+-------------------------+--------------------------------------------------------------------------+
-| Field                   | Value                                                                    |
-+-------------------------+--------------------------------------------------------------------------+
-| admin_state_up          | UP                                                                       |
-| allowed_address_pairs   |                                                                          |
-| binding_host_id         | None                                                                     |
-| binding_profile         | None                                                                     |
-| binding_vif_details     | None                                                                     |
-| binding_vif_type        | None                                                                     |
-| binding_vnic_type       | normal                                                                   |
-| created_at              | 2018-12-27T13:41:21Z                                                     |
-| data_plane_status       | None                                                                     |
-| description             |                                                                          |
-| device_id               |                                                                          |
-| device_owner            |                                                                          |
-| dns_assignment          | None                                                                     |
-| dns_domain              | None                                                                     |
-| dns_name                | None                                                                     |
-| extra_dhcp_opts         |                                                                          |
-| fixed_ips               | ip_address='10.1.0.10', subnet_id='38346388-4b09-4f0a-a3d1-b1a5f6587f4c' |
-| id                      | 93c4691c-405b-4a10-b8c3-2cd59b799b16                                     |
-| location                | None                                                                     |
-| mac_address             | fa:16:3e:bf:1b:62                                                        |
-| name                    | left-port                                                                |
-| network_id              | e4f43f87-3b31-41e4-9803-8e10edd3167e                                     |
-| port_security_enabled   | True                                                                     |
-| project_id              | 70061ce0cd2e47ef9d7dc82174dc9923                                         |
-| propagate_uplink_status | None                                                                     |
-| qos_policy_id           | None                                                                     |
-| revision_number         | 5                                                                        |
-| security_group_ids      | 7406b3d8-0937-4fbc-b6cb-50f229653a80                                     |
-| status                  | ACTIVE                                                                   |
-| tags                    |                                                                          |
-| trunk_details           | None                                                                     |
-| updated_at              | 2018-12-27T13:41:21Z                                                     |
-+-------------------------+--------------------------------------------------------------------------+
+$ openstack router add subnet left-router left-subnet
 ```
 
-```shell
- openstack router add port c971c888-a0bb-47e3-a922-565899c9f090 93c4691c-405b-4a10-b8c3-2cd59b799b16
-```
+#### 5. Link the router to the external network
 
 ```shell
- openstack router set c971c888-a0bb-47e3-a922-565899c9f090 \
-  --external-gateway ext-net
+$ openstack router set left-router --external-gateway ext-net
 ```
 
 ### Step Two: Repeat the previous steps and create the right network
 
+#### 1. Create the right network
+
 ```shell
-$ openstack network create right
+$ openstack network create right-network
 +---------------------------+--------------------------------------+
 | Field                     | Value                                |
 +---------------------------+--------------------------------------+
@@ -200,7 +165,7 @@ $ openstack network create right
 | is_vlan_transparent       | None                                 |
 | location                  | None                                 |
 | mtu                       | None                                 |
-| name                      | right                                |
+| name                      | right-network                        |
 | port_security_enabled     | True                                 |
 | project_id                | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | provider:network_type     | None                                 |
@@ -218,11 +183,11 @@ $ openstack network create right
 +---------------------------+--------------------------------------+
 ```
 
-#### 1. Allocating subnet for the right network
+#### 2. Allocate a subnet for the right network
 
 ```shell
-$ openstack subnet create right_sub  \
---network 46e614d1-baaa-46cf-8e4c-c96fe63fecf2 \
+$ openstack subnet create right-subnet  \
+--network right-network \
 --subnet-range 10.2.0.0/24 \
 --gateway 10.2.0.1
 +-------------------+--------------------------------------+
@@ -241,7 +206,7 @@ $ openstack subnet create right_sub  \
 | ipv6_address_mode | None                                 |
 | ipv6_ra_mode      | None                                 |
 | location          | None                                 |
-| name              | right_sub                            |
+| name              | right-subnet                         |
 | network_id        | 46e614d1-baaa-46cf-8e4c-c96fe63fecf2 |
 | project_id        | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | revision_number   | 2                                    |
@@ -253,7 +218,7 @@ $ openstack subnet create right_sub  \
 +-------------------+--------------------------------------+
 ```
 
-#### 2. Creating a router in the right network
+#### 3. Create a router for the right network
 
 ```shell
 $ openstack router create right-router
@@ -281,60 +246,21 @@ $ openstack router create right-router
 +-------------------------+--------------------------------------+
 ```
 
-#### 3. Attaching a port to the router and link it to the external network
+#### 4. Attach the subnet to the router
 
 ```shell
-$ openstack port create \
---network 46e614d1-baaa-46cf-8e4c-c96fe63fecf2 \
-right-port
-+-------------------------+--------------------------------------------------------------------------+
-| Field                   | Value                                                                    |
-+-------------------------+--------------------------------------------------------------------------+
-| admin_state_up          | UP                                                                       |
-| allowed_address_pairs   |                                                                          |
-| binding_host_id         | None                                                                     |
-| binding_profile         | None                                                                     |
-| binding_vif_details     | None                                                                     |
-| binding_vif_type        | None                                                                     |
-| binding_vnic_type       | normal                                                                   |
-| created_at              | 2018-12-27T13:59:43Z                                                     |
-| data_plane_status       | None                                                                     |
-| description             |                                                                          |
-| device_id               |                                                                          |
-| device_owner            |                                                                          |
-| dns_assignment          | None                                                                     |
-| dns_domain              | None                                                                     |
-| dns_name                | None                                                                     |
-| extra_dhcp_opts         |                                                                          |
-| fixed_ips               | ip_address='10.2.0.10', subnet_id='a1026c99-8dd6-496a-a565-74a49f2e95ec' |
-| id                      | dfe963ec-4f36-4144-96c2-071af9d3c920                                     |
-| location                | None                                                                     |
-| mac_address             | fa:16:3e:93:06:ad                                                        |
-| name                    | right-port                                                               |
-| network_id              | 46e614d1-baaa-46cf-8e4c-c96fe63fecf2                                     |
-| port_security_enabled   | True                                                                     |
-| project_id              | 70061ce0cd2e47ef9d7dc82174dc9923                                         |
-| propagate_uplink_status | None                                                                     |
-| qos_policy_id           | None                                                                     |
-| revision_number         | 5                                                                        |
-| security_group_ids      | 7406b3d8-0937-4fbc-b6cb-50f229653a80                                     |
-| status                  | ACTIVE                                                                   |
-| tags                    |                                                                          |
-| trunk_details           | None                                                                     |
-| updated_at              | 2018-12-27T13:59:44Z                                                     |
-+-------------------------+--------------------------------------------------------------------------+
+$ openstack router add subnet right-router right-subnet
 ```
 
-```shell
- openstack router add port 56f95788-1c34-432f-8ad6-f304776221a2 dfe963ec-4f36-4144-96c2-071af9d3c920
-```
+#### 5. Link the router to the external network
 
 ```shell
- openstack router set 56f95788-1c34-432f-8ad6-f304776221a2 \
---external-gateway ext-net
+$ openstack router set right-router --external-gateway ext-net
 ```
 
 ### Step Three: Create an IKE and IPSec policy
+
+You need to create both IKE and IPSec policy in both "left" and "right" region.
 
 ```shell
 $ openstack vpn ike policy create ikepolicy
@@ -376,15 +302,20 @@ $ openstack vpn ipsec policy create ipsecpolicy
 
 ### Step Four: Create VPN services on both sides
 
-Create a VPN service on the left side and another on the right side
-and note the external IP addresses that were assigned to the VPN services.
+Create a VPN service on the left side and another on the right side and note the external IP addresses that were assigned to the VPN services.
+
+!!! **Multiple IPSec site connections per router**
+!!! If you want to create multiple IPSec site connections it is strongly recommended to create only one VPN service per router and create all site connections in the same VPN service.
+
+!!! **Local subnets and endpoint groups**
+!!! The preferred way of configuring local and peer subnets is using endpoint groups. This allows to set (potentially multiple) local and peer subnets per site connection. Please be aware that the endpoint groups concept cannot be used for a VPN service that already has a (local) subnet set. We recommend to create the VPN service without setting the subnet, but set the local subnet via a local endpoint group in the IPSec site connection.
 
 #### 1. Create the VPN service on the left side
 
+Note that the VPN service is not configured with a subnet here. This is important because it gives us the flexibility to configure multiple local subnets in a local endpoint group per IPSec site connection or multiple site connections with different local subnets.
+
 ```shell
-$ openstack vpn service create vpn \
---router c971c888-a0bb-47e3-a922-565899c9f090 \
---subnet 38346388-4b09-4f0a-a3d1-b1a5f6587f4c
+$ openstack vpn service create vpn --router left-router
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
@@ -395,19 +326,17 @@ $ openstack vpn service create vpn \
 | Router         | c971c888-a0bb-47e3-a922-565899c9f090 |
 | State          | True                                 |
 | Status         | PENDING_CREATE                       |
-| Subnet         | 38346388-4b09-4f0a-a3d1-b1a5f6587f4c |
+| Subnet         | None                                 |
 | external_v4_ip | 195.192.128.58                       |
 | external_v6_ip | None                                 |
 | project_id     | 70061ce0cd2e47ef9d7dc82174dc9923     |
 +----------------+--------------------------------------+
 ```
 
-#### 1. Create the VPN service on the right side
+#### 2. Create the VPN service on the right side
 
 ```shell
-$ openstack vpn service create vpn2 \
-  --router 56f95788-1c34-432f-8ad6-f304776221a2 \
-  --subnet a1026c99-8dd6-496a-a565-74a49f2e95ec
+$ openstack vpn service create vpn2 --router right-router
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
@@ -418,28 +347,115 @@ $ openstack vpn service create vpn2 \
 | Router         | 56f95788-1c34-432f-8ad6-f304776221a2 |
 | State          | True                                 |
 | Status         | PENDING_CREATE                       |
-| Subnet         | a1026c99-8dd6-496a-a565-74a49f2e95ec |
+| Subnet         | None                                 |
 | external_v4_ip | 195.192.130.187                      |
 | external_v6_ip | None                                 |
 | project_id     | 70061ce0cd2e47ef9d7dc82174dc9923     |
 +----------------+--------------------------------------+
 ```
 
-### Step Five: Create the site connections
+### Step Five: Create the endpoint groups
+
+#### 1. Create the local endpoint group for the left side
+
+Entries in the local endpoint group are subnets, given by name or ID. The local endpoint group of the left side will contain the left subnet.
+
+```shell
+$ openstack vpn endpoint group create left-local-epg \
+  --type subnet \
+  --value left-subnet
++-------------+------------------------------------------+
+| Field       | Value                                    |
++-------------+------------------------------------------+
+| Description |                                          |
+| Endpoints   | ['38346388-4b09-4f0a-a3d1-b1a5f6587f4c'] |
+| ID          | 09f1f822-15aa-4495-ac78-654ccfdf0131     |
+| Name        | left-local-epg                           |
+| Project     | 70061ce0cd2e47ef9d7dc82174dc9923         |
+| Type        | subnet                                   |
+| project_id  | 70061ce0cd2e47ef9d7dc82174dc9923         |
++-------------+------------------------------------------+
+```
+
+#### 2. Create the peer endpoint group for the left side
+
+Entries in the peer endpoint group are CIDRs. The peer endpoint group of the left side will contain the CIDR of the peer subnet, in our example that's the right subnet.
+
+```shell
+$ openstack vpn endpoint group create left-peer-epg \
+  --type cidr \
+  --value 10.2.0.0/24
++-------------+--------------------------------------+
+| Field       | Value                                |
++-------------+--------------------------------------+
+| Description |                                      |
+| Endpoints   | ['10.2.0.0/24']                      |
+| ID          | 86e851dd-bedc-4d5b-84c9-71944017ad5e |
+| Name        | left-peer-epg                        |
+| Project     | 70061ce0cd2e47ef9d7dc82174dc9923     |
+| Type        | cidr                                 |
+| project_id  | 70061ce0cd2e47ef9d7dc82174dc9923     |
++-------------+--------------------------------------+
+```
+
+#### 3. Create the local endpoint group for the right side
+
+Entries in the local endpoint group are subnets, given by name or ID. The local endpoint group of the right side contains the right subnet.
+
+```shell
+$ openstack vpn endpoint group create right-local-epg \
+  --type subnet \
+  --value right-subnet
++-------------+------------------------------------------+
+| Field       | Value                                    |
++-------------+------------------------------------------+
+| Description |                                          |
+| Endpoints   | ['a1026c99-8dd6-496a-a565-74a49f2e95ec'] |
+| ID          | f6db9f67-7939-4b90-8e56-ef1be737364a     |
+| Name        | right-local-epg                          |
+| Project     | 70061ce0cd2e47ef9d7dc82174dc9923         |
+| Type        | subnet                                   |
+| project_id  | 70061ce0cd2e47ef9d7dc82174dc9923         |
++-------------+------------------------------------------+
+```
+
+#### 4. Create the peer endpoint group for the right side
+
+Entries in the peer endpoint group are CIDRs. The peer endpoint group of the right side contains the CIDR of the peer subnet, in our example that's the left subnet.
+
+```shell
+$ openstack vpn endpoint group create right-peer-epg \
+  --type cidr \
+  --value 10.1.0.0/24
++-------------+--------------------------------------+
+| Field       | Value                                |
++-------------+--------------------------------------+
+| Description |                                      |
+| Endpoints   | ['10.1.0.0/24']                      |
+| ID          | 2c9248d0-00aa-4f8e-a934-f7fa47b45562 |
+| Name        | right-peer-epg                       |
+| Project     | 70061ce0cd2e47ef9d7dc82174dc9923     |
+| Type        | cidr                                 |
+| project_id  | 70061ce0cd2e47ef9d7dc82174dc9923     |
++-------------+--------------------------------------+
+```
+
+### Step Six: Create the site connections
 
 #### 1. Create the site connection on the left side
 
-Create a site connection named "conn" from the left side (VPN service "vpn") to the right side
-(peer IP address is 195.192.130.187 and 10.2.0.0/24 is the right subnet).
+Create a site connection named "conn" from the left side (VPN service "vpn") to the right side (peer IP address is 195.192.130.187).
+Since endpoint groups are used, the VPN service must not have a (local) subnet set and the peer cidr option of creating the site connection must not be used. Instead the local and peer endpoint groups are set in the site connection.
 
 ```shell
 $ openstack vpn ipsec site connection create conn \
   --vpnservice vpn \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
+  --local-endpoint-group left-local-epg \
   --peer-address 195.192.130.187 \
   --peer-id 195.192.130.187 \
-  --peer-cidr 10.2.0.0/24 \
+  --peer-endpoint-group left-peer-epg \
   --psk secret
 +--------------------------+--------------------------------------------------------+
 | Field                    | Value                                                  |
@@ -450,13 +466,13 @@ $ openstack vpn ipsec site connection create conn \
 | IKE Policy               | ff1f540b-6ea9-42ee-8973-cba841835dfa                   |
 | IPSec Policy             | f9633763-2393-4ec3-824a-1e07dd7cfc2e                   |
 | Initiator                | bi-directional                                         |
-| Local Endpoint Group ID  | None                                                   |
+| Local Endpoint Group ID  | 09f1f822-15aa-4495-ac78-654ccfdf0131                   |
 | Local ID                 |                                                        |
 | MTU                      | 1500                                                   |
 | Name                     | conn                                                   |
 | Peer Address             | 195.192.130.187                                        |
-| Peer CIDRs               | 10.2.0.0/24                                            |
-| Peer Endpoint Group ID   | None                                                   |
+| Peer CIDRs               |                                                        |
+| Peer Endpoint Group ID   | 86e851dd-bedc-4d5b-84c9-71944017ad5e                   |
 | Peer ID                  | 195.192.130.187                                        |
 | Pre-shared Key           | secret                                                 |
 | Project                  | 70061ce0cd2e47ef9d7dc82174dc9923                       |
@@ -471,8 +487,8 @@ $ openstack vpn ipsec site connection create conn \
 
 #### 2. Create the site connection on the right side
 
-Create a site connection named "conn2" from the right side (VPN service "vpn2") to the left side
-(peer IP address is 195.192.128.58 and 10.1.0.0/24 is the left subnet).
+Create a site connection named "conn2" from the right side (VPN service "vpn2") to the left side (peer IP address is 195.192.128.58).
+Since endpoint groups are used, the VPN service must not have a (local) subnet set and the peer cidr option of creating the site connection must not be used. Instead the local and peer endpoint groups are set in the site connection.
 
 
 ```shell
@@ -480,9 +496,10 @@ $ openstack vpn ipsec site connection create conn2 \
   --vpnservice vpn2 \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
+  --local-endpoint-group right-local-epg \
   --peer-address 195.192.128.58 \
   --peer-id 195.192.128.58 \
-  --peer-cidr 10.1.0.0/24 \
+  --peer-endpoint-group right-peer-epg \
   --psk secret
 +--------------------------+--------------------------------------------------------+
 | Field                    | Value                                                  |
@@ -493,13 +510,13 @@ $ openstack vpn ipsec site connection create conn2 \
 | IKE Policy               | ff1f540b-6ea9-42ee-8973-cba841835dfa                   |
 | IPSec Policy             | f9633763-2393-4ec3-824a-1e07dd7cfc2e                   |
 | Initiator                | bi-directional                                         |
-| Local Endpoint Group ID  | None                                                   |
+| Local Endpoint Group ID  | f6db9f67-7939-4b90-8e56-ef1be737364a                   |
 | Local ID                 |                                                        |
 | MTU                      | 1500                                                   |
 | Name                     | conn2                                                  |
 | Peer Address             | 195.192.128.58                                         |
-| Peer CIDRs               | 10.1.0.0/24                                            |
-| Peer Endpoint Group ID   | None                                                   |
+| Peer CIDRs               |                                                        |
+| Peer Endpoint Group ID   | 2c9248d0-00aa-4f8e-a934-f7fa47b45562                   |
 | Peer ID                  | 195.192.128.58                                         |
 | Pre-shared Key           | secret                                                 |
 | Project                  | 70061ce0cd2e47ef9d7dc82174dc9923                       |
@@ -512,9 +529,9 @@ $ openstack vpn ipsec site connection create conn2 \
 +--------------------------+--------------------------------------------------------+
 ```
 
-### Step Six: Check if the VPN works properly
+### Step Seven: Check if the VPN works properly
 
-Create virtual machines with interfaces in `right_sub` and `left_sub`, and make sure they can reach each other, by sending ICMP echo requests to internal IP addresses.
+Create virtual machines with interfaces in `right-subnet` and `left-subnet`, and make sure they can reach each other, by sending ICMP echo requests to internal IP addresses.
 Note that one of this virtual machines needs to have a Floating IP address, so you can reach the VM itself.
 
 ## Note on Interoperatibility
