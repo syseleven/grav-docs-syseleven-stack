@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This Document will show you the essential steps to repartition your VM disk using an Ubuntu 18.04 server as example with the `m1c.tiny` [flavor](../../04.Reference/03.compute/docs.en.md).
+This Document will show you the essential steps to repartition your VM disk. For this purpose we are using an Ubuntu 18.04 server as example with the `m1c.tiny` [flavor](../../04.Reference/03.compute/docs.en.md).
 
 
 ### Prerequisites
@@ -18,7 +18,7 @@ This Document will show you the essential steps to repartition your VM disk usin
 * You need to have the login data for the SysEleven Stack API (user name and passphrase)
 * Knowledge how to utilise a terminal/SSH and SSH-keys.
 
-### Start VM
+### Start VM with custom user data
 
 By default [cloudinit](https://cloudinit.readthedocs.io/en/latest/) will grow your VM image partition size to the complete size of the ephemeral disk (which is defined by the flavor you used for your VM). To avoid this behavior and use the spare space for a new partition we will use following snippet :
  
@@ -28,11 +28,11 @@ growpart:
   mode: off
 ```
 
-Using the OpenStack dashboard to start your VM you may provide this snippet in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option and provide our own cloud-config file for cloudinit.
+Using the OpenStack dashboard to start your VM you may provide this snippet in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
 
 ### Check existing partitions
 
-To be able to check the partitions we need to use ssh to connect to the VM. Once we have done this we should see the following :
+To be able to check the partitions we need to use ssh to connect to the VM. We further need to get root rights. Having done so, we can see the following :
 
 ```shell
 $ root@partition-test:~# df -h
@@ -64,7 +64,7 @@ Number  Start   End     Size    File system  Name  Flags
 root@partition-test:~#
 ```
 
-As we can see, our partitation /dev/vda1 did not grow and is the original size the image itself. Further we can see that we have 51,3GB free space.
+As we can see, our partitation /dev/vda1 did not grow and got the original size of the image itself. In consequence we have 51,3GB free space, which we may use for our new partition.
 
 ### Create new partition
 
@@ -105,41 +105,6 @@ Relocating backup data structures to the end of the disk
 
 Expert command (? for help): m
 
-Command (? for help): n
-Partition number (2-128, default 2): 2
-First sector (34-104857566, default = 4612096) or {+-}size{KMGTP}:
-Last sector (4612096-104857566, default = 104857566) or {+-}size{KMGTP}:
-Current type is 'Linux filesystem'
-Hex code or GUID (L to show codes, Enter = 8300):
-Changed type of partition to 'Linux filesystem'
-
-Command (? for help): p
-Disk /dev/vda: 104857600 sectors, 50.0 GiB
-Sector size (logical/physical): 512/512 bytes
-Disk identifier (GUID): C2EE45B5-56B2-4257-8BB5-E271FA3DD857
-Partition table holds up to 128 entries
-Main partition table begins at sector 2 and ends at sector 33
-First usable sector is 34, last usable sector is 104857566
-Partitions will be aligned on 2048-sector boundaries
-Total free space is 2047 sectors (1023.5 KiB)
-
-Number  Start (sector)    End (sector)  Size       Code  Name
-   1          227328         4612062   2.1 GiB     8300
-   2         4612096       104857566   47.8 GiB    8300  Linux filesystem
-  14            2048           10239   4.0 MiB     EF02
-  15           10240          227327   106.0 MiB   EF00
-
-Command (? for help): w
-
-Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
-PARTITIONS!!
-
-Do you want to proceed? (Y/N): Y
-OK; writing new GUID partition table (GPT) to /dev/vda.
-Warning: The kernel is still using the old partition table.
-The new table will be used at the next reboot or after you
-run partprobe(8) or kpartx(8)
-The operation has completed successfully.
 Command (? for help):
 ```
 
@@ -183,7 +148,7 @@ run partprobe(8) or kpartx(8)
 The operation has completed successfully.
 ```
 
-To be able to see the new partition we should let Ubuntu reload the partition table.
+To be able to see the new partition we need to reload the partition table.
 
 ```
 root@partition-test:~# partprobe
@@ -236,4 +201,4 @@ echo "UUID=8b1aba77-feb7-4bdb-83e8-35879411059c /mnt ext4 defaults 0 0" >> /etc/
 
 ### Conclusion
 
-TODO
+We have started a VM using custom user data which prevents the growing of the VM root partition to the complete size of the ephemeral disk. Afterwards we have used the resulting free disk space to create a custom partition. In the end we have created a new ext4 filesystem on the new partition and mounted it so we can use it.
