@@ -21,7 +21,7 @@ This Document will show you the essential steps to repartition your VM disk. For
 ### Start VM with custom user data
 
 By default [cloudinit](https://cloudinit.readthedocs.io/en/latest/) will grow your VM image partition size to the complete size of the ephemeral disk (which is defined by the flavor you used for your VM). To avoid this behavior and use the spare space for a new partition we will use following snippet :
- 
+
 ```shell
 #cloud-config
 growpart:
@@ -150,7 +150,7 @@ The operation has completed successfully.
 
 To be able to see the new partition we need to reload the partition table.
 
-```
+```shell
 root@partition-test:~# partprobe
 root@partition-test:~# ls /dev | grep vda2
 vda2
@@ -167,8 +167,8 @@ mke2fs 1.44.1 (24-Mar-2018)
 Creating filesystem with 12530683 4k blocks and 3137536 inodes
 Filesystem UUID: a6edfdf1-23dd-4b1d-af45-493a8d0fd986
 Superblock backups stored on blocks:
-	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
-	4096000, 7962624, 11239424
+ 32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
+ 4096000, 7962624, 11239424
 
 Allocating group tables: done
 Writing inode tables: done
