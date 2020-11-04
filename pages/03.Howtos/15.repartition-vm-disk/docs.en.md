@@ -12,6 +12,8 @@ taxonomy:
 
 This Document will show you the essential steps to repartition your VM disk. For this purpose we are using an Ubuntu 18.04 server as example with the `m1c.tiny` [flavor](../../04.Reference/03.compute/docs.en.md).
 
+We strongly recommend to use the automatic approach but for instructional use we are also covering the manual process here.
+
 
 ### Prerequisites
 
@@ -29,11 +31,7 @@ growpart:
 runcmd:
 # Parted asks whether to fix /dev/vda to use all available space, we reply "Fix" and continue
 # Resize primary partition to 10GB
-- "echo Fix > /tmp.txt"
-- "echo 1 >> /tmp.txt"
-- "echo yes >> /tmp.txt"
-- "echo 10GB >> /tmp.txt"
-- "parted ---pretend-input-tty /dev/vda resizepart < /tmp.txt"
+- "printf 'Fix\n1\nyes\n10GB\n' | parted ---pretend-input-tty /dev/vda resizepart"
 # Prepare partitions
 - "parted -s /dev/vda mkpart DATA ext4 10GB 20GB"
 - "parted -s /dev/vda mkpart DATA ext4 20GB 50GB"
@@ -52,7 +50,7 @@ This snippet was written for a Ubuntu 18.04 VM with a 50GB ephemeral disk. It wi
 
 Using the OpenStack dashboard to start your VM you may provide this snippet in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
 
-Inside of the provisioned VM you may see the following : 
+Inside of the provisioned VM you may see the following :
 
 ```shell
 ubuntu@partition-test:~$ df -h
