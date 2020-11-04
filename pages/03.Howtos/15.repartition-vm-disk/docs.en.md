@@ -18,7 +18,7 @@ This Document will show you the essential steps to repartition your VM disk. For
 * You need to have the login data for the SysEleven Stack API (user name and passphrase)
 * Knowledge how to utilise a terminal/SSH and SSH-keys.
 
-### Start VM with custom user data
+### Automatically configure partitions
 
 By default [cloudinit](https://cloudinit.readthedocs.io/en/latest/) will grow your VM image partition size to the complete size of the ephemeral disk (which is defined by the flavor you used for your VM). To avoid this behavior and use the spare space for a new partition we will use following snippet :
 
@@ -26,11 +26,62 @@ By default [cloudinit](https://cloudinit.readthedocs.io/en/latest/) will grow yo
 #cloud-config
 growpart:
   mode: off
+runcmd:
+# Parted asks whether to fix /dev/vda to use all available space, we reply "Fix" and continue
+# Resize primary partition to 10GB
+- "echo Fix > /tmp.txt"
+- "echo 1 >> /tmp.txt"
+- "echo yes >> /tmp.txt"
+- "echo 10GB >> /tmp.txt"
+- "parted ---pretend-input-tty /dev/vda resizepart < /tmp.txt"
+# Prepare partitions
+- "parted -s /dev/vda mkpart DATA ext4 10GB 20GB"
+- "parted -s /dev/vda mkpart DATA ext4 20GB 50GB"
+# Configure new partitions
+- "echo $(parted /dev/vda -s print|grep DATA |awk '/^\ *[0-9]+/{print $1}') > /partition_nums.txt"
+- "for i in $(cat /partition_nums.txt); do mkfs.ext4 /dev/vda${i}; done"
+- "for i in $(cat /partition_nums.txt); do e2label /dev/vda${i} DATA${i}; done"
+- "for i in $(cat /partition_nums.txt); do mkdir -p /mnt/disks/data${i}; done"
+- "for i in $(cat /partition_nums.txt); do mount -t ext4 /dev/vda${i} /mnt/disks/data${i}; done"
+- "for i in $(cat /partition_nums.txt); do echo LABEL=DATA${i} /mnt/disks/data${i} ext4 defaults 0 0 | sudo tee -a /etc/fstab; done"
+# System is not aware of new space on main partition. Needs refresh.
+- "resize2fs /dev/vda1"
 ```
+
+This snippet was written for a Ubuntu VM with a 50GB ephemeral disk. It will resize the main partition to 10 GB and create 2 new partitions (10 GB and 30 GB), create an ext-4 filesystem and mount them.
 
 Using the OpenStack dashboard to start your VM you may provide this snippet in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
 
-### Check existing partitions
+Inside of the provisioned VM you may see the following : 
+
+```shell
+ubuntu@partition-test:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            985M     0  985M   0% /dev
+tmpfs           200M  648K  199M   1% /run
+/dev/vda1       8.9G  1.1G  7.9G  12% /
+tmpfs           997M     0  997M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           997M     0  997M   0% /sys/fs/cgroup
+/dev/vda15      105M  3.6M  101M   4% /boot/efi
+/dev/vda2       9.2G   37M  8.6G   1% /mnt/disks/data2
+/dev/vda3        28G   45M   26G   1% /mnt/disks/data3
+tmpfs           200M     0  200M   0% /run/user/1000
+```
+
+### Manually configure partitions
+
+In contrast to the automatic disk partioning, we will do the steps by hand which would be needed to create a new partition. All we need to do is to tell [cloudinit](https://cloudinit.readthedocs.io/en/latest/) via user-data to not grow the initial VM image partition.
+
+```shell
+#cloud-config
+growpart:
+  mode: off
+```
+
+The following steps will guide you through the process of manually creating a separate partition.
+
+#### Check existing partitions
 
 To be able to check the partitions we need to use ssh to connect to the VM. We further need to get root rights. Having done so, we can see the following :
 
@@ -66,7 +117,7 @@ root@partition-test:~#
 
 As we can see, our partitation /dev/vda1 did not grow and got the original size of the image itself. In consequence we have 51,3GB free space, which we may use for our new partition.
 
-### Create new partition
+#### Create new partition
 
 In order to use the free space, we have to relocate the backup data structures to the end of the disk. We are using [gdisk](https://linux.die.net/man/8/gdisk) in expert mode to do so.
 
@@ -156,7 +207,7 @@ root@partition-test:~# ls /dev | grep vda2
 vda2
 ```
 
-### Create filesystem on new partition
+#### Create filesystem on new partition
 
 Now that we have our new partition, the next step is to create a filesystem on it. We will go with `ext4` in this example.
 
