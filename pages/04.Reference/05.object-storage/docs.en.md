@@ -11,14 +11,14 @@ taxonomy:
 
 SysEleven Stack provides S3 compatible Object Storage.
 
-It stores and retrieves arbitrary unstructured data objects via a RESTful, HTTP based API. It is highly fault tolerant with its data replication and scale-out architecture. In its implementation as a distributed eventually consistent object storage, it is not mountable like a file server.
+It stores and retrieves arbitrary unstructured data objects via a RESTful, HTTP-based API. It is highly fault tolerant with its data replication and scale-out architecture. In its implementation as a distributed eventually consistent object storage, it is not mountable like a file server.
 
 You can create the OpenStack API to generate credentials to access the SysEleven Stack Object Storage. You can then use the S3 API with various S3 clients and/or SDKs.
 
 ## Buckets
 
 Buckets are the logical unit SysEleven Stack Object Storage uses to stores objects.
-Every bucket in the SysEleven Stack as a unique name.
+Every bucket in the SysEleven Stack has a unique name per region.
 
 ## Objects
 
@@ -68,7 +68,7 @@ openstack ec2 credentials list
 
 ### S3cmd
 
-Infos about the `s3cmd` client can be found [here](http://s3tools.org/s3cmd).
+Information about the `s3cmd` client can be found [here](http://s3tools.org/s3cmd).
 
 Now you can create an `s3cmd` configuration which could look like this:
 
@@ -91,7 +91,7 @@ Next, create an S3 Bucket.
 s3cmd mb s3://BUCKET_NAME -P
 ```
 
-The option `-P` or `--acl-public` makes this a public bucket which means that public objects in this bucket and a list of public objects can be retrieved. Without this option or with `--acl-private` the public retrieval of objects and the list is ot possible.
+The option `-P` or `--acl-public` makes this a public bucket which means that public objects in this bucket and a list of public objects can be retrieved. Without this option or with `--acl-private` the public retrieval of objects and the list is not possible.
 
 Then add some object(s):
 
@@ -107,21 +107,23 @@ Please note that `s3cmd` may be configured to return incorrect URLs, i.e. by def
 Public URL of the object is: http://BUCKET_NAME.s3.amazonaws.com/test.jpg
 ```
 
-The correct URL for this object in SysEleven Stack would be
+The correct URL for this object in SysEleven Stack would be:
 
-`https://s3.dbl.cloud.syseleven.net/BUCKET_NAME/test.jpg`
+`https://s3.REGION.cloud.syseleven.net/BUCKET_NAME/test.jpg`
+
+where REGION is the SysEleven Stack region (e.g. cbk or dbl).
 
 You can use these URLs to refer to the uploaded files as static assets in your web applications.
 
 ### Minio
 
-Infos about the Minio client can be found [here](https://minio.io).
+Information about the Minio client can be found [here](https://minio.io).
 
 **Installation of Minio client into the home directory of the current user is necessary for the following example commands to work!**
 
 !!!! **Client functionality**
 !!!! The Minio client is currently **incapable** of generating **public** files.
-!!!! While synchronising many files `minios` performance is much better than with `s3cmd` though.
+!!!! While synchronising many files Minio's performance is much better than with `s3cmd` though.
 
 Now you can create a Minio S3 configuration:
 
