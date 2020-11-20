@@ -18,7 +18,7 @@ You can create the OpenStack API to generate credentials to access the SysEleven
 ## Buckets
 
 Buckets are the logical unit SysEleven Stack Object Storage uses to stores objects.
-Every bucket in the SysEleven Stack has a unique name per region.
+Every bucket name is unique within a SysEleven Stack region.
 
 ## Objects
 
