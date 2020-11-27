@@ -35,7 +35,7 @@ openstack token issue
 +------------+----------------------------------+
 ```
 
-The token ("id" row in the table) you will pass in the `X-Auth-Token` header of the REST API requests.
+The token ("id" row in the table) has to be passed in the `X-Auth-Token` header of the REST API requests.
 
 ## Query quota
 
@@ -118,7 +118,7 @@ Field | Description
 -----|---------|-------------
 compute.cores | Number of virtual cores |
 compute.instances | Number of virtual machines (servers, instances) |
-compute.ram_mb | RAM for virtual machines in MB |
+compute.ram_mb | RAM for virtual machines in MiB |
 dns.zones | Number of DNS zones |
 network.floatingips | Number of floating IP addresses |
 network.lb_healthmonitors | Number of Neutron LBaaSv2 health monitors |
@@ -132,7 +132,7 @@ network.vpn_ipsec_site_connections | Number of VPNaaS site connections |
 network.vpn_ipsecpolicies | Number of VPNaaS IPSec policies |
 network.vpn_services | Number of VPNaaS VPN services |
 s3.space_bytes | Limit of Object Storage (S3) size in bytes |
-volume.space_gb | Limit of Block Storage size (for volumes) in GB |
+volume.space_gb | Limit of Block Storage size (for volumes) in GiB |
 volume.volumes | Number of Block Storage volumes |
 
 A limit of -1 means "unlimited", 0 means "no resources".
@@ -242,7 +242,7 @@ Field | Description |
 compute.cores | Number of virtual cores |
 compute.flavors | Number of virtual machines per flavor |
 compute.instances | Total number of virtual machines |
-compute.ram_mb | Total RAM of virtual machines in MB |
+compute.ram_mb | Total RAM of virtual machines in MiB |
 dns.zones | Number of DNS zones |
 network.floatingips | Number of floating IP addresses |
 network.lb_healthmonitors | Number of LBaaS health monitors |
@@ -256,5 +256,10 @@ network.vpn_ipsec_site_connections | Number of VPNaaS site connections |
 network.vpn_ipsecpolicies | Number of VPNaaS IPSec policies |
 network.vpn_services | Number of VPNaaS VPN services |
 s3.space_bytes | Used size of Object Storage (S3) in Bytes |
-volume.space_gb | Used size of Block Storage (volumes) in GB |
+volume.space_gb | Used size of Block Storage (volumes) in GiB |
 volume.volumes | Number of Block Storage volumes |
+
+
+## Contributed Software
+
+One of our customers kindly created an exporter to use this API with Prometheus and made it available as open source on [GitHub](https://github.com/Staffbase/syseleven-exporter).
