@@ -35,7 +35,7 @@ encryption                       | no        |
 access logging                   | no        |
 website hosting configuration    | no        |
 
-Setting bucket/object ACLs is only partially possible and currently unintuitive to use. We are in contact with the software manufacturer to solve this problem. For detailed information feel free to contact our [Cloud Support](../06.Support/default.en.md).
+Setting bucket/object ACLs is only partially possible and currently unintuitive to use. We are in contact with the software manufacturer to solve this problem. For detailed information feel free to contact our [Cloud Support](../../06.Support/default.en.md).
 
 ## Buckets
 
