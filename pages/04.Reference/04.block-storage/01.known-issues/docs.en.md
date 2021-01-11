@@ -18,7 +18,7 @@ When a snapshot is created of a volume, the format of the backing file is change
 
 When a snapshot is created of a volume, the file which is storing the current contents of the volume is no longer changed.  To allow further writes to the volume, a new file is created in the "qcow2" format (Qemu Copy On Write).  New writes are stored in this file, and thanks to the qcow2 file format, a record can be kept which content in the new file is replacing data in the snapshot file.
 
-However, keeping this information correct necessarily impacts the write performance.  This is the reason why volumes are not stored in this format when created, but after creation of a snapshot this is unavoidable.
+However, keeping this information correct necessarily impacts the write performance. This is the reason why volumes are not stored in this format when created, but after creation of a snapshot this is unavoidable.
 
 **Solutions:**
 Avoid using snapshots when possible.
