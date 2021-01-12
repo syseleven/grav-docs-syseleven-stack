@@ -77,7 +77,7 @@ A snapshot saves a point-in-time copy of a block storage volume.
 openstack volume snapshot create --volume volume_name_or_id snapshot_name
 ```
 
-Snapshots can only be created while the volume is detached. The option `--force` to create a snapshot from an attached volume is currently not supported and may lead to a snapshot in ERROR state.
+Snapshots can only be created while the volume is detached. The option `--force` to create a snapshot from an attached volume is currently not supported and may lead to a snapshot in ERROR state. Boot volumes cannot be detached (not even while the instance is shut down).
 
 You may use the snapshot as a source when creating a new volume:
 
