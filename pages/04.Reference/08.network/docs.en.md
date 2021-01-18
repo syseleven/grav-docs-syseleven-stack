@@ -90,6 +90,28 @@ You can find [example code in our terraform-examples](https://github.com/syselev
 
 With VPNaaS you can establish secure site-to-site tunnels from your premises to SysEleven Stack, so you can access cloud resources like if they were part of your network. This feature can also be used to interconnect different regions together.
 
+Currently our VPNaaS implementation supports following algorithms in both phase 1 and 2:
+
+| Authentication |
+| -------------- |
+| SHA-1          |
+| SHA-256        |
+| SHA3-384       |
+| SHA3-512       |
+
+| Encryption     |
+| -------------- |
+| 3DES           |
+| AES-128        |
+| AES-192        |
+| AES-256        |
+
+| DH Groups      |
+| -------------- |
+| Group 2        |
+| Group 5        |
+| Group 14       |
+
 See our heat-examples on GitHub [for an example how to connect two regions using VPNaaS](https://github.com/syseleven/heat-examples/tree/master/vpn-site2site).
 
 #### Known interoperability issues
