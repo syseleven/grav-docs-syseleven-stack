@@ -1,0 +1,10 @@
+enabled: true
+cdn: true
+popup_background_color: '#002b4b'
+popup_text_color: '#ffffff'
+button_background_color: '#99cc33'
+button_text_color: '#003333'
+button_border_color: '#99cc33'
+position: bottom
+theme: classic
+content_href: 'https://www.syseleven.de/datenschutz/'
