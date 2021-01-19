@@ -1,0 +1,12 @@
+enabled: true
+trackingId: UA-4634575-11
+position: head
+objectName: ga
+forceSsl: true
+async: false
+anonymizeIp: true
+cookieConfig: false
+cookieName: _ga
+cookieExpires: 63072000
+debugStatus: false
+debugTrace: false
