@@ -22,7 +22,6 @@ Name                             | Description                                  
 CentOS 8 (YYYY-MM-DD)            | Unmodified, directly from vendor                    |
 CentOS 8 Stream (YYYY-MM-DD)     | Unmodified, directly from vendor                    |
 CentOS 7 (YYYY-MM-DD)            | Unmodified, directly from vendor                    |
-CoreOS Stable (YYYY-MM-DD)       | Unmodified, directly from vendor                    |
 Flatcar Stable (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
 Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
 Debian Buster (YYYY-MM-DD)       | Unmodified, directly from vendor *(See note below)* |
@@ -99,11 +98,10 @@ Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/curren
 CentOS 7                  | `https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2` |
 CentOS 8                  | `https://cloud.centos.org/centos/8/x86_64/images/` |
 CentOS 8 Stream           | `https://cloud.centos.org/centos/8-stream/x86_64/images/` |
-CoreOS Stable             | `https://stable.release.core-os.net/amd64-usr/current/coreos_production_openstack_image.img.bz2` |
 Flatcar Stable            | `https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_openstack_image.img.bz2` |
 
-!!! The CoreOS and Flatcar images must be decompressed before uploading
-!!! `bunzip2 coreos_production_openstack_image.img.bz2`
+!!! The Flatcar image must be decompressed before uploading
+!!! `bunzip2 flatcar_production_openstack_image.img.bz2`
 
 ### How to upload images?
 
