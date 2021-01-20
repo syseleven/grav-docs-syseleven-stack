@@ -11,7 +11,7 @@ taxonomy:
 
 Using the SysEleven Stack Network service, you can do much more than just accessing the internet; It's possible to build arbitrary private network topologies using virtual routers, networks, subnets, load balancers and VPN site connections.
 
-Servers can access the internet using virtual routers (SNAT). For making servers and loadbalancers accessible from the internet, we offer a Floating IP service (DNAT).
+Servers can access the internet using virtual routers (SNAT). For making servers and load balancers accessible from the internet, we offer a Floating IP service (DNAT).
 
 You can improve security and control isolation by using security groups and by defining firewall rules.
 
@@ -44,7 +44,7 @@ You can associate one or more *OpenStack subnets* to your networks. You can use 
 
 Virtual machines and virtual routers use *OpenStack ports* to connect to virtual networks. When creating a port, you can let it choose a free IP address automatically for you, or assign a fixed IP address.
 
-By creating different networks, you can have multiple isolated layer 2 networks. Different networks can use overlapping IP address space if you want, e.g. Network A and network B can both use the same `10.0.10.0/24` network, if you don't plan to interconnect them.
+By creating different networks, you can have multiple isolated layer 2 networks. Different networks can use overlapping IP address spaces if you want, e.g. Network A and network B can both use the same `10.0.10.0/24` network, if you don't plan to interconnect them.
 
 It is not possible to bridge multiple networks. To communicate from network A to network B you need to use a router.
 
@@ -75,8 +75,7 @@ The `default` security group will be used if not specified otherwise. It allows 
 ! We recommend not to block ICMP because path MTU discovery relies on it, to avoid connectivity issues over VPN tunnels.
 ! For these reasons, ICMP packets from link local range 169.254.0.0/16 are explicitly allowed to enter any virtual machine in our cloud.
 ! This is not a security concern, since this range is not routed in Internet and between OpenStack networks.
-! If you configure an extra layer of security with iptables or other kind filtering inside virtual machine itself, please
-! allow ICMP from this range.
+! If you configure an extra layer of security with iptables or other kind of filtering inside a virtual machine itself, please allow ICMP from this range.
 
 ### Firewall rules (FWaaS)
 
@@ -88,16 +87,16 @@ You can find [example code in our terraform-examples](https://github.com/syselev
 
 ### IPsec VPN (VPNaaS)
 
-With VPNaaS you can establish secure site-to-site tunnels from your premises to SysEleven Stack, so you can access cloud resources like if they were part of your network. This feature can also be used to interconnect different regions together.
+With VPNaaS you can establish secure site-to-site tunnels from your premises to SysEleven Stack, so you can access cloud resources like if they were part of your network. This feature can also be used to interconnect different regions.
 
-Currently our VPNaaS implementation supports following algorithms in both phase 1 and 2:
+Currently our VPNaaS implementation supports the following algorithms in both phase 1 and 2:
 
 | Authentication |
 | -------------- |
 | SHA-1          |
 | SHA-256        |
-| SHA3-384       |
-| SHA3-512       |
+| SHA-384        |
+| SHA-512        |
 
 | Encryption     |
 | -------------- |
