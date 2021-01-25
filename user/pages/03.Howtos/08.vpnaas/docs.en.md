@@ -308,7 +308,8 @@ Create a VPN service on the left side and another on the right side and note the
 !!! If you want to create multiple IPSec site connections it is strongly recommended to create only one VPN service per router and create all site connections in the same VPN service.
 
 !!! **Local subnets and endpoint groups**
-!!! The preferred way of configuring local and peer subnets is using endpoint groups. This allows to set (potentially multiple) local and peer subnets per site connection. Please be aware that the endpoint groups concept cannot be used for a VPN service that already has a (local) subnet set. We recommend to create the VPN service without setting the subnet, but set the local subnet via a local endpoint group in the IPSec site connection.
+!!! There are two ways to configure local and peer subnets: (1) Endpoint groups for both local subnet(s) and for peer CIDR(s) and (2) one local subnet ID in VPN service and one peer CIDR in IPSec site connection.
+!!! The preferred way is (1) using endpoint groups. This allows to set potentially multiple local and peer subnets per site connection. Please be aware that the endpoint groups concept cannot be mixed with the (older) approach where the local subnet ID is set in the VPN service configuration. If you use endpoint groups you have to use the concept for both local subnets and peer CIDRs and you must not set the (local) subnet ID in the VPN service. Otherwise creating the IPSec site connection will be rejected.
 
 #### 1. Create the VPN service on the left side
 
