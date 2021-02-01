@@ -132,7 +132,7 @@ Wenn eine Umwandlung einer vorhandenen Instanz unausweichlich erscheint, kann ei
 
 Instanz-Snapshots können erstellt werden, falls die VM nicht von einem Cinder Volume gestartet wurde.
 
-!! WARNING: Beim Erstellen von Snapshots einer Instanz, wird diese für kurze Zeit unerreichbar (Abhänging von der Größe der Disk).
+!! WARNUNG: Beim Erstellen von Snapshots einer Instanz, wird diese während des Vorgangs unerreichbar (Die Dauer des Vorgangs ist abhänging von der Größe der Disk).
 
 ```shell
 openstack server image create --name <MyInstanceSnapshotName> <MyInstanceName>
