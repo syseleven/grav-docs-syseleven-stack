@@ -55,7 +55,7 @@ source openrc
 
 To recover data from an existing instance, we have to create a snapshot first.
 
-Attention: The server will be unavailable for a few minutes.
+!! WARNING: Creating instance snapshots of your server will make it unresponsive for a period of time (depending on the disk size).
 
 ```shell
 openstack server image create <server uuid> --name <snapshot name> --wait

@@ -132,6 +132,8 @@ If a conversion of an existing instance seems inevitable, a similar result can b
 
 Instance snapshots can be created from instances, if they are not booted from a cinder volume.
 
+!! WARNING: Creating instance snapshots of your server will make it unresponsive for a period of time (depending on the disk size).
+
 ```shell
 openstack server image create --name <MyInstanceSnapshotName> <MyInstanceName>
 ```

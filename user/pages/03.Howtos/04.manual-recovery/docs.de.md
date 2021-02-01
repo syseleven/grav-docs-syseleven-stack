@@ -55,7 +55,7 @@ source openrc
 
 Um die Daten herunterladen zu können muss ein Snapshot erstellt werden.
 
-Achtung: Der betroffene Server wird für wenige Minuten angehalten.
+!! WARNUNG: Beim Erstellen von Snapshots einer Instanz, wird diese während des Vorgangs unerreichbar (Die Dauer des Vorgangs ist abhänging von der Größe der Disk).
 
 ```shell
 openstack server image create <server uuid> --name <snapshot name> --wait
