@@ -25,7 +25,7 @@ This How-to serves as manual on how to install the OpenStack CLI (Command Line I
 *In this manual we expect that you haven't installed any of the required tools.
 If you already installed any of the tools, please skip that specific step.*
 
-! **Required OpenStack client version to work with the SysEleven Cloud**
+! **Required OpenStack client version to work with the SysEleven Stack**
 ! OpenStack client version 3.13.x is the minimum to work with multiple regions. Please make sure to install the latest stable version.
 
 ---
@@ -59,7 +59,7 @@ Alternatively running a ["virtual environment" with `virtualenv`](#virtualenv) a
 After the installation of `PIP` finished, we need to install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
 
 ```shell
-sudo -H pip install python-openstackclient python-heatclient python-novaclient python-neutronclient python-cinderclient python-glanceclient python-designateclient python-octaviaclient python-barbicanclient
+sudo -H pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-barbicanclient
 ```
 
 ---
@@ -84,7 +84,7 @@ C:\Python27\Scripts>easy_install pip
 After the installation of `PIP` finished, we need to install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
 
 ```batch
-C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-novaclient python-neutronclient python-cinderclient python-glanceclient python-designateclient python-octaviaclient python-barbicanclient
+C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-barbicanclient
 ```
 
 ---
@@ -114,7 +114,7 @@ If there are dependency errors alternatively running a ["virtual environment" wi
 After the installation of `PIP` finished, we need to install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
 
 ```shell
-sudo -H pip install python-openstackclient python-heatclient python-novaclient python-neutronclient python-cinderclient python-glanceclient python-designateclient python-octaviaclient python-barbicanclient
+pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-barbicanclient
 ```
 
 ---
@@ -142,13 +142,17 @@ One has the possibility to install plugins. Place the corresponding plugin name 
 pip install python-<PLUGINNAME>client
 ```
 
-Recommended plugins for the SysEleven Stack:
+Required plugins for OpenStack (automatically installed as dependencies):
 
-* heat - Orchestration API
+* keystone - Identity API
 * nova - Compute API
-* neutron - Network API
 * cinder - Block Storage Volume API
 * glance - Image API
+
+Recommended plugins for the SysEleven Stacki (explicitly installed):
+
+* heat - Orchestration API
+* neutron - Network API
 * designate - Domain Name Service API
 * octavia - Load Balancer API
 * barbican - Key Manager API
@@ -156,7 +160,7 @@ Recommended plugins for the SysEleven Stack:
 Installing the recommended plugins:
 
 ```shell
-pip install python-heatclient python-novaclient python-neutronclient python-cinderclient python-glanceclient python-designateclient python-octaviaclient python-barbicanclient
+pip install python-heatclient python-neutronclient python-designateclient python-octaviaclient python-barbicanclient
 ```
 
 ---
