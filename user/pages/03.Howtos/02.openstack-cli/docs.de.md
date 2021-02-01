@@ -142,7 +142,7 @@ Es besteht die Möglichkeit, Plugins zu installieren. Dafür fügt man in den na
 pip install python-<PLUGINNAME>client
 ```
 
-Benötigte Plugins für den OpenStack (automatisch als Abhängigkeit installiert):
+Benötigte Plugins für den OpenStack (automatisch als Abhängigkeit von python-openstackclient installiert):
 
 * keystone - Identity API
 * nova - Compute API
@@ -204,4 +204,3 @@ Wenn wir nun etwas installieren, landen die installierten Programme im Projektor
 ```shell
 deactivate
 ```
-

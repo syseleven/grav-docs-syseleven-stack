@@ -142,14 +142,14 @@ One has the possibility to install plugins. Place the corresponding plugin name 
 pip install python-<PLUGINNAME>client
 ```
 
-Required plugins for OpenStack (automatically installed as dependencies):
+Required plugins for OpenStack (automatically installed as dependencies of python-openstackclient):
 
 * keystone - Identity API
 * nova - Compute API
 * cinder - Block Storage Volume API
 * glance - Image API
 
-Recommended plugins for the SysEleven Stacki (explicitly installed):
+Recommended plugins for the SysEleven Stack (explicitly installed):
 
 * heat - Orchestration API
 * neutron - Network API
