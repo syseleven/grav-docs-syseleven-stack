@@ -92,6 +92,8 @@ Using the special PROXY protocol it is possible to retrieve the client IP addres
 
 Your application must support the PROXY protocol. It is possible to add a reverse proxy like nginx between your application and the Octavia loadbalancer to add PROXY support. The nginx documentation provides a how-to for [receiving the proxy protocol](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/).
 
+There is a [tutorial](https://docs.syseleven.de/metakube/de/tutorials/how-to-use-the-proxy-protocol) covering the process of configuring the PROXY protocol for nginx in MetaKube.
+
 ### Distribution strategies
 
 The distribution strategy controls how the load balancer chooses its backend.
