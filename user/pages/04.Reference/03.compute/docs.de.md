@@ -27,33 +27,33 @@ Wir empfehlen diese Instanz-Typen für die meisten Anwendungen und Nutzungsfäll
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
-M1 Tiny     |  m1.tiny    |  4GB   |   1   |   50GB   |
-M1 Small    |  m1.small   |  8GB   |   2   |   50GB   |
-M1 Medium   |  m1.medium  | 16GB   |   4   |   50GB   |
-M1 Large    |  m1.large   | 32GB   |   8   |   50GB   |
-(M1 XLarge**)   |  (m1.xlarge)** | 64GB   |   16   |   50GB   |
-(M1 XXLarge**)  |  (m1.xxlarge)** | 128GB|   32   |   50GB   |
+M1 Tiny     |  m1.tiny    |  4GiB   |   1   |   50GiB   |
+M1 Small    |  m1.small   |  8GiB   |   2   |   50GiB   |
+M1 Medium   |  m1.medium  | 16GiB   |   4   |   50GiB   |
+M1 Large    |  m1.large   | 32GiB   |   8   |   50GiB   |
+(M1 XLarge**)   |  (m1.xlarge)** | 64GiB   |   16   |   50GiB   |
+(M1 XXLarge**)  |  (m1.xxlarge)** | 128GiB|   32   |   50GiB   |
 
 #### CPU-Optimiert
 
 Name            | API Name     | Memory | vCPUs | Storage* |
 ----------------|--------------|--------|-------|----------|
-M1 CPU Tiny     |  m1c.tiny    |  2GB   |   1   |   50GB   |
-M1 CPU Small    |  m1c.small   |  4GB   |   2   |   50GB   |
-M1 CPU Medium   |  m1c.medium  | 8GB    |   4   |   50GB   |
-M1 CPU Large    |  m1c.large   | 16GB   |   8   |   50GB   |
-M1 CPU XLarge   |  m1c.xlarge  | 32GB   |   16   |   50GB   |
-(M1 CPU XXLarge)** |  (m1c.xxlarge)** | 64GB   |   32   |   50GB   |
+M1 CPU Tiny     |  m1c.tiny    |  2GiB   |   1   |   50GiB   |
+M1 CPU Small    |  m1c.small   |  4GiB   |   2   |   50GiB   |
+M1 CPU Medium   |  m1c.medium  | 8GiB    |   4   |   50GiB   |
+M1 CPU Large    |  m1c.large   | 16GiB   |   8   |   50GiB   |
+M1 CPU XLarge   |  m1c.xlarge  | 32GiB   |   16   |   50GiB   |
+(M1 CPU XXLarge)** |  (m1c.xxlarge)** | 64GiB   |   32   |   50GiB   |
 
 #### RAM-Optimiert
 
 Name            | API Name     | Memory | vCPUs | Storage* |
 ----------------|--------------|--------|-------|----------|
-M1 RAM Tiny     |  m1r.tiny    |  8GB   |   1   |   50GB   |
-M1 RAM Small    |  m1r.small   | 16GB   |   2   |   50GB   |
-M1 RAM Medium   |  m1r.medium  | 32GB   |   4   |   50GB   |
-(M1 RAM Large)**  |  m1r.large | 64GB   |   8   |   50GB   |
-(M1 RAM XLarge)** |  m1r.xlarge| 128GB  |   16   |   50GB   |
+M1 RAM Tiny     |  m1r.tiny    |  8GiB   |   1   |   50GiB   |
+M1 RAM Small    |  m1r.small   | 16GiB   |   2   |   50GiB   |
+M1 RAM Medium   |  m1r.medium  | 32GiB   |   4   |   50GiB   |
+(M1 RAM Large)**  |  m1r.large | 64GiB   |   8   |   50GiB   |
+(M1 RAM XLarge)** |  m1r.xlarge| 128GiB  |   16   |   50GiB   |
 
 (*)
 Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.en.md) ergänzt werden.
@@ -74,36 +74,36 @@ Für mehr Informationen lesen Sie bitte die [Dokumentation des Local SSD Storage
 
 Name        | API Name    | Memory | vCPUs | Storage* |
 ------------|-------------|--------|-------|----------|
-L1 Tiny     | l1.tiny     |   4GB  |   1   |   25GB   |
-L1 Small    | l1.small    |   8GB  |   2   |   50GB   |
-L1 Medium   | l1.medium   |  16GB  |   4   |  100GB   |
-L1 Large    | l1.large    |  32GB  |   8   |  200GB   |
-L1 XLarge   | l1.xlarge   |  64GB  |  16   |  400GB   |
-L1 2XLarge  | l1.2xlarge  | 128GB  |  32   |  800GB   |
-L1 4XLarge  | l1.4xlarge  | 256GB  |  64   | 1600GB   |
+L1 Tiny     | l1.tiny     |   4GiB  |   1   |   25GiB   |
+L1 Small    | l1.small    |   8GiB  |   2   |   50GiB   |
+L1 Medium   | l1.medium   |  16GiB  |   4   |  100GiB   |
+L1 Large    | l1.large    |  32GiB  |   8   |  200GiB   |
+L1 XLarge   | l1.xlarge   |  64GiB  |  16   |  400GiB   |
+L1 2XLarge  | l1.2xlarge  | 128GiB  |  32   |  800GiB   |
+L1 4XLarge  | l1.4xlarge  | 256GiB  |  64   | 1600GiB   |
 
 #### CPU-Optimiert
 
 Name          | API Name    | Memory | vCPUs | Storage* |
 --------------|-------------|--------|-------|----------|
-L1 CPU Tiny   | l1c.tiny     |   2GB  |   1   |   25GB   |
-L1 CPU Small  | l1c.small    |   4GB  |   2   |   50GB   |
-L1 CPU Medium | l1c.medium   |   8GB  |   4   |  100GB   |
-L1 CPU Large    | l1c.large    |  16GB  |   8   |  200GB   |
-L1 CPU XLarge   | l1c.xlarge   |  32GB  |  16   |  400GB   |
-L1 CPU 2XLarge  | l1c.2xlarge  |  64GB  |  32   |  800GB   |
-L1 CPU 4XLarge  | l1c.4xlarge  | 128GB  |  64   | 1600GB   |
+L1 CPU Tiny   | l1c.tiny     |   2GiB  |   1   |   25GiB   |
+L1 CPU Small  | l1c.small    |   4GiB  |   2   |   50GiB   |
+L1 CPU Medium | l1c.medium   |   8GiB  |   4   |  100GiB   |
+L1 CPU Large    | l1c.large    |  16GiB  |   8   |  200GiB   |
+L1 CPU XLarge   | l1c.xlarge   |  32GiB  |  16   |  400GiB   |
+L1 CPU 2XLarge  | l1c.2xlarge  |  64GiB  |  32   |  800GiB   |
+L1 CPU 4XLarge  | l1c.4xlarge  | 128GiB  |  64   | 1600GiB   |
 
 #### RAM-Optimiert
 
 Name          | API Name    | Memory | vCPUs | Storage* |
 --------------|-------------|--------|-------|----------|
-L1 RAM Tiny   | l1r.tiny     |   8GB  |   1   |   25GB   |
-L1 RAM Small  | l1r.small    |  16GB  |   2   |   50GB   |
-L1 RAM Medium | l1r.medium   |  32GB  |   4   |  100GB   |
-L1 RAM Large    | l1r.large  |  64GB  |   8   |  200GB   |
-L1 RAM XLarge   | l1r.xlarge | 128GB  |  16   |  400GB   |
-L1 RAM 2XLarge  | l1r.2xlarge| 256GB  |  32   |  800GB   |
+L1 RAM Tiny   | l1r.tiny     |   8GiB  |   1   |   25GiB   |
+L1 RAM Small  | l1r.small    |  16GiB  |   2   |   50GiB   |
+L1 RAM Medium | l1r.medium   |  32GiB  |   4   |  100GiB   |
+L1 RAM Large    | l1r.large  |  64GiB  |   8   |  200GiB   |
+L1 RAM XLarge   | l1r.xlarge | 128GiB  |  16   |  400GiB   |
+L1 RAM 2XLarge  | l1r.2xlarge| 256GiB  |  32   |  800GiB   |
 
 
 (*)

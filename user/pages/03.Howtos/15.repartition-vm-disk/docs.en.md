@@ -30,7 +30,7 @@ growpart:
   mode: off
 runcmd:
 # Parted asks whether to fix /dev/vda to use all available space, we reply "Fix" and continue
-# Resize primary partition to 10GB
+# Resize primary partition to 10GiB
 - "printf 'Fix\n1\nyes\n10GB\n' | parted ---pretend-input-tty /dev/vda resizepart"
 # Prepare partitions
 - "parted -s /dev/vda mkpart DATA ext4 10GB 20GB"
@@ -46,7 +46,7 @@ runcmd:
 - "resize2fs /dev/vda1"
 ```
 
-This snippet was written for a Ubuntu 18.04 VM with a 50GB ephemeral disk. It will resize the main partition to 10 GB and create 2 new partitions (10 GB and 30 GB), create an ext-4 filesystem and mount them.
+This snippet was written for a Ubuntu 18.04 VM with a 50GiB ephemeral disk. It will resize the main partition to 10 GiB and create 2 new partitions (10 GiB and 30 GiB), create an ext-4 filesystem and mount them.
 
 Using the OpenStack dashboard to start your VM you may provide this snippet in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
 

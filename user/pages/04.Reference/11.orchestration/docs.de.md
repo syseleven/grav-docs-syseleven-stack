@@ -470,7 +470,7 @@ Was passiert, wenn unsere Maschine größer werden soll als der eingestellte
 Flavor? und wo sind meine Daten, die ich in der Maschine aufgebaut habe, wenn
 ich den Stack lösche, wie ich es gelernt habe? Die Antwort auf beide Fragen
 findet sich [hier](../../04.Reference/04.block-storage/docs.en.md). Jede Maschine im Syseleven Stack wird derzeit
-mit einer Größe von 50GB Storage ausgeliefert. Brauche ich zusätzlichen
+mit einer Größe von 50GiB Storage ausgeliefert. Brauche ich zusätzlichen
 Speicher, muss ich auf sogenannte Volumes zurückgreifen. Doch auch aus einer
 anderen Überlegung heraus sind Volumes interessant: Wenn ich meine Maschine
 löschen und dennoch meine Daten erhalten möchte (beispielsweise die Daten
@@ -490,7 +490,7 @@ Blockdevice, also im Grunde eine weitere Festplatte, auf. So habe ich eine
 Lösung für die Persistenz meiner Daten.
 
 Ebenfalls lässt sich so ein Setup realisieren, bei dem eine virtuelle Maschine
-mehr Speicherplatz zur Verfügung gestellt bekommt, als die 50GB des
+mehr Speicherplatz zur Verfügung gestellt bekommt, als die 50GiB des
 Grundsystems. Hier bietet es sich jedoch an, das Volume nicht separiert zu
 erstellen, sondern in dem Stack, in dem die Maschine selbst auch erstellt wird.
 Ein vollständiges Setup sieht dann so aus:
