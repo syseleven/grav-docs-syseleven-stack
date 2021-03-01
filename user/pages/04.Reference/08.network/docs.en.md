@@ -96,6 +96,8 @@ Currently our VPNaaS implementation supports the following algorithms in both ph
 | -------------- |
 | SHA-1          |
 | SHA-256        |
+| SHA-384        |
+| SHA-512        |
 
 | Encryption     |
 | -------------- |
