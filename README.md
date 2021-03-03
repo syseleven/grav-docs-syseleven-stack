@@ -2,7 +2,7 @@
 
 ## SysEleven Stack Documentation Repository
 
-[![Build Status](https://travis-ci.org/syseleven/grav-docs-syseleven-stack.svg?branch=master)](https://travis-ci.org/syseleven/grav-docs-syseleven-stack) 
+[![Build Status](https://travis-ci.org/syseleven/grav-docs-syseleven-stack.svg?branch=master)](https://travis-ci.org/syseleven/grav-docs-syseleven-stack)
 [![GitHub license](https://img.shields.io/github/license/syseleven/grav-docs-syseleven-stack.svg)](https://github.com/syseleven/grav-docs-syseleven-stack/blob/master/LICENSE)
 
 The content of master is automatically displayed at [https://docs.syseleven.de/syseleven-stack](https://docs.syseleven.de/syseleven-stack) in a [Grav CMS](https://getgrav.org/) installation.
@@ -17,7 +17,7 @@ $ npm run lint
 
 ## Contributions
 
-We welcome contributions and fixes for our documentation. 
+We welcome contributions and fixes for our documentation.
 
 It is important that you respect the directory structure pattern already present under `/pages`, so that grav is able to find and link the pages correctly:
 
@@ -32,3 +32,15 @@ It is important that you respect the directory structure pattern already present
 * Links to images and other pages should be relative links to the markdown file, grav will automatically rewrite them correctly
 
 To ensure that there are no syntax errors and that the metadata is correct, run `npm run lint` before creating a pull request.
+
+## Local testing
+
+To test changes locally before pushing the repository, run:
+
+```sh
+docker-compose up --build
+```
+
+Then open http://localhost:8080/syseleven-stack in your browser. **Grav is caching very aggressively, if you don’t see changes made, reload without cache.
+
+**Important: If you make changes to the content, you have to execute the command again as all content is built into the image statically**
