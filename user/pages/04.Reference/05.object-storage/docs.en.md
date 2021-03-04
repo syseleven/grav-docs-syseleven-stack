@@ -40,7 +40,7 @@ Setting bucket/object ACLs is only partially possible and currently unintuitive 
 ## Buckets
 
 Buckets are the logical unit SysEleven Stack Object Storage uses to stores objects.
-Every bucket name is unique within a SysEleven Stack region.
+Every bucket name must be unique within a SysEleven Stack region.
 
 ## Objects
 
