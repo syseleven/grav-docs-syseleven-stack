@@ -150,7 +150,7 @@ Only if the virtual machine was created from such an image the compute service l
 
 Snapshots can be used as templates for new instances.
 
-[This heat example](https://github.com/syseleven/heat-examples/tree/master/singles-server-from-snapshot) shows
+[This heat example](https://github.com/syseleven/heat-examples/tree/master/single-server-from-snapshot) shows
 how to use snapshots to launch new instances using the ephemeral or volume storage.
 
 ---
