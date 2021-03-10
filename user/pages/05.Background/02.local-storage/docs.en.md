@@ -69,8 +69,8 @@ To keep the impact predictable, we hereby announce a regular
 !! maintenance window:
 !! Every week in the night from wednesday, 11pm (23h) to thursday, 4am,
 
-**we will restart about 25% of our local ssd storage compute nodes.
-Statistically, every instance will be shut down once a month.**
+we will restart about 25% of our local ssd storage compute nodes.
+Statistically, every instance **will be shut down once a month.**
 
 ### How is maintenance carried out for local SSD storage nodes?
 
