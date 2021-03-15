@@ -11,7 +11,7 @@ taxonomy:
 
 ### Overview
 
-In this tutorial we will use the [Object Storage](../../04.Reference/05.object-storage/docs.en.md) to create buckets and objects with and limit the access to these by applying ACLs. We will be using [s3cmd](http://s3tools.org/s3cmd) manage our resources.
+In this tutorial we will use the [Object Storage](../../04.Reference/05.object-storage/docs.en.md) to create buckets and objects with and limit the access to these by applying ACLs. We will be using [boto3](https://boto3.readthedocs.io) to manage our resources.
 
 ### Prerequisites
 
@@ -20,11 +20,13 @@ In this tutorial we will use the [Object Storage](../../04.Reference/05.object-s
 * You have created EC2 credentials for your OpenStack user to be able to use the [Object Storage](../../04.Reference/05.object-storage/docs.en.md).
 * You have installed [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) or alternatively installed [s3cmd](http://s3tools.org/s3cmd)
 
-We suggest you use boto3 to reproduce all testcases shown in this tutorial as s3cmd is not capable of setting ACLs on object upload and may change bucket ACLs unexpectedly.
+We suggest you use boto3 to reproduce all testcases shown in this tutorial as our experiments show, s3cmd is not capable of isolating buckets. 
+
+To verify if the ACLs are in place we may use s3cmd.
 
 ### Prepare environment
 
-The access and secret key from our OpenStack user will be needed to properly configure boto3/s3cmd.
+The access and secret key from our OpenStack user will be needed to properly configure boto3.
 
 We can configure boto3 to our needs using following snippet:
 
@@ -38,27 +40,10 @@ s3 = session.resource(
    aws_access_key_id = "my-access-key",
    aws_secret_access_key = "my-secret-key",
    endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
-   #   endpoint_url = 'https://s3.cbk.cloud.syseleven.net'
+   #endpoint_url = 'https://s3.cbk.cloud.syseleven.net'
    )
 # Get our client
 s3client=s3.meta.client
-```
-
-The alternative would be to setup our s3cmd config accordingly : 
-
-```shell
-cat <<EOF > s3cfg-admin
-[default]
-access_key = my-access-key
-secret_key = my-secret-key
-use_https = True
-check_ssl_certificate = True
-check_ssl_hostname = False
-host_base = s3.dbl.cloud.syseleven.net
-#host_base = s3.cbk.cloud.syseleven.net
-host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
-#host_bucket = %(bucket).s3.cbk.cloud.syseleven.net
-EOF
 ```
 
 ### Create buckets
@@ -77,23 +62,28 @@ Using your personal s3cmd configuration, we will create following buckets.
 * `public-scope-bucket` representing a bucket which will be public readable and read/writeable by all access keys created for the OpenStack project.
 * `owner-scope-bucket` representing a bucket which will only be read/writeable by the owner of the bucket.
 
-When not providing any ACL on bucket creation the default private ACL will be used. Private in this case is a bit misleading as it still allows full control for all access keys created for your OpenStack project. Thus we have to further narrow down the ACLs later.
+The default private ACL will be used when no ACL is provided on bucket creation. Private in this case can be a bit misleading as this predefined ACL still allows full control for all access keys created for your OpenStack project. Thus we have to further narrow down the ACLs for our use-cases.
 
-Lets assume we (the owner of the bucket) have following username : `exampleuser` and our project has following ID `123456789abcdefghijqlmnopqrstuvw` and has following group name `mygroup` (By default the group name is the name of your project + "-operator" in the end). Further we know of an other user with following username : `anotheruser` and his project has following ID `wvutsrqponmlqjihgfedcba987654321`.
+Lets assume we (the owner of the bucket) have following username : `exampleuser`, our project has following ID `123456789abcdefghijqlmnopqrstuvw` and our user is in group with following name `project-operator`. Further we know of another user with following username : `anotheruser` who has created his ec2 credentials for a project with following ID `wvutsrqponmlqjihgfedcba987654321`. 
  
+Lets have a look at following python snippet whichs shows how we can set the ACLs on bucket creation with boto3.
+
 ```python
 s3client.create_bucket(Bucket="project-scope-bucket")
 s3client.create_bucket(Bucket="project-scope-readonly-bucket",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=123456789abcdefghijqlmnopqrstuvw")
-s3client.create_bucket(Bucket="group-scope-bucket",GrantFullControl="ID=g:mygroup/123456789abcdefghijqlmnopqrstuvw")
-s3client.create_bucket(Bucket="group-scope-readonly-bucket",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=g:mygroup/123456789abcdefghijqlmnopqrstuvw")
-# The bucket owner always keeps full_control access to his bucket, thus we can use following ACL
+s3client.create_bucket(Bucket="group-scope-bucket",GrantFullControl="ID=g:project-operator/123456789abcdefghijqlmnopqrstuvw")
+s3client.create_bucket(Bucket="group-scope-readonly-bucket",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=g:project-operator/123456789abcdefghijqlmnopqrstuvw")
+# The bucket owner always keeps full_control access to his bucket, thus we can use following ACL to allow the other user read/write access.
 s3client.create_bucket(Bucket="user-scope-bucket",GrantFullControl="ID=u:anotheruser/wvutsrqponmlqjihgfedcba987654321")
 s3client.create_bucket(Bucket="user-scope-readonly-bucket",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=u:anotheruser/wvutsrqponmlqjihgfedcba987654321")
 s3client.create_bucket(Bucket="owner-scope-bucket",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw")
-# For the public scope bucket we may use a predefined ACL
+# For the public scope bucket we may use the predefined public-read ACL
 s3client.create_bucket(Bucket="public-scope-bucket",ACL="public-read")
+```
 
-# For testing purpose we may force the recreation of the buckets with following snippet
+We may force the recreation of the buckets with following try/catch block (for testing purposes).
+
+```python
 bucket = "myBucket"
 try:
    s3client.create_bucket(Bucket=bucket)
@@ -106,36 +96,36 @@ except:
    s3client.create_bucket(Bucket=bucket)
 ```
 
-When using s3cmd we may skip tightening bucket ACLs as these will be loosen up again when uploading objects.
-
-Now that we have prepared our buckets we may proceed to upload our objects.
+In the next step we will proceed and upload objects with the same ACL structure.
 
 ### Create objects 
 
-Using the same ACLs we have defined for creating the buckets we are now creating objects.
+We are now creating/uploading objects using the same ACLs we have used for creating our initial buckets.
 
 ```python
 for bucket in ["project-scope-bucket project-scope-readonly-bucket group-scope-bucket group-scope-readonly-bucket user-scope-bucket user-scope-readonly-bucket owner-scope-bucket","public-scope-bucket"] :
    s3client.put_object(Body="secret",Bucket=bucket,Key="project-scope-object")
    s3client.put_object(Body="secret",Bucket=bucket,Key="project-scope-readonly-object",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=123456789abcdefghijqlmnopqrstuvw")
-   s3client.put_object(Body="secret",Bucket=bucket,Key="group-scope-object",GrantFullControl="ID=g:mygroup/123456789abcdefghijqlmnopqrstuvw")
-   s3client.put_object(Body="secret",Bucket=bucket,Key="group-scope-readonly-object",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=g:mygroup/123456789abcdefghijqlmnopqrstuvw")
+   s3client.put_object(Body="secret",Bucket=bucket,Key="group-scope-object",GrantFullControl="ID=g:project-operator/123456789abcdefghijqlmnopqrstuvw")
+   s3client.put_object(Body="secret",Bucket=bucket,Key="group-scope-readonly-object",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=g:project-operator/123456789abcdefghijqlmnopqrstuvw")
    s3client.put_object(Body="secret",Bucket=bucket,Key="user-scope-object",GrantFullControl="ID=u:anotheruser/wvutsrqponmlqjihgfedcba987654321")
    s3client.put_object(Body="secret",Bucket=bucket,Key="user-scope-readonly-object",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=u:anotheruser/wvutsrqponmlqjihgfedcba987654321")
    s3client.put_object(Body="secret",Bucket=bucket,Key="owner-scope-object",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw")
    s3client.put_object(Body="secret",Bucket=bucket,Key="public-scope-object",ACL="public-read")
 ```
 
-By uploading objects via boto3 we will not change the parent bucket ACLs. Thus access to the buckets/objects will be as expected. Just be aware if you grant write permission to an entity (project/group/user) on bucket level, the entity will inherit write permissions on objects inside of the bucket even if the ACLs of the objects state otherwise.
+By uploading objects via boto3, we will not change the parent bucket ACLs. Thus access to the buckets/objects will be set as expected. Just be aware if you grant write permission to an entity (project/group/user) on bucket level, the entity will inherit write permissions on objects inside of the bucket even if the ACLs of the objects state otherwise.
 
 
-If you are using s3cmd for object upload the parent bucket ACLs may get changed resulting in unexpected access being granted for project members.
+### Note on ACL grant/revoke by groups
 
-### Grant/revoke access via groups
-
-By default every OpenStack project will get a single group which contains all the users which have access to the project. Similiar to the setup of grants/revokes for users it is possible to implement these using groups.
+By default every OpenStack project will get a single group which contains all the users which have access to the project. The group management is currently handled by SysEleven 
 
 If you need specific groups for setting up your desired ACLs please feel free to contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+
+### Note on ACL grant/revoke by username
+
+Setting ACLs for specific users may not work if the username is not POSIX compliant (e.g. the username is a mail address). If you need a change of usernames in order to setup your desired ACLs please contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
 
 ## References
 
