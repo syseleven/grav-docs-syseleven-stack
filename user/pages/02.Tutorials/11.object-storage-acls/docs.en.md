@@ -103,7 +103,7 @@ In the next step we will proceed and upload objects with the same ACL structure.
 We are now creating/uploading objects using the same ACLs we have used for creating our initial buckets.
 
 ```python
-for bucket in ["project-scope-bucket project-scope-readonly-bucket group-scope-bucket group-scope-readonly-bucket user-scope-bucket user-scope-readonly-bucket owner-scope-bucket","public-scope-bucket"] :
+for bucket in ["project-scope-bucket", "project-scope-readonly-bucket", "group-scope-bucket", "group-scope-readonly-bucket", "user-scope-bucket" ,"user-scope-readonly-bucket", "owner-scope-bucket", "public-scope-bucket"] :
    s3client.put_object(Body="secret",Bucket=bucket,Key="project-scope-object")
    s3client.put_object(Body="secret",Bucket=bucket,Key="project-scope-readonly-object",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=123456789abcdefghijqlmnopqrstuvw")
    s3client.put_object(Body="secret",Bucket=bucket,Key="group-scope-object",GrantFullControl="ID=g:project-operator/123456789abcdefghijqlmnopqrstuvw")
