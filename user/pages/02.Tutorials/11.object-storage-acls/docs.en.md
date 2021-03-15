@@ -81,21 +81,6 @@ s3client.create_bucket(Bucket="owner-scope-bucket",GrantFullControl="ID=u:exampl
 s3client.create_bucket(Bucket="public-scope-bucket",ACL="public-read")
 ```
 
-We may force the recreation of the buckets with following try/catch block (for testing purposes).
-
-```python
-bucket = "myBucket"
-try:
-   s3client.create_bucket(Bucket=bucket)
-except:
-   print("there was a problem creating the bucket '{}', it may have already existed".format(bucket))
-   oldbucket = s3.Bucket(bucket)
-   # Cleanup remaining objects in bucket
-   oldbucket.objects.all().delete()
-   s3client.delete_bucket(Bucket=bucket)
-   s3client.create_bucket(Bucket=bucket)
-```
-
 In the next step we will proceed and upload objects with the same ACL structure.
 
 ### Create objects 
