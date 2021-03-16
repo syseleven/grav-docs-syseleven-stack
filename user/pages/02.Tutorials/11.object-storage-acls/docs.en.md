@@ -11,24 +11,40 @@ taxonomy:
 
 ### Overview
 
-In this tutorial we will use the [Object Storage](../../04.Reference/05.object-storage/docs.en.md) to create buckets and objects with and limit the access to these by applying ACLs. We will be using [boto3](https://boto3.readthedocs.io) to manage our resources.
+In this tutorial we will use the [Object Storage](../../04.Reference/05.object-storage/docs.en.md) to create buckets and objects with and limit the access to these by applying ACLs. We will be using the [s3cmd](http://s3tools.org/s3cmd) S3 client and the python library [boto3](https://boto3.readthedocs.io) to manage our resources.
 
 ### Prerequisites
 
 * You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 * You have created EC2 credentials for your OpenStack user to be able to use the [Object Storage](../../04.Reference/05.object-storage/docs.en.md).
-* You have installed [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) or alternatively installed [s3cmd](http://s3tools.org/s3cmd)
+* You have installed [s3cmd](http://s3tools.org/s3cmd)
+* You have installed python and the [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) library
 
-We suggest you use boto3 to reproduce all testcases shown in this tutorial as our experiments show, s3cmd is not capable of isolating buckets. 
-
-To verify if the ACLs are in place we may use s3cmd.
+We suggest you use the python library boto3 to reproduce all scenarios shown in this tutorial. Using only s3cmd will leave buckets open for group members. We are in contact with the software manufacturer of our object storage about that.
 
 ### Prepare environment
 
-The access and secret key from our OpenStack user will be needed to properly configure boto3.
+To be able to create our buckets, objects and ACLs we first will need to get our access and secret key of the ec2 credentials of our OpenStack user.
 
-We can configure boto3 to our needs using following snippet:
+For s3cmd we have to create following configuration file:
+
+```shell
+syseleven@kickstart:~$ cat .s3cfg
+[default]
+access_key = < REPLACE ME >
+secret_key = < REPLACE ME >
+use_https = True
+check_ssl_certificate = True
+check_ssl_hostname = False
+
+host_base = s3.dbl.cloud.syseleven.net
+host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
+#host_base = s3.cbk.cloud.syseleven.net
+#host_bucket = %(bucket).s3.cbk.cloud.syseleven.net
+```
+
+We can configure boto3 to our needs using following python snippet:
 
 ```python
 import boto3
@@ -46,63 +62,119 @@ s3 = session.resource(
 s3client=s3.meta.client
 ```
 
-### Create buckets
+In the following sections we will take a look at different scenarios for using ACLs in our object storage.
 
-Using your personal s3cmd configuration, we will create following buckets.
+### Create buckets/objects 
 
-* `project-scope-bucket` representing a bucket which will be read/writeable by all access keys created for the OpenStack project.
-* `project-scope-readonly-bucket` representing a bucket which will be readable by all access keys created for the OpenStack project and read/writeable for the owner of the bucket.
+Using the S3 client s3cmd or the S3 python library boto3 we can create buckets and objects. By default these buckets and objects will be read/writeable by all your OpenStack project members (to be more specific, the buckets created without defining any ACL will be accessable for all users who have created ec2 credentials for the underlying OpenStack project).
 
-* `group-scope-bucket` representing a bucket which will be read/writeable by all access keys of users who share the same OpenStack group as the owner of the bucket.
-* `group-scope-readonly-bucket` representing a bucket which will be readable by all access keys of users which share the same OpenStack group as the owner of the bucket and read/writeable for the owner of the bucket.
+To do so with s3cmd:
 
-* `user-scope-bucket` representing a bucket which will read/writeable for specific access keys and by the owner of the bucket.
-* `user-scope-readonly-bucket` representing a bucket which will read for specific access keys and read/writeable by the owner of the bucket.
+```shell
+echo "project members can read me" > test.txt
+s3cmd -c <your-s3-config> mb s3://project-scope-bucket
+s3cmd -c <your-s3-config> put test.txt s3://project-scope-bucket/project-scope-object.txt
+```
 
-* `public-scope-bucket` representing a bucket which will be public readable and read/writeable by all access keys created for the OpenStack project.
-* `owner-scope-bucket` representing a bucket which will only be read/writeable by the owner of the bucket.
-
-The default private ACL will be used when no ACL is provided on bucket creation. Private in this case can be a bit misleading as this predefined ACL still allows full control for all access keys created for your OpenStack project. Thus we have to further narrow down the ACLs for our use-cases.
-
-Lets assume we (the owner of the bucket) have following username : `exampleuser`, our project has following ID `123456789abcdefghijqlmnopqrstuvw` and our user is in group with following name `project-operator`. Further we know of another user with following username : `anotheruser` who has created his ec2 credentials for a project with following ID `wvutsrqponmlqjihgfedcba987654321`. 
- 
-Lets have a look at following python snippet whichs shows how we can set the ACLs on bucket creation with boto3.
+And using the boto3 library with our previous created python s3client.
 
 ```python
 s3client.create_bucket(Bucket="project-scope-bucket")
-s3client.create_bucket(Bucket="project-scope-readonly-bucket",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=123456789abcdefghijqlmnopqrstuvw")
-s3client.create_bucket(Bucket="group-scope-bucket",GrantFullControl="ID=g:project-operator/123456789abcdefghijqlmnopqrstuvw")
-s3client.create_bucket(Bucket="group-scope-readonly-bucket",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=g:project-operator/123456789abcdefghijqlmnopqrstuvw")
-# The bucket owner always keeps full_control access to his bucket, thus we can use following ACL to allow the other user read/write access.
-s3client.create_bucket(Bucket="user-scope-bucket",GrantFullControl="ID=u:anotheruser/wvutsrqponmlqjihgfedcba987654321")
-s3client.create_bucket(Bucket="user-scope-readonly-bucket",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=u:anotheruser/wvutsrqponmlqjihgfedcba987654321")
-s3client.create_bucket(Bucket="owner-scope-bucket",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw")
-# For the public scope bucket we may use the predefined public-read ACL
+s3client.put_object(Body="project members can read me",Bucket="project-scope-bucket",Key="project-scope-object.txt")
+```
+
+Great we successfully created our first bucket and object using the default "private" ACL. There are other predefined ACLs which we may use and we will take a look on them in the next step.
+
+### Predefined ACLs
+
+If you do not need complex ACLs and just want to create a bucket which contents can be read/writeable from everyone with access to your OpenStack project or you plan to create a public readable bucket you are fine with using predefined ACLs.
+
+In the step before we already used such a predefined ACL. In this case it was the default `private` ACL.
+
+Another predefined ACL which may be suitable for your use-case is the `public-read` ACL.
+
+It can be set using the already known s3cmd command with an additional flag:
+
+```shell
+s3cmd -c <your-s3-config> mb s3://public-scope-bucket -P
+```
+
+Or using the boto3 library:
+
+```python
 s3client.create_bucket(Bucket="public-scope-bucket",ACL="public-read")
 ```
 
-In the next step we will proceed and upload objects with the same ACL structure.
+There are further predefined ACLs (or as in AWS called canned ACLs) which may not all be supported by the implementation of our object storage.
 
-### Create objects 
+### Custom ACLs
 
-We are now creating/uploading objects using the same ACLs we have used for creating our initial buckets.
+To setup a more fine grained control on who can access which buckets or objects we have to define our own ACLs. S3cmd as well as the boto3 python library support setting ACLs on bucket and object level. We can narrow down ACLs for user names, group names and project IDs to specific values:
+
+* grant-write -> rights to modify/delete resource
+* grant-read -> rights to read/list resource
+* grant-read-acp -> rights to read/list ACLs
+* grant-write-acp -> rights to modify resources
+* grant-full-control -> grants all rights : read + write + read-acp + write-acp
+
+We will take a look at the different schemes in the folowing sections.
+
+##### User scope
+
+Set ACLs for specific OpenStack users
+
+Scheme : `u:<user-name>/<project-ID>`
+
+examples :
+
+* 1) Narrow down default full control ACL to the owner itself so it will be a isolated private bucket for the bucket owner.
+
+This use-case can not be implemented using s3cmd:
 
 ```python
-for bucket in ["project-scope-bucket", "project-scope-readonly-bucket", "group-scope-bucket", "group-scope-readonly-bucket", "user-scope-bucket" ,"user-scope-readonly-bucket", "owner-scope-bucket", "public-scope-bucket"] :
-   s3client.put_object(Body="secret",Bucket=bucket,Key="project-scope-object")
-   s3client.put_object(Body="secret",Bucket=bucket,Key="project-scope-readonly-object",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=123456789abcdefghijqlmnopqrstuvw")
-   s3client.put_object(Body="secret",Bucket=bucket,Key="group-scope-object",GrantFullControl="ID=g:project-operator/123456789abcdefghijqlmnopqrstuvw")
-   s3client.put_object(Body="secret",Bucket=bucket,Key="group-scope-readonly-object",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=g:project-operator/123456789abcdefghijqlmnopqrstuvw")
-   s3client.put_object(Body="secret",Bucket=bucket,Key="user-scope-object",GrantFullControl="ID=u:anotheruser/wvutsrqponmlqjihgfedcba987654321")
-   s3client.put_object(Body="secret",Bucket=bucket,Key="user-scope-readonly-object",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw",GrantRead="ID=u:anotheruser/wvutsrqponmlqjihgfedcba987654321")
-   s3client.put_object(Body="secret",Bucket=bucket,Key="owner-scope-object",GrantFullControl="ID=u:exampleuser/123456789abcdefghijqlmnopqrstuvw")
-   s3client.put_object(Body="secret",Bucket=bucket,Key="public-scope-object",ACL="public-read")
+s3client.create_bucket(Bucket="owner-scope-bucket",GrantFullControl="ID=u:user.name.of.bucket.owner/project-id")
+s3client.put_object(Body="only readable by owner",Bucket="owner-scope-bucket",Key="owner-scope-object.txt",GrantFullControl="ID=u:user.name.of.bucket.owner/project-id-")
+s3client.put_object(Body="also only readable by owner",Bucket="owner-scope-bucket",Key="project-scope-object.txt")
 ```
 
-By uploading objects via boto3, we will not change the parent bucket ACLs. Thus access to the buckets/objects will be set as expected. Just be aware if you grant write permission to an entity (project/group/user) on bucket level, the entity will inherit write permissions on objects inside of the bucket even if the ACLs of the objects state otherwise.
+As the bucket ACL is limiting access to the bucket to the owner himself, any object inside of this bucket (also new objects) will only be read/writeable by the owner.
 
+* 2) Narrow down default full control ACL to the owner itself and allow other project members readonly access.
 
-### Note on ACL grant/revoke by groups
+This use-case can not be implemented using s3cmd:
+
+```python
+s3client.create_bucket(Bucket="project-scope-readonly-bucket",GrantFullControl="ID=u:user.name.of.bucket.owner/project-id", GrantRead="ID=project-id")
+s3client.put_object(Body="only visible and writeable by owner",Bucket="project-scope-readonly-bucket",Key="owner-scope-object.txt",GrantFullControl="ID=u:user.name.of.bucket.owner/project-id")
+s3client.put_object(Body="read-writeable-by-all-project-members",Bucket="project-scope-readonly-bucket",Key="project-scope-object.txt")
+s3client.put_object(Body="only-readable-by-all-project-members",Bucket="project-scope-readonly-bucket",Key="project-scope-readonly-object.txt",GrantRead="ID=project-id")
+```
+
+The `owner-scope-object.txt` object is only visible and read/writeable for the owner. The `project-scope-object.txt` object will be read/writeable for all project members as the ACLs for this object were not further narrowed down. The `project-scope-readonly-object.txt` object will be readable (readonly) for all project members.
+
+##### group scope
+
+Set ACLs for specific OpenStack groups
+
+Scheme : `g:<group-name>/<project-ID>`
+
+example :
+
+* 1) Allow one group to have full control and a second group to only read access
+
+```python
+s3client.create_bucket(Bucket="group-scope-readwrite-bucket",GrantFullControl="ID=g:group.name.one/project-id",GrantRead="ID=g:group.name.two/project-id")
+s3client.put_object(Body="writeable by group one, readable by group two ",Bucket="group-scope-readwrite-bucket",Key="group-scope-readwrite-object.txt",GrantFullControl="ID=g:group.name.one/project-id",GrantRead="ID=g:group.name.two/project-id")
+s3client.put_object(Body="writeable by group one, invisible to group two ",Bucket="group-scope-readwrite-bucket",Key="group-scope-group-one-object.txt",GrantFullControl="ID=g:group.name.one/project-id")
+```
+
+### Notes
+
+* The owner of a bucket/object will always keep full control (read/write) access.
+* If you grant write permission to an entity (project/group/user) on bucket level, the entity will inherit write permissions on objects inside of the bucket even if the ACLs of the objects state otherwise.
+* Not every possible use-case is covered in this tutorial
+
+### Note on group ACLs 
 
 By default every OpenStack project will get a single group which contains all the users which have access to the project. The group management is currently handled by SysEleven 
 
