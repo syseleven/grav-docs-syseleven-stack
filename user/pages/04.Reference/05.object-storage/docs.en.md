@@ -35,8 +35,7 @@ encryption                       | no        |
 access logging                   | no        |
 website hosting configuration    | no        |
 
-For setting up bucket/object ACLs we suggest to use [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). We have prepared a [guide in our Tutorials section](../../02.Tutorials/11.object-storage-acls/docs.en.md).
-
+For setting up bucket/object ACLs we suggest to use [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). Not all predefined (canned) ACLs of [AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html) are supported. We are supporting the following canned ACLs : `private`,`public-read`,`public-read-write`,`authenticated-read`. Not supported canned ACLs will be interpreted as the default `private` ACL. We have prepared a [guide in our Tutorials section](../../02.Tutorials/11.object-storage-acls/docs.en.md) whichs shows how to setup custom ACLs.
 
 ## Buckets
 
@@ -138,11 +137,9 @@ where REGION is the SysEleven Stack region (e.g. cbk or dbl).
 
 You can use these URLs to refer to the uploaded files as static assets in your web applications.
 
-If you plan to use more complex ACLs we suggest you checkout the boto3 client.
-
 ### Boto3
 
-Information about the `boto3` client can be found [here](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html).
+Information about the `boto3` python S3 library can be found [here](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). We suggest to make use of this library to setup and manage more complex ACLs.
 
 Using the following python snippet we can configure our client:
 

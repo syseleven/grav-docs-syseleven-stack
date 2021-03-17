@@ -44,7 +44,7 @@ host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
 #host_bucket = %(bucket).s3.cbk.cloud.syseleven.net
 ```
 
-We can configure boto3 to our needs using following python snippet:
+We can configure a s3client with the boto3 library using following python snippet:
 
 ```python
 import boto3
@@ -83,15 +83,13 @@ s3client.create_bucket(Bucket="project-scope-bucket")
 s3client.put_object(Body="project members can read me",Bucket="project-scope-bucket",Key="project-scope-object.txt")
 ```
 
-Great we successfully created our first bucket and object using the default "private" ACL. There are other predefined ACLs which we may use and we will take a look on them in the next step.
+Great! We successfully created our first bucket and object using the default `private` ACL. There are other predefined ACLs which we may use and we will take a look on them in the next step.
 
 ### Predefined ACLs
 
 If you do not need complex ACLs and just want to create a bucket which contents can be read/writeable from everyone with access to your OpenStack project or you plan to create a public readable bucket you are fine with using predefined ACLs.
 
-In the step before we already used such a predefined ACL. In this case it was the default `private` ACL.
-
-Another predefined ACL which may be suitable for your use-case is the `public-read` ACL.
+In the step before we already used such a predefined ACL. In this case it was the default `private` ACL. Another predefined ACL which may be suitable for your use-case is the `public-read` ACL.
 
 It can be set using the already known s3cmd command with an additional flag:
 
@@ -105,19 +103,19 @@ Or using the boto3 library:
 s3client.create_bucket(Bucket="public-scope-bucket",ACL="public-read")
 ```
 
-There are further predefined ACLs (or as in AWS called canned ACLs) which may not all be supported by the implementation of our object storage.
+There are further predefined ACLs (called canned ACLs in AWS) which may not all be supported by the implementation of our object storage. For more information please have a look at our related [Object Storage reference guide](../../04.Reference/05.object-storage/docs.en.md).
 
 ### Custom ACLs
 
 To setup a more fine grained control on who can access which buckets or objects we have to define our own ACLs. S3cmd as well as the boto3 python library support setting ACLs on bucket and object level. We can narrow down ACLs for user names, group names and project IDs to specific values:
 
-* grant-write -> rights to modify/delete resource
-* grant-read -> rights to read/list resource
-* grant-read-acp -> rights to read/list ACLs
-* grant-write-acp -> rights to modify resources
-* grant-full-control -> grants all rights : read + write + read-acp + write-acp
+* write -> grants rights to modify/delete resources
+* read -> grants rights to read/list resources
+* read-acp -> grants rights to read/list ACLs
+* write-acp -> grants rights to modify ACLs
+* full-control -> grants all rights : read + write + read-acp + write-acp
 
-We will take a look at the different schemes in the folowing sections.
+We will take a look at the different schemes how and where we can use these values in the folowing sections.
 
 ##### User scope
 
