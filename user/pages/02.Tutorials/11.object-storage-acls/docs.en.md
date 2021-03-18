@@ -94,16 +94,19 @@ In the step before we already used such a predefined ACL. In this case it was th
 It can be set using the already known s3cmd command with an additional flag:
 
 ```shell
+echo "everyone out there can read me" > test.txt
 s3cmd -c <your-s3-config> mb s3://public-scope-bucket -P
+s3cmd -c <your-s3-config> put test.txt s3://public-scope-bucket/public-file.txt
 ```
 
 Or using the boto3 library:
 
 ```python
 s3client.create_bucket(Bucket="public-scope-bucket",ACL="public-read")
+s3client.put_object(Body="public-readable",Bucket="public-scope-bucket",Key="public-file.txt",ACL="public-read")
 ```
 
-There are further predefined ACLs (called canned ACLs in AWS) which may not all be supported by the implementation of our object storage. For more information please have a look at our related [Object Storage reference guide](../../04.Reference/05.object-storage/docs.en.md).
+There are further predefined ACLs (called canned ACLs in AWS) which may and may not be supported by the implementation of our object storage. For more information please have a look at our related [Object Storage reference guide](../../04.Reference/05.object-storage/docs.en.md).
 
 ### Custom ACLs
 
@@ -119,15 +122,17 @@ We will take a look at the different schemes how and where we can use these valu
 
 ##### User scope
 
-Set ACLs for specific OpenStack users
+Narrow down ACLs on specific OpenStack users
 
 Scheme : `u:<user-name>/<project-ID>`
 
+!! For the user scope ACLs to work, your username unfortunately has to be POSIX compliant. If you have a username containing unsupported characters (e.g. `@` from a mail address as it was our default until March 2021) please get into contact with our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+
 examples :
 
-* 1) Narrow down default full control ACL to the owner itself so it will be a isolated private bucket for the bucket owner.
+* 1) Narrow down full control ACL to the owner itself so it will be a isolated private bucket for the bucket owner.
 
-This use-case can not be implemented using s3cmd:
+This use-case cannot be implemented using s3cmd. Our tests show it fails to revoke group read access on the bucket. 
 
 ```python
 s3client.create_bucket(Bucket="owner-scope-bucket",GrantFullControl="ID=u:user.name.of.bucket.owner/project-id")
@@ -135,7 +140,7 @@ s3client.put_object(Body="only readable by owner",Bucket="owner-scope-bucket",Ke
 s3client.put_object(Body="also only readable by owner",Bucket="owner-scope-bucket",Key="project-scope-object.txt")
 ```
 
-As the bucket ACL is limiting access to the bucket to the owner himself, any object inside of this bucket (also new objects) will only be read/writeable by the owner.
+As the bucket ACL is limiting access on the bucket to the owner himself, any object inside of this bucket (also new objects) will only be read/writeable by the owner.
 
 * 2) Narrow down default full control ACL to the owner itself and allow other project members readonly access.
 
@@ -156,6 +161,8 @@ Set ACLs for specific OpenStack groups
 
 Scheme : `g:<group-name>/<project-ID>`
 
+!! By default every OpenStack project has one group which contains all users with access to the project. Users currently are not able to see their group memberships. Please get into contact with our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md) if you need a list of your projects group names.
+
 example :
 
 * 1) Allow one group to have full control and a second group to only read access
@@ -171,16 +178,9 @@ s3client.put_object(Body="writeable by group one, invisible to group two ",Bucke
 * The owner of a bucket/object will always keep full control (read/write) access.
 * If you grant write permission to an entity (project/group/user) on bucket level, the entity will inherit write permissions on objects inside of the bucket even if the ACLs of the objects state otherwise.
 * Not every possible use-case is covered in this tutorial
+* By default every OpenStack project will get a single group which contains all the users which have access to the project. The group management is currently handled by SysEleven 
 
-### Note on group ACLs 
-
-By default every OpenStack project will get a single group which contains all the users which have access to the project. The group management is currently handled by SysEleven 
-
-If you need specific groups for setting up your desired ACLs please feel free to contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
-
-### Note on ACL grant/revoke by username
-
-Setting ACLs for specific users may not work if the username is not POSIX compliant (e.g. the username is a mail address). If you need a change of usernames in order to setup your desired ACLs please contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+If you need specific groups or users for setting up your desired ACLs please feel free to contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
 
 ## References
 
