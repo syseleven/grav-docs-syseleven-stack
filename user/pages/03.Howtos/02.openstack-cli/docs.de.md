@@ -59,7 +59,7 @@ Alternativ kann eine ["virtuelle Umgebung" mit `virtualenv`](#virtualenv) auch f
 Nachdem wir `PIP` installiert haben, brauchen wir nun nur noch den OpenStack Client und die empfohlenen Plugins mit folgendem Befehl zu installieren, um mit den entsprechenden OpenStack APIs kommunizieren zu können:
 
 ```shell
-sudo -H pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-barbicanclient
+sudo -H pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
 ```
 
 ---
@@ -84,7 +84,7 @@ C:\Python27\Scripts>easy_install pip
 Nachdem wir `PIP` installiert haben, brauchen wir nun nur noch den OpenStack Client und die empfohlenen Plugins mit folgendem Befehl zu installieren, um mit den entsprechenden OpenStack APIs kommunizieren zu können:
 
 ```batch
-C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-barbicanclient
+C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
 ```
 
 ---
@@ -114,7 +114,7 @@ Bei Abhängigkeitsproblemen kann alternativ eine ["virtuelle Umgebung" mit `virt
 Nachdem wir `PIP` installiert haben, brauchen wir nun nur noch den OpenStack Client und die empfohlenen Plugins mit folgendem Befehl zu installieren, um mit den entsprechenden OpenStack APIs kommunizieren zu können:
 
 ```shell
-pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-barbicanclient
+pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
 ```
 
 ---
@@ -147,7 +147,6 @@ Benötigte Plugins für den OpenStack (automatisch als Abhängigkeit von python-
 * keystone - Identity API
 * nova - Compute API
 * cinder - Block Storage Volume API
-* glance - Image API
 
 Empfohlene Plugins für den SysEleven Stack (ausdrücklich zusätzlich installiert):
 
@@ -155,12 +154,13 @@ Empfohlene Plugins für den SysEleven Stack (ausdrücklich zusätzlich installie
 * neutron - Network API
 * designate - Domain Name Service API
 * octavia - Load Balancer API
+* glance - Image API (je nach Version teilweise auch automatisch)
 * barbican - Key Manager API
 
 Die empfohlenen Plugins können dann wie folgt installiert werden:
 
 ```shell
-pip install python-heatclient python-neutronclient python-designateclient python-octaviaclient python-barbicanclient
+pip install python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
 ```
 
 ---
