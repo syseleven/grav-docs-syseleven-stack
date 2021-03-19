@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-SysEleven provides and maintains a set of images in the SysEleven Stack. As soon as vendors publish new images, we will verify their origin, test them and publish them automatically. We don't do any changes in vendor images, to keep checksums intact. That allows our customers to validate image origin if needed.
+SysEleven provides and maintains a set of images in the SysEleven Stack. As soon as vendors publish new images, we will verify their origin, test them and publish them automatically. We don't make any changes in vendor images, to keep checksums intact. That allows our customers to validate image origin if needed.
 
 You can view and manage images both via the OpenStack API and CLI, as well as using the [Dashboard (GUI)](https://dashboard.cloud.syseleven.net).
 
@@ -74,13 +74,9 @@ data "openstack_images_image_v2" "ubuntu-focal" {
 
 ### Known issues with public images
 
-- Official Debian Buster OpenStack image may have a bug in `ifupdown` configuration. After initial boot, eth0 interface
-  will be configured with both DHCP and static cloud-init configuration. Since both will try to assign the same IP
-  address to eth0, `RTNETLINK answers: File exists` error will be produced, resulting `networking.service` systemd unit
-  in errored state. This will block DHCP client from refreshing lease after 24 hours. Solution is to remove dynamic eth0
-  configuration from `/etc/network/interfaces`, or to remove static configuration written by cloud-init from
-  `/etc/network/interfaces.d`. After this change, restart of `systemd-networkd` systemd unit, or restart of virtual
-  machine is required.
+- The official Debian Buster OpenStack image may have a bug in the `ifupdown` configuration.
+  After the initial boot, the eth0 interface will be configured with both DHCP and static cloud-init configuration. Since both will try to assign the same IP address to eth0, `RTNETLINK answers: File exists` errors will be produced, with the result that the `networking.service` systemd unit goes into error state. This will block the DHCP client from refreshing the lease after 24 hours.
+  A solution is to remove the dynamic eth0 configuration from `/etc/network/interfaces`, or to remove the static configuration written by cloud-init from `/etc/network/interfaces.d`. After this change, a restart of the `systemd-networkd` systemd unit, or a restart of the virtual machine is required.
 
 ## Uploading images
 
@@ -100,7 +96,7 @@ CentOS 8                  | `https://cloud.centos.org/centos/8/x86_64/images/` |
 CentOS 8 Stream           | `https://cloud.centos.org/centos/8-stream/x86_64/images/` |
 Flatcar Stable            | `https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_openstack_image.img.bz2` |
 
-!!! The Flatcar image must be decompressed before uploading
+!!! The Flatcar image must be decompressed before uploading:
 !!! `bunzip2 flatcar_production_openstack_image.img.bz2`
 
 ### How to upload images?

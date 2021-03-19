@@ -34,6 +34,7 @@ You can manage networking objects both via our [public OpenStack API endpoints](
 | Metering support                        | no | no
 | Quality of service (QoS)                | no | no
 | Service function chaining (SFC)         | no | no
+| Port Trunking                           | no | no
 | IPv6                                    | no | no
 
 ### Basic networking

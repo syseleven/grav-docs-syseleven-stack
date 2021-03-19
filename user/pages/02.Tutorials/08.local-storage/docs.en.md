@@ -45,7 +45,7 @@ You have now created a very basic server with its ephemeral storage on local ssd
 ### Use another tutorial or heat-example
 
 You can use any other tutorial or heat-example and modify it to use local ssd storage instead of distributed storage.
-That does not always make sense, since not all workload profit from local ssd storage but it is in principle possible.
+That does not always make sense, since not all workloads profit from local ssd storage, but it is in principle possible.
 Just follow the instructions to the point right before `openstack stack create` gets executed.
 Edit the stack file(s) and substitute the `m1.*` flavor with the correspondig `l1.*` flavor.
 If you then continue to create the stack, the server(s) will be created using local ssd storage as ephemeral storage.

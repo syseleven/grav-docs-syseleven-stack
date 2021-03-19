@@ -47,7 +47,7 @@ Cloud-init is designed to work with the Metadata service and make it more useful
 
 Operating system vendors like Ubuntu, CentOS, CoreOS, etc. offer official "cloud-images" with cloud-init preinstalled. All [public images we offer](../../04.Reference/06.images/docs.en.md) have cloud-init preinstalled.
 
-For a more detailed overview of all of the cloud-init functionality, please refer to the [official cliud-init documentation](https://cloudinit.readthedocs.io/en/latest/).
+For a more detailed overview of all of the cloud-init functionality, please refer to the [official cloud-init documentation](https://cloudinit.readthedocs.io/en/latest/).
 
 ### Server provisioning
 
