@@ -144,8 +144,6 @@ As the bucket ACL is limiting access on the bucket to the owner himself, any obj
 
 * 2) Narrow down default full control ACL to the owner itself and allow other project members readonly access.
 
-This use-case can not be implemented using s3cmd:
-
 ```python
 s3client.create_bucket(Bucket="project-scope-readonly-bucket",GrantFullControl="ID=u:user.name.of.bucket.owner/project-id", GrantRead="ID=project-id")
 s3client.put_object(Body="only visible and writeable by owner",Bucket="project-scope-readonly-bucket",Key="owner-scope-object.txt",GrantFullControl="ID=u:user.name.of.bucket.owner/project-id")
@@ -154,6 +152,26 @@ s3client.put_object(Body="only-readable-by-all-project-members",Bucket="project-
 ```
 
 The `owner-scope-object.txt` object is only visible and read/writeable for the owner. The `project-scope-object.txt` object will be read/writeable for all project members as the ACLs for this object were not further narrowed down. The `project-scope-readonly-object.txt` object will be readable (readonly) for all project members.
+
+To achieve the same ACLs using s3cmd, it would look like the following :
+
+```shell
+# Create the bucket
+s3cmd -c <your-s3-config> mb s3://project-scope-readonly-bucket
+# Narrow down default full_control ACL
+s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket
+# Create and narrow down ACLs for owner scope object
+s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/owner-scope-object.txt
+s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/owner-scope-object.txt
+s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-group-name>/<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/owner-scope-object.txt
+# Create default object
+s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/project-scope-object.txt
+# Create and narrow down ACLs for project readonly object
+s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
+s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
+s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-group-name>/<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
+--acl-grant=read:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
+```
 
 ##### group scope
 
