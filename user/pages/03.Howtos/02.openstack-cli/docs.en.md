@@ -25,7 +25,7 @@ This How-to serves as manual on how to install the OpenStack CLI (Command Line I
 *In this manual we expect that you haven't installed any of the required tools.
 If you already installed any of the tools, please skip that specific step.*
 
-! **Required OpenStack client version to work with the SysEleven Cloud**
+! **Required OpenStack client version to work with the SysEleven Stack**
 ! OpenStack client version 3.13.x is the minimum to work with multiple regions. Please make sure to install the latest stable version.
 
 ---
@@ -56,17 +56,10 @@ Alternatively running a ["virtual environment" with `virtualenv`](#virtualenv) a
 
 ### OpenStack Client
 
-After the installation of `PIP` finished, we need to install the OpenStack CLI client and required plugins, to be able to communicate with the corresponding OpenStack API:
+After the installation of `PIP` finished, we need to install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
 
 ```shell
-sudo -H pip install \
-    python-openstackclient \
-    python-barbicanclient \
-    python-designateclient \
-    python-glanceclient \
-    python-heatclient \
-    python-neutronclient \
-    python-octaviaclient
+sudo -H pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
 ```
 
 ---
@@ -88,15 +81,11 @@ C:\Python27\Scripts>easy_install pip
 
 ### OpenStack Client
 
-After the installation of `PIP` finished, we need to install the OpenStack CLI as last step:
+After the installation of `PIP` finished, we need to install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
 
 ```batch
-C:\Python27\Scripts>pip install python-openstackclient python-barbicanclient python-designateclient python-glanceclient python-heatclient python-neutronclient python-octaviaclient
+C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
 ```
-
-### OpenStack Plugins
-
-After that [install the required plugins](#installation-of-more-plugins) to be able to talk to the corresponding OpenStack APIs.
 
 ---
 
@@ -122,10 +111,10 @@ apt install -q -y python-minimal python-pip
 
 If there are dependency errors alternatively running a ["virtual environment" with `virtualenv`](#virtualenv) also works, to have a separate environment for the OpenStack Client.
 
-After the installation of `PIP` finished, we need to install the OpenStack CLI client and required plugins, to be able to communicate with the corresponding OpenStack API:
+After the installation of `PIP` finished, we need to install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
 
 ```shell
-pip install python-openstackclient python-heatclient python-neutronclient python-designateclient
+pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
 ```
 
 ---
@@ -153,17 +142,26 @@ One has the possibility to install plugins. Place the corresponding plugin name 
 pip install python-<PLUGINNAME>client
 ```
 
-Installing the heat plugin:
+Required plugins for OpenStack (automatically installed as dependencies of python-openstackclient):
 
-```shell
-pip install python-heatclient
-```
+* keystone - Identity API
+* nova - Compute API
+* cinder - Block Storage Volume API
 
-Required plugins for the SysEleven Stack:
+Recommended plugins for the SysEleven Stack (explicitly installed):
 
 * heat - Orchestration API
 * neutron - Network API
-* designate - DNS API
+* designate - Domain Name Service API
+* octavia - Load Balancer API
+* glance - Image API (sometimes automatically depending on version)
+* barbican - Key Manager API
+
+Installing the recommended plugins:
+
+```shell
+pip install python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
+```
 
 ---
 

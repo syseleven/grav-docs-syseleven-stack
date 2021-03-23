@@ -25,8 +25,8 @@ Dieses How-to dient als Anleitung für die Installation der OpenStack CLI (Befeh
 *In dieser Anleitung gehen wir davon aus, dass bisher nichts von den benötigten Programmen installiert wurde.
 Für den Fall das bereits Bestandteile installiert sind, überspringe den jeweiligen Punkt.*
 
-! **Benötigte OpenStack Client Version die mit der SysEleven Cloud kompatibel ist**
-! OpenStack Client Version 3.13.x ist die minimale Version um mit mehreren Regionen arbeiten zu können. Bitte sicherstellen dass die neueste stabile Version installiert ist.
+! **Benötigte OpenStack Client Version die mit dem SysEleven Stack kompatibel ist**
+! OpenStack Client Version 3.13.x ist die minimale Version um mit mehreren Regionen arbeiten zu können. Bitte sicherstellen, dass die neueste stabile Version installiert ist.
 
 ---
 
@@ -56,10 +56,10 @@ Alternativ kann eine ["virtuelle Umgebung" mit `virtualenv`](#virtualenv) auch f
 
 ### OpenStack Client
 
-Nachdem wir `PIP` installiert haben, brauchen wir nun nur noch den OpenStack Client und Plugins mit folgendem Befehl zu installieren, um mit den entsprechenden OpenStack APIs kommunizieren zu können:
+Nachdem wir `PIP` installiert haben, brauchen wir nun nur noch den OpenStack Client und die empfohlenen Plugins mit folgendem Befehl zu installieren, um mit den entsprechenden OpenStack APIs kommunizieren zu können:
 
 ```shell
-pip install python-openstackclient python-heatclient python-neutronclient python-designateclient
+sudo -H pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
 ```
 
 ---
@@ -81,15 +81,11 @@ C:\Python27\Scripts>easy_install pip
 
 ### OpenStack Client
 
-Nachdem nun `PIP` installiert ist, brauchen wir als letzten Schritt nur noch die OpenStack CLI zu installieren:
+Nachdem wir `PIP` installiert haben, brauchen wir nun nur noch den OpenStack Client und die empfohlenen Plugins mit folgendem Befehl zu installieren, um mit den entsprechenden OpenStack APIs kommunizieren zu können:
 
 ```batch
-C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient python-designateclientt
+C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
 ```
-
-### OpenStack Plugins
-
-[Installiere anschließend die benötigten Plugins](#plugins-installieren), um mit den entsprechenden OpenStack APIs kommunizieren zu können.
 
 ---
 
@@ -115,10 +111,10 @@ apt install -q -y python-minimal python-pip
 
 Bei Abhängigkeitsproblemen kann alternativ eine ["virtuelle Umgebung" mit `virtualenv`](#virtualenv) auch funktionieren, um eine seperate Umgebung für den OpenStack Client zu nutzen.
 
-Nachdem wir `PIP` installiert haben, brauchen wir nun nur noch den OpenStack Client und Plugins mit folgendem Befehl zu installieren, um mit den entsprechenden OpenStack APIs kommunizieren zu können:
+Nachdem wir `PIP` installiert haben, brauchen wir nun nur noch den OpenStack Client und die empfohlenen Plugins mit folgendem Befehl zu installieren, um mit den entsprechenden OpenStack APIs kommunizieren zu können:
 
 ```shell
-sudo -H pip install python-openstackclient python-heatclient python-neutronclient
+pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
 ```
 
 ---
@@ -140,22 +136,32 @@ openstack --help
 
 ### Plugins installieren
 
-Es besteht die Möglichkeit Plugins zu installieren. Dafür fügt man in den nachfolgenden Befehl einfach das entsprechende Plugin ein:
+Es besteht die Möglichkeit, Plugins zu installieren. Dafür fügt man in den nachfolgenden Befehl einfach das entsprechende Plugin ein:
 
 ```shell
 pip install python-<PLUGINNAME>client
 ```
 
-Plugins können dann wie folgt installiert werden:
+Benötigte Plugins für den OpenStack (automatisch als Abhängigkeit von python-openstackclient installiert):
 
-```shell
-pip install python-heatclient
-```
+* keystone - Identity API
+* nova - Compute API
+* cinder - Block Storage Volume API
 
-Benötigte Plugins für den SysEleven Stack:
+Empfohlene Plugins für den SysEleven Stack (ausdrücklich zusätzlich installiert):
 
 * heat - Orchestration API
 * neutron - Network API
+* designate - Domain Name Service API
+* octavia - Load Balancer API
+* glance - Image API (je nach Version teilweise auch automatisch)
+* barbican - Key Manager API
+
+Die empfohlenen Plugins können dann wie folgt installiert werden:
+
+```shell
+pip install python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
+```
 
 ---
 
@@ -198,4 +204,3 @@ Wenn wir nun etwas installieren, landen die installierten Programme im Projektor
 ```shell
 deactivate
 ```
-
