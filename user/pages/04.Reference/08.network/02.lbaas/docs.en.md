@@ -171,3 +171,7 @@ failover-small | Active/Standby | m1c.small | Load balancer is implemented in tw
 standalone-tiny | Stand-alone   | m1c.tiny  | Load balancer is implemented in a single stand-alone virtual machine
 
 The default load balancer flavor is `failover-small` which offers more performance and failure resilience. You may choose `standalone-small` instead for development setups to save some resources when failure resilience is not the top priority.
+
+### Connection Limit
+
+By default the Octavia load balancers are configured with a connection limit of 50000. You may set a different limit in the configuration of the listener.
