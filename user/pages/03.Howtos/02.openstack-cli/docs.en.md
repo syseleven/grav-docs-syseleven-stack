@@ -9,18 +9,18 @@ taxonomy:
 
 ## Overview
 
-This How-to serves as manual on how to install the OpenStack CLI (Command Line Interface). With the OpenStack CLI you can manage and monitor your Stacks.
+This How-to serves as manual on how to install the OpenStack CLI (Command Line Interface). With the OpenStack CLI you can manage and monitor your stacks.
 
 ## Goal
 
-* Install latest OpenStack-Command line Client and required plugins
+* Install latest OpenStack command line client and required plugins
 
 ## Prerequisites
 
 * PC/MAC
 * Admin rights
 * Basic computer skills
-* We assume you know how to utilise SSH and SSH-keys.
+* We assume you know how to utilise SSH and SSH keys.
 
 *In this manual we expect that you haven't installed any of the required tools.
 If you already installed any of the tools, please skip that specific step.*
@@ -28,96 +28,92 @@ If you already installed any of the tools, please skip that specific step.*
 ! **Required OpenStack client version to work with the SysEleven Stack**
 ! OpenStack client version 3.13.x is the minimum to work with multiple regions. Please make sure to install the latest stable version.
 
+## Python and virtual environment
+
+We recommend to use Python 3 and install the OpenStack client into a python virtual environment.
+Even though you could install the OpenStack client system-wide, we will describe the procedure to install it in a [virtual environment](https://docs.python.org/3/tutorial/venv.html) instead. A virtual environment has the advantage to not collide with dependencies other projects may have on your system.
+
 ---
 
-## Installation for MAC
+## Python installation
+
+### MAC
+
+You may need to install a different Python 3 than the one provided by Apple's XCode tools. At the time of writing this there were problems installing certain python modules if you use Apple's python3. You could install Python 3 using the installer available on python.org or install it from Homebrew.
 
 First open `Terminal` or if installed [iTerm2](https://www.iterm2.com/).
 
-### PIP
-
-To install the required packages, we use [PIP](https://en.wikipedia.org/wiki/Pip_(package_manager)) as package manager.
-
-We install `PIP`with the following command:
+To install python3 from Homebrew:
 
 ```shell
-sudo easy_install pip
+brew install python3
 ```
 
-### Python dependencies
+### Red Hat Enterprise Linux, CentOS or Fedora
 
-To work around an OSX issue run the following command:
+Install python3 and some essential build tools which might be needed when you install the openstack client later.
 
 ```shell
-sudo -H pip install --ignore-installed six pyparsing pyOpenSSL
+sudo yum install python3 python3-devel gcc
 ```
 
-Alternatively running a ["virtual environment" with `virtualenv`](#virtualenv) also works, to have a separate environment for the OpenStack Client.
+### Ubuntu or Debian
 
-### OpenStack Client
-
-After the installation of `PIP` finished, we need to install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
+Install python3 and some essential build tools which might be needed when you install the openstack client later.
 
 ```shell
-sudo -H pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
+sudo apt install -q -y python3-minimal python3-venv python3-dev build-essential
 ```
+
+### Windows
+
+Install Python 3 using the installer available for download on [python.org](https://www.python.org/downloads/).
+After the installation is finished, open the command prompt (cmd) and check that the `python` (or `python3`) command opens a python prompt. Exit the prompt with Ctrl+Z and Enter.
 
 ---
 
-## Installation for Windows
+## Virtualenv
 
-### Python
+Create a virtual environment called "env", which will create a subdirectory "env". Activate the virtual environment and upgrade `pip` in it.
 
-To be able to use the OpenStack Client on Windows we first need [Python 2.7](https://www.python.org/downloads/release/python-2712/).
-After the installation is finished, we open our command prompt and ensure that we're in the following directory: `C:\Python27\Scripts`
+### MAC or Linux
 
-### PIP
+```shell
+python3 -m venv env
+source env/bin/activate
+pip install --upgrade pip
+```
 
-Now we use the `easy_install` command to install [PIP](https://en.wikipedia.org/wiki/Pip_(package_manager)) as package manager:
+### Windows
 
 ```batch
-C:\Python27\Scripts>easy_install pip
-```
-
-### OpenStack Client
-
-After the installation of `PIP` finished, we need to install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
-
-```batch
-C:\Python27\Scripts>pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
+python -m venv env
+env\Scripts\activate.bat
+pip install --upgrade pip
 ```
 
 ---
 
-## Installation for Linux
+## OpenStack Client
 
-### PIP
-
-To install the required packages, we use [PIP](https://en.wikipedia.org/wiki/Pip_(package_manager)) as package manager.
-
-#### Red Hat Enterprise Linux, CentOS or Fedora
+Install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
 
 ```shell
-yum install python-minimal python-pip
+pip install python-openstackclient python-barbicanclient python-cinderclient python-designateclient python-glanceclient python-heatclient python-neutronclient python-novaclient python-octaviaclient
 ```
 
-#### Ubuntu or Debian
+The command above will install the general OpenStack client and the plugins for the following OpenStack APIs:
 
-```shell
-apt install -q -y python-minimal python-pip
-```
+* barbican - Key Manager API
+* cinder - Block Storage Volume API
+* designate - Domain Name Service API
+* glance - Image API
+* heat - Orchestration API
+* neutron - Network API
+* nova - Compute API
+* octavia - Load Balancer API
 
-### OpenStack Client
-
-If there are dependency errors alternatively running a ["virtual environment" with `virtualenv`](#virtualenv) also works, to have a separate environment for the OpenStack Client.
-
-After the installation of `PIP` finished, we need to install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
-
-```shell
-pip install python-openstackclient python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
-```
-
----
+On Windows the installation may fail because of missing development tools. Follow the instructions you see on your screen to install those.
 
 ## Conclusion
 
@@ -128,79 +124,4 @@ If needed you can list all commands:
 
 ```shell
 openstack --help
-```
-
----
-
-## Additional information
-
-### Installation of more plugins
-
-One has the possibility to install plugins. Place the corresponding plugin name into the following command:
-
-```shell
-pip install python-<PLUGINNAME>client
-```
-
-Required plugins for OpenStack (automatically installed as dependencies of python-openstackclient):
-
-* keystone - Identity API
-* nova - Compute API
-* cinder - Block Storage Volume API
-
-Recommended plugins for the SysEleven Stack (explicitly installed):
-
-* heat - Orchestration API
-* neutron - Network API
-* designate - Domain Name Service API
-* octavia - Load Balancer API
-* glance - Image API (sometimes automatically depending on version)
-* barbican - Key Manager API
-
-Installing the recommended plugins:
-
-```shell
-pip install python-heatclient python-neutronclient python-designateclient python-octaviaclient python-glanceclient python-barbicanclient
-```
-
----
-
-### Virtualenv
-
-***If the OpenStack Client was installed successfully already, this is not required.***
-
-[Virtualenv](https://virtualenv.pypa.io) provides a virtual environment to avoid problems with dependencies and other programs when installing the OpenStack Client. This manual applies for MAC and Linux systems.
-
-Install `virtualenv` with the following command:
-
-```shell
-pip install virtualenv
-```
-
-Now create a project folder e.g. `myproject` into which we create a `virtualenv`:
-
-```shell
-cd myproject/
-virtualenv venv
-```
-
-If required `virtualenv` can inherit global installed packages (e.g IPython or Numpy). Use the following command to configure this:
-
-```shell
-virtualenv venv --system-site-packages
-```
-
-These commands create a virtual subfolder within the project folder into which everything is being installed. However one has to activate the folder first (within the terminal that we use to work on the project):
-
-```shell
-source myproject/venv/bin/activate
-```
-
-Now we should see `(venv)` at the beginning of our terminal prompt, that confirms that we are working within a `virtualenv`.
-If we install something now the installed programs end up within our project folders and do not create any conflics with other projects.
-
-*To exit the virutal environment we use:*
-
-```shell
-deactivate
 ```
