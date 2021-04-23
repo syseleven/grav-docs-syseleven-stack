@@ -175,3 +175,7 @@ The default load balancer flavor is `failover-small` which offers more performan
 ### Connection Limit
 
 By default the Octavia load balancers are configured with a connection limit of 50000. You may set a different limit in the configuration of the listener.
+
+### Topology limits
+
+The total number of members (backends) across all pools of a load balancer is limited to 300.
