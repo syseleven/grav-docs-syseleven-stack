@@ -32,7 +32,7 @@ If you forgot your password, please contact the [Cloud-Support at cloudsupport@s
 
 ### Token
 
-When you authenticate using a token, it is not necessary anymore to provide username and password. Tokens are valid for only 24 hours.
+When you authenticate using a token, it is not necessary anymore to provide username and password. Tokens are valid for only one hour.
 
 The OpenStack CLI allows you to create tokens with the command `openstack token issue`. It can also be manually revoked using `openstack token revoke`. For more information how to get started with the OpenStack CLI, have a look at the [API access tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 
