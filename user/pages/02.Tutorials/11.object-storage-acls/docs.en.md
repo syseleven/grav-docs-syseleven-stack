@@ -96,7 +96,7 @@ It can be set using the already known s3cmd command with an additional flag:
 ```shell
 echo "everyone out there can read me" > test.txt
 s3cmd -c <your-s3-config> mb s3://public-scope-bucket -P
-s3cmd -c <your-s3-config> put test.txt s3://public-scope-bucket/public-file.txt
+s3cmd -c <your-s3-config> put test.txt s3://public-scope-bucket/public-file.txt -P
 ```
 
 Or using the boto3 library:
@@ -127,7 +127,7 @@ Narrow down ACLs on specific OpenStack users
 Scheme : `u:<user-name>/<project-ID>`
 
 !! **Be aware**
-!! For the user scope ACLs to work, your username unfortunately has to be POSIX compliant. If you have a username containing unsupported characters (e.g. `@` from a mail address as it was our default until March 2021) please get into contact with our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+!! For the user scope ACLs to work, your username unfortunately has to be POSIX compliant. If you have a username containing unsupported characters (e.g. `@` from a mail address) please get into contact with our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
 
 examples :
 
