@@ -179,7 +179,7 @@ To upload our first objects we may use following commands:
 
 ```python
 bucket = "myBucket"
-s3client.put_object(Body="secret",Bucket=bucket,Key="private-scope-object")
+s3client.put_object(Body="secret", Bucket=bucket, Key="private-scope-object")
 ```
 
 Boto3 also supports defining ACLs for your buckets and objects. To learn more take a look on our [ACL guide in the Tutorials section](../../02.Tutorials/11.object-storage-acls/docs.en.md).
