@@ -87,7 +87,7 @@ Great! We successfully created our first bucket and object using the default `pr
 
 ### Predefined ACLs
 
-If you do not need complex ACLs and just want to create a bucket which contents can be read/writeable from everyone with access to your OpenStack project or you plan to create a public readable bucket you are fine with using predefined ACLs.
+If you do not need complex ACLs and just want to create a bucket whose contents can be read/writeable from everyone with access to your OpenStack project or you plan to create a public readable bucket you are fine with using predefined ACLs.
 
 In the step before we already used such a predefined ACL. In this case it was the default `private` ACL. Another predefined ACL which may be suitable for your use-case is the `public-read` ACL.
 
