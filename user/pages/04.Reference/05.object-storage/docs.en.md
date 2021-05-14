@@ -25,7 +25,7 @@ multipart upload                 | yes       |
 bucket listing                   | yes       |
 input compression                | yes       |
 request signature authentication | yes       |
-bucket/object ACL                | yes*      |
+bucket/object ACL                | partially*|
 predefined ACL groups            | yes       |
 bucket/IAM user ACP              | no        |
 object versions                  | no        |
