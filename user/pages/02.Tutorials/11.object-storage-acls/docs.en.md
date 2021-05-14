@@ -76,7 +76,7 @@ s3cmd -c <your-s3-config> mb s3://project-scope-bucket
 s3cmd -c <your-s3-config> put test.txt s3://project-scope-bucket/project-scope-object.txt
 ```
 
-And using the boto3 library with our previous created python s3client.
+And using the boto3 library with our previously-created python s3client.
 
 ```python
 s3client.create_bucket(Bucket="project-scope-bucket")
