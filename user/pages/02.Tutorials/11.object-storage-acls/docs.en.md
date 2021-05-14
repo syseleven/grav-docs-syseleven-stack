@@ -127,7 +127,7 @@ Narrow down ACLs on specific OpenStack users
 Scheme: `u:<user-name>/<project-ID>`
 
 !! **Be aware**
-!! For the user scope ACLs to work, your username unfortunately has to be POSIX compliant. If you have a username containing unsupported characters (e.g. `@` from a mail address) please get into contact with our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+!! For the user scope ACLs to work, your username unfortunately has to be POSIX compliant. If you have a username containing unsupported characters (e.g. `@` from a mail address) please contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
 
 Examples:
 
