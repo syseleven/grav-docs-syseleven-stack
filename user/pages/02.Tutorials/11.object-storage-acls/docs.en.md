@@ -118,7 +118,7 @@ To setup a more fine grained control on who can access which buckets or objects 
 * write-acp -> grants rights to modify ACLs
 * full-control -> grants all rights : read + write + read-acp + write-acp
 
-We will take a look at the different schemes how and where we can use these values in the folowing sections.
+We will take a look at the different schemes how and where we can use these values in the following sections.
 
 ##### User scope
 
