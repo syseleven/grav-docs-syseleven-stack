@@ -183,7 +183,7 @@ Scheme: `g:<group-name>/<project-ID>`
 !! **Be aware**
 !! By default every OpenStack project has one group which contains all users with access to the project. Users currently are not able to see their group memberships. Please get into contact with our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md) if you need a list of your projects group names.
 
-example :
+Example:
 
 * 1) Allow one group to have full control and a second group to only read access
 
