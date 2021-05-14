@@ -174,7 +174,7 @@ s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-gro
 --acl-grant=read:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
 ```
 
-##### group scope
+##### Group scope
 
 Set ACLs for specific OpenStack groups
 
