@@ -110,7 +110,7 @@ There are further predefined ACLs (called canned ACLs in AWS) which may or may n
 
 ### Custom ACLs
 
-To setup a more fine grained control on who can access which buckets or objects we have to define our own ACLs. S3cmd as well as the boto3 python library support setting ACLs on bucket and object level. We can narrow down ACLs for user names, group names and project IDs to specific values:
+To set up a more fine grained control on who can access which buckets or objects we have to define our own ACLs. S3cmd as well as the boto3 python library support setting ACLs on bucket and object level. We can narrow down ACLs for user names, group names and project IDs to specific values:
 
 * write -> grants rights to modify/delete resources
 * read -> grants rights to read/list resources
