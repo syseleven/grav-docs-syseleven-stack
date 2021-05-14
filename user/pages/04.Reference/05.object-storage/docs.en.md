@@ -157,7 +157,7 @@ s3 = session.resource(
    endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
    )
 # Get our client
-s3client=s3.meta.client
+s3client = s3.meta.client
 ```
 
 For (re)creating a bucket we can use following snippet:
