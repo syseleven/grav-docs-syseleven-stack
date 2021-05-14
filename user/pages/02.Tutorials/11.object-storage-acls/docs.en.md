@@ -66,7 +66,7 @@ In the following sections we will take a look at different scenarios for using A
 
 ### Create buckets/objects 
 
-Using the S3 client s3cmd or the S3 python library boto3 we can create buckets and objects. By default these buckets and objects will be read/writeable by all your OpenStack project members (to be more specific, the buckets created without defining any ACL will be accessable for all users who have created ec2 credentials for the underlying OpenStack project).
+Using the S3 client s3cmd or the S3 python library boto3 we can create buckets and objects. By default these buckets and objects will be read/writeable by all your OpenStack project members (to be more specific, the buckets created without defining any ACL will be accessible for all users who have created ec2 credentials for the underlying OpenStack project).
 
 To do so with s3cmd:
 
