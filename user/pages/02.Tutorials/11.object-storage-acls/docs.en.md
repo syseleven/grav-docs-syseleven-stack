@@ -131,7 +131,7 @@ Scheme: `u:<user-name>/<project-ID>`
 
 Examples:
 
-* 1) Narrow down full control ACL to the owner itself so it will be a isolated private bucket for the bucket owner.
+* 1) Narrow down full control ACL to the owner itself so it will be an isolated private bucket for the bucket owner.
 
 This use-case cannot be implemented using s3cmd. Our tests show it fails to revoke group read access on the bucket.
 
