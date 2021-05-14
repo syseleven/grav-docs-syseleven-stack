@@ -154,7 +154,7 @@ s3client.put_object(Body="only-readable-by-all-project-members", Bucket="project
 
 The `owner-scope-object.txt` object is only visible and read/writeable for the owner. The `project-scope-object.txt` object will be read/writeable for all project members as the ACLs for this object were not further narrowed down. The `project-scope-readonly-object.txt` object will be readable (readonly) for all project members.
 
-To achieve the same ACLs using s3cmd, it would look like the following :
+To achieve the same ACLs using s3cmd, it would look like the following:
 
 ```shell
 # Create the bucket
