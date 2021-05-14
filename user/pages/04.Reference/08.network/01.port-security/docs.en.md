@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-OpenStack uses ports to connect cloud instances to networks and corresponding (virtual) network devices like routers, firewalls.
+OpenStack uses ports to connect cloud instances to networks and corresponding (virtual) network devices like routers.
 By default SysEleven Stack port security will be enforced, which means that:
 
 * Incoming traffic that does not originate from your project is not allowed (the default security group)
