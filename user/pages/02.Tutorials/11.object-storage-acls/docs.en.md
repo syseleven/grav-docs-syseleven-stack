@@ -191,7 +191,7 @@ This use-case cannot be fully implemented using s3cmd. Our tests show it fails t
 
 ```python
 s3client.create_bucket(Bucket="group-scope-readwrite-bucket", GrantFullControl="ID=g:group.name.one/<your-OpenStack-project-ID>", GrantRead="ID=g:group.name.two/<your-OpenStack-project-ID>")
-s3client.put_object(Body="writeable by group one, readable by group two ",Bucket="group-scope-readwrite-bucket",Key="group-scope-readwrite-object.txt",GrantFullControl="ID=g:group.name.one/<your-OpenStack-project-ID>",GrantRead="ID=g:group.name.two/<your-OpenStack-project-ID>")
+s3client.put_object(Body="writeable by group one, readable by group two ", Bucket="group-scope-readwrite-bucket", Key="group-scope-readwrite-object.txt", GrantFullControl="ID=g:group.name.one/<your-OpenStack-project-ID>", GrantRead="ID=g:group.name.two/<your-OpenStack-project-ID>")
 s3client.put_object(Body="writeable by group one, invisible to group two ",Bucket="group-scope-readwrite-bucket",Key="group-scope-group-one-object.txt",GrantFullControl="ID=g:group.name.one/<your-OpenStack-project-ID>")
 ```
 
