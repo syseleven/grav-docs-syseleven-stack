@@ -166,7 +166,7 @@ For (re)creating a bucket we can use following snippet:
 bucket = "myBucket"
 try:
     s3client.create_bucket(Bucket=bucket)
-except:
+except Exception:
     print("There was a problem creating the bucket '{}', it may have already existed".format(bucket))
     oldbucket = s3.Bucket(bucket)
     # Cleanup remaining objects in bucket
