@@ -149,7 +149,7 @@ As the bucket ACL is limiting access on the bucket to the owner himself, any obj
 s3client.create_bucket(Bucket="project-scope-readonly-bucket", GrantFullControl="ID=u:user.name.of.bucket.owner/<your-OpenStack-project-ID>", GrantRead="ID=<your-OpenStack-project-ID>")
 s3client.put_object(Body="only visible and writeable by owner", Bucket="project-scope-readonly-bucket", Key="owner-scope-object.txt", GrantFullControl="ID=u:user.name.of.bucket.owner/<your-OpenStack-project-ID>")
 s3client.put_object(Body="read-writeable-by-all-project-members", Bucket="project-scope-readonly-bucket", Key="project-scope-object.txt")
-s3client.put_object(Body="only-readable-by-all-project-members",Bucket="project-scope-readonly-bucket",Key="project-scope-readonly-object.txt",GrantRead="ID=<your-OpenStack-project-ID>")
+s3client.put_object(Body="only-readable-by-all-project-members", Bucket="project-scope-readonly-bucket", Key="project-scope-readonly-object.txt", GrantRead="ID=<your-OpenStack-project-ID>")
 ```
 
 The `owner-scope-object.txt` object is only visible and read/writeable for the owner. The `project-scope-object.txt` object will be read/writeable for all project members as the ACLs for this object were not further narrowed down. The `project-scope-readonly-object.txt` object will be readable (readonly) for all project members.
