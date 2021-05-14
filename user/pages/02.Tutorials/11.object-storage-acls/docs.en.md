@@ -57,7 +57,7 @@ s3 = session.resource(
    aws_secret_access_key = "my-secret-key",
    endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
    #endpoint_url = 'https://s3.cbk.cloud.syseleven.net'
-   )
+)
 # Get our client
 s3client=s3.meta.client
 ```
