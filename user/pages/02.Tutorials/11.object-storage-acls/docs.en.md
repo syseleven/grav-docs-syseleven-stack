@@ -178,7 +178,7 @@ s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-gro
 
 Set ACLs for specific OpenStack groups
 
-Scheme : `g:<group-name>/<project-ID>`
+Scheme: `g:<group-name>/<project-ID>`
 
 !! **Be aware**
 !! By default every OpenStack project has one group which contains all users with access to the project. Users currently are not able to see their group memberships. Please get into contact with our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md) if you need a list of your projects group names.
