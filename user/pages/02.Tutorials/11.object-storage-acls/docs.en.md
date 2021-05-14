@@ -136,7 +136,7 @@ Examples:
 This use-case cannot be implemented using s3cmd. Our tests show it fails to revoke group read access on the bucket.
 
 ```python
-s3client.create_bucket(Bucket="owner-scope-bucket",GrantFullControl="ID=u:user.name.of.bucket.owner/project-id")
+s3client.create_bucket(Bucket="owner-scope-bucket", GrantFullControl="ID=u:user.name.of.bucket.owner/project-id")
 s3client.put_object(Body="only readable by owner",Bucket="owner-scope-bucket",Key="owner-scope-object.txt",GrantFullControl="ID=u:user.name.of.bucket.owner/project-id-")
 s3client.put_object(Body="also only readable by owner",Bucket="owner-scope-bucket",Key="project-scope-object.txt")
 ```
