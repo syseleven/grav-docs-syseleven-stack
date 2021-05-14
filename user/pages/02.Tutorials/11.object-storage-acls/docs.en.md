@@ -59,7 +59,7 @@ s3 = session.resource(
    #endpoint_url = 'https://s3.cbk.cloud.syseleven.net'
 )
 # Get our client
-s3client=s3.meta.client
+s3client = s3.meta.client
 ```
 
 In the following sections we will take a look at different scenarios for using ACLs in our object storage.
