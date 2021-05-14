@@ -83,7 +83,7 @@ s3client.create_bucket(Bucket="project-scope-bucket")
 s3client.put_object(Body="project members can read me", Bucket="project-scope-bucket", Key="project-scope-object.txt")
 ```
 
-Great! We successfully created our first bucket and object using the default `private` ACL. There are other predefined ACLs which we may use and we will take a look on them in the next step.
+Great! We successfully created our first bucket and object using the default `private` ACL. There are other predefined ACLs which we may use and we will take a look at them in the next step.
 
 ### Predefined ACLs
 
