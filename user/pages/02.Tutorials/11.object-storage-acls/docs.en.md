@@ -44,7 +44,7 @@ host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
 #host_bucket = %(bucket).s3.cbk.cloud.syseleven.net
 ```
 
-We can configure a s3client with the boto3 library using following python snippet:
+We can configure an s3 client with the boto3 library using following python snippet:
 
 ```python
 import boto3
