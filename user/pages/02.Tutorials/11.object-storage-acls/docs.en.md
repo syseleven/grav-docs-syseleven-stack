@@ -52,11 +52,11 @@ import botocore
 # Get our session
 session = boto3.session.Session()
 s3 = session.resource(
-   service_name = 's3',
-   aws_access_key_id = "my-access-key",
-   aws_secret_access_key = "my-secret-key",
-   endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
-   #endpoint_url = 'https://s3.cbk.cloud.syseleven.net'
+    service_name = 's3',
+    aws_access_key_id = "my-access-key",
+    aws_secret_access_key = "my-secret-key",
+    endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
+    #endpoint_url = 'https://s3.cbk.cloud.syseleven.net'
 )
 # Get our client
 s3client = s3.meta.client
@@ -87,7 +87,7 @@ Great! We successfully created our first bucket and object using the default `pr
 
 ### Predefined ACLs
 
-If you do not need complex ACLs and just want to create a bucket whose contents can be read/writeable from everyone with access to your OpenStack project or you plan to create a public readable bucket you are fine with using predefined ACLs.
+If you do not need complex ACLs you may be already fine with using predefined ACLs. They cover up usecases such as making a bucket/object read/writeable from everyone with access to your OpenStack project or making a bucket/object public readable.
 
 In the step before we already used such a predefined ACL. In this case it was the default `private` ACL. Another predefined ACL which may be suitable for your use-case is the `public-read` ACL.
 
@@ -170,8 +170,7 @@ s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/projec
 # Create and narrow down ACLs for project readonly object
 s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
 s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
-s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-group-name>/<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
---acl-grant=read:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
+s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-group-name>/<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt --acl-grant=read:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
 ```
 
 ##### Group scope

@@ -151,10 +151,10 @@ import botocore
 # Get our session
 session = boto3.session.Session()
 s3 = session.resource(
-   service_name = 's3',
-   aws_access_key_id = "< REPLACE ME >",
-   aws_secret_access_key = "< REPLACE ME >",
-   endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
+    service_name = 's3',
+    aws_access_key_id = "< REPLACE ME >",
+    aws_secret_access_key = "< REPLACE ME >",
+    endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
 )
 # Get our client
 s3client = s3.meta.client
@@ -165,14 +165,14 @@ For (re)creating a bucket we can use following snippet:
 ```python
 bucket = "myBucket"
 try:
-   s3client.create_bucket(Bucket=bucket)
+    s3client.create_bucket(Bucket=bucket)
 except:
-   print("There was a problem creating the bucket '{}', it may have already existed".format(bucket))
-   oldbucket = s3.Bucket(bucket)
-   # Cleanup remaining objects in bucket
-   oldbucket.objects.all().delete()
-   s3client.delete_bucket(Bucket=bucket)
-   s3client.create_bucket(Bucket=bucket)
+    print("There was a problem creating the bucket '{}', it may have already existed".format(bucket))
+    oldbucket = s3.Bucket(bucket)
+    # Cleanup remaining objects in bucket
+    oldbucket.objects.all().delete()
+    s3client.delete_bucket(Bucket=bucket)
+    s3client.create_bucket(Bucket=bucket)
 ```
 
 To upload our first objects we may use following commands:
