@@ -106,7 +106,7 @@ s3client.create_bucket(Bucket="public-scope-bucket",ACL="public-read")
 s3client.put_object(Body="public-readable", Bucket="public-scope-bucket", Key="public-file.txt", ACL="public-read")
 ```
 
-There are further predefined ACLs (called canned ACLs in AWS) which may and may not be supported by the implementation of our object storage. For more information please have a look at our related [Object Storage reference guide](../../04.Reference/05.object-storage/docs.en.md).
+There are further predefined ACLs (called canned ACLs in AWS) which may or may not be supported by the implementation of our object storage. For more information please have a look at our related [Object Storage reference guide](../../04.Reference/05.object-storage/docs.en.md).
 
 ### Custom ACLs
 
