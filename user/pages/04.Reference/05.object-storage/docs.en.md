@@ -35,7 +35,9 @@ encryption                       | no        |
 access logging                   | no        |
 website hosting configuration    | no        |
 
-Setting bucket/object ACLs is only partially possible and currently unintuitive to use. We are in contact with the software manufacturer to solve this problem. For detailed information feel free to contact our [Cloud Support](../../06.Support/default.en.md).
+We do not offer the complete feature set compared to Amazon S3. Thus we cannot guarantee the same user experience. Certain API calls may fail and receive a `501 Not Implemented` response. If you are in doubt, feel free to contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+
+For setting up bucket/object ACLs we suggest to use [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). Not all predefined (canned) ACLs of [AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html) are supported. We are supporting the following canned ACLs: `private`,`public-read`,`public-read-write`,`authenticated-read`. Not supported canned ACLs will be interpreted as the default `private` ACL. We have prepared a [guide in our Tutorials section](../../02.Tutorials/11.object-storage-acls/docs.en.md) which shows how to set up custom ACLs.
 
 ## Buckets
 
@@ -136,6 +138,52 @@ The correct URL for this object in SysEleven Stack would be:
 where REGION is the SysEleven Stack region (e.g. cbk or dbl).
 
 You can use these URLs to refer to the uploaded files as static assets in your web applications.
+
+### Boto3
+
+Information about the `boto3` python S3 library can be found [here](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). We suggest to make use of this library to set up and manage more complex ACLs.
+
+Using the following python snippet we can configure our client:
+
+```python
+import boto3
+import botocore
+# Get our session
+session = boto3.session.Session()
+s3 = session.resource(
+    service_name = 's3',
+    aws_access_key_id = "< REPLACE ME >",
+    aws_secret_access_key = "< REPLACE ME >",
+    endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
+)
+# Get our client
+s3client = s3.meta.client
+```
+
+For (re)creating a bucket we can use following snippet:
+
+```python
+bucket = "myBucket"
+try:
+    s3client.create_bucket(Bucket=bucket)
+except Exception:
+    print("There was a problem creating the bucket '{}', it may have already existed".format(bucket))
+    oldbucket = s3.Bucket(bucket)
+    # Cleanup remaining objects in bucket
+    oldbucket.objects.all().delete()
+    s3client.delete_bucket(Bucket=bucket)
+    s3client.create_bucket(Bucket=bucket)
+```
+
+To upload our first objects we may use following commands:
+
+```python
+bucket = "myBucket"
+s3client.put_object(Body="secret", Bucket=bucket, Key="private-scope-object")
+```
+
+Boto3 also supports defining ACLs for your buckets and objects. To learn more take a look on our [ACL guide in the Tutorials section](../../02.Tutorials/11.object-storage-acls/docs.en.md).
+
 
 ### Minio
 
