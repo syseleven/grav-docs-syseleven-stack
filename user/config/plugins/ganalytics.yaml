@@ -10,3 +10,4 @@ cookieName: _ga
 cookieExpires: 63072000
 debugStatus: false
 debugTrace: false
+blockedIpRanges: ["172.28.0.1-172.28.0.254"]

@@ -150,7 +150,7 @@ Nur wenn die virtuelle Maschine dann mit solch einem Image erstellt wurde, weiß
 
 Snapshots können als Template für neue Instanzen verwendet werden.
 
-[Dieses Heat-Beispiel](https://github.com/syseleven/heat-examples/tree/master/singles-server-from-snapshot) zeigt, wie Snapshots verwendet werden können, um neue Instanzen zu erstellen.
+[Dieses Heat-Beispiel](https://github.com/syseleven/heat-examples/tree/master/single-server-from-snapshot) zeigt, wie Snapshots verwendet werden können, um neue Instanzen zu erstellen.
 
 ---
 

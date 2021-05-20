@@ -42,7 +42,7 @@ For setting up bucket/object ACLs we suggest to use [boto3](https://boto3.amazon
 ## Buckets
 
 Buckets are the logical unit SysEleven Stack Object Storage uses to stores objects.
-Every bucket name is unique within a SysEleven Stack region.
+Every bucket name can only be used once per SysEleven Stack region among all customers. If a desired bucket name is already taken by any customer, you cannot create another bucket with that name. To minimize the risk of collisions, avoid common and short words, combine multiple rare words, prefix them with your company or brand name, add random numbers or hashes (e.g. `syseleven-bucketname-example-7hg3x` instead of `test` is more likely to succeed). If you create buckets automatedly, prepare to retry with a different choice or resort to manual action.
 
 ## Objects
 

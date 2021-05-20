@@ -13,7 +13,7 @@ Using the SysEleven Stack Network service, you can do much more than just access
 
 Servers can access the internet using virtual routers (SNAT). For making servers and load balancers accessible from the internet, we offer a Floating IP service (DNAT).
 
-You can improve security and control isolation by using security groups and by defining firewall rules.
+You can improve security and control isolation by using security groups.
 
 You can manage networking objects both via our [public OpenStack API endpoints](../../02.Tutorials/02.api-access/docs.en.md), as well as using the Dashboard.
 
@@ -24,12 +24,12 @@ You can manage networking objects both via our [public OpenStack API endpoints](
 | Basic networking                        | yes | yes
 | Floating IPs                            | yes | yes
 | Security groups                         | yes | yes
-| Firewall rules (FWaaS)                  | yes | yes
 | IPsec VPN (VPNaaS)                      | yes | yes
 | Customer public IP space (Bring your own IP) | yes | yes
 | L4 Load balancing (TCP) (Neutron-LBaaS) | yes | yes
 | L7 Load balancing (HTTP/HTTPS) (Octavia-LBaaS) | yes | yes
 | Neutron DNS integration and PTR records | yes | yes
+| Firewall rules (FWaaS)                  | no | no
 | Dynamic routing (BGP)                   | no | no
 | Metering support                        | no | no
 | Quality of service (QoS)                | no | no
@@ -78,14 +78,6 @@ The `default` security group will be used if not specified otherwise. It allows 
 ! This is not a security concern, since this range is not routed in Internet and between OpenStack networks.
 ! If you configure an extra layer of security with iptables or other kind of filtering inside a virtual machine itself, please allow ICMP from this range.
 
-### Firewall rules (FWaaS)
-
-Using FWaaS you can enforce rules at network boundaries. *OpenStack Firewalls*  can be associated with routers, which will then enforce the *Firewall rules*.
-
-You can find [example code in our terraform-examples](https://github.com/syseleven/terraform-examples/tree/master/FWaaS) on GitHub.
-
-! We recommend not to block ICMP because path MTU discovery relies on it, to avoid connectivity issues over VPN tunnels.
-
 ### IPsec VPN (VPNaaS)
 
 With VPNaaS you can establish secure site-to-site tunnels from your premises to SysEleven Stack, so you can access cloud resources like if they were part of your network. This feature can also be used to interconnect different regions.
@@ -96,6 +88,8 @@ Currently our VPNaaS implementation supports the following algorithms in both ph
 | -------------- |
 | SHA-1          |
 | SHA-256        |
+| SHA-384        |
+| SHA-512        |
 
 | Encryption     |
 | -------------- |

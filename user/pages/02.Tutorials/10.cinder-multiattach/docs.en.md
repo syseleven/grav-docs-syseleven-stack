@@ -80,7 +80,10 @@ you need to update your openstack client. Working with multi-attach volumes is s
 
 Multi-attach volumes require a [cluster file system](https://en.wikipedia.org/wiki/Clustered_file_system#SHARED-DISK) like OCFS2 or GFS2 to coordinate concurrent file system access.
 
-**Warning: We do not recommend to use a file system like Ext4 or XFS for multi-attach volumes. Concurrent write access will destroy the file system and the data on that volume.**
+!! **Warning**
+!! We do not recommend to use a file system like Ext4 or XFS for multi-attach volumes.
+!! Concurrent write access will destroy the file system and the data on that volume.
+!! Concurrent read access, even with just a single writer, may fail due to caching in the readers.
 
 For this tutorial we use OCFS2.
 To setup OCFS2 we need to install the ocfs2 management tools and kernel modules for the running kernel version on every VM:
