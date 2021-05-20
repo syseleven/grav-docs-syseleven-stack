@@ -49,6 +49,9 @@ Every bucket name can only be used once per SysEleven Stack region among all cus
 Basically, SysEleven Stack Object Storage is a big key/value store.
 A file or file object can be assigned a file name like key, and made available under this key.
 
+!! **Be aware**
+!! Please avoid using a slash `/` as bucket or object name ending. It will cause unwanted side effects such as being undeleteable or unaccessable. In the case you are stuck with such a phenomenon, please contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+
 ## Regions
 
 The SEOS (SysEleven-Object-Storage / S3) is available in every region. The storage systems run independent from each other.
