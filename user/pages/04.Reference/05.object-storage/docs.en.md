@@ -141,7 +141,7 @@ You can use these URLs to refer to the uploaded files as static assets in your w
 
 ### Boto3
 
-Information about the `boto3` python S3 library can be found [here](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). We suggest to make use of this library to setup and manage more complex ACLs.
+Information about the `boto3` python S3 library can be found [here](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). We suggest to make use of this library to set up and manage more complex ACLs.
 
 Using the following python snippet we can configure our client:
 
