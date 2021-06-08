@@ -64,7 +64,7 @@ s3client = s3.meta.client
 
 In the following sections we will take a look at different scenarios for using ACLs in our object storage.
 
-### Create buckets/objects 
+### Create buckets/objects
 
 Using the S3 client s3cmd or the S3 python library boto3 we can create buckets and objects. By default these buckets and objects will be read/writeable by all your OpenStack project members (to be more specific, the buckets created without defining any ACL will be accessible for all users who have created ec2 credentials for the underlying OpenStack project).
 
@@ -120,7 +120,7 @@ To set up a more fine grained control on who can access which buckets or objects
 
 We will take a look at the different schemes how and where we can use these values in the following sections.
 
-##### User scope
+#### User scope
 
 Narrow down ACLs on specific OpenStack users
 
@@ -173,7 +173,7 @@ s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-proje
 s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-group-name>/<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt --acl-grant=read:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
 ```
 
-##### Group scope
+#### Group scope
 
 Set ACLs for specific OpenStack groups
 
@@ -215,7 +215,7 @@ s3cmd -c <your-s3-config> setacl --acl-grant=read:g:<group-name-with-readonly-ac
 * The owner of a bucket/object will always keep full control (read/write) access.
 * If you grant write permission to an entity (project/group/user) on bucket level, the entity will inherit write permissions on objects inside of the bucket even if the ACLs of the objects state otherwise.
 * Not every possible use-case is covered in this tutorial
-* By default every OpenStack project will get a single group which contains all the users which have access to the project. The group management is currently handled by SysEleven 
+* By default every OpenStack project will get a single group which contains all the users which have access to the project. The group management is currently handled by SysEleven
 
 If you need specific groups or users for setting up your desired ACLs please feel free to contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
 

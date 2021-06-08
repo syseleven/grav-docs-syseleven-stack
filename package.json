@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "lint": "markdownlint -c .markdownlint.json -r node_modules/markdownlint-rules-grav-pages/rules/ pages/"
+    "lint": "markdownlint -c .markdownlint.json -r node_modules/markdownlint-rules-grav-pages/rules/ user/pages/"
   },
   "devDependencies": {
     "markdownlint-cli": "0.27.1",

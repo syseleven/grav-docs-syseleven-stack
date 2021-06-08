@@ -31,8 +31,8 @@ M1 Tiny     |  m1.tiny    |  4GiB   |   1   |   50GiB   |
 M1 Small    |  m1.small   |  8GiB   |   2   |   50GiB   |
 M1 Medium   |  m1.medium  | 16GiB   |   4   |   50GiB   |
 M1 Large    |  m1.large   | 32GiB   |   8   |   50GiB   |
-(M1 XLarge**)   |  (m1.xlarge)** | 64GiB   |   16   |   50GiB   |
-(M1 XXLarge**)  |  (m1.xxlarge)** | 128GiB|   32   |   50GiB   |
+(M1 XLarge\*\*)   |  (m1.xlarge)\*\* | 64GiB   |   16   |   50GiB   |
+(M1 XXLarge\*\*)  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   |
 
 #### CPU-Optimiert
 
@@ -43,7 +43,7 @@ M1 CPU Small    |  m1c.small   |  4GiB   |   2   |   50GiB   |
 M1 CPU Medium   |  m1c.medium  | 8GiB    |   4   |   50GiB   |
 M1 CPU Large    |  m1c.large   | 16GiB   |   8   |   50GiB   |
 M1 CPU XLarge   |  m1c.xlarge  | 32GiB   |   16   |   50GiB   |
-(M1 CPU XXLarge)** |  (m1c.xxlarge)** | 64GiB   |   32   |   50GiB   |
+(M1 CPU XXLarge)\*\* |  (m1c.xxlarge)\*\* | 64GiB   |   32   |   50GiB   |
 
 #### RAM-Optimiert
 
@@ -52,13 +52,13 @@ Name            | API Name     | Memory | vCPUs | Storage* |
 M1 RAM Tiny     |  m1r.tiny    |  8GiB   |   1   |   50GiB   |
 M1 RAM Small    |  m1r.small   | 16GiB   |   2   |   50GiB   |
 M1 RAM Medium   |  m1r.medium  | 32GiB   |   4   |   50GiB   |
-(M1 RAM Large)**  |  m1r.large | 64GiB   |   8   |   50GiB   |
-(M1 RAM XLarge)** |  m1r.xlarge| 128GiB  |   16   |   50GiB   |
+(M1 RAM Large)\*\*  |  (m1r.large)\*\* | 64GiB   |   8   |   50GiB   |
+(M1 RAM XLarge)\*\* |  (m1r.xlarge)\*\* | 128GiB  |   16   |   50GiB   |
 
 (*)
 Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.en.md) ergänzt werden.
 
-(**)
+(\*\*)
 Nur auf Anfrage erhältlich
 
 ### Local SSD Storage Instanz-Typen (L1)
