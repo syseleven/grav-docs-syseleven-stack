@@ -25,9 +25,9 @@ The DNS service is shared between all regions. You will need to choose a region 
 | Zone transfer to different projects     | yes            | yes
 | Secondary Zones                         | yes            | yes
 | Zone Import / Export                    | yes            | yes
-| PTR records for Floating IPs            | yes*           | yes*
+| PTR records for Floating IPs            | yes\*           | yes\*
 
-*Using the Neutron DNS integration (more information in the section <a href="#ptr-records-for-floating-ips">PTR records for Floating IPs</a>)
+\*Using the Neutron DNS integration (more information in the section <a href="#ptr-records-for-floating-ips">PTR records for Floating IPs</a>)
 
 ### Manage zones and recordsets
 

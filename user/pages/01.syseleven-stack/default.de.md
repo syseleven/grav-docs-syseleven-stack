@@ -32,7 +32,8 @@ Auf dem Einstieg aufbauend stellt SysEleven eine [Bibliothek an Heat-Templates](
 
 ## Support
 
-Als der Hersteller des [SysEleven Stacks](https://dashboard.cloud.syseleven.net/) bieten wir **kostenlosen Support** für unsere Cloud-Kunden.  
+Als Anbieter des [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/)s bieten wir unseren Cloud-Kunden umfangreichen Produktsupport.
+Darüberhinausgehender Support und Beratung sind je nach Support Plan ebenfalls verfügbar, müssen jedoch unter Umständen kostenpflichtig beauftragt werden.
 Weitere Informationen finden Sie auf unserer [Support Seite](../06.Support/default.de.md).
 
 ## Beiträge editieren

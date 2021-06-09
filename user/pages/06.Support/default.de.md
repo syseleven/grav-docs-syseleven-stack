@@ -5,7 +5,9 @@ page-toc:
     active: false
 ---
 
-Als der Hersteller des [SysEleven Stacks](https://www.syseleven.de/produkte-services/syseleven-stack/) bieten wir **kostenlosen Support** für unsere Cloud-Kunden. Wir freuen uns Ihnen behilflich zu sein.
+Als Anbieter des [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/)s bieten wir unseren Cloud-Kunden umfangreichen Produktsupport.
+Darüberhinausgehender Support und Beratung sind je nach Support Plan ebenfalls verfügbar, müssen jedoch unter Umständen kostenpflichtig beauftragt werden.
+Wir freuen uns, Ihnen behilflich zu sein.
 
 ## Support kontaktieren
 
