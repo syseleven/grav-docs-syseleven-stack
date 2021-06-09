@@ -16,7 +16,7 @@ Diese Anleitung dient dazu, Sie in die Lage zu versetzen, Local SSD Storage anst
 ## Voraussetzungen
 
 * Sie sollten in der Lage sein, einfache Heat-Templates zu verwenden, wie in [Erste Schritte](../01.firststeps/docs.en.md) gezeigt.
-* Sie sollten die Grundlagen der [OpenStack-Kommandozeilenwerkzeuge](../../03.Howtos/02.openstack-cli/docs.de.md) kennen.
+* Sie sollten die Grundlagen der [OpenStack-Kommandozeilenwerkzeuge](../../03.Howtos/02.openstack-cli/docs.en.md) kennen.
 * Umgebungsvariablen werden gesetzt, wie im [API-Zugriff-Einrichten](../02.api-access/docs.en.md) gezeigt.
 
 ## Wie man eine Instanz mit Local SSD Storage erzeugt
