@@ -181,7 +181,7 @@ Configuration parameter  | Value
 timeout-client-data      | 50000ms
 timeout-member-connect   | 5000ms
 timeout-member-data      | 50000ms
-connection-limit         | 50000 
+connection-limit         | 50000
 -------------------------|--------
 
 You may set different timeouts or limits in the configuration of the listener.
