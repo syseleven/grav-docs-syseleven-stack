@@ -60,7 +60,7 @@ M1 RAM Medium   |  m1r.medium  | 32GiB   |   4   |   50GiB   |
 You can extend ephemeral storage using our durable [Block Storage Service](../04.block-storage/docs.en.md).
 
 (\*\*)
-Only available upon request
+Only available upon request. We would first like to get in touch with you to clarify expectations and implications when using these flavors.
 
 ### Local SSD storage instance types (L1)
 

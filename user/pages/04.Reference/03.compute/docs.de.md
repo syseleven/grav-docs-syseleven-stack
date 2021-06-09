@@ -59,7 +59,7 @@ M1 RAM Medium   |  m1r.medium  | 32GiB   |   4   |   50GiB   |
 Der kurzlebige Festspeicher kann durch unseren ebenfalls verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.en.md) ergänzt werden.
 
 (\*\*)
-Nur auf Anfrage erhältlich
+Nur auf Anfrage erhältlich. Im Vorfeld würden wir gerne die Erwartungen und Implikationen klären, welche mit der Benutzung dieser Flavors einhergehen.
 
 ### Local SSD Storage Instanz-Typen (L1)
 
