@@ -31,8 +31,8 @@ On top of the documentation, SysEleven provides a [library of heat templates](ht
 
 ## Support
 
-As provider of the [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) we provide you with extensive product support without extra charges.
-Additional Support that can be booked may be subject to charge.
+As provider of the [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) we provide you with extensive product support.
+Additional support and consulting are also available depending on your support plan but may be subject to extra charge.
 For further information please check our [support page](../06.Support/default.en.md).
 
 ## Edit articles
