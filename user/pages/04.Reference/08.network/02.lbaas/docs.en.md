@@ -184,7 +184,7 @@ timeout-member-data      | 50000ms
 connection-limit         | 50000 
 -------------------------|--------
 
-You may set a different limit in the configuration of the listener.
+You may set different timeouts or limits in the configuration of the listener.
 
 ### Topology limits
 
