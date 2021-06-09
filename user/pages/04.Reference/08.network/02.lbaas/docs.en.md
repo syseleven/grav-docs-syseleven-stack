@@ -172,9 +172,19 @@ standalone-tiny | Stand-alone   | m1c.tiny  | Load balancer is implemented in a 
 
 The default load balancer flavor is `failover-small` which offers more performance and failure resilience. You may choose `standalone-small` instead for development setups to save some resources when failure resilience is not the top priority.
 
-### Connection Limit
+### Default timeouts and connection limits
 
-By default the Octavia load balancers are configured with a connection limit of 50000. You may set a different limit in the configuration of the listener.
+The Octavia load balancer have following default timeout and connection limits set :
+
+Configuration parameter  | Value
+-------------------------|--------
+timeout-client-data      | 50000ms
+timeout-member-connect   | 5000ms
+timeout-member-data      | 50000ms
+connection-limit         | 50000 
+-------------------------|--------
+
+You may set a different limit in the configuration of the listener.
 
 ### Topology limits
 
