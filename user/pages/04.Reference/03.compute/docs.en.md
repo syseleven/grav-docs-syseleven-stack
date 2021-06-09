@@ -32,8 +32,8 @@ M1 Tiny     |  m1.tiny    |  4GiB   |   1   |   50GiB   |
 M1 Small    |  m1.small   |  8GiB   |   2   |   50GiB   |
 M1 Medium   |  m1.medium  | 16GiB   |   4   |   50GiB   |
 M1 Large    |  m1.large   | 32GiB   |   8   |   50GiB   |
-(M1 XLarge\*\*)   |  (m1.xlarge)\*\* | 64GiB   |   16   |   50GiB   |
-(M1 XXLarge\*\*)  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   |
+(M1 XLarge)\*\*   |  (m1.xlarge)\*\* | 64GiB   |   16   |   50GiB   |
+(M1 XXLarge)\*\*  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   |
 
 #### CPU optimized
 
