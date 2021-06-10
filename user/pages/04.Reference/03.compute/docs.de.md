@@ -92,7 +92,7 @@ L1 CPU Medium | l1c.medium   |   8GiB  |   4   |  100GiB   |
 L1 CPU Large    | l1c.large    |  16GiB  |   8   |  200GiB   |
 L1 CPU XLarge   | l1c.xlarge   |  32GiB  |  16   |  400GiB   |
 L1 CPU 2XLarge  | l1c.2xlarge  |  64GiB  |  32   |  800GiB   |
-L1 CPU 4XLarge  | l1c.4xlarge  | 128GiB  |  64   | 1600GiB   |
+(L1 CPU 4XLarge)\*\*  | (l1c.4xlarge)\*\*  | 128GiB  |  64   | 1600GiB   |
 
 #### RAM-Optimiert
 
@@ -102,13 +102,16 @@ L1 RAM Tiny   | l1r.tiny     |   8GiB  |   1   |   25GiB   |
 L1 RAM Small  | l1r.small    |  16GiB  |   2   |   50GiB   |
 L1 RAM Medium | l1r.medium   |  32GiB  |   4   |  100GiB   |
 L1 RAM Large    | l1r.large  |  64GiB  |   8   |  200GiB   |
-L1 RAM XLarge   | l1r.xlarge | 128GiB  |  16   |  400GiB   |
-L1 RAM 2XLarge  | l1r.2xlarge| 256GiB  |  32   |  800GiB   |
+(L1 RAM XLarge)\*\*   | (l1r.xlarge)\*\*  | 128GiB  |  16   |  400GiB   |
+(L1 RAM 2XLarge)\*\*  | (l1r.2xlarge)\*\* | 256GiB  |  32   |  800GiB   |
 
 
 (*)
 Der lokal angeschlossene Festspeicher kann ebenfalls durch unseren verteilten, langlebigen [Block-Speicher](../04.block-storage/docs.en.md) ergänzt werden,
 [um weniger latenzkritische Daten dort zu speichern](../../05.Background/02.local-storage/docs.de.md#kann-local-ssd-storage-mit-distributed-storage-kombiniert-werden).
+
+(\*\*)
+Nur auf Anfrage erhältlich. Im Vorfeld würden wir gerne die Erwartungen und Implikationen klären, welche mit der Benutzung dieser Flavors einhergehen.
 
 ## Flavor wechseln (resizing)
 

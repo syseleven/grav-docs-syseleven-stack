@@ -93,7 +93,7 @@ L1 CPU Medium | l1c.medium   |   8GiB  |   4   |  100GiB   |
 L1 CPU Large    | l1c.large    |  16GiB  |   8   |  200GiB   |
 L1 CPU XLarge   | l1c.xlarge   |  32GiB  |  16   |  400GiB   |
 L1 CPU 2XLarge  | l1c.2xlarge  |  64GiB  |  32   |  800GiB   |
-L1 CPU 4XLarge  | l1c.4xlarge  | 128GiB  |  64   | 1600GiB   |
+(L1 CPU 4XLarge)\*\*  | (l1c.4xlarge)\*\*  | 128GiB  |  64   | 1600GiB   |
 
 #### RAM optimized
 
@@ -103,12 +103,15 @@ L1 RAM Tiny   | l1r.tiny     |   8GiB  |   1   |   25GiB   |
 L1 RAM Small  | l1r.small    |  16GiB  |   2   |   50GiB   |
 L1 RAM Medium | l1r.medium   |  32GiB  |   4   |  100GiB   |
 L1 RAM Large    | l1r.large  |  64GiB  |   8   |  200GiB   |
-L1 RAM XLarge   | l1r.xlarge | 128GiB  |  16   |  400GiB   |
-L1 RAM 2XLarge  | l1r.2xlarge| 256GiB  |  32   |  800GiB   |
+(L1 RAM XLarge)\*\*   | (l1r.xlarge)\*\*  | 128GiB  |  16   |  400GiB   |
+(L1 RAM 2XLarge)\*\*  | (l1r.2xlarge)\*\* | 256GiB  |  32   |  800GiB   |
 
 (*)
 You can extend local ephemeral storage using our distributed [Block Storage Service](../04.block-storage/docs.en.md),
 [to place less latency critical data on it](../../05.Background/02.local-storage/docs.en.md#can-i-combine-local-ssd-storage-with-distributed-storage).
+
+(\*\*)
+Only available upon request. We would first like to get in touch with you to clarify expectations and implications when using these flavors.
 
 ## Flavor change (resizing)
 
