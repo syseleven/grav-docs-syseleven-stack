@@ -50,7 +50,7 @@ Basically, SysEleven Stack Object Storage is a big key/value store.
 A file or file object can be assigned a file name like key, and made available under this key.
 
 !! **Be aware**
-!! Please avoid using a slash `/` as bucket or object name ending. It will cause unwanted side effects such as being undeleteable or unaccessable. In the case you are stuck with such a phenomenon, please contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+!! We recommend to avoid using a slash (`/`) as bucket or object name ending. The object storage emulates folders and in consequence may interpret objects as buckets which causes unwanted side effects such as objcets/buckets being undeleteable or unaccessable. In the case you are stuck with such a phenomenon, please contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
 
 ## Regions
 
