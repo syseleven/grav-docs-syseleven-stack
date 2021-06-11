@@ -5,7 +5,9 @@ page-toc:
     active: false
 ---
 
-As the vendor of the [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) we provide **free support** to our customers. We are happy to assist you.
+As provider of the [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) we provide you with extensive product support.
+Additional support and consulting are also available depending on your support plan but may be subject to extra charge.
+We are happy to assist you.
 
 ## Contact Support
 

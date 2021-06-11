@@ -31,7 +31,9 @@ On top of the documentation, SysEleven provides a [library of heat templates](ht
 
 ## Support
 
-As the vendor of the [SysEleven Stack](https://dashboard.cloud.syseleven.net/) we provide **free support** to our customers. For further information please check our [support page](../06.Support/default.en.md).
+As provider of the [SysEleven Stack](https://www.syseleven.de/produkte-services/syseleven-stack/) we provide you with extensive product support.
+Additional support and consulting are also available depending on your support plan but may be subject to extra charge.
+For further information please check our [support page](../06.Support/default.en.md).
 
 ## Edit articles
 
