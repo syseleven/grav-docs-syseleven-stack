@@ -51,7 +51,7 @@ source openrc
 
 </details>
 
-## Erstellen eines Snapshots der defekten Instanz
+## Erstellen und herunterladen eines Snapshots der defekten Instanz
 
 Um die Daten herunterladen zu können muss ein Snapshot erstellt werden.
 

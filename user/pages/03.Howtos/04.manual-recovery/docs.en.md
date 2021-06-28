@@ -51,7 +51,7 @@ source openrc
 
 </details>
 
-## Create a snapshot
+## Create and download a snapshot
 
 To recover data from an existing instance, we have to create a snapshot first.
 
