@@ -12,17 +12,84 @@ taxonomy:
 
 This Document will show you the essential steps to repartition your VM disk. For this purpose we are using an Ubuntu 18.04 server as example with the `m1c.tiny` [flavor](../../04.Reference/03.compute/docs.en.md).
 
-We strongly recommend to use the automatic approach but for instructional use we are also covering the manual process here.
-
+We strongly recommend to use the automatic approaches but for instructional use we are also covering the manual process here.
 
 ### Prerequisites
 
 * You need to have the login data for the SysEleven Stack API (user name and passphrase)
 * Knowledge how to utilise a terminal/SSH and SSH-keys.
 
-### Automatically configure partitions
+### Example 1 : (Automatically) configure partitions at boot
 
-By default [cloudinit](https://cloudinit.readthedocs.io/en/latest/) will grow your VM image partition size to the complete size of the ephemeral disk (which is defined by the flavor you used for your VM). To avoid this behavior and use the spare space for a new partition we will use following snippet :
+By default [cloudinit](https://cloudinit.readthedocs.io/en/latest/) will grow your VM image partition size to the complete size of the ephemeral disk (which is defined by the flavor you used for your VM).
+
+```shell
+#cloud-config
+bootcmd:
+  - [cloud-init-per, once, addpartition, sgdisk, /dev/vda, "-e", "-n=0:10G:0", -t, "0:8300"]
+  - [cloud-init-per, once, addpartition, sgdisk, /dev/vda, "-e", "-n=10G:50G:0", -t, "0:8300"]
+runcmd:
+  # reload partition table
+  - "sudo partprobe /dev/vda"
+  # configure new partition
+  - "mkfs.ext4 /dev/vda2"
+  - "e2label /dev/vda2 DATA"
+  - "mkdir -p /mnt/disks/data"
+  - "mount -t ext4 /dev/vda2 /mnt/disks/data"
+  - "echo LABEL=DATA /mnt/disks/data ext4 defaults 0 0 | sudo tee -a /etc/fstab"
+```
+
+This snippet was written and tested for a Ubuntu 18.04 VM with a 50GiB ephemeral disk. It will only allow the growing of the main partition until it reached 10 GiB and create a new partition with the remaining space (40 GiB).
+
+Using the OpenStack dashboard to start your VM you may provide this snippet in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
+
+The different hex codes for partition types can be found in gdisk : 
+(So you might also use this approach to setup a LVM)
+
+```shell
+Hex code or GUID (L to show codes, Enter = 8300): L
+0700 Microsoft basic data  0c01 Microsoft reserved    2700 Windows RE
+3000 ONIE boot             3001 ONIE config           3900 Plan 9
+4100 PowerPC PReP boot     4200 Windows LDM data      4201 Windows LDM metadata
+4202 Windows Storage Spac  7501 IBM GPFS              7f00 ChromeOS kernel
+7f01 ChromeOS root         7f02 ChromeOS reserved     8200 Linux swap
+8300 Linux filesystem      8301 Linux reserved        8302 Linux /home
+8303 Linux x86 root (/)    8304 Linux x86-64 root (/  8305 Linux ARM64 root (/)
+8306 Linux /srv            8307 Linux ARM32 root (/)  8400 Intel Rapid Start
+8e00 Linux LVM             a000 Android bootloader    a001 Android bootloader 2
+a002 Android boot          a003 Android recovery      a004 Android misc
+a005 Android metadata      a006 Android system        a007 Android cache
+a008 Android data          a009 Android persistent    a00a Android factory
+a00b Android fastboot/ter  a00c Android OEM           a500 FreeBSD disklabel
+a501 FreeBSD boot          a502 FreeBSD swap          a503 FreeBSD UFS
+a504 FreeBSD ZFS           a505 FreeBSD Vinum/RAID    a580 Midnight BSD data
+a581 Midnight BSD boot     a582 Midnight BSD swap     a583 Midnight BSD UFS
+a584 Midnight BSD ZFS      a585 Midnight BSD Vinum    a600 OpenBSD disklabel
+a800 Apple UFS             a901 NetBSD swap           a902 NetBSD FFS
+a903 NetBSD LFS            a904 NetBSD concatenated   a905 NetBSD encrypted
+a906 NetBSD RAID           ab00 Recovery HD           af00 Apple HFS/HFS+
+af01 Apple RAID            af02 Apple RAID offline    af03 Apple label
+```
+
+Inside of the provisioned VM you may see the following :
+
+```shell
+ubuntu@partition-test:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            984M     0  984M   0% /dev
+tmpfs           200M  644K  199M   1% /run
+/dev/vda1       9.6G  1.1G  8.5G  12% /
+tmpfs           997M     0  997M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           997M     0  997M   0% /sys/fs/cgroup
+/dev/vda15      105M  6.6M   98M   7% /boot/efi
+/dev/vda2        40G   49M   38G   1% /mnt/disks/data
+tmpfs           200M     0  200M   0% /run/user/1000
+```
+
+### Example 2 : (Automatically) reconfigure partitions after boot
+
+We may also repartition the disk after boot. Following snippet will avoid growing the ephemeral disk and use the spare space for creating new partitions :
 
 ```shell
 #cloud-config
@@ -46,7 +113,7 @@ runcmd:
 - "resize2fs /dev/vda1"
 ```
 
-This snippet was written for a Ubuntu 18.04 VM with a 50GiB ephemeral disk. It will resize the main partition to 10 GiB and create 2 new partitions (10 GiB and 30 GiB), create an ext-4 filesystem and mount them.
+This snippet was written and tested for a Ubuntu 18.04 VM with a 50GiB ephemeral disk. It will resize the main partition to 10 GiB and create 2 new partitions (10 GiB and 30 GiB), create an ext-4 filesystem and mount them.
 
 Using the OpenStack dashboard to start your VM you may provide this snippet in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
 
@@ -67,7 +134,7 @@ tmpfs           997M     0  997M   0% /sys/fs/cgroup
 tmpfs           200M     0  200M   0% /run/user/1000
 ```
 
-### Manually configure partitions
+### Example 2 : (Manually) configure partitions
 
 In contrast to the automatic disk partioning, we will do the steps by hand which would be needed to create a new partition. All we need to do is to tell [cloudinit](https://cloudinit.readthedocs.io/en/latest/) via user-data to not grow the initial VM image partition.
 
