@@ -43,7 +43,7 @@ This snippet was written and tested for a Ubuntu 18.04 VM with a 50GiB ephemeral
 
 Using the OpenStack dashboard to start your VM you may provide this snippet in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
 
-The different hex codes for partition types can be found in gdisk : 
+The different hex codes for partition types can be found in gdisk :
 (So you might also use this approach to setup a LVM)
 
 ```shell
