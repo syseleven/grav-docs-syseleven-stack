@@ -25,7 +25,7 @@ For a quick start to evaluate or just play with local ssd storage, please see ou
 
 ### When should I better not use local SSD storage?
 
-Traditional single server setups often suffer from performance penalty when run on distributed storage. While it may be tempting to build them on local storage to gain speed, we discourage to use is this way because of the lower redundancy and availability. To put it into simple words, you put your service and your data at risk, when running a single server setup on local storage.
+Traditional single server setups often suffer from performance penalty when run on distributed storage. While it may be tempting to build them on local storage to gain speed, we discourage to use it this way because of the lower redundancy and availability. To put it into simple words, you put your service and your data at risk, when running a single server setup on local storage.
 
 ### What can I do to make my setup suitable for local SSD storage?
 
