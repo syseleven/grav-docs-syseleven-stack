@@ -134,7 +134,7 @@ tmpfs           997M     0  997M   0% /sys/fs/cgroup
 tmpfs           200M     0  200M   0% /run/user/1000
 ```
 
-### Example 2 : (Manually) configure partitions
+### Example 3 : (Manually) configure partitions
 
 In contrast to the automatic disk partioning, we will do the steps by hand which would be needed to create a new partition. All we need to do is to tell [cloudinit](https://cloudinit.readthedocs.io/en/latest/) via user-data to not grow the initial VM image partition.
 
