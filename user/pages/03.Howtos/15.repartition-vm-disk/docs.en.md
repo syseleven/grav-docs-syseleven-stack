@@ -19,124 +19,17 @@ We strongly recommend to use the automatic approaches but for instructional use 
 * You need to have the login data for the SysEleven Stack API (user name and passphrase)
 * Knowledge how to utilise a terminal/SSH and SSH-keys.
 
-### Example 1 : (Automatically) configure partitions at boot
+### Examples
 
-By default [cloudinit](https://cloudinit.readthedocs.io/en/latest/) will grow your VM image partition size to the complete size of the ephemeral disk (which is defined by the flavor you used for your VM).
+By default [cloudinit](https://cloudinit.readthedocs.io/en/latest/) will grow your VM image partition size to the complete size of the ephemeral disk (which is defined by the flavor you used for your VM). To avoid this behaviour we can tell cloudinit to behave differently.
 
-```shell
-#cloud-config
-bootcmd:
-  - [cloud-init-per, once, addpartition, sgdisk, /dev/vda, "-e", "-n=0:10G:0", -t, "0:8300"]
-  - [cloud-init-per, once, addpartition, sgdisk, /dev/vda, "-e", "-n=10G:50G:0", -t, "0:8300"]
-runcmd:
-  # reload partition table
-  - "sudo partprobe /dev/vda"
-  # configure new partition
-  - "mkfs.ext4 /dev/vda2"
-  - "e2label /dev/vda2 DATA"
-  - "mkdir -p /mnt/disks/data"
-  - "mount -t ext4 /dev/vda2 /mnt/disks/data"
-  - "echo LABEL=DATA /mnt/disks/data ext4 defaults 0 0 | sudo tee -a /etc/fstab"
-```
+Using the OpenStack dashboard to start your VM you may provide the cloudinit snippets from the following sections in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
 
-This snippet was written and tested for a Ubuntu 18.04 VM with a 50GiB ephemeral disk. It will only allow the growing of the main partition until it reached 10 GiB and create a new partition with the remaining space (40 GiB).
+The snippets shown in the examples were written and tested for an Ubuntu 18.04 VM with a 50GiB ephemeral disk.
 
-Using the OpenStack dashboard to start your VM you may provide this snippet in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
+#### Example 1 : (Manually) configure partitions
 
-The different hex codes for partition types can be found in gdisk :
-(So you might also use this approach to setup a LVM)
-
-```shell
-Hex code or GUID (L to show codes, Enter = 8300): L
-0700 Microsoft basic data  0c01 Microsoft reserved    2700 Windows RE
-3000 ONIE boot             3001 ONIE config           3900 Plan 9
-4100 PowerPC PReP boot     4200 Windows LDM data      4201 Windows LDM metadata
-4202 Windows Storage Spac  7501 IBM GPFS              7f00 ChromeOS kernel
-7f01 ChromeOS root         7f02 ChromeOS reserved     8200 Linux swap
-8300 Linux filesystem      8301 Linux reserved        8302 Linux /home
-8303 Linux x86 root (/)    8304 Linux x86-64 root (/  8305 Linux ARM64 root (/)
-8306 Linux /srv            8307 Linux ARM32 root (/)  8400 Intel Rapid Start
-8e00 Linux LVM             a000 Android bootloader    a001 Android bootloader 2
-a002 Android boot          a003 Android recovery      a004 Android misc
-a005 Android metadata      a006 Android system        a007 Android cache
-a008 Android data          a009 Android persistent    a00a Android factory
-a00b Android fastboot/ter  a00c Android OEM           a500 FreeBSD disklabel
-a501 FreeBSD boot          a502 FreeBSD swap          a503 FreeBSD UFS
-a504 FreeBSD ZFS           a505 FreeBSD Vinum/RAID    a580 Midnight BSD data
-a581 Midnight BSD boot     a582 Midnight BSD swap     a583 Midnight BSD UFS
-a584 Midnight BSD ZFS      a585 Midnight BSD Vinum    a600 OpenBSD disklabel
-a800 Apple UFS             a901 NetBSD swap           a902 NetBSD FFS
-a903 NetBSD LFS            a904 NetBSD concatenated   a905 NetBSD encrypted
-a906 NetBSD RAID           ab00 Recovery HD           af00 Apple HFS/HFS+
-af01 Apple RAID            af02 Apple RAID offline    af03 Apple label
-```
-
-Inside of the provisioned VM you may see the following :
-
-```shell
-ubuntu@partition-test:~$ df -h
-Filesystem      Size  Used Avail Use% Mounted on
-udev            984M     0  984M   0% /dev
-tmpfs           200M  644K  199M   1% /run
-/dev/vda1       9.6G  1.1G  8.5G  12% /
-tmpfs           997M     0  997M   0% /dev/shm
-tmpfs           5.0M     0  5.0M   0% /run/lock
-tmpfs           997M     0  997M   0% /sys/fs/cgroup
-/dev/vda15      105M  6.6M   98M   7% /boot/efi
-/dev/vda2        40G   49M   38G   1% /mnt/disks/data
-tmpfs           200M     0  200M   0% /run/user/1000
-```
-
-### Example 2 : (Automatically) reconfigure partitions after boot
-
-We may also repartition the disk after boot. Following snippet will avoid growing the ephemeral disk and use the spare space for creating new partitions :
-
-```shell
-#cloud-config
-growpart:
-  mode: off
-runcmd:
-# Parted asks whether to fix /dev/vda to use all available space, we reply "Fix" and continue
-# Resize primary partition to 10GiB
-- "printf 'Fix\n1\nyes\n10GB\n' | parted ---pretend-input-tty /dev/vda resizepart"
-# Prepare partitions
-- "parted -s /dev/vda mkpart DATA ext4 10GB 20GB"
-- "parted -s /dev/vda mkpart DATA ext4 20GB 50GB"
-# Configure new partitions
-- "echo $(parted /dev/vda -s print|grep DATA |awk '/^\ *[0-9]+/{print $1}') > /partition_nums.txt"
-- "for i in $(cat /partition_nums.txt); do mkfs.ext4 /dev/vda${i}; done"
-- "for i in $(cat /partition_nums.txt); do e2label /dev/vda${i} DATA${i}; done"
-- "for i in $(cat /partition_nums.txt); do mkdir -p /mnt/disks/data${i}; done"
-- "for i in $(cat /partition_nums.txt); do mount -t ext4 /dev/vda${i} /mnt/disks/data${i}; done"
-- "for i in $(cat /partition_nums.txt); do echo LABEL=DATA${i} /mnt/disks/data${i} ext4 defaults 0 0 | sudo tee -a /etc/fstab; done"
-# System is not aware of new space on main partition. Needs refresh.
-- "resize2fs /dev/vda1"
-```
-
-This snippet was written and tested for a Ubuntu 18.04 VM with a 50GiB ephemeral disk. It will resize the main partition to 10 GiB and create 2 new partitions (10 GiB and 30 GiB), create an ext-4 filesystem and mount them.
-
-Using the OpenStack dashboard to start your VM you may provide this snippet in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
-
-Inside of the provisioned VM you may see the following :
-
-```shell
-ubuntu@partition-test:~$ df -h
-Filesystem      Size  Used Avail Use% Mounted on
-udev            985M     0  985M   0% /dev
-tmpfs           200M  648K  199M   1% /run
-/dev/vda1       8.9G  1.1G  7.9G  12% /
-tmpfs           997M     0  997M   0% /dev/shm
-tmpfs           5.0M     0  5.0M   0% /run/lock
-tmpfs           997M     0  997M   0% /sys/fs/cgroup
-/dev/vda15      105M  3.6M  101M   4% /boot/efi
-/dev/vda2       9.2G   37M  8.6G   1% /mnt/disks/data2
-/dev/vda3        28G   45M   26G   1% /mnt/disks/data3
-tmpfs           200M     0  200M   0% /run/user/1000
-```
-
-### Example 3 : (Manually) configure partitions
-
-In contrast to the automatic disk partioning, we will do the steps by hand which would be needed to create a new partition. All we need to do is to tell [cloudinit](https://cloudinit.readthedocs.io/en/latest/) via user-data to not grow the initial VM image partition.
+In contrast to the automatic disk partioning (which is shown in the examples below), we will do the steps by hand which would be needed to create a new partition. All we need to do is to tell [cloudinit](https://cloudinit.readthedocs.io/en/latest/) via user-data to not grow the initial VM image partition.
 
 ```shell
 #cloud-config
@@ -146,7 +39,7 @@ growpart:
 
 The following steps will guide you through the process of manually creating a separate partition.
 
-#### Check existing partitions
+##### Check existing partitions
 
 To be able to check the partitions we need to use ssh to connect to the VM. We further need to get root rights. Having done so, we can see the following :
 
@@ -182,7 +75,7 @@ root@partition-test:~#
 
 As we can see, our partitation /dev/vda1 did not grow and got the original size of the image itself. In consequence we have 51,3GB free space, which we may use for our new partition.
 
-#### Create new partition
+##### Create new partition
 
 In order to use the free space, we have to relocate the backup data structures to the end of the disk. We are using [gdisk](https://linux.die.net/man/8/gdisk) in expert mode to do so.
 
@@ -272,7 +165,7 @@ root@partition-test:~# ls /dev | grep vda2
 vda2
 ```
 
-#### Create filesystem on new partition
+##### Create filesystem on new partition
 
 Now that we have our new partition, the next step is to create a filesystem on it. We will go with `ext4` in this example.
 
@@ -315,6 +208,115 @@ root@partition-test:~# blkid /dev/vda2
 echo "UUID=8b1aba77-feb7-4bdb-83e8-35879411059c /mnt ext4 defaults 0 0" >> /etc/fstab
 ```
 
+#### Example 2 : (Automatically) reconfigure partitions after boot
+
+Following snippet will avoid growing the ephemeral disk and use the spare space for creating new partitions :
+
+```shell
+#cloud-config
+growpart:
+  mode: off
+runcmd:
+# Parted asks whether to fix /dev/vda to use all available space, we reply "Fix" and continue
+# Resize primary partition to 10GiB
+- "printf 'Fix\n1\nyes\n10GB\n' | parted ---pretend-input-tty /dev/vda resizepart"
+# Prepare partitions
+- "parted -s /dev/vda mkpart DATA ext4 10GB 20GB"
+- "parted -s /dev/vda mkpart DATA ext4 20GB 50GB"
+# Configure new partitions
+- "echo $(parted /dev/vda -s print|grep DATA |awk '/^\ *[0-9]+/{print $1}') > /partition_nums.txt"
+- "for i in $(cat /partition_nums.txt); do mkfs.ext4 /dev/vda${i}; done"
+- "for i in $(cat /partition_nums.txt); do e2label /dev/vda${i} DATA${i}; done"
+- "for i in $(cat /partition_nums.txt); do mkdir -p /mnt/disks/data${i}; done"
+- "for i in $(cat /partition_nums.txt); do mount -t ext4 /dev/vda${i} /mnt/disks/data${i}; done"
+- "for i in $(cat /partition_nums.txt); do echo LABEL=DATA${i} /mnt/disks/data${i} ext4 defaults 0 0 | sudo tee -a /etc/fstab; done"
+# System is not aware of new space on main partition. Needs refresh.
+- "resize2fs /dev/vda1"
+```
+
+It will resize the main partition to 10 GiB and create 2 new partitions (10 GiB and 30 GiB), create an ext-4 filesystem and mount them.
+
+After provisioning we may for our new created partitions inside of the VM :
+
+```shell
+ubuntu@partition-test:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            985M     0  985M   0% /dev
+tmpfs           200M  648K  199M   1% /run
+/dev/vda1       8.9G  1.1G  7.9G  12% /
+tmpfs           997M     0  997M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           997M     0  997M   0% /sys/fs/cgroup
+/dev/vda15      105M  3.6M  101M   4% /boot/efi
+/dev/vda2       9.2G   37M  8.6G   1% /mnt/disks/data2
+/dev/vda3        28G   45M   26G   1% /mnt/disks/data3
+tmpfs           200M     0  200M   0% /run/user/1000
+```
+
+#### Example 3 : (Automatically) configure partitions at boot
+
+Following snippet will limit the growing of the ephemeral disk at 10GB and use the spare space for creating another partition :
+
+```shell
+#cloud-config
+bootcmd:
+  - [cloud-init-per, once, addpartition, sgdisk, /dev/vda, "-e", "-n=0:10G:0", -t, "0:8300"]
+  - [cloud-init-per, once, addpartition, sgdisk, /dev/vda, "-e", "-n=10G:50G:0", -t, "0:8300"]
+runcmd:
+  # reload partition table
+  - "sudo partprobe /dev/vda"
+  # configure new partition
+  - "mkfs.ext4 /dev/vda2"
+  - "e2label /dev/vda2 DATA"
+  - "mkdir -p /mnt/disks/data"
+  - "mount -t ext4 /dev/vda2 /mnt/disks/data"
+  - "echo LABEL=DATA /mnt/disks/data ext4 defaults 0 0 | sudo tee -a /etc/fstab"
+```
+
+The different hex codes for partition types can be found in gdisk :
+(So you might also use this approach to setup a LVM)
+
+```shell
+Hex code or GUID (L to show codes, Enter = 8300): L
+0700 Microsoft basic data  0c01 Microsoft reserved    2700 Windows RE
+3000 ONIE boot             3001 ONIE config           3900 Plan 9
+4100 PowerPC PReP boot     4200 Windows LDM data      4201 Windows LDM metadata
+4202 Windows Storage Spac  7501 IBM GPFS              7f00 ChromeOS kernel
+7f01 ChromeOS root         7f02 ChromeOS reserved     8200 Linux swap
+8300 Linux filesystem      8301 Linux reserved        8302 Linux /home
+8303 Linux x86 root (/)    8304 Linux x86-64 root (/  8305 Linux ARM64 root (/)
+8306 Linux /srv            8307 Linux ARM32 root (/)  8400 Intel Rapid Start
+8e00 Linux LVM             a000 Android bootloader    a001 Android bootloader 2
+a002 Android boot          a003 Android recovery      a004 Android misc
+a005 Android metadata      a006 Android system        a007 Android cache
+a008 Android data          a009 Android persistent    a00a Android factory
+a00b Android fastboot/ter  a00c Android OEM           a500 FreeBSD disklabel
+a501 FreeBSD boot          a502 FreeBSD swap          a503 FreeBSD UFS
+a504 FreeBSD ZFS           a505 FreeBSD Vinum/RAID    a580 Midnight BSD data
+a581 Midnight BSD boot     a582 Midnight BSD swap     a583 Midnight BSD UFS
+a584 Midnight BSD ZFS      a585 Midnight BSD Vinum    a600 OpenBSD disklabel
+a800 Apple UFS             a901 NetBSD swap           a902 NetBSD FFS
+a903 NetBSD LFS            a904 NetBSD concatenated   a905 NetBSD encrypted
+a906 NetBSD RAID           ab00 Recovery HD           af00 Apple HFS/HFS+
+af01 Apple RAID            af02 Apple RAID offline    af03 Apple label
+```
+
+After provisioning we may for our new created 40 GB partition inside of the VM :
+
+```shell
+ubuntu@partition-test:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            984M     0  984M   0% /dev
+tmpfs           200M  644K  199M   1% /run
+/dev/vda1       9.6G  1.1G  8.5G  12% /
+tmpfs           997M     0  997M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           997M     0  997M   0% /sys/fs/cgroup
+/dev/vda15      105M  6.6M   98M   7% /boot/efi
+/dev/vda2        40G   49M   38G   1% /mnt/disks/data
+tmpfs           200M     0  200M   0% /run/user/1000
+```
+
 ### Conclusion
 
-We have started a VM using custom user data which prevents the growing of the VM root partition to the complete size of the ephemeral disk. Afterwards we have used the resulting free disk space to create a custom partition. In the end we have created a new ext4 filesystem on the new partition and mounted it so we can use it.
+We have started a VM using custom user data which prevents the growing of the VM root partition to the complete size of the ephemeral disk. The resulting free disk space was used to setup custom partitions on which we created an ext4 filesystem, mounted it and made our changes persistent for reboots.
