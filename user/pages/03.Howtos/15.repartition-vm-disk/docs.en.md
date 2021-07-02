@@ -255,7 +255,7 @@ tmpfs           200M     0  200M   0% /run/user/1000
 
 #### Example 3 : (Automatically) configure partitions at boot
 
-Following snippet will limit the growing of the ephemeral disk at 10GB and use the spare space for creating another partition :
+Following snippet will limit the growing of the ephemeral disk at 10GiB and use the spare space for creating another partition :
 
 ```shell
 #cloud-config
