@@ -301,7 +301,7 @@ a906 NetBSD RAID           ab00 Recovery HD           af00 Apple HFS/HFS+
 af01 Apple RAID            af02 Apple RAID offline    af03 Apple label
 ```
 
-After provisioning we may for our new created 40 GB partition inside of the VM :
+After provisioning we may for our new created 40 GiB partition inside of the VM :
 
 ```shell
 ubuntu@partition-test:~$ df -h
