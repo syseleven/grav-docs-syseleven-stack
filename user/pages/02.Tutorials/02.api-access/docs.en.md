@@ -16,7 +16,7 @@ taxonomy:
 
 * You need to have the login data for the SysEleven Stack API (user name and passphrase).
 * The [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md) are installed in an up-to-date version.
-* Knowledge how to utilise a terminal/SSH and SSH-keys.
+* Knowledge how to utilise a terminal/SSH and [SSH-keys](../../03.Howtos/01.ssh-keys/docs.en.md).
 
 ## Accessing the SysEleven Stack API
 
