@@ -25,7 +25,7 @@ By default [cloudinit](https://cloudinit.readthedocs.io/en/latest/) will grow yo
 
 Using the OpenStack dashboard to start your VM you may provide the cloudinit snippets from the following sections in the `Customization Script` box located in the `Configuration` tab. If you prefer to use the CLI to bring up the VM, you can use the `--user-data` option to provide the cloud-config file containing the snippet.
 
-The snippets shown in the examples were written and tested for an Ubuntu 18.04 VM with a 50GiB ephemeral disk. Be aware when working with instance or volume snapshots that you should take additional care with your already pre-occupied disk space.
+The snippets shown in the examples were written and tested for an Ubuntu 18.04 VM with a 50 GiB ephemeral disk. Be aware when working with instance or volume snapshots that you should take additional care with your already pre-occupied disk space.
 
 #### Example 1 : (Manually) configure partitions
 
@@ -255,7 +255,7 @@ tmpfs           200M     0  200M   0% /run/user/1000
 
 #### Example 3 : (Automatically) configure partitions at boot
 
-Following snippet will limit the growing of the ephemeral disk at 10GiB and use the spare space for creating another partition :
+Following snippet will limit the growing of the ephemeral disk at 10 GiB and use the spare space for creating another partition :
 
 ```shell
 #cloud-config
