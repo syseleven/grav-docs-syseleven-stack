@@ -1,7 +1,7 @@
 ---
 title: 'Install OpenStack CLI'
 published: true
-date: '02-08-2018 17:29'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - howtos
@@ -27,6 +27,17 @@ If you already installed any of the tools, please skip that specific step.*
 
 ! **Required OpenStack client version to work with the SysEleven Stack**
 ! OpenStack client version 3.13.x is the minimum to work with multiple regions. Please make sure to install the latest stable version.
+
+## Snap on Linux
+
+If you are using `snap` on your Linux distro, you only need the following step for installing openstackclient:
+
+
+```shell
+sudo snap install openstackclients
+```
+
+You can now proceed to [conclusion](#conclusion).
 
 ## Python and virtual environment
 

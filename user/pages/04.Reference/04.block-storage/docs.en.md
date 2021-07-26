@@ -1,7 +1,7 @@
 ---
 title: 'Block Storage'
 published: true
-date: '04-29-2020 10:40'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
@@ -36,7 +36,7 @@ The performance of `quobyte-multiattach` is slightly reduced because some cachin
 
 Please refer to our multi-attach volume tutorial. It explains [how to use multi-attach volumes with the cluster file system ocfs2](../../02.Tutorials/10.cinder-multiattach/docs.en.md).
 
-!! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
+!! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and/or file system and data corruption.
 
 ## Available functionality
 
@@ -54,11 +54,7 @@ Please refer to our multi-attach volume tutorial. It explains [how to use multi-
 
 ### Block storage volumes
 
-The OpenStack Cinder service allows end users to manage virtual block storage
-devices. Via a self service API it provides the functionality to create volumes
-for persistent storage and attach them to virtual machines.
-A volume can be moved from one VM to another by detaching it and re-attaching
-it somewhere else. Also you may delete or rebuild a VM without losing its data
+The OpenStack Cinder service allows end users to manage virtual block storage devices. Via a self service API it provides the functionality to create volumes for persistent storage and attach them to virtual machines. A volume can be moved from one VM to another by detaching it and re-attaching it somewhere else. Also you may delete or rebuild a VM without losing its data
 that is kept on a Cinder volume.
 
 Inside the virtual machine the volume will be available as a block device (e.g. on Linux operating systems as `/dev/vdX`). It might be necessary to format the device with the file system of your choice.
@@ -99,7 +95,7 @@ The cinder volume must be detached for the operation to succeed.
 
 When you create a volume with a multi-attach volume type (See <a href="#available-volume-types">available volume types</a>), it is possible to attach it to multiple virtual machines at the same time.
 
-!! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and / or file system and data corruption.
+!! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and/or file system and data corruption.
 
 This is useful, for example, to make app servers more scalable or to reduce single points of failure: If your application relies on a file system to store information, for example pictures, you can use multi-attach volumes to share the file system across a number of app servers, without the need for network storage solutions like NFS.
 

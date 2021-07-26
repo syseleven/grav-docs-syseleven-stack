@@ -1,7 +1,7 @@
 ---
 title: 'Load Balancer as a Service (LBaaS)'
 published: true
-date: '2019-02-28 17:30'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
@@ -14,7 +14,7 @@ The SysEleven Stack offers LBaaS via two different generations of APIs: Neutron 
 !! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
 
 Looking at the API definition both services are similar. But there are differences in the feature set provided by the SysEleven Stack.
-With Neutron LBaaS only simple TCP-based load balancers are supported, with Octavia on the other hand also HTTP and HTTPS. Both services optionally allow to set up health monitoring.
+With Neutron LBaaS only simple TCP-based load balancers are supported, with Octavia also HTTP and HTTPS can be used. Both services optionally allow to set up health monitoring.
 
 The client IP address can only be made visible to the backend servers if an Octavia load balancer is used, in case of Neutron the backends will only see the IP address of the load balancer.
 
@@ -33,7 +33,7 @@ Available in dashboard | yes | no (planned)
 
 ## General limitations of the cloud dashboard (Horizon)
 
-Currently, the cloud dashboard (Horizon) at [cloud.syseleven.de](https://cloud.syseleven.de) only displays Neutron-LBaaS load balancers. Octavia load balancers you can manage [using the API and the OpenStack CLI](../../../02.Tutorials/02.api-access/docs.en.md) (using the `openstack loadbalancer` commands).
+Currently, the cloud dashboard (Horizon) at [cloud.syseleven.de](https://cloud.syseleven.de) only displays Neutron-LBaaS load balancers. Octavia load balancers can be managed [using the API and the OpenStack CLI](../../../02.Tutorials/02.api-access/docs.en.md) (using the `openstack loadbalancer` commands).
 
 ## Neutron LBaaSv2
 
@@ -174,7 +174,7 @@ The default load balancer flavor is `failover-small` which offers more performan
 
 ### Default timeouts and connection limits
 
-The Octavia load balancer have following default timeout and connection limits set :
+Octavia load balancers have the following default timeout and connection limits:
 
 Configuration parameter  | Value
 -------------------------|--------

@@ -1,7 +1,7 @@
 ---
 title: Secrets
 published: true
-date: '18-06-2020 10:40'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-SysEleven Stack uses the OpenStack component Barbican for secret storage. We introduced the Barbican secret storage first of all to provide a safe way to store SSL certificates and private keys for [Octavia Load balancer as a Service](../08.network/02.lbaas/docs.en.md).
+SysEleven Stack uses the OpenStack component `Barbican` for secret storage. We introduced the Barbican secret storage first of all to provide a safe way to store SSL certificates and private keys for [Octavia Load balancer as a Service](../08.network/02.lbaas/docs.en.md).
 
 !! Barbican is part of the Octavia public beta phase. This means we invite you to test the Barbican secret storage, but we do not recommend you to use it for production workloads yet.
 

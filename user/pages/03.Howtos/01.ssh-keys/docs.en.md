@@ -1,7 +1,7 @@
 ---
 title: 'Import SSH keys'
 published: true
-date: '02-08-2018 17:23'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
@@ -17,6 +17,8 @@ taxonomy:
 SSH keys can be imported via the GUI (Horizon / Dashboad) or the CLI (OpenStack Client). While uploading SSH keys via the dashboard might be easier, uploading the SSH keys via the OpenStack CLI might be faster if SSH keys are to be imported into multiple regions.
 
 !!!  SSH keys are saved in user and <u>not</u> project (tenant) context.
+!!!  SSH keys are region specific.
+!!!  Ed25519 SSH keys do not work.
 
 ---
 
@@ -33,8 +35,8 @@ Using the username and password (API credentials) that were provided by SysEleve
 
 ![SysEleven Login](../../images/horizon-login.png)
 
-* In order to import your SSH-key using the dashboard, we go to "Compute" --> "Access And Security" --> "Key Pairs".
-* There we select "Import Key Pair", give the key pair a name (that we remember for later use) and import the public part of the key pair via copy & paste into the interface.
+* In order to import your SSH-key using the dashboard, we go to "Compute" --> "Key Pairs".
+* There we select "Import Public Key", give the key pair a name (that we remember for later use) and import the public part of the key pair, either via copy & paste into the interface or via uploading the key file.
 
 ![import SSH key](../../images/sshkeys.png)
 

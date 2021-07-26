@@ -1,7 +1,7 @@
 ---
 title: 'Orchestration Service'
 published: true
-date: '08-08-2018 11:55'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
@@ -158,7 +158,7 @@ heat stack-create -f net3.yaml \
 
 You can see in the [Dashboard](https://dashboard.cloud.syseleven.net) that you created a private network `example-net`, which is connected to the public network `float1` through a Router.
 
-Using this infrastructure we can now start a virtual machine which has an outside network connections. All that is missing is a way to assign a virtual machine to a given subnet. This is done using *Ports*. *Ports* are the network interfaces of a virtual machine: A *Port* needs to be connected to a *Subnet* for the virtual machine to be able to use it. Here is the code to connect a *Port* to a *Subnet*:
+Using this infrastructure we can now start a virtual machine which has an outside network connections. We are still missing a way to assign a virtual machine to a given subnet. This is done using *Ports*. *Ports* are the network interfaces of a virtual machine: A *Port* needs to be connected to a *Subnet* for the virtual machine to be able to use it. Here is the code to connect a *Port* to a *Subnet*:
 
 ```plain
   port:
@@ -167,7 +167,7 @@ Using this infrastructure we can now start a virtual machine which has an outsid
       network_id: { get_resource: net}
 ```
 
-Now you have defined and created the major parts of an orchestrated setup. Next, you start a virtual machine that uses the infrastructure created so far::
+Now you have defined and created the major parts of an orchestrated setup. Next, you start a virtual machine that uses the infrastructure created so far:
 
 ```plain
 heat_template_version: 2014-10-16
@@ -396,7 +396,7 @@ You got to know the network and virtual machine parts of orchestration. You do n
 
 Using a storage template, you get a volume with a UID. You can pass this UID to a virtual machine using a parameter, where the volume will show up as an additional block device, just like an additional hard disk. Using that block device, data can be stored persistently.
 
-You can also build a setup where a virtual machine has more than 50 GiB of storage. In that case you do not need to create the volume in a separate stack, you can just expand the orchestration template for your virtual machine. A complete setup would look like this:
+You can also build a setup where a virtual machine has more than 50 GiB of storage. In that case you do not need to create the volume in a separate stack, you can just expand the orchestration template for your virtual machine.
 
 <!--- TODO: Code fehlt. -->
 

@@ -1,7 +1,7 @@
 ---
 title: 'Manual data recovery'
 published: true
-date: '08-08-2018 10:17'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
@@ -25,7 +25,7 @@ taxonomy:
 
 ### Temporary work environment
 
-For this tutorial, we need a *Linux* environment and the OpenStack client. If you do not have that yet, you can create it with the following commands:
+For this tutorial, we need a *Linux* environment and the OpenStack client in the SysEleven cloud. If you do not have that yet, you can create it with the following commands:
 
 ```shell
 wget https://raw.githubusercontent.com/syseleven/heat-examples/master/kickstart/kickstart.yaml
@@ -43,7 +43,7 @@ ssh syseleven@<server-ip>
 The following commands need to be executed in the ssh session.
 
 We also need the OpenStack credentials (openrc-file).
-You can download the file [here](https://dashboard.cloud.syseleven.net/horizon/project/access_and_security/api_access/openrc/).
+You can download the file [here](https://cloud.syseleven.de/horizon/project/api_access/openrc/).
 
 ```shell
 source openrc

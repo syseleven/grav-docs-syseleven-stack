@@ -1,7 +1,7 @@
 ---
 title: 'Object Storage'
 published: true
-date: '08-08-2018 11:16'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
@@ -72,7 +72,7 @@ DBL      | s3.dbl.cloud.syseleven.net  | Yes                 |
 
 You need to meet the following prerequisites to generate credentials:
 
-* You need the OpenStack command line tools in version >= `2.0`.
+* You need the OpenStack command line tools in version >= `3.13.x`.
 * A change to your shell environment (you can add this to your `openrc` file):
 
 ```shell
