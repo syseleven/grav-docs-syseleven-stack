@@ -54,7 +54,7 @@ Please refer to our multi-attach volume tutorial. It explains [how to use multi-
 
 ### Block storage volumes
 
-The OpenStack Cinder service allows end users to manage virtual block storage devices. Via a self service API it provides the functionality to create volumes for persistent storage and attach them to virtual machines. A volume can be moved from one VM to another by detaching it and re-attaching it somewhere else. Also you may delete or rebuild a VM without losing its data
+The OpenStack Cinder service allows end users to manage virtual block storage devices. Via a self service API it provides the functionality to create volumes for persistent storage and attach them to virtual machines. A volume can be moved from one VM to another by detaching it and re-attaching it somewhere else. Also you may delete or rebuild a VM without losing its data that is kept on a Cinder volume.
 
 Inside the virtual machine the volume will be available as a block device (e.g. on Linux operating systems as `/dev/vdX`). It might be necessary to format the device with the file system of your choice.
 
