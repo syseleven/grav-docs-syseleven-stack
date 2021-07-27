@@ -65,7 +65,7 @@ Floating IPs can be associated with virtual machines or load balancers, to make 
 
 ## Security groups
 
-A security group acts as a virtual firewall for servers and other resources on a network. It is a named collection of network access rules-
+A security group acts as a virtual firewall for servers and other resources on a network. It is a named collection of network access rules.
 
 Rules can reference other security groups and can be even self-referencing.
 
