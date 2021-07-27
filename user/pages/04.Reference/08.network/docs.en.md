@@ -69,7 +69,7 @@ A security group acts as a virtual firewall for servers and other resources on a
 
 Rules can reference other security groups and can be even self-referencing.
 
-Let's say you have backend servers, frontend servers, and database servers. You might create a security group for each and  then define that backend servers can access database servers, while frontend servers cannot access database servers.
+Let's say you have backend servers, frontend servers, and database servers. You might create a security group for each and then define that backend servers can access database servers, while frontend servers cannot access database servers.
 
 The `default` security group will be used if not specified otherwise. It allows all traffic in your OpenStack project that originates from a port with the `default` security group, and denies everything else.
 
