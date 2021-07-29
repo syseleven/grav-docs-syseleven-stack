@@ -15,7 +15,7 @@ This means that IPsec policies and connections are configured within the OpenSta
 No dedicated virtual machines are required to use this service.
 
 !!! **Feature availability**
-!!! VPNaaS is currently available in both our regions 'dbl' and 'cbk'.
+!!! VPNaaS is currently available in all our regions.
 
 ## Prerequisites
 
@@ -333,6 +333,8 @@ $ openstack vpn service create vpn --router left-router
 | project_id     | 70061ce0cd2e47ef9d7dc82174dc9923     |
 +----------------+--------------------------------------+
 ```
+
+Note that the external IP address may a different one than the one of the router.
 
 #### 2. Create the VPN service on the right side
 
