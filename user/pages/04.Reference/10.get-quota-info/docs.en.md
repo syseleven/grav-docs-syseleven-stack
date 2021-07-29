@@ -1,6 +1,7 @@
 ---
 title: 'REST API for Quota Information'
-date: '01-11-2019 12:00'
+published: true
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
@@ -8,20 +9,13 @@ taxonomy:
 
 ## Introduction
 
-For many resource types like instances, VCPUs, volume storage you can check
-the limits and the current usage in the dashboard (Horizon) or use the
-standard OpenStack APIs to collect the data in some automation.
-But information about quota and usage of object storage (S3) is not
-available using standard APIs.
+For many resource types like instances, VCPUs, volume storage you can check the limits and the current usage in the dashboard (Horizon) or use the standard OpenStack APIs to collect the data in some automation. But information about quota and usage of object storage (S3) is not available using standard APIs.
 
-For quota and usage information including object storage the SysEleven Stack
-offers an own REST API.
+For quota and usage information including object storage the SysEleven Stack offers an own REST API.
 
 ## Requirements
 
-For queries to the quota API you need an OpenStack Keystone token to
-authenticate with. If you installed the OpenStack command line tools
-you can create a token with the command `openstack token issue`.
+For queries to the quota API you need an OpenStack Keystone token to authenticate with. If you installed the OpenStack command line tools you can create a token with the command `openstack token issue`.
 
 ```plain
 openstack token issue
@@ -53,7 +47,7 @@ project_id  | URL path | The OpenStack project ID. It needs to be the same as th
 X-Auth-Token | Header | Token for authenticating the request. |
 regions      | URL query parameter | Optionally restrict the regions to be queried. Comma-separated list of region names. If no region is given here, all regions are queried. |
 
-Example
+Example:
 
 - Token "01234567890abcdef01234567890abcd"
 - Project ID "11111111111111111111111111111111"
@@ -159,7 +153,7 @@ If you are only interested in the usage information of certain components, using
 to accelerate the queries because unnecessary internal communication to other components or regions is
 avoided.
 
-Component names supported by `filter`:
+**Component names supported by `filter`**
 
 - compute
 - dns
@@ -169,7 +163,7 @@ Component names supported by `filter`:
 - s3
 - volume
 
-Example
+Example:
 
 - Token "01234567890abcdef01234567890abcd"
 - Project ID "11111111111111111111111111111111"

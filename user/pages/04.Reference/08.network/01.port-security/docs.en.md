@@ -1,7 +1,7 @@
 ---
 title: 'Port Security'
 published: true
-date: '08-08-2018 11:45'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
@@ -16,6 +16,6 @@ By default SysEleven Stack port security will be enforced, which means that:
 * Only traffic from and to the IP addresses known by OpenStack will be allowed
 
 It is possible to change these restrictions using security groups and the port security settings.  
-In this article we will focus on the port security settings; for more information about security groups have a look [here](https://wiki.openstack.org/wiki/Neutron/SecurityGroups).
+For more information about security groups have a look [here](https://wiki.openstack.org/wiki/Neutron/SecurityGroups).
 
 [This tutorial](../../../03.Howtos/06.allowing-an-additional-subnet-to-talk-to-or-via-a-port/docs.en.md) shows how to allow an additional subnet to talk to/via a port to be able to communicate via a VPN for example.

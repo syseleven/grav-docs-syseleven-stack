@@ -1,7 +1,7 @@
 ---
 title: 'Metadata service & cloud-init'
 published: true
-date: '04-01-2019 17:50'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
@@ -19,7 +19,7 @@ When a new instance starts for the first time, if you are using images that come
 
 ## Metadata service
 
-The metadata service can be accessed via HTTP from any virtual machine running on the SysEleven Stack like so:
+The metadata service can be accessed via HTTP from any virtual machine running on the SysEleven Stack:
 
 ```bash
 $ curl http://169.254.169.254/

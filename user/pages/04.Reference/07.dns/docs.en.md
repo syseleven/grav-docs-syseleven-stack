@@ -1,13 +1,13 @@
 ---
 title: 'DNS'
 published: true
-date: '24-06-2919 11:08'
+date: '26-07-2021 16:25'
 taxonomy:
     category:
         - docs
 ---
 
-## DNS
+## Overview
 
 Using the SysEleven Stack DNS service you can rely on our authoritative DNS infrastructure and experience for your domains and records.
 
@@ -17,7 +17,7 @@ You can manage DNS zones and records both via our [public OpenStack API endpoint
 
 The DNS service is shared between all regions. You will need to choose a region in the Dashboard or using the OpenStack CLI environment variable `OS_REGION`, but it does not matter which one you choose. DNS objects are always global.
 
-### Feature Support Matrix
+## Feature Support Matrix
 
 | OpenStack Designate Feature             |   CBK region   |   DBL region
 | ----------------------------------------|----------------|-------------
@@ -29,7 +29,7 @@ The DNS service is shared between all regions. You will need to choose a region 
 
 \*Using the Neutron DNS integration (more information in the section <a href="#ptr-records-for-floating-ips">PTR records for Floating IPs</a>)
 
-### Manage zones and recordsets
+## Manage zones and recordsets
 
 A `zone` object represents a DNS Zone, e.g. your domain name and your subdomain names. If you want to use the SysEleven Stack DNS service for your domain, you need to delegate it to our DNS servers.
 
@@ -39,15 +39,15 @@ To find out more on how you can do this, see our [tutorial](../../02.Tutorials/0
 
 !! Please note that DNS zones in the SysEleven DNS service must be fully qualified, which means they must end with a trailing dot. If your domain name is `example.com`, the corresponding fully qualified zone name would be `example.com.`
 
-### Zone transfer to different projects
+## Zone transfer to different projects
 
-It is possible to transfer zones If they need to be maintained using different OpenStack projects. For example you can have a zone named `company.com.` in `project-a` and another zone named `team-1.company.com.` in `project-b`.
+It is possible to transfer zones if they need to be maintained using different OpenStack projects. For example you can have a zone named `company.com.` in `project-a` and another zone named `team-1.company.com.` in `project-b`.
 
-#### Zone disputes
+### Zone disputes
 
 It is not automatically possible for us to verify ownership of your domain names, so in very rare circumstances your domain name might have been claimed by another customer already. Please contact our customer support in this case.
 
-### Secondary Zones
+## Secondary Zones
 
 It is possible to use our authoritative name server infrastructure together with a hidden master that you maintain yourself. You can accomplish that by creating a secondary zone. Using the OpenStack CLI you can create it like this: `openstack zone create --type secondary --masters master-1.example.com. master-2.example.com`.
 
@@ -55,11 +55,11 @@ Our authoritative name servers will respect the `Refresh`, `Retry`, `Expire` and
 
 Sending the `NOTIFY` message to our DNS servers is not supported.
 
-### Zone Import / Export
+## Zone Import / Export
 
-To migrate large amounts of zones and records to the SysEleven Stack DNS service, it is possible to use our Import / Export functionality. It is using the master file format as specified in RFC 1035.
+To migrate large amounts of zones and records to the SysEleven Stack DNS service, it is possible to use our Import / Export functionality. It is using the master file format as specified in [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035).
 
-### PTR records for Floating IPs
+## PTR records for Floating IPs
 
 It is possible to configure PTR records for Floating IPs. This is accomplished using the Neutron DNS integration. For more information, please refer to our [Network reference guide](../08.network/docs.en.md) and our [How-to guide for setting up PTR records for existing floating IPs](../../03.Howtos/14.add-ptr-records/docs.en.md).
 
