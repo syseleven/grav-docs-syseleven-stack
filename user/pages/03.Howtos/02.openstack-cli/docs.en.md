@@ -73,7 +73,7 @@ sudo yum install python3 python3-devel gcc
 Install python3 and some essential build tools which might be needed when you install the openstack client later.
 
 ```shell
-sudo apt install -q -y python3-minimal python3-venv python3-dev build-essential
+sudo apt-get update && sudo apt install -q -y python3-minimal python3-venv python3-pip python3-dev build-essential
 ```
 
 ### Windows
@@ -92,15 +92,15 @@ Create a virtual environment called "env", which will create a subdirectory "env
 ```shell
 python3 -m venv env
 source env/bin/activate
-pip install --upgrade pip
+pip3 install --upgrade pip
 ```
 
 ### Windows
 
 ```batch
-python -m venv env
+python3 -m venv env
 env\Scripts\activate.bat
-pip install --upgrade pip
+pip3 install --upgrade pip
 ```
 
 ---
@@ -110,7 +110,7 @@ pip install --upgrade pip
 Install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
 
 ```shell
-pip install python-openstackclient python-barbicanclient python-cinderclient python-designateclient python-glanceclient python-heatclient python-neutronclient python-novaclient python-octaviaclient
+pip3 install python-openstackclient python-barbicanclient python-cinderclient python-designateclient python-glanceclient python-heatclient python-neutronclient python-novaclient python-octaviaclient
 ```
 
 The command above will install the general OpenStack client and the plugins for the following OpenStack APIs:
