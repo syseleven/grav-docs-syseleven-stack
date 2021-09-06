@@ -29,11 +29,11 @@ Distribution strategies | ROUND_ROBIN (random) | ROUND_ROBIN, LEAST_CONNECTIONS,
 Health Monitoring protocols | TCP, HTTP, HTTPS | PING, HTTP, TCP, HTTPS, TLS-HELLO
 Header insertion (`X-Forwarded-For` etc.) | no | yes
 PROXY protocol support | no | yes
-Available in dashboard | yes | no (planned)
+Available in dashboard | yes | yes
 
-## General limitations of the cloud dashboard (Horizon)
+## Cloud dashboard (Horizon)
 
-Currently, the cloud dashboard (Horizon) at [cloud.syseleven.de](https://cloud.syseleven.de) only displays Neutron-LBaaS load balancers. Octavia load balancers can be managed [using the API and the OpenStack CLI](../../../02.Tutorials/02.api-access/docs.en.md) (using the `openstack loadbalancer` commands).
+Both LBaaS services can be managed in the cloud dashboard (Horizon) at [cloud.syseleven.de](https://cloud.syseleven.de) under the Network category as "Neutron Load Balancers" and "Octavia Load Balancers" respectively.
 
 ## Neutron LBaaSv2
 
@@ -182,7 +182,6 @@ timeout-client-data      | 50000ms
 timeout-member-connect   | 5000ms
 timeout-member-data      | 50000ms
 connection-limit         | 50000
--------------------------|--------
 
 You may set different timeouts or limits in the configuration of the listener.
 
