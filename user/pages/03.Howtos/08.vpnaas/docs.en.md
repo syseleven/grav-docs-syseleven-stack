@@ -334,7 +334,7 @@ $ openstack vpn service create vpn --router left-router
 +----------------+--------------------------------------+
 ```
 
-Note that the external IP address may a different one than the one of the router.
+Note that the external IP address may be a different one than the one of the router.
 
 #### 2. Create the VPN service on the right side
 
