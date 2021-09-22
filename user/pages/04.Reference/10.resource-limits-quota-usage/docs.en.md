@@ -9,7 +9,7 @@ taxonomy:
 
 ## Reasoning behind resource limits
 
-The SysEleven Stack imposes resource limits per region on customer projects. This may sound a little bit bossy, given the fact that our customers have access to plans where they pay on-demand what they use. Couldn't we waive all restrictions and let customers use what they want? For the time being, we decided to stick with quota limits, because they server for the following purposes:
+The SysEleven Stack imposes resource limits per region on customer projects. This may sound a little bit bossy, given the fact that our customers have access to plans where they pay on-demand what they use. Couldn't we waive all restrictions and let customers use what they want? For the time being, we decided to stick with quota limits, because they serve for the following purposes:
 
 ### Infrastructure protection
 
