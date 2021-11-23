@@ -89,6 +89,7 @@ openstack ec2 credentials list
 !! **Important note**
 !! Since the authentication service is centralised, the credentials created have access to SEOS/S3 in all regions.
 !! Access to a specific region is gained by defining different storage backend URLs.
+!! The credentials can also be used "backwards" to create a token for the user owning the credentials, thus with the access/secret key pair it is possible to gain access to OpenStack resources.
 
 
 ## Clients
