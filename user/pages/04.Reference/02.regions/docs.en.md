@@ -1,7 +1,7 @@
 ---
 title: Regions
 published: true
-date: '08-08-2018 11:24'
+date: '25-11-2021 11:00'
 taxonomy:
     category:
         - docs
@@ -33,7 +33,7 @@ taxonomy:
 ![SysEleven Login](../../images/horizon-login.png)
 
 * In order to select a region via the dashboard, we go to the dropdown menu at the top of the dashboard.
-* There we select the region (cbk / dbl).
+* There we select the region (cbk / dbl / fes).
 
 ![Select region](../../images/selectregion.png)
 
@@ -51,12 +51,12 @@ Once selected we can start creating resources in the selected region.
 
 ### How to select?
 
-**The default region is defined in the 'openrc' file.**  
+**The default region is defined in the 'openrc' file.**
 For your own comfort you can create one 'openrc' file per region.
 
 Using the username and password (API credentials) that were provided by SysEleven we source the 'openrc' file and enable the CLI client to talk to the Syseleven Stack.
 
-When using the openstack client we can select the region with  
+When using the openstack client we can select the region with
 the command line option `--os-region-name <region name>`.
 
 The following example shows how to use it:

@@ -1,7 +1,7 @@
 ---
 title: 'Block Storage'
 published: true
-date: '26-07-2021 16:25'
+date: '25-11-2021 11:00'
 taxonomy:
     category:
         - docs
@@ -17,10 +17,10 @@ You can manage your block storage volumes and make them available to your comput
 
 ## Available volume types
 
-| Volume type                             |   CBK region   |   DBL region
-| ----------------------------------------|----------------|-------------
-| quobyte                                 | yes (default)  | yes (default)
-| quobyte-multiattach                     | yes            | yes
+| Volume type                             | CBK region    | DBL region    | FES region
+| ----------------------------------------|---------------|---------------|-----------
+| quobyte                                 | Yes (default) | Yes (default) | Yes (default)
+| quobyte-multiattach                     | Yes           | Yes           | Yes
 
 ### quobyte
 
@@ -40,15 +40,15 @@ Please refer to our multi-attach volume tutorial. It explains [how to use multi-
 
 ## Available functionality
 
-| OpenStack Cinder Feature                |   CBK region   |   DBL region
-| ----------------------------------------|----------------|-------------
-| Block storage volumes                   | yes | yes
-| Volume transfer                         | yes | yes
-| Volume snapshots                        | yes (offline*) | yes (offline*)
-| Save volume as glance image             | yes (offline*) | yes (offline*)
-| Multi-attach volumes                    | yes | yes
-| Volume resizing                         | yes (offline*) | yes (offline*)
-| Volume backups                          | no | no
+| OpenStack Cinder Feature                | CBK region     | DBL region     | FES region
+| ----------------------------------------|----------------|----------------|---------------
+| Block storage volumes                   | Yes            | Yes            | Yes
+| Volume transfer                         | Yes            | Yes            | Yes
+| Volume snapshots                        | Yes (offline*) | Yes (offline*) | Yes (offline*)
+| Save volume as glance image             | Yes (offline*) | Yes (offline*) | Yes (offline*)
+| Multi-attach volumes                    | Yes            | Yes            | Yes
+| Volume resizing                         | Yes (offline*) | Yes (offline*) | Yes (offline*)
+| Volume backups                          | No             | No             | No
 
 * offline means, that this functionality is only supported for volumes that are not attached to a virtual machine.
 

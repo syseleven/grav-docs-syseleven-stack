@@ -1,7 +1,7 @@
 ---
 title: 'DNS'
 published: true
-date: '26-07-2021 16:25'
+date: '25-11-2021 11:00'
 taxonomy:
     category:
         - docs
@@ -19,13 +19,13 @@ The DNS service is shared between all regions. You will need to choose a region 
 
 ## Feature Support Matrix
 
-| OpenStack Designate Feature             |   CBK region   |   DBL region
-| ----------------------------------------|----------------|-------------
-| Manage zones and recordsets             | yes            | yes
-| Zone transfer to different projects     | yes            | yes
-| Secondary Zones                         | yes            | yes
-| Zone Import / Export                    | yes            | yes
-| PTR records for Floating IPs            | yes\*           | yes\*
+| OpenStack Designate Feature             | CBK region | DBL region | FES region
+| ----------------------------------------|------------|------------|-----------
+| Manage zones and recordsets             | Yes        | Yes        | Yes
+| Zone transfer to different projects     | Yes        | Yes        | Yes
+| Secondary Zones                         | Yes        | Yes        | Yes
+| Zone Import / Export                    | Yes        | Yes        | Yes
+| PTR records for Floating IPs            | Yes\*      | Yes\*      | Yes\*
 
 \*Using the Neutron DNS integration (more information in the section <a href="#ptr-records-for-floating-ips">PTR records for Floating IPs</a>)
 

@@ -1,7 +1,7 @@
 ---
 title: 'Object Storage ACLs'
 published: true
-date: '08-20-2020 09:37'
+date: '25-11-2021 11:00'
 taxonomy:
     category:
         - docs
@@ -27,7 +27,7 @@ We suggest you use the python library boto3 to reproduce all scenarios shown in 
 
 To be able to create our buckets, objects and ACLs we first will need to get our access and secret key of the ec2 credentials of our OpenStack user.
 
-For s3cmd we have to create following configuration file:
+For s3cmd we have to create following configuration file (example is in DBL region):
 
 ```shell
 syseleven@kickstart:~$ cat .s3cfg
@@ -44,7 +44,7 @@ host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
 #host_bucket = %(bucket).s3.cbk.cloud.syseleven.net
 ```
 
-We can configure an s3 client with the boto3 library using following python snippet:
+We can configure an s3 client with the boto3 library using following python snippet (example is in DBL region):
 
 ```python
 import boto3
