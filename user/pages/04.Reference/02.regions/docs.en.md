@@ -10,8 +10,9 @@ taxonomy:
 ## Overview
 
 * Regions are available to all customers.
-* Currently 2 regions are available.
+* Currently 3 regions are available.
 * The dashboard "Overview" shows the resources of the currently selected region.
+* Resource limits may vary between regions, in some cases effectively preventing the practical use of (a) region(s).
 
 ## Goal
 
@@ -32,12 +33,12 @@ taxonomy:
 
 ![SysEleven Login](../../images/horizon-login.png)
 
-* In order to select a region via the dashboard, we go to the dropdown menu at the top of the dashboard.
-* There we select the region (cbk / dbl / fes).
+* In order to select a region via the dashboard, go to the dropdown menu at the top of the dashboard.
+* There select the region (cbk / dbl / fes).
 
 ![Select region](../../images/selectregion.png)
 
-Once selected we can start creating resources in the selected region.
+Once the region is selected you can start creating resources in that region.
 
 ---
 
@@ -54,9 +55,9 @@ Once selected we can start creating resources in the selected region.
 **The default region is defined in the 'openrc' file.**
 For your own comfort you can create one 'openrc' file per region.
 
-Using the username and password (API credentials) that were provided by SysEleven we source the 'openrc' file and enable the CLI client to talk to the Syseleven Stack.
+Using the username and password (API credentials) that were provided by SysEleven source the 'openrc' file and enable the CLI client to talk to the Syseleven Stack.
 
-When using the openstack client we can select the region with
+When using the openstack client you can select the region with
 the command line option `--os-region-name <region name>`.
 
 The following example shows how to use it:
@@ -79,4 +80,4 @@ openstack --os-region-name dbl server list
 +--------------------------------------+--------------+--------+-------------------------------------------+-------------------------+----------+
 ```
 
-Once selected we can start using resources via API and templates.
+Once the region is selected you can start using resources via API and templates.
