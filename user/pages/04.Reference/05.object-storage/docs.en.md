@@ -1,7 +1,7 @@
 ---
 title: 'Object Storage'
 published: true
-date: '26-07-2021 16:25'
+date: '25-11-2021 11:00'
 taxonomy:
     category:
         - docs
@@ -60,6 +60,7 @@ Region   | URL                         | Transfer Encryption |
 ---------|-----------------------------|---------------------|
 CBK      | s3.cbk.cloud.syseleven.net  | Yes                 |
 DBL      | s3.dbl.cloud.syseleven.net  | Yes                 |
+FES      | s3.fes.cloud.syseleven.net  | Yes                 |
 
 
 !!!! **Deprecated URL**
@@ -138,7 +139,7 @@ The correct URL for this object in SysEleven Stack would be:
 
 `https://s3.REGION.cloud.syseleven.net/BUCKET_NAME/test.jpg`
 
-where REGION is the SysEleven Stack region (e.g. cbk or dbl).
+where REGION is the SysEleven Stack region (e.g. cbk, dbl or fes).
 
 You can use these URLs to refer to the uploaded files as static assets in your web applications.
 
