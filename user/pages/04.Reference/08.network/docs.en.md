@@ -160,7 +160,7 @@ When using this approach, Floating IPs themselves don't need to be created using
 
 ## IPv6
 
-You have the possibility to allocate IPv6 Global Unicast Addresses for your virtual subnets, where supported. IPv6 is supported in the Dual-Stack mode, which means that single virtual network may have both IPv4 and IPv6 subnets. Ports of virtual machines connected to such network, will get both IPv4 and IPv6 addresses. IPv6-only networks are currently not fully supported, due to limitations in the Metadata service. While you may stil run such setups, your virtual machines will not be able to retrieve public SSH keys or use other features that Metadata service provides.
+You have the possibility to allocate IPv6 Global Unicast Addresses for your virtual subnets, where supported. IPv6 is supported in the Dual-Stack mode, which means that a single virtual network may have both IPv4 and IPv6 subnets. Ports of virtual machines connected to such network, will get both IPv4 and IPv6 addresses. IPv6-only networks are currently not fully supported, due to limitations in the Metadata service. While you may still run such setups, your virtual machines will not be able to retrieve public SSH keys or use other features that the Metadata service provides.
 
 There is no possibility to use Floating IPs in IPv6 address family, which means that you cannot allocate a Floating IP from IPv6 address pool, neither you can have a Floating IP pointing at an IPv6 address.
 
