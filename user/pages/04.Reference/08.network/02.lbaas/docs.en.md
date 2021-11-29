@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-The SysEleven Stack offers LBaaS via two different generations of APIs: Neutron LBaaSv2 (obsolete) and Octavia.
+The SysEleven Stack offers LBaaS via two different generations of APIs: Neutron LBaaSv2 (obsolete) and Octavia LBaaS.
 
 !! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
 
