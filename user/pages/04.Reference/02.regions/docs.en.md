@@ -52,13 +52,11 @@ Once the region is selected you can start creating resources in that region.
 
 ### How to select?
 
-**The default region is defined in the 'openrc' file.**
-For your own comfort you can create one 'openrc' file per region.
+**The default region is defined in the 'openrc' file** in the environment variable `OS_REGION_NAME`. For your own comfort you can create one 'openrc' file per region and adjust `OS_REGION_NAME` in each file.
 
 Using the username and password (API credentials) that were provided by SysEleven source the 'openrc' file and enable the CLI client to talk to the Syseleven Stack.
 
-When using the openstack client you can select the region with
-the command line option `--os-region-name <region name>`.
+When using the openstack client you can select the region by setting the `OS_REGION_NAME` variable accordingly. As an alternative you can override it with the command line option `--os-region-name <region name>`.
 
 The following example shows how to use it:
 
@@ -69,14 +67,14 @@ openstack --os-region-name cbk server list
 +--------------------------------------+--------------+--------+-------------------------------------------+-------------------------+----------+
 | ID                                   | Name         | Status | Networks                                  | Image                   | Flavor   |
 +--------------------------------------+--------------+--------+-------------------------------------------+-------------------------+----------+
-| 9cdf2a81-0271-4b6f-aa3e-61asdas51dsa | lampserver   | ACTIVE | lampserver-net=10.0.0.14, 195.192.128.23  | Ubuntu Server 16.04 LTS | m1c.tiny |
+| 9cdf2a81-0271-4b6f-aa3e-61asdas51dsa | lampserver   | ACTIVE | lampserver-net=10.0.0.14, 185.56.132.xxx  | Ubuntu Server 16.04 LTS | m1c.tiny |
 +--------------------------------------+--------------+--------+-------------------------------------------+-------------------------+----------+
 
 openstack --os-region-name dbl server list
 +--------------------------------------+--------------+--------+-------------------------------------------+-------------------------+----------+
 | ID                                   | Name         | Status | Networks                                  | Image                   | Flavor   |
 +--------------------------------------+--------------+--------+-------------------------------------------+-------------------------+----------+
-| 18e28c13-999e-4389-92ce-asd1das1das5 | lampserver   | ACTIVE | lampserver-net=10.0.0.14, 195.192.128.23  | Ubuntu Server 16.04 LTS | m1c.tiny |
+| 18e28c13-999e-4389-92ce-asd1das1das5 | lampserver   | ACTIVE | lampserver-net=10.0.0.11, 195.192.128.xxx | Ubuntu Server 16.04 LTS | m1c.tiny |
 +--------------------------------------+--------------+--------+-------------------------------------------+-------------------------+----------+
 ```
 
