@@ -305,7 +305,7 @@ $ openstack vpn ipsec policy create ipsecpolicy
 Create a VPN service on the left side and another on the right side and note the external IP addresses that were assigned to the VPN services.
 
 !!! **Multiple IPSec site connections per router**
-!!! If you want to create multiple IPSec site connections it is strongly recommended to create only one VPN service per router and create all site connections in the same VPN service.
+!!! If you want to create multiple IPSec site connections it is strongly recommended to create only one VPN service per router and create all site connections in the same VPN service. In some of our regions requests to create a second VPN service for the same router will fail.
 
 !!! **Local subnets and endpoint groups**
 !!! There are two ways to configure local and peer subnets: (1) Endpoint groups for both local subnet(s) and for peer CIDR(s) and (2) one local subnet ID in VPN service and one peer CIDR in IPSec site connection.
