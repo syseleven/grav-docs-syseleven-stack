@@ -1,7 +1,7 @@
 ---
 title: 'Load Balancer as a Service (LBaaS)'
 published: true
-date: '26-07-2021 16:25'
+date: '25-11-2021 10:15'
 taxonomy:
     category:
         - docs
@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-The SysEleven Stack offers LBaaS via two different generations of APIs: Neutron LBaaSv2 and Octavia.
+The SysEleven Stack offers LBaaS via two different generations of APIs: Neutron LBaaSv2 (obsolete) and Octavia LBaaS.
 
 !! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
 
@@ -22,14 +22,14 @@ The client IP address can only be made visible to the backend servers if an Octa
 
 The following table compares the supported features of the two LBaaS services:
 
-Function                | Neutron LBaaSv2 | Octavia LBaaS
-------------------------|-----------------|--------------
-Loadbalancing protocols | TCP             | TCP, HTTP, HTTPS, TERMINATED_HTTPS
-Distribution strategies | ROUND_ROBIN (random) | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
-Health Monitoring protocols | TCP, HTTP, HTTPS | PING, HTTP, TCP, HTTPS, TLS-HELLO
-Header insertion (`X-Forwarded-For` etc.) | no | yes
-PROXY protocol support | no | yes
-Available in dashboard | yes | yes
+Function                                  | Neutron LBaaSv2      | Octavia LBaaS
+------------------------------------------|----------------------|------------------------------------------
+Loadbalancing protocols                   | TCP                  | TCP, HTTP, HTTPS, TERMINATED_HTTPS
+Distribution strategies                   | ROUND_ROBIN (random) | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
+Health Monitoring protocols               | TCP, HTTP, HTTPS     | PING, HTTP, TCP, HTTPS, TLS-HELLO
+Header insertion (`X-Forwarded-For` etc.) | No                   | Yes
+PROXY protocol support                    | No                   | Yes
+Available in dashboard                    | Yes                  | Yes
 
 ## Cloud dashboard (Horizon)
 
@@ -39,14 +39,16 @@ Both LBaaS services can be managed in the cloud dashboard (Horizon) at [cloud.sy
 
 Neutron load balancers can be maintained using the cloud dashboard (Horizon) at [cloud.syseleven.de](https://cloud.syseleven.de), or [using the API and the neutron CLI](../../../02.Tutorials/02.api-access/docs.en.md) (e.g. `neutron lbaas-loadbalancer-list`).
 
-Neutron LBaaSv2 Feature              | Supported in CBK region | Supported in DBL region
--------------------------------------|-------------------------|---------------
-Load balancing protocols             | TCP | TCP
-Health Monitoring protocols          | HTTP, TCP, HTTPS | HTTP, TCP, HTTPS
-Pool protocols                       | TCP | TCP
-Distribution strategies              | ROUND_ROBIN (random) | ROUND_ROBIN (random)
-Session persistence                  | SOURCE_IP | SOURCE_IP
-L7 rules and policies                | No                     | No
+Neutron LBaaSv2 Feature              | Supported in CBK region | Supported in DBL region | Supported in FES region
+-------------------------------------|-------------------------|-------------------------|------------------------
+Load balancing protocols             | TCP                     | TCP                     | No
+Health Monitoring protocols          | HTTP, TCP, HTTPS        | HTTP, TCP, HTTPS        | No
+Pool protocols                       | TCP                     | TCP                     | No
+Distribution strategies              | ROUND_ROBIN (random)    | ROUND_ROBIN (random)    | No
+Session persistence                  | SOURCE_IP               | SOURCE_IP               | No
+L7 rules and policies                | No                      | No                      | No
+
+! Neutron LBaaSv2 is obsolete and not supported in the region FES
 
 ### Limitations
 
@@ -58,17 +60,17 @@ L7 rules and policies                | No                     | No
 
 Octavia is our more advanced load balancer option. Below you will find the reference documentation. If you want a quick start, please refer to our [LBaaS tutorial](../../../02.Tutorials/05.lbaas/docs.en.md).
 
-Octavia LBaaS Feature                | Supported in CBK region | Supported in DBL region
--------------------------------------|-------------------------|---------------
-Load balancing protocols             | TCP, HTTP, HTTPS, TERMINATED_HTTPS | TCP, HTTP, HTTPS, TERMINATED_HTTPS
-Health Monitoring protocols          | PING, HTTP, TCP, HTTPS, TLS-HELLO | PING, HTTP, TCP, HTTPS, TLS-HELLO
-Pool protocols                       | PROXY, TCP, HTTP, HTTPS | PROXY, TCP, HTTP, HTTPS
-Distribution strategies              | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP                    | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
-Session persistence                  | Yes                     | Yes
-Header insertion                     | Yes                     | Yes
-L7 rules and policies                | Yes                     | Yes
-Load Balancer Flavors                | Yes                     | Yes
-VIP QoS policies                     | No                      | No
+Octavia LBaaS Feature                | Supported in CBK region                   | Supported in DBL region                   | Supported in FES region
+-------------------------------------|-------------------------------------------|-------------------------------------------| -----------------------------------------
+Load balancing protocols             | TCP, HTTP, HTTPS, TERMINATED_HTTPS        | TCP, HTTP, HTTPS, TERMINATED_HTTPS        | TCP, HTTP, HTTPS, TERMINATED_HTTPS
+Health Monitoring protocols          | PING, HTTP, TCP, HTTPS, TLS-HELLO         | PING, HTTP, TCP, HTTPS, TLS-HELLO         | PING, HTTP, TCP, HTTPS, TLS-HELLO
+Pool protocols                       | PROXY, TCP, HTTP, HTTPS                   | PROXY, TCP, HTTP, HTTPS                   | PROXY, TCP, HTTP, HTTPS
+Distribution strategies              | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP | ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP
+Session persistence                  | Yes                                       | Yes                                       | Yes
+Header insertion                     | Yes                                       | Yes                                       | Yes
+L7 rules and policies                | Yes                                       | Yes                                       | Yes
+Load Balancer Flavors                | Yes                                       | Yes                                       | Yes
+VIP QoS policies                     | No                                        | No                                        | No
 
 ### Load balancing protocols
 
