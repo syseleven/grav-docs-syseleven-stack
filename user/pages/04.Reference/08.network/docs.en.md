@@ -166,7 +166,7 @@ There is no possibility to use Floating IPs in IPv6 address family, which means 
 
 During the creation of an IPv6 subnet, you may enter a CIDR manually, or allocate a globally routable /64 prefix from a public address pool. Subnets with manually-set CIDR can not send traffic or be reached to/from the Internet. Inter-VM communication is not restricted in any way. If you choose to allocate an IPv6 prefix from an address pool instead, you will get a globally routable /64 prefix reachable from the Internet for your load balancers and VMs. You can not choose the exact IPv6 subnet you will get, but as long as your subnet is not deleted, the allocated range can not be changed. The range is assigned to you and does not interfere with any customers, so it is safe to assume that full /64 range is yours, when you configure VPN or Firewalls.
 
-! Please note that every virtual machine or load balancer with an IPv6 address in globally routable subnet is immediately reachable from the Internet, so plan your security groups accordingly.
+! Please note that every virtual machine or load balancer with an IPv6 address in a globally routable subnet is immediately reachable from the Internet, so plan your security groups accordingly.
 
 ### IPv6 addressing
 
