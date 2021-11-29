@@ -11,7 +11,7 @@ taxonomy:
 
 Using the SysEleven Stack Network service, you can do much more than just accessing the Internet; It's possible to build arbitrary private network topologies using virtual routers, networks, subnets, load balancers and VPN site connections.
 
-Servers can access the Internet using virtual routers (SNAT). For making servers and load balancers accessible from the Internet, we offer an IPv4 Floating IP service (DNAT), Load Banacers and IPv6 Global Unicast Addresses.
+Servers can access the Internet using virtual routers (SNAT). For making servers and load balancers accessible from the Internet, we offer an IPv4 Floating IP service (DNAT), Load Balancers and IPv6 Global Unicast Addresses.
 
 You can improve security and control isolation by using security groups.
 
