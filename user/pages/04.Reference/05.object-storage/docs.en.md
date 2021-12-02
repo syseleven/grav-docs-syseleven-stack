@@ -109,8 +109,18 @@ use_https = True
 check_ssl_certificate = True
 check_ssl_hostname = False
 
+#host_base = s3.cbk.cloud.syseleven.net
+#host_bucket = %(bucket).s3.cbk.cloud.syseleven.net
+#website_endpoint = http://%(bucket)s.s3.cbk.cloud.syseleven.net/%(location)s/
+#website_endpoint = http://s3.cbk.cloud.syseleven.net/%(bucket)s/%(location)s/
 host_base = s3.dbl.cloud.syseleven.net
 host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
+#website_endpoint = http://%(bucket)s.s3.dbl.cloud.syseleven.net/%(location)s/
+website_endpoint = http://s3.dbl.cloud.syseleven.net/%(bucket)s/%(location)s/
+#host_base = s3.fes.cloud.syseleven.net
+#host_bucket = %(bucket).s3.fes.cloud.syseleven.net
+#website_endpoint = http://s3.fes.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = http://%(bucket)s.s3.fes.cloud.syseleven.net/%(location)s/
 ```
 
 Next, create an S3 Bucket.
@@ -140,6 +150,10 @@ The correct URL for this object in SysEleven Stack would be:
 `https://s3.REGION.cloud.syseleven.net/BUCKET_NAME/test.jpg`
 
 where REGION is the SysEleven Stack region (e.g. cbk, dbl or fes).
+
+When your bucket name satisfies the limitations of dns hostnames, your object may also be available under this URL:
+
+`https://BUCKET_NAME.s3.REGION.cloud.syseleven.net/test.jpg`
 
 You can use these URLs to refer to the uploaded files as static assets in your web applications.
 
