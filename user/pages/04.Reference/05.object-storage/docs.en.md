@@ -35,7 +35,7 @@ encryption                       | no        |
 access logging                   | no        |
 website hosting configuration    | no        |
 
-We do not offer the complete feature set compared to Amazon S3. Thus we cannot guarantee the same user experience. Certain API calls may fail and receive a `501 Not Implemented` response. If you are in doubt, feel free to contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+We do not offer the complete feature set compared to Amazon S3. Thus we cannot guarantee the same user experience. Certain API calls may fail and receive a `501 Not Implemented` response. If you are in doubt, feel free to contact our [Support (support@syseleven.de)](../../06.Support/default.en.md).
 
 For setting up bucket/object ACLs we suggest to use [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). Not all predefined (canned) ACLs of [AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html) are supported. We are supporting the following canned ACLs: `private`,`public-read`,`public-read-write`,`authenticated-read`. Not supported canned ACLs will be interpreted as the default `private` ACL. We have prepared a [guide in our Tutorials section](../../02.Tutorials/11.object-storage-acls/docs.en.md) which shows how to set up custom ACLs.
 
@@ -50,7 +50,7 @@ Basically, SysEleven Stack Object Storage is a big key/value store.
 A file or file object can be assigned a file name like key, and made available under this key.
 
 !! **Be aware**
-!! We discourage the use of special characters, especially dots (`.`) and slashes (`/`) in bucket or object names, especially at the start and end of names. As names can be used or interpreted as dns names, pathnames and/or filenames, this can confuse both server and client software and in consequence may lead to buckets or objects being unaccessible or unmaintainable. In case you are stuck with such a phenomenon, please contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+!! We discourage the use of special characters, especially dots (`.`) and slashes (`/`) in bucket or object names, especially at the start and end of names. As names can be used or interpreted as dns names, pathnames and/or filenames, this can confuse both server and client software and in consequence may lead to buckets or objects being unaccessible or unmaintainable. In case you are stuck with such a phenomenon, please contact our [Support (support@syseleven.de)](../../06.Support/default.en.md).
 
 ## Regions
 
