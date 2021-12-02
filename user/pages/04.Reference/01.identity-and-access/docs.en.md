@@ -67,7 +67,7 @@ We manage projects, users, groups and roles for you. Please contact the [Support
 
 ### Projects
 
-Every cloud resource, like virtual machines, belong to a certain project. It might be good practice to separate unrelated pieces of infrastructure into different projects.
+Every cloud resource, like virtual machines, belongs to a certain project. It might be good practice to separate unrelated pieces of infrastructure into different projects. If you need separate projects, please contact the [Support (support@syseleven.de)](../../06.Support/default.en.md).
 
 ### Groups
 
