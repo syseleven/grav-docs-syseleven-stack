@@ -38,10 +38,18 @@ use_https = True
 check_ssl_certificate = True
 check_ssl_hostname = False
 
-host_base = s3.dbl.cloud.syseleven.net
-host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
 #host_base = s3.cbk.cloud.syseleven.net
 #host_bucket = %(bucket).s3.cbk.cloud.syseleven.net
+#website_endpoint = http://%(bucket)s.s3.cbk.cloud.syseleven.net/%(location)s/
+#website_endpoint = http://s3.cbk.cloud.syseleven.net/%(bucket)s/%(location)s/
+host_base = s3.dbl.cloud.syseleven.net
+host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
+#website_endpoint = http://%(bucket)s.s3.dbl.cloud.syseleven.net/%(location)s/
+website_endpoint = http://s3.dbl.cloud.syseleven.net/%(bucket)s/%(location)s/
+#host_base = s3.fes.cloud.syseleven.net
+#host_bucket = %(bucket).s3.fes.cloud.syseleven.net
+#website_endpoint = http://s3.fes.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = http://%(bucket)s.s3.fes.cloud.syseleven.net/%(location)s/
 ```
 
 We can configure an s3 client with the boto3 library using following python snippet (example is in DBL region):
@@ -55,8 +63,9 @@ s3 = session.resource(
     service_name = 's3',
     aws_access_key_id = "my-access-key",
     aws_secret_access_key = "my-secret-key",
-    endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
     #endpoint_url = 'https://s3.cbk.cloud.syseleven.net'
+    endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
+    #endpoint_url = 'https://s3.fes.cloud.syseleven.net'
 )
 # Get our client
 s3client = s3.meta.client
