@@ -11,7 +11,7 @@ taxonomy:
 
 SysEleven provides and maintains a set of images in the SysEleven Stack. As soon as vendors publish new images, we will verify their origin, test them and publish them automatically. We don't make any changes in vendor images, to keep checksums intact. That allows our customers to validate image origin if needed.
 
-You can view and manage images both via the OpenStack API and CLI, as well as using the [Dashboard (GUI)](https://dashboard.cloud.syseleven.net).
+You can view and manage images both via the OpenStack API and CLI, as well as using the [Dashboard (GUI)](https://cloud.syseleven.de/).
 
 If you need to maintain your own set of images, you can upload them yourself as well using the OpenStack API. It is possible to use tools like [Hashicorp Packer](https://www.packer.io/) to build your own images, for example with certain preinstalled software.
 

@@ -9,13 +9,13 @@ taxonomy:
 
 ## Vorraussetzungen
 
-* Zugang zum [Dashboard](https://dashboard.cloud.syseleven.net)
+* Zugang zum [Dashboard](https://cloud.syseleven.de/)
 * mindestens 2 vorhandene Router/Netzwerke
 * verschiedene IP-Ranges in beiden Netzwerken
 
 ### Login
 
-Mit den von SysEleven erhaltenen Daten für Nutzername und Passwort loggen wir uns im [Dashboard](https://dashboard.cloud.syseleven.net) ein.
+Mit den von SysEleven erhaltenen Daten für Nutzername und Passwort loggen wir uns im [Dashboard](https://cloud.syseleven.de/) ein.
 
 ![SysEleven Login](../../images/horizon-login.png)
 

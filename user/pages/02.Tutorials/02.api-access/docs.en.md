@@ -20,7 +20,7 @@ taxonomy:
 
 ## Accessing the SysEleven Stack API
 
-To work with the SysEleven Stack API you need to set environment variables used by the command line tools to authenticate and authorize your API calls. Users logged into the [Dashboard](https://dashboard.cloud.syseleven.net) can download a file that helps setting these variables under *API Access*. There you can click on *Download OpenStack RC File* --> *Openstack RC File (Identity API v3)* to download the corresponding file.
+To work with the SysEleven Stack API you need to set environment variables used by the command line tools to authenticate and authorize your API calls. Users logged into the [Dashboard](https://cloud.syseleven.de/) can download a file that helps setting these variables under *API Access*. There you can click on *Download OpenStack RC File* --> *Openstack RC File (Identity API v3)* to download the corresponding file.
 
 ![horizon-compute-apiaccess-openrc](../../images/horizon-compute-apiaccess-openrc.png)
 

@@ -13,7 +13,7 @@ SysEleven Stack Block Storage Service is built on the OpenStack Cinder project.
 
 With the Block Storage Service it is possible to add additional persistent block storage to your compute instances.
 
-You can manage your block storage volumes and make them available to your compute instances both via our public OpenStack API endpoints, as well as using the [Dashboard](https://dashboard.cloud.syseleven.net) and the [OpenStack CLI](../../02.Tutorials/02.api-access/docs.en.md).
+You can manage your block storage volumes and make them available to your compute instances both via our public OpenStack API endpoints, as well as using the [Dashboard](https://cloud.syseleven.de/) and the [OpenStack CLI](../../02.Tutorials/02.api-access/docs.en.md).
 
 ## Available volume types
 

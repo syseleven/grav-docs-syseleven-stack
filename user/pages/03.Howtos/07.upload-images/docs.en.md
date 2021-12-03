@@ -13,7 +13,7 @@ There are three different ways to upload custom images.
 
 ### Dashboard
 
-* First log in to the [Dashboard](https://dashboard.cloud.syseleven.net/horizon/project/)  
+* First log in to the [Dashboard](https://cloud.syseleven.de/horizon/project/)
 * Now navigate to 'Compute' -> 'Images'
 * Here click on the button 'Create Image'
 * Enter the required info and click on "Create Image" and now the custom image is uploaded into the SysEleven Stack
@@ -49,7 +49,7 @@ resources:
       location: https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2
 ```
 
-Further information can be found [here](https://dashboard.cloud.syseleven.net/horizon/project/stacks/resource_types/OS::Glance::Image).
+Further information can be found [here](https://cloud.syseleven.de/horizon/project/stacks/resource_types/OS::Glance::Image).
 
 ## Image sources
 

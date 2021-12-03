@@ -31,7 +31,7 @@ SSH keys can be imported via the GUI (Horizon / Dashboad) or the CLI (OpenStack 
 
 ### How to import?
 
-Using the username and password (API credentials) that were provided by SysEleven we login at: [https://dashboard.cloud.syseleven.net](https://dashboard.cloud.syseleven.net).
+Using the username and password (API credentials) that were provided by SysEleven we login at: [https://cloud.syseleven.de/](https://cloud.syseleven.de/).
 
 ![SysEleven Login](../../images/horizon-login.png)
 

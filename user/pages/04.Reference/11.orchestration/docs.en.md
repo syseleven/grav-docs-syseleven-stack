@@ -13,7 +13,7 @@ The SysEleven Stack orchestration service is built on the OpenStack Heat project
 
 It orchestrates multiple composite cloud applications by using the OpenStack native HOT template format. It can be seen as an overlay template specification, which through a native REST API can configure the underlying SysEleven Stack services.
 
-You can use the orchestration service both via our public OpenStack API endpoints, as well as using the [Dashboard](https://dashboard.cloud.syseleven.net)
+You can use the orchestration service both via our public OpenStack API endpoints, as well as using the [Dashboard](https://cloud.syseleven.de/)
 
 With the orchestration service you can do more than just start and stop virtual machines: You have control over your stack's network, storage, security groups, as well as your virtual machines. To run web services successfully on the SysEleven Stack, these components need to be known and orchestrated.
 
@@ -52,7 +52,7 @@ Now, create this network by running
 heat stack-create -f net.yaml netexample1
 ```
 
-If you now open the [Dashboard](https://dashboard.cloud.syseleven.net), you will see that you just made a piece of infrastructure: In the *Network* tab you see the network and subnet as defined in `net.yaml`. We do not need this network, so we clean it up with the following command:
+If you now open the [Dashboard](https://cloud.syseleven.de/), you will see that you just made a piece of infrastructure: In the *Network* tab you see the network and subnet as defined in `net.yaml`. We do not need this network, so we clean it up with the following command:
 
 ```shell
 heat stack-delete netexample1
@@ -112,7 +112,7 @@ heat stack-create -f net2.yaml \
                   netexample2
 ```
 
-You can check in the [Dashboard](https://dashboard.cloud.syseleven.net) under "Network Topology" to see that the object was created correctly. You can also see that *Network* and *Router* are independent objects. To connect both objects you need an additional object that does just that: A *Router-Subnet-Connect*. Here is the code to add this piece of infrastructure:
+You can check in the [Dashboard](https://cloud.syseleven.de/) under "Network Topology" to see that the object was created correctly. You can also see that *Network* and *Router* are independent objects. To connect both objects you need an additional object that does just that: A *Router-Subnet-Connect*. Here is the code to add this piece of infrastructure:
 
 ```plain
 parameters:
@@ -156,7 +156,7 @@ heat stack-create -f net3.yaml \
                   netexample3
 ```
 
-You can see in the [Dashboard](https://dashboard.cloud.syseleven.net) that you created a private network `example-net`, which is connected to the public network `float1` through a Router.
+You can see in the [Dashboard](https://cloud.syseleven.de/) that you created a private network `example-net`, which is connected to the public network `float1` through a Router.
 
 Using this infrastructure we can now start a virtual machine which has an outside network connections. We are still missing a way to assign a virtual machine to a given subnet. This is done using *Ports*. *Ports* are the network interfaces of a virtual machine: A *Port* needs to be connected to a *Subnet* for the virtual machine to be able to use it. Here is the code to connect a *Port* to a *Subnet*:
 
@@ -229,7 +229,7 @@ resources:
 
 You can use this template as usual, only that you reference the public SSH Key you stored in the Dashboard using the command line switch `-Pkey_name=<PubKeyName>` This ensures that you can log in to the default account on your virtual machine using SSH.
 
-In the [Dashboard](https://dashboard.cloud.syseleven.net) you can see the network being built. You also see the subnet and router are created and all objects will be connected. We cannot connect to our virtual machine though: The setup is missing a publicly accessible IP address. The missing object is a *Floating IP*, another object we need to connect with our *Port*. When that's done, we have a virtual machine that is reachable from the Internet. Here is the necessary orchestration code:
+In the [Dashboard](https://cloud.syseleven.de/) you can see the network being built. You also see the subnet and router are created and all objects will be connected. We cannot connect to our virtual machine though: The setup is missing a publicly accessible IP address. The missing object is a *Floating IP*, another object we need to connect with our *Port*. When that's done, we have a virtual machine that is reachable from the Internet. Here is the necessary orchestration code:
 
 ```plain
 heat_template_version: 2014-10-16
