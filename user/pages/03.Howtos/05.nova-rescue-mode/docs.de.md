@@ -50,7 +50,7 @@ ssh syseleven@<server-ip>
 Alle folgenden Kommandos werden hier ausgeführt.
 
 Wir benötigen auch die OpenStack Zugangsdaten (openrc-Datei).
-Diese kann [hier](https://dashboard.cloud.syseleven.net/horizon/project/access_and_security/api_access/openrc/) heruntergeladen werden.
+Diese kann [hier](https://cloud.syseleven.de/horizon/project/access_and_security/api_access/openrc/) heruntergeladen werden.
 
 ```shell
 source openrc

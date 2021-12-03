@@ -26,7 +26,7 @@ Multi-Factor-Authentication (TOTP)         | no  |
 
 A common way for an user or service to authenticate towards Keystone is by using username and password. For an example, have a look at the [API access tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 
-Users can change their password either using the OpenStack CLI command `openstack user password set`, or via the [OpenStack dashboard](https://cloud.syseleven.de).
+Users can change their password either using the OpenStack CLI command `openstack user password set`, or via the [OpenStack dashboard](https://cloud.syseleven.de/).
 
 If you forgot your password, please contact the [Cloud-Support at cloudsupport@syseleven.de](../../06.Support/default.en.md).
 

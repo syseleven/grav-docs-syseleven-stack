@@ -29,7 +29,7 @@ taxonomy:
 
 ### How to select?
 
-* Log in to the [SysEleven Stack Dashboard](https://dashboard.cloud.syseleven.net) using the username and password (API credentials) that were provided by SysEleven.
+* Log in to the [SysEleven Stack Dashboard](https://cloud.syseleven.de/) using the username and password (API credentials) that were provided by SysEleven.
 
 ![SysEleven Login](../../images/horizon-login.png)
 

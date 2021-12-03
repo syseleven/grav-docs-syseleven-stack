@@ -9,13 +9,13 @@ taxonomy:
 
 ## Prerequisites
 
-* Access to the [Dashboard](https://dashboard.cloud.syseleven.net)
+* Access to the [Dashboard](https://cloud.syseleven.de/)
 * At least two existing routers/networks
 * Different IP ranges in both networks
 
 ### Step One: Login
 
-Sign in at the  [Dashboard](https://dashboard.cloud.syseleven.net)
+Sign in at the  [Dashboard](https://cloud.syseleven.de/)
 
 ![SysEleven Login](../../images/horizon-login.png)
 
