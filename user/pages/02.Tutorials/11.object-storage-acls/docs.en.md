@@ -127,7 +127,7 @@ Narrow down ACLs on specific OpenStack users
 Scheme: `u:<user-name>/<project-ID>`
 
 !! **Be aware**
-!! For the user scope ACLs to work, your username unfortunately has to be POSIX compliant. If you have a username containing unsupported characters (e.g. `@` from a mail address) please contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+!! For the user scope ACLs to work, your username unfortunately has to be POSIX compliant. If you have a username containing unsupported characters (e.g. `@` from a mail address) please contact our [Support (support@syseleven.de)](../../06.Support/default.en.md).
 
 Examples:
 
@@ -180,7 +180,7 @@ Set ACLs for specific OpenStack groups
 Scheme: `g:<group-name>/<project-ID>`
 
 !! **Be aware**
-!! By default every OpenStack project has one group which contains all users with access to the project. Users currently are not able to see their group memberships. Please contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md) if you need a list of your project's group names.
+!! By default every OpenStack project has one group which contains all users with access to the project. Users currently are not able to see their group memberships. Please contact our [Support (support@syseleven.de)](../../06.Support/default.en.md) if you need a list of your project's group names.
 
 Example:
 
@@ -217,7 +217,7 @@ s3cmd -c <your-s3-config> setacl --acl-grant=read:g:<group-name-with-readonly-ac
 * Not every possible use-case is covered in this tutorial
 * By default every OpenStack project will get a single group which contains all the users which have access to the project. The group management is currently handled by SysEleven
 
-If you need specific groups or users for setting up your desired ACLs please feel free to contact our [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+If you need specific groups or users for setting up your desired ACLs please feel free to contact our [Support (support@syseleven.de)](../../06.Support/default.en.md).
 
 ## References
 

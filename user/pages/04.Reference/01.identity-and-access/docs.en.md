@@ -28,7 +28,7 @@ A common way for an user or service to authenticate towards Keystone is by using
 
 Users can change their password either using the OpenStack CLI command `openstack user password set`, or via the [OpenStack dashboard](https://cloud.syseleven.de).
 
-If you forgot your password, please contact the [Cloud-Support at cloudsupport@syseleven.de](../../06.Support/default.en.md).
+If you forgot your password, please contact the [Support at support@syseleven.de](../../06.Support/default.en.md).
 
 ### Token
 
@@ -63,15 +63,15 @@ On the SysEleven Stack, `users` belong to `groups`, which can get access to `pro
 
 Typically every customer will have one or more users (for every team member), and one or more projects. Users can have access to all customer projects, or only to a subset of projects if required.
 
-We manage projects, users, groups and roles for you. Please contact the [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md) if you happen to require changes to your projects, users or groups.
+We manage projects, users, groups and roles for you. Please contact the [Support (support@syseleven.de)](../../06.Support/default.en.md) if you happen to require changes to your projects, users or groups.
 
 ### Projects
 
-Every cloud resource, like virtual machines, belong to a certain project. It might be good practice to separate unrelated pieces of infrastructure into different projects.
+Every cloud resource, like virtual machines, belongs to a certain project. It might be good practice to separate unrelated pieces of infrastructure into different projects. If you need separate projects, please contact the [Support (support@syseleven.de)](../../06.Support/default.en.md).
 
 ### Groups
 
-By default, we create one group for read-only access and one group for read-write access for every project. If you have special requirements, please contact the [Cloud-Support (cloudsupport@syseleven.de)](../../06.Support/default.en.md).
+By default, we create one group for read-only access and one group for read-write access for every project. If you have special requirements, please contact the [Support (support@syseleven.de)](../../06.Support/default.en.md).
 
 ### Roles
 
