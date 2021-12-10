@@ -78,4 +78,4 @@ Affected instances will receive an ACPI shutdown event that gives the operating 
 
 ### How many nodes/instances will be affected by local SSD storage node maintenance simultaneously?
 
-Planned maintenances will only affect one compute node at a time and between two maintenances there will be half an hour of recreation to allow the affected systems to re-join their clusters or whatever. It will, however, affect all local ssd storage instances on the same compute node. To ensure, that redundant systems will not be affected simultaneously, you must put them into [anti-affinity-groups](../../02.Tutorials/07.affinity/docs.de.md).
+Planned maintenances will only affect one compute node at a time and between two maintenances there will be half an hour of recreation to allow the affected systems to re-join their clusters or whatever. It will, however, affect all local ssd storage instances on the same compute node. To ensure, that redundant systems will not be affected simultaneously, you must put them into [anti-affinity-groups](../../02.Tutorials/07.affinity/docs.en.md).
