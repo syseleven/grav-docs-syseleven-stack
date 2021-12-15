@@ -1,0 +1,12 @@
+# NOTE: Currently we do not support german language documentation. We used to have it, and therefore
+# we implement a permanent redirect here to the english documentation of SysEleven Stack for SEO and UX reasons.
+# See also README for more information on internationalization support in the docs.
+RedirectMatch 301 ^/syseleven-stack/de(/.*)?$ /syseleven-stack/en$1
+
+# Disable PHP error logging to the web site
+php_flag display_startup_errors off
+php_flag display_errors off
+php_flag html_errors off
+# As we are running in a docker container, let's log warnings and errors to stderr
+php_flag log_errors on
+php_value error_log /dev/stderr
