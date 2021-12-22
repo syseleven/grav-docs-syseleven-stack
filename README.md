@@ -44,3 +44,18 @@ docker-compose up --build
 Then open http://localhost:8080/syseleven-stack in your browser. **Grav is caching very aggressively, if you don’t see changes made, reload without cache.
 
 **Important: If you make changes to the content, you have to execute the command again as all content is built into the image statically**
+
+## Multi-language support
+
+Available documentation languages can be configured in [`user/config/system.yaml`](user/config/system.yaml).
+
+Markdown files must be at least available in english language; If a translation is not available grav will
+fall back to english language.
+
+At the moment (Dec 2021) we only support english language documentation. As we used to have german language docs
+as well, we implemented a `RedirectMatch` rule in an additional [`.htaccess`](user/apache2/.htaccess) file for
+permanent redirect from german docs to english docs for SEO and UX reasons.
+
+We deploy the .htaccess file in the [`Dockerfile`](Dockerfile) using `COPY`. Please note that there is another
+`.htaccess` file in `/var/www/html/syseleven-stack/` from the parent container; statements there will take precedence.
+For that reason you cannot use `Rewrite` rules unfortunately.
