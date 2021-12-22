@@ -8,6 +8,7 @@ intl_enabled: true
 languages:
   supported:
     - en
+    - de
   include_default_lang: true
   translations: true
   translations_fallback: true
