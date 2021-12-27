@@ -49,7 +49,7 @@ resources:
       location: https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2
 ```
 
-Further information can be found [here](https://cloud.syseleven.de/horizon/project/stacks/resource_types/OS::Glance::Image).
+Further information can be found [here](https://cloud.syseleven.de/horizon/project/resource_types/OS::Glance::Image/).
 
 ## Image sources
 
