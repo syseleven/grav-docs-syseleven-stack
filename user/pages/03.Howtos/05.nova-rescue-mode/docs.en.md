@@ -50,7 +50,7 @@ ssh syseleven@<server-ip>
 The following commands need to be executed in the ssh session.
 
 We also need the OpenStack credentials (openrc-file).
-You can download the file [here](https://cloud.syseleven.de/horizon/project/access_and_security/api_access/openrc/).
+You can download the file [here](https://cloud.syseleven.de/horizon/project/api_access/openrc/).
 
 ```shell
 source openrc
