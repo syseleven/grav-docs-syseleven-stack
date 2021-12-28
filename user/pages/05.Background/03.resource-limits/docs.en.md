@@ -37,7 +37,7 @@ Some customers prefer to commit to a certain volume paid upfront, other prefer p
 
   upfront commitment + on demand buffer = quota limit
 
-While quota limits apply per project and region, your upfront commitment can be applied over all regions. This comes in handy, if you have a not fully redundant, but fully automated infrastructure in one of our regions and we announce a maintenance. You can get the same quota limits in another region, build a copy of your infrastructure, switch over and tear down the now unused infrastructure in the old region. While the baseline of you setup is covered by the comitment, you only have to pay the exceeding resources on demand for the short duration where the setup is doubled. The idle buffers do not need to be paid.
+While quota limits apply per project and region, your upfront commitment can be applied over all regions. This comes in handy, if you have a not fully redundant, but fully automated infrastructure in one of our regions and we announce a maintenance. You can get the same quota limits in another region, build a copy of your infrastructure, switch over and tear down the now unused infrastructure in the old region. While the baseline of you setup is covered by the commitment, you only have to pay the exceeding resources on demand for the short duration where the setup is doubled. The idle buffers do not need to be paid.
 
 
 
