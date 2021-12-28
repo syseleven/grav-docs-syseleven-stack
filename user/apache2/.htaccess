@@ -1,5 +1,7 @@
-# NOTE: Currently we do not support german language documentation. We used to have it, and therefore
-# we implement a permanent redirect here to the english documentation of SysEleven Stack for SEO and UX reasons.
+# NOTE: This .htaccess is only used for the testing container image,
+# not by the production environment.
+
+# Implement a permanent redirect from the /de pages to /en
 # See also README for more information on internationalization support in the docs.
 RedirectMatch 301 ^/syseleven-stack/de(/.*)?$ /syseleven-stack/en$1
 
