@@ -1,5 +1,5 @@
 ---
-title: 'REST API for Quota Information'
+title: 'REST API for Quota and Usage Information'
 published: true
 date: '26-07-2021 16:25'
 taxonomy:
@@ -7,13 +7,14 @@ taxonomy:
         - docs
 ---
 
-## Introduction
 
-For many resource types like instances, VCPUs, volume storage you can check the limits and the current usage in the dashboard (Horizon) or use the standard OpenStack APIs to collect the data in some automation. But information about quota and usage of object storage (S3) is not available using standard APIs.
+## Rest API
+
+For many resource types like instances, vCPUs, volume storage you can check the limits and the current usage in the dashboard (Horizon) or use the standard OpenStack APIs to collect the data in some automation. But information about quota and usage of object storage (SEOS, S3) is not available using standard APIs.
 
 For quota and usage information including object storage the SysEleven Stack offers an own REST API.
 
-## Requirements
+### Requirements
 
 For queries to the quota API you need an OpenStack Keystone token to authenticate with. If you installed the OpenStack command line tools you can create a token with the command `openstack token issue`.
 
@@ -31,15 +32,15 @@ openstack token issue
 
 The token ("id" row in the table) has to be passed in the `X-Auth-Token` header of the REST API requests.
 
-## Query quota
+### Query quota limits
 
-### URL
+#### URL
 
 ```plain
 GET https://api.cloud.syseleven.net:5001/v1/projects/{project_id}/quota
 ```
 
-### Request parameters
+#### Request parameters
 
 Name        | Where    | Description |
 ------------|----------|-------------|
@@ -57,7 +58,7 @@ Example:
 curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.syseleven.net:5001/v1/projects/11111111111111111111111111111111/quota?regions=cbk,dbl
 ```
 
-### Response
+#### Response
 
 The response contains the quota information in JSON format. Example for a response with information about regions cbk and dbl:
 
@@ -131,15 +132,15 @@ volume.volumes | Number of Block Storage volumes |
 
 A limit of -1 means "unlimited", 0 means "no resources".
 
-## Query current usage
+### Query current usage
 
-### URL
+#### URL
 
 ```plain
 GET https://api.cloud.syseleven.net:5001/v1/projects/{project_id}/current_usage
 ```
 
-### Request parameters
+#### Request parameters
 
 Name         | Where    | Description |
 -------------|----------|-------------|
@@ -174,7 +175,7 @@ Example:
 curl -H 'X-Auth-Token: 01234567890abcdef01234567890abcd' https://api.cloud.syseleven.net:5001/v1/projects/11111111111111111111111111111111/current_usage?regions=cbk,dbl&filter=compute,s3
 ```
 
-### Response
+#### Response
 
 The response contains the information about the currently-used resources in JSON format. Example of a response with data about regions cbk and dbl (and without a component filter):
 
@@ -254,6 +255,6 @@ volume.space_gb | Used size of Block Storage (volumes) in GiB |
 volume.volumes | Number of Block Storage volumes |
 
 
-## Contributed Software
+### Contributed Software
 
 One of our customers kindly created an exporter to use this API with Prometheus and made it available as open source on [GitHub](https://github.com/Staffbase/syseleven-exporter).
