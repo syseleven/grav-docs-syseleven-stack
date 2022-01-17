@@ -65,15 +65,3 @@ When trying to update a Neutron LBaaSv2 load balancer (name, description or admi
 
 **Solution:**
 The Cloud Support needs to reset the load balancer state.
-
-## Network resource setup won't work if name or description contain non-ASCII characters
-
-**Affected Regions:**
-CBK and DBL
-
-**Problem Statement:**
-When some network resource is created where the name or description contains non-ASCII characters the resource won't be fully created. It may be looking fine from the Neutron API perspective, but in the internal SDN software (Midonet) the new resource is missing.
-For example if you create a security group where the description contains a German umlaut the security group is visible in the neutron API, but does not actually exist internally. This may break the connectivity to VMs using this security group. Requests that reference this security group may fail, including creating new VMs.
-
-**Solution:**
-Use only US-ASCII characters in names or descriptions of network resources (routers, networks, security groups, etc.) to avoid internal problems. If you already created some resource with an unsupported name or description, you should delete and re-create it with a pure ASCII name/description.
