@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-OpenStack's Neutron provides Site-to-Site IPsec IKEv1 VPN through VPN as a Service (VPNaaS).
+OpenStack's Neutron provides Site-to-Site IPsec VPN through VPN as a Service (VPNaaS).
 This means that IPsec policies and connections are configured within the OpenStack.
 No dedicated virtual machines are required to use this service.
 
@@ -260,21 +260,21 @@ $ openstack router set right-router --external-gateway ext-net
 
 ### Step Three: Create an IKE and IPSec policy
 
-You need to create both IKE and IPSec policy in both "left" and "right" region.
+You need to create both IKE and IPSec policy in both "left" and "right" region. We recommend to set some parameters explicitly to provide a more secure VPN than the default values would.
 
 ```shell
-$ openstack vpn ike policy create ikepolicy
+$ openstack vpn ike policy create ikepolicy --ike-version v2 --auth-algorithm sha256 --encryption-algorithm aes-256 --pfs group14
 +-------------------------------+----------------------------------------+
 | Field                         | Value                                  |
 +-------------------------------+----------------------------------------+
-| Authentication Algorithm      | sha1                                   |
+| Authentication Algorithm      | sha256                                 |
 | Description                   |                                        |
-| Encryption Algorithm          | aes-128                                |
+| Encryption Algorithm          | aes-256                                |
 | ID                            | ff1f540b-6ea9-42ee-8973-cba841835dfa   |
-| IKE Version                   | v1                                     |
+| IKE Version                   | v2                                     |
 | Lifetime                      | {u'units': u'seconds', u'value': 3600} |
 | Name                          | ikepolicy                              |
-| Perfect Forward Secrecy (PFS) | group5                                 |
+| Perfect Forward Secrecy (PFS) | group14                                |
 | Phase1 Negotiation Mode       | main                                   |
 | Project                       | 70061ce0cd2e47ef9d7dc82174dc9923       |
 | project_id                    | 70061ce0cd2e47ef9d7dc82174dc9923       |
@@ -282,18 +282,18 @@ $ openstack vpn ike policy create ikepolicy
 ```
 
 ```shell
-$ openstack vpn ipsec policy create ipsecpolicy
+$ openstack vpn ipsec policy create ipsecpolicy --auth-algorithm sha256 --encryption-algorithm aes-256 --pfs group14
 +-------------------------------+----------------------------------------+
 | Field                         | Value                                  |
 +-------------------------------+----------------------------------------+
-| Authentication Algorithm      | sha1                                   |
+| Authentication Algorithm      | sha256                                 |
 | Description                   |                                        |
 | Encapsulation Mode            | tunnel                                 |
-| Encryption Algorithm          | aes-128                                |
+| Encryption Algorithm          | aes-256                                |
 | ID                            | f9633763-2393-4ec3-824a-1e07dd7cfc2e   |
 | Lifetime                      | {u'units': u'seconds', u'value': 3600} |
 | Name                          | ipsecpolicy                            |
-| Perfect Forward Secrecy (PFS) | group5                                 |
+| Perfect Forward Secrecy (PFS) | group14                                |
 | Project                       | 70061ce0cd2e47ef9d7dc82174dc9923       |
 | Transform Protocol            | esp                                    |
 | project_id                    | 70061ce0cd2e47ef9d7dc82174dc9923       |
