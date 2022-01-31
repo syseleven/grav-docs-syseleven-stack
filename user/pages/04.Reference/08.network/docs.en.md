@@ -104,7 +104,7 @@ Currently our VPNaaS implementation supports the following algorithms in both ph
 | Group 5        |
 | Group 14       |
 
-See our heat-examples on GitHub [for an example how to connect two regions using VPNaaS](https://github.com/syseleven/heat-examples/tree/master/vpn-site2site).
+See our terraform examples on GitHub [for an example how to connect two regions using VPNaaS](https://github.com/syseleven/terraform-examples/tree/master/vpnaas).
 
 ### Known interoperability issues
 
