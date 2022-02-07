@@ -1,4 +1,4 @@
-FROM registry.code.syseleven.de/syseleven/managed-services/docs/grav-docker:2022-01-28-211435
+FROM registry.code.syseleven.de/syseleven/managed-services/docs/grav-docker:2022-02-07-201358
 
 # We need the page to be at /var/www/html/metakube for easier ingress configuration
 USER root
