@@ -236,7 +236,7 @@ runcmd:
 
 It will resize the main partition to 10 GiB and create 2 new partitions (10 GiB and 30 GiB), create an ext-4 filesystem and mount them.
 
-After provisioning we may for our new created partitions inside of the VM :
+After provisioning we may see our new created partitions from inside of the VM :
 
 ```shell
 ubuntu@partition-test:~$ df -h
