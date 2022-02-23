@@ -116,11 +116,11 @@ compute.instances | Number of virtual machines (servers, instances) |
 compute.ram_mb | RAM for virtual machines in MiB |
 dns.zones | Number of DNS zones |
 network.floatingips | Number of floating IP addresses |
-network.lb_healthmonitors | Number of Neutron LBaaSv2 health monitors |
-network.lb_listeners | Number of Neutron LBaaSv2 listeners |
-network.lb_members | Number of Neutron LBaaSv2 pool members |
-network.lb_pools | Number of Neutron LBaaSv2 pools |
-network.loadbalancers | Number of Neutron LBaaSv2 load balancers |
+network.lb_healthmonitors | Number of Neutron LBaaS v2 health monitors |
+network.lb_listeners | Number of Neutron LBaaS v2 listeners |
+network.lb_members | Number of Neutron LBaaS v2 pool members |
+network.lb_pools | Number of Neutron LBaaS v2 pools |
+network.loadbalancers | Number of Neutron LBaaS v2 load balancers |
 network.vpn_endpoint_groups | Number of VPNaaS endpoint groups |
 network.vpn_ikepolicy | Number of VPNaaS IKE policies |
 network.vpn_ipsec_site_connections | Number of VPNaaS site connections |
@@ -156,13 +156,15 @@ avoided.
 
 **Component names supported by `filter`**
 
-- compute
-- dns
-- network
-- network.lb
-- network.vpn
-- s3
-- volume
+Filter name | Details |
+------------|---------|
+compute     | Compute resources |
+dns         | DNS zones |
+network     | Network resources (excl. LBaaS and VPNaaS) |
+network.lb  | Neutron LBaaS v2 resources |
+network.vpn | VPNaaS resources |
+s3          | Object storage consumption |
+volume      | Block storage resources |
 
 Example:
 
@@ -240,11 +242,11 @@ compute.instances | Total number of virtual machines |
 compute.ram_mb | Total RAM of virtual machines in MiB |
 dns.zones | Number of DNS zones |
 network.floatingips | Number of floating IP addresses |
-network.lb_healthmonitors | Number of LBaaS health monitors |
-network.lb_listeners | Number of LBaaS listeners |
-network.lb_members | Number of LBaaS pool members |
-network.lb_pools | Number of LBaaS pools |
-network.loadbalancers | Number of LBaaS load balancers |
+network.lb_healthmonitors | Number of Neutron LBaaS v2 health monitors |
+network.lb_listeners | Number of Neutron LBaaS v2 listeners |
+network.lb_members | Number of Neutron LBaaS v2 pool members |
+network.lb_pools | Number of Neutron LBaaS v2 pools |
+network.loadbalancers | Number of Neutron LBaaS v2 load balancers |
 network.vpn_endpoint_groups | Number of VPNaaS endpoint groups |
 network.vpn_ikepolicy | Number of VPNaaS IKE policies |
 network.vpn_ipsec_site_connections | Number of VPNaaS site connections |
