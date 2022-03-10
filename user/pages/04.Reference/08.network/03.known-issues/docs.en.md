@@ -30,6 +30,7 @@ To avoid running into this issue there are 4 possible solutions:
 
 The last suggested solution does not automatically send keepalives on every TCP connection, since the application must request kernel keepalives when it opens the TCP socket.
 
+
 ## High TCP setup delay on CentOS
 
 **Affected Regions:**
@@ -40,6 +41,7 @@ Current CentOS 7 has problems handling a huge amount of requests per seconds in 
 
 **Solution:**
 We suggest to use Ubuntu 18.04 instead of CentOS. The described problem does not occur there.
+
 
 ## High TCP setup delay
 
@@ -54,6 +56,7 @@ Since software-defined network in the region FES is not based on Midonet anymore
 **Solution:**
 Currently there is no solution to overcome this issue.
 
+
 ## Error updating Neutron LBaaS load balancer
 
 **Affected Regions:**
@@ -62,6 +65,18 @@ CBK and DBL
 **Problem Statement:**
 When trying to update a Neutron LBaaSv2 load balancer (name, description or admin-state-up), Neutron will answer with 400 Bad Request. The affected load balancer ends up in `ERROR` state. The load balancer itself will get updated accordingly and keeps working as intended. Unfortunately due to the load balancer switching to the ERROR state, further requests (except delete requests) on it will be rejected.
 
-
 **Solution:**
 The Cloud Support needs to reset the load balancer state.
+
+
+## Connection setup rate limitation
+
+**Affected Regions:**
+CBK and DBL
+
+**Problem Statement:**
+The SDN solution we are using in the CBK and DBL regions is reactive and thus newly created connections/flows create strain. To avoid a negative performance impact on other users, the maximum rate of newly created outgoing connections has been limited to 5000 per second, which in our observation exceeded all legitimate use cases and was only hit by attempted denial attacks.
+
+**Solution:**
+If you approach this limit, try to reduce the number of newly created connections per second. Depending on your use case, it is often possible (and recommended anyway) to reuse existing connections as much as possible (e.g. by using connection pooling techniques). Alternatively, it is possible to spread the traffic over several instances (horizontal scale out). Please approach our support to either propose a suitable workaround or reconsider the limit.
+
