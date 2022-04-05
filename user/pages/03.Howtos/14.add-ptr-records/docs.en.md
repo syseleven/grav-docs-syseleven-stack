@@ -142,3 +142,8 @@ Also, a matching reverse PTR-type record is configured for the floating IP:
 $ dig +short -x 185.56.129.73
 appserver2.ptrhowto.example.
 ```
+
+!!!! **Side note**
+!!!! An alternative way to setup PTR records would be to directly create a floating IP with a dns_domain and dns_name set using the OpenStack CLI. But using this approach unfortunately it is not possible to change the domain or name of the floating IP retroactivly.
+!!!!
+!!!! It is also possible to have multiple PTR records for a single VM. You can achieve this by using multiple Ports with different dns_names. It is not possible using multiple fixed IPs on the same Port due to dns_name collisions.
