@@ -59,9 +59,9 @@ openstack server list
 +--------------------------------------+----------------+--------+----------------------------------------+----------------------------------+
 | ID                                   | Name           | Status | Networks                               | Image Name                       |
 +--------------------------------------+----------------+--------+----------------------------------------+----------------------------------+
-| 2befeba0-70f1-4049-97d8-98a71a3b6d72 | App Instance 1 | ACTIVE | net_demo=192.168.1.14                | Ubuntu Xenial 16.04 (2020-03-30) |
-| 6e607706-13e2-4433-8665-3617835865c0 | App Instance 2 | ACTIVE | net_demo=192.168.1.2                 | Ubuntu Xenial 16.04 (2020-03-30) |
-| a6d64bf4-d2da-4d17-ada0-9b5c10942bc9 | App Instance 3 | ACTIVE | net_demo=192.168.1.6                 | Ubuntu Xenial 16.04 (2020-03-30) |
+| 2befeba0-70f1-4049-97d8-98a71a3b6d72 | App Instance 1 | ACTIVE | net_demo=192.168.1.14                | Ubuntu Xenial 22.04 (2022-04-26) |
+| 6e607706-13e2-4433-8665-3617835865c0 | App Instance 2 | ACTIVE | net_demo=192.168.1.2                 | Ubuntu Xenial 22.04 (2022-04-26) |
+| a6d64bf4-d2da-4d17-ada0-9b5c10942bc9 | App Instance 3 | ACTIVE | net_demo=192.168.1.6                 | Ubuntu Xenial 22.04 (2022-04-26) |
 +--------------------------------------+----------------+--------+----------------------------------------+----------------------------------+
 
 openstack --os-compute-api-version 2.60 server add volume "App Instance 1" testvolume
@@ -90,9 +90,9 @@ To setup OCFS2 we need to install the ocfs2 management tools and kernel modules 
 
 ```shell
 uname -a
-Linux app-instance-1 4.4.0-177-generic #207-Ubuntu SMP Mon Mar 16 01:16:10 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+Linux app-instance-1  5.15.0-25-generic #25-Ubuntu SMP Wed Mar 30 15:54:22 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
 
-apt install ocfs2-tools linux-modules-extra-4.4.0-177-generic
+apt install ocfs2-tools linux-modules-extra-5.15.0-25-generic
 ```
 
 OCFS2 is configurend in /etc/default/o2cb and /etc/ocfs/cluster.conf.
