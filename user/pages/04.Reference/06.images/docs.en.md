@@ -25,10 +25,9 @@ CentOS 7 (YYYY-MM-DD)            | Unmodified, directly from vendor             
 Flatcar Stable (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
 Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
 Debian Buster (YYYY-MM-DD)       | Unmodified, directly from vendor *(See note below)* |
+Ubuntu Jammy 22.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
 Ubuntu Focal 20.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
 Ubuntu Bionic 18.04 (YYYY-MM-DD) | Unmodified, directly from vendor                    |
-Ubuntu Xenial 16.04 (YYYY-MM-DD) | Unmodified, directly from vendor                    |
-Rescue Ubuntu 16.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
 Rescue Ubuntu 18.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
 
 !!! Debian Buster image provided by Debian community has a bug that causes loss of networking
@@ -86,10 +85,9 @@ If you prefer maintaining your own set of images, this table shows sources for c
 
 Distro                    | URL |
 --------------------------|-----|
+Ubuntu 22.04 LTS (Jammy)  | `https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img` |
 Ubuntu 20.04 LTS (Focal)  | `http://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img` |
 Ubuntu 18.04 LTS (Bionic) | `http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img` |
-Ubuntu 16.04 LTS (Xenial) | `http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img` |
-Ubuntu 14.04 LTS (Trusty) | `http://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img` |
 Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
 CentOS 7                  | `https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2` |
 CentOS 8                  | `https://cloud.centos.org/centos/8/x86_64/images/` |
