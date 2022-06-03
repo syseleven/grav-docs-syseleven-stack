@@ -88,6 +88,8 @@ Distro                    | URL |
 Ubuntu 22.04 LTS (Jammy)  | `https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img` |
 Ubuntu 20.04 LTS (Focal)  | `http://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img` |
 Ubuntu 18.04 LTS (Bionic) | `http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img` |
+Debian 11 (Bullseye)      | `https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-generic-amd64.qcow2` |
+Debian 10 (Buster)        | `https://cdimage.debian.org/cdimage/openstack/current-10/debian-10-openstack-amd64.qcow2` |
 Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
 CentOS 7                  | `https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2` |
 CentOS 8                  | `https://cloud.centos.org/centos/8/x86_64/images/` |
