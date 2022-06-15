@@ -24,7 +24,7 @@ It is important that you respect the directory structure pattern already present
 * Every page needs one folder
 * The folder name maps to the url slug
 * The folder name should be prefixed with a number used for ordering the menu items
-* Maximum nesting level is 3
+* Maximum nesting level is 2
 * The markdown file with the content within one folder has to be named `default.en.md`
 * Content is written in markdown. More information about the syntax can be found [here](https://learn.getgrav.org/content/markdown)
 * Be aware that every file needs a Grav specific header. More information about the header can be found [here](https://learn.getgrav.org/content/headers)
