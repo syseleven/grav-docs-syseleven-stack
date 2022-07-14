@@ -59,7 +59,7 @@ source_sha512sum                 | SHA512 hash of the original image file, as pr
 source_sha256sum                 | SHA256 hash of the original image file, as provided by the vendor under `source_url` |
 source_url                       | URL to the vendor image file that has been used for this image |
 
-Here is an example for filtering the images by properties using [Hasicorp Terraform's image data source](https://www.terraform.io/docs/providers/openstack/d/images_image_v2.html):
+Here is an example for filtering the images by properties using [Hashicorp Terraform's image data source](https://www.terraform.io/docs/providers/openstack/d/images_image_v2.html):
 
 ```hcl
 data "openstack_images_image_v2" "ubuntu-focal" {
