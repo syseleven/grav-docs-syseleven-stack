@@ -1,5 +1,5 @@
 ---
-title: 'REST API for Quota and Usage Information'
+title: 'API for Quota and Usage Information'
 published: true
 date: '26-07-2021 16:25'
 taxonomy:
@@ -8,11 +8,11 @@ taxonomy:
 ---
 
 
-## Rest API
+## API
 
 For many resource types like instances, vCPUs, volume storage you can check the limits and the current usage in the dashboard (Horizon) or use the standard OpenStack APIs to collect the data in some automation. But information about quota and usage of object storage (SEOS, S3) is not available using standard APIs.
 
-For quota and usage information including object storage the SysEleven Stack offers an own REST API.
+For quota and usage information including object storage the SysEleven Stack offers an own API.
 
 ### Requirements
 
@@ -30,7 +30,7 @@ openstack token issue
 +------------+----------------------------------+
 ```
 
-The token ("id" row in the table) has to be passed in the `X-Auth-Token` header of the REST API requests.
+The token ("id" row in the table) has to be passed in the `X-Auth-Token` header of the API requests.
 
 With the following command you may directly assign a new token to a shell variable:
 
@@ -38,9 +38,15 @@ With the following command you may directly assign a new token to a shell variab
 token=$(openstack token issue -c id -f value)
 ```
 
+### Known limitations
+
+!! Due to implementation issues, the API is currently limited to return data about the default project of a user. Queries about other accessible projects will fail.
+
+Until we are able to fix this issue, we provide our customers having multiple openstack projects with additional credentials for each project.
+
 ### API versions
 
-There are 2 versions of the REST API: v1 and v2. Version v2 extends the data schema for usage and quota API endpoints to add values related to Octavia load balancers. The following examples use v2-based URLs, but v1 is still supported (just replace v2 with v1 in the URL).
+There are 2 versions of the API: v1 and v2. Version v2 extends the data schema for usage and quota API endpoints to add values related to Octavia load balancers. The following examples use v2-based URLs, but v1 is still supported (just replace v2 with v1 in the URL).
 
 ### Query quota limits
 
