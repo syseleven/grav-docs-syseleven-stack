@@ -19,7 +19,6 @@ If you need to maintain your own set of images, you can upload them yourself as 
 
 Name                             | Description                                         |
 ---------------------------------|-----------------------------------------------------|
-CentOS 8 (YYYY-MM-DD)            | Unmodified, directly from vendor                    |
 CentOS 8 Stream (YYYY-MM-DD)     | Unmodified, directly from vendor                    |
 CentOS 7 (YYYY-MM-DD)            | Unmodified, directly from vendor                    |
 Flatcar Stable (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
@@ -92,7 +91,6 @@ Debian 11 (Bullseye)      | `https://cloud.debian.org/images/cloud/bullseye/late
 Debian 10 (Buster)        | `https://cdimage.debian.org/cdimage/openstack/current-10/debian-10-openstack-amd64.qcow2` |
 Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
 CentOS 7                  | `https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2` |
-CentOS 8                  | `https://cloud.centos.org/centos/8/x86_64/images/` |
 CentOS 8 Stream           | `https://cloud.centos.org/centos/8-stream/x86_64/images/` |
 Flatcar Stable            | `https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_openstack_image.img.bz2` |
 
