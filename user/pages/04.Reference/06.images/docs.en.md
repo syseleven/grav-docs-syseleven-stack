@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-SysEleven provides and maintains a set of images in the SysEleven Stack. As soon as vendors publish new images, we will verify their origin, test them and publish them automatically. We don't make any changes in vendor images, to keep checksums intact. That allows our customers to validate image origin if needed.
+SysEleven provides and maintains a set of images in the SysEleven Stack. As soon as vendors publish new images, we will verify their origin, test them and publish them automatically. This means that we only publish images that are correctly signed. We don't make any changes in vendor images, to keep checksums intact. That allows our customers to validate image origin if needed.
 
 You can view and manage images both via the OpenStack API and CLI, as well as using the [Dashboard (GUI)](https://cloud.syseleven.de/).
 
@@ -31,6 +31,9 @@ Ubuntu Jammy 22.04 (YYYY-MM-DD)  | Unmodified, directly from vendor             
 
 !!! Debian Buster image provided by Debian community has a bug that causes loss of networking
 !!! in virtual machine after 24 hours. See section "Known issues with public images" below.
+
+!!! Debian Bullseye has no cryptographic signature. Because it cannot be verified to be authentic,
+!!! we don't publish this image.
 
 ### Public image lifecycle
 
