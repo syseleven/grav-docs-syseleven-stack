@@ -40,9 +40,9 @@ token=$(openstack token issue -c id -f value)
 
 ### Known limitations
 
-!! Due to implementation issues, the API is currently limited to return data about the default project.
+!! Due to implementation issues, the API is currently limited to return data about the default project of a user. Queries about other accessible projects will fail.
 
-Until we are able to fix this issue, we provide our customers with multiple openstack projects with additional credentials for each project.
+Until we are able to fix this issue, we provide our customers having multiple openstack projects with additional credentials for each project.
 
 ### API versions
 
