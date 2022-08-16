@@ -38,6 +38,12 @@ With the following command you may directly assign a new token to a shell variab
 token=$(openstack token issue -c id -f value)
 ```
 
+### Known limitations
+
+!! Due to implementation issues, the API is currently limited to return data about the default project.
+
+Until we are able to fix this issue, we provide our customers with multiple openstack projects with additional credentials for each project.
+
 ### API versions
 
 There are 2 versions of the REST API: v1 and v2. Version v2 extends the data schema for usage and quota API endpoints to add values related to Octavia load balancers. The following examples use v2-based URLs, but v1 is still supported (just replace v2 with v1 in the URL).
