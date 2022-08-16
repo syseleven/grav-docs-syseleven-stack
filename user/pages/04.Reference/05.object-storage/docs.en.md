@@ -11,7 +11,7 @@ taxonomy:
 
 SysEleven Stack provides S3 compatible Object Storage.
 
-It stores and retrieves arbitrary unstructured data objects via a RESTful, HTTP-based API. It is highly fault tolerant with its data replication and scale-out architecture. In its implementation as a distributed eventually consistent object storage, it is not mountable like a file server.
+It stores and retrieves arbitrary unstructured data objects via a HTTP-based API. It is highly fault tolerant with its data replication and scale-out architecture. In its implementation as a distributed eventually consistent object storage, it is not mountable like a file server.
 
 You can create the OpenStack API to generate credentials to access the SysEleven Stack Object Storage. You can then use the S3 API with various S3 clients and/or SDKs.
 
