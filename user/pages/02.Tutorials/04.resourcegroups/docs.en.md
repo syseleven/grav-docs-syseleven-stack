@@ -34,7 +34,7 @@ resources:
     type: OS::Nova::Server
     depends_on: example_subnet
     properties:
-      image: Ubuntu 16.04 sys11-cloudimg amd64
+      image: Ubuntu Jammy 22.04 (2022-08-11)
       flavor: m1.small
       name: server01
       user_data_format: RAW
@@ -50,7 +50,7 @@ resources:
     type: OS::Nova::Server
     depends_on: example_subnet
     properties:
-      image: Ubuntu 16.04 sys11-cloudimg amd64
+      image: Ubuntu Jammy 22.04 (2022-08-11)
       flavor: m1.small
       name: server02
       user_data_format: RAW
@@ -153,7 +153,7 @@ resources:
     type: OS::Nova::Server
     properties:
       user_data_format: RAW
-      image: Ubuntu 16.04 sys11-cloudimg amd64
+      image: Ubuntu Jammy 22.04 (2022-08-11)
       flavor: m1.small
       name: { get_param: server_name }
       networks:

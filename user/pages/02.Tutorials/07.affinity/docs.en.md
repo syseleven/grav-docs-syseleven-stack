@@ -43,7 +43,7 @@ resources:
     type: OS::Nova::Server
     properties:
       user_data_format: RAW
-      image: Ubuntu 16.04 sys11-cloudimg amd64
+      image: Ubuntu Jammy 22.04 (2022-08-11)
       flavor: m1.small
       name: server app 1
       scheduler_hints:
@@ -143,7 +143,7 @@ resources:
     type: OS::Nova::Server
     properties:
       user_data_format: RAW
-      image: Ubuntu 16.04 sys11-cloudimg amd64
+      image: Ubuntu Jammy 22.04 (2022-08-11)
       flavor: m1.small
       name: { get_param: server_name }
       networks:

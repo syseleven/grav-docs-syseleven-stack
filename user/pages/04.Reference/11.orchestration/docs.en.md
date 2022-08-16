@@ -184,7 +184,7 @@ resources:
     type: OS::Nova::Server
     properties:
       name: example host
-      image: Ubuntu-14.04-LTS from cloud-images.ubuntu.com
+      image: Ubuntu Jammy 22.04 (2022-08-11)
       key_name: { get_param: key_name }
       flavor: m1c.tiny
       networks:
@@ -246,7 +246,7 @@ resources:
     type: OS::Nova::Server
     properties:
       name: example host
-      image: Ubuntu-14.04-LTS from cloud-images.ubuntu.com
+      image: Ubuntu Jammy 22.04 (2022-08-11)
       key_name: { get_param: key_name }
       flavor: m1c.tiny
       networks:
@@ -318,7 +318,7 @@ resources:
     type: OS::Nova::Server
     properties:
       name: example host
-      image: Ubuntu-14.04-LTS from cloud-images.ubuntu.com
+      image: Ubuntu Jammy 22.04 (2022-08-11)
       key_name: { get_param: key_name }
       flavor: m1c.tiny
       networks:
@@ -460,7 +460,7 @@ resources:
     type: OS:Nova::Server
     properties:
       key_name: { get_param: key_name }
-      image: CirrOS 0.3.2 amd64
+      image: Ubuntu Jammy 22.04 (2022-08-11)
       flavor: m1.tiny
       networks:
 - port: { get_resource: example_port }
