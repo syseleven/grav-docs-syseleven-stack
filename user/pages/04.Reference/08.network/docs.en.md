@@ -100,9 +100,12 @@ Currently our VPNaaS implementation supports the following algorithms in both ph
 
 | DH Groups      |
 | -------------- |
-| Group 2        |
 | Group 5        |
 | Group 14       |
+
+!! **Deprecation warning**
+!! DH Group 2 is not supported anymore.
+!! API requests to setup policies using DH Group 2 will be rejected.
 
 See our terraform examples on GitHub [for an example how to connect two regions using VPNaaS](https://github.com/syseleven/terraform-examples/tree/master/vpnaas).
 
