@@ -57,7 +57,7 @@ You can use user-data together with cloud-init for provisioning your cloud insta
 
 You can find an [example of how to do that with Heat](https://github.com/syseleven/heat-examples/tree/master/cloudinit) in our Heat-examples.
 
-For a Terraform example you can refer to the [official Terraform documentation](https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs).
+For a Terraform example you can refer to the [official Terraform documentation](https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_instance_v2#instance-with-user-data-cloud-init).
 
 #### SSH provisioning
 
