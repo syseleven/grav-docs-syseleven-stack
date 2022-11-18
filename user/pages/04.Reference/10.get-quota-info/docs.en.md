@@ -303,4 +303,4 @@ volume.volumes | Number of Block Storage volumes ||
 
 ### Contributed Software
 
-One of our customers kindly created an exporter to use this API (v1) with Prometheus and made it available as open source on [GitHub](https://github.com/Staffbase/syseleven-exporter).
+One of our customers kindly created an exporter to use this API (v1) with Prometheus and made it available as open source. We are maintaining a fork on [GitHub](https://github.com/syseleven/syseleven-exporter).
