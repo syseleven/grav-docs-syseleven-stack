@@ -15,25 +15,27 @@ It stores and retrieves arbitrary unstructured data objects via an HTTP-based AP
 
 You can create the OpenStack API to generate credentials to access the SysEleven Stack Object Storage. You can then use the S3 API with various S3 clients and/or SDKs.
 
-## Supported S3 operations
+## Supported S3 operations by backend
 
-Feature                          | Supported |
----------------------------------|-----------|
-bucket HEAD/GET/PUT/DELETE       | yes       |
-object HEAD/GET/PUT/POST/DELETE  | yes       |
-multipart upload                 | yes       |
-bucket listing                   | yes       |
-input compression                | yes       |
-request signature authentication | yes       |
-bucket/object ACL                | partially*|
-predefined ACL groups            | yes       |
-bucket/IAM user ACP              | no        |
-object versions                  | no        |
-object expiration                | no        |
-regions and storage classes      | no        |
-encryption                       | no        |
-access logging                   | no        |
-website hosting configuration    | no        |
+Feature                          | Support in Quobyte            | Support in Ceph               |
+---------------------------------|-------------------------------|-------------------------------|
+bucket HEAD/GET/PUT/DELETE       | yes                           | yes                           |
+object HEAD/GET/PUT/POST/DELETE  | yes                           | yes                           |
+multipart upload                 | yes                           | yes                           |
+bucket listing                   | yes                           | yes                           |
+input compression                | yes                           | yes                           |
+request signature authentication | yes                           | yes                           |
+predefined ACL groups            | yes                           | yes                           |
+bucket/object ACL                | partially*                    | partially*                    |
+bucket policies                  | no                            | yes                           |
+object versions                  | no                            | yes                           |
+object expiration                | no                            | yes                           |
+encryption                       | no                            | yes                           |
+CORS                             | no                            | yes                           |
+bucket/IAM user ACP              | no                            | no                            |
+regions and storage classes      | no                            | no                            |
+access logging                   | no                            | no                            |
+website hosting configuration    | no                            | no                            |
 
 We do not offer the complete feature set compared to Amazon S3. Thus we cannot guarantee the same user experience. Certain API calls may fail and receive a `501 Not Implemented` response. If you are in doubt, feel free to contact our [Support (support@syseleven.de)](../../06.Support/default.en.md).
 
@@ -56,11 +58,13 @@ A file or file object can be assigned a file name like key, and made available u
 
 The SEOS (SysEleven-Object-Storage / S3) is available in every region. The storage systems run independent from each other.
 
-Region   | URL                         | Transfer Encryption |
----------|-----------------------------|---------------------|
-CBK      | s3.cbk.cloud.syseleven.net  | Yes                 |
-DBL      | s3.dbl.cloud.syseleven.net  | Yes                 |
-FES      | s3.fes.cloud.syseleven.net  | Yes                 |
+Region   | URL                                    | Backend             |
+---------|----------------------------------------|---------------------|
+CBK      | s3.cbk.cloud.syseleven.net             | Quobyte             |
+DBL      | s3.dbl.cloud.syseleven.net             | Quobyte             |
+FES      | s3.fes.cloud.syseleven.net             | Quobyte             |
+FES      | objectstorage.fes.cloud.syseleven.net  | Ceph                |
+
 
 
 !!!! **Deprecated URL**

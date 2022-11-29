@@ -21,6 +21,8 @@ You can manage your block storage volumes and make them available to your comput
 | ----------------------------------------|---------------|---------------|-----------
 | quobyte                                 | Yes (default) | Yes (default) | Yes (default)
 | quobyte-multiattach                     | Yes           | Yes           | Yes
+| ceph                                    | No            | No            | Yes
+
 
 ### quobyte
 
@@ -37,6 +39,12 @@ The performance of `quobyte-multiattach` is slightly reduced because some cachin
 Please refer to our multi-attach volume tutorial. It explains [how to use multi-attach volumes with the cluster file system ocfs2](../../02.Tutorials/10.cinder-multiattach/docs.en.md).
 
 !! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and/or file system and data corruption.
+
+### ceph
+
+The data will be stored on SSDs in the SysEleven Stack distributed storage cluster based on Ceph. The data will be replicated and stored on three different storage nodes and SSDs.
+
+The volumes can only be attached to a single virtual machine at a time.
 
 ## Available functionality
 
