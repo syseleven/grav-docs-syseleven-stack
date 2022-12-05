@@ -57,11 +57,7 @@ The kickstart instance contains all necessary tools to get started with the Open
 
 ![horizon-orchestration-stacks-launch-complete-kickstart](../../images/horizon-orchestration-stacks-launch-complete-kickstart.png)
 
-* Go to "Compute" --> "Instances" in order to retrieve the floating IP that is required to access the instance via SSH  
-
-![horizon-compute-instances](../../images/horizon-compute-instances.png)
-
-* Copy the floating IP from the kickstart server  
+* Go to "Compute" --> "Instances" in order to retrieve the floating IP that is required to access the instance via SSH and copy the floating IP of the kickstart server  
 
 ![horizon-compute-instances-kickstart-fip](../../images/horizon-compute-instances-kickstart-fip.png)
 
