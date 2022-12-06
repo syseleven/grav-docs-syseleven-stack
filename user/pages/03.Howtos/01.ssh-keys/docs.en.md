@@ -18,7 +18,6 @@ SSH keys can be imported via the GUI (Horizon / Dashboad) or the CLI (OpenStack 
 
 !!!  SSH keys are saved in user and <u>not</u> project (tenant) context.
 !!!  SSH keys are region specific.
-!!!  Ed25519 SSH keys do not work.
 
 ---
 
