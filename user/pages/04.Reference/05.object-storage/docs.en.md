@@ -158,6 +158,71 @@ When your bucket name satisfies the limitations of dns hostnames, your object ma
 
 You can use these URLs to refer to the uploaded files as static assets in your web applications.
 
+
+### AWS CLI
+
+Information about the AWS client can be found [here](https://aws.amazon.com/cli/).
+
+!!!! **Ceph and Quobyte specific commands**
+!!!! There are some incompatibilities with some S3 commands in AWS CLI for Ceph S3 which works fine with Quobyte S3. This part will cover commands for `s3.xxx.cloud.syseleven.net` endpoints which are Quobyte and `objectstorage.fes.cloud.syseleven.net` which is our Ceph endpoint.
+!!!!
+!!!! This part will be updated regularly so it's suggested to check often.
+
+The `aws-cli` also has configuration file which can be created under the home directory of the user which runs the command.
+
+```shell
+mdkir ~/.aws
+```
+
+The configuration for a simple use should be like this:
+
+```shell
+syseleven@kickstart:~$ cat ~/.aws/config
+[default]
+aws_access_key_id = < REPLACE ME >
+aws_secret_access_key = < REPLACE ME >
+```
+
+Listing buckets: **[Quobyte - Ceph]**
+
+```shell
+aws --endpoint-url https://s3.cbk.cloud.syseleven.net s3 ls
+```
+
+Creating a bucket:  **[Quobyte]**
+
+```shell
+aws --endpoint-url https://s3.cbk.cloud.syseleven.net s3 mb s3://test-bucket-sys11-j2j4
+```
+
+Creating a bucket:  **[Ceph]**
+
+```shell
+aws --endpoint-url https://objectstorage.fes.cloud.syseleven.net s3api create-bucket --bucket test-bucket-sys11-j2j4
+```
+
+
+
+Put a file to the bucket: **[Quobyte - Ceph]**
+
+```shell
+aws --endpoint-url https://s3.cbk.cloud.syseleven.net s3 cp test.pdf s3://test-bucket-sys11-j2j4
+```
+
+After this a simple query for S3 bucket list can be simple as the following: **[Quobyte - Ceph]**
+
+```shell
+aws --endpoint-url https://s3.cbk.cloud.syseleven.net s3 ls s3://test-bucket-sys11-j2j4
+2022-12-14 15:14:39       3652 test.pdf
+```
+
+Removing objects can also be done as follows: **[Quobyte - Ceph]**
+
+```shell
+aws --endpoint-url https://s3.cbk.cloud.syseleven.net s3 rm s3://test-bucket-sys11-j2j4/test.pdf
+delete: s3://test-bucket-sys11-j2j4/test.pdf
+```
+
 ### Boto3
 
 Information about the `boto3` python S3 library can be found [here](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). We suggest to make use of this library to set up and manage more complex ACLs.
