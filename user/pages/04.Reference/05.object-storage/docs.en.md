@@ -168,7 +168,7 @@ Information about the AWS client can be found [here](https://aws.amazon.com/cli/
 !!!!
 !!!! This part will be updated regularly so it's suggested to check often.
 
-The `aws-cli` also has configuration file which can be created under the home directory of the user which runs the command.
+The `aws-cli` also has a configuration file which can be created under the home directory of the user which runs the command.
 
 ```shell
 mdkir ~/.aws
@@ -201,22 +201,20 @@ Creating a bucket:  **[Ceph]**
 aws --endpoint-url https://objectstorage.fes.cloud.syseleven.net s3api create-bucket --bucket test-bucket-sys11-j2j4
 ```
 
-
-
 Put a file to the bucket: **[Quobyte - Ceph]**
 
 ```shell
 aws --endpoint-url https://s3.cbk.cloud.syseleven.net s3 cp test.pdf s3://test-bucket-sys11-j2j4
 ```
 
-After this a simple query for S3 bucket list can be simple as the following: **[Quobyte - Ceph]**
+After this a simple query for the S3 bucket list can be simple as the following: **[Quobyte - Ceph]**
 
 ```shell
 aws --endpoint-url https://s3.cbk.cloud.syseleven.net s3 ls s3://test-bucket-sys11-j2j4
 2022-12-14 15:14:39       3652 test.pdf
 ```
 
-Removing objects can also be done as follows: **[Quobyte - Ceph]**
+Objects can be removed as follows: **[Quobyte - Ceph]**
 
 ```shell
 aws --endpoint-url https://s3.cbk.cloud.syseleven.net s3 rm s3://test-bucket-sys11-j2j4/test.pdf
