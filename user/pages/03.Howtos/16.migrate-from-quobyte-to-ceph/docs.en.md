@@ -33,14 +33,13 @@ Quobyte also is able to give you storage as a block device same as your local de
 At this example, I have two volumes created in my Instance
 
 ```shell
-[~]>$ openstack volume list --fit-width
-+--------------------------------------+-----------------------+--------+------+------------------------------------------+
-| ID                                   | Name                  | Status | Size | Attached to                              |
-+--------------------------------------+-----------------------+--------+------+------------------------------------------+
-| d9891bfe-1f9b-414e-90f3-4a0a2a454b77 | volume-qb-10-test-web | in-use |    2 | Attached to test-qb-to-ceph on /dev/vdc  |
-| 51602f73-95b5-4165-9c35-8c5406ceda92 | volume-qb-10-test     | in-use |   10 | Attached to test-qb-to-ceph on /dev/vdb  |
-+--------------------------------------+-----------------------+--------+------+------------------------------------------+
-[~]>$
+[~]>$ openstack volume list --fit-width 
++--------------------------------------+----------------------+-----------+------+-------------+
+| ID                                   | Name                 | Status    | Size | Attached to |
++--------------------------------------+----------------------+-----------+------+-------------+
+| 8b1a1c5a-bcfc-4c8f-bb91-be5dc09251e8 | test-volume-qb-2-db  | available |   10 |             |
+| 47d2af74-9aa4-4b20-86bf-b658351a91db | test-volume-qb-2-web | available |    2 |             |
++--------------------------------------+----------------------+-----------+------+-------------+
 [~]>$
 ```
 
@@ -51,43 +50,20 @@ And both of them are created from Quobyte type in OpenStack
 +--------------------------------------+---------------------+-----------+
 | ID                                   | Name                | Is Public |
 +--------------------------------------+---------------------+-----------+
-| d578ba45-0e46-4dcb-b886-ba882c74a8e5 | quobyte-multiattach | True      |
-| 732afc9b-6b16-4b68-aa1d-fb2a273b361b | quobyte             | True      |
+| ebacc66b-fd02-4b9a-ae10-64de5a595053 | ceph                | False     |
+| 1b291a48-c8ba-4275-a22a-619f65b807ee | quobyte-multiattach | True      |
+| e2ebd226-2504-4159-a0ea-7a5e30e2e4b0 | quobyte             | True      |
 +--------------------------------------+---------------------+-----------+
 [~]>$
 ```
 
-Here you can see definition of one of them
+For getting better feeling and understanding, I have installed MariaDB (Database) and Nginx (Web server) on this VM on these mounted volumes from Quobyte and would like to migrate these services to Ceph. Lets to take a look briefly at what we have at this VM.
+
+##### Nginx
+
 
 ```shell
-[~]>$ openstack volume show volume-qb-10-test --fit-width
-+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Field                        | Value                                                                                                                                                       |
-+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| attachments                  | [{'id': '51602f73-95b5-4165-9c35-8c5406ceda92', 'attachment_id': 'a60acf6a-2b6b-4026-9c24-9391162fe888', 'volume_id':                                       |
-|                              | '51602f73-95b5-4165-9c35-8c5406ceda92', 'server_id': 'e893ac63-2009-4fae-81c8-528b37c6d900', 'host_name': 'fes300305.fes.sys11cloud.net', 'device':         |
-|                              | '/dev/vdb', 'attached_at': '2022-12-29T13:51:04.000000'}]                                                                                                   |
-| availability_zone            | fes1                                                                                                                                                        |
-| bootable                     | false                                                                                                                                                       |
-| consistencygroup_id          | None                                                                                                                                                        |
-| created_at                   | 2022-12-29T13:50:09.000000                                                                                                                                  |
-| description                  | for QB                                                                                                                                                      |
-| encrypted                    | False                                                                                                                                                       |
-| id                           | 51602f73-95b5-4165-9c35-8c5406ceda92                                                                                                                        |
-| multiattach                  | False                                                                                                                                                       |
-| name                         | volume-qb-10-test                                                                                                                                           |
-| os-vol-tenant-attr:tenant_id | 32e93511038d4c01941d54ff94669250                                                                                                                            |
-| properties                   |                                                                                                                                                             |
-| replication_status           | None                                                                                                                                                        |
-| size                         | 10                                                                                                                                                          |
-| snapshot_id                  | None                                                                                                                                                        |
-| source_volid                 | None                                                                                                                                                        |
-| status                       | in-use                                                                                                                                                      |
-| type                         | quobyte                                                                                                                                                     |
-| updated_at                   | 2022-12-29T13:51:05.000000                                                                                                                                  |
-| user_id                      | 48b65c881b8f4ae2a83979dbd3d83b5c                                                                                                                            |
-+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-[~]>$
+
 ```
 
 So for a block storage we may use our block devices for different goals, and now we want to talk about these different approaches for using a block device.
