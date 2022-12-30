@@ -10,5 +10,8 @@
     "deep-extend": "0.6.0",
     "markdownlint-cli": "0.32.2",
     "markdownlint-rules-grav-pages": "1.0.19"
+  },
+  "dependencies": {
+    "markdownlint": "^0.27.0"
   }
 }
