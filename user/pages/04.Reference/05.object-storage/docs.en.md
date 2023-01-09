@@ -32,7 +32,7 @@ object versions                  | no                            | yes          
 object expiration                | no                            | yes                           |
 encryption                       | no                            | yes                           |
 website hosting configuration    | no                            | no                            |
-    CORS                         | no                            | yes                           |
+CORS                             | no                            | yes                           |
 bucket/IAM user ACP              | no                            | no                            |
 regions and storage classes      | no                            | no                            |
 access logging                   | no                            | no                            |
