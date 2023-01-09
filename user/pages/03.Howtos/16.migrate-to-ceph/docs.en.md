@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This document is a guide to help you to migrate your storage from Quobyte or local storage to Ceph. Since there could be different use cases of Quobyte(QB). For this purpose, lets to define a scenario from real world.
+This document is a guide to help you to migrate your storage from Quobyte or local storage to Ceph. For this purpose, lets to define a scenario from real world.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ This document is a guide to help you to migrate your storage from Quobyte or loc
 
 ## How to do, with an example
 
-Imagine you have a Virtual Machine(VM) which has a simple website and a database on it. You have your storage as a block device in your operating system layer, like ***/dev/vdb*** and ***/dev/sdc***. You have formatted your block device and mounted in specific mount points for your services. There are three disks, and they are mounted in specific mount points.
+Imagine you have a Virtual Machine(VM) which has a simple website and a database on it. You have your storage as a block device in your operating system layer, like ***/dev/vdb*** and ***/dev/sdc***. You have formatted your block device and mounted in specific mount points for your services. There are two disks, and they are mounted in specific mount points, one for Nginx and other for MariaDB
 
 ```shell
 [~]># lsblk
@@ -121,7 +121,7 @@ So there are two partitions which we want to migrate to Ceph. I have created two
 
 ### Steps
 
-At this method, it is OK for you to stop your services for a while (It depends on many factors) and start them after migration. Here, you can see the steps to take this
+We imagine that it is OK for you to stop your services for a while (It depends on many factors) and start them after migration. Here, you can see the steps to take this
 
 #### 1. Stop Your Services
 
@@ -161,7 +161,7 @@ Jan 02 10:25:22 test-qb-to-ceph systemd[1]: Stopped MariaDB 10.3.36 database ser
 root@test-qb-to-ceph:~#
 ```
 
-#### 2. Mount the new Ceph disks to somewhere in your OS temporarily
+#### 2. Mount the new Ceph disks
 
 It is up to you where you would like to create temporary mount points. At this example, two directories created in ***/opt/db*** and ***/opt/web*** and disks are mounted
 
@@ -183,9 +183,9 @@ tmpfs         799M  0  799M   0% /run/user/1000
 root@test-qb-to-ceph:~#
 ```
 
-#### 3. Copy over your data from old partitions to new
+#### 3. Copy over your data
 
-You can use rsync to do it very simple
+You can use rsync to do it very simple to copy your data from old QB partitions into new Ceph partitions
 
 ```shell
 root@test-qb-to-ceph:~# rsync -avh /home/www/ /opt/web/
@@ -222,9 +222,9 @@ tmpfs         799M  0  799M   0% /run/user/1000
 root@test-qb-to-ceph:~#
 ```
 
-#### 5. Replace the new Ceph mount points with the old one
+#### 5. Replace mount points
 
-All will be done in fstab, or you prefer to do it manually. And this is good idea to comment (not to delete) the old lines in fstab
+All will be done in fstab, or you prefer to do it manually. And this is good idea to comment (not to delete) the old lines in fstab till you be sure about it
 
 ```shell
 root@test-qb-to-ceph:~# cat /etc/fstab
@@ -238,7 +238,7 @@ root@test-qb-to-ceph:~#
 
 ```
 
-#### 6. Check if it works or not with starting services
+#### 6. Check if it works
 
 Start services and check the functionality
 
