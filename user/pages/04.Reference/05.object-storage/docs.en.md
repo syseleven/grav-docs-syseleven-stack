@@ -31,11 +31,13 @@ bucket policies                  | no                            | yes          
 object versions                  | no                            | yes                           |
 object expiration                | no                            | yes                           |
 encryption                       | no                            | yes                           |
-CORS                             | no                            | yes                           |
+website hosting configuration    | no                            | no                            |
+    CORS                         | no                            | yes                           |
 bucket/IAM user ACP              | no                            | no                            |
 regions and storage classes      | no                            | no                            |
 access logging                   | no                            | no                            |
-website hosting configuration    | no                            | no                            |
+
+
 
 We do not offer the complete feature set compared to Amazon S3. Thus we cannot guarantee the same user experience. Certain API calls may fail and receive a `501 Not Implemented` response. If you are in doubt, feel free to contact our [Support (support@syseleven.de)](../../06.Support/default.en.md).
 
