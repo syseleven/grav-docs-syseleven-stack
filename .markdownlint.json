@@ -12,7 +12,5 @@
   "valid-metadata-block": true,
   "no-multiple-blanks": false,
   "no-duplicate-heading": false,
-  "commands-show-output": false,
-  "code-block-style": ":fenced"
+  "commands-show-output": false
 }
-

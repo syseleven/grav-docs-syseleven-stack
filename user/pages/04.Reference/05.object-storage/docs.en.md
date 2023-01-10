@@ -37,11 +37,10 @@ bucket/IAM user ACP              | no                            | no           
 regions and storage classes      | no                            | no                            |
 access logging                   | no                            | no                            |
 
-
+(*)
+For setting up bucket/object ACLs we suggest to use [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). Not all predefined (canned) ACLs of [AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html) are supported. We are supporting the following canned ACLs: `private`,`public-read`,`public-read-write`,`authenticated-read`. Not supported canned ACLs will be interpreted as the default `private` ACL. We have prepared a [guide in our Tutorials section](../../02.Tutorials/11.object-storage-acls/docs.en.md) which shows how to set up custom ACLs.
 
 We do not offer the complete feature set compared to Amazon S3. Thus we cannot guarantee the same user experience. Certain API calls may fail and receive a `501 Not Implemented` response. If you are in doubt, feel free to contact our [Support (support@syseleven.de)](../../06.Support/default.en.md).
-
-For setting up bucket/object ACLs we suggest to use [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). Not all predefined (canned) ACLs of [AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html) are supported. We are supporting the following canned ACLs: `private`,`public-read`,`public-read-write`,`authenticated-read`. Not supported canned ACLs will be interpreted as the default `private` ACL. We have prepared a [guide in our Tutorials section](../../02.Tutorials/11.object-storage-acls/docs.en.md) which shows how to set up custom ACLs.
 
 ## Buckets
 
@@ -67,12 +66,9 @@ DBL      | s3.dbl.cloud.syseleven.net             | Quobyte             |
 FES      | s3.fes.cloud.syseleven.net             | Quobyte             |
 FES      | objectstorage.fes.cloud.syseleven.net  | Ceph                |
 
-
-
 !!!! **Deprecated URL**
 !!!! For historical reasons 's3.cloud.syseleven.net' redirects to 's3.cbk.cloud.syseleven.net'.
 !!!! We recommend to always use a region specific URL like in the table above.
-
 
 
 ## Credentials

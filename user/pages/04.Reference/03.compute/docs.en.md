@@ -41,7 +41,6 @@ M2 Large    |  m2.large   | 32GiB  |   8   |   50GiB  | fes                  |
 (M1 XXLarge)\*\*  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   | dbl, cbk, fes |
 (M2 XXLarge)\*\*  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   | fes           |
 
-
 #### CPU optimized
 
 Name            | API Name     | Memory  | vCPUs | Storage*  | Region availability  |
@@ -58,7 +57,6 @@ M1 CPU XLarge   |  m1c.xlarge  | 32GiB   |   16  |   50GiB   | dbl, cbk, fes    
 M2 CPU XLarge   |  m2c.xlarge  | 32GiB   |   16  |   50GiB   | fes                  |
 (M1 CPU XXLarge)\*\* |  (m1c.xxlarge)\*\* | 64GiB   |   32   |   50GiB   | dbl, cbk, fes |
 (M2 CPU XXLarge)\*\* |  (m2c.xxlarge)\*\* | 64GiB   |   32   |   50GiB   | fes           |
-
 
 #### RAM optimized
 

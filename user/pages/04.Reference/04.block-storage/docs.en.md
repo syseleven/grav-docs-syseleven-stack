@@ -23,7 +23,6 @@ You can manage your block storage volumes and make them available to your comput
 | quobyte-multiattach                     | Yes           | Yes           | Yes
 | ceph                                    | No            | No            | Yes
 
-
 ### quobyte
 
 The data will be stored on SSDs in the SysEleven Stack distributed storage cluster based on Quobyte. The data will be replicated and stored on three different storage nodes and SSDs.
