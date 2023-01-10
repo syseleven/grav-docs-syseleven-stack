@@ -43,7 +43,7 @@ Please refer to our multi-attach volume tutorial. It explains [how to use multi-
 
 The data will be stored on SSDs in the SysEleven Stack distributed storage cluster based on Ceph. The data will be replicated and stored on three different storage nodes and SSDs.
 
-The volumes can only be attached to a single virtual machine at a time.
+A volume can only be attached to a single virtual machine at a time.
 
 ## Available functionality
 
