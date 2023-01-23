@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This document is a guide to help you to migrate your storage from Quobyte or local storage to Ceph. For this purpose, lets to define a scenario from real world.
+This document is a guide to help you to migrate your storage from Quobyte or local storage to Ceph. For this purpose, let's define a scenario from real world.
 
 ## Prerequisites
 
@@ -33,9 +33,9 @@ vdc  254:32   0   2G  0 disk /home/www
 [~]>#
 ```
 
-Quobyte also is able to give you storage as a block device same as your local devices and this is completely transparent from point of view of Operating System
+Quobyte also is able to give you storage as a block device same as your local devices and this is completely transparent from the point of view of the Operating System
 
-At this example, I have two volumes created with QB and attached to my Instance
+In this example, I have two volumes created with QB and attached to my Instance
 
 ```shell
 [~]>$ openstack volume list --fit-width 
@@ -163,7 +163,7 @@ root@test-qb-to-ceph:~#
 
 #### 2. Mount the new Ceph disks
 
-It is up to you where you would like to create temporary mount points. At this example, two directories created in ***/opt/db*** and ***/opt/web*** and disks are mounted
+It is up to you where you would like to create temporary mount points. In this example, two directories are created in ***/opt/db*** and ***/opt/web*** and disks are mounted
 
 
 ```shell
@@ -224,7 +224,7 @@ root@test-qb-to-ceph:~#
 
 #### 5. Replace mount points
 
-All will be done in fstab, or you prefer to do it manually. And this is good idea to comment (not to delete) the old lines in fstab till you be sure about it
+All will be done in fstab, or you prefer to do it manually. And this is good idea to comment (not to delete) the old lines in fstab until you are sure about it. Then you'll need to mount the 2 mountpoints manually here, or reboot.
 
 ```shell
 root@test-qb-to-ceph:~# cat /etc/fstab
@@ -237,6 +237,7 @@ UUID=a7f03a6d-17a4-4b57-88d8-ea10b92b93fc    /home/www    ext4    errors=remount
 root@test-qb-to-ceph:~#
 
 ```
+
 
 #### 6. Check if it works
 
