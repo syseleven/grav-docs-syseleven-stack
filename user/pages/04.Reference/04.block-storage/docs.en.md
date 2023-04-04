@@ -128,4 +128,4 @@ resize2fs /dev/vdX
 
 * Online resizing is not supported. A volume must be detached, before it can be resized.
 * Shrinking volumes is not supported. If you need to reduce the size of your volume, create a new one and copy the data.
-* The number of volumes that can be attached to a single instance is currently limited to 26.
+* The number of volumes that can be attached to a single instance is currently limited to 26 (root device + 25 more).
