@@ -25,7 +25,7 @@ Quotas greatly ease our capacity management, allowing us to react on customers i
 
 ### Pushing the limits
 
-If your contract contains ondemand tariffs, you can raise (or lower, or shift between projects and or regions) your quota on short notice by letting us know without any formal requirements, via e-mail, ticket, telephone during our office hours. We do not charge for the adjustment, nor for the buffer capacity, as long as it is not needed. For a balance between too much unused buffer capacity that would impede our capacity management and frequent adjustments, that would impede your flexibility, we recommend to adjust the limits quarterly to the expected need plus some headroom. Still, should your plans change unexpectedly, you can always have your limits changed on short notice.
+If your contract contains ondemand tariffs, you can raise (or lower, or shift between projects and or regions) your quota on short notice by letting us know without any formal requirements, via [e-mail](mailto:support@syseleven.de), [ticket](https://helpdesk.syseleven.de/hc/en-us/requests/new), or telephone during our office hours. We do not charge for the adjustment, nor for the buffer capacity, as long as it is not needed. For a balance between too much unused buffer capacity that would impede our capacity management and frequent adjustments, that would impede your flexibility, we recommend to adjust the limits quarterly to the expected need plus some headroom. Still, should your plans change unexpectedly, you can always have your limits changed on short notice.
 
 ### Monitoring usage vs. limits
 
