@@ -6,11 +6,12 @@ taxonomy:
         - docs
 ---
 
-## How to migrate your storage from Quobyte or local storage to Ceph
+## How to migrate your storage to a different storage type
 
 ### Overview
 
-This document is a guide to help you to migrate your storage from Quobyte or local storage to Ceph. For this purpose, let's define a scenario from real world.
+This document is a guide to help you to migrate your storage to a different type e.g. between Local SSD storage, Distributed storage based on Quobyte or Ceph or change between different Local SSD Storage flavors, which is otherwise not supported. For this purpose, let's define a realistic scenario.
+
 
 ## Prerequisites
 
@@ -21,7 +22,7 @@ This document is a guide to help you to migrate your storage from Quobyte or loc
 
 ## How to do, with an example
 
-Imagine you have a Virtual Machine(VM) which has a simple website and a database on it. You have your storage as a block device in your operating system layer, like ***/dev/vdb*** and ***/dev/sdc***. You have formatted your block device and mounted in specific mount points for your services. There are two disks, and they are mounted in specific mount points, one for Nginx and other for MariaDB
+Imagine you have a Virtual Machine (VM) which has a simple website and a database on it. You operating system is installed on the Nova ephemeral root device `/dev/vda`, your database files are supposed to be stored on a separate Cinder volume `/dev/vdc` mounted to `/var/lib/mysql` and your web documents are supposed to be on a Cinder volume `/dev/vdb` mounted to `/srv/www`.
 
 ```shell
 [~]># lsblk
@@ -29,9 +30,11 @@ NAME  MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
 vda  254:0    0  50G  0 disk
 └─vda1 254:1  0  50G  0 part /
 vdb  254:16   0  10G  0 disk /var/lib/mysql
-vdc  254:32   0   2G  0 disk /home/www
+vdc  254:32   0   2G  0 disk /srv/www
 [~]>#
 ```
+
+The storage type of Nova ephemeral root storage is determined by the flavor. Per convention, all flavors whose names start with `m*` refer to distributed storage and flavors with names starting with `l*` refer to local storage. The storage type of cinder volumes is directly specified and currently defaults to `quobyte` in all three regions, in our new region `fes` we alternatively offer `ceph`. Likewise, only in our new `fes` region you can choose between `m1*`-flavors using quobyte as storage backend and `m2*`-flavors using `ceph` instead as the storage backend.
 
 Quobyte also is able to give you storage as a block device same as your local devices and this is completely transparent from the point of view of the Operating System
 
@@ -76,7 +79,7 @@ tmpfs         3.9G  0  3.9G   0% /dev/shm
 tmpfs         5.0M  0  5.0M   0% /run/lock
 tmpfs         3.9G  0  3.9G   0% /sys/fs/cgroup
 /dev/vdb      9.8G  124M  9.2G   2% /var/lib/mysql
-/dev/vdc      2.0G   71M  1.8G   4% /home/www
+/dev/vdc      2.0G   71M  1.8G   4% /srv/www
 tmpfs         799M  0  799M   0% /run/user/1000
 root@test-qb-to-ceph:~#
 ```
