@@ -9,10 +9,18 @@ taxonomy:
 
 ## Overview
 
+### Object upload fails with a 501 Not Implemented error
+
+**Problem Statement:**
+Trying to upload objects towards the SysEleven Stack Object Storage (based on the Ceph backend) can fail depending on the signature version you are using. The integration with the OpenStack identity-and-access service Keystone limits the featureset supported by the Ceph backend. In consequence (depending on your client) you will receive a 501 error trying to upload objects.
+
+**Solutions:**
+Switch from signature version 4 to signature version 2 for object uploads.
+
 ### Request timeouts using recently created EC2 credentials
 
 **Problem Statement:**
-Using recently-created EC2 credentials to communicate with the SysEleven Stack Object Storage may result in requests taking longer than 60 seconds. Depending on the client used for communication to the SysEleven Stack Object Storage, this can further lead to request timeouts.
+Using recently-created EC2 credentials to communicate with the SysEleven Stack Object Storage may result in requests taking longer than 60 seconds. Depending on the client used for communication to the SysEleven Stack Object Storage (based on the Quobyte backend), this can further lead to request timeouts.
 
 **Solutions:**
 The problem will be gone after a few minutes, after the object storage refreshed its own user credentials cache.
