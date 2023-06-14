@@ -39,5 +39,10 @@ Some customers prefer to commit to a certain volume paid upfront, other prefer p
 
 While quota limits apply per project and region, your upfront commitment can be applied over all regions. This comes in handy, if you have a not fully redundant, but fully automated infrastructure in one of our regions and we announce a maintenance. You can get the same quota limits in another region, build a copy of your infrastructure, switch over and tear down the now unused infrastructure in the old region. While the baseline of you setup is covered by the commitment, you only have to pay the exceeding resources on demand for the short duration where the setup is doubled. The idle buffers do not need to be paid.
 
+### Usage
 
+Any occupied resources are considered "used" and counted against your quota limits. They will also be counted against your upfront commitment or charged on demand.
+When you create an instance, volume, snapshot, object, loadbalancer, floating ip, dns zone, rescources will be allocated and so they will be counted and charged, no matter if they are actually running, attached, assigned.
+To save money or free quota, it is thus not sufficient to stop, detach or unassign them, you must delete them completely to free the resources so that we can reuse them.
+It is part of higher level automation like kuberenetes or terraform or similar tools to recreate them if needed.
 
