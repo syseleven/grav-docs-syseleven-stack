@@ -30,6 +30,8 @@ To avoid running into this issue there are 4 possible solutions:
 
 The last suggested solution does not automatically send keepalives on every TCP connection, since the application must request kernel keepalives when it opens the TCP socket.
 
+If you want to apply the suggested settings to MetaKube worker nodes, please see [the accoring page of the metakube documentation](https://docs.syseleven.de/metakube/en/documentation/network/known-issues#idle-tcp-sessions-being-closed).
+
 
 ## High TCP setup delay on CentOS
 
