@@ -24,6 +24,10 @@ Disk data will be distributed across multiple servers (SysEleven Distributed Sto
 
 We recommend these instance types for most workloads and applications.
 
+!! **M2 instance types still in beta phase**
+!! The M2 instance types are storing the disk image on a different distributed storage (ceph) than the M1 type.
+!! We are currently in the beta phase for this distributed storage system.
+
 #### Balanced
 
 Name        | API Name    | Memory | vCPUs | Storage* | Region availability  |
