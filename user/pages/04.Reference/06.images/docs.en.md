@@ -32,8 +32,9 @@ Ubuntu Jammy 22.04 (YYYY-MM-DD)  | Unmodified, directly from vendor             
 !!! Debian Buster image provided by Debian community has a bug that causes loss of networking
 !!! in virtual machine after 24 hours. See section "Known issues with public images" below.
 
-!!! Debian Bullseye has no cryptographic signature. Because it cannot be verified to be authentic,
-!!! we don't publish this image.
+!!! Debian Bullseye and Bookworm have no cryptographic signature provided. Because they cannot be
+!!! verified to be authentic, we don't publish these images.
+!!! See <a href="#uploading-images">Uploading images</a> for an alternative.
 
 ### Public image lifecycle
 
@@ -92,6 +93,7 @@ CentOS 8 Stream           | `https://cloud.centos.org/centos/8-stream/x86_64/ima
 Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
 Debian 10 (Buster)        | `https://cdimage.debian.org/cdimage/openstack/current-10/debian-10-openstack-amd64.qcow2` |
 Debian 11 (Bullseye)      | `https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-generic-amd64.qcow2` |
+Debian 12 (Bookworm)      | `https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2` |
 Flatcar Stable            | `https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_openstack_image.img.bz2` |
 Ubuntu 18.04 LTS (Bionic) | `http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img` |
 Ubuntu 20.04 LTS (Focal)  | `http://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img` |
