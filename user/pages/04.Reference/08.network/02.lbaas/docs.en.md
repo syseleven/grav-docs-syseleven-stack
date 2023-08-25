@@ -11,8 +11,6 @@ taxonomy:
 
 The SysEleven Stack offers LBaaS via two different generations of APIs: Neutron LBaaSv2 (obsolete) and Octavia LBaaS.
 
-!! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
-
 Looking at the API definition both services are similar. But there are differences in the feature set provided by the SysEleven Stack.
 With Neutron LBaaS only simple TCP-based load balancers are supported, with Octavia also HTTP and HTTPS can be used. Both services optionally allow to set up health monitoring.
 
@@ -55,8 +53,6 @@ L7 rules and policies                | No                      | No             
 - Only TCP-based load balancers are supported. For this reason, it is not possible to make the client IP address visible to the backend servers with Neutron LBaaSv2
 
 ## Octavia LBaaS
-
-!! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
 
 Octavia is our more advanced load balancer option. Below you will find the reference documentation. If you want a quick start, please refer to our [LBaaS tutorial](../../../02.Tutorials/05.lbaas/docs.en.md).
 
