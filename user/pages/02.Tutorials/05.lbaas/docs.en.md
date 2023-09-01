@@ -40,8 +40,6 @@ This repository is used in both setups described below:
 
 ## HTTP Load Balancer with Terraform and Octavia
 
-!! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
-
 In this tutorial we demonstrate an Octavia LBaaS setup (in Terraform they call it infrastructure) with the following features:
 
 * an HTTP load balancer
@@ -188,8 +186,6 @@ This repository is used in both setups described below:
 * heat-examples/lbaas: contains the heat template for a TCP load balancer set up using Neutron LBaaSv2 resources
 
 ## HTTP Load Balancer with Heat and Octavia
-
-!! Octavia is currently in the public beta phase. This means we invite you to test Octavia load balancers, but we do not recommend you to use them for production workloads yet.
 
 In this tutorial we demonstrate an Octavia LBaaS setup with the following features:
 
