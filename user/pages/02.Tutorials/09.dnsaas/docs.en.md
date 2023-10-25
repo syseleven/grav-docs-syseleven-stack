@@ -373,13 +373,12 @@ If you need PTR records for your floating IP address, you achieve that by config
 
 ### Import/Export
 
-There is a feature to import/export standard DNS Master Zone Files. This feature is intended to facilitate moving your zones to and from SysEleven Stack. This will be described in a [Howto](../../03.Howtos/docs.en.md).
+There is a feature to import/export standard DNS Master Zone Files. This feature is intended to facilitate moving your zones to and from SysEleven Stack. More information about this process can be found on the [How to export and import DNS zones](../../03.Howtos/12.dns-export-import/docs.en.md) page.
 
 
 ### Transfer
 
-Zones can be transferred between different projects within SysEleven Stack. This process will be described in detail in our planned [Howto](../../03.Howtos/docs.en.md).
-
+Zones can be transferred between different projects within SysEleven Stack. The description of this process can be found on the [How to transfer a DNS zone from one project to another](../../03.Howtos/11.dns-zone-transfer/docs.en.md) page.
 
 ### Collisions
 
