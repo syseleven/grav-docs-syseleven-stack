@@ -13,6 +13,11 @@ taxonomy:
 
 In this tutorial we will use the [Object Storage](../../04.Reference/05.object-storage/docs.en.md) to create buckets and objects with and limit the access to these by applying ACLs. We will be using the [s3cmd](http://s3tools.org/s3cmd) S3 client and the python library [boto3](https://boto3.readthedocs.io) to manage our resources.
 
+!! **A word of caution**
+!! If possible stick to canned ACLs. We want to discourge the usage of custom ACLs.
+!! Due to the implementation and the unituitive way of setting ACLs, we see a huge potential of misconfiguration.
+!! If you insist on using custom ACLs, please try to confirm they are working as intended.
+
 ### Prerequisites
 
 * You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md).
