@@ -17,7 +17,6 @@ Barbican feature                     | Supported
 -------------------------------------|-------------
 Secret storage and metadata          | Yes
 Containers                           | Yes
-Consumers                            | Yes
 Access control lists                 | Yes
 Certificate orders                   | No
 
@@ -36,10 +35,6 @@ Type              | Accompanied secret names
 Generic           | No restrictions
 RSA               | `public_key`, `private_key`, and `private_key_passphrase`
 Certificate       | `certificate` and optionally `private_key`, `private_key_passphrase`, and `intermediates`
-
-## Consumers
-
-Barbican can be used to persist a list of consumers for any given container. The consumer consists of a consumer name, a URL and a reference to the container.
 
 ## Access control lists
 
