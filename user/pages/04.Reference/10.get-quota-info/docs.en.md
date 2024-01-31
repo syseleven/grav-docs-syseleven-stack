@@ -52,11 +52,11 @@ GET https://api.cloud.syseleven.net:5001/v2/projects/{project_id}/quota
 
 #### Request parameters
 
-Name        | Where    | Description |
-------------|----------|-------------|
-project_id  | URL path | The OpenStack project ID. It needs to be the same as the one the token was created with. |
-X-Auth-Token | Header | Token for authenticating the request. |
-regions      | URL query parameter | Optionally restrict the regions to be queried. Comma-separated list of region names. If no region is given here, all regions are queried. |
+| Name         | Where    | Description |
+| ------------ | -------- | ----------- |
+| project_id   | URL path | The OpenStack project ID. It needs to be the same as the one the token was created with. |
+| X-Auth-Token | Header   | Token for authenticating the request. |
+| regions      | URL query parameter | Optionally restrict the regions to be queried. Comma-separated list of region names. If no region is given here, all regions are queried. |
 
 Example:
 
@@ -124,31 +124,31 @@ The response contains the quota information in JSON format. Example for a respon
 
 Overview of fields:
 
-Field | Description | Notes
-------|-------------|-------------
-compute.cores | Number of virtual cores ||
-compute.instances | Number of virtual machines (servers, instances) ||
-compute.ram_mb | RAM for virtual machines in MiB ||
-dns.zones | Number of DNS zones ||
-loadbalancer.healthmonitors | Number of Octavia LBaaS health monitors | since v2 |
-loadbalancer.listeners | Number of Octavia LBaaS listeners | since v2 |
-loadbalancer.members | Number of Octavia LBaaS pool members | since v2 |
-loadbalancer.pools | Number of Octavia LBaaS pools | since v2 |
-loadbalancer.loadbalancers | Number of Octavia LBaaS load balancers | since v2 |
-network.floatingips | Number of floating IP addresses ||
-network.lb_healthmonitors | Number of Neutron LBaaS v2 health monitors | only in regions cbk and dbl |
-network.lb_listeners | Number of Neutron LBaaS v2 listeners | only in regions cbk and dbl |
-network.lb_members | Number of Neutron LBaaS v2 pool members | only in regions cbk and dbl |
-network.lb_pools | Number of Neutron LBaaS v2 pools | only in regions cbk and dbl |
-network.loadbalancers | Number of Neutron LBaaS v2 load balancers | only in regions cbk and dbl |
-network.vpn_endpoint_groups | Number of VPNaaS endpoint groups ||
-network.vpn_ikepolicy | Number of VPNaaS IKE policies ||
-network.vpn_ipsec_site_connections | Number of VPNaaS site connections ||
-network.vpn_ipsecpolicies | Number of VPNaaS IPSec policies ||
-network.vpn_services | Number of VPNaaS VPN services ||
-s3.space_bytes | Limit of Object Storage (S3) size in bytes ||
-volume.space_gb | Limit of Block Storage size (for volumes) in GiB ||
-volume.volumes | Number of Block Storage volumes ||
+| Field | Description | Notes |
+| ----- | ----------- | ----- |
+| compute.cores | Number of virtual cores | |
+| compute.instances | Number of virtual machines (servers, instances) | |
+| compute.ram_mb | RAM for virtual machines in MiB | |
+| dns.zones | Number of DNS zones | |
+| loadbalancer.healthmonitors | Number of Octavia LBaaS health monitors | since v2 |
+| loadbalancer.listeners | Number of Octavia LBaaS listeners | since v2 |
+| loadbalancer.members | Number of Octavia LBaaS pool members | since v2 |
+| loadbalancer.pools | Number of Octavia LBaaS pools | since v2 |
+| loadbalancer.loadbalancers | Number of Octavia LBaaS load balancers | since v2 |
+| network.floatingips | Number of floating IP addresses | |
+| network.lb_healthmonitors | Number of Neutron LBaaS v2 health monitors | only in regions cbk and dbl |
+| network.lb_listeners | Number of Neutron LBaaS v2 listeners | only in regions cbk and dbl |
+| network.lb_members | Number of Neutron LBaaS v2 pool members | only in regions cbk and dbl |
+| network.lb_pools | Number of Neutron LBaaS v2 pools | only in regions cbk and dbl |
+| network.loadbalancers | Number of Neutron LBaaS v2 load balancers | only in regions cbk and dbl |
+| network.vpn_endpoint_groups | Number of VPNaaS endpoint groups | |
+| network.vpn_ikepolicy | Number of VPNaaS IKE policies | |
+| network.vpn_ipsec_site_connections | Number of VPNaaS site connections | |
+| network.vpn_ipsecpolicies | Number of VPNaaS IPSec policies | |
+| network.vpn_services | Number of VPNaaS VPN services | |
+| s3.space_bytes | Limit of Object Storage (S3) size in bytes | |
+| volume.space_gb | Limit of Block Storage size (for volumes) in GiB | |
+| volume.volumes | Number of Block Storage volumes | |
 
 A limit of -1 means "unlimited", 0 means "no resources".
 
@@ -162,12 +162,12 @@ GET https://api.cloud.syseleven.net:5001/v2/projects/{project_id}/current_usage
 
 #### Request parameters
 
-Name         | Where    | Description |
--------------|----------|-------------|
-project_id   | URL path | The OpenStack project ID. It needs to be the same as the one the token was created with. |
-X-Auth-Token | Header | Token for authenticating the request. |
-regions      | URL query parameter | Optionally restrict the regions to be queried. Comma-separated list of region names. If no region is given here, all regions are queried. |
-filter       | URL query parameter | Optionally restrict the components to be queried. Comma-separated list of component names like "compute", "network", etc. See below for a list |
+| Name         | Where    | Description |
+| ------------ | -------- | ----------- |
+| project_id   | URL path | The OpenStack project ID. It needs to be the same as the one the token was created with. |
+| X-Auth-Token | Header | Token for authenticating the request. |
+| regions      | URL query parameter | Optionally restrict the regions to be queried. Comma-separated list of region names. If no region is given here, all regions are queried. |
+| filter       | URL query parameter | Optionally restrict the components to be queried. Comma-separated list of component names like "compute", "network", etc. See below for a list |
 
 Using the `regions` and `filter` parameters you may restrict the query to regions and/or components.
 If you are only interested in the usage information of certain components, using those filters allows
@@ -176,16 +176,16 @@ avoided.
 
 **Component names supported by `filter`**
 
-Filter name  | Details |
--------------|---------|
-compute      | Compute resources |
-dns          | DNS zones |
-loadbalancer | Load balancer resources (Octavia LBaaS); since v2 |
-network      | Network resources (excl. LBaaS and VPNaaS) |
-network.lb   | Neutron LBaaS v2 resources |
-network.vpn  | VPNaaS resources |
-s3           | Object storage consumption |
-volume       | Block storage resources |
+| Filter name  | Details |
+| ------------ | ------- |
+| compute      | Compute resources |
+| dns          | DNS zones |
+| loadbalancer | Load balancer resources (Octavia LBaaS); since v2 |
+| network      | Network resources (excl. LBaaS and VPNaaS) |
+| network.lb   | Neutron LBaaS v2 resources |
+| network.vpn  | VPNaaS resources |
+| s3           | Object storage consumption |
+| volume       | Block storage resources |
 
 Example:
 
@@ -267,33 +267,33 @@ The response contains the information about the currently-used resources in JSON
 }
 ```
 
-Field | Description | Notes |
-------|-------------|-------|
-compute.cores | Number of virtual cores ||
-compute.flavors | Number of virtual machines per flavor ||
-compute.instances | Total number of virtual machines ||
-compute.ram_mb | Total RAM of virtual machines in MiB ||
-dns.zones | Number of DNS zones ||
-loadbalancer.flavors | Number of Octavia LBaaS load balancers per flavor | since v2 |
-loadbalancer.healthmonitors | Number of Octavia LBaaS health monitors | since v2 |
-loadbalancer.listeners | Number of Octavia LBaaS  listeners | since v2 |
-loadbalancer.loadbalancers | Number of Octavia LBaaS  load balancers | since v2 |
-loadbalancer.members | Number of Octavia LBaaS  pool members | since v2 |
-loadbalancer.pools | Number of Octavia LBaaS  pools | since v2 |
-network.floatingips | Number of floating IP addresses ||
-network.lb_healthmonitors | Number of Neutron LBaaS v2 health monitors | only in regions cbk and dbl |
-network.lb_listeners | Number of Neutron LBaaS v2 listeners | only in regions cbk and dbl |
-network.lb_members | Number of Neutron LBaaS v2 pool members | only in regions cbk and dbl |
-network.lb_pools | Number of Neutron LBaaS v2 pools | only in regions cbk and dbl |
-network.loadbalancers | Number of Neutron LBaaS v2 load balancers | only in regions cbk and dbl |
-network.vpn_endpoint_groups | Number of VPNaaS endpoint groups ||
-network.vpn_ikepolicy | Number of VPNaaS IKE policies ||
-network.vpn_ipsec_site_connections | Number of VPNaaS site connections ||
-network.vpn_ipsecpolicies | Number of VPNaaS IPSec policies ||
-network.vpn_services | Number of VPNaaS VPN services ||
-s3.space_bytes | Used size of Object Storage (S3) in Bytes ||
-volume.space_gb | Used size of Block Storage (volumes) in GiB ||
-volume.volumes | Number of Block Storage volumes ||
+| Field | Description | Notes |
+| ----- | ----------- | ----- |
+| compute.cores | Number of virtual cores | |
+| compute.flavors | Number of virtual machines per flavor | |
+| compute.instances | Total number of virtual machines | |
+| compute.ram_mb | Total RAM of virtual machines in MiB | |
+| dns.zones | Number of DNS zones | |
+| loadbalancer.flavors | Number of Octavia LBaaS load balancers per flavor | since v2 |
+| loadbalancer.healthmonitors | Number of Octavia LBaaS health monitors | since v2 |
+| loadbalancer.listeners | Number of Octavia LBaaS  listeners | since v2 |
+| loadbalancer.loadbalancers | Number of Octavia LBaaS  load balancers | since v2 |
+| loadbalancer.members | Number of Octavia LBaaS  pool members | since v2 |
+| loadbalancer.pools | Number of Octavia LBaaS  pools | since v2 |
+| network.floatingips | Number of floating IP addresses | |
+| network.lb_healthmonitors | Number of Neutron LBaaS v2 health monitors | only in regions cbk and dbl |
+| network.lb_listeners | Number of Neutron LBaaS v2 listeners | only in regions cbk and dbl |
+| network.lb_members | Number of Neutron LBaaS v2 pool members | only in regions cbk and dbl |
+| network.lb_pools | Number of Neutron LBaaS v2 pools | only in regions cbk and dbl |
+| network.loadbalancers | Number of Neutron LBaaS v2 load balancers | only in regions cbk and dbl |
+| network.vpn_endpoint_groups | Number of VPNaaS endpoint groups | |
+| network.vpn_ikepolicy | Number of VPNaaS IKE policies | |
+| network.vpn_ipsec_site_connections | Number of VPNaaS site connections | |
+| network.vpn_ipsecpolicies | Number of VPNaaS IPSec policies | |
+| network.vpn_services | Number of VPNaaS VPN services | |
+| s3.space_bytes | Used size of Object Storage (S3) in Bytes | |
+| volume.space_gb | Used size of Block Storage (volumes) in GiB | |
+| volume.volumes | Number of Block Storage volumes | |
 
 ### Contributed Software
 
