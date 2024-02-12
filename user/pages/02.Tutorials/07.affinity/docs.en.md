@@ -10,7 +10,7 @@ taxonomy:
 
 ## Goal
 
-* This tutorial shows howto distribute instances to different hosts using servergroups
+* This tutorial shows howto distribute instances to different hosts using server groups
 * It is also shown how to force instances on the same host
 
 ## Prerequisites
@@ -21,7 +21,7 @@ taxonomy:
 
 ## Problem
 
-By default, there is no guarantees wether servers will be distributed across different hypervisors. The Nova compute scheduler makes that decision based on available resources.  
+By default, there is no guarantees whether servers will be distributed across different hypervisors. The Nova compute scheduler makes that decision based on available resources.  
 This can lead to services that are meant to be highly available to share a common host and thus share a single point of failure.  
 Inversely it might be desired to have two services to be located as close as possible, because they will need high bandwidth between each other.  
 Both cases are solvable using ServerGroups. That way you can influence the distribution of instances.
@@ -196,7 +196,7 @@ openstack server show server_1 -c name -c hostId
 +--------+----------------------------------------------------------+
 ```
 
-## Link Ressources/Sources
+## Link Resources/Sources
 
 * [Heat Template Guide](http://docs.openstack.org/developer/heat/template_guide/index.html)
 * [Heat Template ServerGroup Resource](http://docs.openstack.org/developer/heat/template_guide/openstack.html#OS::Nova::ServerGroup)
@@ -207,4 +207,4 @@ openstack server show server_1 -c name -c hostId
 
 ## Links/Examples
 
-The templates published on github [affinity](https://github.com/syseleven/heat-examples/tree/master/affinity) contain examples for *affinity* und *anti-affinity*.
+The templates published on GitHub [affinity](https://github.com/syseleven/heat-examples/tree/master/affinity) contain examples for *affinity* and *anti-affinity*.

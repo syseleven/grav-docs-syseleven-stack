@@ -46,4 +46,4 @@ Using access control lists, you can reduce access to certain users or groups.
 
 ## Known issues
 
-- Currently it is not possible to create containers of type certificate with Terraform. See [the terraform issue tracker](https://github.com/terraform-providers/terraform-provider-openstack/issues/1005) and the [OpenStack issue tracker](https://storyboard.openstack.org/#!/story/2007629).
+- Currently it is not possible to create containers of type certificate with Terraform. See [the Terraform issue tracker](https://github.com/terraform-providers/terraform-provider-openstack/issues/1005) and the [OpenStack issue tracker](https://storyboard.openstack.org/#!/story/2007629).

@@ -537,6 +537,6 @@ $ openstack vpn ipsec site connection create conn2 \
 Create virtual machines with interfaces in `right-subnet` and `left-subnet`, and make sure they can reach each other, by sending ICMP echo requests to internal IP addresses.
 Note that one of this virtual machines needs to have a Floating IP address, so you can reach the VM itself.
 
-## Note on Interoperatibility
+## Note on Interoperability
 
 Please see the [reference](../../04.Reference/08.network/docs.en.md) for [known interoperability issues](../../04.Reference/08.network/docs.en.md#known-interoperability-issues).

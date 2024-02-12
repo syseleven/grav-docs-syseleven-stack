@@ -125,7 +125,7 @@ domain.example.de.  IN SOA ns04.cloud.syseleven.net. hostmaster.domain.example.d
 www.domain.example.de.  IN A 123.45.67.89
 ```
 
-The ouput of the showfile command can directly by used as zone file in bind. In the next step we will reimport the zone we just exported.
+The output of the showfile command can directly by used as zone file in bind. In the next step we will reimport the zone we just exported.
 
 ### Import your zone
 

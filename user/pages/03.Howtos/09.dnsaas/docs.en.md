@@ -86,7 +86,7 @@ $ openstack recordset create --type A --record 123.45.67.89 domain.example. www.
 
 ### Delegate your Domain to SysEleven Stack Nameservers
 
-The delegation of a zone will be done by the appropriate registry for the toplevel domain where the registered domain belongs to, e.g. DeNIC for `*.de`-Domains. Most likely it will be triggered via your registrar or reseller. They need to know the nameservers that the domain shall be delegated to. You can obtain that list with the following command
+The delegation of a zone will be done by the appropriate registry for the top level domain where the registered domain belongs to, e.g. DeNIC for `*.de`-Domains. Most likely it will be triggered via your registrar or reseller. They need to know the nameservers that the domain shall be delegated to. You can obtain that list with the following command
 
 ```shell
 $ openstack recordset list domain.example. --type ns

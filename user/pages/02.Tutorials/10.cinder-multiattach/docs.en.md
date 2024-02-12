@@ -95,7 +95,7 @@ Linux app-instance-1  5.15.0-25-generic #25-Ubuntu SMP Wed Mar 30 15:54:22 UTC 2
 apt install ocfs2-tools linux-modules-extra-5.15.0-25-generic
 ```
 
-OCFS2 is configurend in /etc/default/o2cb and /etc/ocfs/cluster.conf.
+OCFS2 is configured in /etc/default/o2cb and /etc/ocfs/cluster.conf.
 Set `O2CB_ENABLED=true` in /etc/default/o2cb. All other settings can be left unchanged.
 
 ```shell

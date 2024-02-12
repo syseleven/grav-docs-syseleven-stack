@@ -12,11 +12,11 @@ taxonomy:
 
 OpenStack's Designate provides a Domain Name Service as a service (DNSaaS).
 This means that zones and records can be configured within OpenStack via an API (also see the [reference guide](../../04.Reference/07.dns/docs.en.md)) and will be queryable via DNS protocol from public nameservers run by SysEleven.
-This functionality can be very handy to automate updates to dns records caused by failovers or deployments, it also facilitatess automated renewal of letsencrypt ssl certificates.
+This functionality can be very handy to automate updates to dns records caused by failovers or deployments, it also facilitates automated renewal of Let's Encrypt SSL certificates.
 
 The tutorial is intended to make you familiar with the main functionality and aware of the presence of more advanced features of the DNS service of the SysEleven Stack.
 It shows examples for the openstack CLI, discovering the functionality in the [GUI](https://cloud.syseleven.de/horizon/project/dnszones/) is left as an exercise to the user.
-The API can also be used with [Terraform](https://www.terraform.io/docs/providers/openstack/r/dns_zone_v2.html), have a look at our [terraform examples](https://github.com/syseleven/terraform-examples).
+The API can also be used with [Terraform](https://www.terraform.io/docs/providers/openstack/r/dns_zone_v2.html), have a look at our [Terraform examples](https://github.com/syseleven/terraform-examples).
 
 ### Prerequisites
 
@@ -73,7 +73,7 @@ The zone name can be any publicly available domain name or subdomain name. Top l
 
 #### Create a secondary (slave) zone
 
-To create a secondary or slave zone, thats content are actually managed by (and obtained from) the primary or master server, you need to specify the master server(s):
+To create a secondary or slave zone, whose content is actually managed by (and obtained from) the primary or master server, you need to specify the master server(s):
 
 ```shell
 $ openstack zone create --type SECONDARY --masters 123.45.67.89 -- secondary.domain.example.
@@ -102,7 +102,7 @@ $ openstack zone create --type SECONDARY --masters 123.45.67.89 -- secondary.dom
 
 Note, that the shown email-address `hostmaster@example.com` is a placeholder by openstack, any given value will be ignored for secondary zones.
 
-Attention: Because more than one master ip address can be specified, the list must either be terminated with a double dash or the whole parameter with its list be moved to the end of the command line.
+Attention: Because more than one master IP address can be specified, the list must either be terminated with a double dash or the whole parameter with its list be moved to the end of the command line.
 
 ```shell
 openstack zone create secondary.domain.example. --type SECONDARY --masters 123.45.67.89
@@ -111,7 +111,7 @@ openstack zone create secondary.domain.example. --type SECONDARY --masters 123.4
 
 #### Have the zone delegated to the SysEleven Stack nameservers
 
-The delegation of a zone will be done by the appropriate registry for the toplevel domain where the registered domain belongs to. Most likely it will be triggered via your registrar or reseller. They need to know the nameservers that the domain shall be delegated to. You can obtain that list with the following command
+The delegation of a zone will be done by the appropriate registry for the top level domain where the registered domain belongs to. Most likely it will be triggered via your registrar or reseller. They need to know the nameservers that the domain shall be delegated to. You can obtain that list with the following command
 
 ```shell
 $ openstack recordset list domain.example. --type ns
@@ -263,7 +263,7 @@ $ openstack zone delete domain.example.de.
 | Problem | Solution |
 |---|---|
 | Duplicate Zone| Zone has already been created, either by you or by another user. See [collisions](#collisions). |
-| Invalid TLD | Zone names must be within a known toplevel domain. Contact us if you believe the top level domain is valid. |
+| Invalid TLD | Zone names must be within a known top level domain. Contact us if you believe the top level domain is valid. |
 | More than one label is required | It is not allowed to create a zone for a top level domain. |
 | Zone name cannot be the same as a TLD | It is not allowed to create a zone for a known top level domain. |
 | u'domain.example' is not a 'domainname'| Domain names must be fully qualified, i.e. end with a dot. |

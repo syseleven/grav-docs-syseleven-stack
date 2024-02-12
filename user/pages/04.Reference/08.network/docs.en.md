@@ -107,7 +107,7 @@ Currently our VPNaaS implementation supports the following algorithms in both ph
 !! DH Group 2 is not supported anymore.
 !! API requests to setup policies using DH Group 2 will be rejected.
 
-See our terraform examples on GitHub [for an example how to connect two regions using VPNaaS](https://github.com/syseleven/terraform-examples/tree/master/vpnaas).
+See our Terraform examples on GitHub [for an example how to connect two regions using VPNaaS](https://github.com/syseleven/terraform-examples/tree/master/vpnaas).
 
 ### Known interoperability issues
 
@@ -143,9 +143,9 @@ If you are using a custom public IP space (Bring your own IP), you first need to
 
 ### Floating IPs with DNS properties
 
-To create a reverse lookup PTR entry for a floating IP address, two parameters `--dns-domain` and `--dns-name` can be set. The DNS zone specfied in `--dns-domain` has to be created and owned by the same project. If the zone exists and configured properly, a forward A-type record as specified in `--dns-name` will be created in it. A reverse PTR-type record will be created in the `in-addr.arpa` zone that is hosted in our cloud, but invisible to customer projects.
+To create a reverse lookup PTR entry for a floating IP address, two parameters `--dns-domain` and `--dns-name` can be set. The DNS zone specified in `--dns-domain` has to be created and owned by the same project. If the zone exists and configured properly, a forward A-type record as specified in `--dns-name` will be created in it. A reverse PTR-type record will be created in the `in-addr.arpa` zone that is hosted in our cloud, but invisible to customer projects.
 
-The full command line to create a floating IP adress with a reverse PTR record will look like this: `openstack floating ip create --dns-domain example.com. --dns-name mx01 ext-net`
+The full command line to create a floating IP address with a reverse PTR record will look like this: `openstack floating ip create --dns-domain example.com. --dns-name mx01 ext-net`
 
 It is unfortunately not possible to set the `dns_name` and `dns_domain` properties for a floating IP that has already been created in the past.
 
@@ -153,7 +153,7 @@ It is unfortunately not possible to set the `dns_name` and `dns_domain` properti
 
 Forward A-type and reverse PTR-type records can be created automatically for all VMs that have Floating IP addresses attached. In order to achieve this, you need to provide the `--dns-domain` option when creating the network. It can also be updated later (e.g. using `openstack network set example-network --dns-domain example.com.`). You can create a network with the `dns_domain` property set using `openstack network create example-net --dns-domain example.com.`.
 
-The DNS zone specfied in `--dns-domain` must be created and owned by the same project. If the zone exists and is configured properly on a network, forward A-type records and reverse PTR-type records will be created for every VM in that network, as soon as a Floating IP address is attached to it.
+The DNS zone specified in `--dns-domain` must be created and owned by the same project. If the zone exists and is configured properly on a network, forward A-type records and reverse PTR-type records will be created for every VM in that network, as soon as a Floating IP address is attached to it.
 
 The record name will be generated from the VM name. Note that some symbols like underscore (`_`) or spaces ( ) are not allowed in host names, and will be removed from the host name. When a Floating IP address is detached from a VM the corresponding A and PTR records are deleted automatically.
 
@@ -171,4 +171,4 @@ During the creation of an IPv6 subnet, you may enter a CIDR manually, or allocat
 
 ### IPv6 addressing
 
-When an IPv6 range is allocated and configured on a subnet, you should set `IPv6 RA mode` and `IPv6 address mode`. These two control how the IPv6 address is allocated for the port that is connected to the IPv6-enabled subnet. We recommend setting both of these options to `dhcpv6-stateless`, which will generate a safe random IPv6 address, that will be acquired by a virtual machine via DHCP. Altough other combinations of these options are available, we don't recommend setting them, unless you know what you are doing and how ICMPv6 RA works. Since these options affect cloud-init, DHCP client, and ICMPv6 ND protocol configuration inside your virtual machines, changing them should always go together with reconfiguration of the operating system inside the virtual machine.
+When an IPv6 range is allocated and configured on a subnet, you should set `IPv6 RA mode` and `IPv6 address mode`. These two control how the IPv6 address is allocated for the port that is connected to the IPv6-enabled subnet. We recommend setting both of these options to `dhcpv6-stateless`, which will generate a safe random IPv6 address, that will be acquired by a virtual machine via DHCP. Although other combinations of these options are available, we don't recommend setting them, unless you know what you are doing and how ICMPv6 RA works. Since these options affect cloud-init, DHCP client, and ICMPv6 ND protocol configuration inside your virtual machines, changing them should always go together with reconfiguration of the operating system inside the virtual machine.

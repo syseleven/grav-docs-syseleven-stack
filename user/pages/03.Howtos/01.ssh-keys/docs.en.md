@@ -14,7 +14,7 @@ taxonomy:
 
 ## Overview
 
-SSH keys can be imported via the GUI (Horizon / Dashboad) or the CLI (OpenStack Client). While uploading SSH keys via the dashboard might be easier, uploading the SSH keys via the OpenStack CLI might be faster if SSH keys are to be imported into multiple regions.
+SSH keys can be imported via the GUI (Horizon / Dashboard) or the CLI (OpenStack Client). While uploading SSH keys via the dashboard might be easier, uploading the SSH keys via the OpenStack CLI might be faster if SSH keys are to be imported into multiple regions.
 
 !!!  SSH keys are saved in user and <u>not</u> project (tenant) context.
 !!!  SSH keys are region specific.

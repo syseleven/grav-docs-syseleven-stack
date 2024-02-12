@@ -69,7 +69,7 @@ To avoid problems, we recommend waiting for cloud-init to complete by running th
 while [ ! -e /var/lib/cloud/instance/boot-finished ]; do sleep 1; echo 'Waiting for cloud-init to finish.'; done
 ```
 
-When you are using terraform it will look like this:
+When you are using Terraform it will look like this:
 
 ```hcl
 provisioner "remote-exec" {

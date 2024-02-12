@@ -70,8 +70,8 @@ FES      | objectstorage.fes.cloud.syseleven.net  | Ceph                |
 !!!! For historical reasons 's3.cloud.syseleven.net' redirects to 's3.cbk.cloud.syseleven.net'.
 !!!! We recommend to always use a region specific URL like in the table above.
 
-!! **ceph objectstorage is still in beta phase**
-!! The objectstorage behind the endpoint objectstorage.fes.cloud.syseleven.net is storing the data on a different distributed storage than the other endpoints.
+!! **Ceph object storage is still in beta phase**
+!! The object storage behind the endpoint objectstorage.fes.cloud.syseleven.net is storing the data on a different distributed storage than the other endpoints.
 !! We are currently in the beta phase for this distributed storage system.
 
 ## Credentials

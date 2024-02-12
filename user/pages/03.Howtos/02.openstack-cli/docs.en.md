@@ -30,7 +30,7 @@ If you already installed any of the tools, please skip that specific step.*
 
 ## Snap on Linux
 
-If you are using `snap` on your Linux distro, you only need the following step for installing openstackclient:
+If you are using `snap` on your Linux distribution, you only need the following step for installing openstackclient:
 
 
 ```shell
