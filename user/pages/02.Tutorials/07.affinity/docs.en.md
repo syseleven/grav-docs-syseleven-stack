@@ -198,12 +198,12 @@ openstack server show server_1 -c name -c hostId
 
 ## Link Resources/Sources
 
-* [Heat Template Guide](http://docs.openstack.org/developer/heat/template_guide/index.html)
-* [Heat Template ServerGroup Resource](http://docs.openstack.org/developer/heat/template_guide/openstack.html#OS::Nova::ServerGroup)
-* [Nova Scheduler Reference](http://docs.openstack.org/mitaka/config-reference/compute/scheduler.html)
-* [Nova Scheduler Affinity Filter](http://docs.openstack.org/mitaka/config-reference/compute/scheduler.html#servergroupaffinityfilter)
-* [OpenStack Client Server Create](http://docs.openstack.org/developer/python-openstackclient/command-objects/server.html#server-create)
-* [OpenStack Client ServerGroup](http://docs.openstack.org/developer/python-openstackclient/command-objects/server-group.html)
+* [Heat Template Guide](https://docs.openstack.org/developer/heat/template_guide/index.html)
+* [Heat Template ServerGroup Resource](https://docs.openstack.org/developer/heat/template_guide/openstack.html#OS::Nova::ServerGroup)
+* [Nova Scheduler Reference](https://docs.openstack.org/mitaka/config-reference/compute/scheduler.html)
+* [Nova Scheduler Affinity Filter](https://docs.openstack.org/mitaka/config-reference/compute/scheduler.html#servergroupaffinityfilter)
+* [OpenStack Client Server Create](https://docs.openstack.org/developer/python-openstackclient/command-objects/server.html#server-create)
+* [OpenStack Client ServerGroup](https://docs.openstack.org/developer/python-openstackclient/command-objects/server-group.html)
 
 ## Links/Examples
 

@@ -102,7 +102,7 @@ openstack ec2 credentials list
 
 ### S3cmd
 
-Information about the `s3cmd` client can be found [here](http://s3tools.org/s3cmd).
+Information about the `s3cmd` client can be found [here](https://s3tools.org/s3cmd).
 
 Now you can create an `s3cmd` configuration which could look like this:
 
@@ -117,16 +117,16 @@ check_ssl_hostname = False
 
 #host_base = s3.cbk.cloud.syseleven.net
 #host_bucket = %(bucket).s3.cbk.cloud.syseleven.net
-#website_endpoint = http://%(bucket)s.s3.cbk.cloud.syseleven.net/%(location)s/
-#website_endpoint = http://s3.cbk.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = https://%(bucket)s.s3.cbk.cloud.syseleven.net/%(location)s/
+#website_endpoint = https://s3.cbk.cloud.syseleven.net/%(bucket)s/%(location)s/
 host_base = s3.dbl.cloud.syseleven.net
 host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
-#website_endpoint = http://%(bucket)s.s3.dbl.cloud.syseleven.net/%(location)s/
-website_endpoint = http://s3.dbl.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = https://%(bucket)s.s3.dbl.cloud.syseleven.net/%(location)s/
+website_endpoint = https://s3.dbl.cloud.syseleven.net/%(bucket)s/%(location)s/
 #host_base = s3.fes.cloud.syseleven.net
 #host_bucket = %(bucket).s3.fes.cloud.syseleven.net
-#website_endpoint = http://s3.fes.cloud.syseleven.net/%(bucket)s/%(location)s/
-#website_endpoint = http://%(bucket)s.s3.fes.cloud.syseleven.net/%(location)s/
+#website_endpoint = https://s3.fes.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = https://%(bucket)s.s3.fes.cloud.syseleven.net/%(location)s/
 ```
 
 Next, create an S3 Bucket.

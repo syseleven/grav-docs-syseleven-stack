@@ -164,4 +164,4 @@ Now it is possible to read and write files on the volume from all VMs.
 ## References
 
 * [SysEleven Stack block storage reference guide](../../04.Reference/04.block-storage/docs.en.md)
-* [OCFS2 best practices guide](http://www.oracle.com/us/technologies/linux/ocfs2-best-practices-2133130.pdf)
+* [OCFS2 best practices guide](https://www.oracle.com/us/technologies/linux/ocfs2-best-practices-2133130.pdf)
