@@ -29,7 +29,7 @@ The snippets shown in the examples were written and tested for an Ubuntu 18.04 V
 
 #### Example 1 : (Manually) configure partitions
 
-In contrast to the automatic disk partioning (which is shown in the examples below), we will do the steps by hand which would be needed to create a new partition. All we need to do is to tell [cloudinit](https://cloudinit.readthedocs.io/en/latest/) via user-data to not grow the initial VM image partition.
+In contrast to the automatic disk partitioning (which is shown in the examples below), we will do the steps by hand which would be needed to create a new partition. All we need to do is to tell [cloudinit](https://cloudinit.readthedocs.io/en/latest/) via user-data to not grow the initial VM image partition.
 
 ```shell
 #cloud-config
@@ -73,7 +73,7 @@ Number  Start   End     Size    File system  Name  Flags
 root@partition-test:~#
 ```
 
-As we can see, our partitation /dev/vda1 did not grow and got the original size of the image itself. In consequence we have 51,3GB free space, which we may use for our new partition.
+As we can see, our partition /dev/vda1 did not grow and got the original size of the image itself. In consequence we have 51,3GB free space, which we may use for our new partition.
 
 ##### Create new partition
 

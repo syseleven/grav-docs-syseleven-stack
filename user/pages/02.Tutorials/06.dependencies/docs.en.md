@@ -102,4 +102,4 @@ syselevenstack@kickstart:~/heat-examples/example-setup$ openstack stack create -
 
 ## Examples
 
-We provided an [example setup](https://github.com/syseleven/heat-examples/tree/master/example-setup) on github which uses dependencies.
+We provided an [example setup](https://github.com/syseleven/heat-examples/tree/master/example-setup) on GitHub which uses dependencies.

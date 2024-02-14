@@ -27,7 +27,7 @@ Our documentation is structured in four distinct sections:
 
 ## Examples
 
-On top of the documentation, SysEleven provides a [library of heat templates](https://github.com/syseleven/heat-examples) as well as a [library of terraform examples](https://github.com/syseleven/terraform-examples) that will help you with the creation of a complex setup.
+On top of the documentation, SysEleven provides a [library of heat templates](https://github.com/syseleven/heat-examples) as well as a [library of Terraform examples](https://github.com/syseleven/terraform-examples) that will help you with the creation of a complex setup.
 
 ## Support
 

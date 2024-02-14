@@ -404,7 +404,7 @@ You can also build a setup where a virtual machine has more than 50 GiB of stora
 
 Heat template files are written in YAML and describe the virtual infrastructure. They consist of five important sections:
 `heat_template_version`, `description`, `parameters`, `resources` and `output`.
-You can find the current specification of all heat components and options at the [Heat Project online documentation](http://docs.openstack.org/developer/heat/template_guide/openstack.html).
+You can find the current specification of all heat components and options at the [Heat Project online documentation](https://docs.openstack.org/developer/heat/template_guide/openstack.html).
 
 ### Heat version
 

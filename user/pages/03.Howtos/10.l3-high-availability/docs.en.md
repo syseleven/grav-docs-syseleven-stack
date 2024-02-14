@@ -10,7 +10,7 @@ taxonomy:
 ## Problem statement
 
 * Some services, like reverse proxies or load balancers cannot use service discovery mechanisms in order to achieve high availability.
-* In order to improve high availablity and decrease covergence time after failure, it is feasible to have one virtual IP address shared between different instances. Some applications have this functionality built-in, some don't.
+* In order to improve high availability and decrease convergence time after failure, it is feasible to have one virtual IP address shared between different instances. Some applications have this functionality built-in, some don't.
 
 ## Technology used
 
@@ -195,7 +195,7 @@ ubuntu@ha-first:~$ ip -4 a
 ubuntu@ha-first:~$
 ```
 
-Let's check if we can reach this ip address from our observer instance.
+Let's check if we can reach this IP address from our observer instance.
 
 ```shell
 ubuntu@observer:~$ ping 10.200.51.10 -c 3
@@ -258,7 +258,7 @@ ubuntu@observer:~$ ip neigh
 ubuntu@observer:~$
 ```
 
-We can now sucessfully reach the virtual ip address. It has the MAC address 00:00:5e:00:01:01, which, according to RFC, is
+We can now successfully reach the virtual IP address. It has the MAC address 00:00:5e:00:01:01, which, according to RFC, is
 the virtual mac address assigned to VRRP virtual router 1 (configuration option virtual_router_id)
 
 Let's now bring down keepalived process on `ha_first` and check if virtual IP address will now be served by `ha_second`:

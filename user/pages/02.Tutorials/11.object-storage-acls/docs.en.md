@@ -11,11 +11,11 @@ taxonomy:
 
 ### Overview
 
-In this tutorial we will use the [Object Storage](../../04.Reference/05.object-storage/docs.en.md) to create buckets and objects with and limit the access to these by applying ACLs. We will be using the [s3cmd](http://s3tools.org/s3cmd) S3 client and the python library [boto3](https://boto3.readthedocs.io) to manage our resources.
+In this tutorial we will use the [Object Storage](../../04.Reference/05.object-storage/docs.en.md) to create buckets and objects with and limit the access to these by applying ACLs. We will be using the [s3cmd](https://s3tools.org/s3cmd) S3 client and the python library [boto3](https://boto3.readthedocs.io) to manage our resources.
 
 !! **A word of caution**
-!! If possible stick to canned ACLs. We want to discourge the usage of custom ACLs.
-!! Due to the implementation and the unituitive way of setting ACLs, we see a huge potential of misconfiguration.
+!! If possible stick to canned ACLs. We want to discourage the usage of custom ACLs.
+!! Due to the implementation and the unintuitive way of setting ACLs, we see a huge potential of misconfiguration.
 !! If you insist on using custom ACLs, please try to confirm they are working as intended.
 
 ### Prerequisites
@@ -23,7 +23,7 @@ In this tutorial we will use the [Object Storage](../../04.Reference/05.object-s
 * You know the basics of using the [OpenStack CLI-Tools](../../03.Howtos/02.openstack-cli/docs.en.md).
 * Environment variables are set, like shown in the [API-Access-Tutorial](../../02.Tutorials/02.api-access/docs.en.md).
 * You have created EC2 credentials for your OpenStack user to be able to use the [Object Storage](../../04.Reference/05.object-storage/docs.en.md).
-* You have installed [s3cmd](http://s3tools.org/s3cmd)
+* You have installed [s3cmd](https://s3tools.org/s3cmd)
 * You have installed python and the [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) library
 
 We suggest you use the python library boto3 to reproduce all scenarios shown in this tutorial. Using only s3cmd will leave buckets open for group members. We are in contact with the software manufacturer of our object storage about that.
@@ -45,16 +45,16 @@ check_ssl_hostname = False
 
 #host_base = s3.cbk.cloud.syseleven.net
 #host_bucket = %(bucket).s3.cbk.cloud.syseleven.net
-#website_endpoint = http://%(bucket)s.s3.cbk.cloud.syseleven.net/%(location)s/
-#website_endpoint = http://s3.cbk.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = https://%(bucket)s.s3.cbk.cloud.syseleven.net/%(location)s/
+#website_endpoint = https://s3.cbk.cloud.syseleven.net/%(bucket)s/%(location)s/
 host_base = s3.dbl.cloud.syseleven.net
 host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
-#website_endpoint = http://%(bucket)s.s3.dbl.cloud.syseleven.net/%(location)s/
-website_endpoint = http://s3.dbl.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = https://%(bucket)s.s3.dbl.cloud.syseleven.net/%(location)s/
+website_endpoint = https://s3.dbl.cloud.syseleven.net/%(bucket)s/%(location)s/
 #host_base = s3.fes.cloud.syseleven.net
 #host_bucket = %(bucket).s3.fes.cloud.syseleven.net
-#website_endpoint = http://s3.fes.cloud.syseleven.net/%(bucket)s/%(location)s/
-#website_endpoint = http://%(bucket)s.s3.fes.cloud.syseleven.net/%(location)s/
+#website_endpoint = https://s3.fes.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = https://%(bucket)s.s3.fes.cloud.syseleven.net/%(location)s/
 ```
 
 We can configure an s3 client with the boto3 library using following python snippet (example is in DBL region):

@@ -181,15 +181,15 @@ how to use snapshots to launch new instances using the ephemeral or volume stora
 
 ## Questions & Answers
 
-### What is the difference between local ssd storage and distributed storage?
+### What is the difference between local SSD storage and distributed storage?
 
-SysEleven Stack distributed storage distributes several copies of segments of your data over many physical ssd devices attached to different physical compute nodes connected via network. This allows for high overall performance, because several devices can work simultaneously, but introduces a latency for single operations, because data has to be transmitted via network.
+SysEleven Stack distributed storage distributes several copies of segments of your data over many physical SSD devices attached to different physical compute nodes connected via network. This allows for high overall performance, because several devices can work simultaneously, but introduces a latency for single operations, because data has to be transmitted via network.
 
-SysEleven Stack local ssd storage stores your data on a local raid mirrored ssd storage directly attached to the compute node. This reduces the latency, because no network is involved, but also redundancy, because only two devices and one compute node are involved.
+SysEleven Stack local SSD storage stores your data on a local raid mirrored SSD storage directly attached to the compute node. This reduces the latency, because no network is involved, but also redundancy, because only two devices and one compute node are involved.
 
 ### Which storage flavor fits my needs best?
 
-In general, workloads where large volumes of data are transmitted or many small chunks of data are handled in parallel benefit from the overall performance of distributed storage and of course the redundancy and availability whereas workloads with tiny requests that need to be executed serially benefits from the lower latency of local ssd storage.
+In general, workloads where large volumes of data are transmitted or many small chunks of data are handled in parallel benefit from the overall performance of distributed storage and of course the redundancy and availability whereas workloads with tiny requests that need to be executed serially benefits from the lower latency of local SSD storage.
 
 ### Why are instances migrated?
 
@@ -268,5 +268,5 @@ The security group "default" is added in this example, since this group is takin
 Any occupied resources are considered "used" and counted against your [quota limits](../../05.Background/03.resource-limits/docs.en.md#usage). They will also be counted against your upfront commitment or charged on demand.
 When you create an instance, volume, snapshot, object, loadbalancer, floating ip, dns zone, resources will be allocated and so they will be counted and charged, no matter if they are actually running, attached, assigned.
 To save money or free quota, it is thus not sufficient to stop, detach or unassign them, you must delete them completely to free the resources so that we can reuse them.
-It is part of higher level automation like kubernetes or terraform or similar tools to recreate them if needed.
+It is part of higher level automation like Kubernetes or Terraform or similar tools to recreate them if needed.
 

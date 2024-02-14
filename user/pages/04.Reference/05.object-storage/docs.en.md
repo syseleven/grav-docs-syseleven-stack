@@ -13,7 +13,7 @@ SysEleven Stack provides S3 compatible Object Storage.
 
 It stores and retrieves arbitrary unstructured data objects via an HTTP-based API. It is highly fault tolerant with its data replication and scale-out architecture. In its implementation as a distributed eventually consistent object storage, it is not mountable like a file server.
 
-You can create the OpenStack API to generate credentials to access the SysEleven Stack Object Storage. You can then use the S3 API with various S3 clients and/or SDKs.
+You can use the OpenStack API to generate credentials to access the SysEleven Stack Object Storage. You can then use the S3 API with various S3 clients and/or SDKs.
 
 ## Supported S3 operations by backend
 
@@ -70,8 +70,8 @@ FES      | objectstorage.fes.cloud.syseleven.net  | Ceph                |
 !!!! For historical reasons 's3.cloud.syseleven.net' redirects to 's3.cbk.cloud.syseleven.net'.
 !!!! We recommend to always use a region specific URL like in the table above.
 
-!! **ceph objectstorage is still in beta phase**
-!! The objectstorage behind the endpoint objectstorage.fes.cloud.syseleven.net is storing the data on a different distributed storage than the other endpoints.
+!! **Ceph object storage is still in beta phase**
+!! The object storage behind the endpoint objectstorage.fes.cloud.syseleven.net is storing the data on a different distributed storage than the other endpoints.
 !! We are currently in the beta phase for this distributed storage system.
 
 ## Credentials
@@ -102,7 +102,7 @@ openstack ec2 credentials list
 
 ### S3cmd
 
-Information about the `s3cmd` client can be found [here](http://s3tools.org/s3cmd).
+Information about the `s3cmd` client can be found [here](https://s3tools.org/s3cmd).
 
 Now you can create an `s3cmd` configuration which could look like this:
 
@@ -117,16 +117,16 @@ check_ssl_hostname = False
 
 #host_base = s3.cbk.cloud.syseleven.net
 #host_bucket = %(bucket).s3.cbk.cloud.syseleven.net
-#website_endpoint = http://%(bucket)s.s3.cbk.cloud.syseleven.net/%(location)s/
-#website_endpoint = http://s3.cbk.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = https://%(bucket)s.s3.cbk.cloud.syseleven.net/%(location)s/
+#website_endpoint = https://s3.cbk.cloud.syseleven.net/%(bucket)s/%(location)s/
 host_base = s3.dbl.cloud.syseleven.net
 host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
-#website_endpoint = http://%(bucket)s.s3.dbl.cloud.syseleven.net/%(location)s/
-website_endpoint = http://s3.dbl.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = https://%(bucket)s.s3.dbl.cloud.syseleven.net/%(location)s/
+website_endpoint = https://s3.dbl.cloud.syseleven.net/%(bucket)s/%(location)s/
 #host_base = s3.fes.cloud.syseleven.net
 #host_bucket = %(bucket).s3.fes.cloud.syseleven.net
-#website_endpoint = http://s3.fes.cloud.syseleven.net/%(bucket)s/%(location)s/
-#website_endpoint = http://%(bucket)s.s3.fes.cloud.syseleven.net/%(location)s/
+#website_endpoint = https://s3.fes.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = https://%(bucket)s.s3.fes.cloud.syseleven.net/%(location)s/
 ```
 
 Next, create an S3 Bucket.

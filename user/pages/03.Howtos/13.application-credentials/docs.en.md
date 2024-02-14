@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-Since the Queens update, OpenStack supports the creation of [Application Credentials](../../04.Reference/01.identity-and-access/docs.en.md) to allow users and their applications to authenticate to OpenStack. The users can delegate a subset of their assigned roles, granting an application the same or restricted authorization for their projects and ressources.  
+Since the Queens update, OpenStack supports the creation of [Application Credentials](../../04.Reference/01.identity-and-access/docs.en.md) to allow users and their applications to authenticate to OpenStack. The users can delegate a subset of their assigned roles, granting an application the same or restricted authorization for their projects and resources.  
 
 ### Create Application Credentials
 

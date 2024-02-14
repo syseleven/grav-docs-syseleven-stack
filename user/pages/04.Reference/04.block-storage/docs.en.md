@@ -117,7 +117,7 @@ Your client must use the nova API version 2.60 or later for attaching / detachin
 openstack --os-compute-api-version 2.60 server add volume instance_name volume_name
 ```
 
-The necessary settings for terraform are described in the [terraform documentation for multi-attach volume attachments](https://www.terraform.io/docs/providers/openstack/r/compute_volume_attach_v2.html#using-multiattach-enabled-volumes).
+The necessary settings for Terraform are described in the [Terraform documentation for multi-attach volume attachments](https://www.terraform.io/docs/providers/openstack/r/compute_volume_attach_v2.html#using-multiattach-enabled-volumes).
 
 ### Volume resizing
 

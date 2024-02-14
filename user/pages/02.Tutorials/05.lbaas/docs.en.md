@@ -27,7 +27,7 @@ Below you will find two tutorials in two variants: how to set up an HTTP load ba
 
 ## Git repository with Terraform examples
 
-The Terraform examples used in the tutorials are [available on Github](https://github.com/syseleven/terraform-examples/tree/master/lbaas)
+The Terraform examples used in the tutorials are [available on GitHub](https://github.com/syseleven/terraform-examples/tree/master/lbaas)
 
 ```shell
 git clone https://github.com/syseleven/terraform-examples.git
@@ -35,8 +35,8 @@ git clone https://github.com/syseleven/terraform-examples.git
 
 This repository is used in both setups described below:
 
-* terraform-examples/lbaas-octavia-http: contains the Terraform receipe for an HTTP load balancer set up using Octavia resources
-* terraform-examples/lbaas: contains the terraform template for a TCP load balancer set up using Neutron LBaaSv2 resources
+* terraform-examples/lbaas-octavia-http: contains the Terraform recipe for an HTTP load balancer set up using Octavia resources
+* terraform-examples/lbaas: contains the Terraform template for a TCP load balancer set up using Neutron LBaaSv2 resources
 
 ## HTTP Load Balancer with Terraform and Octavia
 
@@ -100,7 +100,7 @@ Outputs:
 loadbalancer_http = "http://185.56.128.100"
 ```
 
-Note that the "Allowed CIDRs" of the listeners in the example are already set to a value (here 0.0.0.0/0). This is in contrast to Heat, where you have to set them in a separate step. The security groups are also configured in the terraform receipe.
+Note that the "Allowed CIDRs" of the listeners in the example are already set to a value (here 0.0.0.0/0). This is in contrast to Heat, where you have to set them in a separate step. The security groups are also configured in the Terraform recipe.
 
 ### Step two: Check if the load balancer works properly
 
@@ -174,7 +174,7 @@ Open AnyApp in other tabs/windows to see the load balancer working.
 
 ## Git repository with Heat template examples
 
-The heat template examples used in the tutorials are available [on Github](https://github.com/syseleven/heat-examples).
+The heat template examples used in the tutorials are available [on GitHub](https://github.com/syseleven/heat-examples).
 
 ```shell
 git clone https://github.com/syseleven/heat-examples.git

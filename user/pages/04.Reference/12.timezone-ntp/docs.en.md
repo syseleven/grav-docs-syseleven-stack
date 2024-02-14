@@ -16,6 +16,6 @@ Please be aware that the time shown in your instance logs may differ from the lo
 
 SysEleven does **not** provide time servers for you to use. Please select public time servers in your instances.
 
-The following list could be a starting point:  
+The following list could be a starting point:
 
-[http://www.pool.ntp.org/en/use.html](http://www.pool.ntp.org/en/use.html)
+* <https://www.pool.ntp.org/en/use.html>

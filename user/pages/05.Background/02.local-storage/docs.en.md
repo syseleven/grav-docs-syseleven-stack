@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-SysEleven Stack offers two flavors of ephemeral storage. The default storage type is a distributed storage based on quobyte. It offers high performance, redundancy and scalability at the cost of latency. For some application workloads, where latency is a bottleneck, we offer local ssd storage.
+SysEleven Stack offers two flavors of ephemeral storage. The default storage type is a distributed storage based on Quobyte. It offers high performance, redundancy and scalability at the cost of latency. For some application workloads, where latency is a bottleneck, we offer local SSD storage.
 
 ---
 
@@ -21,7 +21,7 @@ We provide a [tabular overview of our flavor types](../../04.Reference/03.comput
 
 ### How do I use local SSD storage?
 
-For a quick start to evaluate or just play with local ssd storage, please see our [Tutorials](../../02.Tutorials/08.local-storage/docs.en.md).
+For a quick start to evaluate or just play with local SSD storage, please see our [Tutorials](../../02.Tutorials/08.local-storage/docs.en.md).
 
 ### When should I better not use local SSD storage?
 
@@ -29,7 +29,7 @@ Traditional single server setups often suffer from performance penalty when run 
 
 ### What can I do to make my setup suitable for local SSD storage?
 
-Depending on your application, there are many proven ways to design either your setup or your application in a way that provides for the missing redundancy. Application servers can be multiplied and put behind a loadbalancer, databases can be set up in replication topologies or clusters. We try to provide some inspiration among our [heat teamplates](https://github.com/syseleven/heat-examples), please contact us if you need further assistance.
+Depending on your application, there are many proven ways to design either your setup or your application in a way that provides for the missing redundancy. Application servers can be multiplied and put behind a loadbalancer, databases can be set up in replication topologies or clusters. We try to provide some inspiration among our [heat templates](https://github.com/syseleven/heat-examples), please contact us if you need further assistance.
 
 ### Can I use local SSD storage for volumes?
 
@@ -67,15 +67,15 @@ Local SSD storage instances cannot be (live) migrated, we need to regularly rebo
 To keep the impact predictable, we hereby announce a regular
 
 !! maintenance window:
-!! Every week in the night from wednesday, 11pm (23h) to thursday, 4am,
+!! Every week in the night from Wednesday, 11pm (23h) to Thursday, 4am,
 
-we will restart about 25% of our local ssd storage compute nodes.
+we will restart about 25% of our local SSD storage compute nodes.
 Statistically, every instance **will be shut down once a month.**
 
 ### How is maintenance carried out for local SSD storage nodes?
 
-Affected instances will receive an ACPI shutdown event that gives the operating system one minute grace period to shut down orderly. After the maintenance it will we brought up again. Expect up to half an hour (30min) of downtime. There will be **no further annoucement** aside from the ACPI shutdown event.
+Affected instances will receive an ACPI shutdown event that gives the operating system one minute grace period to shut down orderly. After the maintenance it will we brought up again. Expect up to half an hour (30min) of downtime. There will be **no further announcement** aside from the ACPI shutdown event.
 
 ### How many nodes/instances will be affected by local SSD storage node maintenance simultaneously?
 
-Planned maintenances will only affect one compute node at a time and between two maintenances there will be half an hour of recreation to allow the affected systems to re-join their clusters or whatever. It will, however, affect all local ssd storage instances on the same compute node. To ensure, that redundant systems will not be affected simultaneously, you must put them into [anti-affinity-groups](../../02.Tutorials/07.affinity/docs.en.md).
+Planned maintenances will only affect one compute node at a time and between two maintenances there will be half an hour of recreation to allow the affected systems to re-join their clusters or whatever. It will, however, affect all local SSD storage instances on the same compute node. To ensure, that redundant systems will not be affected simultaneously, you must put them into [anti-affinity-groups](../../02.Tutorials/07.affinity/docs.en.md).

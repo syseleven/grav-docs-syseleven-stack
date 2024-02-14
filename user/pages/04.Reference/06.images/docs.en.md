@@ -13,7 +13,7 @@ SysEleven provides and maintains a set of images in the SysEleven Stack. As soon
 
 You can view and manage images both via the OpenStack API and CLI, as well as using the [Dashboard (GUI)](https://cloud.syseleven.de/).
 
-If you need to maintain your own set of images, you can upload them yourself as well using the OpenStack API. It is possible to use tools like [Hashicorp Packer](https://www.packer.io/) to build your own images, for example with certain preinstalled software.
+If you need to maintain your own set of images, you can upload them yourself as well using the OpenStack API. It is possible to use tools like [HashiCorp Packer](https://www.packer.io/) to build your own images, for example with certain preinstalled software.
 
 ## Available public images
 
@@ -62,7 +62,7 @@ source_sha512sum                 | SHA512 hash of the original image file, as pr
 source_sha256sum                 | SHA256 hash of the original image file, as provided by the vendor under `source_url` |
 source_url                       | URL to the vendor image file that has been used for this image |
 
-Here is an example for filtering the images by properties using [Hashicorp Terraform's image data source](https://www.terraform.io/docs/providers/openstack/d/images_image_v2.html):
+Here is an example for filtering the images by properties using [HashiCorp Terraform's image data source](https://www.terraform.io/docs/providers/openstack/d/images_image_v2.html):
 
 ```hcl
 data "openstack_images_image_v2" "ubuntu-focal" {

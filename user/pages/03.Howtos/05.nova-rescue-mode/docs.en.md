@@ -105,7 +105,7 @@ ssh ubuntu@<Instance floating ip>
 
 ### via Console
 
-The rescue image generated a random password with every start, which can be viewed on the console. The root user is only allowed to login via the console. Once logged in you can define a password for the systemuser "ubuntu" if no SSH key is available and login via SSH is preferred.
+The rescue image generated a random password with every start, which can be viewed on the console. The root user is only allowed to login via the console. Once logged in you can define a password for the system user "ubuntu" if no SSH key is available and login via SSH is preferred.
 
 Get the root password:
 
