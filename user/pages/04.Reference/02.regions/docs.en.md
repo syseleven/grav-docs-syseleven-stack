@@ -68,6 +68,8 @@ Using the username and password (API credentials) that were provided by SysEleve
 
 When using the openstack client you can select the region by setting the `OS_REGION_NAME` variable accordingly. As an alternative you can override it with the command line option `--os-region-name <region name>`.
 
+**Note:** if you don't specify any region name in the `openrc` file or on the command line, the OpenStack client may pick a region in an unpredictable way, depending on what service you try to use.
+
 The following example shows how to use it:
 
 ```shell
