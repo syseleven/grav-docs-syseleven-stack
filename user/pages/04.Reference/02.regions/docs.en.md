@@ -64,7 +64,7 @@ Once the region is selected you can start creating resources in that region.
 
 **The default region is defined in the 'openrc' file** in the environment variable `OS_REGION_NAME`. For your own comfort you can create one 'openrc' file per region and adjust `OS_REGION_NAME` in each file.
 
-Using the username and password (API credentials) that were provided by SysEleven source the 'openrc' file and enable the CLI client to talk to the Syseleven Stack.
+Using the username and password (API credentials) that were provided by SysEleven source the 'openrc' file and enable the CLI client to talk to the SysEleven Stack.
 
 When using the openstack client you can select the region by setting the `OS_REGION_NAME` variable accordingly. As an alternative you can override it with the command line option `--os-region-name <region name>`.
 
