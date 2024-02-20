@@ -14,6 +14,16 @@ taxonomy:
 * The dashboard "Overview" shows the resources of the currently selected region.
 * Resource limits may vary between regions, in some cases effectively preventing the practical use of (a) region(s).
 
+## Regions
+
+The current 3 regions are:
+
+* `cbk` (Berlin)
+* `dbl` (Berlin)
+* `fes` (Frankfurt)
+
+Since 2024, a fourth region, `dus2` (Düsseldorf), is visible in the OpenStack catalog but is not yet publicly available.
+
 ## Goal
 
 * Select Region via GUI (Horizon)
