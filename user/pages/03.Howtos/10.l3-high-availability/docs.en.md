@@ -297,6 +297,7 @@ There is confirmation in log:
 Aug 07 09:06:18 ha-second Keepalived_vrrp[8665]: VRRP_Instance(vrrp_1) Transition to MASTER STATE
 Aug 07 09:06:19 ha-second Keepalived_vrrp[8665]: VRRP_Instance(vrrp_1) Entering MASTER STATE
 ```
+
 [/ui-tab]
 [ui-tab title="New regions (fes, dus2)"]
 
