@@ -6,7 +6,7 @@ taxonomy:
     category:
         - docs
 ---
-! This solution is deprecated, we highly recommend to use Octavia LBaaS for this purpose: [Create a Load Balancer](../../02.Tutorials/05.lbaas/docs.en.md)
+! Please consider using Octavia LBaaS solution provided by the SysEleven Stack before you decide to create a VIP VRRP cluster on your own: [Create a Load Balancer](../../02.Tutorials/05.lbaas/docs.en.md)
 
 ## Problem statement
 
@@ -21,13 +21,13 @@ taxonomy:
 
 * `keepalived` is an open source VRRP implementation
 
-## Legacy vs New regions
+## Cloud regions specifics
 
-Our legacy regions (cbk, dbl) have a different SDN backed than our new regions (fes, dus2).
+CBK and DBL cloud regions have a different SDN backend than FES region.
 Each SDN requires a dedicated `keepalived` configuration - both are presented below.
 
 [ui-tabs position="top-left" active="0" theme="lite"]
-[ui-tab title="Legacy regions (cbk, dbl)"]
+[ui-tab title="CBK and DBL regions"]
 
 ### Considerations
 
@@ -299,7 +299,7 @@ Aug 07 09:06:19 ha-second Keepalived_vrrp[8665]: VRRP_Instance(vrrp_1) Entering 
 ```
 
 [/ui-tab]
-[ui-tab title="New regions (fes, dus2)"]
+[ui-tab title="FES region"]
 
 ### Considerations
 
