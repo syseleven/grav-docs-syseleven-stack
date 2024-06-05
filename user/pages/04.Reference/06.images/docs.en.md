@@ -51,18 +51,30 @@ Public images get certain properties that you can use for finding the latest ima
 
 Property name                    | Description                               |
 ---------------------------------|-------------------------------------------|
+architecture                     | Image only runs with this cpu architecture. Currently always `x86_64`. Same as `cpu_arch` |
 ci_job_id                        | Internal reference number                 |
 ci_pipeline_id                   | Internal reference number                 |
-cpu_arch                         | Image only runs with this cpu architecture. Currently always `x86_64` |
-default_ssh_username             | If not configured otherwise using cloud-init, servers using this image can be accessed with this ssh username. |
+cpu_arch                         | Image only runs with this cpu architecture. Currently always `x86_64`. Same as `architecture` |
+default_ssh_username             | If not configured otherwise using cloud-init, servers using this image can be accessed with this ssh username. Same as `image_original_user` |
 distribution                     | Unique identifier for the distribution and version (e.g. `ubuntu-focal`) |
-os_distro                        | Name of the distribution (e.g. `ubuntu`)  |
+hypervisor_type                  | The hypervisor type. Currently always `qemu` |
+hw_disk_bus                      | Specifies the type of disk controller to attach disk devices to. Currently always `virtio` |
+hw_rng_model                     | A preference of a random-number generator device type added to the image's instances. Currently always `virtio` |
+image_description                | URL to the vendor's image repository notes |
+image_source                     | URL to the vendor image file that has been used for this image. Same as `source_url` |
+image_build_date                 | Date when the image was added to the catalog |
+image_original_user              | If not configured otherwise using cloud-init, servers using this image can be accessed with this ssh username. Same as `default_ssh_username` |
+os_distro                        | Name of the distribution (e.g. `ubuntu`) |
 os_type                          | Operating system type (currently always `linux`) |
 os_version                       | Version of the operating system (e.g. `20.04`) |
+provided_until                   | The date until when the image will be available and updated |
+replace_frequency                | How often the image will be replaced with an updated version |
 source_sha512sum                 | SHA512 hash of the original image file, as provided by the vendor under `source_url` |
 source_sha256sum                 | SHA256 hash of the original image file, as provided by the vendor under `source_url` |
-source_url                       | URL to the vendor image file that has been used for this image |
+source_url                       | URL to the vendor image file that has been used for this image. Same as `image_source` |
+uuid_validity                    | How long the image will be referencable by its UUID |
 
+We follow the [SCS Image Metadata Standard](https://docs.scs.community/standards/scs-0102-v1-image-metadata/)
 Here is an example for filtering the images by properties using [HashiCorp Terraform's image data source](https://www.terraform.io/docs/providers/openstack/d/images_image_v2.html):
 
 ```hcl
