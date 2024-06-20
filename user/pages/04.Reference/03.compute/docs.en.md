@@ -20,13 +20,9 @@ You can manage your compute instance both via our public [OpenStack API](../../0
 ### Standard instance types (M1 & M2)
 
 Standard instances generally offer you good performance, availability and storage durability.
-Disk data will be distributed across multiple servers (SysEleven Distributed Storage).
+Disk data will be distributed across multiple servers (SysEleven Distributed Storage). The difference between M1 and M2 types is the storage technology used.
 
 We recommend these instance types for most workloads and applications.
-
-!! **M2 instance types still in beta phase**
-!! The M2 instance types are storing the disk image on a different distributed storage (ceph) than the M1 type.
-!! We are currently in the beta phase for this distributed storage system.
 
 #### Balanced
 
