@@ -45,10 +45,6 @@ The data will be stored on SSDs in the SysEleven Stack distributed storage clust
 
 A volume can only be attached to a single virtual machine at a time.
 
-!! **ceph volume type is still in beta phase**
-!! The ceph volume type is storing the data on a different distributed storage than the quobyte/quobyte-multiattach type.
-!! We are currently in the beta phase for this distributed storage system.
-
 ## Available functionality
 
 | OpenStack Cinder Feature                | CBK region     | DBL region     | FES region
