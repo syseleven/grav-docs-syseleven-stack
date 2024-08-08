@@ -19,8 +19,6 @@ If you need to maintain your own set of images, you can upload them yourself as 
 
 Name                             | Description                                         |
 ---------------------------------|-----------------------------------------------------|
-CentOS 7 (YYYY-MM-DD)            | Unmodified, directly from vendor                    |
-CentOS 8 Stream (YYYY-MM-DD)     | Unmodified, directly from vendor                    |
 Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
 Debian Buster (YYYY-MM-DD)       | Unmodified, directly from vendor *(See note below)* |
 Flatcar Stable (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
@@ -101,8 +99,7 @@ If you prefer maintaining your own set of images, this table shows sources for c
 
 Distro                    | URL |
 --------------------------|-----|
-CentOS 7                  | `https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2` |
-CentOS 8 Stream           | `https://cloud.centos.org/centos/8-stream/x86_64/images/` |
+CentOS Stream 9           | `https://cloud.centos.org/centos/9-stream/x86_64/images/` |
 Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
 Debian 10 (Buster)        | `https://cdimage.debian.org/cdimage/openstack/current-10/debian-10-openstack-amd64.qcow2` |
 Debian 11 (Bullseye)      | `https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-generic-amd64.qcow2` |
