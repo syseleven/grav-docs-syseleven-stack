@@ -46,3 +46,35 @@ There is a technical limitation in the backend storage of SEOS of 200 million ob
 
 **Solutions:**
 Please contact our customer support if you run into (or think you may run into) this limitation.
+
+### Unexpected high usage due to stale multipart uploads
+
+**Problem Statement:**
+Large files can be uploaded in a set of parts. If such a multipart upload is not finished properly, the already-uploaded parts are kept in the storage system and count into the object-storage usage even though they are not visible when you list the objects inside a bucket.
+
+**Solutions:**
+Unfinished multipart uploads are not cleaned up automatically by default. The user is free to decide whether to continue the upload or abort it explicitly. If the upload is aborted all its parts are deleted.
+
+The following S3 API operations can be used to deal with incomplete multipart uploads:
+
+* `ListMultipartUploads` to list the multipart uploads for a given bucket
+* `ListParts` to list the already-uploaded parts of a given upload (identified by bucket, key and upload ID)
+* `AbortMultipartUpload` to abort a multipart upload and clean up its parts
+
+Example CLI commands:
+
+```plain
+# list multipart uploads
+s3cmd multipart s3://BUCKET_NAME
+aws s3api list-multipart-uploads --bucket BUCKET_NAME --endpoint-url ENDPOINT_URL
+
+# list parts
+s3cmd listmp s3://BUCKET_NAME/KEY UPLOAD_ID
+aws s3api list-parts --bucket BUCKET_NAME --key KEY --upload-id UPLOAD_ID --endpoint-url ENDPOINT_URL
+
+# abort an upload
+s3cmd abortmp s3://BUCKET_NAME/KEY UPLOAD_ID
+aws s3api abort-multipart-upload --bucket BUCKET_NAME --key KEY --upload-id UPLOAD_ID --endpoint-url ENDPOINT_URL
+```
+
+With ceph-based object storage you may configure a bucket lifecycle rule `AbortIncompleteMultipartUpload` to let unfinished multipart uploads be cleaned up automatically after a certain number of days.
