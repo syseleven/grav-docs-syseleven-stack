@@ -187,9 +187,9 @@ $ openstack network create right-network
 
 ```shell
 $ openstack subnet create right-subnet  \
---network right-network \
---subnet-range 10.2.0.0/24 \
---gateway 10.2.0.1
+  --network right-network \
+  --subnet-range 10.2.0.0/24 \
+  --gateway 10.2.0.1
 +-------------------+--------------------------------------+
 | Field             | Value                                |
 +-------------------+--------------------------------------+
