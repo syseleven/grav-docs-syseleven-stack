@@ -456,8 +456,9 @@ $ openstack vpn ipsec site connection create left-conn \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
   --local-endpoint-group left-local-epg \
+  --local-id left-peer.domain.example \
   --peer-address 195.192.130.187 \
-  --peer-id 195.192.130.187 \
+  --peer-id right-peer.domain.example \
   --peer-endpoint-group left-peer-epg \
   --psk secret
 +--------------------------+--------------------------------------------------------+
@@ -470,13 +471,13 @@ $ openstack vpn ipsec site connection create left-conn \
 | IPSec Policy             | f9633763-2393-4ec3-824a-1e07dd7cfc2e                   |
 | Initiator                | bi-directional                                         |
 | Local Endpoint Group ID  | 09f1f822-15aa-4495-ac78-654ccfdf0131                   |
-| Local ID                 |                                                        |
+| Local ID                 | left-peer.domain.example                               |
 | MTU                      | 1500                                                   |
 | Name                     | left-conn                                              |
 | Peer Address             | 195.192.130.187                                        |
 | Peer CIDRs               |                                                        |
 | Peer Endpoint Group ID   | 86e851dd-bedc-4d5b-84c9-71944017ad5e                   |
-| Peer ID                  | 195.192.130.187                                        |
+| Peer ID                  | right-peer.domain.example                              |
 | Pre-shared Key           | secret                                                 |
 | Project                  | 70061ce0cd2e47ef9d7dc82174dc9923                       |
 | Route Mode               | static                                                 |
@@ -500,9 +501,10 @@ $ openstack vpn ipsec site connection create right-conn \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
   --local-endpoint-group right-local-epg \
+  --local-id right-peer.domain.example \
   --peer-address 195.192.128.58 \
-  --peer-id 195.192.128.58 \
   --peer-endpoint-group right-peer-epg \
+  --peer-id left-peer.domain.example \
   --psk secret
 +--------------------------+--------------------------------------------------------+
 | Field                    | Value                                                  |
@@ -514,13 +516,13 @@ $ openstack vpn ipsec site connection create right-conn \
 | IPSec Policy             | f9633763-2393-4ec3-824a-1e07dd7cfc2e                   |
 | Initiator                | bi-directional                                         |
 | Local Endpoint Group ID  | f6db9f67-7939-4b90-8e56-ef1be737364a                   |
-| Local ID                 |                                                        |
+| Local ID                 | right-peer.domain.example                              |
 | MTU                      | 1500                                                   |
 | Name                     | right-conn                                             |
 | Peer Address             | 195.192.128.58                                         |
 | Peer CIDRs               |                                                        |
 | Peer Endpoint Group ID   | 2c9248d0-00aa-4f8e-a934-f7fa47b45562                   |
-| Peer ID                  | 195.192.128.58                                         |
+| Peer ID                  | left-peer.domain.example                               |
 | Pre-shared Key           | secret                                                 |
 | Project                  | 70061ce0cd2e47ef9d7dc82174dc9923                       |
 | Route Mode               | static                                                 |
