@@ -145,47 +145,47 @@ Scheme: `u:<user-name>/<project-ID>`
 
 Examples:
 
-* 1) Narrow down full control ACL to the owner itself so it will be an isolated private bucket for the bucket owner.
+1) Narrow down full control ACL to the owner itself so it will be an isolated private bucket for the bucket owner.
 
-This use-case cannot be implemented using s3cmd. Our tests show it fails to revoke group read access on the bucket.
+   This use-case cannot be implemented using s3cmd. Our tests show it fails to revoke group read access on the bucket.
 
-```python
-s3client.create_bucket(Bucket="owner-scope-bucket", GrantFullControl="ID=u:user.name.of.bucket.owner/project-id")
-s3client.put_object(Body="only readable by owner", Bucket="owner-scope-bucket", Key="owner-scope-object.txt", GrantFullControl="ID=u:user.name.of.bucket.owner/project-id-")
-s3client.put_object(Body="also only readable by owner", Bucket="owner-scope-bucket", Key="project-scope-object.txt")
-```
+   ```python
+   s3client.create_bucket(Bucket="owner-scope-bucket", GrantFullControl="ID=u:user.name.of.bucket.owner/project-id")
+   s3client.put_object(Body="only readable by owner", Bucket="owner-scope-bucket", Key="owner-scope-object.txt", GrantFullControl="ID=u:user.name.of.bucket.owner/project-id-")
+   s3client.put_object(Body="also only readable by owner", Bucket="owner-scope-bucket", Key="project-scope-object.txt")
+   ```
 
-As the bucket ACL is limiting access on the bucket to the owner himself, any object inside of this bucket (also new objects) will only be read/writeable by the owner.
+   As the bucket ACL is limiting access on the bucket to the owner himself, any object inside of this bucket (also new objects) will only be read/writeable by the owner.
 
-* 2) Narrow down default full control ACL to the owner itself and allow other project members readonly access.
+2) Narrow down default full control ACL to the owner itself and allow other project members readonly access.
 
-```python
-s3client.create_bucket(Bucket="project-scope-readonly-bucket", GrantFullControl="ID=u:user.name.of.bucket.owner/<your-OpenStack-project-ID>", GrantRead="ID=<your-OpenStack-project-ID>")
-s3client.put_object(Body="only visible and writeable by owner", Bucket="project-scope-readonly-bucket", Key="owner-scope-object.txt", GrantFullControl="ID=u:user.name.of.bucket.owner/<your-OpenStack-project-ID>")
-s3client.put_object(Body="read-writeable-by-all-project-members", Bucket="project-scope-readonly-bucket", Key="project-scope-object.txt")
-s3client.put_object(Body="only-readable-by-all-project-members", Bucket="project-scope-readonly-bucket", Key="project-scope-readonly-object.txt", GrantRead="ID=<your-OpenStack-project-ID>")
-```
+   ```python
+   s3client.create_bucket(Bucket="project-scope-readonly-bucket", GrantFullControl="ID=u:user.name.of.bucket.owner/<your-OpenStack-project-ID>", GrantRead="ID=<your-OpenStack-project-ID>")
+   s3client.put_object(Body="only visible and writeable by owner", Bucket="project-scope-readonly-bucket", Key="owner-scope-object.txt", GrantFullControl="ID=u:user.name.of.bucket.owner/<your-OpenStack-project-ID>")
+   s3client.put_object(Body="read-writeable-by-all-project-members", Bucket="project-scope-readonly-bucket", Key="project-scope-object.txt")
+   s3client.put_object(Body="only-readable-by-all-project-members", Bucket="project-scope-readonly-bucket", Key="project-scope-readonly-object.txt", GrantRead="ID=<your-OpenStack-project-ID>")
+   ```
 
-The `owner-scope-object.txt` object is only visible and read/writeable for the owner. The `project-scope-object.txt` object will be read/writeable for all project members as the ACLs for this object were not further narrowed down. The `project-scope-readonly-object.txt` object will be readable (readonly) for all project members.
+   The `owner-scope-object.txt` object is only visible and read/writeable for the owner. The `project-scope-object.txt` object will be read/writeable for all project members as the ACLs for this object were not further narrowed down. The `project-scope-readonly-object.txt` object will be readable (readonly) for all project members.
 
-To achieve the same ACLs using s3cmd, it would look like the following:
+   To achieve the same ACLs using s3cmd, it would look like the following:
 
-```shell
-# Create the bucket
-s3cmd -c <your-s3-config> mb s3://project-scope-readonly-bucket
-# Narrow down default full_control ACL
-s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket
-# Create and narrow down ACLs for owner scope object
-s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/owner-scope-object.txt
-s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/owner-scope-object.txt
-s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-group-name>/<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/owner-scope-object.txt
-# Create default object
-s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/project-scope-object.txt
-# Create and narrow down ACLs for project readonly object
-s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
-s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
-s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-group-name>/<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt --acl-grant=read:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
-```
+   ```shell
+   # Create the bucket
+   s3cmd -c <your-s3-config> mb s3://project-scope-readonly-bucket
+   # Narrow down default full_control ACL
+   s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket
+   # Create and narrow down ACLs for owner scope object
+   s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/owner-scope-object.txt
+   s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/owner-scope-object.txt
+   s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-group-name>/<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/owner-scope-object.txt
+   # Create default object
+   s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/project-scope-object.txt
+   # Create and narrow down ACLs for project readonly object
+   s3cmd -c <your-s3-config> put test.txt s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
+   s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
+   s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:g:<your-OpenStack-group-name>/<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt --acl-grant=read:<your-OpenStack-project-ID> s3://project-scope-readonly-bucket/project-scope-readonly-object.txt
+   ```
 
 #### Group scope
 
@@ -198,31 +198,31 @@ Scheme: `g:<group-name>/<project-ID>`
 
 Example:
 
-* 1) Allow one group to have full control and a second group to only read access
+1) Allow one group to have full control and a second group to only read access
 
-This use-case cannot be fully implemented using s3cmd. Our tests show it fails to distinguish between groups if the groups refer to the same project.
+   This use-case cannot be fully implemented using s3cmd. Our tests show it fails to distinguish between groups if the groups refer to the same project.
 
-```python
-s3client.create_bucket(Bucket="group-scope-readwrite-bucket", GrantFullControl="ID=g:group.name.one/<your-OpenStack-project-ID>", GrantRead="ID=g:group.name.two/<your-OpenStack-project-ID>")
-s3client.put_object(Body="writeable by group one, readable by group two ", Bucket="group-scope-readwrite-bucket", Key="group-scope-readwrite-object.txt", GrantFullControl="ID=g:group.name.one/<your-OpenStack-project-ID>", GrantRead="ID=g:group.name.two/<your-OpenStack-project-ID>")
-s3client.put_object(Body="writeable by group one, invisible to group two ", Bucket="group-scope-readwrite-bucket", Key="group-scope-group-one-object.txt", GrantFullControl="ID=g:group.name.one/<your-OpenStack-project-ID>")
-```
+   ```python
+   s3client.create_bucket(Bucket="group-scope-readwrite-bucket", GrantFullControl="ID=g:group.name.one/<your-OpenStack-project-ID>", GrantRead="ID=g:group.name.two/<your-OpenStack-project-ID>")
+   s3client.put_object(Body="writeable by group one, readable by group two ", Bucket="group-scope-readwrite-bucket", Key="group-scope-readwrite-object.txt", GrantFullControl="ID=g:group.name.one/<your-OpenStack-project-ID>", GrantRead="ID=g:group.name.two/<your-OpenStack-project-ID>")
+   s3client.put_object(Body="writeable by group one, invisible to group two ", Bucket="group-scope-readwrite-bucket", Key="group-scope-group-one-object.txt", GrantFullControl="ID=g:group.name.one/<your-OpenStack-project-ID>")
+   ```
 
-Using s3cmd to set up similar ACLs (but referring to a different project for the second group):
+   Using s3cmd to set up similar ACLs (but referring to a different project for the second group):
 
-```shell
-# Create the bucket
-s3cmd -c <your-s3-config> mb s3://group-scope-readwrite-bucket
-# Revoke full_control ACL for project members
-s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://group-scope-readwrite-bucket
-# Afterwards allow full_control for your group members
-s3cmd -c <your-s3-config> setacl --acl-grant=full_control:g:<group-name-with-readwrite-access>/<your-OpenStack-project-ID> s3://group-scope-readwrite-bucket
-# And grant read access for the other group
-s3cmd -c <your-s3-config> setacl --acl-grant=read:g:<group-name-with-readonly-access>/<not-the-same-OpenStack-project-ID> s3://group-scope-readwrite-bucket
-# Create object which will be read+writeable for one group and only readable for the second
-s3cmd -c <your-s3-config> put test.txt s3://group-scope-readwrite-bucket/group-scope-readwrite-object.txt
-s3cmd -c <your-s3-config> setacl --acl-grant=read:g:<group-name-with-readonly-access>/<not-the-same-OpenStack-project-ID> s3://group-scope-readwrite-bucket/group-scope-readwrite-object.txt
-```
+   ```shell
+   # Create the bucket
+   s3cmd -c <your-s3-config> mb s3://group-scope-readwrite-bucket
+   # Revoke full_control ACL for project members
+   s3cmd -c <your-s3-config> setacl --acl-revoke=full_control:<your-OpenStack-project-ID> s3://group-scope-readwrite-bucket
+   # Afterwards allow full_control for your group members
+   s3cmd -c <your-s3-config> setacl --acl-grant=full_control:g:<group-name-with-readwrite-access>/<your-OpenStack-project-ID> s3://group-scope-readwrite-bucket
+   # And grant read access for the other group
+   s3cmd -c <your-s3-config> setacl --acl-grant=read:g:<group-name-with-readonly-access>/<not-the-same-OpenStack-project-ID> s3://group-scope-readwrite-bucket
+   # Create object which will be read+writeable for one group and only readable for the second
+   s3cmd -c <your-s3-config> put test.txt s3://group-scope-readwrite-bucket/group-scope-readwrite-object.txt
+   s3cmd -c <your-s3-config> setacl --acl-grant=read:g:<group-name-with-readonly-access>/<not-the-same-OpenStack-project-ID> s3://group-scope-readwrite-bucket/group-scope-readwrite-object.txt
+   ```
 
 ### Notes
 
