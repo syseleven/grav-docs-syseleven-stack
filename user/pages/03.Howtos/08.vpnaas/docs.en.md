@@ -316,13 +316,13 @@ Create a VPN service on the left side and another on the right side and note the
 Note that the VPN service is not configured with a subnet here. This is important because it gives us the flexibility to configure multiple local subnets in a local endpoint group per IPSec site connection or multiple site connections with different local subnets.
 
 ```shell
-$ openstack vpn service create vpn --router left-router
+$ openstack vpn service create left-vpn --router left-router
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
 | Description    |                                      |
 | ID             | a29b6e62-f456-44b1-9774-28cefc1df9fb |
-| Name           | vpn                                  |
+| Name           | left-vpn                             |
 | Project        | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | Router         | c971c888-a0bb-47e3-a922-565899c9f090 |
 | State          | True                                 |
@@ -339,13 +339,13 @@ Note that the external IP address may be a different one than the one of the rou
 #### 2. Create the VPN service on the right side
 
 ```shell
-$ openstack vpn service create vpn2 --router right-router
+$ openstack vpn service create right-vpn --router right-router
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
 | Description    |                                      |
 | ID             | d7c3def8-82f9-4e1d-94ae-0b8d29651cd4 |
-| Name           | vpn2                                 |
+| Name           | right-vpn                            |
 | Project        | 70061ce0cd2e47ef9d7dc82174dc9923     |
 | Router         | 56f95788-1c34-432f-8ad6-f304776221a2 |
 | State          | True                                 |
@@ -447,12 +447,12 @@ $ openstack vpn endpoint group create right-peer-epg \
 
 #### 1. Create the site connection on the left side
 
-Create a site connection named "conn" from the left side (VPN service "vpn") to the right side (peer IP address is 195.192.130.187).
+Create a site connection named "left-conn" from the left side (VPN service "left-vpn") to the right side (peer IP address is 195.192.130.187).
 Since endpoint groups are used, the VPN service must not have a (local) subnet set and the peer cidr option of creating the site connection must not be used. Instead the local and peer endpoint groups are set in the site connection.
 
 ```shell
-$ openstack vpn ipsec site connection create conn \
-  --vpnservice vpn \
+$ openstack vpn ipsec site connection create left-conn \
+  --vpnservice left-vpn \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
   --local-endpoint-group left-local-epg \
@@ -472,7 +472,7 @@ $ openstack vpn ipsec site connection create conn \
 | Local Endpoint Group ID  | 09f1f822-15aa-4495-ac78-654ccfdf0131                   |
 | Local ID                 |                                                        |
 | MTU                      | 1500                                                   |
-| Name                     | conn                                                   |
+| Name                     | left-conn                                              |
 | Peer Address             | 195.192.130.187                                        |
 | Peer CIDRs               |                                                        |
 | Peer Endpoint Group ID   | 86e851dd-bedc-4d5b-84c9-71944017ad5e                   |
@@ -490,13 +490,13 @@ $ openstack vpn ipsec site connection create conn \
 
 #### 2. Create the site connection on the right side
 
-Create a site connection named "conn2" from the right side (VPN service "vpn2") to the left side (peer IP address is 195.192.128.58).
+Create a site connection named "right-conn" from the right side (VPN service "right-vpn") to the left side (peer IP address is 195.192.128.58).
 Since endpoint groups are used, the VPN service must not have a (local) subnet set and the peer cidr option of creating the site connection must not be used. Instead the local and peer endpoint groups are set in the site connection.
 
 
 ```shell
-$ openstack vpn ipsec site connection create conn2 \
-  --vpnservice vpn2 \
+$ openstack vpn ipsec site connection create right-conn \
+  --vpnservice right-vpn \
   --ikepolicy ikepolicy \
   --ipsecpolicy ipsecpolicy \
   --local-endpoint-group right-local-epg \
@@ -516,7 +516,7 @@ $ openstack vpn ipsec site connection create conn2 \
 | Local Endpoint Group ID  | f6db9f67-7939-4b90-8e56-ef1be737364a                   |
 | Local ID                 |                                                        |
 | MTU                      | 1500                                                   |
-| Name                     | conn2                                                  |
+| Name                     | right-conn                                             |
 | Peer Address             | 195.192.128.58                                         |
 | Peer CIDRs               |                                                        |
 | Peer Endpoint Group ID   | 2c9248d0-00aa-4f8e-a934-f7fa47b45562                   |
