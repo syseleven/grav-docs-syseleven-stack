@@ -542,3 +542,42 @@ Note that one of this virtual machines needs to have a Floating IP address, so y
 ## Note on Interoperability
 
 Please see the [reference](../../04.Reference/08.network/docs.en.md) for [known interoperability issues](../../04.Reference/08.network/docs.en.md#known-interoperability-issues).
+
+### Step eight: Inspect and clean up
+
+To list the components just created within this howto
+
+```shell
+openstack network list --long
+openstack subnet list --long
+openstack router list --long
+openstack port list --long
+openstack vpn ipsec policy list --long
+openstack vpn ike policy list --long
+openstack vpn service list --long
+openstack vpn ipsec site connection list --long
+```
+
+To remove those components in the reverse order of creation
+
+```shell
+openstack vpn ipsec site connection delete left-conn
+openstack vpn service delete left-vpn
+openstack vpn ike policy delete ikepolicy
+openstack vpn ipsec policy delete ipsecpolicy
+openstack router remove subnet left-router left-subnet
+openstack router delete left-router
+openstack subnet delete left-subnet
+openstack network delete left-network
+```
+
+```shell
+openstack vpn ipsec site connection delete right-conn
+openstack vpn service delete right-vpn
+openstack vpn ike policy delete ikepolicy
+openstack vpn ipsec policy delete ipsecpolicy
+openstack router remove subnet right-router right-subnet
+openstack router delete right-router
+openstack subnet delete right-subnet
+openstack network delete right-network
+```
