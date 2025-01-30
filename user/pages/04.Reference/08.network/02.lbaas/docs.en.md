@@ -183,6 +183,8 @@ connection-limit         | 50000
 
 You may set different timeouts or limits in the configuration of the listener.
 
-### Topology limits
+### Known issues
 
-The total number of members (backends) across all pools of a load balancer is limited to 300.
+After a reconfiguration of a load balancer, like adding/removing pool members, existing TCP connections will continue to work for up to 24 hours. After that period, the connection will be dropped and clients will need to reconnect.
+
+Some maintenance tasks in the SysEleven OpenStack Cloud may require a restart of the underlying services. Such a restart will interrupt existing TCP connections via a load balancer and clients will need to reconnect.
