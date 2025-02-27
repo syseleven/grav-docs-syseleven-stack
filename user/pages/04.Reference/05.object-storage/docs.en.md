@@ -63,12 +63,14 @@ Region   | URL                                    | Backend             |
 ---------|----------------------------------------|---------------------|
 CBK      | s3.cbk.cloud.syseleven.net             | Quobyte             |
 DBL      | s3.dbl.cloud.syseleven.net             | Quobyte             |
-FES      | s3.fes.cloud.syseleven.net             | Quobyte             |
+FES      | s3.fes.cloud.syseleven.net             | Quobyte (eol 2025-06-15)  |
 FES      | objectstorage.fes.cloud.syseleven.net  | Ceph                |
 
 !!!! **Deprecated URL**
 !!!! For historical reasons 's3.cloud.syseleven.net' redirects to 's3.cbk.cloud.syseleven.net'.
 !!!! We recommend to always use a region specific URL like in the table above.
+
+!! s3.fes.cloud.syseleven.net will be end-of-life on 2025-06-15. We recommend to use `objectstorage.fes.cloud.syseleven.net instead. For existing object data refer to our [migration howto](../../03.Howtos/16.migrate-quobyte-to-ceph/docs.en.md).
 
 ## Credentials
 
@@ -119,10 +121,10 @@ host_base = s3.dbl.cloud.syseleven.net
 host_bucket = %(bucket).s3.dbl.cloud.syseleven.net
 #website_endpoint = https://%(bucket)s.s3.dbl.cloud.syseleven.net/%(location)s/
 website_endpoint = https://s3.dbl.cloud.syseleven.net/%(bucket)s/%(location)s/
-#host_base = s3.fes.cloud.syseleven.net
-#host_bucket = %(bucket).s3.fes.cloud.syseleven.net
-#website_endpoint = https://s3.fes.cloud.syseleven.net/%(bucket)s/%(location)s/
-#website_endpoint = https://%(bucket)s.s3.fes.cloud.syseleven.net/%(location)s/
+#host_base = objectstorage.fes.cloud.syseleven.net
+#host_bucket = %(bucket).objectstorage.fes.cloud.syseleven.net
+#website_endpoint = https://objectstorage.fes.cloud.syseleven.net/%(bucket)s/%(location)s/
+#website_endpoint = https://%(bucket)s.objectstorage.fes.cloud.syseleven.net/%(location)s/
 ```
 
 Next, create an S3 Bucket.

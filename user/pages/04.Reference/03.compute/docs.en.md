@@ -24,53 +24,55 @@ Disk data will be distributed across multiple servers (SysEleven Distributed Sto
 
 We recommend these instance types for most workloads and applications.
 
+!! `m1*`-flavors will be end-of-life in our Region `fes` on 2025-06-15. We recommend to use `m2*`-flavors instead. For existing intances refer to our [migration howto](../../03.Howtos/16.migrate-quobyte-to-ceph/docs.en.md).
+
 #### Balanced
 
 Name        | API Name    | Memory | vCPUs | Storage* | Region availability  |
 ------------|-------------|--------|-------|----------|----------------------|
-M1 Tiny     |  m1.tiny    |  4GiB  |   1   |   50GiB  | dbl, cbk, fes        |
+M1 Tiny     |  m1.tiny    |  4GiB  |   1   |   50GiB  | dbl, cbk (fes eol 2025-06-15) |
 M2 Tiny     |  m2.tiny    |  4GiB  |   1   |   50GiB  | fes                  |
-M1 Small    |  m1.small   |  8GiB  |   2   |   50GiB  | dbl, cbk, fes        |
+M1 Small    |  m1.small   |  8GiB  |   2   |   50GiB  | dbl, cbk (fes eol 2025-06-15) |
 M2 Small    |  m2.small   |  8GiB  |   2   |   50GiB  | fes                  |
-M1 Medium   |  m1.medium  | 16GiB  |   4   |   50GiB  | dbl, cbk, fes        |
+M1 Medium   |  m1.medium  | 16GiB  |   4   |   50GiB  | dbl, cbk (fes eol 2025-06-15) |
 M2 Medium   |  m2.medium  | 16GiB  |   4   |   50GiB  | fes                  |
-M1 Large    |  m1.large   | 32GiB  |   8   |   50GiB  | dbl, cbk, fes        |
+M1 Large    |  m1.large   | 32GiB  |   8   |   50GiB  | dbl, cbk (fes eol 2025-06-15) |
 M2 Large    |  m2.large   | 32GiB  |   8   |   50GiB  | fes                  |
-(M1 XLarge)\*\*   |  (m1.xlarge)\*\* | 64GiB   |   16   |   50GiB   | dbl, cbk, fes |
+(M1 XLarge)\*\*   |  (m1.xlarge)\*\* | 64GiB   |   16   |   50GiB   | dbl, cbk (fes eol 2025-06-15) |
 (M2 XLarge)\*\*   |  (m2.xlarge)\*\* | 64GiB   |   16   |   50GiB   | fes           |
-(M1 XXLarge)\*\*  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   | dbl, cbk, fes |
+(M1 XXLarge)\*\*  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   | dbl, cbk (fes eol 2025-06-15) |
 (M2 XXLarge)\*\*  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   | fes           |
 
 #### CPU optimized
 
 Name            | API Name     | Memory  | vCPUs | Storage*  | Region availability  |
 ----------------|--------------|---------|-------|-----------|----------------------|
-M1 CPU Tiny     |  m1c.tiny    |  2GiB   |   1   |   50GiB   | dbl, cbk, fes        |
+M1 CPU Tiny     |  m1c.tiny    |  2GiB   |   1   |   50GiB   | dbl, cbk (fes eol 2025-06-15) |
 M2 CPU Tiny     |  m2c.tiny    |  2GiB   |   1   |   50GiB   | fes                  |
-M1 CPU Small    |  m1c.small   |  4GiB   |   2   |   50GiB   | dbl, cbk, fes        |
+M1 CPU Small    |  m1c.small   |  4GiB   |   2   |   50GiB   | dbl, cbk (fes eol 2025-06-15) |
 M2 CPU Small    |  m2c.small   |  4GiB   |   2   |   50GiB   | fes                  |
-M1 CPU Medium   |  m1c.medium  | 8GiB    |   4   |   50GiB   | dbl, cbk, fes        |
+M1 CPU Medium   |  m1c.medium  | 8GiB    |   4   |   50GiB   | dbl, cbk (fes eol 2025-06-15) |
 M2 CPU Medium   |  m2c.medium  | 8GiB    |   4   |   50GiB   | fes                  |
-M1 CPU Large    |  m1c.large   | 16GiB   |   8   |   50GiB   | dbl, cbk, fes        |
+M1 CPU Large    |  m1c.large   | 16GiB   |   8   |   50GiB   | dbl, cbk (fes eol 2025-06-15) |
 M2 CPU Large    |  m2c.large   | 16GiB   |   8   |   50GiB   | fes                  |
-M1 CPU XLarge   |  m1c.xlarge  | 32GiB   |   16  |   50GiB   | dbl, cbk, fes        |
+M1 CPU XLarge   |  m1c.xlarge  | 32GiB   |   16  |   50GiB   | dbl, cbk (fes eol 2025-06-15) |
 M2 CPU XLarge   |  m2c.xlarge  | 32GiB   |   16  |   50GiB   | fes                  |
-(M1 CPU XXLarge)\*\* |  (m1c.xxlarge)\*\* | 64GiB   |   32   |   50GiB   | dbl, cbk, fes |
+(M1 CPU XXLarge)\*\* |  (m1c.xxlarge)\*\* | 64GiB   |   32   |   50GiB   | dbl, cbk (fes eol 2025-06-15) |
 (M2 CPU XXLarge)\*\* |  (m2c.xxlarge)\*\* | 64GiB   |   32   |   50GiB   | fes           |
 
 #### RAM optimized
 
 Name            | API Name     | Memory  | vCPUs | Storage* | Region availability  |
 ----------------|--------------|---------|-------|----------|----------------------|
-M1 RAM Tiny     |  m1r.tiny    |  8GiB   |   1   |   50GiB  | dbl, cbk, fes        |
+M1 RAM Tiny     |  m1r.tiny    |  8GiB   |   1   |   50GiB  | dbl, cbk (fes eol 2025-06-15) |
 M2 RAM Tiny     |  m2r.tiny    |  8GiB   |   1   |   50GiB  | fes                  |
-M1 RAM Small    |  m1r.small   | 16GiB   |   2   |   50GiB  | dbl, cbk, fes        |
+M1 RAM Small    |  m1r.small   | 16GiB   |   2   |   50GiB  | dbl, cbk (fes eol 2025-06-15) |
 M2 RAM Small    |  m2r.small   | 16GiB   |   2   |   50GiB  | fes                  |
-M1 RAM Medium   |  m1r.medium  | 32GiB   |   4   |   50GiB  | dbl, cbk, fes        |
+M1 RAM Medium   |  m1r.medium  | 32GiB   |   4   |   50GiB  | dbl, cbk (fes eol 2025-06-15) |
 M2 RAM Medium   |  m2r.medium  | 32GiB   |   4   |   50GiB  | fes                  |
-(M1 RAM Large)\*\*  |  (m1r.large)\*\* | 64GiB   |   8   |   50GiB   | dbl, cbk, fes |
+(M1 RAM Large)\*\*  |  (m1r.large)\*\* | 64GiB   |   8   |   50GiB   | dbl, cbk (fes eol 2025-06-15) |
 (M2 RAM Large)\*\*  |  (m2r.large)\*\* | 64GiB   |   8   |   50GiB   | fes             |
-(M1 RAM XLarge)\*\* |  (m1r.xlarge)\*\* | 128GiB  |   16   |   50GiB   | dbl, cbk, fes |
+(M1 RAM XLarge)\*\* |  (m1r.xlarge)\*\* | 128GiB  |   16   |   50GiB   | dbl, cbk (fes eol 2025-06-15) |
 (M2 RAM XLarge)\*\* |  (m2r.xlarge)\*\* | 128GiB  |   16   |   50GiB   | fes           |
 
 (*)
