@@ -87,6 +87,22 @@ You may use the snapshot as a source when creating a new volume:
 openstack volume create --snapshot snapshot_id name_of_new_volume
 ```
 
+Once you have a snapshot and are ready to remove it, you can delete it with the following command:
+
+```shell
+openstack volume snapshot delete snapshot_name_or_id
+```
+
+**Important:** A volume snapshot deletion cannot be performed while its source volume is attached or in use. 
+
+Before deleting the snapshot, ensure that the volume is detached from any instances. You can verify the volume's status with:
+
+```shell
+openstack volume show volume_name_or_id
+```
+
+If the volume is attached, detach it first to avoid any issues. Deleting a snapshot is irreversible, so be sure that you no longer need the snapshot before proceeding.
+
 ### Save volume as glance image
 
 It is possible to copy the contents of a cinder volume to the [glance image store](../06.images/docs.en.md), e.g. using the [OpenStack CLI](../../02.Tutorials/02.api-access/docs.en.md):
