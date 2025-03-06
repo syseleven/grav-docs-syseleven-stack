@@ -90,14 +90,13 @@ If you prefer maintaining your own set of images, this table shows sources for c
 Distro                    | URL |
 --------------------------|-----|
 CentOS Stream 9           | `https://cloud.centos.org/centos/9-stream/x86_64/images/` |
-Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
-Debian 10 (Buster)        | `https://cdimage.debian.org/cdimage/openstack/current-10/debian-10-openstack-amd64.qcow2` |
 Debian 11 (Bullseye)      | `https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-generic-amd64.qcow2` |
 Debian 12 (Bookworm)      | `https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2` |
 Flatcar Stable            | `https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_openstack_image.img.bz2` |
 Ubuntu 18.04 LTS (Bionic) | `https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img` |
 Ubuntu 20.04 LTS (Focal)  | `https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img` |
 Ubuntu 22.04 LTS (Jammy)  | `https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img` |
+Ubuntu 24.04 LTS (Noble)  | `https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img` |
 
 !!! The Flatcar image must be decompressed before uploading:
 !!! `bunzip2 flatcar_production_openstack_image.img.bz2`
