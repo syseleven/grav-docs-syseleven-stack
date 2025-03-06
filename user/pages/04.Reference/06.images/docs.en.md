@@ -19,8 +19,6 @@ If you need to maintain your own set of images, you can upload them yourself as 
 
 Name                             | Description                                         |
 ---------------------------------|-----------------------------------------------------|
-Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
-Debian Buster (YYYY-MM-DD)       | Unmodified, directly from vendor *(See note below)* |
 Flatcar Stable (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
 Ubuntu Bionic 18.04 (YYYY-MM-DD) | Unmodified, directly from vendor                    |
 Rescue Ubuntu 18.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
@@ -28,10 +26,8 @@ Ubuntu Focal 20.04 (YYYY-MM-DD)  | Unmodified, directly from vendor             
 Ubuntu Jammy 22.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
 Ubuntu Noble 24.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
 
-!!! Debian Buster image provided by Debian community has a bug that causes loss of networking
-!!! in virtual machine after 24 hours. See section "Known issues with public images" below.
-
-!!! Debian Bullseye and Bookworm have no cryptographic signature provided. Because they cannot be
+!!! Debian, starting with version Bullseye, does not provide any more
+!!! cryptographic signature for its cloud images. Because they cannot be
 !!! verified to be authentic, we don't publish these images.
 !!! See <a href="#uploading-images">Uploading images</a> for an alternative.
 
@@ -85,12 +81,6 @@ data "openstack_images_image_v2" "ubuntu-focal" {
 }
 ```
 
-### Known issues with public images
-
-- The official Debian Buster OpenStack image may have a bug in the `ifupdown` configuration.
-  After the initial boot, the eth0 interface will be configured with both DHCP and static cloud-init configuration. Since both will try to assign the same IP address to eth0, `RTNETLINK answers: File exists` errors will be produced, with the result that the `networking.service` systemd unit goes into error state. This will block the DHCP client from refreshing the lease after 24 hours.
-  A solution is to remove the dynamic eth0 configuration from `/etc/network/interfaces`, or to remove the static configuration written by cloud-init from `/etc/network/interfaces.d`. After this change, a restart of the `systemd-networkd` systemd unit, or a restart of the virtual machine is required.
-
 ## Uploading images
 
 ### Image sources
@@ -100,14 +90,13 @@ If you prefer maintaining your own set of images, this table shows sources for c
 Distro                    | URL |
 --------------------------|-----|
 CentOS Stream 9           | `https://cloud.centos.org/centos/9-stream/x86_64/images/` |
-Debian 9 (Stretch)        | `https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2` |
-Debian 10 (Buster)        | `https://cdimage.debian.org/cdimage/openstack/current-10/debian-10-openstack-amd64.qcow2` |
 Debian 11 (Bullseye)      | `https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-generic-amd64.qcow2` |
 Debian 12 (Bookworm)      | `https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2` |
 Flatcar Stable            | `https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_openstack_image.img.bz2` |
 Ubuntu 18.04 LTS (Bionic) | `https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img` |
 Ubuntu 20.04 LTS (Focal)  | `https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img` |
 Ubuntu 22.04 LTS (Jammy)  | `https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img` |
+Ubuntu 24.04 LTS (Noble)  | `https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img` |
 
 !!! The Flatcar image must be decompressed before uploading:
 !!! `bunzip2 flatcar_production_openstack_image.img.bz2`
