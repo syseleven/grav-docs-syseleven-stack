@@ -19,8 +19,6 @@ If you need to maintain your own set of images, you can upload them yourself as 
 
 Name                             | Description                                         |
 ---------------------------------|-----------------------------------------------------|
-Debian Stretch (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
-Debian Buster (YYYY-MM-DD)       | Unmodified, directly from vendor *(See note below)* |
 Flatcar Stable (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
 Ubuntu Bionic 18.04 (YYYY-MM-DD) | Unmodified, directly from vendor                    |
 Rescue Ubuntu 18.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
@@ -28,10 +26,8 @@ Ubuntu Focal 20.04 (YYYY-MM-DD)  | Unmodified, directly from vendor             
 Ubuntu Jammy 22.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
 Ubuntu Noble 24.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
 
-!!! Debian Buster image provided by Debian community has a bug that causes loss of networking
-!!! in virtual machine after 24 hours. See section "Known issues with public images" below.
-
-!!! Debian Bullseye and Bookworm have no cryptographic signature provided. Because they cannot be
+!!! Debian, starting with version Bullseye, does not provide any more
+!!! cryptographic signature for its cloud images. Because they cannot be
 !!! verified to be authentic, we don't publish these images.
 !!! See <a href="#uploading-images">Uploading images</a> for an alternative.
 
@@ -84,12 +80,6 @@ data "openstack_images_image_v2" "ubuntu-focal" {
   }
 }
 ```
-
-### Known issues with public images
-
-- The official Debian Buster OpenStack image may have a bug in the `ifupdown` configuration.
-  After the initial boot, the eth0 interface will be configured with both DHCP and static cloud-init configuration. Since both will try to assign the same IP address to eth0, `RTNETLINK answers: File exists` errors will be produced, with the result that the `networking.service` systemd unit goes into error state. This will block the DHCP client from refreshing the lease after 24 hours.
-  A solution is to remove the dynamic eth0 configuration from `/etc/network/interfaces`, or to remove the static configuration written by cloud-init from `/etc/network/interfaces.d`. After this change, a restart of the `systemd-networkd` systemd unit, or a restart of the virtual machine is required.
 
 ## Uploading images
 
