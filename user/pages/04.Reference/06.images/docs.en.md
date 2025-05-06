@@ -25,6 +25,7 @@ Rescue Ubuntu 18.04 sys11        | Modified, for use with the [nova rescue mode]
 Ubuntu Focal 20.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
 Ubuntu Jammy 22.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
 Ubuntu Noble 24.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
+RHCOS 4.18 (YYYY-MM-DD)          | Unmodified, directly from vendor                    |
 
 !!! Debian, starting with version Bullseye, does not provide any more
 !!! cryptographic signature for its cloud images. Because they cannot be
