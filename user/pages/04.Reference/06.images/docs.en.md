@@ -17,19 +17,17 @@ If you need to maintain your own set of images, you can upload them yourself as 
 
 ## Available public images
 
-Name                             | Description                                         |
----------------------------------|-----------------------------------------------------|
-Flatcar Stable (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
-Ubuntu Bionic 18.04 (YYYY-MM-DD) | Unmodified, directly from vendor                    |
-Rescue Ubuntu 18.04 sys11        | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
-Ubuntu Focal 20.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
-Ubuntu Jammy 22.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
-Ubuntu Noble 24.04 (YYYY-MM-DD)  | Unmodified, directly from vendor                    |
+Name                                    | Description                                         |
+----------------------------------------|-----------------------------------------------------|
+Flatcar Stable (YYYY-MM-DD)             | Unmodified, directly from vendor                    |
+Ubuntu Bionic 18.04 (YYYY-MM-DD)        | Unmodified, directly from vendor                    |
+Rescue Ubuntu 18.04 sys11               | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
+Ubuntu Focal 20.04 (YYYY-MM-DD)         | Unmodified, directly from vendor                    |
+Ubuntu Jammy 22.04 (YYYY-MM-DD)         | Unmodified, directly from vendor                    |
+Ubuntu Noble 24.04 (YYYY-MM-DD)         | Unmodified, directly from vendor                    |
+Red Hat CoreOS <version\> (YYYY-MM-DD)  | Unmodified, directly from vendor, see warning below |
 
-!!! Debian, starting with version Bullseye, does not provide any more
-!!! cryptographic signature for its cloud images. Because they cannot be
-!!! verified to be authentic, we don't publish these images.
-!!! See <a href="#uploading-images">Uploading images</a> for an alternative.
+!!! Red Hat CoreOS images are provided despite the lack of cryptographic signature provided by Red Hat, meaning we were not able to verify their authenticity.
 
 ### Public image lifecycle
 
@@ -38,6 +36,8 @@ As soon as we upload a new version of an operating system image (recognizable by
 - If you are using an old public image, the image will stay visible within the project that is using it until you stop using it
 - If you are not using an old public image anymore, the image will become invisible for you after some time.
 - If a public image becomes completely unused by all customers, we will remove it
+
+!!! We only guarantee the availability of images for the 3 most recent Red Hat CoreOS major versions. If you require older versions, please retrieve them directly from the official Red Hat sources, see <a href="#uploading-images">Uploading images</a> for an alternative.
 
 ### Public image properties
 

@@ -97,7 +97,7 @@ Once you have a snapshot and are ready to remove it, you can delete it with the 
 openstack volume snapshot delete snapshot_name_or_id
 ```
 
-**Important:** A volume snapshot deletion cannot be performed while its source volume is attached or in use. 
+**Important:** A volume snapshot deletion cannot be performed while its source volume is attached or in use.
 
 Before deleting the snapshot, ensure that the volume is detached from any instances. You can verify the volume's status with:
 
