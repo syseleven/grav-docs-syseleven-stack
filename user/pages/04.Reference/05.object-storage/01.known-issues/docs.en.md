@@ -42,7 +42,10 @@ The value of 52428800 Bytes = 50 GiB specified in this example is actually the d
 ### Maximum number of objects
 
 **Problem Statement:**
-There is a technical limitation in the backend storage of SEOS of 200 million objects or directories per project per region.
+There is a technical limitation in the backend storage of SEOS, depending on the storage type:
+
+- **Quobyte**: Limited to **200 million objects or directories** per project per region.
+- **Ceph**: Limited to **100 million objects or directories** per bucket, per region. However, there is no object limit per project, meaning that projects can have multiple buckets, each subject to the per-bucket limit mentioned previously.
 
 **Solutions:**
 Please contact our customer support if you run into (or think you may run into) this limitation.
@@ -57,9 +60,9 @@ Unfinished multipart uploads are not cleaned up automatically by default. The us
 
 The following S3 API operations can be used to deal with incomplete multipart uploads:
 
-* `ListMultipartUploads` to list the multipart uploads for a given bucket
-* `ListParts` to list the already-uploaded parts of a given upload (identified by bucket, key and upload ID)
-* `AbortMultipartUpload` to abort a multipart upload and clean up its parts
+- `ListMultipartUploads` to list the multipart uploads for a given bucket
+- `ListParts` to list the already-uploaded parts of a given upload (identified by bucket, key and upload ID)
+- `AbortMultipartUpload` to abort a multipart upload and clean up its parts
 
 Example CLI commands:
 
