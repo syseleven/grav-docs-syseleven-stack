@@ -78,3 +78,117 @@ aws s3api abort-multipart-upload --bucket BUCKET_NAME --key KEY --upload-id UPLO
 ```
 
 With ceph-based object storage you may configure a bucket lifecycle rule `AbortIncompleteMultipartUpload` to let unfinished multipart uploads be cleaned up automatically after a certain number of days.
+
+### s3 DeleteBucketLifecycle does not delete lifecycle config
+
+**Problem Statement:**
+There is an issue where the s3 DeleteBucketLifecycle which API call fails to actually remove the lifecycle configuration from the bucket. The fix was originally implemented in master but was not included in the squid release line.
+[Ceph tracker link](https://github.com/ceph/ceph/pull/64741)
+
+**Reproduce:**
+Here you will se an example with aws cli how to reproduce it
+
+```plan
+# This is a lifecycle config example
+$ cat lifecycle.json
+{
+  "Rules": [
+    {
+      "ID": "ExpireOldObjects",
+      "Prefix": "",
+      "Status": "Enabled",
+      "Expiration": {
+        "Days": 30
+      }
+    }
+  ]
+}
+
+# Put lifecycle config in to our bucket
+$ aws s3api put-bucket-lifecycle-configuration \
+  --bucket testbucket \
+  --lifecycle-configuration file://lifecycle.json \
+  --endpoint-url https://objectstorage-replicated.dus2.cloud.syseleven.net
+
+# Verify lifecycle config is there
+$ aws s3api get-bucket-lifecycle-configuration \
+  --bucket testbucket \
+  --endpoint-url https://objectstorage-replicated.dus2.cloud.syseleven.net
+{
+    "Rules": [
+        {
+            "Expiration": {
+                "Days": 30
+            },
+            "ID": "ExpireOldObjects",
+            "Prefix": "",
+            "Status": "Enabled"
+        }
+    ]
+}
+
+# Delete the lifecycle config
+$ aws s3api delete-bucket-lifecycle \
+  --bucket testbucket \
+  --endpoint-url https://objectstorage-replicated.dus2.cloud.syseleven.net
+
+# Check if the lifecycle is deleted or not
+$ aws s3api get-bucket-lifecycle-configuration \
+  --bucket testbucket \
+  --endpoint-url https://objectstorage-replicated.dus2.cloud.syseleven.net
+{
+    "Rules": [
+        {
+            "Expiration": {
+                "Days": 30
+            },
+            "ID": "ExpireOldObjects",
+            "Prefix": "",
+            "Status": "Enabled"
+        }
+    ]
+}
+```
+
+**Workaround:**
+As a workaround till the upstream fixes the issue in next release, you can Disable your lifecycle config.
+
+```plain
+# This is a disabled lifecycle config example
+$ cat lifecycle.json
+{
+  "Rules": [
+    {
+      "ID": "ExpireOldObjects",
+      "Prefix": "",
+      "Status": "Disabled",
+      "Expiration": {
+        "Days": 30
+      }
+    }
+  ]
+}
+
+# Put disabled lifecycle config in to our bucket
+$ aws s3api put-bucket-lifecycle-configuration \
+  --bucket testbucket \
+  --lifecycle-configuration file://lifecycle.json \
+  --endpoint-url https://objectstorage-replicated.dus2.cloud.syseleven.net
+
+# Verify lifecycle config is disabled
+$ aws s3api get-bucket-lifecycle-configuration \
+  --bucket testbucket \
+  --endpoint-url https://objectstorage-replicated.dus2.cloud.syseleven.net
+{
+    "Rules": [
+        {
+            "Expiration": {
+                "Days": 30
+            },
+            "ID": "ExpireOldObjects",
+            "Prefix": "",
+            "Status": "Disabled"
+        }
+    ]
+}
+```
