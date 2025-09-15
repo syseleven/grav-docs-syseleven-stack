@@ -83,7 +83,7 @@ With ceph-based object storage you may configure a bucket lifecycle rule `AbortI
 
 **Problem Statement:**
 There’s an issue where the S3 DeleteBucketLifecycle API call doesn’t successfully remove the lifecycle configuration from a bucket.
-[Ceph tracker link](https://github.com/ceph/ceph/pull/64741)
+[Ceph tracker link](https://tracker.ceph.com/issues/71083)
 
 **Reproduction Steps**
 Below is an example using the AWS CLI to demonstrate how to reproduce the issue.
