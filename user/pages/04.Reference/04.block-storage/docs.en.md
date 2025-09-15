@@ -60,6 +60,7 @@ A volume can only be attached to a single virtual machine at a time.
 | Multi-attach volumes                    | Yes            | Yes            | Yes
 | Volume resizing                         | Yes (offline*) | Yes (offline*) | Yes (offline*)
 | Volume backups                          | No             | No             | No
+| Encryption at rest                      | No             | No             | Yes (ceph), No (quobyte)
 
 * offline means, that this functionality is only supported for volumes that are not attached to a virtual machine.
 
@@ -150,6 +151,14 @@ Following the volume size change it might be necessary to grow the filesystem. I
 ```shell
 resize2fs /dev/vdX
 ```
+
+### Encryption at rest
+
+Encryption at rest is only supported in FES region.
+Data stored on a ceph volume is encrypted at rest, which means that data is encrypted before writing it to a physical device. When storage device is lost or damaged your data is protected against unauthorized access.
+
+!! WARNING: In case of a local storage flavors, only data stored on a ceph volume is encrypted. Data stored on the VM's ephemeral local storage or on a quobyte volume is not encrypted.
+!! WARNING: In any case data stored on a quobyte volume is not encrypted.
 
 ### Current limitations
 
