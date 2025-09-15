@@ -79,14 +79,14 @@ aws s3api abort-multipart-upload --bucket BUCKET_NAME --key KEY --upload-id UPLO
 
 With ceph-based object storage you may configure a bucket lifecycle rule `AbortIncompleteMultipartUpload` to let unfinished multipart uploads be cleaned up automatically after a certain number of days.
 
-### s3 DeleteBucketLifecycle does not delete lifecycle config
+### Ceph-based object storage s3 DeleteBucketLifecycle does not delete lifecycle config
 
 **Problem Statement:**
-There is an issue where the s3 DeleteBucketLifecycle which API call fails to actually remove the lifecycle configuration from the bucket. The fix was originally implemented in master but was not included in the squid release line.
+There’s an issue where the S3 DeleteBucketLifecycle API call doesn’t successfully remove the lifecycle configuration from a bucket.
 [Ceph tracker link](https://github.com/ceph/ceph/pull/64741)
 
-**Reproduce:**
-Here you will se an example with aws cli how to reproduce it
+**Reproduction Steps**
+Below is an example using the AWS CLI to demonstrate how to reproduce the issue.
 
 ```plan
 # This is a lifecycle config example
@@ -151,7 +151,7 @@ $ aws s3api get-bucket-lifecycle-configuration \
 ```
 
 **Workaround:**
-As a workaround till the upstream fixes the issue in next release, you can Disable your lifecycle config.
+As a temporary workaround until the upstream fix is included in the next release, you can disable the lifecycle configuration.
 
 ```plain
 # This is a disabled lifecycle config example
