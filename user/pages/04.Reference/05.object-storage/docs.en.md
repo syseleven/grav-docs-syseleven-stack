@@ -72,6 +72,13 @@ FES      | objectstorage.fes.cloud.syseleven.net  | Ceph                |
 
 !! s3.fes.cloud.syseleven.net will be end-of-life on 2025-06-15. We recommend to use `objectstorage.fes.cloud.syseleven.net instead. For existing object data refer to our [migration howto](../../03.Howtos/16.migrate-quobyte-to-ceph/docs.en.md).
 
+## Encryption at rest
+
+Encryption at rest is only supported in FES region.
+Data stored in the S3 Ceph backend (objectstorage.fes.cloud.syseleven.net) is encrypted at rest, which means that data is encrypted before writing it to a physical device. When storage device is lost or damaged your data is protected against unauthorized access.
+
+!! Data stored in the S3 Quobyte backend (s3.fes.cloud.syseleven.net) is not encrypted.
+
 ## Credentials
 
 You need to meet the following prerequisites to generate credentials:
