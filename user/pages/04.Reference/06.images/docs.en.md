@@ -21,7 +21,6 @@ Name                                    | Description                           
 ----------------------------------------|-----------------------------------------------------|
 Flatcar Stable (YYYY-MM-DD)             | Unmodified, directly from vendor                    |
 Ubuntu Bionic 18.04 (YYYY-MM-DD)        | Unmodified, directly from vendor                    |
-Rescue Ubuntu 18.04 sys11               | Modified, for use with the [nova rescue mode](../../03.Howtos/05.nova-rescue-mode/docs.en.md) |
 Ubuntu Focal 20.04 (YYYY-MM-DD)         | Unmodified, directly from vendor                    |
 Ubuntu Jammy 22.04 (YYYY-MM-DD)         | Unmodified, directly from vendor                    |
 Ubuntu Noble 24.04 (YYYY-MM-DD)         | Unmodified, directly from vendor                    |
