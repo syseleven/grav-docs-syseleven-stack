@@ -26,8 +26,12 @@ After [sourcing the openrc.sh](../../02.Tutorials/02.api-access/docs.en.md) you 
 
 ```shell
 openstack image create --progress --private --disk-format=qcow2 --container-format=bare \
---property architecture=x86_64 --name="Ubuntu Noble" --file noble-server-cloudimg-amd64.img
+--property architecture=x86_64 --file noble-server-cloudimg-amd64.img "Ubuntu Noble"
 ```
+
+!!! Please refer to the [official
+OpenStackClient](https://docs.openstack.org/python-openstackclient/latest/cli/command-objects/image-v2.html#image-create)
+documentation for the list of the supported parameters.
 
 ## Image sources
 
