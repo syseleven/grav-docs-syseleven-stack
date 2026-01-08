@@ -63,14 +63,14 @@ Region   | URL                                    | Backend             |
 ---------|----------------------------------------|---------------------|
 CBK      | s3.cbk.cloud.syseleven.net             | Quobyte             |
 DBL      | s3.dbl.cloud.syseleven.net             | Quobyte             |
-FES      | s3.fes.cloud.syseleven.net             | Quobyte (eol 2025-06-15)  |
+FES      | s3.fes.cloud.syseleven.net             | Quobyte (EOL since 2025-06-15)  |
 FES      | objectstorage.fes.cloud.syseleven.net  | Ceph                |
 
 !!!! **Deprecated URL**
 !!!! For historical reasons 's3.cloud.syseleven.net' redirects to 's3.cbk.cloud.syseleven.net'.
 !!!! We recommend to always use a region specific URL like in the table above.
 
-!! s3.fes.cloud.syseleven.net will be end-of-life on 2025-06-15. We recommend to use `objectstorage.fes.cloud.syseleven.net instead. For existing object data refer to our [migration howto](../../03.Howtos/16.migrate-quobyte-to-ceph/docs.en.md).
+!! s3.fes.cloud.syseleven.net is end-of-life since 2025-06-15. We recommend to use `objectstorage.fes.cloud.syseleven.net` instead. For existing object data refer to our [migration howto](../../03.Howtos/16.migrate-quobyte-to-ceph/docs.en.md).
 
 ## Encryption at rest
 
