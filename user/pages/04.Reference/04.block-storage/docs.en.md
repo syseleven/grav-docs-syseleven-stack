@@ -19,8 +19,8 @@ You can manage your block storage volumes and make them available to your comput
 
 | Volume type                             | CBK region    | DBL region    | FES region
 | ----------------------------------------|---------------|---------------|-----------
-| quobyte                                 | Yes (default) | Yes (default) | Yes (eol 2025-06-15)
-| quobyte-multiattach                     | Yes           | Yes           | Yes (eol 2025-06-15)
+| quobyte                                 | Yes (default) | Yes (default) | No (EOL since 2025-06-15)
+| quobyte-multiattach                     | Yes           | Yes           | No (EOL since 2025-06-15)
 | ceph                                    | No            | No            | Yes (default)
 
 ### quobyte
@@ -29,7 +29,7 @@ The data will be stored on SSDs in the SysEleven Stack distributed storage clust
 
 A volume can only be attached to a single virtual machine at a time.
 
-!! This storage type will be end-of-life in our Region `fes` on 2025-06-15. We recommend to use `ceph` instead. For existing Volumes refer to our [migration howto](../../03.Howtos/16.migrate-quobyte-to-ceph/docs.en.md).
+!! This storage type is end-of-life in our Region `fes` since 2025-06-15. We recommend to use `ceph` instead. For existing Volumes refer to our [migration howto](../../03.Howtos/16.migrate-quobyte-to-ceph/docs.en.md).
 
 ### quobyte-multiattach
 
@@ -41,7 +41,7 @@ Please refer to our multi-attach volume tutorial. It explains [how to use multi-
 
 !! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and/or file system and data corruption.
 
-!! This storage type will be end-of-life in our Region `fes` on 2025-06-15. Due to negligible use we haven't decided on a general alternative yet. I you rely on this feature in this region, please contact the [Support at support@syseleven.de](../../06.Support/default.en.md).
+!! This storage type is end-of-life in our Region `fes` since 2025-06-15. Due to negligible use we currently do not provide a general alternative. If you rely on this feature in this region, please contact the [Support at support@syseleven.de](../../06.Support/default.en.md).
 
 ### ceph
 
