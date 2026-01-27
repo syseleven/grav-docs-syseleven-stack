@@ -93,18 +93,9 @@ $ openstack zone transfer request list
 
 ### Accept a transfer
 
-As the recipient, you must accept the transfer of the zone from the donor. You need to obtain the transfer id and the key. The transfer id can be looked up.
+You need to obtain the transfer ID and key from the donor to accept the zone transfer.
 
-```shell
-$ openstack zone transfer accept list
-+--------------------------------------+--------------------------------------+------------+--------------------------+--------+-----+
-| id                                   | zone_id                              | project_id | zone_transfer_request_id | status | key |
-+--------------------------------------+--------------------------------------+------------+--------------------------+--------+-----+
-| ca6b190e-376b-4075-9dd6-a14d451212da | db1228fc-d955-4cc2-a6f8-23ad91024b20 |            |                          | ACTIVE |     |
-+--------------------------------------+--------------------------------------+------------+--------------------------+--------+-----+
-```
-
-The key needs to be given to you by the donor. You can now accept the transfer.
+Once you have it, you can now accept the transfer as following:
 
 ```shell
 $ openstack zone transfer accept request --transfer-id ca6b190e-376b-4075-9dd6-a14d451212da --key S9JX5C27
