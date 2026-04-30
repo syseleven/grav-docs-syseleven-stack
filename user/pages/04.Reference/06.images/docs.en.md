@@ -25,6 +25,7 @@ Rescue Ubuntu 18.04 sys11               | Modified, for use with the [nova rescu
 Ubuntu Focal 20.04 (YYYY-MM-DD)         | Unmodified, directly from vendor                    |
 Ubuntu Jammy 22.04 (YYYY-MM-DD)         | Unmodified, directly from vendor                    |
 Ubuntu Noble 24.04 (YYYY-MM-DD)         | Unmodified, directly from vendor                    |
+Ubuntu Resolute 26.04 (YYYY-MM-DD)      | Unmodified, directly from vendor                    |
 Red Hat CoreOS <version\> (YYYY-MM-DD)  | Unmodified, directly from vendor, see warning below |
 
 !!! Red Hat CoreOS images are provided despite the lack of cryptographic signature provided by Red Hat, meaning we were not able to verify their authenticity.
