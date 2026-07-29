@@ -19,8 +19,8 @@ You can manage your block storage volumes and make them available to your comput
 
 | Volume type                             | CBK region    | DBL region    | FES region
 | ----------------------------------------|---------------|---------------|-----------
-| quobyte                                 | Yes (default) | Yes (default) | No (EOL since 2025-06-15)
-| quobyte-multiattach                     | Yes           | Yes           | No (EOL since 2025-06-15)
+| quobyte                                 | Yes (default) | Yes (default) | No
+| quobyte-multiattach                     | Yes           | Yes           | No
 | ceph                                    | No            | No            | Yes (default)
 
 ### quobyte
@@ -28,8 +28,6 @@ You can manage your block storage volumes and make them available to your comput
 The data will be stored on SSDs in the SysEleven Stack distributed storage cluster based on Quobyte. The data will be replicated and stored on three different storage nodes and SSDs.
 
 A volume can only be attached to a single virtual machine at a time.
-
-!! This storage type is end-of-life in our Region `fes` since 2025-06-15. We recommend to use `ceph` instead. For existing Volumes refer to our [migration howto](../../03.Howtos/16.migrate-quobyte-to-ceph/docs.en.md).
 
 ### quobyte-multiattach
 
@@ -40,8 +38,6 @@ The performance of `quobyte-multiattach` is slightly reduced because some cachin
 Please refer to our multi-attach volume tutorial. It explains [how to use multi-attach volumes with the cluster file system ocfs2](../../02.Tutorials/10.cinder-multiattach/docs.en.md).
 
 !! WARNING: This mode of operation requires special cluster file systems like ocfs2 or gfs2. Otherwise it can lead to the loss of data and/or file system and data corruption.
-
-!! This storage type is end-of-life in our Region `fes` since 2025-06-15. Due to negligible use we currently do not provide a general alternative. If you rely on this feature in this region, please contact the [Support at support@syseleven.de](../../06.Support/default.en.md).
 
 ### ceph
 
@@ -57,10 +53,10 @@ A volume can only be attached to a single virtual machine at a time.
 | Volume transfer                         | Yes            | Yes            | Yes
 | Volume snapshots                        | Yes (offline*) | Yes (offline*) | Yes (offline*)
 | Save volume as glance image             | Yes (offline*) | Yes (offline*) | Yes (offline*)
-| Multi-attach volumes                    | Yes            | Yes            | Yes
+| Multi-attach volumes                    | Yes            | Yes            | No
 | Volume resizing                         | Yes (offline*) | Yes (offline*) | Yes (offline*)
 | Volume backups                          | No             | No             | No
-| Encryption at rest                      | No             | No             | Yes (ceph), No (quobyte)
+| Encryption at rest                      | No             | No             | Yes
 
 * offline means, that this functionality is only supported for volumes that are not attached to a virtual machine.
 
