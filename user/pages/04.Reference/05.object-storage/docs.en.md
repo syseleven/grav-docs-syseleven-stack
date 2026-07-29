@@ -63,21 +63,16 @@ Region   | URL                                    | Backend             |
 ---------|----------------------------------------|---------------------|
 CBK      | s3.cbk.cloud.syseleven.net             | Quobyte             |
 DBL      | s3.dbl.cloud.syseleven.net             | Quobyte             |
-FES      | s3.fes.cloud.syseleven.net             | Quobyte (EOL since 2025-06-15)  |
 FES      | objectstorage.fes.cloud.syseleven.net  | Ceph                |
 
 !!!! **Deprecated URL**
 !!!! For historical reasons 's3.cloud.syseleven.net' redirects to 's3.cbk.cloud.syseleven.net'.
 !!!! We recommend to always use a region specific URL like in the table above.
 
-!! s3.fes.cloud.syseleven.net is end-of-life since 2025-06-15. We recommend to use `objectstorage.fes.cloud.syseleven.net` instead. For existing object data refer to our [migration howto](../../03.Howtos/16.migrate-quobyte-to-ceph/docs.en.md).
-
 ## Encryption at rest
 
 Encryption at rest is only supported in FES region.
 Data stored in the S3 Ceph backend (objectstorage.fes.cloud.syseleven.net) is encrypted at rest, which means that data is encrypted before writing it to a physical device. When storage device is lost or damaged your data is protected against unauthorized access.
-
-!! Data stored in the S3 Quobyte backend (s3.fes.cloud.syseleven.net) is not encrypted.
 
 ## Credentials
 
@@ -160,7 +155,7 @@ The correct URL for this object in SysEleven Stack would be:
 
 `https://s3.REGION.cloud.syseleven.net/BUCKET_NAME/test.jpg`
 
-where REGION is the SysEleven Stack region (e.g. cbk, dbl or fes).
+where REGION is the SysEleven Stack region (e.g. cbk, dbl).
 
 When your bucket name satisfies the limitations of dns hostnames, your object may also be available under this URL:
 
