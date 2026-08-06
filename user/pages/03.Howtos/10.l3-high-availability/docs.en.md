@@ -413,7 +413,7 @@ vrrp_instance vrrp_1 {
 Some of these options need special attention in cloud environments:
 
 * `garp_master_refresh 5` - forces MASTER VRRP node to generate GARP packets every 5 seconds to update ARP tables in SDN and on all VMs connected to the network.
-* `garp_master_refresh_repeat 2` - secifies how many GARP packets will be generated at GARP refresh event.
+* `garp_master_refresh_repeat 2` - specifies how many GARP packets will be generated at GARP refresh event.
 * `unicast_src_ip` and `unicast_peer` - since the cloud does not support broadcast, all communication must be unicast.
 
 Now, let's start keepalived and ensure that instances recognize each other, and state of `ha_second` is transitioned to
