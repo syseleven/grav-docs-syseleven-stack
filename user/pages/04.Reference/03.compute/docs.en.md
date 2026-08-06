@@ -39,7 +39,7 @@ M2 Large    |  m2.large   | 32GiB  |   8   |   50GiB  | fes                  |
 (M1 XLarge)\*\*   |  (m1.xlarge)\*\* | 64GiB   |   16   |   50GiB   | dbl, cbk |
 (M2 XLarge)\*\*   |  (m2.xlarge)\*\* | 64GiB   |   16   |   50GiB   | fes      |
 (M1 XXLarge)\*\*  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   | dbl, cbk |
-(M2 XXLarge)\*\*  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   | fes      |
+(M2 XXLarge)\*\*  |  (m2.xxlarge)\*\* | 128GiB|   32   |   50GiB   | fes      |
 
 #### CPU optimized
 
