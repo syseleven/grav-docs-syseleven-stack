@@ -64,4 +64,4 @@ Repeat the process with the other subnet.
 ## Conclusion
 
 You connected two subnets, so they can communicate with another.  
-You also set up our own host routes and got to know the networking settings in the dashboard.
+You also set up your own host routes and got to know the networking settings in the dashboard.
