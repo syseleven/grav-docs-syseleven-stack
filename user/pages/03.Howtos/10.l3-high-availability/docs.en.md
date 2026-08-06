@@ -15,7 +15,7 @@ taxonomy:
 
 ## Technology used
 
-* Virtual Router Redundancy Protocol, [RFC 5978](https://tools.ietf.org/html/rfc5798)
+* Virtual Router Redundancy Protocol, [RFC 5798](https://tools.ietf.org/html/rfc5798)
 
 ## Components used
 
