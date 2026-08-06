@@ -199,7 +199,7 @@ Overview of fields:
 | network.subnet_pools | Number of subnet pools | since v3 |
 | network.subnets | Number of subnets | since v3 |
 | network.vpn_endpoint_groups | Number of VPNaaS endpoint groups | |
-| network.vpn_ikepolicy | Number of VPNaaS IKE policies | |
+| network.vpn_ikepolicies | Number of VPNaaS IKE policies | |
 | network.vpn_ipsec_site_connections | Number of VPNaaS site connections | |
 | network.vpn_ipsecpolicies | Number of VPNaaS IPSec policies | |
 | network.vpn_services | Number of VPNaaS VPN services | |
@@ -401,7 +401,7 @@ The response contains the information about the currently-used resources in JSON
 | network.subnet_pools | Number of subnet pools | since v3 |
 | network.subnets | Number of subnets | since v3 |
 | network.vpn_endpoint_groups | Number of VPNaaS endpoint groups | |
-| network.vpn_ikepolicy | Number of VPNaaS IKE policies | |
+| network.vpn_ikepolicies | Number of VPNaaS IKE policies | |
 | network.vpn_ipsec_site_connections | Number of VPNaaS site connections | |
 | network.vpn_ipsecpolicies | Number of VPNaaS IPSec policies | |
 | network.vpn_services | Number of VPNaaS VPN services | |
