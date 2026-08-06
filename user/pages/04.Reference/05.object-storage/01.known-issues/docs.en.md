@@ -37,7 +37,7 @@ We suggest to download the file in multiple chunks using the HTTP Range header. 
 s4cmd get --max-singlepart-download-size=$((50*1024**2)) --multipart-split-size=$((50*1024**2)) s3://BUCKET_NAME/FILE_NAME
 ````
 
-The value of 52428800 Bytes = 50 GiB specified in this example is actually the default value for those parameters, so that using `s4cmd` without specifying those parameters should already circumvent the mentioned problem by doing multipart transfers.
+The value of 52428800 Bytes = 50 MiB specified in this example is actually the default value for those parameters, so that using `s4cmd` without specifying those parameters should already circumvent the mentioned problem by doing multipart transfers.
 
 ### Maximum number of objects
 
