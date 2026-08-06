@@ -29,12 +29,14 @@ $ openstack port list
 ### Step Two: Update port security for target port and allow additional subnet
 
 ```shell
-neutron port-update <PORT ID> --allowed_address_pairs list=true type=dict ip_address=<IP Address or IP Subnet/Mask>
+openstack port set --allowed-address ip-address=<IP Address or IP Subnet/Mask> <PORT ID>
 ```
 
 ```shell
-neutron port-update 5fc7ed94-754e-427a-a6d2-9b0f67f9eebd --allowed_address_pairs list=true type=dict ip_address=10.0.0.0/24
+openstack port set --allowed-address ip-address=10.0.0.0/24 5fc7ed94-754e-427a-a6d2-9b0f67f9eebd
 ```
+
+Note that `openstack port set` returns no output. You can verify the change with `openstack port show <PORT ID>`.
 
 ### Step Three: Check if packets can be sent/received
 
