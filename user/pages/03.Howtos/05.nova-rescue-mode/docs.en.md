@@ -100,7 +100,7 @@ Once you are logged in you can work with the rescue mode.
 If you used a SSH key while deploying the instance initially you can login via ssh
 
 ```shell
-ssh ubuntu@<Instance floating ip>
+ssh ubuntu@<instance-floating-ip>
 ```
 
 ### via Console
