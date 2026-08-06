@@ -70,7 +70,7 @@ source_url                       | URL to the vendor image file that has been us
 uuid_validity                    | How long the image will be referencable by its UUID |
 
 We follow the [SCS Image Metadata Standard](https://docs.scs.community/standards/scs-0102-v1-image-metadata/)
-Here is an example for filtering the images by properties using [HashiCorp Terraform's image data source](https://www.terraform.io/docs/providers/openstack/d/images_image_v2.html):
+Here is an example for filtering the images by properties using [HashiCorp Terraform's image data source](https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/data-sources/images_image_v2):
 
 ```hcl
 data "openstack_images_image_v2" "ubuntu-focal" {
