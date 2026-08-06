@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This Document will show you the essential steps to repartition your VM disk. For this purpose we are using an Ubuntu 18.04 server as example with the `m1c.tiny` [flavor](../../04.Reference/03.compute/docs.en.md).
+This document will show you the essential steps to repartition your VM disk. For this purpose we are using an Ubuntu 18.04 server as example with the `m1c.tiny` [flavor](../../04.Reference/03.compute/docs.en.md).
 
 We strongly recommend to use the automatic approaches but for instructional use we are also covering the manual process here.
 

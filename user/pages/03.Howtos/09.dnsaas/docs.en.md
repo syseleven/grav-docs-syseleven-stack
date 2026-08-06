@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This Document will show you the essential steps to create a minimal zone with a minimal recordset for a simple Server like a Website.
+This document will show you the essential steps to create a minimal zone with a minimal recordset for a simple Server like a Website.
 For a complete overview see the [reference guide](../../04.Reference/07.dns/docs.en.md).
 
 ### Prerequisites

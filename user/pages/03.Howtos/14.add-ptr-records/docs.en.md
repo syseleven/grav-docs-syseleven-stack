@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This Document will show you the essential steps to add a PTR record for an existing floating IP.
+This document will show you the essential steps to add a PTR record for an existing floating IP.
 
 For a complete overview see the [networking reference guide](../../04.Reference/08.network/docs.en.md) and the [DNS reference guide](../../04.Reference/07.dns/docs.en.md).
 

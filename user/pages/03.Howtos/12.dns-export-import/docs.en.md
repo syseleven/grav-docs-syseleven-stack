@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This Document will show you the essential steps how to export and import a zone file.
+This document will show you the essential steps how to export and import a zone file.
 For a complete overview see the [reference guide](../../04.Reference/07.dns/docs.en.md).
 
 ### Prerequisites

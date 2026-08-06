@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This Document will show you the essential steps to transfer a zone from one project to another project.
+This document will show you the essential steps to transfer a zone from one project to another project.
 
 For a complete overview see the [reference guide](../../04.Reference/07.dns/docs.en.md).
 
