@@ -194,7 +194,7 @@ In this tutorial we demonstrate an Octavia LBaaS setup with the following featur
 * Health Monitor for LB pool members (upstream instances)
 * a server group with dynamic number of servers
 * every upstream node installs Apache2 and PHP7.0 FPM via HEAT
-* "Anyapp" as simple PHP application
+* "AnyApp" as simple PHP application
 
 ### Step one: Create the stack
 
@@ -259,8 +259,8 @@ $ openstack stack output show examplelb lburl -c output_value -f value
 http://195.192.128.20:80
 ```
 
-Open Anyapp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server.
-Open Anyapp in other tabs/windows to see the load balancer working.
+Open AnyApp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server.
+Open AnyApp in other tabs/windows to see the load balancer working.
 
 ![LBAnyApp](../../images/AnyApp_20180301.png)
 
@@ -276,7 +276,7 @@ In this tutorial we demonstrate a Neutron LBaaSv2 setup with the following featu
 * Health Monitor for LB pool members (upstream instances)
 * a server group with dynamic number of servers
 * every upstream node installs Apache2 and PHP7.0 FPM via HEAT
-* "Anyapp" as simple PHP application
+* "AnyApp" as simple PHP application
 
 ### Step one: Create the stack
 
@@ -349,8 +349,8 @@ $ openstack stack output show examplelb lburl -c output_value -f value
 http://195.192.128.20:80
 ```
 
-Open Anyapp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server.
-Open Anyapp in other tabs/windows to see the load balancer working.
+Open AnyApp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server.
+Open AnyApp in other tabs/windows to see the load balancer working.
 
 ![LBAnyApp](../../images/AnyApp_20180301.png)
 
