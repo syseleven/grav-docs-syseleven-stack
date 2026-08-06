@@ -9,7 +9,7 @@ taxonomy:
 
 ## The SysEleven Rescue Image
 
-The rescue images is built and tested using Ubuntu 18.04 LTS as core system.
+The rescue images are built and tested using Ubuntu 18.04 LTS as core system.
 They contain a variety of pre-installed tools to rescue your instances and supports most filesystems out of the box.
 
 !!! Since the rescue images are rebuilt regularly it is advisable to always check for the [current rescue image name or ID](#launch-nova-rescue-mode).

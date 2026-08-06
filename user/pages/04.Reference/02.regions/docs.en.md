@@ -22,7 +22,7 @@ The current 3 regions are:
 * `dbl` (Berlin)
 * `fes` (Frankfurt)
 
-Since 2024, a fourth region, `dus2` (Düsseldorf), is visible in the OpenStack catalog but is not yet publicly available.
+Newer regions, such as `dus2` (Düsseldorf) and `ham1` (Hamburg), are documented separately at [documentation.syseleven.de](https://documentation.syseleven.de).
 
 ## Goal
 

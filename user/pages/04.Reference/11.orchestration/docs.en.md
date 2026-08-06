@@ -21,7 +21,7 @@ With the orchestration service you can do more than just start and stop virtual 
 
 It is technically possible to run virtual machines without a network, but the majority of applications need connectivity. In OpenStack there are five kinds of objects that are necessary to define a network: *Networks*, *Subnets*, *Ports*, *Routers*, as well as *Floating IPs*.
 
-*Networks* are a kind of container for one or more *Subnets* A *Subnet* is the network actually used by a stack to route traffic from and to the outside world. A virtual machine without a *Subnet* will not be able to talk to the outside world.
+*Networks* are a kind of container for one or more *Subnets*. A *Subnet* is the network actually used by a stack to route traffic from and to the outside world. A virtual machine without a *Subnet* will not be able to talk to the outside world.
 
 Please keep in mind that in OpenStack everything is an *Object* or *Resource* which you can manage via an API. This means you can define a network as part of a Heat stack. As an example, you could create a file named `net.yaml` with the following content:
 
@@ -49,16 +49,16 @@ resources:
 Now, create this network by running
 
 ```shell
-heat stack-create -f net.yaml netexample1
+openstack stack create -t net.yaml netexample1
 ```
 
 If you now open the [Dashboard](https://cloud.syseleven.de/), you will see that you just made a piece of infrastructure: In the *Network* tab you see the network and subnet as defined in `net.yaml`. We do not need this network, so we clean it up with the following command:
 
 ```shell
-heat stack-delete netexample1
+openstack stack delete netexample1
 ```
 
-Aside from *Networks* and *Subnets*, *Routers* are basic building blocks of an infrastructure stack. You need routers to connect your subnets to the Internet. This way you enable your virtual machines to pull updates from an upstream source, for example. You also need *Routers* so clients can reach your virtual machines from the internet. For traffic to the Internet, we use Source Network Address Translation to assign IPv4 based network traffic to the correct virtual machine.
+Aside from *Networks* and *Subnets*, *Routers* are basic building blocks of an infrastructure stack. You need routers to connect your subnets to the Internet. This way you enable your virtual machines to pull updates from an upstream source, for example. You also need *Routers* so clients can reach your virtual machines from the Internet. For traffic to the Internet, we use Source Network Address Translation to assign IPv4 based network traffic to the correct virtual machine.
 
 You can now expand the previous example and add a *Router*:
 
@@ -94,22 +94,22 @@ resources:
 This example is the first where you need a parameter: The `public_network_id`. You can get a list of available networks with public IP addresses like this:
 
 ```shell
-syselevenstack@kickstart:~$ neutron net-list
-+--------------------------------------+---------------+---------------------------------------------------+
-| id                                   | name          | subnets                                           |
-+--------------------------------------+---------------+---------------------------------------------------+
-| 02fc43b8-6de5-4e26-8bc7-7e70f0f3ca1a | float2        | 6c9e0e07-f7ac-40e3-b208-febd9d8cd0b8              |
-| 4f996f76-e943-4e91-bfe2-d01b00283d86 | kickstart-net | d134c951-aaa2-4c9b-9cac-ae51b96f5533 10.0.0.0/24  |
-| 80ca1837-a461-4621-b58d-79507aa8b044 | float1        | d79b58c4-23f3-476b-82f2-e00e348d25d4              |
-+--------------------------------------+---------------+---------------------------------------------------+
+syselevenstack@kickstart:~$ openstack network list
++--------------------------------------+----------------+--------------------------------------+
+| ID                                   | Name           | Subnets                              |
++--------------------------------------+----------------+--------------------------------------+
+| 02fc43b8-6de5-4e26-8bc7-7e70f0f3ca1a | float2         | 6c9e0e07-f7ac-40e3-b208-febd9d8cd0b8 |
+| 4f996f76-e943-4e91-bfe2-d01b00283d86 | kickstart-net  | d134c951-aaa2-4c9b-9cac-ae51b96f5533 |
+| 80ca1837-a461-4621-b58d-79507aa8b044 | float1         | d79b58c4-23f3-476b-82f2-e00e348d25d4 |
++--------------------------------------+----------------+--------------------------------------+
 ```
 
 Choose one of the public networks, for this example `float1` with the ID `80ca1837-a461-4621-b58d-79507aa8b044`. Again, create the network, just with a parameter:
 
 ```shell
-heat stack-create -f net2.yaml \
-                  -P public_network_id=80ca1837-a461-4621-b58d-79507aa8b044 \
-                  netexample2
+openstack stack create -t net2.yaml \
+  --parameter public_network_id=80ca1837-a461-4621-b58d-79507aa8b044 \
+  netexample2
 ```
 
 You can check in the [Dashboard](https://cloud.syseleven.de/) under "Network Topology" to see that the object was created correctly. You can also see that *Network* and *Router* are independent objects. To connect both objects you need an additional object that does just that: A *Router-Subnet-Connect*. Here is the code to add this piece of infrastructure:
@@ -151,14 +151,14 @@ resources:
 If you start this template with the following command:
 
 ```shell
-heat stack-create -f net3.yaml \
-                  -P public_network_id=80ca1837-a461-4621-b58d-79507aa8b044 \
-                  netexample3
+openstack stack create -t net3.yaml \
+  --parameter public_network_id=80ca1837-a461-4621-b58d-79507aa8b044 \
+  netexample3
 ```
 
 You can see in the [Dashboard](https://cloud.syseleven.de/) that you created a private network `example-net`, which is connected to the public network `float1` through a Router.
 
-Using this infrastructure we can now start a virtual machine which has an outside network connections. We are still missing a way to assign a virtual machine to a given subnet. This is done using *Ports*. *Ports* are the network interfaces of a virtual machine: A *Port* needs to be connected to a *Subnet* for the virtual machine to be able to use it. Here is the code to connect a *Port* to a *Subnet*:
+Using this infrastructure we can now start a virtual machine which has an outside network connection. We are still missing a way to assign a virtual machine to a given subnet. This is done using *Ports*. *Ports* are the network interfaces of a virtual machine: A *Port* needs to be connected to a *Subnet* for the virtual machine to be able to use it. Here is the code to connect a *Port* to a *Subnet*:
 
 ```plain
   port:
@@ -227,7 +227,7 @@ resources:
       subnet: { get_resource: subnet }
 ```
 
-You can use this template as usual, only that you reference the public SSH Key you stored in the Dashboard using the command line switch `-Pkey_name=<PubKeyName>` This ensures that you can log in to the default account on your virtual machine using SSH.
+You can use this template as usual, only that you reference the public SSH Key you stored in the Dashboard using the command line switch `--parameter key_name=<PubKeyName>`. This ensures that you can log in to the default account on your virtual machine using SSH.
 
 In the [Dashboard](https://cloud.syseleven.de/) you can see the network being built. You also see the subnet and router are created and all objects will be connected. We cannot connect to our virtual machine though: The setup is missing a publicly accessible IP address. The missing object is a *Floating IP*, another object we need to connect with our *Port*. When that's done, we have a virtual machine that is reachable from the Internet. Here is the necessary orchestration code:
 
@@ -379,18 +379,18 @@ resources:
 After creation has finished, you can log in to the virtual machine. Find it's IP address with the following command:
 
 ```shell
-nova list
+openstack server list
 ```
 
 Copy the IP address and log into the virtual machine:
 
 ```shell
-ssh ec2-user@<IP-Adresse>
+ssh ubuntu@<floating IP>
 ```
 
-In Ubuntu cloud images, `ec2-user` is the default name of the default user account.
+In Ubuntu cloud images, `ubuntu` is the default name of the default user account.
 
-You got to know the network and virtual machine parts of orchestration. You do not need anything else to run a simple stack. But many web applications have operational constraints we did not cover yet: What happens if you need to change the size or number of our virtual machines? How do you preserve and find my data if I delete my stack as shown above? You can find answers to these questions in the [Block Storage documentation](../../04.Reference/04.block-storage/docs.en.md). Every virtual machine currently comes with 50 GiB of storage. If you need additional storage, you need to create and use volumes. Volumes are also interesting from another point of view: If you want to preserve data beyond the life time of a virtual machine (for example a database for a web application), you need to use volumes. The storage that comes with a virtual machine is *ephemeral*: it is lost when the virtual machine is deleted. To provide long lasting storage, create a stack to create and provide a volume of the required storage size.
+You got to know the network and virtual machine parts of orchestration. You do not need anything else to run a simple stack. But many web applications have operational constraints we did not cover yet: What happens if you need to change the size or number of your virtual machines? How do you preserve and find your data if you delete your stack as shown above? You can find answers to these questions in the [Block Storage documentation](../../04.Reference/04.block-storage/docs.en.md). Every virtual machine currently comes with 50 GiB of storage. If you need additional storage, you need to create and use volumes. Volumes are also interesting from another point of view: If you want to preserve data beyond the lifetime of a virtual machine (for example a database for a web application), you need to use volumes. The storage that comes with a virtual machine is *ephemeral*: it is lost when the virtual machine is deleted. To provide long lasting storage, create a stack to provision a volume of the required storage size.
 
 <!--- TODO: Code fehlt. -->
 
@@ -414,7 +414,7 @@ heat_template_version: 2014-10-16
 
 Every heat template starts with the version number of the language. This line specifies which set of features can be used and which notation is needed to express the infrastructure.
 
-Because the language changes from release to release, this line is necessary to keep up backwards compatibility.
+Because the language changes from release to release, this line is necessary to maintain backwards compatibility.
 
 ### Description
 
@@ -439,7 +439,7 @@ Declaring parameters looks like this:
 
 ```plain
 parameters:
-  number_appservers
+  number_appservers:
     type: string
     default: 4
 ```
@@ -456,14 +456,14 @@ As an example: for a virtual machine to get network access, it must be attached 
 
 ```plain
 resources:
-  example_instance
-    type: OS:Nova::Server
+  example_instance:
+    type: OS::Nova::Server
     properties:
       key_name: { get_param: key_name }
       image: Ubuntu Jammy 22.04 (2022-08-11)
       flavor: m1.tiny
       networks:
-- port: { get_resource: example_port }
+        - port: { get_resource: example_port }
 
 ```
 

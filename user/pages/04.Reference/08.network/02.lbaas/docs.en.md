@@ -165,10 +165,10 @@ The SysEleven Stack currently provides two flavors of Octavia Load Balancers:
 
 LB Flavor | Topology | VM flavor | Description
 ----------|----------|-----------|-------------
-failover-small | Active/Standby | m1c.small | Load balancer is implemented in two virtual machines in an active/standby setup.
-standalone-tiny | Stand-alone   | m1c.tiny  | Load balancer is implemented in a single stand-alone virtual machine
+failover-small | Active/Standby | m1c.small (cbk/dbl) / m2c.small (fes) | Load balancer is implemented in two virtual machines in an active/standby setup.
+standalone-tiny | Stand-alone   | m1c.tiny (cbk/dbl) / m2c.tiny (fes) | Load balancer is implemented in a single stand-alone virtual machine
 
-The default load balancer flavor is `failover-small` which offers more performance and failure resilience. You may choose `standalone-small` instead for development setups to save some resources when failure resilience is not the top priority.
+The default load balancer flavor is `failover-small` which offers more performance and failure resilience. You may choose `standalone-tiny` instead for development setups to save some resources when failure resilience is not the top priority.
 
 ### Default timeouts and connection limits
 
