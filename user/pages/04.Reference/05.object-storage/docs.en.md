@@ -176,7 +176,7 @@ Information about the AWS client can be found on the [AWS CLI website](https://a
 The `aws-cli` also has a configuration file which can be created under the home directory of the user which runs the command.
 
 ```shell
-mdkir ~/.aws
+mkdir ~/.aws
 ```
 
 The configuration for a simple use should be like this:
