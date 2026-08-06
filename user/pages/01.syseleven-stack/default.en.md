@@ -37,4 +37,4 @@ For further information please check our [support page](../06.Support/default.en
 
 ## Edit articles
 
-Our [documentation is on GitHub](https://github.com/syseleven/grav-docu-syseleven-stack) and we are happy for any contributions via pull requests.
+Our [documentation is on GitHub](https://github.com/syseleven/grav-docs-syseleven-stack) and we are happy for any contributions via pull requests.
