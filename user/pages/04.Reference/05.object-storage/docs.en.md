@@ -102,7 +102,7 @@ openstack ec2 credentials list
 
 ### S3cmd
 
-Information about the `s3cmd` client can be found [here](https://s3tools.org/s3cmd).
+Information about the `s3cmd` client can be found on the [s3cmd website](https://s3tools.org/s3cmd).
 
 Now you can create an `s3cmd` configuration which could look like this:
 
@@ -166,7 +166,7 @@ You can use these URLs to refer to the uploaded files as static assets in your w
 
 ### AWS CLI
 
-Information about the AWS client can be found [here](https://aws.amazon.com/cli/).
+Information about the AWS client can be found on the [AWS CLI website](https://aws.amazon.com/cli/).
 
 !!!! **Ceph and Quobyte specific commands**
 !!!! There are some incompatibilities with some S3 commands in AWS CLI for Ceph S3 which works fine with Quobyte S3. This part will cover commands for `s3.xxx.cloud.syseleven.net` endpoints which are Quobyte and `objectstorage.fes.cloud.syseleven.net` which is our Ceph endpoint.
@@ -228,7 +228,7 @@ delete: s3://test-bucket-sys11-j2j4/test.pdf
 
 ### Boto3
 
-Information about the `boto3` python S3 library can be found [here](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). We suggest to make use of this library to set up and manage more complex ACLs.
+Information about the `boto3` python S3 library can be found in the [boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). We suggest to make use of this library to set up and manage more complex ACLs.
 
 Using the following python snippet we can configure our client:
 
@@ -274,7 +274,7 @@ Boto3 also supports defining ACLs for your buckets and objects. To learn more ta
 
 ### Minio
 
-Information about the Minio client can be found [here](https://minio.io).
+Information about the Minio client can be found on the [Minio website](https://minio.io).
 
 **Installation of Minio client into the home directory of the current user is necessary for the following example commands to work!**
 
