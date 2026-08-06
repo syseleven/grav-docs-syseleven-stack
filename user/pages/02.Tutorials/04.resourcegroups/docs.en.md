@@ -87,7 +87,7 @@ As you can see, servers and ports are defined twice. That will turn cumbersome w
 
 Simplifying Infrastructure Templates with `Resource Groups`.
 
-A simple servers with several identical servers is split between two files: A `setup.yaml that describes everything except the servers:
+A setup with several identical servers is split between two files: A `setup.yaml` that describes everything except the servers:
 
 ```plain
 heat_template_version: 2014-10-16
