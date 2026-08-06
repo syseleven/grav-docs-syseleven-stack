@@ -61,7 +61,7 @@ resources:
 
   syseleven_subnet:
     type: OS::Neutron::Subnet
-    depends_on: [ syseleven_net ] # <-- Here the order while creating and deleting resourcces is defined.
+    depends_on: [ syseleven_net ] # <-- Here the order while creating and deleting resources is defined.
 
 ```
 
