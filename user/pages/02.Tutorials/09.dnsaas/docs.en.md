@@ -133,7 +133,7 @@ In this case you will have to give the nameserver names `ns01.cloud.syseleven.ne
 We can change or unset the description and change the email address of primary zones like this:
 
 ```shell
-$ openstack zone set --description "Example Domain" --email other@domain.example domain.example.de.
+$ openstack zone set --description "Example Domain" --email other@domain.example domain.example.
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
@@ -155,7 +155,7 @@ $ openstack zone set --description "Example Domain" --email other@domain.example
 | updated_at     | 2019-06-27T09:38:12.000000           |
 | version        | 3                                    |
 +----------------+--------------------------------------+
-$ openstack zone set --no-description --email email@domain.example domain.example.de.
+$ openstack zone set --no-description --email email@domain.example domain.example.
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
@@ -182,7 +182,7 @@ $ openstack zone set --no-description --email email@domain.example domain.exampl
 We can also change the masters of secondary zones like this:
 
 ```shell
-$ openstack zone set --masters 123.45.67.88 -- secondary.domain.example.de.
+$ openstack zone set --masters 123.45.67.88 -- secondary.domain.example.
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
@@ -212,7 +212,7 @@ It is however not possible to change the type between master and secondary zones
 #### Removing zones
 
 ```shell
-$ openstack zone delete secondary.domain.example.de.
+$ openstack zone delete secondary.domain.example.
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
@@ -234,7 +234,7 @@ $ openstack zone delete secondary.domain.example.de.
 | updated_at     | 2019-06-27T09:46:53.000000           |
 | version        | 7                                    |
 +----------------+--------------------------------------+
-$ openstack zone delete domain.example.de.
+$ openstack zone delete domain.example.
 +----------------+--------------------------------------+
 | Field          | Value                                |
 +----------------+--------------------------------------+
