@@ -15,7 +15,7 @@ The kickstart instance contains all necessary tools to get started with the Open
 ## Goal
 
 * Launch a jumphost/kickstart instance via GUI (Horizon)
-* Automated installation of the the OpenStack Client in the new instance
+* Automated installation of the OpenStack Client in the new instance
 
 ## Prerequisites
 
