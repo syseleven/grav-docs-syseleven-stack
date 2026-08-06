@@ -15,7 +15,7 @@ The service is based on and compatible with the OpenStack Designate project and 
 
 You can manage DNS zones and records both via our [public OpenStack API endpoints](../../02.Tutorials/02.api-access/docs.en.md), as well as using the Dashboard.
 
-The DNS service is shared between all regions. You will need to choose a region in the Dashboard or using the OpenStack CLI environment variable `OS_REGION`, but it does not matter which one you choose. DNS objects are always global.
+The DNS service is shared between all regions. You will need to choose a region in the Dashboard or using the OpenStack CLI environment variable `OS_REGION_NAME`, but it does not matter which one you choose. DNS objects are always global.
 
 ## Feature Support Matrix
 
