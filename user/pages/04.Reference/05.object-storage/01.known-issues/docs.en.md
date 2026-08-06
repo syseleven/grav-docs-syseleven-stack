@@ -35,7 +35,7 @@ We suggest to download the file in multiple chunks using the HTTP Range header. 
 
 ```plain
 s4cmd get --max-singlepart-download-size=$((50*1024**2)) --multipart-split-size=$((50*1024**2)) s3://BUCKET_NAME/FILE_NAME
-````
+```
 
 The value of 52428800 Bytes = 50 MiB specified in this example is actually the default value for those parameters, so that using `s4cmd` without specifying those parameters should already circumvent the mentioned problem by doing multipart transfers.
 
@@ -91,7 +91,7 @@ There’s an issue where the S3 DeleteBucketLifecycle API call doesn’t success
 **Reproduction Steps**
 Below is an example using the AWS CLI to demonstrate how to reproduce the issue.
 
-```plan
+```bash
 # This is a lifecycle config example
 $ cat lifecycle.json
 {
