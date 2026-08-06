@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-SysEleven Stacks Compute Service is built on the OpenStack Nova project.
+SysEleven Stack's Compute Service is built on the OpenStack Nova project.
 It manages the life-cycle of compute instances in your environment. Its responsibilities include spawning, scheduling and decommissioning of virtual machines on demand.
 
 You can manage your compute instance both via our public [OpenStack API](../../02.Tutorials/02.api-access/docs.en.md) endpoints, as well as using the [Dashboard](https://cloud.syseleven.de/).
@@ -262,7 +262,7 @@ The security group "default" is added in this example, since this group is takin
 ### Are stopped instances counted regarding quota or ondemand billing?
 
 Any occupied resources are considered "used" and counted against your [quota limits](../../05.Background/03.resource-limits/docs.en.md#usage). They will also be counted against your upfront commitment or charged on demand.
-When you create an instance, volume, snapshot, object, loadbalancer, floating ip, dns zone, resources will be allocated and so they will be counted and charged, no matter if they are actually running, attached, assigned.
+When you create an instance, volume, snapshot, object, loadbalancer, floating IP, DNS zone, resources will be allocated and so they will be counted and charged, no matter if they are actually running, attached, assigned.
 To save money or free quota, it is thus not sufficient to stop, detach or unassign them, you must delete them completely to free the resources so that we can reuse them.
 It is part of higher level automation like Kubernetes or Terraform or similar tools to recreate them if needed.
 
