@@ -8,6 +8,7 @@
   "first-header-h1": {
     "level": 2
   },
+  "table-column-style": false,
   "first-line-h1": false,
   "valid-metadata-block": true,
   "no-multiple-blanks": false,
