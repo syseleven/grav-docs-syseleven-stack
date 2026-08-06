@@ -11,7 +11,7 @@ taxonomy:
 
 SysEleven Stack uses the OpenStack component Keystone for identity and access.
 
-There a different ways to authenticate towards Keystone. Upon successful authentication, the identity service provides the user with an authorization token used for subsequent service requests.
+There are different ways to authenticate towards Keystone. Upon successful authentication, the identity service provides the user with an authorization token used for subsequent service requests.
 
 ## Supported authentication methods
 
