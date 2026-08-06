@@ -33,7 +33,7 @@ You may need to install the designate client (plugin).
 
 #### Create a (primary) zone
 
-First you create a dns zone with the following command:
+First you create a DNS zone with the following command:
 
 ```shell
 $ openstack zone create --email "email@domain.example" domain.example.

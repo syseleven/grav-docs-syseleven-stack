@@ -32,7 +32,7 @@ This is not the main focus of this document, but you can work through [this howt
 
 ### Prepare the Zone and Records in OpenStack/Designate
 
-Create a dns zone with the following command:
+Create a DNS zone with the following command:
 
 ```shell
 $ openstack zone create --email "email@domain.example" domain.example.

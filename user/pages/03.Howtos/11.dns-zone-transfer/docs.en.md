@@ -1,5 +1,5 @@
 ---
-title: 'How to transfer dns zones'
+title: 'How to transfer DNS zones'
 date: '28-07-2019 18:00'
 taxonomy:
     category:
