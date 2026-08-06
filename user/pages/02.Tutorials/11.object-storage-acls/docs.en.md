@@ -30,7 +30,7 @@ We suggest you use the python library boto3 to reproduce all scenarios shown in 
 
 ### Prepare environment
 
-To be able to create our buckets, objects and ACLs we first will need to get our access and secret key of the ec2 credentials of our OpenStack user.
+To be able to create our buckets, objects and ACLs we first will need to get our access and secret key of the EC2 credentials of our OpenStack user.
 
 For s3cmd we have to create following configuration file (example is in DBL region):
 
@@ -75,7 +75,7 @@ In the following sections we will take a look at different scenarios for using A
 
 ### Create buckets/objects
 
-Using the S3 client s3cmd or the S3 python library boto3 we can create buckets and objects. By default these buckets and objects will be read/writeable by all your OpenStack project members (to be more specific, the buckets created without defining any ACL will be accessible for all users who have created ec2 credentials for the underlying OpenStack project).
+Using the S3 client s3cmd or the S3 python library boto3 we can create buckets and objects. By default these buckets and objects will be read/writeable by all your OpenStack project members (to be more specific, the buckets created without defining any ACL will be accessible for all users who have created EC2 credentials for the underlying OpenStack project).
 
 To do so with s3cmd:
 
