@@ -10,7 +10,7 @@ taxonomy:
 
 ## Goal
 
-* This tutorial shows howto distribute instances to different hosts using server groups
+* This tutorial shows how to distribute instances to different hosts using server groups
 * It is also shown how to force instances on the same host
 
 ## Prerequisites
