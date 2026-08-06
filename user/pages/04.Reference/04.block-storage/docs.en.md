@@ -153,7 +153,7 @@ resize2fs /dev/vdX
 Encryption at rest is only supported in FES region.
 Data stored on a ceph volume is encrypted at rest, which means that data is encrypted before writing it to a physical device. When storage device is lost or damaged your data is protected against unauthorized access.
 
-!! WARNING: In case of a local storage flavors, only data stored on a ceph volume is encrypted. Data stored on the VM's ephemeral local storage or on a quobyte volume is not encrypted.
+!! WARNING: In case of local storage flavors, only data stored on a ceph volume is encrypted. Data stored on the VM's ephemeral local storage or on a quobyte volume is not encrypted.
 !! WARNING: In any case data stored on a quobyte volume is not encrypted.
 
 ### Current limitations
