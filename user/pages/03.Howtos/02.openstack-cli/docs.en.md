@@ -105,7 +105,7 @@ pip install --upgrade pip
 
 ---
 
-## OpenStack Client
+## OpenStack client
 
 Install the OpenStack CLI client and recommended plugins, to be able to communicate with the corresponding OpenStack APIs:
 
@@ -128,7 +128,7 @@ On Windows the installation may fail because of missing development tools. Follo
 
 ## Conclusion
 
-We have installed the OpenStack Client and we now can use it.
+We have installed the OpenStack client and we now can use it.
 **To be able to use the OpenStack CLI tools the [API access](../../02.Tutorials/02.api-access/docs.en.md) needs to be configured now.**
 
 If needed you can list all commands:

@@ -9,13 +9,13 @@ taxonomy:
 
 ## Overview
 
-This tutorial explains how to launch a single instance with pre-installed OpenStack Client using the Horizon dashboard (GUI).
-The kickstart instance contains all necessary tools to get started with the OpenStack Client.
+This tutorial explains how to launch a single instance with pre-installed OpenStack client using the Horizon dashboard (GUI).
+The kickstart instance contains all necessary tools to get started with the OpenStack client.
 
 ## Goal
 
 * Launch a jumphost/kickstart instance via GUI (Horizon)
-* Automated installation of the OpenStack Client in the new instance
+* Automated installation of the OpenStack client in the new instance
 
 ## Prerequisites
 
