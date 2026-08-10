@@ -116,7 +116,7 @@ Using `HTTP_COOKIE`, the load balancer will generate a cookie and insert it to t
 
 ### Header insertion
 
-Header insertion can be configured on the load balancer listener resource, for example using the command `openstack loadbalancer listener create --insert-headers <HEADER>=true [..]`.
+Header insertion can be configured on the load balancer listener resource, for example using the command `openstack loadbalancer listener create --insert-headers <header>=true [..]`.
 
 Header insertion is turned off by default. When turned on, the specified header with information about the request will be passed to the pool members.
 

@@ -37,7 +37,7 @@ For this tutorial, we need a *Linux* environment and the OpenStack client. If yo
 ```shell
 wget https://raw.githubusercontent.com/syseleven/heat-examples/master/kickstart/kickstart.yaml
 ...
-openstack stack create -t kickstart.yaml --parameter key_name=<ssh key name> <stack name> --wait
+openstack stack create -t kickstart.yaml --parameter key_name=<ssh-key-name> <stack-name> --wait
 ...
 ```
 
@@ -66,7 +66,7 @@ For this we use a *rescue image* that SysEleven provides in OpenStack.
 First we stop the instance
 
 ```shell
-openstack server stop <server uuid>
+openstack server stop <server-uuid>
 ```
 
 Then we need to get the current ID of the rescue image
@@ -84,7 +84,7 @@ $ openstack image list --public | grep -i rescue
 Now we launch the instance into the rescue mode using the rescue image
 
 ```shell
-# openstack server rescue --image < Image name / ID > <server name / uuid>
+# openstack server rescue --image <image-name-or-id> <server-name-or-uuid>
 
 openstack server rescue --image "Rescue Ubuntu 18.04 sys11" app001
 ```
@@ -171,13 +171,13 @@ detection, and install the latest OS patches and disk drivers.
 First we "unrescue" the instance.
 
 ```shell
-openstack server unrescue <server uuid>
+openstack server unrescue <server-uuid>
 ```
 
 Then we start the instance again.
 
 ```shell
-openstack server start <server uuid>
+openstack server start <server-uuid>
 ```
 
 ## Conclusion

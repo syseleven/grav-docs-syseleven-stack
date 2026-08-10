@@ -227,7 +227,7 @@ resources:
       subnet: { get_resource: subnet }
 ```
 
-You can use this template as usual, only that you reference the public SSH Key you stored in the Dashboard using the command line switch `--parameter key_name=<PubKeyName>`. This ensures that you can log in to the default account on your virtual machine using SSH.
+You can use this template as usual, only that you reference the public SSH Key you stored in the Dashboard using the command line switch `--parameter key_name=<pub-key-name>`. This ensures that you can log in to the default account on your virtual machine using SSH.
 
 In the [Dashboard](https://cloud.syseleven.de/) you can see the network being built. You also see the subnet and router are created and all objects will be connected. We cannot connect to our virtual machine though: The setup is missing a publicly accessible IP address. The missing object is a *Floating IP*, another object we need to connect with our *Port*. When that's done, we have a virtual machine that is reachable from the Internet. Here is the necessary orchestration code:
 
@@ -385,7 +385,7 @@ openstack server list
 Copy the IP address and log into the virtual machine:
 
 ```shell
-ssh ubuntu@<floating IP>
+ssh ubuntu@<floating-ip>
 ```
 
 In Ubuntu cloud images, `ubuntu` is the default name of the default user account.
@@ -494,5 +494,5 @@ A heat stack follows a chain of dependencies on creation, to bring a certain ord
 Resource DELETE failed: Conflict: resources.router_subnet_connect: Router interface for subnet eaa5a91f-3f45-43cf-8714-95118aabc64c on router 487a984c-692c-4d45-80d2-2e0ee92b505d cannot be deleted, as it is required by one or more floating IPs.
 ```
 
-In this case a clean solution is to delete the dependencies by hand - for example first delete the floating IP that is attached to the router, then delete the router and then the whole stack. Oftentimes you can also just call `openstack stack delete <stackName>` multiple times.  
-Again, by specifying `depends_on: <myOtherResourceID>` you can avoid this class of problem entirely.
+In this case a clean solution is to delete the dependencies by hand - for example first delete the floating IP that is attached to the router, then delete the router and then the whole stack. Oftentimes you can also just call `openstack stack delete <stack-name>` multiple times.  
+Again, by specifying `depends_on: <my-other-resource-id>` you can avoid this class of problem entirely.

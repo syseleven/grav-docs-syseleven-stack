@@ -63,7 +63,7 @@ The kickstart instance contains all necessary tools to get started with the Open
 
 * Open a terminal of your choice and log in to the instance via ssh with the username `syseleven`  
 
-`ssh syseleven@<floating IP> -i ~/.ssh/<private-ssh-key>`
+`ssh syseleven@<floating-ip> -i ~/.ssh/<private-ssh-key>`
 
 * You should now be logged in your instance via SSH  
 

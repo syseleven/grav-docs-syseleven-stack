@@ -29,14 +29,14 @@ $ openstack port list
 ### Step Two: Update port security for target port and allow additional subnet
 
 ```shell
-openstack port set --allowed-address ip-address=<IP Address or IP Subnet/Mask> <PORT ID>
+openstack port set --allowed-address ip-address=<ip-address-or-ip-subnet-mask> <port-id>
 ```
 
 ```shell
 openstack port set --allowed-address ip-address=10.0.0.0/24 5fc7ed94-754e-427a-a6d2-9b0f67f9eebd
 ```
 
-Note that `openstack port set` returns no output. You can verify the change with `openstack port show <PORT ID>`.
+Note that `openstack port set` returns no output. You can verify the change with `openstack port show <port-id>`.
 
 ### Step Three: Check if packets can be sent/received
 

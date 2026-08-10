@@ -155,7 +155,7 @@ Instance snapshots can be created from instances, if they are not booted from a 
 !! WARNING: Creating instance snapshots of your server will make it unresponsive for a period of time (depending on the disk size).
 
 ```shell
-openstack server image create --name <MyInstanceSnapshotName> <MyInstanceName>
+openstack server image create --name <my-instance-snapshot-name> <my-instance-name>
 ```
 
 ### Data consistency

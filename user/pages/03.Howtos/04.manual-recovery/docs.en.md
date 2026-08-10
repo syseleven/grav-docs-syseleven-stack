@@ -30,7 +30,7 @@ For this tutorial, we need a *Linux* environment and the OpenStack client in the
 ```shell
 wget https://raw.githubusercontent.com/syseleven/heat-examples/master/kickstart/kickstart.yaml
 ...
-openstack stack create -t kickstart.yaml --parameter key_name=<ssh key name> <stack name> --wait
+openstack stack create -t kickstart.yaml --parameter key_name=<ssh-key-name> <stack-name> --wait
 ...
 ```
 
@@ -58,13 +58,13 @@ To recover data from an existing instance, we have to create a snapshot first.
 !! WARNING: Creating instance snapshots of your server will make it unresponsive for a period of time (depending on the disk size).
 
 ```shell
-openstack server image create <server uuid> --name <snapshot name> --wait
+openstack server image create <server-uuid> --name <snapshot-name> --wait
 ```
 
 We can download the snapshot now. This can take a while.
 
 ```shell
-openstack image save --file snapshot.qcow2 <snapshot name>
+openstack image save --file snapshot.qcow2 <snapshot-name>
 ```
 
 We can access the snapshot's contents via nbd.

@@ -59,7 +59,7 @@ Using the username and password (API credentials) that were provided by SysEleve
 Then we create a new keypair in openstack as follows:
 
 ```shell
-# openstack keypair create --public-key <pathToSSHPublicKey> <my_ssh_key_name>
+# openstack keypair create --public-key <path-to-ssh-public-key> <my-ssh-key-name>
 
 openstack keypair create --public-key ~/.ssh/id_rsa.pub username_rsa
 

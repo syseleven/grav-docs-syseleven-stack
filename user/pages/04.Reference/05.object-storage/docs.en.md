@@ -109,8 +109,8 @@ Now you can create an `s3cmd` configuration which could look like this:
 ```shell
 syseleven@kickstart:~$ cat .s3cfg
 [default]
-access_key = < REPLACE ME >
-secret_key = < REPLACE ME >
+access_key = <replace-me>
+secret_key = <replace-me>
 use_https = True
 check_ssl_certificate = True
 check_ssl_hostname = False
@@ -184,8 +184,8 @@ The configuration for a simple use should be like this:
 ```shell
 syseleven@kickstart:~$ cat ~/.aws/config
 [default]
-aws_access_key_id = < REPLACE ME >
-aws_secret_access_key = < REPLACE ME >
+aws_access_key_id = <replace-me>
+aws_secret_access_key = <replace-me>
 ```
 
 Listing buckets: **[Quobyte - Ceph]**
@@ -239,8 +239,8 @@ import botocore
 session = boto3.session.Session()
 s3 = session.resource(
     service_name = 's3',
-    aws_access_key_id = "< REPLACE ME >",
-    aws_secret_access_key = "< REPLACE ME >",
+    aws_access_key_id = "<replace-me>",
+    aws_secret_access_key = "<replace-me>",
     endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
 )
 # Get our client
@@ -285,7 +285,7 @@ Information about the MinIO client can be found on the [MinIO website](https://m
 Now you can create a MinIO S3 configuration:
 
 ```shell
-~/mc config host add <ALIAS> <YOUR-S3-ENDPOINT> <YOUR-ACCESS-KEY> <YOUR-SECRET-KEY> --api <API-SIGNATURE> --lookup <BUCKET-LOOKUP-TYPE>
+~/mc config host add <alias> <your-s3-endpoint> <your-access-key> <your-secret-key> --api <api-signature> --lookup <bucket-lookup-type>
 ~/mc config host add dbl https://s3.dbl.cloud.syseleven.net accesskey secretkey --api S3v4 --lookup dns
 ~/mc config host add cbk https://s3.cbk.cloud.syseleven.net accesskey secretkey --api S3v4 --lookup dns
 ```
