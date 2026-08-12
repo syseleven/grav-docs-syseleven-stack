@@ -14,7 +14,7 @@ taxonomy:
 
 ## Overview
 
-SSH keys can be imported via the GUI (Horizon / Dashboard) or the CLI (OpenStack Client). While uploading SSH keys via the dashboard might be easier, uploading the SSH keys via the OpenStack CLI might be faster if SSH keys are to be imported into multiple regions.
+SSH keys can be imported via the GUI (Horizon / Dashboard) or the CLI (OpenStack client). While uploading SSH keys via the dashboard might be easier, uploading the SSH keys via the OpenStack CLI might be faster if SSH keys are to be imported into multiple regions.
 
 !!!  SSH keys are saved in user and <u>not</u> project (tenant) context.
 !!!  SSH keys are region specific.
@@ -59,7 +59,7 @@ Using the username and password (API credentials) that were provided by SysEleve
 Then we create a new keypair in openstack as follows:
 
 ```shell
-# openstack keypair create --public-key <pathToSSHPublicKey> <my_ssh_key_name>
+# openstack keypair create --public-key <path-to-ssh-public-key> <my-ssh-key-name>
 
 openstack keypair create --public-key ~/.ssh/id_rsa.pub username_rsa
 

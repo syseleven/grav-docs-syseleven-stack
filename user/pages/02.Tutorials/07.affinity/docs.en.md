@@ -10,7 +10,7 @@ taxonomy:
 
 ## Goal
 
-* This tutorial shows howto distribute instances to different hosts using server groups
+* This tutorial shows how to distribute instances to different hosts using server groups
 * It is also shown how to force instances on the same host
 
 ## Prerequisites
@@ -59,7 +59,7 @@ heat_template_version: 2014-10-16
 
 #
 # you can start this stack using the following command:
-# 'openstack stack create -t group.yaml <stackName>'
+# 'openstack stack create -t group.yaml <stack-name>'
 #
 
 description: deploys a group of servers with only internal network.
@@ -202,8 +202,8 @@ openstack server show server_1 -c name -c hostId
 * [Heat Template ServerGroup Resource](https://docs.openstack.org/developer/heat/template_guide/openstack.html#OS::Nova::ServerGroup)
 * [Nova Scheduler Reference](https://docs.openstack.org/mitaka/config-reference/compute/scheduler.html)
 * [Nova Scheduler Affinity Filter](https://docs.openstack.org/mitaka/config-reference/compute/scheduler.html#servergroupaffinityfilter)
-* [OpenStack Client Server Create](https://docs.openstack.org/developer/python-openstackclient/command-objects/server.html#server-create)
-* [OpenStack Client ServerGroup](https://docs.openstack.org/developer/python-openstackclient/command-objects/server-group.html)
+* [OpenStack client Server Create](https://docs.openstack.org/developer/python-openstackclient/command-objects/server.html#server-create)
+* [OpenStack client ServerGroup](https://docs.openstack.org/developer/python-openstackclient/command-objects/server-group.html)
 
 ## Links/Examples
 

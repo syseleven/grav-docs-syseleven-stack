@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This Document will show you the essential steps to add a PTR record for an existing floating IP.
+This document will show you the essential steps to add a PTR record for an existing floating IP.
 
 For a complete overview see the [networking reference guide](../../04.Reference/08.network/docs.en.md) and the [DNS reference guide](../../04.Reference/07.dns/docs.en.md).
 
@@ -75,7 +75,7 @@ openstack network list
 Then associate the DNS zone with the network:
 
 ```shell
-openstack network set --dns-domain ptrhowto.example. <Network UUID>
+openstack network set --dns-domain ptrhowto.example. <network-uuid>
 ```
 
 ### Set the DNS domain and DNS name of the port
@@ -119,13 +119,13 @@ Finally, to create the forward A-type records and reverse PTR-type records for o
 In our example, the server ID is `e4dc0ac3-7f71-4279-ba95-d686da868dae` and the floating IP is `185.56.129.73`.
 
 ```shell
-openstack server remove floating ip <server UUID> <server floating IP>
+openstack server remove floating ip <server-uuid> <server-floating-ip>
 ```
 
 and then immediately run:
 
 ```shell
-openstack server add floating ip <server UUID> <server floating IP>
+openstack server add floating ip <server-uuid> <server-floating-ip>
 ```
 
 ### Conclusion

@@ -14,6 +14,8 @@ page-toc:
 
 [First steps](../02.Tutorials/01.firststeps/docs.en.md) show, how you can start a compute instance via the dashboard of the SysEleven Stack. Further examples show, how you can use the API of the SysEleven Stack to manage complex setups.
 
+!!! This documentation focuses on the regions `cbk` (Berlin), `dbl` (Berlin) and `fes` (Frankfurt). The documentation for the newer regions `dus2` (Düsseldorf) and `ham1` (Hamburg) can be found in the [new SysEleven documentation](https://documentation.syseleven.de/en/discover/).
+
 ## Contents
 
 Our documentation is structured in four distinct sections:
@@ -37,4 +39,4 @@ For further information please check our [support page](../06.Support/default.en
 
 ## Edit articles
 
-Our [documentation is on GitHub](https://github.com/syseleven/grav-docu-syseleven-stack) and we are happy for any contributions via pull requests.
+Our [documentation is on GitHub](https://github.com/syseleven/grav-docs-syseleven-stack) and we are happy for any contributions via pull requests.

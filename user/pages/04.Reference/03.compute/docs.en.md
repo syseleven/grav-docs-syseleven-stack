@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-SysEleven Stacks Compute Service is built on the OpenStack Nova project.
+SysEleven Stack's Compute Service is built on the OpenStack Nova project.
 It manages the life-cycle of compute instances in your environment. Its responsibilities include spawning, scheduling and decommissioning of virtual machines on demand.
 
 You can manage your compute instance both via our public [OpenStack API](../../02.Tutorials/02.api-access/docs.en.md) endpoints, as well as using the [Dashboard](https://cloud.syseleven.de/).
@@ -39,7 +39,7 @@ M2 Large    |  m2.large   | 32GiB  |   8   |   50GiB  | fes                  |
 (M1 XLarge)\*\*   |  (m1.xlarge)\*\* | 64GiB   |   16   |   50GiB   | dbl, cbk |
 (M2 XLarge)\*\*   |  (m2.xlarge)\*\* | 64GiB   |   16   |   50GiB   | fes      |
 (M1 XXLarge)\*\*  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   | dbl, cbk |
-(M2 XXLarge)\*\*  |  (m1.xxlarge)\*\* | 128GiB|   32   |   50GiB   | fes      |
+(M2 XXLarge)\*\*  |  (m2.xxlarge)\*\* | 128GiB|   32   |   50GiB   | fes      |
 
 #### CPU optimized
 
@@ -155,7 +155,7 @@ Instance snapshots can be created from instances, if they are not booted from a 
 !! WARNING: Creating instance snapshots of your server will make it unresponsive for a period of time (depending on the disk size).
 
 ```shell
-openstack server image create --name <MyInstanceSnapshotName> <MyInstanceName>
+openstack server image create --name <my-instance-snapshot-name> <my-instance-name>
 ```
 
 ### Data consistency
@@ -231,7 +231,7 @@ If you need a fixed IP, you can assign a port from our networking service as a f
 
 ### My compute instance was created, but is e.g. not accessible via SSH/HTTP
 
-By default all compute instances of are using the "default" security group. It's settings do not allow any other packets, except of ICMP in order to be able to ping your compute instance. Any other ports needed by a given instance need to be opened by adding a rule to the security group your instance uses (i.e., SSH or HTTPS).
+By default all compute instances are using the "default" security group. It's settings do not allow any other packets, except of ICMP in order to be able to ping your compute instance. Any other ports needed by a given instance need to be opened by adding a rule to the security group your instance uses (i.e., SSH or HTTPS).
 Here is an example that shows how you can use a heat template to allow incoming HTTP/HTTPS traffic via your security group:
 
 ```plain
@@ -262,7 +262,7 @@ The security group "default" is added in this example, since this group is takin
 ### Are stopped instances counted regarding quota or ondemand billing?
 
 Any occupied resources are considered "used" and counted against your [quota limits](../../05.Background/03.resource-limits/docs.en.md#usage). They will also be counted against your upfront commitment or charged on demand.
-When you create an instance, volume, snapshot, object, loadbalancer, floating ip, dns zone, resources will be allocated and so they will be counted and charged, no matter if they are actually running, attached, assigned.
+When you create an instance, volume, snapshot, object, loadbalancer, floating IP, DNS zone, resources will be allocated and so they will be counted and charged, no matter if they are actually running, attached, assigned.
 To save money or free quota, it is thus not sufficient to stop, detach or unassign them, you must delete them completely to free the resources so that we can reuse them.
 It is part of higher level automation like Kubernetes or Terraform or similar tools to recreate them if needed.
 

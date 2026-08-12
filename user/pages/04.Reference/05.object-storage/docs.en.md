@@ -9,7 +9,7 @@ taxonomy:
 
 ## Overview
 
-SysEleven Stack provides S3 compatible Object Storage.
+SysEleven Stack provides S3-compatible Object Storage.
 
 It stores and retrieves arbitrary unstructured data objects via an HTTP-based API. It is highly fault tolerant with its data replication and scale-out architecture. In its implementation as a distributed eventually consistent object storage, it is not mountable like a file server.
 
@@ -53,7 +53,7 @@ Basically, SysEleven Stack Object Storage is a big key/value store.
 A file or file object can be assigned a file name like key, and made available under this key.
 
 !! **Be aware**
-!! We discourage the use of special characters, especially dots (`.`) and slashes (`/`) in bucket or object names, especially at the start and end of names. As names can be used or interpreted as dns names, pathnames and/or filenames, this can confuse both server and client software and in consequence may lead to buckets or objects being unaccessible or unmaintainable. In case you are stuck with such a phenomenon, please contact our [Support (support@syseleven.de)](../../06.Support/default.en.md).
+!! We discourage the use of special characters, especially dots (`.`) and slashes (`/`) in bucket or object names, especially at the start and end of names. As names can be used or interpreted as DNS names, pathnames and/or filenames, this can confuse both server and client software and in consequence may lead to buckets or objects being inaccessible or unmaintainable. In case you are stuck with such a phenomenon, please contact our [Support (support@syseleven.de)](../../06.Support/default.en.md).
 
 ## Regions
 
@@ -109,8 +109,8 @@ Now you can create an `s3cmd` configuration which could look like this:
 ```shell
 syseleven@kickstart:~$ cat .s3cfg
 [default]
-access_key = < REPLACE ME >
-secret_key = < REPLACE ME >
+access_key = <replace-me>
+secret_key = <replace-me>
 use_https = True
 check_ssl_certificate = True
 check_ssl_hostname = False
@@ -176,7 +176,7 @@ Information about the AWS client can be found on the [AWS CLI website](https://a
 The `aws-cli` also has a configuration file which can be created under the home directory of the user which runs the command.
 
 ```shell
-mdkir ~/.aws
+mkdir ~/.aws
 ```
 
 The configuration for a simple use should be like this:
@@ -184,8 +184,8 @@ The configuration for a simple use should be like this:
 ```shell
 syseleven@kickstart:~$ cat ~/.aws/config
 [default]
-aws_access_key_id = < REPLACE ME >
-aws_secret_access_key = < REPLACE ME >
+aws_access_key_id = <replace-me>
+aws_secret_access_key = <replace-me>
 ```
 
 Listing buckets: **[Quobyte - Ceph]**
@@ -239,8 +239,8 @@ import botocore
 session = boto3.session.Session()
 s3 = session.resource(
     service_name = 's3',
-    aws_access_key_id = "< REPLACE ME >",
-    aws_secret_access_key = "< REPLACE ME >",
+    aws_access_key_id = "<replace-me>",
+    aws_secret_access_key = "<replace-me>",
     endpoint_url = 'https://s3.dbl.cloud.syseleven.net'
 )
 # Get our client
@@ -272,20 +272,20 @@ s3client.put_object(Body="secret", Bucket=bucket, Key="private-scope-object")
 Boto3 also supports defining ACLs for your buckets and objects. To learn more take a look on our [ACL guide in the Tutorials section](../../02.Tutorials/11.object-storage-acls/docs.en.md).
 
 
-### Minio
+### MinIO
 
-Information about the Minio client can be found on the [Minio website](https://minio.io).
+Information about the MinIO client can be found on the [MinIO website](https://minio.io).
 
-**Installation of Minio client into the home directory of the current user is necessary for the following example commands to work!**
+**Installation of MinIO client into the home directory of the current user is necessary for the following example commands to work!**
 
 !!!! **Client functionality**
-!!!! The Minio client is currently **incapable** of generating **public** files.
-!!!! While synchronising many files Minio's performance is much better than with `s3cmd` though.
+!!!! The MinIO client is currently **incapable** of generating **public** files.
+!!!! While synchronising many files MinIO's performance is much better than with `s3cmd` though.
 
-Now you can create a Minio S3 configuration:
+Now you can create a MinIO S3 configuration:
 
 ```shell
-~/mc config host add <ALIAS> <YOUR-S3-ENDPOINT> <YOUR-ACCESS-KEY> <YOUR-SECRET-KEY> --api <API-SIGNATURE> --lookup <BUCKET-LOOKUP-TYPE>
+~/mc config host add <alias> <your-s3-endpoint> <your-access-key> <your-secret-key> --api <api-signature> --lookup <bucket-lookup-type>
 ~/mc config host add dbl https://s3.dbl.cloud.syseleven.net accesskey secretkey --api S3v4 --lookup dns
 ~/mc config host add cbk https://s3.cbk.cloud.syseleven.net accesskey secretkey --api S3v4 --lookup dns
 ```

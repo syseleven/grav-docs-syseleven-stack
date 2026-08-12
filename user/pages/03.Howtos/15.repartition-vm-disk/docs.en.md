@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This Document will show you the essential steps to repartition your VM disk. For this purpose we are using an Ubuntu 18.04 server as example with the `m1c.tiny` [flavor](../../04.Reference/03.compute/docs.en.md).
+This document will show you the essential steps to repartition your VM disk. For this purpose we are using an Ubuntu 18.04 server as example with the `m1c.tiny` [flavor](../../04.Reference/03.compute/docs.en.md).
 
 We strongly recommend to use the automatic approaches but for instructional use we are also covering the manual process here.
 
@@ -218,7 +218,7 @@ growpart:
   mode: off
 runcmd:
 # Parted asks whether to fix /dev/vda to use all available space, we reply "Fix" and continue
-# Resize primary partition to 10GiB
+# Resize primary partition to 10GB
 - "printf 'Fix\n1\nyes\n10GB\n' | parted ---pretend-input-tty /dev/vda resizepart"
 # Prepare partitions
 - "parted -s /dev/vda mkpart DATA ext4 10GB 20GB"
@@ -234,7 +234,7 @@ runcmd:
 - "resize2fs /dev/vda1"
 ```
 
-It will resize the main partition to 10 GiB and create 2 new partitions (10 GiB and 30 GiB), create an ext-4 filesystem and mount them.
+It will resize the main partition to 10 GB and create 2 new partitions (10 GB and 30 GB), create an ext-4 filesystem and mount them.
 
 After provisioning we may see our new created partitions from inside of the VM :
 
@@ -301,7 +301,7 @@ a906 NetBSD RAID           ab00 Recovery HD           af00 Apple HFS/HFS+
 af01 Apple RAID            af02 Apple RAID offline    af03 Apple label
 ```
 
-After provisioning we may for our new created 40 GiB partition inside of the VM :
+After provisioning we may see our newly created 40 GiB partition inside of the VM:
 
 ```shell
 ubuntu@partition-test:~$ df -h

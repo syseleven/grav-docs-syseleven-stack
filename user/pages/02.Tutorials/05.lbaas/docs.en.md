@@ -114,7 +114,7 @@ Outputs:
 loadbalancer_http = "http://185.56.128.100"
 ```
 
-Open AnyApp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server.
+Open AnyApp in your browser via `http://<loadbalancer-ip>` which shows the IP of the currently-used backend server.
 Open AnyApp in other tabs/windows to see the load balancer working.
 
 ![Loadbalancer](../../images/loadbalancer.png)
@@ -152,13 +152,13 @@ loadbalancer_http = "http://185.56.128.100"
 The example code contains the LB floating IP in its output:
 
 ```shell
-# terraform output <Name Of The Output>
+# terraform output <name-of-the-output>
 
 $ terraform output loadbalancer_http
 "http://195.192.128.20"
 ```
 
-Open AnyApp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server. Since this example installs more software on the backends than the previous example, it may take a minute before the AnyApp is available.
+Open AnyApp in your browser via `http://<loadbalancer-ip>` which shows the IP of the currently-used backend server. Since this example installs more software on the backends than the previous example, it may take a minute before the AnyApp is available.
 Open AnyApp in other tabs/windows to see the load balancer working.
 
 ![LBAnyApp](../../images/AnyApp_20180301.png)
@@ -194,7 +194,7 @@ In this tutorial we demonstrate an Octavia LBaaS setup with the following featur
 * Health Monitor for LB pool members (upstream instances)
 * a server group with dynamic number of servers
 * every upstream node installs Apache2 and PHP7.0 FPM via HEAT
-* "Anyapp" as simple PHP application
+* "AnyApp" as simple PHP application
 
 ### Step one: Create the stack
 
@@ -203,7 +203,7 @@ Open the folder containing the example code and create the stack providing your 
 ```shell
 $ cd heat-examples/lbaas-octavia-http
 
-# openstack stack create -t lbstack.yaml --parameter key_name=<publicKeyName> <stackName>
+# openstack stack create -t lbstack.yaml --parameter key_name=<public-key-name> <stack-name>
 
 $ openstack stack create -t lbstack.yaml --parameter key_name=exampleuser examplelb
 +---------------------+--------------------------------------+
@@ -225,7 +225,7 @@ By default the load balancer will accept connections from everywhere. In order t
 In our HEAT template example the listener's name is the stack name followed by "-listener", e.g. "examplelb-listener".
 
 ```shell
-# openstack loadbalancer listener set --allowed-cidr 172.20.0.0/16 --allowed-cidr 10.0.0.0/8 <listener name>
+# openstack loadbalancer listener set --allowed-cidr 172.20.0.0/16 --allowed-cidr 10.0.0.0/8 <listener-name>
 
 $ openstack loadbalancer listener set --allowed-cidr 172.20.0.0/16 --allowed-cidr 10.0.0.0/8 examplelb-listener
 ```
@@ -237,7 +237,7 @@ It is not possible to remove individual CIDRs, so you have to overwrite the list
 The example code contains the LB floating IP in its output:
 
 ```shell
-# openstack stack show <stack name> -f value -c outputs
+# openstack stack show <stack-name> -f value -c outputs
 
 $ openstack stack show examplelb -f value -c outputs
 [
@@ -252,15 +252,15 @@ $ openstack stack show examplelb -f value -c outputs
 To retrieve only the URL use the following command:
 
 ```shell
-# openstack stack output show <stack name> <output key> -c output_value -f value
+# openstack stack output show <stack-name> <output-key> -c output_value -f value
 
 $ openstack stack output show examplelb lburl -c output_value -f value
 
 http://195.192.128.20:80
 ```
 
-Open Anyapp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server.
-Open Anyapp in other tabs/windows to see the load balancer working.
+Open AnyApp in your browser via `http://<loadbalancer-ip>` which shows the IP of the currently-used backend server.
+Open AnyApp in other tabs/windows to see the load balancer working.
 
 ![LBAnyApp](../../images/AnyApp_20180301.png)
 
@@ -276,14 +276,14 @@ In this tutorial we demonstrate a Neutron LBaaSv2 setup with the following featu
 * Health Monitor for LB pool members (upstream instances)
 * a server group with dynamic number of servers
 * every upstream node installs Apache2 and PHP7.0 FPM via HEAT
-* "Anyapp" as simple PHP application
+* "AnyApp" as simple PHP application
 
 ### Step one: Create the stack
 
 ```shell
 $ cd heat-examples/lbaas
 
-# openstack stack create -t lbstack.yaml --parameter key_name=<publicKeyName> <stackName>
+# openstack stack create -t lbstack.yaml --parameter key_name=<public-key-name> <stack-name>
 
 $ openstack stack create -t lbstack.yaml --parameter key_name=exampleuser examplelb
 +---------------------+--------------------------------------+
@@ -307,14 +307,14 @@ See [this link](https://blueprints.launchpad.net/heat/+spec/add-security-group-t
 Assign a security group to the port as follows:
 
 ```shell
-openstack port set --security-group <Security Group> <LoadBalancer Port>
+openstack port set --security-group <security-group> <load-balancer-port>
 ```
 
 To make things easier for you, the example Heat template defines an output section that will format a valid openstack command for this port / security group assignment.
 With the following command you can display the formatted `port set` command:
 
 ```shell
-openstack stack output show <stackName> sec_group_connection -c output_value -f value
+openstack stack output show <stack-name> sec_group_connection -c output_value -f value
 ```
 
 ### Step three: Check if the load balancer works properly
@@ -322,7 +322,7 @@ openstack stack output show <stackName> sec_group_connection -c output_value -f 
 The example code contains the LB floating IP in its output:
 
 ```shell
-# openstack stack show <stack name> -f value -c outputs
+# openstack stack show <stack-name> -f value -c outputs
 
 $ openstack stack show examplelb -f value -c outputs
 [
@@ -342,15 +342,15 @@ $ openstack stack show examplelb -f value -c outputs
 To retrieve only the URL use the following command:
 
 ```shell
-# openstack stack output show <stack name> <output key> -c output_value -f value
+# openstack stack output show <stack-name> <output-key> -c output_value -f value
 
 $ openstack stack output show examplelb lburl -c output_value -f value
 
 http://195.192.128.20:80
 ```
 
-Open Anyapp in your browser via `http://<loadbalancerIP>` which shows the IP of the currently-used backend server.
-Open Anyapp in other tabs/windows to see the load balancer working.
+Open AnyApp in your browser via `http://<loadbalancer-ip>` which shows the IP of the currently-used backend server.
+Open AnyApp in other tabs/windows to see the load balancer working.
 
 ![LBAnyApp](../../images/AnyApp_20180301.png)
 

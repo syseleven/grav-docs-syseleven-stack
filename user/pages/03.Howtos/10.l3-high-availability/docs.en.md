@@ -15,7 +15,7 @@ taxonomy:
 
 ## Technology used
 
-* Virtual Router Redundancy Protocol, [RFC 5978](https://tools.ietf.org/html/rfc5798)
+* Virtual Router Redundancy Protocol, [RFC 5798](https://tools.ietf.org/html/rfc5798)
 
 ## Components used
 
@@ -342,7 +342,7 @@ Now we need to create a network port reserved for the virtual address.
 For this example, we will stick to `10.200.51.10` and we use virtual MAC address 00:00:5e:00:01:01, which according to RFC is the virtual mac address assigned to VRRP virtual router 1.
 
 ```shell
-openstack port create --network ha_lab --fixed-ip subnet=9a027a94-e688-45cb-a653-e223ccc9f72f,ip-address=10.200.51.10 --mac-address 00:00:5e:00:01:01 --security-group <sec_group_1> --security-group <sec_group_2> vip
+openstack port create --network ha_lab --fixed-ip subnet=9a027a94-e688-45cb-a653-e223ccc9f72f,ip-address=10.200.51.10 --mac-address 00:00:5e:00:01:01 --security-group <sec-group-1> --security-group <sec-group-2> vip
 ```
 
 `ha_lab` network ports list with new 'vip' port:
@@ -413,7 +413,7 @@ vrrp_instance vrrp_1 {
 Some of these options need special attention in cloud environments:
 
 * `garp_master_refresh 5` - forces MASTER VRRP node to generate GARP packets every 5 seconds to update ARP tables in SDN and on all VMs connected to the network.
-* `garp_master_refresh_repeat 2` - secifies how many GARP packets will be generated at GARP refresh event.
+* `garp_master_refresh_repeat 2` - specifies how many GARP packets will be generated at GARP refresh event.
 * `unicast_src_ip` and `unicast_peer` - since the cloud does not support broadcast, all communication must be unicast.
 
 Now, let's start keepalived and ensure that instances recognize each other, and state of `ha_second` is transitioned to

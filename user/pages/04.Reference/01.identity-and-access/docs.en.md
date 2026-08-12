@@ -11,7 +11,7 @@ taxonomy:
 
 SysEleven Stack uses the OpenStack component Keystone for identity and access.
 
-There a different ways to authenticate towards Keystone. Upon successful authentication, the identity service provides the user with an authorization token used for subsequent service requests.
+There are different ways to authenticate towards Keystone. Upon successful authentication, the identity service provides the user with an authorization token used for subsequent service requests.
 
 ## Supported authentication methods
 
@@ -84,8 +84,8 @@ For users with read-write access, we will assign both the operator and the viewe
 
 ## Access to SEOS (S3-compatible object storage)
 
-For access to the S3-compatible object storage, users can create, list and delete ec2 credentials (access key and secret key). They are only valid for the SysEleven S3-compatible object storage (SEOS).
+For access to the S3-compatible object storage, users can create, list and delete EC2 credentials (access key and secret key). They are only valid for the SysEleven S3-compatible object storage (SEOS).
 
-It is only possible to create ec2 credentials with the `operator` role, because they allow write access to all S3 buckets within a project by default.
+It is only possible to create EC2 credentials with the `operator` role, because they allow write access to all S3 buckets within a project by default.
 
 For more information, see the [object storage reference guide](../../04.Reference/05.object-storage/docs.en.md).

@@ -62,7 +62,7 @@ GET https://api.cloud.syseleven.net:5001/v3/projects/{project_id}/quota
 Example:
 
 - Project ID "11111111111111111111111111111111"
-- Regions cbk and dbl
+- Regions cbk and fes
 
 ```shell
 token=$(openstack token issue -c id -f value)
@@ -150,10 +150,6 @@ The response contains the quota information in JSON format. Example for a respon
     "network.vpn_services": -1,
     "objectstorage": [
       {
-        "space_bytes": 0,
-        "type": "quobyte"
-      },
-      {
         "space_bytes": 549755813888,
         "type": "ceph"
       }
@@ -199,7 +195,7 @@ Overview of fields:
 | network.subnet_pools | Number of subnet pools | since v3 |
 | network.subnets | Number of subnets | since v3 |
 | network.vpn_endpoint_groups | Number of VPNaaS endpoint groups | |
-| network.vpn_ikepolicy | Number of VPNaaS IKE policies | |
+| network.vpn_ikepolicies | Number of VPNaaS IKE policies | |
 | network.vpn_ipsec_site_connections | Number of VPNaaS site connections | |
 | network.vpn_ipsecpolicies | Number of VPNaaS IPSec policies | |
 | network.vpn_services | Number of VPNaaS VPN services | |
@@ -354,10 +350,6 @@ The response contains the information about the currently-used resources in JSON
     "objectstorage": [
       {
         "space_bytes": 0,
-        "type": "quobyte"
-      },
-      {
-        "space_bytes": 0,
         "type": "ceph"
       }
     ],
@@ -401,7 +393,7 @@ The response contains the information about the currently-used resources in JSON
 | network.subnet_pools | Number of subnet pools | since v3 |
 | network.subnets | Number of subnets | since v3 |
 | network.vpn_endpoint_groups | Number of VPNaaS endpoint groups | |
-| network.vpn_ikepolicy | Number of VPNaaS IKE policies | |
+| network.vpn_ikepolicies | Number of VPNaaS IKE policies | |
 | network.vpn_ipsec_site_connections | Number of VPNaaS site connections | |
 | network.vpn_ipsecpolicies | Number of VPNaaS IPSec policies | |
 | network.vpn_services | Number of VPNaaS VPN services | |

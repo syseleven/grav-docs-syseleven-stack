@@ -10,7 +10,7 @@ taxonomy:
 
 ### Overview
 
-This Document will show you the essential steps to create a minimal zone with a minimal recordset for a simple Server like a Website.
+This document will show you the essential steps to create a minimal zone with a minimal recordset for a simple Server like a Website.
 For a complete overview see the [reference guide](../../04.Reference/07.dns/docs.en.md).
 
 ### Prerequisites
@@ -32,7 +32,7 @@ This is not the main focus of this document, but you can work through [this howt
 
 ### Prepare the Zone and Records in OpenStack/Designate
 
-Create a dns zone with the following command:
+Create a DNS zone with the following command:
 
 ```shell
 $ openstack zone create --email "email@domain.example" domain.example.
