@@ -59,7 +59,7 @@ heat_template_version: 2014-10-16
 
 #
 # you can start this stack using the following command:
-# 'openstack stack create -t group.yaml <stack-name>'
+# 'openstack stack create -t group.yaml <STACK_NAME>'
 #
 
 description: deploys a group of servers with only internal network.
