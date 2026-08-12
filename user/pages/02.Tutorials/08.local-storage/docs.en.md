@@ -35,7 +35,7 @@ cd heat-examples/single-server-on-local-storage
 Now you can create the example stack for local SSD storage:
 
 ```shell
-openstack stack create -t example.yaml local-storage-example-stack -e example-env.yaml --parameter key_name=<ssh-key-name> --wait
+openstack stack create -t example.yaml local-storage-example-stack -e example-env.yaml --parameter key_name=<SSH_KEY_NAME> --wait
 ```
 
 In this command, `key_name` references an SSH-Key that you created in the [SSH Tutorial](../../03.Howtos/01.ssh-keys/docs.en.md).

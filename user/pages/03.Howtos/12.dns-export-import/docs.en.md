@@ -26,7 +26,7 @@ You may need to install the designate client (plugin).
 
 ### Create your zone
 
-This document assumes that you already have a zone you want to export. If you want to practise with a test domain, you can create an empty zone like in the example below. Be sure to use the recommended hostmaster@<your-domain> mail address.
+This document assumes that you already have a zone you want to export. If you want to practise with a test domain, you can create an empty zone like in the example below. Be sure to use the recommended hostmaster@<YOUR_DOMAIN> mail address.
 
 
 ```shell
