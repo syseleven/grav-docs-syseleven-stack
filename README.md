@@ -1,3 +1,5 @@
+> # **WARNING**: This repository is considered archived! Do **NOT** merge or use this repository. The content is accessible in [our new documentation](https://documentation.syseleven.de/en/prior-docs/openstack-cloud/)
+
 # grav-docs-syseleven-stack
 
 ## SysEleven Stack Documentation Repository
