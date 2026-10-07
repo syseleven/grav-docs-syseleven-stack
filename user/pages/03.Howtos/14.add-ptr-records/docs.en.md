@@ -75,7 +75,7 @@ openstack network list
 Then associate the DNS zone with the network:
 
 ```shell
-openstack network set --dns-domain ptrhowto.example. <network-uuid>
+openstack network set --dns-domain ptrhowto.example. <NETWORK_UUID>
 ```
 
 ### Set the DNS domain and DNS name of the port
@@ -119,13 +119,13 @@ Finally, to create the forward A-type records and reverse PTR-type records for o
 In our example, the server ID is `e4dc0ac3-7f71-4279-ba95-d686da868dae` and the floating IP is `185.56.129.73`.
 
 ```shell
-openstack server remove floating ip <server-uuid> <server-floating-ip>
+openstack server remove floating ip <SERVER_UUID> <SERVER_FLOATING_IP>
 ```
 
 and then immediately run:
 
 ```shell
-openstack server add floating ip <server-uuid> <server-floating-ip>
+openstack server add floating ip <SERVER_UUID> <SERVER_FLOATING_IP>
 ```
 
 ### Conclusion

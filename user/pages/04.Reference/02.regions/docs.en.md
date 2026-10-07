@@ -66,14 +66,14 @@ Once the region is selected you can start creating resources in that region.
 
 Using the username and password (API credentials) that were provided by SysEleven source the 'openrc' file and enable the CLI client to talk to the SysEleven Stack.
 
-When using the openstack client you can select the region by setting the `OS_REGION_NAME` variable accordingly. As an alternative you can override it with the command line option `--os-region-name <region-name>`.
+When using the openstack client you can select the region by setting the `OS_REGION_NAME` variable accordingly. As an alternative you can override it with the command line option `--os-region-name <REGION_NAME>`.
 
 **Note:** if you don't specify any region name in the `openrc` file or on the command line, the OpenStack client may pick a region in an unpredictable way, depending on what service you try to use.
 
 The following example shows how to use it:
 
 ```shell
-# openstack --os-region-name <region-name> <openstack-sub-command>
+# openstack --os-region-name <REGION_NAME> <OPENSTACK_SUB_COMMAND>
 
 openstack --os-region-name cbk server list
 +--------------------------------------+--------------+--------+-------------------------------------------+-------------------------+----------+

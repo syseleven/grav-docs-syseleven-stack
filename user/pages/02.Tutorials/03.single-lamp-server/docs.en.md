@@ -46,7 +46,7 @@ taxonomy:
 * Copy the floating IP from the example server  
 * Open a terminal of your choice and log in to the instance via ssh with the username `syseleven`  
 
-`ssh syseleven@<floating-ip> -i ~/.ssh/<private-ssh-key>`
+`ssh syseleven@<FLOATING_IP> -i ~/.ssh/<PRIVATE_SSH_KEY>`
 
 ![ssh-login-syseleven-sshkeyrsa-lamp-server](../../images/ssh-login-syseleven-sshkeyrsa-lamp-server.png)
 

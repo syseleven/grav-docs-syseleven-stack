@@ -37,14 +37,14 @@ For this tutorial, we need a *Linux* environment and the OpenStack client. If yo
 ```shell
 wget https://raw.githubusercontent.com/syseleven/heat-examples/master/kickstart/kickstart.yaml
 ...
-openstack stack create -t kickstart.yaml --parameter key_name=<ssh-key-name> <stack-name> --wait
+openstack stack create -t kickstart.yaml --parameter key_name=<SSH_KEY_NAME> <STACK_NAME> --wait
 ...
 ```
 
 Now we need to connect to the created instance.
 
 ```shell
-ssh syseleven@<server-ip>
+ssh syseleven@<SERVER_IP>
 ```
 
 The following commands need to be executed in the ssh session.
@@ -66,7 +66,7 @@ For this we use a *rescue image* that SysEleven provides in OpenStack.
 First we stop the instance
 
 ```shell
-openstack server stop <server-uuid>
+openstack server stop <SERVER_UUID>
 ```
 
 Then we need to get the current ID of the rescue image
@@ -84,7 +84,7 @@ $ openstack image list --public | grep -i rescue
 Now we launch the instance into the rescue mode using the rescue image
 
 ```shell
-# openstack server rescue --image <image-name-or-id> <server-name-or-uuid>
+# openstack server rescue --image <IMAGE_NAME_OR_ID> <SERVER_NAME_OR_UUID>
 
 openstack server rescue --image "Rescue Ubuntu 18.04 sys11" app001
 ```
@@ -100,7 +100,7 @@ Once you are logged in you can work with the rescue mode.
 If you used a SSH key while deploying the instance initially you can login via ssh
 
 ```shell
-ssh ubuntu@<instance-floating-ip>
+ssh ubuntu@<INSTANCE_FLOATING_IP>
 ```
 
 ### via Console
@@ -171,13 +171,13 @@ detection, and install the latest OS patches and disk drivers.
 First we "unrescue" the instance.
 
 ```shell
-openstack server unrescue <server-uuid>
+openstack server unrescue <SERVER_UUID>
 ```
 
 Then we start the instance again.
 
 ```shell
-openstack server start <server-uuid>
+openstack server start <SERVER_UUID>
 ```
 
 ## Conclusion
